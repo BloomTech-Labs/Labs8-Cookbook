@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "eslint": "^5.8.0"
+    "eslint": "^5.8.0",
+    "prisma": "^1.19.3"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.0",
