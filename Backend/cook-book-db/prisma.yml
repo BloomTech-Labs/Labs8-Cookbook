@@ -1,6 +1,0 @@
-endpoint: https://us1.prisma.sh/arthur-pisakhov-6e604a/cook-book-db/dev
-datamodel: datamodel.prisma
-
-generate:
-  - generator: javascript-client
-    output: ./generated/prisma-client/
