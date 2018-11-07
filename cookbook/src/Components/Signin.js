@@ -25,6 +25,7 @@ class Signin extends Component {
                     <div className='usernameDiv'>
                         <label className='usernameLabel'>Username: </label>
                         <input className='usernameInput'
+                            placeholder='Username'
                             value={this.state.username}
                             onChange={this.handleInputChange}
                             name='username'
@@ -35,6 +36,7 @@ class Signin extends Component {
                     <div className='passwordDiv'>
                         <label className='passwordLabel'>Password: </label>
                         <input className='passwordInput'
+                            placeholder='Password'
                             value={this.state.password}
                             onChange={this.handleInputChange}
                             name='password'
@@ -43,7 +45,7 @@ class Signin extends Component {
                     </div>
 
                     <Link to='/'>
-                        <button className='loginButton' type='submit'>Log In</button>
+                        <button className='loginButton' type='submit'>Log in</button>
                     </Link>
 
                 </form>

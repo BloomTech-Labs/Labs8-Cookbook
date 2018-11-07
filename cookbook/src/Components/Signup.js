@@ -23,27 +23,57 @@ class Signup extends Component {
 
     render() {
         return ( 
-            <div className='signUp'>
+            <div className='signupPage'>
                 <Header />
                 <h1>Sign Up!</h1>
-                <form>
-                    <p>First Name:</p>
-                    <input type='text' name='firstName' value={this.state.firstname} onChange={this.updateInputChange}/>
-                    <p>Last Name:</p>
-                    <input type='text' name='lastName' value={this.state.lastName} onChange={this.updateInputChange}/>
-                    <p>Username:</p>
-                    <input type='text' name='username' value={this.state.Username} onChange={this.updateInputChange}/>
-                    <p>Email:</p>
-                    <input type='text' name='email' value={this.state.email} onChange={this.updateInputChange}/>
-                    <p>Password:</p>
-                    <input type='text' name='password1' value={this.state.password1} onChange={this.updateInputChange}/>
-                    <p>Retype Password:</p>
-                    <input type='text' name='password2' value={this.state.password2} onChange={this.updateInputChange}/>
+                <Link className='signinLink' to='/signin'>Already have an account? Click this to login</Link>
+                <form className='signupForm'>
+                    <input
+                        placeholder='First Name'
+                        type='text' 
+                        name='firstName' 
+                        value={this.state.firstname} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Last Name'
+                        type='text' 
+                        name='lastName' 
+                        value={this.state.lastName} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Username'
+                        type='text' 
+                        name='username' 
+                        value={this.state.Username} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Email'
+                        type='text' 
+                        name='email' 
+                        value={this.state.email} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Password'
+                        type='text' 
+                        name='password1' 
+                        value={this.state.password1} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Re-enter Password'
+                        type='text' 
+                        name='password2' 
+                        value={this.state.password2} 
+                        onChange={this.updateInputChange}
+                    />
                     <Link to='/'>
                         <button>Create Account</button>
                     </Link>
                 </form>
-                <Link className='signinLink' to='/signin'>Already have an account? Sign in here.</Link>
             </div>
          );
     }
