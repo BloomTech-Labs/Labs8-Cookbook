@@ -19,14 +19,14 @@ type User {
 type Recipe {
   id: ID! @unique
   title: String! @unique
-  readyInMinutes: String!
-  servings: String!
-  image: String! @unique
-  imageType: String!
-  dishTypes: String!
-  instructions: String!
-  analyzedInstructions: [String!]!
-  createdBy: User!
+  readyInMinutes: Int!
+  servings: Int!
+  image: String!
+  createdBy: String!
+  # imageType: String!
+  # dishTypes: String!
+  # instructions: String!
+  # analyzedInstructions: [String!]!
 }
 
 # type Recipe_Ingredient {
