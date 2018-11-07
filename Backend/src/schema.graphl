@@ -1,9 +1,11 @@
 # import Post from './generated/prisma.graphql'
 # import User from './generated/prisma.graphql'
+# import Recipe from './generated/prisma.graphql'
 
 type Query {
   posts(searchString: String): [Post!]!
   user(id: ID!): User
+  recipes: [Recipe]!
 }
 
 type Mutation {
@@ -11,4 +13,5 @@ type Mutation {
   publish(id: ID!): Post
   deletePost(id: ID!): Post
   signup(name: String!): User!
+  createRecipe(name: String!): Recipe!
 }

@@ -25,6 +25,9 @@ const resolvers = {
         },
         info
       );
+    },
+    recipes: (_, args, context, info) => {
+      return context.prisma.query.recipes();
     }
   },
   Mutation: {
@@ -76,6 +79,13 @@ const resolvers = {
         },
         info
       );
+    },
+    createRecipe: (_, args, context, info) => {
+      return context.prisma.mutation.createRecipe({
+        data: {
+          name: args.name
+        }
+      });
     }
   }
 };
