@@ -20,7 +20,7 @@ class Signup extends Component {
 
     render() {
         return ( 
-            <div className='container'>
+            <div className='signUp'>
                 <h1>Sign Up!</h1>
                 <form>
                     <p>First Name:</p>

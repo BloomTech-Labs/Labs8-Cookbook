@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Styles/css/app.css';
+import './Styles/css/index.css';
 
 import { Route } from 'react-router-dom';
 
