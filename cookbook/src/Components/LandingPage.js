@@ -4,7 +4,7 @@ import React from 'react';
 const LandingPage = () => {
     return ( 
         <div className='containerLP'>
-        
+            <img  src="../Images/titleImg.jpeg" alt='Image of a table with produce on top.'/>
         </div>
      );
 }
