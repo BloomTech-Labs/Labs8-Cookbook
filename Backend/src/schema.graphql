@@ -1,0 +1,21 @@
+# import * from './generated/prisma.graphql'
+
+type Query {
+  posts(searchString: String): [Post!]!
+  user(id: ID!): User
+  users: [User]!
+  recipes: [Recipe]!
+}
+
+type Mutation {
+  createDraft(authorId: ID!, title: String!, content: String!): Post
+  publish(id: ID!): Post
+  deletePost(id: ID!): Post
+  signup(
+    first_name: String!
+    last_name: String!
+    email: String!
+    password: String!
+  ): User!
+  createRecipe(name: String!): Recipe!
+}
