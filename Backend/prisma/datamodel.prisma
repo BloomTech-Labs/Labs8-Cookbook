@@ -3,13 +3,39 @@ type User {
   first_name: String! 
   last_name: String!
   email: String! @unique
+  username: String! @unique
   password: String!
-  recipes: [Recipe!]!
+  recipes: [Recipe!]! # will check later
 }
+
+# type Schedule {
+#   scheduledBy: User!
+#   recipe: [Recipe!]! # will check later
+#   createdAt: DateTime!
+#   updatedAt: DateTime!
+#   scheduled: String! # will check later
+# }
 
 type Recipe {
   id: ID! @unique
-  name: String! @unique
-  ingrediants: String!
-  directions: String!
+  title: String! @unique
+  readyInMinutes: String!
+  servings: String!
+  image: String! @unique
+  imageType: String!
+  dishTypes: String!
+  instructions: String!
+  analyzedInstructions: [String!]!
+  createdBy: User!
 }
+
+# type Recipe_Ingredient {
+#   recipe: Recipe!
+#   ingredients: [Ingredients!]! 
+#   amount: String!
+# }
+
+# type Ingredient {
+#   id: ID! @unique
+#   name: String!
+# }
