@@ -6,6 +6,7 @@
 # import * from './generated/prisma.graphql'
 
 # Define Mutation and Query to be used by graphqlAPI.
+
 type Query {
   user(id: ID!): User
   users: [User]!
@@ -19,12 +20,27 @@ type Mutation {
     last_name: String!
     email: String!
     password: String!
-  ): User!
+  ): AuthPayload!
+
+  login(username: String!, password: String!): AuthPayload!
+
   createRecipe(
     title: String!
     readyInMinutes: Int!
     servings: Int!
     image: String!
-    createdBy: String!
   ): Recipe!
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type User {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  email: String!
+  recipes: [Recipe!]!
 }
