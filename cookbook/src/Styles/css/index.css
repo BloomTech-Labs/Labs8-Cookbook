@@ -12,6 +12,24 @@
 .containerLP {
   width: 100%;
 }
+.containerLP .titleContainer {
+  position: relative;
+}
+.containerLP .titleContainer .titleImg {
+  width: 100%;
+}
+.containerLP .titleContainer .logo {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+}
+.containerLP .titleContainer .title {
+  position: absolute;
+  text-decoration: underline;
+  color: white;
+  top: 200px;
+  left: 50%;
+}
 .signUp {
   width: 100%;
 }

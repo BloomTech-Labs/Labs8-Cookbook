@@ -1,10 +1,14 @@
 import React from 'react';
-// import
+import titleImg from '../Images/titleImg.jpeg'
 
 const LandingPage = () => {
     return ( 
         <div className='containerLP'>
-            <img  src="../Images/titleImg.jpeg" alt='Image of a table with produce on top.'/>
+            <div className='titleContainer'>
+                <img className="titleImg" src={titleImg} alt="Image of a table with produce on top." />
+                <img className="logo" />
+                <span className='title'>COOKBOOK</span>
+            </div>
         </div>
      );
 }
