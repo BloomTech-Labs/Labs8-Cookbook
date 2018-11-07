@@ -42,12 +42,12 @@ class Signin extends Component {
                         />
                     </div>
 
-                    <div>
+                    <Link to='/'>
                         <button className='loginButton' type='submit'>Log In</button>
-                    </div>
+                    </Link>
 
                 </form>
-                <Link className='signupLink' to='/signup'>Don't have an account? Register Here</Link>
+                <Link className='signupLink' to='/signup'>Don't have an account? Sign up here.</Link>
             </div>
         );
     }
