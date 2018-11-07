@@ -35,7 +35,9 @@ class Signup extends Component {
                     <input type='text' name='password1' value={this.state.password1} onChange={this.updateInputChange}/>
                     <p>Retype Password:</p>
                     <input type='text' name='password2' value={this.state.password2} onChange={this.updateInputChange}/>
-                    <button>Create Account</button>
+                    <Link to='/'>
+                        <button>Create Account</button>
+                    </Link>
                 </form>
                 <Link className='signinLink' to='/signin'>Already have an account? Sign in here.</Link>
             </div>
