@@ -10,6 +10,7 @@ const LandingPage = () => {
                 <span className='title'>COOKBOOK</span>
             </div>
         </div>
+        
      );
 }
  
