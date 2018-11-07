@@ -4,8 +4,10 @@
   justify-content: center;
   width: 100%;
 }
-.app .container {
+.header {
   width: 100%;
+  background-image: url("../../Images/headerImg.jpg");
+  height: 70px;
 }
 .containerLP {
   border: 1px solid red;

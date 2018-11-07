@@ -3,7 +3,9 @@ import React from 'react';
 
 const LandingPage = () => {
     return ( 
-        <div className='containerLP'></div>
+        <div className='containerLP'>
+        
+        </div>
      );
 }
  

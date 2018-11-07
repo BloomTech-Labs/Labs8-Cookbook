@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Header from './Header';
+
+
 class Signup extends Component {
     constructor() {
         super();
@@ -21,6 +24,7 @@ class Signup extends Component {
     render() {
         return ( 
             <div className='signUp'>
+                <Header />
                 <h1>Sign Up!</h1>
                 <form>
                     <p>First Name:</p>
