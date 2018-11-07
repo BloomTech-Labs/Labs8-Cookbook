@@ -1,3 +1,4 @@
+//This file defines resolvers for Query
 const Query = {
   user: async (_, args, context, info) => {
     const user = await context.db.query.user({

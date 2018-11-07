@@ -1,3 +1,4 @@
+//This file defines resolvers for Mutation
 const Mutation = {
   signup: async (_, args, context, info) => {
     const user = await context.db.mutation.createUser(
