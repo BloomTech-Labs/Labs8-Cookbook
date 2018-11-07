@@ -27,7 +27,7 @@ class Signup extends Component {
                     <p>Last Name:</p>
                     <input type='text' name='lastName' value={this.state.lastName} onChange={this.updateInputChange}/>
                     <p>Username:</p>
-                    <input type='text' name='Username' value={this.state.Username} onChange={this.updateInputChange}/>
+                    <input type='text' name='username' value={this.state.Username} onChange={this.updateInputChange}/>
                     <p>Email:</p>
                     <input type='text' name='email' value={this.state.email} onChange={this.updateInputChange}/>
                     <p>Password:</p>
