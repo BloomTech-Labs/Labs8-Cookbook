@@ -1,10 +1,22 @@
 {
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "cook-book-backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "eslint": "^5.8.0",
-    "prisma": "^1.19.3"
+    "graphql": "^14.0.2",
+    "graphql-cli": "^2.17.0",
+    "graphql-yoga": "^1.16.7",
+    "prisma": "^1.19.3",
+    "prisma-binding": "^2.1.6"
   },
   "devDependencies": {
-    "eslint-plugin-prettier": "^3.0.0",
-    "prettier": "^1.14.3"
+    "prettier": "1.14.3"
   }
 }
