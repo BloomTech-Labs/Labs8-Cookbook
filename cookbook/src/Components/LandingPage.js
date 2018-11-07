@@ -1,8 +1,11 @@
 import React from 'react';
+// import
 
 const LandingPage = () => {
     return ( 
-        <div></div>
+        <div className='containerLP'>
+        
+        </div>
      );
 }
  
