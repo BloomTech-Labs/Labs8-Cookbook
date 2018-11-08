@@ -50,7 +50,7 @@
 }
 @media (max-width: 400px) {
   .containerLP .titleContainer .logo {
-    top: 46px;
+    top: 56px;
     height: 120px;
   }
 }
@@ -62,7 +62,7 @@
 }
 @media (max-width: 400px) {
   .containerLP .titleContainer .title {
-    top: 200px;
+    top: 230px;
   }
 }
 .signUp {
