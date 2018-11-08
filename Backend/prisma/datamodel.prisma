@@ -25,10 +25,19 @@ type Recipe {
   servings: Int!
   image: String!
   createdBy: User!
+  instructions: [Instruction!]!
+  
   # imageType: String!
   # dishTypes: String!
-  # instructions: String!
   # analyzedInstructions: [String!]!
+}
+
+type Instruction {
+  id: ID! @unique
+  stepNum: Int!
+  description: String!
+  isComplete: Boolean @default(value: "false")
+  recipe: Recipe!
 }
 
 # type Recipe_Ingredient {
@@ -37,7 +46,10 @@ type Recipe {
 #   amount: String!
 # }
 
-# type Ingredient {
-#   id: ID! @unique
-#   name: String!
-# }
+type Ingredient {
+  id: ID! @unique
+  name: String!
+  amount: Float!
+  unit: String!
+  recipe: Recipe!
+}
