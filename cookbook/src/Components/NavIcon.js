@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import OpenIcon from '../Images/Icons/nav-hamburger.png';
 
 
 class NavIcon extends Component {
@@ -11,8 +12,8 @@ class NavIcon extends Component {
 
     render() {
         return (
-            <div>
-
+            <div className='nav-icon'>
+                <img src={OpenIcon} alt='Navigation Icon'/>
             </div>
         );
     }

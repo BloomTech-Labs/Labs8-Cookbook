@@ -27,8 +27,15 @@
   margin-top: 10px;
   margin-left: 40px;
 }
-.header .nav {
+@media (max-width: 400px) {
+  .header .logo {
+    height: 30px;
+  }
+}
+.nav-icon {
   margin-right: 40px;
+  display: flex;
+  align-items: center;
 }
 .containerLP {
   width: 100%;

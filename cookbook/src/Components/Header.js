@@ -7,6 +7,7 @@ const Header = () => {
     return ( 
         <div className='header'>
             <img className='logo' src={Logo} alt='COOKBOOK logo'/>
+            <NavIcon />
         </div> 
     );
 }
