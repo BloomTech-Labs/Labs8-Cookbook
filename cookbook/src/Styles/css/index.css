@@ -1,3 +1,6 @@
+html {
+  font-size: 62.5%;
+}
 .app {
   text-align: center;
   display: flex;
@@ -12,6 +15,95 @@
 .containerLP {
   border: 1px solid red;
 }
-.signUp {
+.signupPage {
+  width: 95%;
+  font-family: 'Noto Serif', serif;
+}
+h1 {
+  font-size: 3.3rem;
+  margin-bottom: 3px;
+}
+.switchForm {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.4rem;
+  color: #ff8c00;
+  font-style: unset;
+}
+.signupForm {
+  display: flex;
+  flex-flow: column;
+}
+input {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.8rem;
+  height: 3rem;
+  border: 1px solid lightgrey;
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+}
+input::placeholder {
+  color: lightgrey;
+}
+button {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.8rem;
+  height: 3.7rem;
   width: 100%;
+  background-color: #ff8c00;
+  color: white;
+  border: 1px solid lightgrey;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+.hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.ui-checkbox {
+  display: flex;
+  margin-top: 1.5rem;
+}
+.ui-checkbox .ui-checkbox-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.8rem;
+  margin: 0 0 0 1rem;
+}
+.ui-checkbox:before {
+  content: "✓";
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  border: 0.1rem lightgrey solid;
+  border-radius: 0.1rem;
+  font-style: normal;
+  font-weight: bold;
+  vertical-align: middle;
+  text-align: center;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  color: white;
+  text-shadow: 0 0 0 white;
+  background-color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+/* checkbox:checked */
+input[type=checkbox]:checked + .ui-checkbox:before {
+  color: #ff8c00;
+  text-shadow: 0 0 0 #ff8c00;
+  background-color: white;
+}
+.ui-checkbox-disclaimer {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2rem;
+  align-self: baseline;
+  margin: 0 0 0 3.6rem;
+  color: grey;
 }

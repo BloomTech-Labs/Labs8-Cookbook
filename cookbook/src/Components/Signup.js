@@ -13,7 +13,8 @@ class Signup extends Component {
             username: '',
             email: '',
             password1: '',
-            password2: ''
+            password2: '',
+            buyPremium: false
         }
     }
 
@@ -21,29 +22,70 @@ class Signup extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+    updateBuyPremium = () => {
+        this.setState({ buyPremium: !this.state.buyPremium})
+    }
+
     render() {
         return ( 
-            <div className='signUp'>
+            <div className='signupPage'>
                 <Header />
                 <h1>Sign Up!</h1>
-                <form>
-                    <p>First Name:</p>
-                    <input type='text' name='firstName' value={this.state.firstname} onChange={this.updateInputChange}/>
-                    <p>Last Name:</p>
-                    <input type='text' name='lastName' value={this.state.lastName} onChange={this.updateInputChange}/>
-                    <p>Username:</p>
-                    <input type='text' name='username' value={this.state.Username} onChange={this.updateInputChange}/>
-                    <p>Email:</p>
-                    <input type='text' name='email' value={this.state.email} onChange={this.updateInputChange}/>
-                    <p>Password:</p>
-                    <input type='text' name='password1' value={this.state.password1} onChange={this.updateInputChange}/>
-                    <p>Retype Password:</p>
-                    <input type='text' name='password2' value={this.state.password2} onChange={this.updateInputChange}/>
+                <Link className='switchForm' to='/signin'>Already have an account? Sign in here</Link>
+                <form className='signupForm'>
+                    <input
+                        placeholder='First Name'
+                        type='text' 
+                        name='firstName' 
+                        value={this.state.firstname} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Last Name'
+                        type='text' 
+                        name='lastName' 
+                        value={this.state.lastName} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Username'
+                        type='text' 
+                        name='username' 
+                        value={this.state.Username} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Email'
+                        type='text' 
+                        name='email' 
+                        value={this.state.email} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Password'
+                        type='password' 
+                        name='password1' 
+                        value={this.state.password1} 
+                        onChange={this.updateInputChange}
+                    />
+                    <input
+                        placeholder='Re-enter Password'
+                        type='password' 
+                        name='password2' 
+                        value={this.state.password2} 
+                        onChange={this.updateInputChange}
+                    />
+                    <label>
+                        <input className='hidden' type='checkbox' />
+                        <div className='ui-checkbox'>
+                            <p className='ui-checkbox-text'>Buy Premium Membership</p>
+                        </div>
+                    </label>
+                    <p className='ui-checkbox-disclaimer'>(Takes you to payment options after account is created)</p>
                     <Link to='/'>
-                        <button>Create Account</button>
+                        <button>Create My Account</button>
                     </Link>
                 </form>
-                <Link className='signinLink' to='/signin'>Already have an account? Sign in here.</Link>
             </div>
          );
     }

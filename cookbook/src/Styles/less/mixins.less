@@ -1,0 +1,71 @@
+#form() {
+    .switch-form {
+        font-family: @secondary-font;
+        font-size: 1.4rem;
+        color: @CBorange;
+        font-style: unset;
+    }
+
+    .input {
+        font-family: @secondary-font;
+        font-size: 1.8rem;
+        height: 3.0rem;
+        border: 1px solid lightgrey;
+        margin-top: 1.5rem;
+        padding-left: 1rem;
+    }
+
+    .input-placeholder {
+        color: lightgrey;
+    }
+
+    #checkbox() {
+        .hidden {
+            position:absolute; 
+            width:0; 
+            height:0; 
+            opacity:0; 
+            margin:0; 
+            padding:0; 
+            overflow:hidden;
+        }
+
+        .box (@character:"✓") {
+            content:@character;
+            display:inline-block;
+            position:relative;
+            box-sizing:border-box;
+            border: .1rem lightgrey solid;
+            border-radius:.1rem;
+            font-style:normal;
+            font-weight:bold;
+            vertical-align:middle;
+            text-align:center;
+            transition:all .2s linear;
+            cursor:pointer;
+        }
+        .color (@color, @background) {
+            color:@color;
+            text-shadow:0 0 0 @color;
+            background-color:@background;
+        }
+        .size (@width:2.5rem, @height:2.5rem, @size:2rem) {
+            width:@width;
+            height:@height;
+            font-size:@size;
+            line-height:@height;
+        }
+    }
+
+    .submit {
+        font-family: @secondary-font;
+        font-size: 1.8rem;
+        height: 3.7rem;
+        width: 100%;
+        background-color: @CBorange;
+        color: white;
+        border: 1px solid lightgrey;
+        margin-top: 1rem;
+        padding-left: 1.5rem;
+    }
+}
