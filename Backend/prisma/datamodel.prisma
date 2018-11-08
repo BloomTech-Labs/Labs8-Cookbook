@@ -1,22 +1,43 @@
+## this file defines the schema database for prisma/graphql server
+
 type User {
   id: ID! @unique
   first_name: String! 
   last_name: String!
   email: String! @unique
+  username: String! @unique
   password: String!
-  posts: [Post!]!
+  recipes: [Recipe!]! # will check later
 }
 
-type Post {
-  id: ID! @unique
-  title: String!
-  content: String!
-  published: Boolean! @default(value: "false")
-  author: User!
-  date: String!
-}
+# type Schedule {
+#   scheduledBy: User!
+#   recipe: [Recipe!]! # will check later
+#   createdAt: DateTime!
+#   updatedAt: DateTime!
+#   scheduled: String! # will check later
+# }
 
 type Recipe {
   id: ID! @unique
-  name: String! @unique
+  title: String! @unique
+  readyInMinutes: Int!
+  servings: Int!
+  image: String!
+  createdBy: User!
+  # imageType: String!
+  # dishTypes: String!
+  # instructions: String!
+  # analyzedInstructions: [String!]!
 }
+
+# type Recipe_Ingredient {
+#   recipe: Recipe!
+#   ingredients: [Ingredients!]! 
+#   amount: String!
+# }
+
+# type Ingredient {
+#   id: ID! @unique
+#   name: String!
+# }
