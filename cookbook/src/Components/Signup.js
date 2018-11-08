@@ -79,9 +79,9 @@ class Signup extends Component {
                         <input className='hidden' type='checkbox' />
                         <div className='ui-checkbox'>
                             <p className='ui-checkbox-text'>Buy Premium Membership</p>
-                            <p className='ui-checkbox-disclaimer'>(Don't worry, you can change this later)</p>
                         </div>
                     </label>
+                    <p className='ui-checkbox-disclaimer'>(Takes you to payment options after account is created)</p>
                     <Link to='/'>
                         <button>Create My Account</button>
                     </Link>
