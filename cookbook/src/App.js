@@ -13,8 +13,12 @@ class App extends Component {
     return (
       <div className="app">
           <Route exact path='/' component={LandingPage}/>
-          <Route path='/signin' component={Signin}/>
-          <Route path='/signup' component={Signup}/>
+          <Route path='/signin' render={ (props) =>
+            { return(<Signin {...props} />) } }
+          />
+          <Route path='/signup' render={ (props) =>
+            { return(<Signup {...props} />) } }
+          />
       </div>
     );
   }

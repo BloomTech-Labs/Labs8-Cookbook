@@ -26,13 +26,21 @@ class Signup extends Component {
         this.setState({ buyPremium: !this.state.buyPremium})
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('You signed up!');
+        this.props.history.push('/');
+    }
+
     render() {
         return ( 
             <div className='signupPage'>
                 <Header />
                 <h1>Sign Up!</h1>
                 <Link className='switchForm' to='/signin'>Already have an account? Sign in here</Link>
+                
                 <form className='signupForm'>
+                    
                     <input
                         placeholder='First Name'
                         type='text' 
@@ -40,6 +48,7 @@ class Signup extends Component {
                         value={this.state.firstname} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Last Name'
                         type='text' 
@@ -47,13 +56,16 @@ class Signup extends Component {
                         value={this.state.lastName} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Username'
+                        autoComplete='username'
                         type='text' 
                         name='username' 
                         value={this.state.Username} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Email'
                         type='text' 
@@ -61,30 +73,36 @@ class Signup extends Component {
                         value={this.state.email} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Password'
+                        autoComplete='new-password'
                         type='password' 
                         name='password1' 
                         value={this.state.password1} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Re-enter Password'
+                        autoComplete='new-password'
                         type='password' 
                         name='password2' 
                         value={this.state.password2} 
                         onChange={this.updateInputChange}
                     />
-                    <label>
-                        <input className='hidden' type='checkbox' />
-                        <div className='ui-checkbox'>
-                            <p className='ui-checkbox-text'>Buy Premium Membership</p>
-                        </div>
-                    </label>
+                    
+                    <div>
+                        <label>
+                            <input className='hidden' type='checkbox' />
+                            <div onClick={this.updateBuyPremium} className='ui-checkbox'>
+                                <p className='ui-checkbox-text'>Buy Premium Membership</p>
+                            </div>
+                        </label>
+                    </div>
                     <p className='ui-checkbox-disclaimer'>(Takes you to payment options after account is created)</p>
-                    <Link to='/'>
-                        <button>Create My Account</button>
-                    </Link>
+                    
+                    <button onClick={this.handleSubmit}>Create My Account</button>
                 </form>
             </div>
          );
