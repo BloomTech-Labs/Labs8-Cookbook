@@ -21,24 +21,49 @@
 .containerLP .titleContainer .bckgImg {
   position: relative;
 }
+@media (max-width: 400px) {
+  .containerLP .titleContainer .bckgImg {
+    height: 400px;
+  }
+}
 .containerLP .titleContainer .landingNav {
+  width: 100%;
   position: absolute;
   top: 10px;
+  justify-content: flex-end;
   display: flex;
-  justify-content: right;
+}
+.containerLP .titleContainer .landingNav .login {
+  margin-right: 15px;
+  text-decoration: none;
+  color: white;
+}
+.containerLP .titleContainer .landingNav .register {
+  margin-right: 15px;
+  text-decoration: none;
+  color: white;
 }
 .containerLP .titleContainer .logo {
   position: absolute;
   top: 120px;
-  border: 1px solid red;
-  height: 150px;
+  height: 240px;
+}
+@media (max-width: 400px) {
+  .containerLP .titleContainer .logo {
+    top: 46px;
+    height: 120px;
+  }
 }
 .containerLP .titleContainer .title {
   position: absolute;
   text-decoration: underline;
   color: white;
-  top: 280px;
-  border: 1px solid red;
+  top: 420px;
+}
+@media (max-width: 400px) {
+  .containerLP .titleContainer .title {
+    top: 200px;
+  }
 }
 .signUp {
   width: 100%;
