@@ -32,7 +32,9 @@ class Signup extends Component {
                 <Header />
                 <h1>Sign Up!</h1>
                 <Link className='switchForm' to='/signin'>Already have an account? Sign in here</Link>
+                
                 <form className='signupForm'>
+                    
                     <input
                         placeholder='First Name'
                         type='text' 
@@ -40,6 +42,7 @@ class Signup extends Component {
                         value={this.state.firstname} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Last Name'
                         type='text' 
@@ -47,6 +50,7 @@ class Signup extends Component {
                         value={this.state.lastName} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Username'
                         type='text' 
@@ -54,6 +58,7 @@ class Signup extends Component {
                         value={this.state.Username} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Email'
                         type='text' 
@@ -61,6 +66,7 @@ class Signup extends Component {
                         value={this.state.email} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Password'
                         type='password' 
@@ -68,6 +74,7 @@ class Signup extends Component {
                         value={this.state.password1} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <input
                         placeholder='Re-enter Password'
                         type='password' 
@@ -75,6 +82,7 @@ class Signup extends Component {
                         value={this.state.password2} 
                         onChange={this.updateInputChange}
                     />
+                    
                     <label>
                         <input className='hidden' type='checkbox' />
                         <div className='ui-checkbox'>
@@ -82,9 +90,8 @@ class Signup extends Component {
                         </div>
                     </label>
                     <p className='ui-checkbox-disclaimer'>(Takes you to payment options after account is created)</p>
-                    <Link to='/'>
-                        <button>Create My Account</button>
-                    </Link>
+                    
+                    <button>Create My Account</button>
                 </form>
             </div>
          );

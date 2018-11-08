@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Header from './Header';
+
 class Signin extends Component {
 
     state = {
@@ -19,37 +21,32 @@ class Signin extends Component {
 
     render() {
         return (
-            <div className='signin'>
-                <form className='form' onSubmit={this.handleSubmit}>
+            <div className='signinPage'>
+                <Header />
+                <h1>Login</h1>
+                <Link className='switchForm' to='/signup'>Don't have an account? Sign up here</Link>
 
-                    <div className='usernameDiv'>
-                        <label className='usernameLabel'>Username: </label>
-                        <input className='usernameInput'
-                            placeholder='Username'
-                            value={this.state.username}
-                            onChange={this.handleInputChange}
-                            name='username'
-                            type='text'
-                        />
-                    </div>
+                <form className='signinForm' onSubmit={this.handleSubmit}>
 
-                    <div className='passwordDiv'>
-                        <label className='passwordLabel'>Password: </label>
-                        <input className='passwordInput'
-                            placeholder='Password'
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                            name='password'
-                            type='password'
-                        />
-                    </div>
+                    <input className='usernameInput'
+                        placeholder='Username'
+                        value={this.state.username}
+                        onChange={this.handleInputChange}
+                        name='username'
+                        type='text'
+                    />
 
-                    <Link to='/'>
-                        <button className='loginButton' type='submit'>Log in</button>
-                    </Link>
+                    <input className='passwordInput'
+                        placeholder='Password'
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                        name='password'
+                        type='password'
+                    />
 
+                    <button>Log In</button>
+                    
                 </form>
-                <Link className='signupLink' to='/signup'>Don't have an account? Sign up here.</Link>
             </div>
         );
     }
