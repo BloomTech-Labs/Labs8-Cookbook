@@ -3,11 +3,55 @@
     font-family: @primary-font;
 }
 
+h1 {
+    font-size: 3.3rem;
+    margin-bottom: 3px;
+}
+
+.switchForm {
+    #form > .switch-form;
+}
+
 .signupForm {
     display: flex;
     flex-flow: column;
 }
 
 input {
-    #cookbook-namespace > .form-input;
+    #form > .input;
+}
+
+input::placeholder {
+    #form > .input-placeholder;
+}
+
+button {
+    #form > .submit;
+}
+
+//======= Custom Checkbox ==========//
+.hidden {
+    #form > #checkbox > .hidden;
+}
+
+.ui-checkbox {
+    display: flex;
+    margin-top: 1.5rem;
+    
+    .ui-checkbox-text {
+        font-family: @secondary-font;
+        font-size: 1.8rem;
+        margin: 0 0 0 1rem;
+    }
+}
+
+.ui-checkbox:before {
+    #form > #checkbox > .box;
+    #form > #checkbox > .color(white, white);
+    #form > #checkbox > .size();
+}
+
+/* checkbox:checked */
+input[type=checkbox]:checked + .ui-checkbox:before {
+    #form > #checkbox > .color(@CBorange, white);
 }

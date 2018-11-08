@@ -13,7 +13,8 @@ class Signup extends Component {
             username: '',
             email: '',
             password1: '',
-            password2: ''
+            password2: '',
+            buyPremium: false
         }
     }
 
@@ -21,12 +22,16 @@ class Signup extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+    updateBuyPremium = () => {
+        this.setState({ buyPremium: !this.state.buyPremium})
+    }
+
     render() {
         return ( 
             <div className='signupPage'>
                 <Header />
                 <h1>Sign Up!</h1>
-                <Link className='signinLink' to='/signin'>Already have an account? Click this to login</Link>
+                <Link className='switchForm' to='/signin'>Already have an account? Sign in here</Link>
                 <form className='signupForm'>
                     <input
                         placeholder='First Name'
@@ -58,20 +63,27 @@ class Signup extends Component {
                     />
                     <input
                         placeholder='Password'
-                        type='text' 
+                        type='password' 
                         name='password1' 
                         value={this.state.password1} 
                         onChange={this.updateInputChange}
                     />
                     <input
                         placeholder='Re-enter Password'
-                        type='text' 
+                        type='password' 
                         name='password2' 
                         value={this.state.password2} 
                         onChange={this.updateInputChange}
                     />
+                    <label>
+                        <input className='hidden' type='checkbox' />
+                        <div className='ui-checkbox'>
+                            <p className='ui-checkbox-text'>Buy Premium Membership</p>
+                            <p className='ui-checkbox-disclaimer'>(Don't worry, you can change this later)</p>
+                        </div>
+                    </label>
                     <Link to='/'>
-                        <button>Create Account</button>
+                        <button>Create My Account</button>
                     </Link>
                 </form>
             </div>
