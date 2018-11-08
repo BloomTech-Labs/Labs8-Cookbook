@@ -44,8 +44,8 @@ class Signin extends Component {
                         type='password'
                     />
 
-                    <button>Log In</button>
-                    
+                    <button onClick={this.handleSubmit}>Log In</button>
+
                 </form>
             </div>
         );

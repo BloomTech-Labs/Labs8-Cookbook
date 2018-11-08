@@ -26,6 +26,11 @@ class Signup extends Component {
         this.setState({ buyPremium: !this.state.buyPremium})
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('You signed up!')
+    }
+
     render() {
         return ( 
             <div className='signupPage'>
@@ -83,15 +88,17 @@ class Signup extends Component {
                         onChange={this.updateInputChange}
                     />
                     
-                    <label>
-                        <input className='hidden' type='checkbox' />
-                        <div className='ui-checkbox'>
-                            <p className='ui-checkbox-text'>Buy Premium Membership</p>
-                        </div>
-                    </label>
+                    <div>
+                        <label>
+                            <input className='hidden' type='checkbox' />
+                            <div onClick={this.updateBuyPremium} className='ui-checkbox'>
+                                <p className='ui-checkbox-text'>Buy Premium Membership</p>
+                            </div>
+                        </label>
+                    </div>
                     <p className='ui-checkbox-disclaimer'>(Takes you to payment options after account is created)</p>
                     
-                    <button>Create My Account</button>
+                    <button onClick={this.handleSubmit}>Create My Account</button>
                 </form>
             </div>
          );
