@@ -36,6 +36,8 @@ class Signup extends Component {
         return ( 
             <div className='signupPage'>
                 <Header />
+                <div className="container">
+
                 <h1>Sign Up!</h1>
                 <Link className='switchForm' to='/signin'>Already have an account? Sign in here</Link>
                 
@@ -104,6 +106,7 @@ class Signup extends Component {
                     
                     <button onClick={this.handleSubmit}>Create My Account</button>
                 </form>
+                </div>
             </div>
          );
     }
