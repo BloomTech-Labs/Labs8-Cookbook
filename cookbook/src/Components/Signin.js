@@ -30,6 +30,7 @@ class Signin extends Component {
 
                     <input className='usernameInput'
                         placeholder='Username'
+                        autoComplete='username'
                         value={this.state.username}
                         onChange={this.handleInputChange}
                         name='username'
@@ -38,6 +39,7 @@ class Signin extends Component {
 
                     <input className='passwordInput'
                         placeholder='Password'
+                        autoComplete='current-password'
                         value={this.state.password}
                         onChange={this.handleInputChange}
                         name='password'

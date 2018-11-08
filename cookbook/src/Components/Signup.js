@@ -58,6 +58,7 @@ class Signup extends Component {
                     
                     <input
                         placeholder='Username'
+                        autoComplete='username'
                         type='text' 
                         name='username' 
                         value={this.state.Username} 
@@ -74,6 +75,7 @@ class Signup extends Component {
                     
                     <input
                         placeholder='Password'
+                        autoComplete='new-password'
                         type='password' 
                         name='password1' 
                         value={this.state.password1} 
@@ -82,6 +84,7 @@ class Signup extends Component {
                     
                     <input
                         placeholder='Re-enter Password'
+                        autoComplete='new-password'
                         type='password' 
                         name='password2' 
                         value={this.state.password2} 
