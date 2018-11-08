@@ -1,7 +1,7 @@
-endpoint: https://us1.prisma.sh/cookbook_project/prisma/dev
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.prisma
+# secret: ${env:PRISMA_SECRET}
 
 hooks:
   post-deploy:
     - graphql get-schema --project prisma
-    
