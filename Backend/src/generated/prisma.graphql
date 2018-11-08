@@ -1,0 +1,833 @@
+# source: https://cookbook-dab958dac5.herokuapp.com/prisma/dev
+# timestamp: Thu Nov 08 2018 11:26:01 GMT-0800 (Pacific Standard Time)
+
+type AggregateRecipe {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createUser(data: UserCreateInput!): User!
+  createRecipe(data: RecipeCreateInput!): Recipe!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateRecipe(data: RecipeUpdateInput!, where: RecipeWhereUniqueInput!): Recipe
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteRecipe(where: RecipeWhereUniqueInput!): Recipe
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertRecipe(where: RecipeWhereUniqueInput!, create: RecipeCreateInput!, update: RecipeUpdateInput!): Recipe!
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyRecipes(data: RecipeUpdateManyMutationInput!, where: RecipeWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyRecipes(where: RecipeWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  recipes(where: RecipeWhereInput, orderBy: RecipeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Recipe]!
+  user(where: UserWhereUniqueInput!): User
+  recipe(where: RecipeWhereUniqueInput!): Recipe
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  recipesConnection(where: RecipeWhereInput, orderBy: RecipeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): RecipeConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Recipe implements Node {
+  id: ID!
+  title: String!
+  readyInMinutes: Int!
+  servings: Int!
+  image: String!
+  createdBy: User!
+}
+
+"""A connection to a list of items."""
+type RecipeConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [RecipeEdge]!
+  aggregate: AggregateRecipe!
+}
+
+input RecipeCreateInput {
+  title: String!
+  readyInMinutes: Int!
+  servings: Int!
+  image: String!
+  createdBy: UserCreateOneWithoutRecipesInput!
+}
+
+input RecipeCreateManyWithoutCreatedByInput {
+  create: [RecipeCreateWithoutCreatedByInput!]
+  connect: [RecipeWhereUniqueInput!]
+}
+
+input RecipeCreateWithoutCreatedByInput {
+  title: String!
+  readyInMinutes: Int!
+  servings: Int!
+  image: String!
+}
+
+"""An edge in a connection."""
+type RecipeEdge {
+  """The item at the end of the edge."""
+  node: Recipe!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum RecipeOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  readyInMinutes_ASC
+  readyInMinutes_DESC
+  servings_ASC
+  servings_DESC
+  image_ASC
+  image_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type RecipePreviousValues {
+  id: ID!
+  title: String!
+  readyInMinutes: Int!
+  servings: Int!
+  image: String!
+}
+
+type RecipeSubscriptionPayload {
+  mutation: MutationType!
+  node: Recipe
+  updatedFields: [String!]
+  previousValues: RecipePreviousValues
+}
+
+input RecipeSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [RecipeSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [RecipeSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [RecipeSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: RecipeWhereInput
+}
+
+input RecipeUpdateInput {
+  title: String
+  readyInMinutes: Int
+  servings: Int
+  image: String
+  createdBy: UserUpdateOneRequiredWithoutRecipesInput
+}
+
+input RecipeUpdateManyMutationInput {
+  title: String
+  readyInMinutes: Int
+  servings: Int
+  image: String
+}
+
+input RecipeUpdateManyWithoutCreatedByInput {
+  create: [RecipeCreateWithoutCreatedByInput!]
+  connect: [RecipeWhereUniqueInput!]
+  disconnect: [RecipeWhereUniqueInput!]
+  delete: [RecipeWhereUniqueInput!]
+  update: [RecipeUpdateWithWhereUniqueWithoutCreatedByInput!]
+  upsert: [RecipeUpsertWithWhereUniqueWithoutCreatedByInput!]
+}
+
+input RecipeUpdateWithoutCreatedByDataInput {
+  title: String
+  readyInMinutes: Int
+  servings: Int
+  image: String
+}
+
+input RecipeUpdateWithWhereUniqueWithoutCreatedByInput {
+  where: RecipeWhereUniqueInput!
+  data: RecipeUpdateWithoutCreatedByDataInput!
+}
+
+input RecipeUpsertWithWhereUniqueWithoutCreatedByInput {
+  where: RecipeWhereUniqueInput!
+  update: RecipeUpdateWithoutCreatedByDataInput!
+  create: RecipeCreateWithoutCreatedByInput!
+}
+
+input RecipeWhereInput {
+  """Logical AND on all given filters."""
+  AND: [RecipeWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [RecipeWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [RecipeWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  readyInMinutes: Int
+
+  """All values that are not equal to given value."""
+  readyInMinutes_not: Int
+
+  """All values that are contained in given list."""
+  readyInMinutes_in: [Int!]
+
+  """All values that are not contained in given list."""
+  readyInMinutes_not_in: [Int!]
+
+  """All values less than the given value."""
+  readyInMinutes_lt: Int
+
+  """All values less than or equal the given value."""
+  readyInMinutes_lte: Int
+
+  """All values greater than the given value."""
+  readyInMinutes_gt: Int
+
+  """All values greater than or equal the given value."""
+  readyInMinutes_gte: Int
+  servings: Int
+
+  """All values that are not equal to given value."""
+  servings_not: Int
+
+  """All values that are contained in given list."""
+  servings_in: [Int!]
+
+  """All values that are not contained in given list."""
+  servings_not_in: [Int!]
+
+  """All values less than the given value."""
+  servings_lt: Int
+
+  """All values less than or equal the given value."""
+  servings_lte: Int
+
+  """All values greater than the given value."""
+  servings_gt: Int
+
+  """All values greater than or equal the given value."""
+  servings_gte: Int
+  image: String
+
+  """All values that are not equal to given value."""
+  image_not: String
+
+  """All values that are contained in given list."""
+  image_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_not_in: [String!]
+
+  """All values less than the given value."""
+  image_lt: String
+
+  """All values less than or equal the given value."""
+  image_lte: String
+
+  """All values greater than the given value."""
+  image_gt: String
+
+  """All values greater than or equal the given value."""
+  image_gte: String
+
+  """All values containing the given string."""
+  image_contains: String
+
+  """All values not containing the given string."""
+  image_not_contains: String
+
+  """All values starting with the given string."""
+  image_starts_with: String
+
+  """All values not starting with the given string."""
+  image_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_ends_with: String
+
+  """All values not ending with the given string."""
+  image_not_ends_with: String
+  createdBy: UserWhereInput
+}
+
+input RecipeWhereUniqueInput {
+  id: ID
+  title: String
+}
+
+type Subscription {
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  recipe(where: RecipeSubscriptionWhereInput): RecipeSubscriptionPayload
+}
+
+type User implements Node {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  email: String!
+  username: String!
+  password: String!
+  recipes(where: RecipeWhereInput, orderBy: RecipeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Recipe!]
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  first_name: String!
+  last_name: String!
+  email: String!
+  username: String!
+  password: String!
+  recipes: RecipeCreateManyWithoutCreatedByInput
+}
+
+input UserCreateOneWithoutRecipesInput {
+  create: UserCreateWithoutRecipesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutRecipesInput {
+  first_name: String!
+  last_name: String!
+  email: String!
+  username: String!
+  password: String!
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge."""
+  node: User!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  first_name_ASC
+  first_name_DESC
+  last_name_ASC
+  last_name_DESC
+  email_ASC
+  email_DESC
+  username_ASC
+  username_DESC
+  password_ASC
+  password_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  email: String!
+  username: String!
+  password: String!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+}
+
+input UserUpdateInput {
+  first_name: String
+  last_name: String
+  email: String
+  username: String
+  password: String
+  recipes: RecipeUpdateManyWithoutCreatedByInput
+}
+
+input UserUpdateManyMutationInput {
+  first_name: String
+  last_name: String
+  email: String
+  username: String
+  password: String
+}
+
+input UserUpdateOneRequiredWithoutRecipesInput {
+  create: UserCreateWithoutRecipesInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateWithoutRecipesDataInput
+  upsert: UserUpsertWithoutRecipesInput
+}
+
+input UserUpdateWithoutRecipesDataInput {
+  first_name: String
+  last_name: String
+  email: String
+  username: String
+  password: String
+}
+
+input UserUpsertWithoutRecipesInput {
+  update: UserUpdateWithoutRecipesDataInput!
+  create: UserCreateWithoutRecipesInput!
+}
+
+input UserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  first_name: String
+
+  """All values that are not equal to given value."""
+  first_name_not: String
+
+  """All values that are contained in given list."""
+  first_name_in: [String!]
+
+  """All values that are not contained in given list."""
+  first_name_not_in: [String!]
+
+  """All values less than the given value."""
+  first_name_lt: String
+
+  """All values less than or equal the given value."""
+  first_name_lte: String
+
+  """All values greater than the given value."""
+  first_name_gt: String
+
+  """All values greater than or equal the given value."""
+  first_name_gte: String
+
+  """All values containing the given string."""
+  first_name_contains: String
+
+  """All values not containing the given string."""
+  first_name_not_contains: String
+
+  """All values starting with the given string."""
+  first_name_starts_with: String
+
+  """All values not starting with the given string."""
+  first_name_not_starts_with: String
+
+  """All values ending with the given string."""
+  first_name_ends_with: String
+
+  """All values not ending with the given string."""
+  first_name_not_ends_with: String
+  last_name: String
+
+  """All values that are not equal to given value."""
+  last_name_not: String
+
+  """All values that are contained in given list."""
+  last_name_in: [String!]
+
+  """All values that are not contained in given list."""
+  last_name_not_in: [String!]
+
+  """All values less than the given value."""
+  last_name_lt: String
+
+  """All values less than or equal the given value."""
+  last_name_lte: String
+
+  """All values greater than the given value."""
+  last_name_gt: String
+
+  """All values greater than or equal the given value."""
+  last_name_gte: String
+
+  """All values containing the given string."""
+  last_name_contains: String
+
+  """All values not containing the given string."""
+  last_name_not_contains: String
+
+  """All values starting with the given string."""
+  last_name_starts_with: String
+
+  """All values not starting with the given string."""
+  last_name_not_starts_with: String
+
+  """All values ending with the given string."""
+  last_name_ends_with: String
+
+  """All values not ending with the given string."""
+  last_name_not_ends_with: String
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  username: String
+
+  """All values that are not equal to given value."""
+  username_not: String
+
+  """All values that are contained in given list."""
+  username_in: [String!]
+
+  """All values that are not contained in given list."""
+  username_not_in: [String!]
+
+  """All values less than the given value."""
+  username_lt: String
+
+  """All values less than or equal the given value."""
+  username_lte: String
+
+  """All values greater than the given value."""
+  username_gt: String
+
+  """All values greater than or equal the given value."""
+  username_gte: String
+
+  """All values containing the given string."""
+  username_contains: String
+
+  """All values not containing the given string."""
+  username_not_contains: String
+
+  """All values starting with the given string."""
+  username_starts_with: String
+
+  """All values not starting with the given string."""
+  username_not_starts_with: String
+
+  """All values ending with the given string."""
+  username_ends_with: String
+
+  """All values not ending with the given string."""
+  username_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
+  recipes_every: RecipeWhereInput
+  recipes_some: RecipeWhereInput
+  recipes_none: RecipeWhereInput
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+  username: String
+}
