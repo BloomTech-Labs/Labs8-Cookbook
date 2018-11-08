@@ -2,7 +2,7 @@
 
 type User {
   id: ID! @unique
-  first_name: String! 
+  first_name: String!
   last_name: String!
   email: String! @unique
   username: String! @unique
@@ -20,7 +20,7 @@ type User {
 
 type Recipe {
   id: ID! @unique
-  title: String! @unique
+  title: String!
   readyInMinutes: Int!
   servings: Int!
   image: String!
@@ -33,7 +33,7 @@ type Recipe {
 
 # type Recipe_Ingredient {
 #   recipe: Recipe!
-#   ingredients: [Ingredients!]! 
+#   ingredients: [Ingredients!]!
 #   amount: String!
 # }
 
