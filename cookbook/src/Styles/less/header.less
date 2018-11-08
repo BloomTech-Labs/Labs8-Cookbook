@@ -1,5 +1,24 @@
 .header {
     width: 100%;
-    background-image: url("../../Images/headerImg.jpg");
-    height: 70px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    background-image: url('../../Images/HeaderImg_Desktop.jpg');
+    @media @tablet {
+        background-image: url('../../Images/HeaderImg_Tablet.jpg');
+    }
+    @media @phone {
+        background-image: url('../../Images/HeaderImg_Phone.jpg');
+        height: 50px;
+    }
+
+    .logo {
+        height: 40px;
+        margin-top: 10px;
+        margin-left: 40px;
+
+        @media @phone {
+            height: 30px;
+        }
+    }
 }

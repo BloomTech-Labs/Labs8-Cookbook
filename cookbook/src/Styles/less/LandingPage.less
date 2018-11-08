@@ -1,3 +1,58 @@
 .containerLP {
-    border: 1px solid red;
+    width: 100%;
+
+    .titleContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .bckgImg {
+            position: relative;
+            @media @phone {
+                height: 400px;
+            }
+        }
+
+        .landingNav {
+            width: 100%;
+            position: absolute;
+            top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            display: flex;
+
+            .login {
+                margin-right: 15px;
+                text-decoration: none;
+                color: white;
+            }
+
+            .register {
+                margin-right: 15px;
+                text-decoration: none;
+                color: white;
+            }
+        }
+
+        .logo {
+            position: absolute;
+            top: 120px;
+            height: 240px;
+            @media @phone {
+                top: 56px;
+                height: 120px;
+            }
+        }
+
+        .title {
+            position: absolute;
+            text-decoration: underline;
+            color: white;
+            top: 420px;
+            @media @phone {
+                top: 230px;
+            }
+        }
+    }
 }

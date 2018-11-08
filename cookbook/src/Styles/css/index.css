@@ -9,11 +9,92 @@ html {
 }
 .header {
   width: 100%;
-  background-image: url("../../Images/headerImg.jpg");
-  height: 70px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  background-image: url('../../Images/HeaderImg_Desktop.jpg');
+}
+@media (max-width: 768px) {
+  .header {
+    background-image: url('../../Images/HeaderImg_Tablet.jpg');
+  }
+}
+@media (max-width: 400px) {
+  .header {
+    background-image: url('../../Images/HeaderImg_Phone.jpg');
+    height: 50px;
+  }
+}
+.header .logo {
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+@media (max-width: 400px) {
+  .header .logo {
+    height: 30px;
+  }
+}
+.nav-icon {
+  margin-right: 40px;
+  display: flex;
+  align-items: center;
 }
 .containerLP {
-  border: 1px solid red;
+  width: 100%;
+}
+.containerLP .titleContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.containerLP .titleContainer .bckgImg {
+  position: relative;
+}
+@media (max-width: 400px) {
+  .containerLP .titleContainer .bckgImg {
+    height: 400px;
+  }
+}
+.containerLP .titleContainer .landingNav {
+  width: 100%;
+  position: absolute;
+  top: 10px;
+  justify-content: flex-end;
+  display: flex;
+}
+.containerLP .titleContainer .landingNav .login {
+  margin-right: 15px;
+  text-decoration: none;
+  color: white;
+}
+.containerLP .titleContainer .landingNav .register {
+  margin-right: 15px;
+  text-decoration: none;
+  color: white;
+}
+.containerLP .titleContainer .logo {
+  position: absolute;
+  top: 120px;
+  height: 240px;
+}
+@media (max-width: 400px) {
+  .containerLP .titleContainer .logo {
+    top: 56px;
+    height: 120px;
+  }
+}
+.containerLP .titleContainer .title {
+  position: absolute;
+  text-decoration: underline;
+  color: white;
+  top: 420px;
+}
+@media (max-width: 400px) {
+  .containerLP .titleContainer .title {
+    top: 230px;
+  }
 }
 .signupPage {
   width: 95%;
