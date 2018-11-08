@@ -16,7 +16,8 @@ class Signin extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log('You signed in!')
+        console.log('You signed in!');
+        this.props.history.push('/');
     }
 
     render() {
