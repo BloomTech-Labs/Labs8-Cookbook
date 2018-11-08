@@ -101,9 +101,15 @@ html {
   }
 }
 .signupPage {
-  border: 1px solid red;
   width: 100%;
   font-family: 'Noto Serif', serif;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.signupPage .container {
+  width: 95%;
+  max-width: 600px;
 }
 h1 {
   font-size: 3.3rem;
@@ -194,9 +200,15 @@ input[type=checkbox]:checked + .ui-checkbox:before {
   color: grey;
 }
 .signinPage {
+  width: 100%;
+  font-family: 'Noto Serif', serif;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.signinPage .container {
   width: 95%;
   max-width: 600px;
-  font-family: 'Noto Serif', serif;
 }
 h1 {
   font-size: 3.3rem;

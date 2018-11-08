@@ -24,6 +24,7 @@ class Signin extends Component {
         return (
             <div className='signinPage'>
                 <Header />
+                <div className="container">
                 <h1>Login</h1>
                 <Link className='switchForm' to='/signup'>Don't have an account? Sign up here</Link>
 
@@ -50,6 +51,7 @@ class Signin extends Component {
                     <button onClick={this.handleSubmit}>Log In</button>
 
                 </form>
+                </div>
             </div>
         );
     }
