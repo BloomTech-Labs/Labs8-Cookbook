@@ -6,12 +6,14 @@ html {
   display: flex;
   justify-content: center;
   width: 100%;
+  flex-wrap: wrap;
 }
 .header {
   width: 100%;
   height: 60px;
   display: flex;
   justify-content: space-between;
+  opacity: 0.8;
   background-image: url('../../Images/HeaderImg_Desktop.jpg');
 }
 @media (max-width: 768px) {
@@ -271,4 +273,72 @@ button {
   border: 1px solid lightgrey;
   margin-top: 1.5rem;
   padding-left: 1.5rem;
+}
+.footer {
+  width: 100%;
+  background-color: #9E9D9E;
+  height: 240px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 1.6rem;
+}
+@media (max-width: 400px) {
+  .footer {
+    margin-top: 40px;
+  }
+}
+.footer .content {
+  width: 440px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .footer .content {
+    width: 370px;
+  }
+}
+@media (max-width: 400px) {
+  .footer .content {
+    width: 320px;
+  }
+}
+.footer .content .logo {
+  height: 130px;
+}
+@media (max-width: 768px) {
+  .footer .content .logo {
+    height: 110px;
+  }
+}
+@media (max-width: 400px) {
+  .footer .content .logo {
+    height: 100px;
+  }
+}
+.footer .content .created-by {
+  display: flex;
+  flex-wrap: wrap;
+  width: 150px;
+}
+@media (max-width: 768px) {
+  .footer .content .created-by {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 400px) {
+  .footer .content .created-by {
+    font-size: 1.3rem;
+  }
+}
+.footer .content .created-by h3 {
+  width: 100%;
+}
+.footer .content .created-by span {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 8px;
 }
