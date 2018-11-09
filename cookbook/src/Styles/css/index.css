@@ -45,16 +45,15 @@ html {
 }
 .containerLP .titleContainer {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 .containerLP .titleContainer .bckgImg {
   position: relative;
+  width: 100%;
+  height: auto;
 }
 @media (max-width: 400px) {
   .containerLP .titleContainer .bckgImg {
-    height: 400px;
+    width: 400px;
   }
 }
 .containerLP .titleContainer .landingNav {
@@ -77,26 +76,31 @@ html {
   font-size: 2.4rem;
   font-weight: bold;
 }
-.containerLP .titleContainer .logo {
+.containerLP .titleContainer .logo-title {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.containerLP .titleContainer .logo-title .logo {
   position: absolute;
-  top: 120px;
-  height: 240px;
+  display: block;
+  top: 90px;
+  height: 220px;
 }
 @media (max-width: 400px) {
-  .containerLP .titleContainer .logo {
+  .containerLP .titleContainer .logo-title .logo {
     top: 56px;
     height: 120px;
   }
 }
-.containerLP .titleContainer .title {
+.containerLP .titleContainer .logo-title .title {
   position: absolute;
-  text-decoration: underline;
   color: white;
-  top: 420px;
+  top: 350px;
   font-size: 10rem;
 }
 @media (max-width: 400px) {
-  .containerLP .titleContainer .title {
+  .containerLP .titleContainer .logo-title .title {
     top: 230px;
   }
 }
@@ -128,7 +132,7 @@ h1 {
 input {
   font-family: 'Lato', sans-serif;
   font-size: 1.8rem;
-  height: 3.0rem;
+  height: 3rem;
   border: 1px solid lightgrey;
   margin-top: 1.5rem;
   padding-left: 1rem;
@@ -170,13 +174,13 @@ button {
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  border: .1rem lightgrey solid;
-  border-radius: .1rem;
+  border: 0.1rem lightgrey solid;
+  border-radius: 0.1rem;
   font-style: normal;
   font-weight: bold;
   vertical-align: middle;
   text-align: center;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   cursor: pointer;
   color: white;
   text-shadow: 0 0 0 white;
@@ -227,7 +231,7 @@ h1 {
 input {
   font-family: 'Lato', sans-serif;
   font-size: 1.8rem;
-  height: 3.0rem;
+  height: 3rem;
   border: 1px solid lightgrey;
   margin-top: 1.5rem;
   padding-left: 1rem;
