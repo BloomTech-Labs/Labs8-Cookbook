@@ -21,19 +21,24 @@
             display: flex;
             justify-content: flex-end;
             display: flex;
+            font-size: 2.4rem;
+            @media @tablet {
+                font-size: 2.2rem;
+            }
+            @media @phone {
+                font-size: 1.8rem;
+            }
 
             .login {
                 margin-right: 15px;
                 text-decoration: none;
                 color: white;
-                font-size: 2.4rem;
             }
 
             .register {
                 margin-right: 15px;
                 text-decoration: none;
                 color: white;
-                font-size: 2.4rem;
                 font-weight: bold
             }
         }
@@ -48,9 +53,13 @@
                 display: block;
                 top: 90px;
                 height: 220px;
+                @media @tablet {
+                    top: 80px;
+                    height: 170px;
+                }
                 @media @phone {
                     top: 56px;
-                    height: 120px;
+                    height: 100px;
                 }
             }
     
@@ -59,8 +68,13 @@
                 color: white;
                 top: 350px;
                 font-size: 10rem;
+                @media @tablet {
+                    top: 280px;
+                    font-size: 9rem;
+                }
                 @media @phone {
-                    top: 230px;
+                    top: 160px;
+                    font-size: 5.8rem;
                 }
             }
         }
