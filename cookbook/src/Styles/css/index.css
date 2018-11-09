@@ -1,17 +1,29 @@
 html {
   font-size: 62.5%;
 }
+.container-margin-top {
+  margin-top: 60px;
+}
+@media (max-width: 400px) {
+  .container-margin-top {
+    margin-top: 50px;
+  }
+}
 .app {
   text-align: center;
   display: flex;
   justify-content: center;
   width: 100%;
+  flex-wrap: wrap;
 }
 .header {
   width: 100%;
   height: 60px;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  z-index: 1;
+  margin-bottom: 60px;
   background-image: url('../../Images/HeaderImg_Desktop.jpg');
 }
 @media (max-width: 768px) {
@@ -25,36 +37,72 @@ html {
     height: 50px;
   }
 }
-.header .logo {
-  height: 40px;
-  margin-top: 10px;
+.header .link {
   margin-left: 40px;
 }
 @media (max-width: 400px) {
-  .header .logo {
+  .header .link {
+    margin-left: 20px;
+  }
+}
+.header .link .logo {
+  height: 40px;
+  margin-top: 10px;
+}
+@media (max-width: 400px) {
+  .header .link .logo {
     height: 30px;
   }
 }
 .nav-icon {
   margin-right: 40px;
-  display: flex;
-  align-items: center;
+  display: inline-block;
+  position: relative;
+  margin-top: 17px;
+}
+@media (max-width: 400px) {
+  .nav-icon {
+    margin-top: 14px;
+    margin-right: 20px;
+  }
+}
+.nav-icon .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #ff8c00;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  text-align: right;
+}
+.nav-icon .dropdown-content .link {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-size: 1.4rem;
+  display: block;
+}
+.nav-icon .dropdown-content .link:hover {
+  background-color: #660066;
+}
+.nav-icon:hover .dropdown-content {
+  display: block;
 }
 .containerLP {
   width: 100%;
 }
 .containerLP .titleContainer {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 .containerLP .titleContainer .bckgImg {
   position: relative;
+  width: 100%;
+  height: auto;
 }
 @media (max-width: 400px) {
   .containerLP .titleContainer .bckgImg {
-    height: 400px;
+    width: 400px;
   }
 }
 .containerLP .titleContainer .landingNav {
@@ -63,41 +111,69 @@ html {
   top: 10px;
   justify-content: flex-end;
   display: flex;
+  font-size: 2.4rem;
+}
+@media (max-width: 768px) {
+  .containerLP .titleContainer .landingNav {
+    font-size: 2.2rem;
+  }
+}
+@media (max-width: 400px) {
+  .containerLP .titleContainer .landingNav {
+    font-size: 1.8rem;
+  }
 }
 .containerLP .titleContainer .landingNav .login {
   margin-right: 15px;
   text-decoration: none;
   color: white;
-  font-size: 2.4rem;
 }
 .containerLP .titleContainer .landingNav .register {
   margin-right: 15px;
   text-decoration: none;
   color: white;
-  font-size: 2.4rem;
   font-weight: bold;
 }
-.containerLP .titleContainer .logo {
-  position: absolute;
-  top: 120px;
-  height: 240px;
+.containerLP .titleContainer .logo-title {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-@media (max-width: 400px) {
-  .containerLP .titleContainer .logo {
-    top: 56px;
-    height: 120px;
+.containerLP .titleContainer .logo-title .logo {
+  position: absolute;
+  display: block;
+  top: 90px;
+  height: 220px;
+}
+@media (max-width: 768px) {
+  .containerLP .titleContainer .logo-title .logo {
+    top: 80px;
+    height: 170px;
   }
 }
-.containerLP .titleContainer .title {
+@media (max-width: 400px) {
+  .containerLP .titleContainer .logo-title .logo {
+    top: 56px;
+    height: 100px;
+  }
+}
+.containerLP .titleContainer .logo-title .title {
   position: absolute;
-  text-decoration: underline;
   color: white;
-  top: 420px;
+  top: 350px;
   font-size: 10rem;
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .containerLP .titleContainer .logo-title .title {
+    top: 280px;
+    font-size: 9rem;
+  }
 }
 @media (max-width: 400px) {
-  .containerLP .titleContainer .title {
-    top: 230px;
+  .containerLP .titleContainer .logo-title .title {
+    top: 160px;
+    font-size: 5.8rem;
   }
 }
 .signupPage {
@@ -110,6 +186,12 @@ html {
 .signupPage .container {
   width: 95%;
   max-width: 600px;
+  margin-top: 60px;
+}
+@media (max-width: 400px) {
+  .signupPage .container {
+    margin-top: 50px;
+  }
 }
 h1 {
   font-size: 3.3rem;
@@ -128,7 +210,7 @@ h1 {
 input {
   font-family: 'Lato', sans-serif;
   font-size: 1.8rem;
-  height: 3.0rem;
+  height: 3rem;
   border: 1px solid lightgrey;
   margin-top: 1.5rem;
   padding-left: 1rem;
@@ -170,13 +252,13 @@ button {
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  border: .1rem lightgrey solid;
-  border-radius: .1rem;
+  border: 0.1rem lightgrey solid;
+  border-radius: 0.1rem;
   font-style: normal;
   font-weight: bold;
   vertical-align: middle;
   text-align: center;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   cursor: pointer;
   color: white;
   text-shadow: 0 0 0 white;
@@ -209,6 +291,12 @@ input[type=checkbox]:checked + .ui-checkbox:before {
 .signinPage .container {
   width: 95%;
   max-width: 600px;
+  margin-top: 60px;
+}
+@media (max-width: 400px) {
+  .signinPage .container {
+    margin-top: 50px;
+  }
 }
 h1 {
   font-size: 3.3rem;
@@ -227,7 +315,7 @@ h1 {
 input {
   font-family: 'Lato', sans-serif;
   font-size: 1.8rem;
-  height: 3.0rem;
+  height: 3rem;
   border: 1px solid lightgrey;
   margin-top: 1.5rem;
   padding-left: 1rem;
@@ -245,4 +333,72 @@ button {
   border: 1px solid lightgrey;
   margin-top: 1.5rem;
   padding-left: 1.5rem;
+}
+.footer {
+  width: 100%;
+  background-color: #9E9D9E;
+  height: 240px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 1.6rem;
+}
+@media (max-width: 400px) {
+  .footer {
+    margin-top: 40px;
+  }
+}
+.footer .content {
+  width: 440px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .footer .content {
+    width: 370px;
+  }
+}
+@media (max-width: 400px) {
+  .footer .content {
+    width: 320px;
+  }
+}
+.footer .content .logo {
+  height: 130px;
+}
+@media (max-width: 768px) {
+  .footer .content .logo {
+    height: 110px;
+  }
+}
+@media (max-width: 400px) {
+  .footer .content .logo {
+    height: 100px;
+  }
+}
+.footer .content .created-by {
+  display: flex;
+  flex-wrap: wrap;
+  width: 150px;
+}
+@media (max-width: 768px) {
+  .footer .content .created-by {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 400px) {
+  .footer .content .created-by {
+    font-size: 1.3rem;
+  }
+}
+.footer .content .created-by h3 {
+  width: 100%;
+}
+.footer .content .created-by span {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 8px;
 }

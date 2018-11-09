@@ -1,0 +1,59 @@
+.footer {
+    width: 100%;
+    background-color: #9E9D9E;
+    height: 240px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 1.6rem;
+    @media @phone {
+        margin-top: 40px;
+    }
+
+    .content {
+        width: 440px;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media @tablet {
+            width: 370px;
+        }
+        @media @phone {
+            width: 320px;
+        }
+
+        .logo {
+            height: 130px;
+            @media @tablet {
+                height: 110px;
+            }
+            @media @phone {
+                height: 100px;
+            }
+        }
+    
+        .created-by {
+            display: flex;
+            flex-wrap: wrap;
+            width: 150px;
+            @media @tablet {
+                font-size: 1.4rem;
+            }
+            @media @phone {
+                font-size: 1.3rem;
+            }
+    
+            h3 {
+                width: 100%;
+            }
+    
+            span {
+                text-align: left;
+                width: 100%;
+                margin-bottom: 8px;
+            }
+        }
+    }
+}

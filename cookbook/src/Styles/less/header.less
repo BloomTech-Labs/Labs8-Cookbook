@@ -3,6 +3,9 @@
     height: 60px;
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+    margin-bottom: 60px;
     background-image: url('../../Images/HeaderImg_Desktop.jpg');
     @media @tablet {
         background-image: url('../../Images/HeaderImg_Tablet.jpg');
@@ -12,13 +15,19 @@
         height: 50px;
     }
 
-    .logo {
-        height: 40px;
-        margin-top: 10px;
+    .link {
         margin-left: 40px;
-
         @media @phone {
-            height: 30px;
+            margin-left: 20px;
+        }
+
+        .logo {
+            height: 40px;
+            margin-top: 10px;
+    
+            @media @phone {
+                height: 30px;
+            }
         }
     }
 }
