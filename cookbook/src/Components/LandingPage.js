@@ -17,7 +17,6 @@ const LandingPage = () => {
                 <div className='logo-title'>
                     <img className="logo" src={logo} />
                     <span className='title'>COOKBOOK</span>
-                    {/* <div className='underline'></div> */}
                 </div>
             </div>
         </div>
