@@ -19,7 +19,10 @@ class Home extends Component {
         <Header />
         <div className="home-container">
           <div className="home-path">
-            <Link to="/home">Home</Link> / {current}
+            <span>
+              <Link to="/home">Home</Link> / {current}
+            </span>
+            <button className="signout-btn">Signout</button>
           </div>
           <Nav />
           <div className="home-content">

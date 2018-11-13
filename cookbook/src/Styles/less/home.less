@@ -8,6 +8,7 @@
     "footer footer footer footer";
   grid-template-rows: auto;
   grid-template-columns: 1fr 2fr 2fr 2fr;
+
   a {
     text-decoration: none;
   }
@@ -21,6 +22,15 @@
     padding: 20px;
     grid-area: pathname;
     font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      width: 130px;
+      right: 10px;
+      background: gray;
+      padding: 0;
+    }
   }
 
   .home-navbar {

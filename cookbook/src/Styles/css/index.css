@@ -421,6 +421,15 @@ button {
   padding: 20px;
   grid-area: pathname;
   font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-container .home-path button {
+  width: 130px;
+  right: 10px;
+  background: gray;
+  padding: 0;
 }
 .home-container .home-navbar {
   font-size: 1.6rem;
