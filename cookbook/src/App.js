@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import './Styles/css/index.css';
 
 import { Route } from 'react-router-dom';
+import ApolloClient from 'apollo-boost';
 
 import LandingPage from './Components/LandingPage';
 import Signin from './Components/Signin';
 import Signup from './Components/Signup';
 import Footer from './Components/Footer';
+
+// apollo client
+const client = new ApolloClient({
+  uri: 'https://lambda-cookbook.herokuapp.com/'
+})
 
 
 class App extends Component {
