@@ -1,33 +1,33 @@
 .header {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    z-index: 1;
-    margin-bottom: 60px;
-    background-image: url('../../Images/HeaderImg_Desktop.jpg');
-    @media @tablet {
-        background-image: url('../../Images/HeaderImg_Tablet.jpg');
-    }
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  background-image: url("../../Images/HeaderImg_Desktop.jpg");
+  @media @tablet {
+    background-image: url("../../Images/HeaderImg_Tablet.jpg");
+  }
+  @media @phone {
+    background-image: url("../../Images/HeaderImg_Phone.jpg");
+    height: 50px;
+  }
+
+  .link {
+    margin-left: 40px;
     @media @phone {
-        background-image: url('../../Images/HeaderImg_Phone.jpg');
-        height: 50px;
+      margin-left: 20px;
     }
 
-    .link {
-        margin-left: 40px;
-        @media @phone {
-            margin-left: 20px;
-        }
+    .logo {
+      height: 40px;
+      margin-top: 10px;
 
-        .logo {
-            height: 40px;
-            margin-top: 10px;
-    
-            @media @phone {
-                height: 30px;
-            }
-        }
+      @media @phone {
+        height: 30px;
+      }
     }
+  }
 }

@@ -1,6 +1,9 @@
 html {
   font-size: 62.5%;
 }
+* {
+  box-sizing: border-box;
+}
 .container-margin-top {
   margin-top: 60px;
 }
@@ -10,11 +13,9 @@ html {
   }
 }
 .app {
-  text-align: center;
-  display: flex;
-  justify-content: center;
   width: 100%;
-  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 .header {
   width: 100%;
@@ -23,17 +24,17 @@ html {
   justify-content: space-between;
   position: fixed;
   z-index: 1;
-  margin-bottom: 60px;
-  background-image: url('../../Images/HeaderImg_Desktop.jpg');
+  top: 0;
+  background-image: url("../../Images/HeaderImg_Desktop.jpg");
 }
 @media (max-width: 768px) {
   .header {
-    background-image: url('../../Images/HeaderImg_Tablet.jpg');
+    background-image: url("../../Images/HeaderImg_Tablet.jpg");
   }
 }
 @media (max-width: 400px) {
   .header {
-    background-image: url('../../Images/HeaderImg_Phone.jpg');
+    background-image: url("../../Images/HeaderImg_Phone.jpg");
     height: 50px;
   }
 }
@@ -401,4 +402,19 @@ button {
   text-align: left;
   width: 100%;
   margin-bottom: 8px;
+}
+.home-container {
+  margin-top: 60px;
+  display: grid;
+  grid-template-areas: "pathname pathname pathname pathname" "navbar main main sidebar" "footer footer footer footer";
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 2fr 2fr 2fr;
+}
+.home-container .home-content {
+  padding: 20px;
+  grid-area: main;
+}
+.home-container .home-path {
+  padding: 20px;
+  grid-area: pathname;
 }
