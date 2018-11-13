@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import Header from "./Header";
-// import Nav from "./Nav";
+import Nav from "./Nav";
 // import Create from "./Create";
 // import Recipes from "./Recipes";
 // import Calendar from "./Calendar";
@@ -21,7 +21,7 @@ class Home extends Component {
           <div className="home-path">
             <Link to="/home">Home</Link> / {current}
           </div>
-          {/* <Nav /> */}
+          <Nav />
           <div className="home-content">
             {/* <Route path="/home/create" component={Create} />
           <Route path="/home/recipes" component={Recipes} />
