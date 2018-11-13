@@ -7,9 +7,7 @@ import Header from './Header';
 
 const userSignUp = gql`
     {
-        user (id: "cjoaer9kn00120898yjnixwzf"
-        ){
-            id
+        users {
             first_name
             last_name
             email
@@ -28,6 +26,19 @@ class Signup extends Component {
             password1: '',
             password2: '',
             buyPremium: false
+        }
+    }
+
+    register(){
+        var data = this.props.data;
+        if(data.loading){
+            return( <div>You are being registered...</div> );
+        } else {
+            return data.users.map(user => {
+                return(
+                    <li key={ user.id }>{ user.name }</li>
+                )
+            })
         }
     }
 
@@ -119,6 +130,7 @@ class Signup extends Component {
                     <p className='ui-checkbox-disclaimer'>(Takes you to payment options after account is created)</p>
                     
                     <button onClick={this.handleSubmit}>Create My Account</button>
+                    { this.register() }
                 </form>
                 </div>
             </div>
