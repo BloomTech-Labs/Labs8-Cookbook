@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 import Header from "./Header";
 import Nav from "./Nav";
-// import Create from "./Create";
-// import Recipes from "./Recipes";
-// import Calendar from "./Calendar";
-// import Dashboard from "./Dashboard";
-// import Settings from "./Settings";
+import Create from "./Create";
+import Recipes from "./Recipes";
+import Calendar from "./Calendar";
+import Dashboard from "./Dashboard";
+import Settings from "./Settings";
 // import Billing from "./Billing";
 
 class Home extends Component {
@@ -26,12 +26,12 @@ class Home extends Component {
           </div>
           <Nav />
           <div className="home-content">
-            {/* <Route path="/home/create" component={Create} />
-          <Route path="/home/recipes" component={Recipes} />
-          <Route path="/home/calendar" component={Calendar} />
-          <Route path="/home/dashboard" component={Dashboard} />
-          <Route path="/home/settings" component={Settings} />
-          <Route path="/home/billing" component={Billing} /> */}
+            <Route path="/home/create" component={Create} />
+            <Route path="/home/recipes" component={Recipes} />
+            <Route path="/home/calendar" component={Calendar} />
+            <Route path="/home/dashboard" component={Dashboard} />
+            <Route path="/home/settings" component={Settings} />
+            {/* <Route path="/home/billing" component={Billing} /> */}
           </div>
         </div>
       </React.Fragment>

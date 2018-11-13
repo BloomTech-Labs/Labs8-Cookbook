@@ -414,6 +414,7 @@ button {
   text-decoration: none;
 }
 .home-container .home-content {
+  font-size: 1.6rem;
   padding: 20px;
   grid-area: main;
 }
