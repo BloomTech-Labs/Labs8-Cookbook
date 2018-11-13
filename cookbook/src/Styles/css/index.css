@@ -404,6 +404,8 @@ button {
   margin-bottom: 8px;
 }
 .home-container {
+  width: 70%;
+  margin: auto;
   margin-top: 60px;
   display: grid;
   grid-template-areas: "pathname pathname pathname pathname" "navbar main main sidebar" "footer footer footer footer";
@@ -441,7 +443,7 @@ button {
   justify-content: flex-start;
   border: 1px solid black;
   grid-area: navbar;
-  height: 60vh;
+  height: 50vh;
   list-style-type: none;
 }
 .home-container .home-navbar li {
