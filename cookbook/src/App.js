@@ -12,7 +12,7 @@ import Footer from './Components/Footer';
 
 // apollo client
 const client = new ApolloClient({
-  uri: 'https://lambda-cookbook.herokuapp.com/'
+  uri: 'http://localhost:4000/'
 })
 
 

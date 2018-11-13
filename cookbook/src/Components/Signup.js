@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { gql } from 'apollo-boost';
+import { graphql } from 'react-apollo';
 
 import Header from './Header';
 
+const userSignUp = gql`
+    {
+        user (id: "cjoaer9kn00120898yjnixwzf"
+        ){
+            id
+            first_name
+            last_name
+            email
+        }
+    }
+`
 
 class Signup extends Component {
     constructor() {
@@ -33,6 +46,7 @@ class Signup extends Component {
     }
 
     render() {
+        console.log(this.props)
         return ( 
             <div className='signupPage'>
                 <Header />
@@ -112,4 +126,4 @@ class Signup extends Component {
     }
 }
  
-export default Signup;
+export default graphql(userSignUp)(Signup);
