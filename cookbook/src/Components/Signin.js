@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../Auth/Auth.js';
 
 import Header from './Header';
+
+const auth = new Auth();
+auth.login();
 
 class Signin extends Component {
 
