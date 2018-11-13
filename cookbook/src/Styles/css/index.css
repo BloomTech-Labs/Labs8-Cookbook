@@ -1,6 +1,9 @@
 html {
   font-size: 62.5%;
 }
+* {
+  box-sizing: border-box;
+}
 .container-margin-top {
   margin-top: 60px;
 }
@@ -10,11 +13,9 @@ html {
   }
 }
 .app {
-  text-align: center;
-  display: flex;
-  justify-content: center;
   width: 100%;
-  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 }
 .header {
   width: 100%;
@@ -23,17 +24,17 @@ html {
   justify-content: space-between;
   position: fixed;
   z-index: 1;
-  margin-bottom: 60px;
-  background-image: url('../../Images/HeaderImg_Desktop.jpg');
+  top: 0;
+  background-image: url("../../Images/HeaderImg_Desktop.jpg");
 }
 @media (max-width: 768px) {
   .header {
-    background-image: url('../../Images/HeaderImg_Tablet.jpg');
+    background-image: url("../../Images/HeaderImg_Tablet.jpg");
   }
 }
 @media (max-width: 400px) {
   .header {
-    background-image: url('../../Images/HeaderImg_Phone.jpg');
+    background-image: url("../../Images/HeaderImg_Phone.jpg");
     height: 50px;
   }
 }
@@ -401,4 +402,50 @@ button {
   text-align: left;
   width: 100%;
   margin-bottom: 8px;
+}
+.home-container {
+  width: 70%;
+  margin: auto;
+  margin-top: 60px;
+  display: grid;
+  grid-template-areas: "pathname pathname pathname pathname" "navbar main main sidebar" "footer footer footer footer";
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 2fr 2fr 2fr;
+}
+.home-container a {
+  text-decoration: none;
+}
+.home-container .home-content {
+  font-size: 1.6rem;
+  padding: 20px;
+  grid-area: main;
+}
+.home-container .home-path {
+  padding: 20px;
+  grid-area: pathname;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-container .home-path button {
+  width: 130px;
+  right: 10px;
+  background: gray;
+  padding: 0;
+}
+.home-container .home-navbar {
+  font-size: 1.6rem;
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid black;
+  grid-area: navbar;
+  height: 50vh;
+  list-style-type: none;
+}
+.home-container .home-navbar li {
+  margin-top: 10px;
 }
