@@ -55,6 +55,14 @@ html {
     height: 30px;
   }
 }
+.header .signout {
+  color: white;
+  font-size: 2.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: center;
+  margin-bottom: 5px;
+}
 .nav-icon {
   margin-right: 40px;
   display: inline-block;

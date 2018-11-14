@@ -19,12 +19,9 @@ class Header extends Component {
                 </Link>
                 {
                     isAuthenticated() && (
-                        <button
-                        className="btn-margin"
-                        onClick={this.logout.bind(this)}
-                        >
+                    <div className="signout" onClick={this.logout.bind(this)}>
                         Sign Out
-                        </button>
+                    </div>
                     )
                 }
                 <NavIcon />
