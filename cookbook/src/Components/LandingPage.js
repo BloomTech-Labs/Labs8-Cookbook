@@ -14,8 +14,10 @@ const LandingPage = () => {
                     <Link className='login' to='signin'>Login</Link>
                     <Link className='register' to='signup'>Register</Link>
                 </div>
+                <div className='logo-title'>
                     <img className="logo" src={logo} />
                     <span className='title'>COOKBOOK</span>
+                </div>
             </div>
         </div>
 

@@ -1,0 +1,54 @@
+.home-container {
+  width: 70%;
+  margin: auto;
+  margin-top: 60px;
+  display: grid;
+  grid-template-areas:
+    // "header header header header"
+    "pathname pathname pathname pathname"
+    "navbar main main sidebar"
+    "footer footer footer footer";
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 2fr 2fr 2fr;
+
+  a {
+    text-decoration: none;
+  }
+
+  .home-content {
+    font-size: 1.6rem;
+    padding: 20px;
+    grid-area: main;
+  }
+
+  .home-path {
+    padding: 20px;
+    grid-area: pathname;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      width: 130px;
+      right: 10px;
+      background: gray;
+      padding: 0;
+    }
+  }
+
+  .home-navbar {
+    font-size: 1.6rem;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid black;
+    grid-area: navbar;
+    height: 50vh;
+    list-style-type: none;
+    li {
+      margin-top: 10px;
+    }
+  }
+}
