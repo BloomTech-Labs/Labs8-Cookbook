@@ -5,7 +5,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'cookbookproject.auth0.com',
     clientID: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
-    redirectUri: 'https://lambda-cookbook.netlify.com',
+    redirectUri: 'http://localhost:3000/signin',
     responseType: 'token id_token',
     scope: 'openid'
   });
@@ -57,6 +57,6 @@ export default class Auth {
     // Access Token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
-
   }
+
 }
