@@ -5,7 +5,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'cookbookproject.auth0.com',
     clientID: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'https://lambda-cookbook.netlify.com/callback',
     responseType: 'token id_token',
     scope: 'openid'
   });
