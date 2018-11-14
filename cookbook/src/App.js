@@ -27,7 +27,10 @@ class App extends Component {
             return (<LandingPage auth={auth} {...props} />) 
             }}
           />
-          <Route path="/home" component={Home} />
+          <Route path='/home' render={ (props) => {
+            return (<Home auth={auth} {...props} />)
+            }}
+          />
           <Route path='/signin' render={ (props) => {
             return (<Signin auth={auth} {...props} />)
             }}

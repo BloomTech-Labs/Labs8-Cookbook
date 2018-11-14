@@ -16,7 +16,7 @@ class Home extends Component {
       current === "home" ? null : current[0].toUpperCase() + current.slice(1);
     return (
       <React.Fragment>
-        <Header />
+        <Header auth={this.props.auth} />
         <div className="home-container">
           <div className="home-path">
             <span>
