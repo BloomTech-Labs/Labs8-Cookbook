@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Header from './Header';
 
-
 class Signup extends Component {
     constructor() {
         super();
@@ -33,6 +32,7 @@ class Signup extends Component {
     }
 
     render() {
+        console.log(this.props)
         return ( 
             <div className='signupPage'>
                 <Header />
