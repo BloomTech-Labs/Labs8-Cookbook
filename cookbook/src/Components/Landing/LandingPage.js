@@ -19,7 +19,6 @@ class LandingPage extends Component {
                 <div className='titleContainer'>
                     <img className="bckgImg" src={titleImg} alt="Image of a table with produce on top." />
                     <div className='landingNav'>
-                        <NavIcon  className='nav-icon'/>
                         {
                             !isAuthenticated() && (
                             <div className="register" onClick={this.login.bind(this)}>

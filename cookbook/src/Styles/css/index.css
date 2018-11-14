@@ -142,7 +142,7 @@ html {
   width: 100%;
   position: absolute;
   top: 10px;
-  justify-content: space-between;
+  justify-content: flex-end;
   display: flex;
   font-size: 2.4rem;
 }
@@ -155,9 +155,6 @@ html {
   .containerLP .titleContainer .landingNav {
     font-size: 1.8rem;
   }
-}
-.containerLP .titleContainer .landingNav .nav-icon {
-  margin-left: 15px;
 }
 .containerLP .titleContainer .landingNav .register {
   margin-right: 15px;
