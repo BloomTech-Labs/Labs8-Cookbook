@@ -20,12 +20,9 @@ class LandingPage extends Component {
                     <div className='landingNav'>
                         {
                             !isAuthenticated() && (
-                                <button
-                                className="btn-margin"
-                                onClick={this.login.bind(this)}
-                                >
+                            <div className="register" onClick={this.login.bind(this)}>
                                 Sign In or Register
-                                </button>
+                            </div>
                             )
                         }
                     </div>
