@@ -3,10 +3,6 @@ import Recipe from './Recipe';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-const Recipes = () => {
-  return <div>This is Recipes Page</div>;
-};
-
 const RECIPE_QUERY = gql`
   {
     recipes {
