@@ -6,7 +6,16 @@ import { Route } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
 import Signin from './Components/Signin';
 import Signup from './Components/Signup';
+import Callback from './Auth/Callback.js';
+import Auth from './Auth/Auth.js';
 
+const auth = new Auth();
+
+const handleAuthentication = (nextState, replace) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication();
+  }
+}
 
 class App extends Component {
   render() {
@@ -14,10 +23,14 @@ class App extends Component {
       <div className="app">
           <Route exact path='/' component={LandingPage}/>
           <Route path='/signin' render={ (props) =>
-            { return(<Signin {...props} />) } }
+            { return(<Signin auth={auth} {...props} />) } }
           />
           <Route path='/signup' render={ (props) =>
-            { return(<Signup {...props} />) } }
+            { return(<Signup auth={auth} {...props} />) } }
+          />
+          <Route path='/callback' render={ (props) =>
+            { handleAuthentication(props);
+              return(<Callback {...props} />) } }
           />
       </div>
     );

@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import Auth from '../Auth/Auth.js';
-
-const auth = new Auth();
 
 class Signin extends Component {
     goTo(route) {
@@ -9,22 +6,22 @@ class Signin extends Component {
       }
     
       login() {
-        auth.login();
+        this.props.auth.login();
       }
     
       logout() {
-        auth.logout();
+        this.props.auth.logout();
       }
     
       render() {
-        const { isAuthenticated } = auth;
+        const { isAuthenticated } = this.props.auth;
     
         return (
           <div>
             
                 <button
                   className="btn-margin"
-                  onClick={this.goTo.bind(this, '/')}
+                  onClick={this.goTo.bind(this, '')}
                 >
                   Home
                 </button>
