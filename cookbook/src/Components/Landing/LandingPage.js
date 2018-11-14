@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import titleImg from '../../Images/titleImg.jpeg';
 import logo from '../../designs/Logo/CookBookLogo.svg';
-// import NavIcon from ../
+import NavIcon from '../SubComponents/NavIcon';
 
 
 class LandingPage extends Component {
@@ -19,7 +19,7 @@ class LandingPage extends Component {
                 <div className='titleContainer'>
                     <img className="bckgImg" src={titleImg} alt="Image of a table with produce on top." />
                     <div className='landingNav'>
-                        {/* <NavIcon /> */}
+                        <NavIcon  className='nav-icon'/>
                         {
                             !isAuthenticated() && (
                             <div className="register" onClick={this.login.bind(this)}>
