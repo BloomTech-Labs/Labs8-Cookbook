@@ -22,6 +22,7 @@ html {
   height: 60px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -41,6 +42,11 @@ html {
 .header .link {
   margin-left: 40px;
 }
+@media (max-width: 768px) {
+  .header .link {
+    margin-left: 30px;
+  }
+}
 @media (max-width: 400px) {
   .header .link {
     margin-left: 20px;
@@ -48,7 +54,6 @@ html {
 }
 .header .link .logo {
   height: 40px;
-  margin-top: 10px;
 }
 @media (max-width: 400px) {
   .header .link .logo {
@@ -57,11 +62,22 @@ html {
 }
 .header .signout {
   color: white;
-  font-size: 2.6rem;
-  font-weight: bold;
+  font-size: 2rem;
+  text-decoration: underline;
   cursor: pointer;
-  align-self: center;
-  margin-bottom: 5px;
+  height: 30px;
+  margin-right: 40px;
+}
+@media (max-width: 768px) {
+  .header .signout {
+    margin-right: 30px;
+  }
+}
+@media (max-width: 400px) {
+  .header .signout {
+    margin-right: 20px;
+    font-size: 1.8rem;
+  }
 }
 .containerLP {
   width: 100%;

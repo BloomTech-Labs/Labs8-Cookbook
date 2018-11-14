@@ -17,14 +17,9 @@ class Header extends Component {
                 <Link className='link' to='/home'>
                     <img className='logo' src={Logo} alt='COOKBOOK logo'/>
                 </Link>
-                {
-                    isAuthenticated() && (
-                    <div className="signout" onClick={this.logout.bind(this)}>
-                        Sign Out
-                    </div>
-                    )
-                }
-                <NavIcon />
+                <div className="signout" onClick={this.logout.bind(this)}>
+                    Sign Out
+                </div>
             </div> 
         );
     }

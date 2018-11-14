@@ -22,7 +22,6 @@ class Home extends Component {
             <span>
               <Link to="/home">Home</Link> / {current}
             </span>
-            <button className="signout-btn">Signout</button>
           </div>
           <Nav />
           <div className="home-content">
