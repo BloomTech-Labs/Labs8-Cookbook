@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Logo from '../designs/Logo/CookBookLogo.svg';
 import NavIcon from './NavIcon';
 import { Link } from 'react-router-dom';
 
 
-const Header = () => {
-    return ( 
-        <div className='header'>
-            <Link className='link' to='/'>
-                <img className='logo' src={Logo} alt='COOKBOOK logo'/>
-            </Link>
-            <NavIcon />
-        </div> 
-    );
+class Header extends Component {
+    logout() {
+        this.props.auth.logout();
+    }
+
+    render() {
+        const { isAuthenticated } = this.props.auth;
+
+        return ( 
+            <div className='header'>
+                <Link className='link' to='/home'>
+                    <img className='logo' src={Logo} alt='COOKBOOK logo'/>
+                </Link>
+                {
+                    isAuthenticated() && (
+                    <div className="signout" onClick={this.logout.bind(this)}>
+                        Sign Out
+                    </div>
+                    )
+                }
+                <NavIcon />
+            </div> 
+        );
+    }
 }
  
 export default Header;
