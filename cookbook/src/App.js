@@ -23,17 +23,23 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-          <Route exact path='/' component={LandingPage}/>
+          <Route exact path='/' render={ (props) =>{ 
+            return (<LandingPage auth={auth} {...props} />) 
+            }}
+          />
           <Route path="/home" component={Home} />
-          <Route path='/signin' render={ (props) =>
-            { return(<Signin auth={auth} {...props} />) } }
+          <Route path='/signin' render={ (props) => {
+            return (<Signin auth={auth} {...props} />)
+            }}
           />
-          <Route path='/signup' render={ (props) =>
-            { return(<Signup auth={auth} {...props} />) } }
+          <Route path='/signup' render={ (props) =>{
+            return (<Signup auth={auth} {...props} />)
+            }}
           />
-          <Route path='/callback' render={ (props) =>
-            { handleAuthentication(props);
-              return(<Callback {...props} />) } }
+          <Route path='/callback' render={ (props) =>{
+            handleAuthentication(props);
+            return (<Callback {...props} />)
+            }}
           />
           <Footer />
       </div>
