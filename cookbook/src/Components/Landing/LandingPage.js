@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import titleImg from '../Images/titleImg.jpeg';
-import logo from '../designs/Logo/CookBookLogo.svg';
+import titleImg from '../../Images/titleImg.jpeg';
+import logo from '../../designs/Logo/CookBookLogo.svg';
+import NavIcon from '../SubComponents/NavIcon';
 
 
 class LandingPage extends Component {
@@ -21,7 +22,7 @@ class LandingPage extends Component {
                         {
                             !isAuthenticated() && (
                             <div className="register" onClick={this.login.bind(this)}>
-                                Sign In or Register
+                                Login/Register
                             </div>
                             )
                         }
