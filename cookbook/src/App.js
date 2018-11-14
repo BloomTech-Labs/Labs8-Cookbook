@@ -3,11 +3,11 @@ import "./Styles/css/index.css";
 
 import { Route } from 'react-router-dom';
 
-import Home from "./Components/Home";
-import LandingPage from './Components/LandingPage';
-import Signin from './Components/Signin';
-import Signup from './Components/Signup';
-import Footer from "./Components/Footer";
+import Home from "./Components/Home/Home";
+import LandingPage from './Components/Landing/LandingPage';
+import Signin from './Components/SigninSignup/Signin';
+import Signup from './Components/SigninSignup/Signup';
+import Footer from "./Components/SubComponents/Footer";
 import Callback from './Auth/Callback.js';
 import Auth from './Auth/Auth.js';
 

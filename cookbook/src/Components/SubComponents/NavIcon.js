@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import OpenIcon from '../Images/Icons/nav-hamburger.png';
+import OpenIcon from '../../Images/Icons/nav-hamburger.png';
 import { Link } from 'react-router-dom';
 
 

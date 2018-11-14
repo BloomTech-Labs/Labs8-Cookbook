@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Logo from '../designs/Logo/CookBookLogo.svg';
+import Logo from '../../designs/Logo/CookBookLogo.svg';
 import NavIcon from './NavIcon';
 import { Link } from 'react-router-dom';
 

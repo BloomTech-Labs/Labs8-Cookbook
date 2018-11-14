@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import titleImg from '../Images/titleImg.jpeg';
-import logo from '../designs/Logo/CookBookLogo.svg';
+import titleImg from '../../Images/titleImg.jpeg';
+import logo from '../../designs/Logo/CookBookLogo.svg';
+// import NavIcon from ../
 
 
 class LandingPage extends Component {
@@ -18,10 +19,11 @@ class LandingPage extends Component {
                 <div className='titleContainer'>
                     <img className="bckgImg" src={titleImg} alt="Image of a table with produce on top." />
                     <div className='landingNav'>
+                        {/* <NavIcon /> */}
                         {
                             !isAuthenticated() && (
                             <div className="register" onClick={this.login.bind(this)}>
-                                Sign In or Register
+                                Login/Register
                             </div>
                             )
                         }
