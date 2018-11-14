@@ -11,8 +11,6 @@ import Footer from "./Components/Footer";
 import Callback from './Auth/Callback.js';
 import Auth from './Auth/Auth.js';
 
-<<<<<<< HEAD
-=======
 const auth = new Auth();
 
 const handleAuthentication = (nextState, replace) => {
@@ -21,7 +19,6 @@ const handleAuthentication = (nextState, replace) => {
   }
 }
 
->>>>>>> master
 class App extends Component {
   render() {
     return (
