@@ -5,8 +5,6 @@ import { Route } from 'react-router-dom';
 
 import Home from "./Components/Home/Home";
 import LandingPage from './Components/Landing/LandingPage';
-import Signin from './Components/SigninSignup/Signin';
-import Signup from './Components/SigninSignup/Signup';
 import Footer from "./Components/SubComponents/Footer";
 import Callback from './Auth/Callback.js';
 import Auth from './Auth/Auth.js';
@@ -29,14 +27,6 @@ class App extends Component {
           />
           <Route path='/home' render={ (props) => {
             return (<Home auth={auth} {...props} />)
-            }}
-          />
-          <Route path='/signin' render={ (props) => {
-            return (<Signin auth={auth} {...props} />)
-            }}
-          />
-          <Route path='/signup' render={ (props) =>{
-            return (<Signup auth={auth} {...props} />)
             }}
           />
           <Route path='/callback' render={ (props) =>{
