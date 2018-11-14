@@ -53,3 +53,11 @@ type Ingredient {
   unit: String!
   recipe: Recipe!
 }
+
+type Subscription {
+  id: ID! @unique
+  type: String!
+  amount: Int!
+  user: User!
+  charge: String!
+}

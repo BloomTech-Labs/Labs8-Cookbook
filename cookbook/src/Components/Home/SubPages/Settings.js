@@ -4,16 +4,8 @@ import StripeCheckout from 'react-stripe-checkout';
 
 export default class Settings extends React.Component {
   onToken = (token) => {
-    fetch('/save-stripe-token', {
-      method: 'POST',
-      body: JSON.stringify(token),
-    }).then(response => {
-      response.json().then(data => {
-        alert(`We are in business, ${data.email}`);
-      });
-    });
+    console.log(`TOKEN: ${token.id}`)
   }
-
 
   render() {
     return (
@@ -21,7 +13,7 @@ export default class Settings extends React.Component {
 
         <StripeCheckout
           token={this.onToken}
-          stripeKey={process.env.REACT_APP_STRIPE_TEST_KEY}
+          stripeKey='pk_test_FyA4hajfxfEQ4jCcEaeQtTIL'
           name='Cookbook Subscription'
           zipcode={false}
           amount={1000}
