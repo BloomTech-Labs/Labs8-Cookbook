@@ -1,32 +1,30 @@
 import React, { Component } from 'react';
-import User from './User';
+import Recipe from './Recipe';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-const USER_QUERY = gql`
+const RECIPE_QUERY = gql`
   {
-    users {
+    recipes {
       id
-      first_name
-      last_name
-      email
+      title
     }
   }
 `
 
-class Users extends Component {
+class Recipes extends Component {
   render() {
     return (
-      <Query query={USER_QUERY}>
+      <Query query={RECIPE_QUERY}>
         {({ loading, error, data }) => {
           if (loading) return <div>Fetching</div>
           if (error) return <div>Error</div>
           
-          const usersToRender = data.users
+          const recipesToRender = data.recipes
 
           return (
             <div>
-              {usersToRender.map(user => <User key={user.id} user={user} />)}
+              {recipesToRender.map(recipes => <Recipe key={recipes.id} recipes={recipes} />)}
             </div>
           )
         }}
@@ -35,4 +33,4 @@ class Users extends Component {
   }
 }
 
-export default Users;
+export default Recipes;

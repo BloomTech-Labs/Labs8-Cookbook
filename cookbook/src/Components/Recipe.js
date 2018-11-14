@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
-class User extends Component {
+class Recipe extends Component {
   render() {
     return (
       <div>
         <div>
-          {this.props.user.first_name} ({this.props.user.last_name})
+          {this.props.recipes.title}
         </div>
       </div>
     )
   }
 }
 
-export default User;
+export default Recipe;

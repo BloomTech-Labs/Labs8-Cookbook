@@ -7,7 +7,7 @@ import LandingPage from './Components/LandingPage';
 import Signin from './Components/Signin';
 import Signup from './Components/Signup';
 import Footer from './Components/Footer';
-import Users from './Components/Users';
+import Recipes from './Components/Recipes';
 
 class App extends Component {
   render() {
@@ -21,7 +21,7 @@ class App extends Component {
           { return(<Signup {...props} />) } }
         />
         <Route path='/test' render={ (props) =>
-          { return(<Users {...props} />) } }
+          { return(<Recipes {...props} />) } }
         />
         <Footer />
       </div>
