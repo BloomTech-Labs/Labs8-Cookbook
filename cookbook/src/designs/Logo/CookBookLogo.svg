@@ -15,10 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="CookBook Logo.svg"
-   inkscape:export-filename="C:\Users\diveb\LambdaSchool\Labs\Cookbook\Project\Labs8-Cookbook\cookbook\designs\Logo\Logo.png"
-   inkscape:export-xdpi="72"
-   inkscape:export-ydpi="72">
+   sodipodi:docname="CookBookLogo.svg"
+   inkscape:export-filename="C:\Users\diveb\LambdaSchool\Labs\Cookbook\Project\Labs8-Cookbook\cookbook\designs\Signup.png"
+   inkscape:export-xdpi="100"
+   inkscape:export-ydpi="100">
   <defs
      id="defs2">
     <clipPath
@@ -42,11 +42,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.5226941"
-     inkscape:cx="180.2099"
-     inkscape:cy="30.383963"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="220.47316"
+     inkscape:cy="223.01011"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g5557"
      showgrid="false"
      inkscape:window-width="2560"
      inkscape:window-height="1377"
@@ -63,7 +63,7 @@
     <inkscape:grid
        type="xygrid"
        id="grid4618"
-       originx="33.86168"
+       originx="33.861681"
        originy="-221.91113" />
   </sodipodi:namedview>
   <metadata
@@ -118,8 +118,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:'Arial Rounded MT Bold';-inkscape-font-specification:'Arial Rounded MT Bold, ';letter-spacing:0.26458335px;fill:#b3b3b3;stroke-width:0.26458335;stroke-miterlimit:4;stroke-dasharray:none" /></text>
     <g
        id="g5557"
-       transform="matrix(2.2658333,0,0,2.2658333,106.89429,3.5381204)"
-       style="fill:#ffffff">
+       transform="matrix(2.2658333,0,0,2.2658333,106.89429,3.5381204)">
       <path
          id="rect5467"
          transform="matrix(0.26458334,0,0,0.26458334,-233.80671,56.75746)"
@@ -151,17 +150,15 @@
          d="m 53.038568,-18.397612 a 1.7931263,1.7931263 0 0 1 -0.896563,1.552893 1.7931263,1.7931263 0 0 1 -1.793127,0 1.7931263,1.7931263 0 0 1 -0.896563,-1.552893"
          sodipodi:open="true"
          transform="scale(-1)" />
-      <text
-         id="text5485"
-         y="27.486"
-         x="-48.827824"
+      <g
+         aria-label="B"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.45770359px;line-height:1.25;font-family:'Arial Rounded MT Bold';-inkscape-font-specification:'Arial Rounded MT Bold, ';text-align:start;letter-spacing:1.77331972px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.35466391"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Arial Rounded MT Bold';-inkscape-font-specification:'Arial Rounded MT Bold, ';fill:#ffffff;stroke-width:0.35466391"
-           y="27.486"
-           x="-48.827824"
-           id="tspan5483"
-           sodipodi:role="line">B</tspan></text>
+         id="text5485">
+        <path
+           d="m -45.19806,27.486 h -2.068873 q -0.447948,0 -0.641905,-0.198575 -0.189339,-0.203193 -0.189339,-0.641904 v -5.089058 q 0,-0.447948 0.193957,-0.641904 0.198575,-0.198575 0.637287,-0.198575 h 2.193559 q 0.484892,0 0.84048,0.06003 0.355587,0.06003 0.637286,0.230901 0.240137,0.143159 0.424858,0.364823 0.184721,0.217047 0.281699,0.484892 0.09698,0.263228 0.09698,0.558781 0,1.015964 -1.015965,1.487002 1.334608,0.424858 1.334608,1.653251 0,0.568016 -0.290935,1.0252 -0.290935,0.452566 -0.785064,0.669613 -0.309407,0.129305 -0.711175,0.184721 -0.401767,0.0508 -0.937457,0.0508 z m -0.101597,-3.006331 h -1.426968 v 1.976513 h 1.473148 q 1.390024,0 1.390024,-1.00211 0,-0.512601 -0.360205,-0.743502 -0.360206,-0.230901 -1.075999,-0.230901 z m -1.426968,-2.733867 v 1.750229 h 1.256101 q 0.512601,0 0.789682,-0.09698 0.281699,-0.09698 0.429476,-0.369442 0.11545,-0.193956 0.11545,-0.434093 0,-0.512601 -0.364824,-0.678849 -0.364823,-0.170867 -1.112942,-0.170867 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Arial Rounded MT Bold';-inkscape-font-specification:'Arial Rounded MT Bold, ';stroke-width:0.35466391;fill:#ffffff"
+           id="path885" />
+      </g>
       <path
          transform="scale(-1)"
          sodipodi:open="true"
