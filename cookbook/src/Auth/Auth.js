@@ -1,14 +1,14 @@
 import auth0 from 'auth0-js';
 import history from './History.js';
 
-let endpoint = 'http://localhost:3000/callback';
+let devEndpoint = 'http://localhost:3000/callback';
 let prodEndpoint = 'https://lambda-cookbook.netlify.com/callback';
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'cookbookproject.auth0.com',
     clientID: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
-    redirectUri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
+    redirectUri: process.env.CURR_ENV === 'dev' ? devEndpoint : prodEndpoint,
     responseType: 'token id_token',
     scope: 'openid'
   });
