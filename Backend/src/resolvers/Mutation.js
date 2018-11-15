@@ -1,4 +1,5 @@
 //This file defines resolvers for Mutation
+const stripe = require("../stripe");
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -76,7 +77,7 @@ const Mutation = {
     console.log(charge);
     //TODO create actual subscript with userID
   },
-  
+
   };
 
 module.exports = Mutation;
