@@ -281,7 +281,6 @@ html {
 .home-container {
   margin-top: 60px;
   width: 768px;
-  border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
 }
