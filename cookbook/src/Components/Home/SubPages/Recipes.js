@@ -8,6 +8,9 @@ const RECIPE_QUERY = gql`
     recipes {
       id
       title
+      readyInMinutes
+      servings
+      image
     }
   }
 `
