@@ -8,6 +8,9 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 // a localizer for BigCalendar
 const localizer = BigCalendar.momentLocalizer(moment) 
 
+require('style-loader')
+require('css-loader')
+require('react-big-calendar/lib/css/react-big-calendar.css')
 
 const RecipeCalendar = props => (
   <div>
