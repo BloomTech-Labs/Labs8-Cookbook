@@ -14,6 +14,9 @@ class Recipe extends Component {
             height={60}
             width={160}
           />
+          <div className="recipeSchedule_body">
+            Scheduled For
+          </div>
         </div>
       </div>
     )
