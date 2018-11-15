@@ -11,7 +11,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import history from './Auth/History.js';
 
 const httpLink = new createHttpLink({
-    uri: process.env.BACKEND_URL
+    uri: process.env.REACT_APP_BACKEND_URL
   })
   
 const client = new ApolloClient({
