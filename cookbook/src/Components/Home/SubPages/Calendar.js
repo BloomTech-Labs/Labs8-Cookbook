@@ -1,7 +1,28 @@
 import React from "react";
+import moment from 'moment';
+import BigCalendar from 'react-big-calendar';
 
-const Calendar = () => {
-  return <div>This is Calendar page</div>;
-};
+import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
-export default Calendar;
+// a localizer for BigCalendar
+const localizer = BigCalendar.momentLocalizer(moment) 
+
+// require('style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.css')
+
+const RecipeCalendar = props => (
+  <div>
+    <BigCalendar
+      style={{
+        height: '420px',
+        width: '640px'
+      }}
+      localizer={localizer}
+      events={[]}
+      startAccessor="start"
+      endAccessor="end"
+    />
+  </div>
+)
+
+export default RecipeCalendar;

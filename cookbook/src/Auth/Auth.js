@@ -5,10 +5,10 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'cookbookproject.auth0.com',
     clientID: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
-    // uncomment netlify link before final push.
-    // redirectUri: 'https://lambda-cookbook.netlify.com/callback',
-    // comment out local host when pushing to GitHub
-    redirectUri: 'http://localhost:3000/callback',
+    // =!=!=!=!= uncomment netlify URI before final push =!=!=!=!=
+    redirectUri: 'https://lambda-cookbook.netlify.com/callback',
+    // =!=!=!=!= comment out localhost URI when pushing to GitHub =!=!=!=!=
+    // redirectUri: 'http://localhost:3000/callback',
     responseType: 'token id_token',
     scope: 'openid'
   });
