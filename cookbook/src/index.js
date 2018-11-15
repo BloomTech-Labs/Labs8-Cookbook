@@ -12,8 +12,8 @@ import history from './Auth/History.js';
 import auth from './Auth/Auth.js';
 
 const httpLink = new createHttpLink({
-    uri: process.env.REACT_APP_BACKEND_URL
-  })
+    uri: process.env.REACT_APP_CURR_ENV === "dev" ? 'https://localhost:4000' : process.env.REACT_APP_BACKEND_URL
+})
   
 const client = new ApolloClient({
     link: httpLink,

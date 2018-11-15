@@ -5,6 +5,7 @@ const Mutation = require("./resolvers/Mutation");
 const Query = require("./resolvers/Query");
 const AuthPayload = require("./resolvers/AuthPayload");
 const db = require("./db");
+const jwt = require("jsonwebtoken");
 
 // Create server with typeDefs, resolvers, and context(database)
 function createServer() {
@@ -18,7 +19,24 @@ function createServer() {
     resolverValidationOptions: {
       requireResolversForResolveType: false
     },
-    context: req => ({ ...req, db })
+    context: ({ req }) => {
+      // simple auth check on every request
+      const token = req.headers.authorization;
+      const user = new Promise((resolve, reject) => {
+        jwt.verify(token, getKey, options, (err, decoded) => {
+          if(err) {
+            return reject(err);
+          }
+          resolve(decoded.email);
+        });
+      });
+      console.log(user);
+      return {
+        user,
+        req,
+        db
+      };
+    },
   });
 }
 
