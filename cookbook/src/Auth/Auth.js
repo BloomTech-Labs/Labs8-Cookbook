@@ -11,7 +11,7 @@ export default class Auth {
     clientID: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
     redirectUri: process.env.REACT_APP_CURR_ENV === "dev" ? devEndpoint : prodEndpoint,
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid email'
   });
 
   constructor() {
