@@ -17,7 +17,11 @@ const Query = {
   users: async (_, args, context, info) => {
     const users = await context.db.query.users();
     return users;
-  }
-};
+  },
+
+  getAuth: async(parent, args, context, info) => {
+    const token = await context.user.id_token;
+    return token;
+  }};
 
 module.exports = Query;

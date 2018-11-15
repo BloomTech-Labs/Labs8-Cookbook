@@ -19,25 +19,27 @@ function createServer() {
     resolverValidationOptions: {
       requireResolversForResolveType: false
     },
-    context: ({ req }) => {
+    context: (req) => { 
+      console.log(req.request);
+      return {...req, db}
       // simple auth check on every request
-      const token = req.headers.authorization;
-      const user = new Promise((resolve, reject) => {
-        jwt.verify(token, getKey, options, (err, decoded) => {
-          if(err) {
-            return reject(err);
-          }
-          resolve(decoded.email);
-        });
-      });
-      console.log(user);
-      return {
-        user,
-        req,
-        db
-      };
-    },
-  });
-}
+  //     console.log('req: ', req);
+  //     const token = req.headers.authorization;
+  //     const user = new Promise((resolve, reject) => {
+  //       jwt.verify(token, getKey, options, (err, decoded) => {
+  //         if(err) {
+  //           return reject(err);
+  //         }
+  //         resolve(decoded.email);
+  //       });
+  //     });
+  //     return {
+  //       user,
+  //       ...req,
+  //       db
+  //     };
+  //   },
+  }
+})}
 
 module.exports = createServer;

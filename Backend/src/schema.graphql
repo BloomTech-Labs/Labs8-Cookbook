@@ -11,6 +11,7 @@ type Query {
   user(id: ID!): User
   users: [User]!
   recipes: [Recipe]!
+  getAuth: String!
 }
 
 type Mutation {

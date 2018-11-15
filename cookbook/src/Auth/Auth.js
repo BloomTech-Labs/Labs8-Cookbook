@@ -25,6 +25,10 @@ class Auth {
     this.auth0.authorize();
   }
 
+  getIdToken() {
+    return this.idToken;
+  }
+
   handleAuthentication() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
