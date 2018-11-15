@@ -16,6 +16,9 @@ html {
   width: 100%;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .nav-icon {
   margin-right: 40px;
@@ -277,7 +280,7 @@ html {
 }
 .home-container {
   margin-top: 60px;
-  width: 800px;
+  width: 768px;
   border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
@@ -287,15 +290,25 @@ html {
     margin-top: 50px;
   }
 }
+@media (max-width: 768px) {
+  .home-container {
+    width: 600px;
+  }
+}
+@media (max-width: 400px) {
+  .home-container {
+    width: 370px;
+  }
+}
 .home-container .home-path {
   padding: 20px;
   width: 100%;
-  border: 1px solid red;
   height: 50px;
   font-size: 1.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 .home-container .home-path button {
   width: 130px;
@@ -303,15 +316,11 @@ html {
   background: gray;
   padding: 0;
 }
-.home-container .home-path .home-content {
+.home-container .home-content {
   font-size: 1.6rem;
-  padding: 20px;
-  grid-area: main;
-  border: 1px solid blue;
 }
 .home-navbar {
   font-size: 1.6rem;
-  margin-top: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -320,6 +329,11 @@ html {
   grid-area: navbar;
   width: 120px;
   list-style-type: none;
+}
+@media (max-width: 400px) {
+  .home-navbar {
+    display: none;
+  }
 }
 .home-navbar li {
   margin-top: 10px;

@@ -1,6 +1,5 @@
 .home-navbar {
     font-size: 1.6rem;
-    margin-top: 20px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -9,6 +8,10 @@
     grid-area: navbar;
     width: 120px;
     list-style-type: none;
+    @media @phone {
+        display: none;
+    }
+
     li {
       margin-top: 10px;
     }

@@ -1,31 +1,34 @@
 .home-container {
   .container-margin-top();
-  width: 800px;
+  width: 768px;
   border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
+  @media @tablet {
+    width: 600px;
+  }
+  @media @phone {
+    width: 370px;
+  }
 
   .home-path {
     padding: 20px;
     width: 100%;
-    border: 1px solid red;
     height: 50px;
     font-size: 1.6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
     button {
       width: 130px;
       right: 10px;
       background: gray;
       padding: 0;
     }
+  }
 
   .home-content {
     font-size: 1.6rem;
-    padding: 20px;
-    grid-area: main;
-    border: 1px solid blue;
-  }
   }
 }
