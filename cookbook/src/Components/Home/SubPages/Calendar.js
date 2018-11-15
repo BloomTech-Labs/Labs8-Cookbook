@@ -13,10 +13,6 @@ const localizer = BigCalendar.momentLocalizer(moment)
 const RecipeCalendar = props => (
   <div className='calendar-page'>
     <BigCalendar
-      style={{
-        height: '420px',
-        width: '640px'
-      }}
       localizer={localizer}
       events={[]}
       startAccessor="start"

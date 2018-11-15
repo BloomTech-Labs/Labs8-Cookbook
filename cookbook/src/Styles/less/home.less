@@ -20,15 +20,16 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    button {
-      width: 130px;
-      right: 10px;
-      background: gray;
-      padding: 0;
-    }
   }
 
   .home-content {
     font-size: 1.6rem;
+    width: 650px;
+    @media @tablet {
+      width: 500px;
+    }
+    @media @phone {
+      width: 366px;
+    }
   }
 }
