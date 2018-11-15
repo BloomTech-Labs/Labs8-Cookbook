@@ -1,6 +1,7 @@
 import auth0 from 'auth0-js';
 import history from './History.js';
 
+// Change callback URL based on where the app is hosted
 let devEndpoint = 'http://localhost:3000/callback';
 let prodEndpoint = 'https://lambda-cookbook.netlify.com/callback';
 
@@ -12,7 +13,6 @@ export default class Auth {
     responseType: 'token id_token',
     scope: 'openid'
   });
-
 
   constructor() {
     this.login = this.login.bind(this);
