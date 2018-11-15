@@ -7,7 +7,7 @@ import Recipes from "./SubPages/Recipes";
 import Calendar from "./SubPages/Calendar";
 import Dashboard from "./SubPages/Dashboard";
 import Settings from "./SubPages/Settings";
-
+import Billing from "./SubPages/Billing";
 
 class Home extends Component {
   render() {
@@ -30,7 +30,7 @@ class Home extends Component {
             <Route path="/home/calendar" component={Calendar} />
             <Route path="/home/dashboard" component={Dashboard} />
             <Route path="/home/settings" component={Settings} />
-            {/* <Route path="/home/billing" component={Billing} /> */}
+            <Route path="/home/billing" component={Billing} />
           </div>
         </div>
       </React.Fragment>

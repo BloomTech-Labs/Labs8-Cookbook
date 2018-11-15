@@ -1,0 +1,25 @@
+.create-wrapper {
+  display: grid;
+  gap: 10px;
+  grid-template-areas: "content filter";
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto;
+
+  button {
+    width: 20%;
+    padding: 0;
+    margin: 0;
+    height: 3rem;
+  }
+
+  .create-content-wrapper {
+    grid-area: content;
+
+    input {
+      width: 50%;
+    }
+  }
+  .create-filter-wrapper {
+    grid-area: filter;
+  }
+}
