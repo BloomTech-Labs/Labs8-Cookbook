@@ -5,7 +5,7 @@ import history from './History.js';
 let devEndpoint = "http://localhost:3000/callback";
 let prodEndpoint = "https://lambda-cookbook.netlify.com/callback";
 
-export default class Auth {
+class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'cookbookproject.auth0.com',
     clientID: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
@@ -64,3 +64,6 @@ export default class Auth {
   }
 
 }
+
+const auth = new Auth();
+export default auth;

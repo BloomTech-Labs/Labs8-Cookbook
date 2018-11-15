@@ -7,9 +7,7 @@ import Home from "./Components/Home/Home";
 import LandingPage from './Components/Landing/LandingPage';
 import Footer from "./Components/SubComponents/Footer";
 import Callback from './Auth/Callback.js';
-import Auth from './Auth/Auth.js';
-
-const auth = new Auth();
+import auth from './Auth/Auth.js';
 
 const handleAuthentication = (nextState, replace) => {
   if (/access_token|id_token|error/.test(nextState.location.hash)) {
@@ -22,11 +20,11 @@ class App extends Component {
     return (
       <div className="app">
           <Route exact path='/' render={ (props) =>{ 
-            return (<LandingPage auth={auth} {...props} />) 
+            return (<LandingPage {...props} />) 
             }}
           />
           <Route path='/home' render={ (props) => {
-            return (<Home auth={auth} {...props} />)
+            return (<Home {...props} />)
             }}
           />
           <Route path='/callback' render={ (props) =>{
