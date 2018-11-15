@@ -381,6 +381,28 @@ html {
     height: 300px;
   }
 }
+@media (max-width: 768px) {
+  .calendar-page .rbc-calendar {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 400px) {
+  .calendar-page .rbc-calendar {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 400px) {
+  .calendar-page .rbc-calendar .rbc-toolbar .rbc-btn-group button {
+    font-size: 0.8rem;
+    width: 40px;
+  }
+}
+@media (max-width: 400px) {
+  .calendar-page .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
+    font-size: 1rem;
+    padding: 0;
+  }
+}
 .recipe-preview {
   border: 1px solid gray;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);

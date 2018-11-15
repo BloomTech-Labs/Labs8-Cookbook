@@ -4,4 +4,32 @@
     @media @phone {
         height: 300px;
     }
+    .rbc-calendar {
+        @media @tablet {
+            font-size: 1.4rem;
+        }
+        @media @phone {
+            font-size: 1.0rem;
+        }
+
+        .rbc-toolbar {
+
+            .rbc-btn-group {
+
+                button {
+                    @media @phone {
+                        font-size: .8rem;
+                        width: 40px;
+                    }
+                }
+            }
+
+            .rbc-toolbar-label {
+                @media @phone {
+                    font-size: 1.0rem;
+                    padding: 0;
+                }
+            }
+        }
+    }
 }
