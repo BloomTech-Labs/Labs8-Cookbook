@@ -1,18 +1,19 @@
 import auth0 from 'auth0-js';
 import history from './History.js';
 
+// Change callback URL based on where the app is hosted
+let devEndpoint = "http://localhost:3000/callback";
+let prodEndpoint = "https://lambda-cookbook.netlify.com/callback";
+console.log("process.env.REACT_APP_CURR_ENV: ", process.env.REACT_APP_CURR_ENV);
+
 export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'cookbookproject.auth0.com',
     clientID: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
-    // =!=!=!=!= uncomment netlify URI before final push =!=!=!=!=
-    redirectUri: 'https://lambda-cookbook.netlify.com/callback',
-    // =!=!=!=!= comment out localhost URI when pushing to GitHub =!=!=!=!=
-    // redirectUri: 'http://localhost:3000/callback',
+    redirectUri: process.env.REACT_APP_CURR_ENV === "dev" ? devEndpoint : prodEndpoint,
     responseType: 'token id_token',
     scope: 'openid'
   });
-
 
   constructor() {
     this.login = this.login.bind(this);
