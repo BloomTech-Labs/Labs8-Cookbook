@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
-import Header from "./Header";
-import Nav from "./Nav";
-import Create from "./Create";
-import Recipes from "./Recipes";
-import Calendar from "./Calendar";
-import Dashboard from "./Dashboard";
-import Settings from "./Settings";
-// import Billing from "./Billing";
+import Header from "../SubComponents/Header";
+import Nav from "../SubComponents/Nav";
+import Create from "./SubPages/Create";
+import Recipes from "./SubPages/Recipes";
+import Calendar from "./SubPages/Calendar";
+import Dashboard from "./SubPages/Dashboard";
+import Settings from "./SubPages/Settings";
+
 
 class Home extends Component {
   render() {
@@ -16,13 +16,12 @@ class Home extends Component {
       current === "home" ? null : current[0].toUpperCase() + current.slice(1);
     return (
       <React.Fragment>
-        <Header />
+        <Header auth={this.props.auth} />
         <div className="home-container">
           <div className="home-path">
             <span>
               <Link to="/home">Home</Link> / {current}
             </span>
-            <button className="signout-btn">Signout</button>
           </div>
           <Nav />
           <div className="home-content">

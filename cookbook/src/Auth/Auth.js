@@ -13,6 +13,7 @@ export default class Auth {
     scope: 'openid'
   });
 
+
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -28,7 +29,7 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.push('/');
+        history.push('/home');
       } else if (err) {
         history.push('/');
         console.log(err);
@@ -43,7 +44,7 @@ export default class Auth {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     // navigate to the home route
-    history.push('/');
+    history.push('/home');
   }
 
   logout() {
@@ -51,7 +52,7 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    // navigate to the home route
+    // navigate to the landingPage
     history.push('/');
   }
 
