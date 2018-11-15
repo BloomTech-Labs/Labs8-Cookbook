@@ -1,17 +1,7 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-
-const Section = styled.section`
-  grid-area: main;
-`;
 
 const Preview = props => {
-  let loading = null;
-  if (!props.loading && !props.og_title) {
-    loading = <div>Please enter a recipe for preview</div>;
-  } else if (props.loading && !props.og_title) {
-    loading = <div>Loading...</div>;
-  }
+  let loading = props.loading ? <div>Loading...</div> : null;
 
   const preview = props.og_title ? (
     <React.Fragment>
@@ -32,7 +22,7 @@ const Preview = props => {
   ) : null;
 
   return (
-    <section>
+    <section className="recipe-preview">
       {loading}
       {preview}
     </section>
