@@ -16,6 +16,9 @@ html {
   width: 100%;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .nav-icon {
   margin-right: 40px;
@@ -207,164 +210,6 @@ html {
     font-size: 5.3rem;
   }
 }
-.signupPage {
-  width: 100%;
-  font-family: 'Noto Serif', serif;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.signupPage .container {
-  width: 95%;
-  max-width: 600px;
-  margin-top: 60px;
-}
-@media (max-width: 400px) {
-  .signupPage .container {
-    margin-top: 50px;
-  }
-}
-h1 {
-  font-size: 3.3rem;
-  margin-bottom: 3px;
-}
-.switchForm {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.4rem;
-  color: #ff8c00;
-  font-style: unset;
-}
-.signupForm {
-  display: flex;
-  flex-flow: column;
-}
-input {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.8rem;
-  height: 3rem;
-  border: 1px solid lightgrey;
-  margin-top: 1.5rem;
-  padding-left: 1rem;
-}
-input::placeholder {
-  color: lightgrey;
-}
-button {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.8rem;
-  height: 3.7rem;
-  width: 100%;
-  background-color: #ff8c00;
-  color: white;
-  border: 1px solid lightgrey;
-  margin-top: 1.5rem;
-  padding-left: 1.5rem;
-}
-.hidden {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-.ui-checkbox {
-  display: flex;
-  margin-top: 1.5rem;
-}
-.ui-checkbox .ui-checkbox-text {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.8rem;
-  margin: 0 0 0 1rem;
-}
-.ui-checkbox:before {
-  content: "✓";
-  display: inline-block;
-  position: relative;
-  box-sizing: border-box;
-  border: 0.1rem lightgrey solid;
-  border-radius: 0.1rem;
-  font-style: normal;
-  font-weight: bold;
-  vertical-align: middle;
-  text-align: center;
-  transition: all 0.2s linear;
-  cursor: pointer;
-  color: white;
-  text-shadow: 0 0 0 white;
-  background-color: white;
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 2rem;
-  line-height: 2.5rem;
-}
-/* checkbox:checked */
-input[type=checkbox]:checked + .ui-checkbox:before {
-  color: #ff8c00;
-  text-shadow: 0 0 0 #ff8c00;
-  background-color: white;
-}
-.ui-checkbox-disclaimer {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.2rem;
-  align-self: baseline;
-  margin: 0 0 0 3.6rem;
-  color: grey;
-}
-.signinPage {
-  width: 100%;
-  font-family: 'Noto Serif', serif;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.signinPage .container {
-  width: 95%;
-  max-width: 600px;
-  margin-top: 60px;
-}
-@media (max-width: 400px) {
-  .signinPage .container {
-    margin-top: 50px;
-  }
-}
-h1 {
-  font-size: 3.3rem;
-  margin-bottom: 3px;
-}
-.switchForm {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.4rem;
-  color: #ff8c00;
-  font-style: unset;
-}
-.signinForm {
-  display: flex;
-  flex-flow: column;
-}
-input {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.8rem;
-  height: 3rem;
-  border: 1px solid lightgrey;
-  margin-top: 1.5rem;
-  padding-left: 1rem;
-}
-input::placeholder {
-  color: lightgrey;
-}
-button {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.8rem;
-  height: 3.7rem;
-  width: 100%;
-  background-color: #ff8c00;
-  color: white;
-  border: 1px solid lightgrey;
-  margin-top: 1.5rem;
-  padding-left: 1.5rem;
-}
 .footer {
   width: 100%;
   background-color: #9E9D9E;
@@ -434,49 +279,74 @@ button {
   margin-bottom: 8px;
 }
 .home-container {
-  width: 70%;
-  margin: auto;
   margin-top: 60px;
-  display: grid;
-  grid-template-areas: "pathname pathname" "navbar main " "footer footer";
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 6fr;
+  width: 768px;
+  display: flex;
+  flex-wrap: wrap;
 }
-.home-container a {
-  text-decoration: none;
+@media (max-width: 400px) {
+  .home-container {
+    margin-top: 50px;
+  }
 }
-.home-container .home-content {
-  font-size: 1.6rem;
-  padding: 20px;
-  grid-area: main;
+@media (max-width: 768px) {
+  .home-container {
+    width: 600px;
+  }
+}
+@media (max-width: 400px) {
+  .home-container {
+    width: 370px;
+  }
 }
 .home-container .home-path {
   padding: 20px;
-  grid-area: pathname;
+  width: 100%;
+  height: 50px;
   font-size: 1.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
-.home-container .home-path button {
-  width: 130px;
-  right: 10px;
-  background: gray;
-  padding: 0;
-}
-.home-container .home-navbar {
+.home-container .home-content {
   font-size: 1.6rem;
-  margin-top: 20px;
-  padding: 20px;
+  width: 650px;
+}
+@media (max-width: 768px) {
+  .home-container .home-content {
+    width: 500px;
+  }
+}
+@media (max-width: 400px) {
+  .home-container .home-content {
+    width: 366px;
+  }
+}
+.home-navbar {
+  font-size: 1.6rem;
+  padding-left: 20px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   border: 1px solid black;
   grid-area: navbar;
-  height: 50vh;
+  width: 110px;
   list-style-type: none;
 }
-.home-container .home-navbar li {
+@media (max-width: 768px) {
+  .home-navbar {
+    padding-left: 10px;
+    width: 90px;
+  }
+}
+@media (max-width: 400px) {
+  .home-navbar {
+    display: none;
+  }
+}
+.home-navbar li {
   margin-top: 10px;
 }
 .create-wrapper {
@@ -500,6 +370,37 @@ button {
 }
 .create-wrapper .create-filter-wrapper {
   grid-area: filter;
+}
+.calendar-page {
+  margin-left: 5px;
+  height: 420px;
+}
+@media (max-width: 400px) {
+  .calendar-page {
+    height: 300px;
+  }
+}
+@media (max-width: 768px) {
+  .calendar-page .rbc-calendar {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 400px) {
+  .calendar-page .rbc-calendar {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 400px) {
+  .calendar-page .rbc-calendar .rbc-toolbar .rbc-btn-group button {
+    font-size: 0.8rem;
+    width: 40px;
+  }
+}
+@media (max-width: 400px) {
+  .calendar-page .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
+    font-size: 1rem;
+    padding: 0;
+  }
 }
 .recipe-preview {
   border: 1px solid gray;
