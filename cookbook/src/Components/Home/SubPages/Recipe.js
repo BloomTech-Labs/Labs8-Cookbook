@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Image from 'react-image-resizer';
 
 class Recipe extends Component {
   render() {
@@ -8,9 +9,11 @@ class Recipe extends Component {
           {this.props.recipes.title}
         </div>
         <div className="recipeCard__body">
-          {this.props.recipes.readyInMinutes}
-          {this.props.recipes.servings}
-          {this.props.recipes.image}
+          <Image 
+            src={this.props.recipes.image} 
+            height={60}
+            width={160}
+          />
         </div>
       </div>
     )
