@@ -26,7 +26,7 @@ class Recipes extends Component {
           const recipesToRender = data.recipes
 
           return (
-            <div>
+            <div className="recipes-container">
               {recipesToRender.map(recipes => <Recipe key={recipes.id} recipes={recipes} />)}
             </div>
           )
