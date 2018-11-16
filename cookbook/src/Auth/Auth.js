@@ -4,15 +4,14 @@ import history from './History.js';
 // Change callback URL based on where the app is hosted
 let devEndpoint = "http://localhost:3000/callback";
 let prodEndpoint = "https://lambda-cookbook.netlify.com/callback";
-console.log("process.env.REACT_APP_CURR_ENV: ", process.env.REACT_APP_CURR_ENV);
 
-export default class Auth {
+class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'cookbookproject.auth0.com',
     clientID: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
     redirectUri: process.env.REACT_APP_CURR_ENV === "dev" ? devEndpoint : prodEndpoint,
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid email'
   });
 
   constructor() {
@@ -24,6 +23,10 @@ export default class Auth {
 
   login() {
     this.auth0.authorize();
+  }
+
+  getIdToken() {
+    return this.idToken;
   }
 
   handleAuthentication() {
@@ -65,3 +68,6 @@ export default class Auth {
   }
 
 }
+
+const auth = new Auth();
+export default auth;

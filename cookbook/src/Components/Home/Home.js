@@ -10,13 +10,18 @@ import Settings from "./SubPages/Settings";
 import Billing from "./SubPages/Billing";
 
 class Home extends Component {
+
+  componentDidMount() {
+    
+  }
+
   render() {
     let current = this.props.location.pathname.split("/").pop();
     current =
       current === "home" ? null : current[0].toUpperCase() + current.slice(1);
     return (
       <React.Fragment>
-        <Header auth={this.props.auth} />
+        <Header />
         <div className="home-container">
           <div className="home-path">
             <span>

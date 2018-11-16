@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import auth from '../../Auth/Auth.js';
 
 import titleImg from '../../Images/titleImg.jpeg';
 import logo from '../../designs/Logo/CookBookLogo.svg';
-import NavIcon from '../SubComponents/NavIcon';
-
 
 class LandingPage extends Component {
     login() {
-        this.props.auth.login();
+        auth.login();
     }
 
     render() {
-        const { isAuthenticated } = this.props.auth;
+        const { isAuthenticated } = auth;
 
         return ( 
             <div className='containerLP'>
