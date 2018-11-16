@@ -6,8 +6,13 @@ const cors = require('cors')
 const server = createServer();
 
 // cross-origin requests
-server.use(cors());
 
-server.start(() =>
-  console.log("GraphQL server is running on http://localhost:4000")
-);
+server.start(
+  {
+    cors: {
+      credentials: true,
+      origin: [process.env.FRONTEND_URL, "https://lambda-cookbook.netlify.com"]
+    }
+  },
+() => console.log('Server starting')
+)
