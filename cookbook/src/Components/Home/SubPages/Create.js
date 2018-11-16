@@ -13,8 +13,7 @@ class Create extends Component {
       og_image: "",
       og_desc: "",
       prep_time: "",
-      cook_time: "",
-      total_time: "",
+      servings: "",
       rating: ""
     };
   }
@@ -57,12 +56,21 @@ class Create extends Component {
             og_image={this.state.og_image}
             og_desc={this.state.og_desc}
             prep_time={this.state.prep_time}
-            cook_time={this.state.cook_time}
-            total_time={this.state.total_time}
             rating={this.state.rating}
+            servings={this.state.servings}
             loading={this.state.loadingPreview}
           />
           {saveButton}
+        </div>
+        <div className="create-filter-wrapper">
+          <div className="recipe-btn">
+            <button>Breakfast</button>
+            <button>Lunch</button>
+            <button>Dinner</button>
+            <button>Dessert</button>
+            <button>Snack</button>
+          </div>
+          <div className="input-calendar">placeholder</div>
         </div>
       </div>
     );
