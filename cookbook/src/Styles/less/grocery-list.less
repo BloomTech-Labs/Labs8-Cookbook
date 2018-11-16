@@ -1,18 +1,39 @@
 .grocery-list-page {
-    border: 1px solid red;
     display: flex;
     justify-content: space-between;
-    height: 500px;
+    flex-wrap: wrap;
 
-    .calendar {
-        margin-left: 10px;
-        border: 1px solid green;
-        width: 410px;
+    .gen-list-container {
+        width: 620px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+
+        @media @desktop {
+            margin-left: 5px;
+            width: 460px;
+        }
+        @media @tablet {
+            width: 100%;
+        }
+
+        .calendar {
+            width: 100%;
+            margin-bottom: 20px;
+        }
     }
+
 
     .list {
         border: 1px solid black;
-        width: 220px;
+        width: 330px;
+        @media @desktop {
+            width: 220px;
+        }
+        @media @tablet {
+            width: 100%;
+        }
 
         .list-header {
             font-size: 1.2rem;

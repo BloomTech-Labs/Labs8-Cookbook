@@ -12,8 +12,9 @@ class GroceryList extends Component {
   render() {
     return (
       <div className='grocery-list-page'>
-        <div className='calendar'>
-          <Calendar />
+        <div className='gen-list-container'>
+          <Calendar className='calendar'/>
+          <button>Generate List</button>
         </div>
         <div className='list'>
           <div className='list-header'>Grocery List (date range here)</div>
