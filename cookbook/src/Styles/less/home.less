@@ -1,10 +1,15 @@
 .home-container {
   .container-margin-top();
-  width: 768px;
+  width: 1100px;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  border: 1px solid green;
+  @media @desktop {
+    width: 800px;
+  }
   @media @tablet {
-    width: 600px;
+    width: 90%;
   }
   @media @phone {
     width: 370px;
@@ -23,12 +28,9 @@
 
   .home-content {
     font-size: 1.6rem;
-    width: 650px;
+    width: 88%;
     @media @tablet {
-      width: 500px;
-    }
-    @media @phone {
-      width: 366px;
+      width: 100%
     }
   }
 }
