@@ -1,7 +1,8 @@
 // This file start the server. Also all logic for authentication, billing, etc... stay here
 require("dotenv").config();
 const createServer = require("./createServer");
-const cors = require('cors')
+const cors = require('cors');
+const checkJwt = require('./middleware/checkJwt.js');
 
 // [START calendar_api]
 const fs = require('fs');
@@ -101,6 +102,19 @@ function listEvents(auth) {
 // [END calendar_quickstart]
 
 const server = createServer();
+
+// [Middlware]
+server.express.post(
+  server.options.endpoint,
+  checkJwt,
+  (err, req, res, next) => {
+    if (err) {
+      console.error('Token error: ' + err);
+      return res.status(401).send(err.message);
+    }
+    next();
+  }
+);
 
 // cross-origin requests
 server.use(cors());
