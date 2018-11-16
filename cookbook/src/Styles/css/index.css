@@ -409,13 +409,18 @@ html {
   margin: 10px 0;
   padding: 10px;
 }
-.recipeCard {
+.recipes-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.recipes-container .recipeCard {
   border: 1px solid black;
   width: 180px;
   height: 200px;
   margin: 0 10px 20px 10px;
 }
-.recipeCard .noteCard__title {
+.recipes-container .recipeCard .noteCard__title {
   max-height: 40px;
   font-weight: 500;
   margin: 5px 10px 0 10px;
@@ -428,7 +433,7 @@ html {
   overflow: hidden;
   text-align: center;
 }
-.recipeCard .recipeCard__body {
+.recipes-container .recipeCard .recipeCard__body {
   max-height: 130px;
   margin: 5px 10px 15px 10px;
   line-height: 22px;
@@ -439,7 +444,7 @@ html {
   display: inline-block;
   overflow: hidden;
 }
-.recipeCard .recipeSchedule_body {
+.recipes-container .recipeCard .recipeSchedule_body {
   text-align: center;
   margin: 10px;
   font-weight: 500;
