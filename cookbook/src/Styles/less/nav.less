@@ -1,0 +1,23 @@
+.home-navbar {
+    font-size: 1.6rem;
+    padding-left: 20px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid black;
+    grid-area: navbar;
+    width: 110px;
+    list-style-type: none;
+    @media @tablet {
+        padding-left: 10px;
+        width: 90px;
+    }
+    @media @phone {
+        display: none;
+    }
+
+    li {
+      margin-top: 10px;
+    }
+  }

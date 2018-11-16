@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import titleImg from '../../Images/titleImg.jpeg';
 import logo from '../../designs/Logo/CookBookLogo.svg';
-import NavIcon from '../SubComponents/NavIcon';
 
 
 class LandingPage extends Component {
@@ -17,7 +15,7 @@ class LandingPage extends Component {
         return ( 
             <div className='containerLP'>
                 <div className='titleContainer'>
-                    <img className="bckgImg" src={titleImg} alt="Image of a table with produce on top." />
+                    <img className="bckgImg" src={titleImg} alt="table with produce on top." />
                     <div className='landingNav'>
                         {
                             !isAuthenticated() && (
@@ -28,7 +26,7 @@ class LandingPage extends Component {
                         }
                     </div>
                     <div className='logo-title'>
-                        <img className="logo" src={logo} />
+                        <img className="logo" src={logo} alt='company logo'/>
                         <span className='title'>COOKBOOK</span>
                     </div>
                 </div>
