@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const Preview = props => {
   let loading = props.loading ? <div>Loading...</div> : null;
