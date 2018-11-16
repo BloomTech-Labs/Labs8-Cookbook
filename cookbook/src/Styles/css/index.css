@@ -318,6 +318,7 @@ html {
 .home-container .home-content {
   font-size: 1.6rem;
   width: 88%;
+  margin-bottom: 30px;
 }
 @media (max-width: 768px) {
   .home-container .home-content {
@@ -373,21 +374,25 @@ html {
 }
 .calendar-page {
   margin-left: 5px;
-  height: 420px;
 }
-@media (max-width: 400px) {
-  .calendar-page {
-    height: 300px;
+.calendar-page .rbc-calendar {
+  height: 650px;
+}
+@media (max-width: 1200px) {
+  .calendar-page .rbc-calendar {
+    height: 500px;
   }
 }
 @media (max-width: 768px) {
   .calendar-page .rbc-calendar {
     font-size: 1.4rem;
+    height: 420px;
   }
 }
 @media (max-width: 400px) {
   .calendar-page .rbc-calendar {
     font-size: 1rem;
+    height: 380px;
   }
 }
 @media (max-width: 400px) {

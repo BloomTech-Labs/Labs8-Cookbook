@@ -1,15 +1,18 @@
 .calendar-page {
     margin-left: 5px;
-    height: 420px;
-    @media @phone {
-        height: 300px;
-    }
+
     .rbc-calendar {
+        height: 650px;
+        @media @desktop {
+            height: 500px;
+        }
         @media @tablet {
             font-size: 1.4rem;
+            height: 420px;
         }
         @media @phone {
             font-size: 1.0rem;
+            height: 380px;
         }
 
         .rbc-toolbar {
