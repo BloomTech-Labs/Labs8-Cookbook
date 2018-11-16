@@ -51,6 +51,25 @@ const scraper = async url => {
         .match(/\d+.+/g);
       const servings = el.querySelector(`span.count`).textContent;
       const rating = el.querySelector(`span[class="sr-only"]`).textContent;
+      const ingredient_list = [];
+      const ingredients = document.querySelectorAll("li[data-ingredient]");
+
+      ingredients.forEach(i => {
+        ingredient_list.push({
+          quantity: i.children[0].textContent.trim(),
+          food: i.children[1].textContent.trim()
+        });
+      });
+
+      const instructions = [];
+      const directions = document.querySelectorAll(`div.directions ol li`);
+
+      directions.forEach(i => {
+        if (!i.firstElementChild) {
+          instructions.push(i.textContent);
+        }
+      });
+
       return {
         og_title,
         og_sitename,
@@ -58,7 +77,9 @@ const scraper = async url => {
         og_desc,
         prep_time,
         servings,
-        rating
+        rating,
+        ingredients,
+        instructions
       };
     } catch (error) {
       console.log(error);
