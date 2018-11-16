@@ -19,9 +19,10 @@ function createServer() {
     resolverValidationOptions: {
       requireResolversForResolveType: false
     },
-    context: (req) => { 
-      console.log(req.request);
-      return {...req, db}
+    context: req => ({ 
+      ...req, 
+      db
+    })
       // simple auth check on every request
   //     console.log('req: ', req);
   //     const token = req.headers.authorization;
@@ -39,7 +40,6 @@ function createServer() {
   //       db
   //     };
   //   },
-  }
 })}
 
 module.exports = createServer;
