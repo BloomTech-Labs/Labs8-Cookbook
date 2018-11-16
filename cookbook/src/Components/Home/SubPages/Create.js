@@ -62,6 +62,16 @@ class Create extends Component {
           />
           {saveButton}
         </div>
+        <div className="create-filter-wrapper">
+          <div className="recipe-btn">
+            <button>Breakfast</button>
+            <button>Lunch</button>
+            <button>Dinner</button>
+            <button>Dessert</button>
+            <button>Snack</button>
+          </div>
+          <div className="input-calendar">placeholder</div>
+        </div>
       </div>
     );
   }
