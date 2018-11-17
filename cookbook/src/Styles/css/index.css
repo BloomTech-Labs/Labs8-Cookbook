@@ -412,8 +412,13 @@ html {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+@media (max-width: 400px) {
+  .grocery-list-page {
+    justify-content: center;
+  }
+}
 .grocery-list-page .gen-list-container {
-  width: 620px;
+  width: 580px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -422,7 +427,7 @@ html {
 @media (max-width: 1200px) {
   .grocery-list-page .gen-list-container {
     margin-left: 5px;
-    width: 460px;
+    width: 420px;
   }
 }
 @media (max-width: 768px) {
@@ -430,9 +435,48 @@ html {
     width: 100%;
   }
 }
-.grocery-list-page .gen-list-container .calendar {
+.grocery-list-page .gen-list-container .DayPicker {
   width: 100%;
   margin-bottom: 20px;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Caption {
+  text-align: center;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
+  width: 100%;
+  height: 300px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
+    height: 280px;
+  }
+}
+@media (max-width: 768px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
+    height: 300px;
+    width: 90%;
+  }
+}
+@media (max-width: 400px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
+    height: 240px;
+    width: 80%;
+  }
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: #f0f8ff !important;
+  color: #4a90e2;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day {
+  border-radius: 0 !important;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day--start {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day--end {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
 }
 .grocery-list-page .list {
   border: 1px solid black;
@@ -440,12 +484,17 @@ html {
 }
 @media (max-width: 1200px) {
   .grocery-list-page .list {
-    width: 220px;
+    width: 250px;
   }
 }
 @media (max-width: 768px) {
   .grocery-list-page .list {
     width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .grocery-list-page .list {
+    width: 90%;
   }
 }
 .grocery-list-page .list .list-header {

@@ -8,7 +8,6 @@ class GroceryList extends Component {
   static defaultProps = {
     numberOfMonths: 1,
   };
-
   constructor(props) {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
@@ -40,50 +39,30 @@ class GroceryList extends Component {
     return (
       <div className='grocery-list-page'>
         <div className='gen-list-container'>
-  <p>
-          {!from && !to && 'Please select the first day.'}
-          {from && !to && 'Please select the last day.'}
-          {from &&
-            to &&
-            `Selected from ${from.toLocaleDateString()} to
-                ${to.toLocaleDateString()}`}{' '}
-          {from &&
-            to && (
-              <button className="link" onClick={this.handleResetClick}>
-                Reset
-              </button>
-            )}
-        </p>
-        <DayPicker
-          className="Selectable"
-          numberOfMonths={this.props.numberOfMonths}
-          selectedDays={[from, { from, to }]}
-          modifiers={modifiers}
-          onDayClick={this.handleDayClick}
-        />
-        <Helmet>
-          <style>{`
-            .Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-              background-color: #f0f8ff !important;
-              color: #4a90e2;
-            }
-            .Selectable .DayPicker-Day {
-              border-radius: 0 !important;
-            }
-            .Selectable .DayPicker-Day--start {
-              border-top-left-radius: 50% !important;
-              border-bottom-left-radius: 50% !important;
-            }
-            .Selectable .DayPicker-Day--end {
-              border-top-right-radius: 50% !important;
-              border-bottom-right-radius: 50% !important;
-            }
-          `}</style>
-        </Helmet>
+          <p>
+            {!from && !to && 'Please select the first day.'}
+            {from && !to && 'Please select the last day.'}
+            {from &&
+              to &&
+              `Selected from ${from.toLocaleDateString()} to
+                  ${to.toLocaleDateString()}`}{' '}
+            {from &&
+              to && (
+                <button className="link" onClick={this.handleResetClick}>
+                  Reset
+                </button>
+              )}
+          </p>
+          <DayPicker
+            numberOfMonths={this.props.numberOfMonths}
+            selectedDays={[from, { from, to }]}
+            modifiers={modifiers}
+            onDayClick={this.handleDayClick}
+          />
           <button>Generate List</button>
         </div>
         <div className='list'>
-          <div className='list-header'>Grocery List (date range here)</div>
+          <div className='list-header'>Grocery List: {from && to && `${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}{' '}</div>
         </div>
       </div>
     
