@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import Logo from '../../designs/Logo/CookBookLogo.svg';
 import NavIcon from './NavIcon';
 import { Link } from 'react-router-dom';
+import auth from '../../Auth/Auth.js';
 
 
 class Header extends Component {
     logout() {
-        this.props.auth.logout();
+        auth.logout();
     }
 
     render() {
-        const { isAuthenticated } = this.props.auth;
+        const { isAuthenticated } = auth;
 
         return ( 
             <div className='header'>

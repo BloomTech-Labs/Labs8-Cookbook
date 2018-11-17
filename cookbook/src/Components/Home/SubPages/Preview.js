@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const Preview = props => {
   let loading = props.loading ? <div>Loading...</div> : null;
@@ -13,10 +13,8 @@ const Preview = props => {
         // style={{ height: "160px", width: "270" }}
       />
       <div>Rating: {props.rating}</div>
-      <div>
-        Prep Time: {props.prep_time}, Cook Time:
-        {props.cook_time}, Total Time: {props.total_time}
-      </div>
+      <div>Prep Time: {props.prep_time}</div>
+      <div>Servings: {props.servings}</div>
       <div>{props.og_desc}</div>
     </React.Fragment>
   ) : null;

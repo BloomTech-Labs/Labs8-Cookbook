@@ -1,0 +1,44 @@
+.recipes-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+
+  .recipeCard {
+    border: 1px solid black;
+    width: 180px;
+    height: 200px;
+    margin: 0 10px 20px 10px;
+
+    .noteCard__title {
+      max-height: 40px;
+      font-weight: 500;
+      margin: 5px 10px 0 10px;
+      padding: 5px 0;
+      font-size: 15px;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+      width: 90%;
+      display: inline-block;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .recipeCard__body {
+      max-height: 130px;
+      margin: 5px 10px 15px 10px;
+      line-height: 22px;
+      padding-bottom: 10px;
+      word-wrap: break-word;
+      text-overflow: ellipsis;
+      width: 90%;
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    .recipeSchedule_body {
+      text-align: center;
+      margin: 10px;
+      font-weight: 500;
+    }
+  }
+}
