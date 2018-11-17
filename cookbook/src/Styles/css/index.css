@@ -280,8 +280,10 @@ html {
 }
 .home-container {
   margin-top: 60px;
-  width: 768px;
+  width: 1100px;
   display: flex;
+  justify-content: space-between;
+
   flex-wrap: wrap;
 }
 @media (max-width: 400px) {
@@ -289,9 +291,16 @@ html {
     margin-top: 50px;
   }
 }
+
+@media (max-width: 1200px) {
+  .home-container {
+    width: 800px;
+  }
+}
 @media (max-width: 768px) {
   .home-container {
-    width: 600px;
+    width: 90%;
+
   }
 }
 @media (max-width: 400px) {
@@ -311,20 +320,16 @@ html {
 }
 .home-container .home-content {
   font-size: 1.6rem;
-  width: 650px;
+  width: 88%;
+  margin-bottom: 30px;
 }
 @media (max-width: 768px) {
   .home-container .home-content {
-    width: 500px;
-  }
-}
-@media (max-width: 400px) {
-  .home-container .home-content {
-    width: 366px;
+    width: 100%;
   }
 }
 .home-navbar {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   padding-left: 20px;
   height: 400px;
   display: flex;
@@ -332,13 +337,13 @@ html {
   justify-content: flex-start;
   border: 1px solid black;
   grid-area: navbar;
-  width: 110px;
+
+  width: 11%;
   list-style-type: none;
 }
 @media (max-width: 768px) {
   .home-navbar {
-    padding-left: 10px;
-    width: 90px;
+    display: none;
   }
 }
 @media (max-width: 400px) {
@@ -373,34 +378,131 @@ html {
 }
 .calendar-page {
   margin-left: 5px;
-  height: 420px;
 }
-@media (max-width: 400px) {
-  .calendar-page {
-    height: 300px;
+.calendar-page .rbc-calendar {
+  height: 650px;
+}
+@media (max-width: 1200px) {
+  .calendar-page .rbc-calendar {
+    height: 500px;
   }
 }
 @media (max-width: 768px) {
   .calendar-page .rbc-calendar {
     font-size: 1.4rem;
+    height: 420px;
   }
 }
 @media (max-width: 400px) {
   .calendar-page .rbc-calendar {
-    font-size: 1.0rem;
+    font-size: 1rem;
+    height: 380px;
   }
 }
 @media (max-width: 400px) {
   .calendar-page .rbc-calendar .rbc-toolbar .rbc-btn-group button {
-    font-size: .8rem;
+    font-size: 0.8rem;
     width: 40px;
   }
 }
 @media (max-width: 400px) {
   .calendar-page .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
-    font-size: 1.0rem;
+    font-size: 1rem;
     padding: 0;
   }
+}
+.grocery-list-page {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media (max-width: 400px) {
+  .grocery-list-page {
+    justify-content: center;
+  }
+}
+.grocery-list-page .gen-list-container {
+  width: 580px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container {
+    margin-left: 5px;
+    width: 420px;
+  }
+}
+@media (max-width: 768px) {
+  .grocery-list-page .gen-list-container {
+    width: 100%;
+  }
+}
+.grocery-list-page .gen-list-container .DayPicker {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Caption {
+  text-align: center;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
+  width: 100%;
+  height: 300px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
+    height: 280px;
+  }
+}
+@media (max-width: 768px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
+    height: 300px;
+    width: 90%;
+  }
+}
+@media (max-width: 400px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
+    height: 240px;
+    width: 80%;
+  }
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: #f0f8ff !important;
+  color: #4a90e2;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day {
+  border-radius: 0 !important;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day--start {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day--end {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+}
+.grocery-list-page .list {
+  border: 1px solid black;
+  width: 330px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .list {
+    width: 250px;
+  }
+}
+@media (max-width: 768px) {
+  .grocery-list-page .list {
+    width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  .grocery-list-page .list {
+    width: 90%;
+  }
+}
+.grocery-list-page .list .list-header {
+  font-size: 1.2rem;
 }
 .recipe-preview {
   border: 1px solid gray;

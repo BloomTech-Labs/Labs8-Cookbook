@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+
 import auth from '../../Auth/Auth.js';
 
 import titleImg from '../../Images/titleImg.jpeg';
 import logo from '../../designs/Logo/CookBookLogo.svg';
+
 
 class LandingPage extends Component {
     login() {
@@ -15,7 +17,7 @@ class LandingPage extends Component {
         return ( 
             <div className='containerLP'>
                 <div className='titleContainer'>
-                    <img className="bckgImg" src={titleImg} alt="Image of a table with produce on top." />
+                    <img className="bckgImg" src={titleImg} alt="table with produce on top." />
                     <div className='landingNav'>
                         {
                             !isAuthenticated() && (
@@ -26,7 +28,7 @@ class LandingPage extends Component {
                         }
                     </div>
                     <div className='logo-title'>
-                        <img className="logo" src={logo} />
+                        <img className="logo" src={logo} alt='company logo'/>
                         <span className='title'>COOKBOOK</span>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import Nav from "../SubComponents/Nav";
 import Create from "./SubPages/Create";
 import Recipes from "./SubPages/Recipes";
 import Calendar from "./SubPages/Calendar";
-import Dashboard from "./SubPages/Dashboard";
+import GroceryList from "./SubPages/GroceryList";
 import Settings from "./SubPages/Settings";
 import Billing from "./SubPages/Billing";
 
@@ -33,7 +33,7 @@ class Home extends Component {
             <Route path="/home/create" component={Create} />
             <Route path="/home/recipes" component={Recipes} />
             <Route path="/home/calendar" component={Calendar} />
-            <Route path="/home/dashboard" component={Dashboard} />
+            <Route path="/home/dashboard" component={GroceryList} />
             <Route path="/home/settings" component={Settings} />
             <Route path="/home/billing" component={Billing} />
           </div>
