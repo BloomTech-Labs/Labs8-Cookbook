@@ -41,9 +41,10 @@ function createServer() {
     //   ...req, 
     //   db
     // })
-    context: ({ req }) => {
+    context: ( req ) => {
+      console.log('req.request.headers.authorization: ', req.request.headers.authorization);
       // simple auth check on every request
-      const token = req.headers.authorization;
+      const token = req.request.headers.authorization;
       const user = new Promise((resolve, reject) => {
         jwt.verify(token, getKey, options, (err, decoded) => {
           if(err) {
