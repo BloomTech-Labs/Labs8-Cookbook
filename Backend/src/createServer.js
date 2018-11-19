@@ -41,7 +41,7 @@ function createServer() {
     //   ...req, 
     //   db
     // })
-    context: ( { request } ) => {
+    context: ({ request }) => {
       // simple auth check on every request
       const token = request.headers.authorization;
       const user = new Promise((resolve, reject) => {
@@ -49,7 +49,7 @@ function createServer() {
           if(err) {
             return reject(err);
           }
-          resolve(decoded.email);
+          resolve(decoded);
         });
       });
   
