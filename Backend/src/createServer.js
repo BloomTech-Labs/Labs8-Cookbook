@@ -6,6 +6,24 @@ const Query = require("./resolvers/Query");
 const AuthPayload = require("./resolvers/AuthPayload");
 const db = require("./db");
 const jwt = require("jsonwebtoken");
+const jwksClient = require('jwks-rsa');
+
+const client = jwksClient({
+  jwksUri: `https://cookbookproject.auth0.com/.well-known/jwks.json`
+});
+
+function getKey(header, cb){
+  client.getSigningKey(header.kid, function(err, key) {
+    var signingKey = key.publicKey || key.rsaPublicKey;
+    cb(null, signingKey);
+  });
+}
+
+const options = {
+  audience: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
+  issuer: `https://cookbookproject.auth0.com/`,
+  algorithms: ['RS256']
+};
 
 // Create server with typeDefs, resolvers, and context(database)
 function createServer() {
@@ -36,6 +54,8 @@ function createServer() {
       });
   
       return {
+        ...req,
+        db,
         user
       };
     },
