@@ -3,7 +3,6 @@
 const { GraphQLServer } = require("graphql-yoga");
 const Mutation = require("./resolvers/Mutation");
 const Query = require("./resolvers/Query");
-const AuthPayload = require("./resolvers/AuthPayload");
 const db = require("./db");
 const jwt = require("jsonwebtoken");
 const jwksClient = require('jwks-rsa');
@@ -31,8 +30,7 @@ function createServer() {
     typeDefs: "src/schema.graphql",
     resolvers: {
       Mutation,
-      Query,
-      AuthPayload
+      Query
     },
     resolverValidationOptions: {
       requireResolversForResolveType: false

@@ -5,13 +5,15 @@ const { getUserId } = require("../utils");
 
 const Mutation = {
   signup: async (_, args, context, info) => {
-    const newUser = await context.db.mutation.signup(
+    const auth0Sub = context.user.sub;
+    const email = context.user.email;
+    const newUser = await context.db.mutation.createUser(
       {
         data: {
-          auth0Sub: context.user.sub,
+          auth0Sub: auth0Sub,
           firstName: args.firstName,
           lastName: args.lastName,
-          email: context.user.email
+          email: email
         }
       },
       info
@@ -19,51 +21,36 @@ const Mutation = {
     return newUser;
   },
 
-  login: async (_, args, context, info) => {
-    //Get user information from db
-    const user = await context.db.query.user(
-      { where: { username: args.username } },
-      `{ id password }`
-    );
-    if (!user) {
-      throw new Error("No such user found");
-    }
-    //Validate user info
-
-    const valid = await bcrypt.compare(args.password, user.password);
-    if (!valid) {
-      throw new Error("Invalid password");
-    }
-
-    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
-
-    // 3
-    return {
-      token,
-      user
-    };
-  },
-
   createRecipe: async (_, args, context, info) => {
-    const user = await context.db.query.user({
-      where: {
-        auth0Sub: context.user.sub
-      }
-    });
+    try {
+      const contextUser = await context.user;
+      const auth0Sub = contextUser.sub
 
-    const recipe = await context.db.mutation.createRecipe(
-      {
-        data: {
-          title: args.title,
-          readyInMinutes: args.readyInMinutes,
-          servings: args.servings,
-          image: args.image,
-          createdBy: { connect: { id: user.id } }
+      const user = await context.db.query.user({
+        where: {
+          auth0Sub: auth0Sub
         }
-      },
-      info
-    );
-    return recipe;
+      },info);
+
+      console.log("user.id: ", user.id)
+  
+      const recipe = await context.db.mutation.createRecipe(
+        {
+          input: {
+            title: args.title,
+            readyInMinutes: args.readyInMinutes,
+            servings: args.servings,
+            image: args.image,
+            createdBy: { connect: { id: user.id } }
+          }
+        },
+        info
+      );
+      return recipe;
+    }
+    catch (e) {
+      console.log('You must be logged in to do this');
+    }
   },
 
   createSubscription: async (parent, args, context, info) => {
