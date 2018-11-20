@@ -5,7 +5,18 @@ const { getUserId } = require("../utils");
 
 const Mutation = {
   signup: async (_, args, context, info) => {
-    
+    const newUser = await context.db.mutation.signup(
+      {
+        data: {
+          auth0Sub: context.user.sub,
+          firstName: args.firstName,
+          lastName: args.lastName,
+          email: context.user.email
+        }
+      },
+      info
+    );
+    return newUser;
   },
 
   login: async (_, args, context, info) => {
