@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import auth from '../../Auth/Auth.js';
 
 import titleImg from '../../Images/titleImg.jpeg';
