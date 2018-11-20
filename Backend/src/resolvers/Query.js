@@ -3,7 +3,7 @@ const Query = {
   user: async (_, args, context, info) => {
     const user = await context.db.query.user({
       where: {
-        id: args.id
+        auth0Sub: context.user.sub
       }
     });
     return user;
@@ -20,7 +20,7 @@ const Query = {
   },
 
   getAuth: async(parent, args, context, info) => {
-    const token = await context.user.id_token;
+    const token = await context.user;
     return token;
   }};
 

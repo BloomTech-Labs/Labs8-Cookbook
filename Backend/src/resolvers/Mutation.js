@@ -1,67 +1,11 @@
 //This file defines resolvers for Mutation
 const stripe = require("../stripe");
 
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const jwksClient = require("jwks-rsa");
 const { getUserId } = require("../utils");
 
-const jwks = jwksClient({
-  cache: true,
-  rateLimit: true,
-  jwksRequestsPerMinute: 1,
-  jwksUri: 'https://cookbookproject.auth0.com/.well-known/jwks.json'
-});
-
-const parseIdToken = idToken =>
-  new Promise((resolve, reject) => {
-    const { header, payload } = jwt.decode(idToken, { complete: true });
-    if (!header || !header.kid || !payload) {
-      reject(new Error('Invalid token.'));
-    }
-    jwks.getSigningKey(header.kid, (fetchError, key) => {
-      if (fetchError) {
-        reject(new Error('Error getting signing key: ' + fetchError.message));
-      }
-      return jwt.verify(
-        idToken,
-        key.publicKey,
-        { algorithms: ['RS256'] },
-        (verificationError, decoded) => {
-          if (verificationError) {
-            reject('Verification error: ' + verificationError.message);
-          }
-          resolve(decoded);
-        }
-      );
-    });
-  });
-
 const Mutation = {
-  signup: async (parent, { idToken }, context, info) => {
-    let token = null;
-    try {
-      token = await parseIdToken(idToken);
-    } catch (err) {
-      console.error(err);
-      throw new Error(err.message);
-    }
-    const auth0Id = token.sub;
-    const user = await context.db.query.user({ where: { auth0Id } }, info);
-    if (user) {
-      // Just in case this user is logging in just after verifying their email:
-      if (user.emailVerified !== token.email_verified) {
-        return context.db.mutation.updateUser({ where: { auth0Id }, data: { emailVerified: token.email_verified } }, info);
-      }
-      return user;
-    }
-    return context.db.mutation.createUser({
-      data: {
-        email: token.email,
-        emailVerified: token.email_verified,
-        auth0Id: token.sub
-      }
-    });
+  signup: async (_, args, context, info) => {
+    
   },
 
   login: async (_, args, context, info) => {
@@ -90,7 +34,12 @@ const Mutation = {
   },
 
   createRecipe: async (_, args, context, info) => {
-    const userId = getUserId(context);
+    const user = await context.db.query.user({
+      where: {
+        auth0Sub: context.user.sub
+      }
+    });
+
     const recipe = await context.db.mutation.createRecipe(
       {
         data: {
@@ -98,7 +47,7 @@ const Mutation = {
           readyInMinutes: args.readyInMinutes,
           servings: args.servings,
           image: args.image,
-          createdBy: { connect: { id: userId } }
+          createdBy: { connect: { id: user.id } }
         }
       },
       info

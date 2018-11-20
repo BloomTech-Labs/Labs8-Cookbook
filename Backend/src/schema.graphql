@@ -15,7 +15,7 @@ type Query {
 }
 
 type Mutation {
-  signup(first_name: String!, last_name: String!, email: String!, username: String!, password: String!): AuthPayload!
+  signup(firstName: String!, lastName: String!, email: String!, username: String!, password: String!): AuthPayload!
   login(username: String!, password: String!): AuthPayload!
   createRecipe(title: String!, readyInMinutes: Int!, servings: Int!, image: String!): Recipe!
   createSubscription(token: String!): Subscription!
@@ -28,8 +28,9 @@ type AuthPayload {
 
 type User {
   id: ID!
-  first_name: String!
-  last_name: String!
+  auth0Sub: String!
+  firstName: String!
+  lastName: String!
   email: String!
   recipes: [Recipe!]!
 }
