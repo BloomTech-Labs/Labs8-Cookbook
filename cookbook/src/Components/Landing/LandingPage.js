@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-
 import auth from '../../Auth/Auth.js';
 
 import titleImg from '../../Images/titleImg.jpeg';
 import logo from '../../designs/Logo/CookBookLogo.svg';
 
+const { isAuthenticated } = auth;
 
 class LandingPage extends Component {
     login() {
         auth.login();
     }
 
+    componentDidMount() {
+        if (isAuthenticated()) this.props.history.push('/home');
+    }
+
     render() {
-        const { isAuthenticated } = auth;
 
         return ( 
             <div className='containerLP'>

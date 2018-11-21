@@ -2,11 +2,10 @@
 
 type User {
   id: ID! @unique
-  first_name: String!
-  last_name: String!
+  auth0Sub: String! @unique
+  firstName: String!
+  lastName: String!
   email: String! @unique
-  username: String! @unique
-  password: String!
   recipes: [Recipe!]! # will check later
 }
 
@@ -25,7 +24,7 @@ type Recipe {
   servings: Int!
   image: String!
   createdBy: User!
-  instructions: [Instruction!]!
+  # instructions: [Instruction!]!
   
   # imageType: String!
   # dishTypes: String!
