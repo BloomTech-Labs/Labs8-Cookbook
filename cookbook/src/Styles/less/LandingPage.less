@@ -1,5 +1,8 @@
 .containerLP {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
     .titleContainer {
         width: 100%;
@@ -89,20 +92,46 @@
         }
     }
 
-    .about-us {
+    .lp-content {
         display: flex;
         justify-content: center;
-        margin-top: 30px;
-        font-family: "verdana";
-        
-        .about-header {
-            letter-spacing: .3rem;
+        flex-wrap: wrap;
+        border: 1px solid red;
+        width: 1000px;
+        @media @desktop {
+            width: 768px;
+        }
+        @media @tablet {
+            width: 620px;
+        }
+        @media @phone {
+            width: 360px;
+        }
 
-            .fa {
-                margin-right: 30px;
-                margin-left: 30px;
-                height: 15px;
-                margin-bottom: 3px;
+        .about-us {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            font-family: "verdana";
+            
+            .about-header {
+                letter-spacing: .3rem;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+    
+                .fa {
+                    margin-right: 30px;
+                    margin-left: 30px;
+                    height: 15px;
+                    margin-bottom: 3px;
+                }
+            }
+            
+            .about-content {
+                width: 350px;
+                font-size: 1.6rem;
             }
         }
     }

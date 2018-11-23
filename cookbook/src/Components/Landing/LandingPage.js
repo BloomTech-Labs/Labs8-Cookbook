@@ -33,8 +33,11 @@ class LandingPage extends Component {
                         <span className='title'>COOKBOOK</span>
                     </div>
                 </div>
-                <div className='about-us'>
-                        <h1 className="about-header"><FontAwesomeIcon icon="utensils" className="fa"/>ABOUT US<FontAwesomeIcon icon="utensils" className="fa"/></h1>
+                <div className="lp-content">
+                    <div className='about-us'>
+                            <h1 className="about-header"><FontAwesomeIcon icon="utensils" className="fa"/>ABOUT US<FontAwesomeIcon icon="utensils" className="fa"/></h1>
+                            <p className='about-content'>Here at CookBook, we aim to be your one stop shop for meal planning. Through the use of our extensive gallery of recipes, our members are able to create a diverse schedule that fits their needs. our system will then generate your grocery list that can be easily accessed while on the go. Join for free today to see how we can get your meal-planning back on track.</p>
+                    </div>
                 </div>
             </div>
     
