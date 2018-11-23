@@ -26,7 +26,7 @@
                 font-size: 2.2rem;
             }
             @media @phone {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .register {
@@ -37,6 +37,9 @@
                 font-weight: bold;
                 cursor: pointer;
                 height: 30px;
+                @media @phone {
+                    margin-top: 5px;
+                }
             }
         }
 
@@ -48,32 +51,58 @@
             .logo {
                 position: absolute;
                 display: block;
-                top: 90px;
+                top: 140px;
                 height: 220px;
+                @media @desktop {
+                    top: 90px;
+                    height: 180px;
+                }
                 @media @tablet {
-                    top: 80px;
-                    height: 170px;
+                    top: 75px;
+                    height: 130px;
                 }
                 @media @phone {
-                    top: 65px;
-                    height: 85px;
+                    top: 55px;
+                    height: 75px;
                 }
             }
     
             .title {
                 position: absolute;
                 color: white;
-                top: 350px;
-                font-size: 10rem;
-                text-decoration: underline;
-                @media @tablet {
-                    top: 280px;
+                top: 390px;
+                font-size: 10.5rem;
+
+                @media @desktop {
+                    top: 300px;
                     font-size: 9rem;
                 }
-                @media @phone {
-                    top: 160px;
-                    font-size: 5.3rem;
+                @media @tablet {
+                    top: 220px;
+                    font-size: 7.6rem;
                 }
+                @media @phone {
+                    top: 140px;
+                    font-size: 4.8rem;
+                }
+            }
+        }
+    }
+
+    .about-us {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        font-family: "verdana";
+        
+        .about-header {
+            letter-spacing: .3rem;
+
+            .fa {
+                margin-right: 30px;
+                margin-left: 30px;
+                height: 15px;
+                margin-bottom: 3px;
             }
         }
     }

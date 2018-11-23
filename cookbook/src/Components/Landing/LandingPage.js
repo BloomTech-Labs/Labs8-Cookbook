@@ -4,6 +4,7 @@ import auth from '../../Auth/Auth.js';
 
 import titleImg from '../../Images/titleImg.jpeg';
 import logo from '../../designs/Logo/CookBookLogo.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 class LandingPage extends Component {
@@ -31,6 +32,9 @@ class LandingPage extends Component {
                         <img className="logo" src={logo} alt='company logo'/>
                         <span className='title'>COOKBOOK</span>
                     </div>
+                </div>
+                <div className='about-us'>
+                        <h1 className="about-header"><FontAwesomeIcon icon="utensils" className="fa"/>ABOUT US<FontAwesomeIcon icon="utensils" className="fa"/></h1>
                 </div>
             </div>
     
