@@ -7450,6 +7450,10 @@ remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
 
+render-if@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/render-if/-/render-if-0.1.1.tgz#f255a47bf973814ac077735b994b95fa3d1cd42e"
+
 renderkid@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/renderkid/-/renderkid-2.0.2.tgz#12d310f255360c07ad8fde253f6c9e9de372d2aa"
