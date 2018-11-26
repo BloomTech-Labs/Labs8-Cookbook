@@ -13,18 +13,23 @@ class Header extends Component {
         const { isAuthenticated } = auth;
 
         return ( 
-            <div className='header'>
-                <Link className='link' to='/home'>
-                    <img className='logo' src={Logo} alt='COOKBOOK logo'/>
-                </Link>
-                <span className="title">COOKBOOK</span>
-                {/* {
-                    isAuthenticated() && ( */}
-                    <div className="signout" onClick={this.logout.bind(this)}>
-                        logout
-                    </div>
-                     {/* )
-                } */}
+            <div className='header-nav'>
+                <div className='header'>
+                    <Link className='link' to='/home'>
+                        <img className='logo' src={Logo} alt='COOKBOOK logo'/>
+                    </Link>
+                    <span className="title">COOKBOOK</span>
+                    {/* {
+                        isAuthenticated() && ( */}
+                        <div className="signout" onClick={this.logout.bind(this)}>
+                            logout
+                        </div>
+                        {/* )
+                    } */}
+                </div>
+                <div className='nav'>
+
+                </div>
             </div> 
         );
     }
