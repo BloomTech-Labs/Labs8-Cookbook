@@ -1,44 +1,46 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { Router } from 'react-router-dom';
-import { ApolloProvider } from 'react-apollo';
-import { ApolloClient } from 'apollo-client';
-import { createHttpLink } from 'apollo-link-http';
-import { setContext } from 'apollo-link-context';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import history from './Auth/History.js';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter as Router } from "react-router-dom";
+import { ApolloProvider } from "react-apollo";
+import { ApolloClient } from "apollo-client";
+import { createHttpLink } from "apollo-link-http";
+import { setContext } from "apollo-link-context";
+import { InMemoryCache } from "apollo-cache-inmemory";
 
 const httpLink = new createHttpLink({
-    uri: process.env.REACT_APP_CURR_ENV === "dev" ? 'http://localhost:4000' : process.env.REACT_APP_BACKEND_URL
+  uri:
+    process.env.REACT_APP_CURR_ENV === "dev"
+      ? "http://localhost:4000"
+      : process.env.REACT_APP_BACKEND_URL
 });
 
 const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
-    const id_token = localStorage.getItem('id_token');
-    // return the headers to the context so httpLink can read them
-    return {
-        headers: {
-            ...headers,
-            authorization: id_token ? id_token : "",
-        }
+  // get the authentication token from local storage if it exists
+  const id_token = localStorage.getItem("id_token");
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: id_token ? id_token : ""
     }
+  };
 });
-  
+
 const client = new ApolloClient({
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache()
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
 });
 
 ReactDOM.render(
+  <Router>
     <ApolloProvider client={client}>
-        <Router history={history}>
-            <App />
-        </Router>
-    </ApolloProvider>, 
-    document.getElementById('root')
+      <App />
+    </ApolloProvider>
+  </Router>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
