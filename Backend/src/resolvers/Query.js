@@ -1,33 +1,36 @@
 //This file defines resolvers for Query
 const Query = {
-  user: async (_, args, context, info) => {
-    try {
-      const contextUser = await context.user;
-      const auth0Sub = contextUser.sub;
-
-      console.log("auth0Sub: ", auth0Sub);
-
-      const user = await context.db.query.user({
-        where: {
-          auth0Sub: auth0Sub
-        }
-      },info);
-
-      return user
-    }
-    catch(e) {
-      console.log(e.message)
-    }
-  },
-
   recipes: async (_, args, context, info) => {
-    const recipes = await context.db.query.recipes();
-    return recipes;
+    try {
+      const recipes = await context.db.query.recipes();
+      return recipes;
+    } catch (error) {
+      console.log(error.message);
+    }
   },
 
   users: async (_, args, context, info) => {
     const users = await context.db.query.users();
     return users;
-  }};
+  },
+
+  currentUser: async (_, args, context, info) => {
+    try {
+      const auth_user = await context.user;
+      const auth0sub = args.auth0sub || auth_user.sub || "";
+      const currentUser = await context.db.query.user(
+        {
+          where: {
+            auth0Sub: auth0sub
+          }
+        },
+        info
+      );
+      return currentUser;
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+};
 
 module.exports = Query;
