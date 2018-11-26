@@ -26,15 +26,22 @@ class RecipeCalendar extends Component {
         id: 0,
         start: new Date(),
         end: new Date(moment().add(0, "days")),
-        title: "Cooking",
+        title: "Omelette",
         resourceId: 1
       },
       {
         id: 1,
         start: new Date(),
         end: new Date(moment().add(0, "days")),
-        title: "Hiking",
+        title: "Turkey Sandwich",
         resourceId: 2
+      },
+      {
+        id: 3,
+        start: new Date(),
+        end: new Date(moment().add(0, "days")),
+        title: "Steak",
+        resourceId: 3
       }
     ]
   };
@@ -48,12 +55,16 @@ class RecipeCalendar extends Component {
   //   console.log(this.events)
   // };
 
-  onEventDrop = ({ start, end }) => {
-    this.setState(state => {
-      state.events.id.start = start;
-      state.events.id.end = end;
-      return { events: state.events };
-    });
+  onEventDrop = ({ event, start, end, resourceId }) => {
+    const { events } = this.state
+    const idx = events.indexOf(event)
+    const updatedEvent = { ...event, start, end, resourceId }
+    const nextEvents = [...events]
+    nextEvents.splice(idx, 1, updatedEvent)
+
+    this.setState({
+      events: nextEvents,
+    })
   }
 
   render() {
