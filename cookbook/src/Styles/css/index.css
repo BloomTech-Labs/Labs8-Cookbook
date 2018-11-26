@@ -111,8 +111,73 @@ html {
 }
 .header-nav .nav {
   width: 100%;
-  height: 90px;
+  height: 40px;
+  vertical-align: middle;
   border: 1px solid red;
+  font-size: 2.6rem;
+  font-weight: 300;
+}
+.header-nav .nav .create-nav {
+  width: 25%;
+  height: 100%;
+  color: #D85E50;
+  background-color: #ffc988;
+}
+.header-nav .nav .calendar-nav {
+  width: 25%;
+  height: 100%;
+  color: #F5E6DC;
+  background-color: #B3C1CC;
+}
+.header-nav .nav .dashboard-nav {
+  width: 25%;
+  height: 100%;
+  color: #ffc988;
+  background-color: #2E3650;
+}
+.header-nav .nav .settings-nav {
+  width: 25%;
+  height: 100%;
+  color: #B3C1CC;
+  background-color: #D85E50;
+}
+.header-nav .nav .recipes-nav {
+  width: 25%;
+  height: 100%;
+  color: #2E3650;
+  background-color: #F5E6DC;
+}
+.header-nav .current-page {
+  width: 100%;
+  height: 40px;
+  font-size: 2.6rem;
+  font-weight: 300;
+}
+.header-nav .current-page .create-cp {
+  color: #D85E50;
+  background-color: #ffc988;
+  text-align: center;
+}
+.header-nav .current-page .calendar-cp {
+  color: #F5E6DC;
+  background-color: #B3C1CC;
+  text-align: center;
+}
+.header-nav .current-page .dashboard-cp {
+  color: #ffc988;
+  background-color: #2E3650;
+  height: 40px;
+  text-align: center;
+}
+.header-nav .current-page .settings-cp {
+  color: #B3C1CC;
+  background-color: #D85E50;
+  text-align: center;
+}
+.header-nav .current-page .recipes-cp {
+  color: #2E3650;
+  background-color: #F5E6DC;
+  text-align: center;
 }
 .containerLP {
   width: 100%;

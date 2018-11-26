@@ -39,19 +39,36 @@ class Header extends Component {
                 </div>
                 <div className='nav'>
                     {renderIf(this.props.location.pathname !== '/home/create')(
-                        <Link className='create' to='/home/create'>CREATE</Link>
+                        <Link to='/home/create'><span className='create-nav'>CREATE</span></Link>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/calendar')(
-                        <Link className='calendar' to='/home/calendar'>CALENDAR</Link>
+                        <Link to='/home/calendar'><span className='calendar-nav'>CALENDAR</span></Link>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/dashboard')(    
-                        <Link className='dashboard' to='/home/dashboard'>GROCERY LIST</Link>
+                        <Link to='/home/dashboard'><span className='dashboard-nav'>GROCERY LIST</span></Link>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/settings')(    
-                        <Link className='settings' to='/home/settings'>SETTINGS</Link>
+                        <Link to='/home/settings'><span className='settings-nav'>SETTINGS</span></Link>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/recipes')(    
-                        <Link className='recipes' to='/home/recipes'>RECIPES</Link>
+                        <Link to='/home/recipes'><span className='recipes-nav'>RECIPES</span></Link>
+                    )}
+                </div>
+                <div className='current-page'>
+                    {renderIf(this.props.location.pathname === '/home/create')(
+                        <span className='create-cp'>CREATE</span>
+                    )}
+                    {renderIf(this.props.location.pathname === '/home/calendar')(
+                        <span className='calendar-cp'>CALENDAR</span>
+                    )}
+                    {renderIf(this.props.location.pathname === '/home/dashboard')(    
+                        <span className='dashboard-cp'>DASHBAORD</span>
+                    )}
+                    {renderIf(this.props.location.pathname === '/home/settings')(    
+                        <span className='settings-cp'>SETTINGS</span>
+                    )}
+                    {renderIf(this.props.location.pathname === '/home/recipes')(    
+                        <span className='recipes-cp'>RECIPES</span>
                     )}
                 </div>
             </div> 
