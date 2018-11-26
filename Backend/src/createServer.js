@@ -5,13 +5,13 @@ const Mutation = require("./resolvers/Mutation");
 const Query = require("./resolvers/Query");
 const db = require("./db");
 const jwt = require("jsonwebtoken");
-const jwksClient = require('jwks-rsa');
+const jwksClient = require("jwks-rsa");
 
 const client = jwksClient({
   jwksUri: `https://cookbookproject.auth0.com/.well-known/jwks.json`
 });
 
-function getKey(header, cb){
+function getKey(header, cb) {
   client.getSigningKey(header.kid, function(err, key) {
     var signingKey = key.publicKey || key.rsaPublicKey;
     cb(null, signingKey);
@@ -19,9 +19,9 @@ function getKey(header, cb){
 }
 
 const options = {
-  audience: '7klW1TtJaes7ZrekqNXavbJrwWQLkDf0',
+  audience: "7klW1TtJaes7ZrekqNXavbJrwWQLkDf0",
   issuer: `https://cookbookproject.auth0.com/`,
-  algorithms: ['RS256']
+  algorithms: ["RS256"]
 };
 
 // Create server with typeDefs, resolvers, and context(database)
@@ -35,28 +35,23 @@ function createServer() {
     resolverValidationOptions: {
       requireResolversForResolveType: false
     },
-    // context: req => ({ 
-    //   ...req, 
-    //   db
-    // })
     context: ({ request }) => {
-      // simple auth check on every request
       const token = request.headers.authorization;
       const user = new Promise((resolve, reject) => {
         jwt.verify(token, getKey, options, (err, decoded) => {
-          if(err) {
+          if (err) {
             return reject(err);
           }
           resolve(decoded);
         });
       });
-  
       return {
         ...request,
         db,
         user
       };
-    },
-})};
+    }
+  });
+}
 
 module.exports = createServer;
