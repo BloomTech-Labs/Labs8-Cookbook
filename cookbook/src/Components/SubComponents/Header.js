@@ -29,46 +29,46 @@ class Header extends Component {
                         <img className='logo' src={Logo} alt='COOKBOOK logo'/>
                     </Link>
                     <span className="title">COOKBOOK</span>
-                    {/* {
-                        isAuthenticated() && ( */}
+                    {
+                        isAuthenticated() && (
                         <div className="signout" onClick={this.logout.bind(this)}>
                             logout
                         </div>
-                        {/* )
-                    } */}
+                        )
+                    }
                 </div>
                 <div className='nav'>
                     {renderIf(this.props.location.pathname !== '/home/create')(
-                        <Link to='/home/create'><span className='create-nav'>CREATE</span></Link>
+                        <Link to='/home/create' className='create-nav'>CREATE</Link>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/calendar')(
-                        <Link to='/home/calendar'><span className='calendar-nav'>CALENDAR</span></Link>
+                        <Link to='/home/calendar' className='calendar-nav'>CALENDAR</Link>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/dashboard')(    
-                        <Link to='/home/dashboard'><span className='dashboard-nav'>GROCERY LIST</span></Link>
+                        <Link to='/home/dashboard' className='dashboard-nav'>GROCERY LIST</Link>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/settings')(    
-                        <Link to='/home/settings'><span className='settings-nav'>SETTINGS</span></Link>
+                        <Link to='/home/settings' className='settings-nav'>SETTINGS</Link>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/recipes')(    
-                        <Link to='/home/recipes'><span className='recipes-nav'>RECIPES</span></Link>
+                        <Link to='/home/recipes' className='recipes-nav'>RECIPES</Link>
                     )}
                 </div>
                 <div className='current-page'>
                     {renderIf(this.props.location.pathname === '/home/create')(
-                        <span className='create-cp'>CREATE</span>
+                        <div className='create-cp'>CREATE</div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/calendar')(
-                        <span className='calendar-cp'>CALENDAR</span>
+                        <div className='calendar-cp'>CALENDAR</div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/dashboard')(    
-                        <span className='dashboard-cp'>DASHBAORD</span>
+                        <div className='dashboard-cp'>DASHBAORD</div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/settings')(    
-                        <span className='settings-cp'>SETTINGS</span>
+                        <div className='settings-cp'>SETTINGS</div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/recipes')(    
-                        <span className='recipes-cp'>RECIPES</span>
+                        <div className='recipes-cp'>RECIPES</div>
                     )}
                 </div>
             </div> 
