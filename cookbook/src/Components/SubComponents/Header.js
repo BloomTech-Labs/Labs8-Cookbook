@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Logo from '../../designs/Logo/CookBookLogo.svg';
-import NavIcon from './NavIcon';
 import { Link } from 'react-router-dom';
 import auth from '../../Auth/Auth.js';
 
@@ -18,14 +17,14 @@ class Header extends Component {
                 <Link className='link' to='/home'>
                     <img className='logo' src={Logo} alt='COOKBOOK logo'/>
                 </Link>
-                {
-                    isAuthenticated() && (
+                <span className="title">COOKBOOK</span>
+                {/* {
+                    isAuthenticated() && ( */}
                     <div className="signout" onClick={this.logout.bind(this)}>
-                        Sign Out
+                        logout
                     </div>
-                    )
-                }
-                <NavIcon className='nav-icon'/>
+                     {/* )
+                } */}
             </div> 
         );
     }

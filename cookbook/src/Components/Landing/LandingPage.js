@@ -18,6 +18,7 @@ class LandingPage extends Component {
         // Carousel settings:
         var settings = {
             infinite: true,
+            speed: 500,
             slidesToScroll: 4,
             variableWidth: true,
             centerMode: true
