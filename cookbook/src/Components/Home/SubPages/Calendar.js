@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import moment from 'moment';
 import Calendar from 'react-big-calendar';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import Buttons from './Buttons'
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -68,13 +69,14 @@ class RecipeCalendar extends Component {
   // };
 
   onEventDrop = ({ event, start, end, resourceId }) => {
-    console.log(this.state.events)
     const { events } = this.state
     const idx = events.indexOf(event)
+    
     const updatedEvent = { ...event, start, end, resourceId }
+
     const nextEvents = [...events]
     nextEvents.splice(idx, 1, updatedEvent)
-    console.log(this.state.events)
+
     this.setState({
       events: nextEvents,
     })
@@ -101,7 +103,8 @@ class RecipeCalendar extends Component {
           />
         </div>
         <div className="calendar-toolbar">
-          
+          <Buttons>
+          </Buttons>
         </div>
       </div>
     )
