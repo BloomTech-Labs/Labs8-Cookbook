@@ -6,6 +6,18 @@ import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
+import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
+
+const SCHEDULE_RECIPE = gql`
+  mutation scheduleRecipe($type: String!) {
+    scheduleRecipe(type: $type) {
+      id
+      type
+    }
+  }
+`;
+
 // a localizer for BigCalendar
 const localizer = Calendar.momentLocalizer(moment) 
 
@@ -56,15 +68,17 @@ class RecipeCalendar extends Component {
   // };
 
   onEventDrop = ({ event, start, end, resourceId }) => {
+    console.log(this.state.events)
     const { events } = this.state
     const idx = events.indexOf(event)
     const updatedEvent = { ...event, start, end, resourceId }
     const nextEvents = [...events]
     nextEvents.splice(idx, 1, updatedEvent)
-
+    console.log(this.state.events)
     this.setState({
       events: nextEvents,
     })
+
   }
 
   render() {
@@ -77,6 +91,9 @@ class RecipeCalendar extends Component {
             defaultView="month"
             events={this.state.events}
             onEventDrop={this.onEventDrop}
+            resources={resourceMap}
+            resourceIdAccessor="resourceId"
+            resourceTitleAccessor="resourceTitle"
             // onEventResize={this.onEventResize}
             // resizable
             selectable
@@ -90,16 +107,5 @@ class RecipeCalendar extends Component {
     )
   }
 }
-
-// const RecipeCalendar = props => (
-//   <div className='calendar-page'>
-//     <BigCalendar
-//       localizer={localizer}
-//       events={[]}
-//       startAccessor="start"
-//       endAccessor="end"
-//     />
-//   </div>
-// )
 
 export default RecipeCalendar;

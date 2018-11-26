@@ -1,3 +1,7 @@
+type AggregateEvent {
+  count: Int!
+}
+
 type AggregateIngredient {
   count: Int!
 }
@@ -20,6 +24,134 @@ type AggregateUser {
 
 type BatchPayload {
   count: Long!
+}
+
+type Event {
+  id: ID!
+  recipe: Recipe!
+  start: String!
+  end: String!
+  resourceId: Int!
+  title: String!
+}
+
+type EventConnection {
+  pageInfo: PageInfo!
+  edges: [EventEdge]!
+  aggregate: AggregateEvent!
+}
+
+input EventCreateInput {
+  recipe: RecipeCreateOneInput!
+  start: String!
+  end: String!
+  resourceId: Int!
+  title: String!
+}
+
+type EventEdge {
+  node: Event!
+  cursor: String!
+}
+
+enum EventOrderByInput {
+  id_ASC
+  id_DESC
+  start_ASC
+  start_DESC
+  end_ASC
+  end_DESC
+  resourceId_ASC
+  resourceId_DESC
+  title_ASC
+  title_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input EventUpdateInput {
+  recipe: RecipeUpdateOneRequiredInput
+  start: String
+  end: String
+  resourceId: Int
+  title: String
+}
+
+input EventWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  recipe: RecipeWhereInput
+  start: String
+  start_not: String
+  start_in: [String!]
+  start_not_in: [String!]
+  start_lt: String
+  start_lte: String
+  start_gt: String
+  start_gte: String
+  start_contains: String
+  start_not_contains: String
+  start_starts_with: String
+  start_not_starts_with: String
+  start_ends_with: String
+  start_not_ends_with: String
+  end: String
+  end_not: String
+  end_in: [String!]
+  end_not_in: [String!]
+  end_lt: String
+  end_lte: String
+  end_gt: String
+  end_gte: String
+  end_contains: String
+  end_not_contains: String
+  end_starts_with: String
+  end_not_starts_with: String
+  end_ends_with: String
+  end_not_ends_with: String
+  resourceId: Int
+  resourceId_not: Int
+  resourceId_in: [Int!]
+  resourceId_not_in: [Int!]
+  resourceId_lt: Int
+  resourceId_lte: Int
+  resourceId_gt: Int
+  resourceId_gte: Int
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  AND: [EventWhereInput!]
+  OR: [EventWhereInput!]
+  NOT: [EventWhereInput!]
+}
+
+input EventWhereUniqueInput {
+  id: ID
 }
 
 type Ingredient {
@@ -68,12 +200,6 @@ input IngredientUpdateInput {
   amount: Float
   unit: String
   recipe: RecipeUpdateOneRequiredInput
-}
-
-input IngredientUpdateManyMutationInput {
-  name: String
-  amount: Float
-  unit: String
 }
 
 input IngredientWhereInput {
@@ -185,12 +311,6 @@ input InstructionUpdateInput {
   recipe: RecipeUpdateOneRequiredInput
 }
 
-input InstructionUpdateManyMutationInput {
-  stepNum: Int
-  description: String
-  isComplete: Boolean
-}
-
 input InstructionWhereInput {
   id: ID
   id_not: ID
@@ -243,33 +363,39 @@ input InstructionWhereUniqueInput {
 scalar Long
 
 type Mutation {
+  createEvent(data: EventCreateInput!): Event!
+  updateEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event
+  updateManyEvents(data: EventUpdateInput!, where: EventWhereInput): BatchPayload!
+  upsertEvent(where: EventWhereUniqueInput!, create: EventCreateInput!, update: EventUpdateInput!): Event!
+  deleteEvent(where: EventWhereUniqueInput!): Event
+  deleteManyEvents(where: EventWhereInput): BatchPayload!
   createIngredient(data: IngredientCreateInput!): Ingredient!
   updateIngredient(data: IngredientUpdateInput!, where: IngredientWhereUniqueInput!): Ingredient
-  updateManyIngredients(data: IngredientUpdateManyMutationInput!, where: IngredientWhereInput): BatchPayload!
+  updateManyIngredients(data: IngredientUpdateInput!, where: IngredientWhereInput): BatchPayload!
   upsertIngredient(where: IngredientWhereUniqueInput!, create: IngredientCreateInput!, update: IngredientUpdateInput!): Ingredient!
   deleteIngredient(where: IngredientWhereUniqueInput!): Ingredient
   deleteManyIngredients(where: IngredientWhereInput): BatchPayload!
   createInstruction(data: InstructionCreateInput!): Instruction!
   updateInstruction(data: InstructionUpdateInput!, where: InstructionWhereUniqueInput!): Instruction
-  updateManyInstructions(data: InstructionUpdateManyMutationInput!, where: InstructionWhereInput): BatchPayload!
+  updateManyInstructions(data: InstructionUpdateInput!, where: InstructionWhereInput): BatchPayload!
   upsertInstruction(where: InstructionWhereUniqueInput!, create: InstructionCreateInput!, update: InstructionUpdateInput!): Instruction!
   deleteInstruction(where: InstructionWhereUniqueInput!): Instruction
   deleteManyInstructions(where: InstructionWhereInput): BatchPayload!
   createRecipe(data: RecipeCreateInput!): Recipe!
   updateRecipe(data: RecipeUpdateInput!, where: RecipeWhereUniqueInput!): Recipe
-  updateManyRecipes(data: RecipeUpdateManyMutationInput!, where: RecipeWhereInput): BatchPayload!
+  updateManyRecipes(data: RecipeUpdateInput!, where: RecipeWhereInput): BatchPayload!
   upsertRecipe(where: RecipeWhereUniqueInput!, create: RecipeCreateInput!, update: RecipeUpdateInput!): Recipe!
   deleteRecipe(where: RecipeWhereUniqueInput!): Recipe
   deleteManyRecipes(where: RecipeWhereInput): BatchPayload!
   createSubscription(data: SubscriptionCreateInput!): Subscription!
   updateSubscription(data: SubscriptionUpdateInput!, where: SubscriptionWhereUniqueInput!): Subscription
-  updateManySubscriptions(data: SubscriptionUpdateManyMutationInput!, where: SubscriptionWhereInput): BatchPayload!
+  updateManySubscriptions(data: SubscriptionUpdateInput!, where: SubscriptionWhereInput): BatchPayload!
   upsertSubscription(where: SubscriptionWhereUniqueInput!, create: SubscriptionCreateInput!, update: SubscriptionUpdateInput!): Subscription!
   deleteSubscription(where: SubscriptionWhereUniqueInput!): Subscription
   deleteManySubscriptions(where: SubscriptionWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   deleteUser(where: UserWhereUniqueInput!): User
   deleteManyUsers(where: UserWhereInput): BatchPayload!
@@ -287,6 +413,9 @@ type PageInfo {
 }
 
 type Query {
+  event(where: EventWhereUniqueInput!): Event
+  events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event]!
+  eventsConnection(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EventConnection!
   ingredient(where: IngredientWhereUniqueInput!): Ingredient
   ingredients(where: IngredientWhereInput, orderBy: IngredientOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Ingredient]!
   ingredientsConnection(where: IngredientWhereInput, orderBy: IngredientOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): IngredientConnection!
@@ -381,13 +510,6 @@ input RecipeUpdateInput {
   servings: Int
   image: String
   createdBy: UserUpdateOneRequiredWithoutRecipesInput
-}
-
-input RecipeUpdateManyMutationInput {
-  title: String
-  readyInMinutes: Int
-  servings: Int
-  image: String
 }
 
 input RecipeUpdateManyWithoutCreatedByInput {
@@ -546,12 +668,6 @@ input SubscriptionUpdateInput {
   charge: String
 }
 
-input SubscriptionUpdateManyMutationInput {
-  type: String
-  amount: Int
-  charge: String
-}
-
 input SubscriptionWhereInput {
   id: ID
   id_not: ID
@@ -689,13 +805,6 @@ input UserUpdateInput {
   lastName: String
   email: String
   recipes: RecipeUpdateManyWithoutCreatedByInput
-}
-
-input UserUpdateManyMutationInput {
-  auth0Sub: String
-  firstName: String
-  lastName: String
-  email: String
 }
 
 input UserUpdateOneRequiredInput {
