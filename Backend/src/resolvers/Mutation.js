@@ -1,109 +1,56 @@
 //This file defines resolvers for Mutation
 const stripe = require("../stripe");
 
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const jwksClient = require("jwks-rsa");
 const { getUserId } = require("../utils");
 
-const jwks = jwksClient({
-  cache: true,
-  rateLimit: true,
-  jwksRequestsPerMinute: 1,
-  jwksUri: 'https://cookbookproject.auth0.com/.well-known/jwks.json'
-});
-
-const parseIdToken = idToken =>
-  new Promise((resolve, reject) => {
-    const { header, payload } = jwt.decode(idToken, { complete: true });
-    if (!header || !header.kid || !payload) {
-      reject(new Error('Invalid token.'));
-    }
-    jwks.getSigningKey(header.kid, (fetchError, key) => {
-      if (fetchError) {
-        reject(new Error('Error getting signing key: ' + fetchError.message));
-      }
-      return jwt.verify(
-        idToken,
-        key.publicKey,
-        { algorithms: ['RS256'] },
-        (verificationError, decoded) => {
-          if (verificationError) {
-            reject('Verification error: ' + verificationError.message);
-          }
-          resolve(decoded);
-        }
-      );
-    });
-  });
-
 const Mutation = {
-  signup: async (parent, { idToken }, context, info) => {
-    let token = null;
-    try {
-      token = await parseIdToken(idToken);
-    } catch (err) {
-      console.error(err);
-      throw new Error(err.message);
-    }
-    const auth0Id = token.sub;
-    const user = await context.db.query.user({ where: { auth0Id } }, info);
-    if (user) {
-      // Just in case this user is logging in just after verifying their email:
-      if (user.emailVerified !== token.email_verified) {
-        return context.db.mutation.updateUser({ where: { auth0Id }, data: { emailVerified: token.email_verified } }, info);
-      }
-      return user;
-    }
-    return context.db.mutation.createUser({
-      data: {
-        email: token.email,
-        emailVerified: token.email_verified,
-        auth0Id: token.sub
-      }
-    });
-  },
-
-  login: async (_, args, context, info) => {
-    //Get user information from db
-    const user = await context.db.query.user(
-      { where: { username: args.username } },
-      `{ id password }`
-    );
-    if (!user) {
-      throw new Error("No such user found");
-    }
-    //Validate user info
-
-    const valid = await bcrypt.compare(args.password, user.password);
-    if (!valid) {
-      throw new Error("Invalid password");
-    }
-
-    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
-
-    // 3
-    return {
-      token,
-      user
-    };
-  },
-
-  createRecipe: async (_, args, context, info) => {
-    const userId = getUserId(context);
-    const recipe = await context.db.mutation.createRecipe(
+  signup: async (_, args, context, info) => {
+    const auth0Sub = context.user.sub;
+    const email = context.user.email;
+    const newUser = await context.db.mutation.createUser(
       {
         data: {
-          title: args.title,
-          readyInMinutes: args.readyInMinutes,
-          servings: args.servings,
-          image: args.image,
-          createdBy: { connect: { id: userId } }
+          auth0Sub: auth0Sub,
+          firstName: args.firstName,
+          lastName: args.lastName,
+          email: email
         }
       },
       info
     );
-    return recipe;
+    return newUser;
+  },
+
+  createRecipe: async (_, args, context, info) => {
+    try {
+      const contextUser = await context.user;
+      const auth0Sub = contextUser.sub
+
+      const user = await context.db.query.user({
+        where: {
+          auth0Sub: auth0Sub
+        }
+      },info);
+
+      console.log("user.id: ", user.id)
+  
+      const recipe = await context.db.mutation.createRecipe(
+        {
+          input: {
+            title: args.title,
+            readyInMinutes: args.readyInMinutes,
+            servings: args.servings,
+            image: args.image,
+            createdBy: { connect: { id: user.id } }
+          }
+        },
+        info
+      );
+      return recipe;
+    }
+    catch (e) {
+      console.log('You must be logged in to do this');
+    }
   },
 
   createSubscription: async (parent, args, context, info) => {
