@@ -1,8 +1,8 @@
 import auth0 from "auth0-js";
 
 // Change callback URL based on where the app is hosted
-let devEndpoint = "http://localhost:3000/callback";
-let prodEndpoint = "https://lambda-cookbook.netlify.com/callback";
+let devEndpoint = "http://localhost:3000";
+let prodEndpoint = "https://lambda-cookbook.netlify.com";
 
 class Auth {
   constructor() {
@@ -12,7 +12,9 @@ class Auth {
       domain: "cookbookproject.auth0.com",
       clientID: "7klW1TtJaes7ZrekqNXavbJrwWQLkDf0",
       redirectUri:
-        process.env.REACT_APP_CURR_ENV === "dev" ? devEndpoint : prodEndpoint,
+        process.env.REACT_APP_CURR_ENV === "dev"
+          ? `${devEndpoint}/callback`
+          : `${prodEndpoint}/callback`,
       responseType: "token id_token",
       scope: "openid email"
     });
@@ -54,7 +56,8 @@ class Auth {
     //Set authFlag in local storage to false
     localStorage.setItem(this.authFlag, JSON.stringify(false));
     this.auth0.logout({
-      returnTo: "http://localhost:3000",
+      returnTo:
+        process.env.REACT_APP_CURR_ENV === "dev" ? devEndpoint : prodEndpoint,
       clientID: "7klW1TtJaes7ZrekqNXavbJrwWQLkDf0"
     });
   };
