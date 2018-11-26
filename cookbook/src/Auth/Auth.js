@@ -62,11 +62,23 @@ class Auth {
     });
   };
 
-  isAuthenticated = () => {
-    // Check whether the current time is past the token's expiry time
-    return new Date().getTime() < this.expiresAt;
+  silentAuth = () => {
+    if (this.isAuthenticated()) {
+      return new Promise((resolve, reject) => {
+        this.auth0.checkSession({}, (err, authResult) => {
+          if (err) {
+            localStorage.removeItem(this.authFlag);
+            return reject(err);
+          }
+          this.setSession(authResult);
+          resolve(authResult);
+        });
+      });
+    }
+  };
 
-    // return JSON.parse(localStorage.getItem(this.authFlag));
+  isAuthenticated = () => {
+    return JSON.parse(localStorage.getItem(this.authFlag));
   };
 }
 
