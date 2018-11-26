@@ -7,6 +7,7 @@ import Home from "./Components/Home/Home";
 import LandingPage from "./Components/Landing/LandingPage";
 import Footer from "./Components/SubComponents/Footer";
 import Callback from "./Auth/Callback.js";
+import Signup from "./Components/SubComponents/Signup";
 
 class App extends Component {
   state = {
@@ -35,6 +36,7 @@ class App extends Component {
           <Route exact path="/" component={LandingPage} />
           <Route path="/home" component={Home} />
           <Route exact path="/callback" component={Callback} />
+          <Route exact path="/signup" component={Signup} />
           <Footer />
         </div>
       );
