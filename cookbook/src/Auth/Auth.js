@@ -55,12 +55,15 @@ class Auth {
     localStorage.setItem(this.authFlag, JSON.stringify(false));
     this.auth0.logout({
       returnTo: "http://localhost:3000",
-      clientID: "oPRYEaqCnAiPDMLxUD62PntAdb2lmLlA"
+      clientID: "7klW1TtJaes7ZrekqNXavbJrwWQLkDf0"
     });
   };
 
   isAuthenticated = () => {
-    return JSON.parse(localStorage.getItem(this.authFlag));
+    // Check whether the current time is past the token's expiry time
+    return new Date().getTime() < this.expiresAt;
+
+    // return JSON.parse(localStorage.getItem(this.authFlag));
   };
 }
 

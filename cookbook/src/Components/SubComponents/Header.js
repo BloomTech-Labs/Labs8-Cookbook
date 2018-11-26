@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import Logo from '../../designs/Logo/CookBookLogo.svg';
-import NavIcon from './NavIcon';
-import { Link } from 'react-router-dom';
-import auth from '../../Auth/Auth.js';
-
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import React, { Component } from "react";
+import Logo from "../../designs/Logo/CookBookLogo.svg";
+import NavIcon from "./NavIcon";
+import { Link, withRouter } from "react-router-dom";
+import auth from "../../Auth/Auth.js";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
 
 const USER_QUERY = gql`
   {
@@ -14,50 +13,49 @@ const USER_QUERY = gql`
       auth0Sub
     }
   }
-`
-
+`;
 
 class Header extends Component {
-    logout() {
-        auth.logout();
-    }
+  logout() {
+    auth.logout();
+    // this.props.history.replace('/');
+  }
 
-    render() {
-        const { isAuthenticated } = auth;
+  render() {
+    const { isAuthenticated } = auth;
 
-        return ( 
-            <div className='header'>
-                <Link className='link' to='/home'>
-                    <img className='logo' src={Logo} alt='COOKBOOK logo'/>
-                </Link>
+    return (
+      <div className="header">
+        <Link className="link" to="/home">
+          <img className="logo" src={Logo} alt="COOKBOOK logo" />
+        </Link>
 
-                <Query query={USER_QUERY}>
-                    {({ loading, error, data }) => {
-                        if (loading) return <div>Fetching</div>
-                        if (error) return <div>Error</div>
-                        
-                        const user = data.user
+        <Query query={USER_QUERY}>
+          {({ loading, error, data }) => {
+            if (loading) return <div>Fetching</div>;
+            if (error) return <div>Error</div>;
 
-                        return (
-                            <div>
-                                No user{user.auth0Sub}
-                            </div>
-                        )
-                    }}
-                </Query>
+            const user = data.user;
 
-                {
-                    isAuthenticated() && (
-                    <div className="signout" onClick={this.logout.bind(this)}>
-                        Sign Out
-                    </div>
-                    )
-                }
+            return (
+              <div>
+                No user
+                {user.auth0Sub}
+              </div>
+            );
+          }}
+        </Query>
 
-                <NavIcon className='nav-icon'/>
-            </div> 
-        );
-    }
+        {isAuthenticated() && (
+          <div className="signout" onClick={this.logout}>
+            Sign Out
+          </div>
+        )}
+
+        <NavIcon className="nav-icon" />
+      </div>
+    );
+  }
 }
- 
+
 export default Header;

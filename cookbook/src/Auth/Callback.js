@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
-import loading from '../designs/Logo/Logo.png';
+import React, { Component } from "react";
+import loading from "../designs/Logo/Logo.png";
+import auth from "../Auth/Auth";
 
 class Callback extends Component {
-  render() {
+  async componentDidMount() {
+    await auth.handleAuthentication();
+    this.props.history.replace("/home");
+  }
 
+  render() {
     return (
       <div>
-        <img src={loading} alt="loading"/>
+        <img src={loading} alt="loading" />
         Loading...
       </div>
     );
