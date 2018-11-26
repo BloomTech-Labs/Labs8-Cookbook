@@ -10,9 +10,6 @@ import Billing from "./SubPages/Billing";
 
 class Home extends Component {
 
-  componentDidMount() {
-    
-  }
 
   render() {
     let current = this.props.location.pathname.split("/").pop();
