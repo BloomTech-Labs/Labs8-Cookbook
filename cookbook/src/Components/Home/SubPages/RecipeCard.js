@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Image from 'react-image-resizer';
 
-class Recipe extends Component {
+class RecipeCard extends Component {
   render() {
     return (
       <div className="recipeCard">
@@ -16,6 +16,8 @@ class Recipe extends Component {
           />
           <div className="recipeSchedule_body">
             Scheduled For
+            <div className="recipeCardMeal">{this.props.recipes.meal}</div>
+            <div className="recipeCardDate">{this.props.recipes.date.toLocaleDateString()}</div>
           </div>
         </div>
       </div>
@@ -23,4 +25,4 @@ class Recipe extends Component {
   }
 }
 
-export default Recipe;
+export default RecipeCard;
