@@ -17,6 +17,7 @@ const RECIPE_QUERY = gql`
 
 const dummyRecipesData = [
   {
+    id: 0,
     title: 'Deviled Eggs',
     image: 'https://img.sndimg.com:443/food/image/upload/w_993,h_559,c_fill,fl_progressive,q_80/v1/img/recipes/48/15/3/TrKIAiXyStaqjpJUCaT0_food.com-28.jpg',
     URL: 'https://www.geniuskitchen.com/recipe/deviled-eggs-48153',
