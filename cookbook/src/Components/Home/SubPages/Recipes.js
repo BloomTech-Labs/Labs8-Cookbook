@@ -60,7 +60,7 @@ class Recipes extends Component {
           <input
             type="text"
             name="search"
-            placeholder='search'
+            placeholder="search"
             onChange={this.handleChange}
             value={this.state.search}></input>
         </form>
