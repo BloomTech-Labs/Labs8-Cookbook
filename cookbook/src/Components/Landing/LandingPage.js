@@ -18,7 +18,6 @@ class LandingPage extends Component {
     }
 
     render() {
-<<<<<<< HEAD
         const { isAuthenticated } = auth;
         // Carousel settings:
         var settings = {
@@ -28,8 +27,6 @@ class LandingPage extends Component {
             variableWidth: true,
             centerMode: true
           };
-=======
->>>>>>> master
 
         return ( 
             <div className='containerLP'>
