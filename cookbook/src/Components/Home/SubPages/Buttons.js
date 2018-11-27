@@ -2,11 +2,16 @@ import React, { Component } from "react";
 
 
 class Buttons extends Component {
+  onClick(e) {
+    e.preventDefault();
+    console.log('works');
+  }
+
   render() {
     return (
       <div className="recipe-inputs">
         <div className="recipe-buttons">
-          <button>Breakfast</button>
+          <button onClick={ (e) => { this.onClick(); } }>Breakfast</button>
           <button>Lunch</button>
           <button>Dinner</button>
           <button>Dessert</button>
