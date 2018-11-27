@@ -15,10 +15,8 @@ type Query {
 
 type Mutation {
   signup(
-    auth0Sub: String!, 
     firstName: String!, 
-    lastName: String!, 
-    email: String!
+    lastName: String!
   ): User!
   createRecipe(
     title: String!, 
@@ -26,8 +24,7 @@ type Mutation {
     servings: Int!, 
     image: String!
   ): Recipe!
-  createSubscription(
-    token: String!
+  createSubscription(token: String!
   ): Subscription!
   createEvent(
     start: String!, 
