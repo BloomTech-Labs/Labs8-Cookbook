@@ -60,3 +60,12 @@ type Subscription {
   user: User!
   charge: String!
 }
+
+type Event {
+  id: ID! @unique
+  recipe: Recipe!
+  start: String!
+  end: String!
+  resourceId: Int!
+  title: String!
+}
