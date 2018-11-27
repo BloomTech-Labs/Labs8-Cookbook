@@ -2,23 +2,46 @@ import React, { Component } from "react";
 
 
 class Buttons extends Component {
-  onClick(e) {
-    e.preventDefault();
-    console.log('works');
+  constructor(props) {
+    super(props);
+    this.isBreakfast = this.isBreakfast.bind(this);
+    this.isLunch = this.isBreakfast.bind(this);
+    this.state = {
+      type: "",
+    }
+  }
+
+  isBreakfast() {
+    this.setState(() => {
+      return {
+        type: "breakfast"
+      };
+    });
+    console.log(this.state.type)
+  }
+
+  isLunch() {
+    this.setState(() => {
+      return {
+        type: "lunch"
+      };
+    });
+    console.log(this.state.type)
   }
 
   render() {
     return (
       <div className="recipe-inputs">
         <div className="recipe-buttons">
-          <button>Breakfast</button>
-          <button>Lunch</button>
+          <button onClick={this.isBreakfast}>
+            {this.state.type ? 'Breakfast Added' : 'Breakfast'}
+          </button>
+          <button onClick={this.isLunch}>
+            {this.state.type ? 'Lunch Added' : 'Lunch'}
+          </button>
           <button>Dinner</button>
           <button>Dessert</button>
           <button>Snack</button>
-          <div className="recipe-servings">
-            Servings
-          </div>
           <button>Save</button>
         </div>
       </div>

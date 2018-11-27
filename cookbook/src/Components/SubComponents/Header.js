@@ -74,7 +74,7 @@ class Header extends Component {
                         <div className='calendar-cp'>CALENDAR</div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/dashboard')(    
-                        <div className='dashboard-cp'>DASHBAORD</div>
+                        <div className='dashboard-cp'>DASHBOARD</div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/settings')(    
                         <div className='settings-cp'>SETTINGS</div>
