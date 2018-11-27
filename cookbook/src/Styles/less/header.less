@@ -1,60 +1,164 @@
-.header {
+.header-nav {
   width: 100%;
-  height: 60px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   position: fixed;
   z-index: 1;
   top: 0;
-  background-image: url("../../Images/HeaderImg_Desktop.jpg");
-  @media @tablet {
-    background-image: url("../../Images/HeaderImg_Tablet.jpg");
-  }
-  @media @phone {
-    background-image: url("../../Images/HeaderImg_Phone.jpg");
-    height: 50px;
-  }
 
-  .link {
-    margin-left: 40px;
-    @media @tablet {
-      margin-left: 30px;
-    }
-    @media @phone {
-      margin-left: 20px;
+  .header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: @CBblue;
+    color: @CBtan;
+
+    .link {
+      margin-left: 40px;
+      @media @tablet {
+        margin-left: 30px;
+      }
+      @media @phone {
+        margin-left: 20px;
+      }
+
+      .logo {
+        height: 40px;
+      }
     }
 
-    .logo {
-      height: 40px;
+    .title {
+      font-size: 4rem;
+      letter-spacing: 4.5rem;
+      @media @desktop {
+        letter-spacing: 3.7rem;
+      }
+      @media @tablet {
+        letter-spacing: 2.6rem;
+      }
+      @media @phone {
+        display: none;
+      }
+    }
+
+    .signout {
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      height: 100%;
+      width: 70px;
+      background: @CBred;
+      color: @CBblue;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      padding-top: 15px;
+      margin-right: 40px;
+      @media @tablet {
+        margin-right: 30px;
+      }
+      @media @phone {
+        margin-right: 20px;
+        font-size: 1.8rem;
+        padding-top: 17px;
+      }
+    }
+
+    .nav-icon {
+      display: none;
 
       @media @phone {
-        height: 30px;
+        display: block;
       }
     }
   }
 
-  .signout {
-    color: white;
-    font-size: 2rem;
-    text-decoration: underline;
-    cursor: pointer;
-    height: 30px;
-    margin-right: 40px;
-    @media @tablet {
-      margin-right: 30px;
+  .nav {
+    width: 100%;
+    height: 40px;
+    vertical-align: middle;
+    border: 1px solid red;
+    font-size: 2.6rem;
+    font-weight: 300; 
+    
+    .create-nav {
+      width: 25%;
+      height: 100%;
+      color: @CBred;
+      background-color: @CBorange;
     }
-    @media @phone {
-      margin-right: 20px;
-      font-size: 1.8rem;
+
+    .calendar-nav {
+      width: 25%;
+      height: 100%;
+      color: @CBtan;
+      background-color: @CBgrey;
+    }
+
+    .dashboard-nav {
+      width: 25%;
+      height: 100%;
+      color: @CBorange;
+      background-color: @CBblue;
+    }
+
+    .settings-nav {
+      width: 25%;
+      height: 100%;
+      color: @CBgrey;
+      background-color: @CBred;
+    }
+
+    .recipes-nav {
+      width: 25%;
+      height: 100%;
+      color: @CBblue;
+      background-color: @CBtan;
     }
   }
 
-  .nav-icon {
-    display: none;
+  .current-page {
+    height: 40px;
+    font-size: 2.6rem;
+    font-weight: 300;
+    position: static; 
 
-    @media @phone {
-      display: block;
+    .create-cp {
+      width: 100%;
+      color: @CBred;
+      background-color: @CBorange;
+      text-align: center;
+    }
+
+    .calendar-cp {
+      width: 100%;
+      color: @CBtan;
+      background-color: @CBgrey;
+      text-align: center;
+    }
+
+    .dashboard-cp {
+      width: 100%;
+      color: @CBorange;
+      background-color: @CBblue;
+      text-align: center;
+    }
+
+    .settings-cp {
+      width: 100%;
+      color: @CBgrey;
+      background-color: @CBred;
+      text-align: center;
+    }
+
+    .recipes-cp {
+      width: 100%;
+      color: @CBblue;
+      background-color: @CBtan;
+      text-align: center;
     }
   }
 }

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
+
+import auth from "../../Auth/Auth.js";
 import Header from "../SubComponents/Header";
-import Nav from "../SubComponents/Nav";
 import Create from "./SubPages/Create";
 import Recipes from "./SubPages/Recipes";
 import Calendar from "./SubPages/Calendar";
@@ -10,9 +11,8 @@ import Settings from "./SubPages/Settings";
 import Billing from "./SubPages/Billing";
 
 class Home extends Component {
-
   componentDidMount() {
-    
+    if (!auth.isAuthenticated()) this.props.history.push("/");
   }
 
   render() {
@@ -23,12 +23,6 @@ class Home extends Component {
       <React.Fragment>
         <Header />
         <div className="home-container">
-          <div className="home-path">
-            <span>
-              <Link to="/home">Home</Link> / {current}
-            </span>
-          </div>
-          <Nav />
           <div className="home-content">
             <Route path="/home/create" component={Create} />
             <Route path="/home/recipes" component={Recipes} />

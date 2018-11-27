@@ -3,9 +3,26 @@
 const { GraphQLServer } = require("graphql-yoga");
 const Mutation = require("./resolvers/Mutation");
 const Query = require("./resolvers/Query");
-const AuthPayload = require("./resolvers/AuthPayload");
 const db = require("./db");
 const jwt = require("jsonwebtoken");
+const jwksClient = require("jwks-rsa");
+
+const client = jwksClient({
+  jwksUri: `https://cookbookproject.auth0.com/.well-known/jwks.json`
+});
+
+function getKey(header, cb) {
+  client.getSigningKey(header.kid, function(err, key) {
+    var signingKey = key.publicKey || key.rsaPublicKey;
+    cb(null, signingKey);
+  });
+}
+
+const options = {
+  audience: "7klW1TtJaes7ZrekqNXavbJrwWQLkDf0",
+  issuer: `https://cookbookproject.auth0.com/`,
+  algorithms: ["RS256"]
+};
 
 // Create server with typeDefs, resolvers, and context(database)
 function createServer() {
@@ -13,33 +30,28 @@ function createServer() {
     typeDefs: "src/schema.graphql",
     resolvers: {
       Mutation,
-      Query,
-      AuthPayload
+      Query
     },
     resolverValidationOptions: {
       requireResolversForResolveType: false
     },
-    context: req => ({ 
-      ...req, 
-      db
-    })
-      // simple auth check on every request
-  //     console.log('req: ', req);
-  //     const token = req.headers.authorization;
-  //     const user = new Promise((resolve, reject) => {
-  //       jwt.verify(token, getKey, options, (err, decoded) => {
-  //         if(err) {
-  //           return reject(err);
-  //         }
-  //         resolve(decoded.email);
-  //       });
-  //     });
-  //     return {
-  //       user,
-  //       ...req,
-  //       db
-  //     };
-  //   },
-})}
+    context: ({ request }) => {
+      const token = request.headers.authorization;
+      const user = new Promise((resolve, reject) => {
+        jwt.verify(token, getKey, options, (err, decoded) => {
+          if (err) {
+            return reject(err);
+          }
+          resolve(decoded);
+        });
+      });
+      return {
+        ...request,
+        db,
+        user
+      };
+    }
+  });
+}
 
 module.exports = createServer;
