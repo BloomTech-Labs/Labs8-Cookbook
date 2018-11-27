@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import auth from '../../Auth/Auth.js';
 
 import titleImg from '../../Images/titleImg.jpeg';
@@ -7,13 +6,19 @@ import logo from '../../designs/Logo/CookBookLogo.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Slider from 'react-slick';
 
+const { isAuthenticated } = auth;
 
 class LandingPage extends Component {
     login() {
         auth.login();
     }
 
+    componentDidMount() {
+        if (isAuthenticated()) this.props.history.push('/home');
+    }
+
     render() {
+<<<<<<< HEAD
         const { isAuthenticated } = auth;
         // Carousel settings:
         var settings = {
@@ -23,6 +28,8 @@ class LandingPage extends Component {
             variableWidth: true,
             centerMode: true
           };
+=======
+>>>>>>> master
 
         return ( 
             <div className='containerLP'>

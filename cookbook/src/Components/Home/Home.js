@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
+
+import auth from "../../Auth/Auth.js";
 import Header from "../SubComponents/Header";
 import Create from "./SubPages/Create";
 import Recipes from "./SubPages/Recipes";
@@ -9,7 +11,9 @@ import Settings from "./SubPages/Settings";
 import Billing from "./SubPages/Billing";
 
 class Home extends Component {
-
+  componentDidMount() {
+    if (!auth.isAuthenticated()) this.props.history.push("/");
+  }
 
   render() {
     let current = this.props.location.pathname.split("/").pop();
