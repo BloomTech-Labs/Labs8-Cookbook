@@ -30,6 +30,18 @@ class Buttons extends Component {
     console.log(this.state.type)
   };
 
+  isSnack = (e) => {
+    e.preventDefault();
+    this.setState({type: "snack"})
+    console.log(this.state.type)
+  };
+
+  isDessert = (e) => {
+    e.preventDefault();
+    this.setState({type: "dessert"})
+    console.log(this.state.type)
+  };
+
   render() {
     return (
       <div className="recipe-inputs">
@@ -46,8 +58,13 @@ class Buttons extends Component {
             onClick={this.isDinner}>
             {this.state.type === "dinner" ? 'Dinner Added' : 'Dinner'}
           </button>
-          <button>Dessert</button>
-          <button>Snack</button>
+          <button 
+            onClick={this.isSnack}>
+            {this.state.type === "snack" ? 'Snack Added' : 'Snack'}
+          </button>
+          <button 
+            onClick={this.isSnack}>
+            {this.state.type === "dessert" ? 'Dessert Added' : 'Dessert'}</button>
           <button>Save</button>
         </div>
       </div>
