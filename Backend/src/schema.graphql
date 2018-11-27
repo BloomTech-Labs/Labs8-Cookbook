@@ -8,37 +8,18 @@
 # Define Mutation and Query to be used by graphqlAPI.
 
 type Query {
-  user(id: ID!): User
   users: [User]!
   recipes: [Recipe]!
-  getAuth: String!
+  currentUser(auth0Sub: String): User
 }
 
 type Mutation {
-  signup(first_name: String!, last_name: String!, email: String!, username: String!, password: String!): AuthPayload!
-  login(username: String!, password: String!): AuthPayload!
-  createRecipe(title: String!, readyInMinutes: Int!, servings: Int!, image: String!): Recipe!
+  signup(firstName: String!, lastName: String!): User!
+  createRecipe(
+    title: String!
+    readyInMinutes: Int!
+    servings: Int!
+    image: String!
+  ): Recipe!
   createSubscription(token: String!): Subscription!
-}
-
-type AuthPayload {
-  token: String
-  user: User
-}
-
-type User {
-  id: ID!
-  first_name: String!
-  last_name: String!
-  email: String!
-  recipes: [Recipe!]!
-}
-
-type Recipe {
-  id: ID!
-  title: String!
-  readyInMinutes: Int!
-  servings: Int!
-  image: String!
-  createdBy: User!
 }
