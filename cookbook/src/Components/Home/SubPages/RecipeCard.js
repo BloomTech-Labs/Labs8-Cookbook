@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Image from 'react-image-resizer';
 
 class RecipeCard extends Component {
+
   handleLink() {
     window.open(this.props.recipes.URL, '_blank');
   }

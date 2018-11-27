@@ -35,23 +35,37 @@ const dummyRecipesData = [
 ]
 
 class Recipes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
+    };
+  }
+
+  handleAddRecipe() {
+    this.props.history.push('create')
+  }
+
   render() {
     return (
-      <Query query={RECIPE_QUERY}>
-        {({ loading, error, data }) => {
-          if (loading) return <div>Fetching</div>
-          if (error) return <div>Error</div>
-          
-          // const recipesToRender = data.recipes
-          const recipesToRender = dummyRecipesData
+      <div>
+        <button onClick={() => this.handleAddRecipe()} className="recipesAddRecipe">+ add recipe</button>
+        <Query query={RECIPE_QUERY}>
+          {({ loading, error, data }) => {
+            if (loading) return <div>Fetching</div>
+            if (error) return <div>Error</div>
+            
+            // const recipesToRender = data.recipes
+            const recipesToRender = dummyRecipesData
 
-          return (
-            <div className="recipes-container">
-              {recipesToRender.map(recipes => <RecipeCard key={recipes.id} recipes={recipes} />)}
-            </div>
-          )
-        }}
-      </Query>
+            return (
+              <div className="recipes-container">
+                {recipesToRender.map(recipes => <RecipeCard key={recipes.id} recipes={recipes} />)}
+              </div>
+            )
+          }}
+        </Query>
+      </div>
     )
   }
 }
