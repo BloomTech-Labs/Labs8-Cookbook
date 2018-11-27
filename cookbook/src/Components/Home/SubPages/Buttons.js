@@ -2,44 +2,50 @@ import React, { Component } from "react";
 
 
 class Buttons extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.isBreakfast = this.isBreakfast.bind(this);
-    this.isLunch = this.isBreakfast.bind(this);
+    this.isLunch = this.isLunch.bind(this);
+    this.isDinner = this.isDinner.bind(this);
     this.state = {
-      type: "",
+      type: ""
     }
   }
 
-  isBreakfast() {
-    this.setState(() => {
-      return {
-        type: "breakfast"
-      };
-    });
+  isBreakfast = (e) =>  {
+    e.preventDefault(); 
+    this.setState({type: "breakfast"})
     console.log(this.state.type)
-  }
+  };
 
-  isLunch() {
-    this.setState(() => {
-      return {
-        type: "lunch"
-      };
-    });
+  isLunch = (e) => {
+    e.preventDefault();
+    this.setState({type: "lunch"})
     console.log(this.state.type)
-  }
+  };
+
+  isDinner = (e) => {
+    e.preventDefault();
+    this.setState({type: "dinner"})
+    console.log(this.state.type)
+  };
 
   render() {
     return (
       <div className="recipe-inputs">
         <div className="recipe-buttons">
-          <button onClick={this.isBreakfast}>
-            {this.state.type ? 'Breakfast Added' : 'Breakfast'}
+          <button 
+            onClick={this.isBreakfast}>
+            {this.state.type === "breakfast" ? 'Breakfast Added' : 'Breakfast'}
           </button>
-          <button onClick={this.isLunch}>
-            {this.state.type ? 'Lunch Added' : 'Lunch'}
+          <button
+            onClick={this.isLunch}>
+            {this.state.type === "lunch" ? 'Lunch Added' : 'Lunch'}
           </button>
-          <button>Dinner</button>
+          <button
+            onClick={this.isDinner}>
+            {this.state.type === "dinner" ? 'Dinner Added' : 'Dinner'}
+          </button>
           <button>Dessert</button>
           <button>Snack</button>
           <button>Save</button>
