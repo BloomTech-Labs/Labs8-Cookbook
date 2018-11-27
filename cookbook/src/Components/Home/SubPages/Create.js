@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Preview from "./Preview";
 import scraper from "../../../utils/scraper";
+import Buttons from "./Buttons";
+
 class Create extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +38,32 @@ class Create extends Component {
     });
   };
 
+  
+  isBreakfast = (e) =>  {
+    e.preventDefault(); 
+    this.setState({type: "breakfast"})
+  };
+
+  isLunch = (e) => {
+    e.preventDefault();
+    this.setState({type: "lunch"})
+  };
+
+  isDinner = (e) => {
+    e.preventDefault();
+    this.setState({type: "dinner"})
+  };
+
+  isSnack = (e) => {
+    e.preventDefault();
+    this.setState({type: "snack"})
+  };
+
+  isDessert = (e) => {
+    e.preventDefault();
+    this.setState({type: "dessert"})
+  };
+
   render() {
     const saveButton = this.state.og_title ? <button>SAVE</button> : null;
 
@@ -64,11 +92,7 @@ class Create extends Component {
         </div>
         <div className="create-filter-wrapper">
           <div className="recipe-btn">
-            <button>Breakfast</button>
-            <button>Lunch</button>
-            <button>Dinner</button>
-            <button>Dessert</button>
-            <button>Snack</button>
+            <Buttons />
           </div>
           <div className="input-calendar">placeholder</div>
         </div>
