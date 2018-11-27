@@ -6,6 +6,8 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import renderIf from 'render-if';
 
+import User from "../Home/SubPages/User";
+
 
 class Header extends Component {
     static propTypes = {
@@ -28,14 +30,25 @@ class Header extends Component {
                     <Link className='link' to='/home'>
                         <img className='logo' src={Logo} alt='COOKBOOK logo'/>
                     </Link>
+                    <User>
+                      {({ data: { currentUser } }) => {
+                        if (currentUser)
+                          return (
+                            <p>
+                              Welcome {currentUser.firstName} {currentUser.lastName}
+                            </p>
+                          );
+                        return null;
+                      }}
+                    </User>
                     <span className="title">COOKBOOK</span>
-                    {/* {
-                        isAuthenticated() && ( */}
-                        <div className="signout" onClick={this.logout.bind(this)}>
+                    {
+                        isAuthenticated() && (
+                        <div className="signout" onClick={auth.logout}>
                             logout
                         </div>
-                        {/* )
-                    } */}
+                        )
+                    }
                 </div>
                 <div className='nav'>
                     {renderIf(this.props.location.pathname !== '/home/create')(
@@ -77,45 +90,4 @@ class Header extends Component {
 }
  
 export default withRouter(Header);
-=======
-import React, { Component } from "react";
-import Logo from "../../designs/Logo/CookBookLogo.svg";
-import NavIcon from "./NavIcon";
-import { Link } from "react-router-dom";
-import auth from "../../Auth/Auth.js";
-import User from "../Home/SubPages/User";
-
-class Header extends Component {
-  render() {
-    const { isAuthenticated } = auth;
-
-    return (
-      <div className="header">
-        <Link className="link" to="/home">
-          <img className="logo" src={Logo} alt="COOKBOOK logo" />
-        </Link>
-        <User>
-          {({ data: { currentUser } }) => {
-            if (currentUser)
-              return (
-                <p>
-                  Welcome {currentUser.firstName} {currentUser.lastName}
-                </p>
-              );
-            return null;
-          }}
-        </User>
-        {isAuthenticated() && (
-          <div className="signout" onClick={auth.logout}>
-            Sign Out
-          </div>
-        )}
-
-        <NavIcon className="nav-icon" />
-      </div>
-    );
-  }
-}
-
-export default Header;
 
