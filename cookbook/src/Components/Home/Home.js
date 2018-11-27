@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import auth from "../../Auth/Auth.js";
 import Header from "../SubComponents/Header";
@@ -16,9 +16,8 @@ class Home extends Component {
   }
 
   render() {
-    let current = this.props.location.pathname.split("/").pop();
-    current =
-      current === "home" ? null : current[0].toUpperCase() + current.slice(1);
+    // let current = this.props.location.pathname.split("/").pop();
+    // current = current === "home" ? null : current[0].toUpperCase() + current.slice(1);
     return (
       <React.Fragment>
         <Header />

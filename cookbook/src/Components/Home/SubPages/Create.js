@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Preview from "./Preview";
 import scraper from "../../../utils/scraper";
+import DatePicker from '../../SubComponents/DatePicker.js';
+
 class Create extends Component {
   constructor(props) {
     super(props);
@@ -14,13 +16,18 @@ class Create extends Component {
       og_desc: "",
       prep_time: "",
       servings: "",
-      rating: ""
+      rating: "",
+      onDate: null
     };
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value, loadingPreview: false });
   };
+
+  handlePickDate = (date) => {
+    this.setState({onDate: date});
+  }
 
   findRecipes = () => {
     this.setState({ loadingPreview: true }, async () => {
@@ -70,7 +77,7 @@ class Create extends Component {
             <button>Dessert</button>
             <button>Snack</button>
           </div>
-          <div className="input-calendar">placeholder</div>
+          <DatePicker handlePickDate={this.handlePickDate}></DatePicker>
         </div>
       </div>
     );
