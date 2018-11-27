@@ -46,10 +46,25 @@ class Recipes extends Component {
     this.props.history.push('create')
   }
 
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value});
+  };
+
   render() {
     return (
       <div>
+        
         <button onClick={() => this.handleAddRecipe()} className="recipesAddRecipe">+ add recipe</button>
+        
+        <form>
+          <input
+            type="text"
+            name="search"
+            placeholder='search'
+            onChange={this.handleChange}
+            value={this.state.search}></input>
+        </form>
+        
         <Query query={RECIPE_QUERY}>
           {({ loading, error, data }) => {
             if (loading) return <div>Fetching</div>
@@ -60,7 +75,7 @@ class Recipes extends Component {
 
             return (
               <div className="recipes-container">
-                {recipesToRender.map(recipes => <RecipeCard key={recipes.id} recipes={recipes} />)}
+                {recipesToRender.map(recipes => <RecipeCard key={recipes.id} recipes={recipes} search={this.state.search} />)}
               </div>
             )
           }}
