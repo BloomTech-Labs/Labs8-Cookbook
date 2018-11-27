@@ -34,7 +34,6 @@ export default class Settings extends React.Component {
         <Mutation mutation={CREATE_SUBSCRIPTION_MUTATION}>
         {createSubscription => (
           <StripeCheckout
-            token={this.onToken}
             stripeKey='pk_test_FyA4hajfxfEQ4jCcEaeQtTIL'
             name='Cookbook Subscription'
             zipcode={false}

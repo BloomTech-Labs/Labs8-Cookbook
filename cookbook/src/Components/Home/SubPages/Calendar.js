@@ -7,17 +7,17 @@ import Buttons from './Buttons'
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import gql from "graphql-tag";
-import { Mutation } from "react-apollo";
+// import gql from "graphql-tag";
+// import { Mutation } from "react-apollo";
 
-const SCHEDULE_RECIPE = gql`
-  mutation scheduleRecipe($type: String!) {
-    scheduleRecipe(type: $type) {
-      id
-      type
-    }
-  }
-`;
+// const SCHEDULE_RECIPE = gql`
+//   mutation scheduleRecipe($type: String!) {
+//     scheduleRecipe(type: $type) {
+//       id
+//       type
+//     }
+//   }
+// `;
 
 // a localizer for BigCalendar
 const localizer = Calendar.momentLocalizer(moment) 

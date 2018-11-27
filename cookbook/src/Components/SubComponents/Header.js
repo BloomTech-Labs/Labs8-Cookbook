@@ -6,17 +6,17 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import renderIf from 'render-if';
 
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+// import gql from 'graphql-tag';
+// import { Query } from 'react-apollo';
 
-const USER_QUERY = gql`
-  {
-    user {
-      id
-      auth0Sub
-    }
-  }
-`
+// const USER_QUERY = gql`
+//   {
+//     user {
+//       id
+//       auth0Sub
+//     }
+//   }
+// `
 
 
 class Header extends Component {

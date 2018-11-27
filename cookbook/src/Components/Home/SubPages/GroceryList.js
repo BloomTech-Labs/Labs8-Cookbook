@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-// import Helmet from 'react-helmet';
-=======
->>>>>>> 717e938efa78e21bc2910f7a51678eb280be8f6d
 import DayPicker, { DateUtils } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 

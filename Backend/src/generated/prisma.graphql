@@ -79,6 +79,13 @@ input EventUpdateInput {
   title: String
 }
 
+input EventUpdateManyMutationInput {
+  start: String
+  end: String
+  resourceId: Int
+  title: String
+}
+
 input EventWhereInput {
   id: ID
   id_not: ID
@@ -377,7 +384,7 @@ scalar Long
 type Mutation {
   createEvent(data: EventCreateInput!): Event!
   updateEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event
-  updateManyEvents(data: EventUpdateInput!, where: EventWhereInput): BatchPayload!
+  updateManyEvents(data: EventUpdateManyMutationInput!, where: EventWhereInput): BatchPayload!
   upsertEvent(where: EventWhereUniqueInput!, create: EventCreateInput!, update: EventUpdateInput!): Event!
   deleteEvent(where: EventWhereUniqueInput!): Event
   deleteManyEvents(where: EventWhereInput): BatchPayload!
