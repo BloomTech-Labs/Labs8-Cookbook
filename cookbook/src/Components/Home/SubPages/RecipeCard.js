@@ -13,17 +13,17 @@ class RecipeCard extends Component {
   render() {
     return (
       <div className="recipeCard">
-        <div className="noteCard__title">
+        <div className="recipeCardTitle">
           {this.props.recipes.title}
         </div>
-        <div className="recipeCard__body">
-          <Image 
-            src={this.props.recipes.image} 
-            height={60}
-            width={160}
-          />
+        <Image className="recipeCardImage"
+          src={this.props.recipes.image} 
+          height={60}
+          width={160}
+        />
+        <div className="recipeCardBody">
           <button onClick={() => this.handleLink()} className="recipeCardLink">Link</button>
-          <div className="recipeSchedule_body">
+          <div className="recipeCardSchedule">
             scheduled for
             <div className="recipeCardMeal">{this.props.recipes.meal}</div>
             <div className="recipeCardDate">{this.props.recipes.date.toLocaleDateString()}</div>
