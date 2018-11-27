@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
-import auth from '../../Auth/Auth.js';
 
+import auth from "../../Auth/Auth.js";
 import Header from "../SubComponents/Header";
 import Nav from "../SubComponents/Nav";
 import Create from "./SubPages/Create";
@@ -12,9 +12,8 @@ import Settings from "./SubPages/Settings";
 import Billing from "./SubPages/Billing";
 
 class Home extends Component {
-
   componentDidMount() {
-    if (!auth.isAuthenticated()) this.props.history.push('/');
+    if (!auth.isAuthenticated()) this.props.history.push("/");
   }
 
   render() {
