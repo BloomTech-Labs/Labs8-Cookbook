@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
-class PickDay extends Component {
+class DatePicker extends Component {
   constructor(props) {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
@@ -11,12 +11,14 @@ class PickDay extends Component {
     };
   }
   handleDayClick(day, { selected }) {
+    let selectedDay = selected ? undefined : day
     this.setState({
-      selectedDay: selected ? undefined : day,
+      selectedDay
     });
+    this.props.handlePickDate(selectedDay);
   }
   getSelectedDay() {
-      return this.state.selectedDay;
+    return this.state.selectedDay;
   }
   render() {
     return (
@@ -35,4 +37,4 @@ class PickDay extends Component {
   }
 }
 
-export default PickDay;
+export default DatePicker;
