@@ -52,45 +52,55 @@ class Header extends Component {
                 <div className='nav'>
                     {renderIf(this.props.location.pathname !== '/home/create')(
                         <div  className='create-nav'>
-                            <Link to='/home/create' style={{textDecoration: 'none'}}>CREATE</Link>
+                            <Link to='/home/create' style={{textDecoration: 'none', color: '#D85E50'}}>CREATE</Link>
                         </div>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/calendar')(
                         <div className='calendar-nav'>
-                            <Link to='/home/calendar'>CALENDAR</Link>
+                            <Link to='/home/calendar' style={{textDecoration: 'none', color: '#F5E6DC'}}>CALENDAR</Link>
                         </div>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/dashboard')(    
                         <div className='dashboard-nav'>
-                            <Link to='/home/dashboard'>GROCERY LIST</Link>
+                            <Link to='/home/dashboard' style={{textDecoration: 'none', color: '#ffc988'}}>GROCERY LIST</Link>
                         </div>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/settings')(    
                         <div className='settings-nav'>
-                            <Link to='/home/settings'>SETTINGS</Link>
+                            <Link to='/home/settings' style={{textDecoration: 'none', color: '#B3C1CC'}}>SETTINGS</Link>
                         </div>
                     )}
                     {renderIf(!this.props.location.pathname.includes('/home/recipe'))(    
                         <div className='recipes-nav'>
-                            <Link to='/home/recipes'>RECIPES</Link>
+                            <Link to='/home/recipes' style={{textDecoration: 'none', color: '#2E3650'}}>RECIPES</Link>
                         </div>
                     )}
                 </div>
                 <div className='current-page'>
                     {renderIf(this.props.location.pathname === '/home/create')(
-                        <Link to='/home/create' className='create-cp'>CREATE</Link>
+                        <div className='create-cp'>
+                            <Link to='/home/create' style={{textDecoration: 'none', color: '#D85E50'}}>CREATE</Link>
+                        </div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/calendar')(
-                        <Link to='/home/calendar' className='calendar-cp'>CALENDAR</Link>
+                        <div className='calendar-cp'>
+                            <Link to='/home/calendar' style={{textDecoration: 'none', color: '#F5E6DC'}}>CALENDAR</Link>
+                        </div>
                     )}
-                    {renderIf(this.props.location.pathname === '/home/dashboard')(    
-                        <Link to='/home/dashboard' className='dashboard-cp'>GROCERY LIST</Link>
+                    {renderIf(this.props.location.pathname === '/home/dashboard')(
+                        <div className='dashboard-cp'>    
+                            <Link to='/home/dashboard' style={{textDecoration: 'none', color: '#ffc988'}}>GROCERY LIST</Link>
+                        </div>
                     )}
-                    {renderIf(this.props.location.pathname === '/home/settings')(    
-                        <Link to='/home/settings' className='settings-cp'>SETTINGS</Link>
+                    {renderIf(this.props.location.pathname === '/home/settings')(
+                        <div className='settings-cp'>    
+                            <Link to='/home/settings' style={{textDecoration: 'none', color: '#B3C1CC'}}>SETTINGS</Link>
+                        </div>
                     )}
-                    {renderIf(this.props.location.pathname.includes('/home/recipe'))(    
-                        <Link to='/home/recipes' className='recipes-cp'>RECIPES</Link>
+                    {renderIf(this.props.location.pathname.includes('/home/recipe'))(
+                        <div className='recipes-cp'>    
+                            <Link to='/home/recipes' style={{textDecoration: 'none', color: '#2E3650'}}>RECIPES</Link>
+                        </div>
                     )}
                 </div>
             </div> 
