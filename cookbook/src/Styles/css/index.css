@@ -440,6 +440,11 @@ html {
   width: 100%;
   margin-bottom: 30px;
 }
+@media (max-width: 768px) {
+  .home-container .home-content {
+    width: 100%;
+  }
+}
 .create-wrapper {
   display: grid;
   gap: 10px;
@@ -611,45 +616,45 @@ html {
   margin: 10px 0;
   padding: 10px;
 }
-.recipes-container {
+.recipesContainer {
+  display: flex;
+  flex-flow: column;
+}
+.recipesContainer .recipesFunctionBar {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.recipesContainer .recipesFunctionBar .recipesFilterButtonChosen {
+  background: black;
+  color: white;
+  border: 2px black solid;
+  border-radius: 500px;
+}
+.recipesContainer .recipesFunctionBar .recipesFilterButtonNotChosen {
+  background: white;
+  color: grey;
+  border: 2px grey solid;
+  border-radius: 500px;
+}
+.recipesContainer .recipesCards {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  margin-top: 20px;
 }
-.recipes-container .recipeCard {
+.recipesContainer .recipesCards .recipeCard {
   border: 1px solid black;
   width: 180px;
   height: 200px;
   margin: 0 10px 20px 10px;
 }
-.recipes-container .recipeCard .noteCard__title {
-  max-height: 40px;
-  font-weight: 500;
-  margin: 5px 10px 0 10px;
-  padding: 5px 0;
-  font-size: 15px;
-  word-wrap: break-word;
-  text-overflow: ellipsis;
-  width: 90%;
-  display: inline-block;
-  overflow: hidden;
-  text-align: center;
-}
-.recipes-container .recipeCard .recipeCard__body {
-  max-height: 130px;
-  margin: 5px 10px 15px 10px;
-  line-height: 22px;
-  padding-bottom: 10px;
-  word-wrap: break-word;
-  text-overflow: ellipsis;
-  width: 90%;
-  display: inline-block;
-  overflow: hidden;
-}
-.recipes-container .recipeCard .recipeSchedule_body {
-  text-align: center;
-  margin: 10px;
-  font-weight: 500;
+.recipesContainer .recipesCards .recipeCardInvisible {
+  display: none;
+  border: 1px solid black;
+  width: 180px;
+  height: 200px;
+  margin: 0 10px 20px 10px;
 }
 .recipe-page {
   display: flex;

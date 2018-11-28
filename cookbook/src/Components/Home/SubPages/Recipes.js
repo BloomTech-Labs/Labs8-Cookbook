@@ -1,79 +1,115 @@
 import React, { Component } from 'react';
-import Recipe from './Recipe';
+import RecipeCard from './RecipeCard';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
-// const RECIPE_QUERY = gql`
-//   {
-//     recipes {
-//       id
-//       title
-//       readyInMinutes
-//       servings
-//       image
-//     }
-//   }
-// `
-
-class Recipes extends Component {
-  constructor() {
-    super();
-    this.state = {
-      // test data for recipe view page
-      dummyData: [
-        {
-          id: 1,
-          title: 'Basic Omelette',
-          readyInMinutes: '15',
-          servings: '2',
-          image: 'https://img.jamieoliver.com/jamieoliver/recipe-database/oldImages/xtra_med/366_1_1436868647.jpg?tr=w-335',
-          createdBy: 'katie',
-          scheduledFor: '12/01/2018',
-          meal: 'breakfast',
-          ingredients: [
-            {id: 11, amount: 6, name: 'eggs'},
-            {id: 12, amount: 1, name: 'cup of cheddar cheese'},
-            {id: 13, amount: 2-1/2, name: 'tablespoons olive oil'},
-            {id: 14, amount: 1, name: 'teaspoon salt'}
-          ],
-          instructions: [
-            {id: 21, description: 'blah blah blah blah'},
-            {id: 22, description: 'blah blah blah blah'},
-            {id: 23, description: 'blah blah blah blah'},
-            {id: 24, description: 'blah blah blah blah'},
-            {id: 25, description: 'blah blah blah blah'},
-            {id: 26, description: 'blah blah blah blah'},
-            {id: 27, description: 'blah blah blah blah'}
-          ],
-        }
-      ]
+const RECIPE_QUERY = gql`
+  {
+    recipes {
+      id
+      title
+      readyInMinutes
+      servings
+      image
     }
   }
+`
 
+const dummyRecipesData = [
+  {
+    id: 0,
+    title: 'Deviled Eggs',
+    image: 'https://img.sndimg.com:443/food/image/upload/w_993,h_559,c_fill,fl_progressive,q_80/v1/img/recipes/48/15/3/TrKIAiXyStaqjpJUCaT0_food.com-28.jpg',
+    URL: 'https://www.geniuskitchen.com/recipe/deviled-eggs-48153',
+    meal: 'breakfast',
+    date: new Date( 'Wed Nov 21 2018 12:00:00 GMT-0800' )
+  },
+  {
+    id: 1,
+    title: 'Fettuccine Alfredo',
+    image: 'https://img.sndimg.com:443/food/image/upload/w_896,h_504,c_fill,fl_progressive,q_80/v1/img/recipes/85/96/7nqcwQZxSiOWr3jp4BgE_FettucineAlfredo3.jpg',
+    URL: 'https://www.geniuskitchen.com/recipe/olive-garden-fettuccine-alfredo-8596?ic1=suggestedAsset%7Cfettucine',
+    meal: 'dinner',
+    date: new Date( 'Thurs Nov 22 2018 12:00:00 GMT-0800' )
+  }
+]
 
+class Recipes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
+      filter: new Set([])
+    };
+  }
+
+  handleAddRecipe() {
+    this.props.history.push('create')
+  }
+
+  handleSearch = e => {
+    this.setState({ [e.target.name]: e.target.value});
+  };
+
+  handleFilter = (meal) => {
+    let newFilter = this.state.filter;
+    if ( newFilter.has(meal) ) newFilter.delete(meal);
+    else newFilter.add(meal);
+
+    this.setState({ filter: newFilter });
+  }
+
+  filterButtonClassName = (meal) => {
+    return this.state.filter.has(meal) ? "recipesFilterButtonChosen" : "recipesFilterButtonNotChosen";
+  }
 
   render() {
     return (
-      // <Query query={RECIPE_QUERY}>
-      //   {({ loading, error, data }) => {
-      //     if (loading) return <div>Fetching</div>
-      //     if (error) return <div>Error</div>
+      <div className="recipesContainer">
+
+        <div className="recipesFunctionBar">
+        
+          <button onClick={() => this.handleAddRecipe()} className="recipesAddRecipe">+ add recipe</button>
           
-      //     const recipesToRender = data.recipes
+          <form>
+            <input
+              type="text"
+              name="search"
+              placeholder="search"
+              onChange={this.handleSearch}
+              value={this.state.search}>
+            </input>
+          </form>
 
-      //     return (
-      //       <div className="recipes-container">
-      //         {recipesToRender.map(recipes => <Recipe key={recipes.id} recipes={recipes}/>)}
-      //       </div>
-      //     )
-      //   }}
-      // </Query>
+          <div className="recipesFilterContainer">
+            <button className={this.filterButtonClassName("breakfast")} onClick={() => this.handleFilter("breakfast")}>breakfast</button>
+            <button className={this.filterButtonClassName("lunch")}  onClick={() => this.handleFilter("lunch")}>lunch</button>
+            <button className={this.filterButtonClassName("dinner")} onClick={() => this.handleFilter("dinner")}>dinner</button>
+          </div>
 
-      // For testing purposes. DummyData.
-      <div className="recipes-container">
-        {this.state.dummyData.map(dummyData => (
-          <Recipe key={dummyData.id} dummyData={dummyData}/>
-        ))}
+        </div>
+        
+        <Query query={RECIPE_QUERY}>
+          {({ loading, error, data }) => {
+            // if (loading) return <div>Fetching</div>
+            // if (error) return <div>Error</div>
+            
+            // const recipesToRender = data.recipes
+            const recipesToRender = dummyRecipesData
+
+            return (
+              <div className="recipesCards">
+                {recipesToRender.map(recipes => 
+                <RecipeCard 
+                  key={recipes.id} 
+                  recipes={recipes} 
+                  search={this.state.search}
+                  filter={this.state.filter}
+                />)}
+              </div>
+            )
+          }}
+        </Query>
       </div>
     )
   }
