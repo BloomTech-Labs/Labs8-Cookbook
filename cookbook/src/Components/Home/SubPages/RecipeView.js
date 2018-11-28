@@ -44,9 +44,9 @@ class RecipeView extends Component {
                 <div className='right-container'>
                     <div className='title'>Instructions</div>
                     <div className='instructions'>
-                        {/* {this.props.location.state.instructions.map(inst => (
+                        {this.props.location.state.instructions.map(inst => (
                             <div className='description'>{inst.description}</div>
-                        ))} */}
+                        ))}
                     </div>
                 </div>
             </div>

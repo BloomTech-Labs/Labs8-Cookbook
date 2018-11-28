@@ -693,10 +693,45 @@ html {
   background-position: center;
   background-size: cover;
 }
+@media (max-width: 1200px) {
+  .recipe-page .left-container .recipe-img {
+    width: 180px;
+    height: 180px;
+  }
+}
+@media (max-width: 768px) {
+  .recipe-page .left-container .recipe-img {
+    width: 145px;
+    height: 145px;
+  }
+}
+@media (max-width: 400px) {
+  .recipe-page .left-container .recipe-img {
+    width: 160px;
+    height: 160px;
+  }
+}
 .recipe-page .left-container .scheduled-for {
   border: 1px solid red;
   width: 180px;
   margin-left: 50px;
+}
+@media (max-width: 1200px) {
+  .recipe-page .left-container .scheduled-for {
+    width: 160px;
+  }
+}
+@media (max-width: 768px) {
+  .recipe-page .left-container .scheduled-for {
+    width: 145px;
+    margin-left: 35px;
+  }
+}
+@media (max-width: 400px) {
+  .recipe-page .left-container .scheduled-for {
+    width: 160px;
+    margin-left: 45px;
+  }
 }
 .recipe-page .left-container .recipe-info {
   width: 100%;
