@@ -25,9 +25,6 @@ html {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  position: fixed;
-  z-index: 1;
-  top: 0;
 }
 .header-nav .header {
   width: 100%;
@@ -37,10 +34,18 @@ html {
   align-items: center;
   background-color: #2E3650;
   color: #F5E6DC;
+  position: fixed;
+  z-index: 1;
+  top: 0;
 }
 @media (max-width: 768px) {
   .header-nav .header {
     height: 50px;
+  }
+}
+@media (max-width: 400px) {
+  .header-nav .header {
+    height: 38px;
   }
 }
 .header-nav .header .link {
@@ -58,6 +63,11 @@ html {
 }
 .header-nav .header .link .logo {
   height: 40px;
+}
+@media (max-width: 400px) {
+  .header-nav .header .link .logo {
+    height: 30px;
+  }
 }
 .header-nav .header .title {
   font-size: 4rem;
@@ -102,7 +112,7 @@ html {
   .header-nav .header .signout {
     margin-right: 20px;
     font-size: 1.6rem;
-    padding-top: 14px;
+    padding-top: 8px;
   }
 }
 .header-nav .nav {
@@ -112,11 +122,20 @@ html {
   font-weight: 300;
   text-align: center;
   display: flex;
+  position: fixed;
+  z-index: 1;
+  top: 60px;
 }
 @media (max-width: 768px) {
   .header-nav .nav {
     height: 30px;
     font-size: 2.2rem;
+    top: 50px;
+  }
+}
+@media (max-width: 400px) {
+  .header-nav .nav {
+    display: none;
   }
 }
 .header-nav .nav .create-nav {
@@ -149,12 +168,21 @@ html {
   width: 100%;
   font-size: 2.6rem;
   font-weight: 300;
-  position: static;
+  margin-top: 95px;
 }
 @media (max-width: 768px) {
   .header-nav .current-page {
     height: 30px;
     font-size: 2.2rem;
+    margin-top: 80px;
+  }
+}
+@media (max-width: 400px) {
+  .header-nav .current-page {
+    position: fixed;
+    z-index: 1;
+    top: 35px;
+    margin-top: 0;
   }
 }
 .header-nav .current-page .create-cp {
