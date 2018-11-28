@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Preview from "./Preview";
 import scraper from "../../../utils/scraper";
+import Buttons from "./Buttons";
 import DatePicker from '../../SubComponents/DatePicker.js';
 
 class Create extends Component {
@@ -8,7 +9,7 @@ class Create extends Component {
     super(props);
     this.state = {
       query: "",
-      type: "breakfast",
+      type: "",
       loadingPreview: false,
       og_title: "",
       og_sitename: "",
@@ -28,6 +29,13 @@ class Create extends Component {
   handlePickDate = (date) => {
     this.setState({onDate: date});
   }
+
+  mealButtonHandler = (e) =>  {
+    e.preventDefault();
+    this.setState({
+      type: e.target.name
+    })
+  };
 
   findRecipes = () => {
     this.setState({ loadingPreview: true }, async () => {
@@ -71,11 +79,10 @@ class Create extends Component {
         </div>
         <div className="create-filter-wrapper">
           <div className="recipe-btn">
-            <button>Breakfast</button>
-            <button>Lunch</button>
-            <button>Dinner</button>
-            <button>Dessert</button>
-            <button>Snack</button>
+            <Buttons 
+              mealButtonHandler={this.mealButtonHandler}
+              type={this.state.type}
+            />
           </div>
           <DatePicker handlePickDate={this.handlePickDate}></DatePicker>
         </div>
