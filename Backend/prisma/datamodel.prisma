@@ -6,7 +6,7 @@ type User {
   firstName: String!
   lastName: String!
   email: String! @unique
-  recipes: [Recipe!]! # will check later
+  recipes: [Recipe!]! 
 }
 
 # type Schedule {

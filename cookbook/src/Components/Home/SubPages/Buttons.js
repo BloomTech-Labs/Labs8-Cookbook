@@ -27,19 +27,16 @@ class Buttons extends Component {
   isDinner = (e) => {
     e.preventDefault();
     this.setState({type: "dinner"})
-
   };
 
   isSnack = (e) => {
     e.preventDefault();
     this.setState({type: "snack"})
-
   };
 
   isDessert = (e) => {
     e.preventDefault();
     this.setState({type: "dessert"})
-
   };
 
   render() {
