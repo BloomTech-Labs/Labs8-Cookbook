@@ -23,7 +23,7 @@ class Recipes extends Component {
       dummyData: [
         {
           id: 1,
-          title: 'Omelette',
+          title: 'Basic Omelette',
           readyInMinutes: '15',
           servings: '2',
           image: 'https://img.jamieoliver.com/jamieoliver/recipe-database/oldImages/xtra_med/366_1_1436868647.jpg?tr=w-335',
