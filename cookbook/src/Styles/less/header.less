@@ -27,9 +27,6 @@
       @media @tablet {
         margin-left: 30px;
       }
-      @media @phone {
-        margin-left: 20px;
-      }
 
       .logo {
         height: 40px;
@@ -71,9 +68,9 @@
         padding-top: 12px;
       }
       @media @phone {
-        margin-right: 20px;
         font-size: 1.6rem;
         padding-top: 8px;
+        width: 60px;
       }
     }
   }
@@ -184,6 +181,18 @@
       color: @CBblue;
       background-color: @CBtan;
       text-align: center;
+    }
+  }
+
+  .phone-nav {
+    border: 1px solid red;
+    display: none;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 35px;
+    @media @phone {
+      display: block;
     }
   }
 }

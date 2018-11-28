@@ -56,11 +56,6 @@ html {
     margin-left: 30px;
   }
 }
-@media (max-width: 400px) {
-  .header-nav .header .link {
-    margin-left: 20px;
-  }
-}
 .header-nav .header .link .logo {
   height: 40px;
 }
@@ -110,9 +105,9 @@ html {
 }
 @media (max-width: 400px) {
   .header-nav .header .signout {
-    margin-right: 20px;
     font-size: 1.6rem;
     padding-top: 8px;
+    width: 60px;
   }
 }
 .header-nav .nav {
@@ -219,6 +214,19 @@ html {
   color: #2E3650;
   background-color: #F5E6DC;
   text-align: center;
+}
+.header-nav .phone-nav {
+  border: 1px solid red;
+  display: none;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 35px;
+}
+@media (max-width: 400px) {
+  .header-nav .phone-nav {
+    display: block;
+  }
 }
 .containerLP {
   width: 100%;
