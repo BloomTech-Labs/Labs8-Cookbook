@@ -9,7 +9,7 @@ class Create extends Component {
     super(props);
     this.state = {
       query: "",
-      type: "breakfast",
+      type: "",
       loadingPreview: false,
       og_title: "",
       og_sitename: "",
@@ -30,6 +30,13 @@ class Create extends Component {
     this.setState({onDate: date});
   }
 
+  mealButtonHandler = (e) =>  {
+    e.preventDefault();
+    this.setState({
+      type: e.target.name
+    })
+  };
+
   findRecipes = () => {
     this.setState({ loadingPreview: true }, async () => {
       try {
@@ -42,32 +49,6 @@ class Create extends Component {
         console.log(error.data);
       }
     });
-  };
-
-  
-  isBreakfast = (e) =>  {
-    e.preventDefault(); 
-    this.setState({type: "breakfast"})
-  };
-
-  isLunch = (e) => {
-    e.preventDefault();
-    this.setState({type: "lunch"})
-  };
-
-  isDinner = (e) => {
-    e.preventDefault();
-    this.setState({type: "dinner"})
-  };
-
-  isSnack = (e) => {
-    e.preventDefault();
-    this.setState({type: "snack"})
-  };
-
-  isDessert = (e) => {
-    e.preventDefault();
-    this.setState({type: "dessert"})
   };
 
   render() {
@@ -98,7 +79,10 @@ class Create extends Component {
         </div>
         <div className="create-filter-wrapper">
           <div className="recipe-btn">
-            <Buttons />
+            <Buttons 
+              mealButtonHandler={this.mealButtonHandler}
+              type={this.state.type}
+            />
           </div>
           <DatePicker handlePickDate={this.handlePickDate}></DatePicker>
         </div>

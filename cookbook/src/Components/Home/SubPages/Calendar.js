@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import moment from 'moment';
 import Calendar from 'react-big-calendar';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-import Buttons from './Buttons'
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
@@ -55,7 +54,8 @@ class RecipeCalendar extends Component {
             title: "Steak",
             resourceId: 3
           }
-        ]
+        ],
+        type: ""
       };
     }
 
@@ -102,10 +102,6 @@ class RecipeCalendar extends Component {
             selectable
             style={{ height: "100vh" }}
           />
-        </div>
-        <div className="calendar-toolbar">
-          <Buttons>
-          </Buttons>
         </div>
         <Mutation mutation={SCHEDULE_RECIPE} variables={{ events }}>
           {postMutation => <button onClick={postMutation}>Submit</button>}
