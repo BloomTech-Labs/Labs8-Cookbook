@@ -11,7 +11,7 @@ class RecipeView extends Component {
 
     render() {
         return (
-            <div>
+            <div className='recipe-page'>
                 <span>This is the recipes page!</span>
             </div>
         )
