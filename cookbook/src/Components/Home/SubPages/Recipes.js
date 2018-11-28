@@ -35,11 +35,21 @@ class Recipes extends Component {
             {id: 12, amount: 1, name: 'cup of cheddar cheese'},
             {id: 13, amount: 2-1/2, name: 'tablespoons olive oil'},
             {id: 14, amount: 1, name: 'teaspoon salt'}
-          ]
+          ],
+          instructions: [
+            {id: 21, description: 'blah blah blah blah'},
+            {id: 22, description: 'blah blah blah blah'},
+            {id: 23, description: 'blah blah blah blah'},
+            {id: 24, description: 'blah blah blah blah'},
+            {id: 25, description: 'blah blah blah blah'},
+            {id: 26, description: 'blah blah blah blah'},
+            {id: 27, description: 'blah blah blah blah'}
+          ],
         }
       ]
     }
   }
+
 
 
   render() {

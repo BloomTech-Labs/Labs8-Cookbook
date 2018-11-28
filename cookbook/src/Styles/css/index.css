@@ -654,7 +654,6 @@ html {
   font-weight: 500;
 }
 .recipe-page {
-  border: 1px solid red;
   display: flex;
   justify-content: space-between;
 }
@@ -668,6 +667,8 @@ html {
   border: 1px solid green;
   margin-left: 20px;
   width: 500px;
+  display: flex;
+  flex-wrap: wrap;
 }
 @media (max-width: 1200px) {
   .recipe-page .left-container {
@@ -685,6 +686,45 @@ html {
     width: 100%;
     margin-left: 0px;
   }
+}
+.recipe-page .left-container .recipe-img {
+  width: 230px;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+}
+.recipe-page .left-container .scheduled-for {
+  border: 1px solid red;
+  width: 180px;
+  margin-left: 50px;
+}
+.recipe-page .left-container .recipe-info {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+.recipe-page .left-container .recipe-info .title {
+  width: 100%;
+}
+.recipe-page .left-container .recipe-info .cook-time {
+  width: 150px;
+  border: 1px solid red;
+}
+.recipe-page .left-container .recipe-info .servings {
+  width: 150px;
+  border: 1px solid red;
+}
+.recipe-page .left-container .ingredients {
+  width: 100%;
+}
+.recipe-page .left-container .ingredients .title {
+  text-align: center;
+  width: 100%;
+}
+.recipe-page .left-container .ingredients .ingredient .amount {
+  margin-right: 8px;
 }
 .recipe-page .right-container {
   border: 1px solid orange;
