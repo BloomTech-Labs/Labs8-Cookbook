@@ -6,51 +6,57 @@ type User {
   firstName: String!
   lastName: String!
   email: String! @unique
-  recipes: [Recipe!]! 
+  isSubscribed: Boolean! @default(value: false)
+  recipes: [Recipe!]!
 }
-
-# type Schedule {
-#   scheduledBy: User!
-#   recipe: [Recipe!]! # will check later
-#   createdAt: DateTime!
-#   updatedAt: DateTime!
-#   scheduled: String! # will check later
-# }
 
 type Recipe {
   id: ID! @unique
   title: String!
-  readyInMinutes: Int!
-  servings: Int!
+  prepTime: String!
+  servings: String!
   image: String!
+  url: String!
   createdBy: User!
-  # instructions: [Instruction!]!
-  
-  # imageType: String!
-  # dishTypes: String!
-  # analyzedInstructions: [String!]!
+  ingredients: [Ingredient!]!
+  instructions: [Instruction!]!
+  events: [Event!]!
+}
+
+type Event {
+  id: ID! @unique
+  recipe: Recipe!
+  date: String!
+  mealType: String!
 }
 
 type Instruction {
   id: ID! @unique
   stepNum: Int!
   description: String!
-  isComplete: Boolean @default(value: "false")
-  recipe: Recipe!
+  isCompleted: Boolean! @default(value: false)
+  event: Event!
 }
-
-# type Recipe_Ingredient {
-#   recipe: Recipe!
-#   ingredients: [Ingredients!]!
-#   amount: String!
-# }
 
 type Ingredient {
   id: ID! @unique
   name: String!
-  amount: Float!
-  unit: String!
-  recipe: Recipe!
+  quantity: Float!
+  event: Event!
+}
+
+type GroceryList {
+  id: ID! @unique
+  startDate: String!
+  endDate: String!
+  groceryList: [totalQuantity!]!
+}
+
+type totalQuantity {
+  id: ID! @unique
+  name: String!
+  quantity: Float!
+  isPurchased: Boolean! @default(value: false)
 }
 
 type Subscription {
@@ -59,13 +65,4 @@ type Subscription {
   amount: Int!
   user: User!
   charge: String!
-}
-
-type Event {
-  id: ID! @unique
-  recipe: Recipe!
-  start: String!
-  end: String!
-  resourceId: Int!
-  title: String!
 }
