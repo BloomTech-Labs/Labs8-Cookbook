@@ -9,6 +9,7 @@ import Calendar from "./SubPages/Calendar";
 import GroceryList from "./SubPages/GroceryList";
 import Settings from "./SubPages/Settings";
 import Billing from "./SubPages/Billing";
+import RecipeView from "./SubPages/RecipeView";
 
 class Home extends Component {
   componentDidMount() {
@@ -29,6 +30,7 @@ class Home extends Component {
             <Route path="/home/dashboard" component={GroceryList} />
             <Route path="/home/settings" component={Settings} />
             <Route path="/home/billing" component={Billing} />
+            <Route path="/home/recipe/" component={RecipeView} />
           </div>
         </div>
       </React.Fragment>
