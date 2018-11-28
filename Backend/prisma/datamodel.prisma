@@ -7,14 +7,14 @@ type User {
   lastName: String!
   email: String! @unique
   isSubscribed: Boolean! @default(value: false)
-  recipes: [Recipe!]! 
+  recipes: [Recipe!]!
 }
 
 type Recipe {
   id: ID! @unique
   title: String!
-  prepTime: Int!
-  servings: Int!
+  prepTime: String!
+  servings: String!
   image: String!
   url: String!
   createdBy: User!
@@ -55,7 +55,7 @@ type GroceryList {
 type totalQuantity {
   id: ID! @unique
   name: String!
-  quantity: Int!
+  quantity: Float!
   isPurchased: Boolean! @default(value: false)
 }
 

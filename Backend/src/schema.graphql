@@ -17,11 +17,11 @@ type Mutation {
   signup(firstName: String!, lastName: String!): User!
   createRecipe(
     title: String!
-    prepTime: Int!
-    servings: Int!
+    prepTime: String!
+    servings: String!
     image: String!
     url: String!
-  ): Recipe!
+  ): Recipe
   createSubscription(token: String!): Subscription!
   createEvent(
     start: String!

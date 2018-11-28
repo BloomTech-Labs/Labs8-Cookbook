@@ -38,9 +38,19 @@ const Mutation = {
         },
         info
       );
+
+      console.log(
+        user.id,
+        args.title,
+        args.prepTime,
+        args.servings,
+        args.image,
+        args.url
+      );
+
       const recipe = await context.db.mutation.createRecipe(
         {
-          input: {
+          data: {
             title: args.title,
             prepTime: args.prepTime,
             servings: args.servings,
@@ -51,10 +61,10 @@ const Mutation = {
         },
         info
       );
-
+      console.log(recipe);
       return recipe;
     } catch (e) {
-      console.log("You must be logged in to do this");
+      console.log("e.message");
     }
   },
 

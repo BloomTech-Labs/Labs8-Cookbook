@@ -631,8 +631,8 @@ type Query {
 type Recipe {
   id: ID!
   title: String!
-  prepTime: Int!
-  servings: Int!
+  prepTime: String!
+  servings: String!
   image: String!
   url: String!
   createdBy: User!
@@ -649,8 +649,8 @@ type RecipeConnection {
 
 input RecipeCreateInput {
   title: String!
-  prepTime: Int!
-  servings: Int!
+  prepTime: String!
+  servings: String!
   image: String!
   url: String!
   createdBy: UserCreateOneWithoutRecipesInput!
@@ -671,8 +671,8 @@ input RecipeCreateOneWithoutEventsInput {
 
 input RecipeCreateWithoutCreatedByInput {
   title: String!
-  prepTime: Int!
-  servings: Int!
+  prepTime: String!
+  servings: String!
   image: String!
   url: String!
   ingredients: IngredientCreateManyInput
@@ -682,8 +682,8 @@ input RecipeCreateWithoutCreatedByInput {
 
 input RecipeCreateWithoutEventsInput {
   title: String!
-  prepTime: Int!
-  servings: Int!
+  prepTime: String!
+  servings: String!
   image: String!
   url: String!
   createdBy: UserCreateOneWithoutRecipesInput!
@@ -717,8 +717,8 @@ enum RecipeOrderByInput {
 
 input RecipeUpdateInput {
   title: String
-  prepTime: Int
-  servings: Int
+  prepTime: String
+  servings: String
   image: String
   url: String
   createdBy: UserUpdateOneRequiredWithoutRecipesInput
@@ -745,8 +745,8 @@ input RecipeUpdateOneRequiredWithoutEventsInput {
 
 input RecipeUpdateWithoutCreatedByDataInput {
   title: String
-  prepTime: Int
-  servings: Int
+  prepTime: String
+  servings: String
   image: String
   url: String
   ingredients: IngredientUpdateManyInput
@@ -756,8 +756,8 @@ input RecipeUpdateWithoutCreatedByDataInput {
 
 input RecipeUpdateWithoutEventsDataInput {
   title: String
-  prepTime: Int
-  servings: Int
+  prepTime: String
+  servings: String
   image: String
   url: String
   createdBy: UserUpdateOneRequiredWithoutRecipesInput
@@ -810,22 +810,34 @@ input RecipeWhereInput {
   title_not_starts_with: String
   title_ends_with: String
   title_not_ends_with: String
-  prepTime: Int
-  prepTime_not: Int
-  prepTime_in: [Int!]
-  prepTime_not_in: [Int!]
-  prepTime_lt: Int
-  prepTime_lte: Int
-  prepTime_gt: Int
-  prepTime_gte: Int
-  servings: Int
-  servings_not: Int
-  servings_in: [Int!]
-  servings_not_in: [Int!]
-  servings_lt: Int
-  servings_lte: Int
-  servings_gt: Int
-  servings_gte: Int
+  prepTime: String
+  prepTime_not: String
+  prepTime_in: [String!]
+  prepTime_not_in: [String!]
+  prepTime_lt: String
+  prepTime_lte: String
+  prepTime_gt: String
+  prepTime_gte: String
+  prepTime_contains: String
+  prepTime_not_contains: String
+  prepTime_starts_with: String
+  prepTime_not_starts_with: String
+  prepTime_ends_with: String
+  prepTime_not_ends_with: String
+  servings: String
+  servings_not: String
+  servings_in: [String!]
+  servings_not_in: [String!]
+  servings_lt: String
+  servings_lte: String
+  servings_gt: String
+  servings_gte: String
+  servings_contains: String
+  servings_not_contains: String
+  servings_starts_with: String
+  servings_not_starts_with: String
+  servings_ends_with: String
+  servings_not_ends_with: String
   image: String
   image_not: String
   image_in: [String!]
@@ -985,7 +997,7 @@ input SubscriptionWhereUniqueInput {
 type totalQuantity {
   id: ID!
   name: String!
-  quantity: Int!
+  quantity: Float!
   isPurchased: Boolean!
 }
 
@@ -997,7 +1009,7 @@ type totalQuantityConnection {
 
 input totalQuantityCreateInput {
   name: String!
-  quantity: Int!
+  quantity: Float!
   isPurchased: Boolean
 }
 
@@ -1028,13 +1040,13 @@ enum totalQuantityOrderByInput {
 
 input totalQuantityUpdateDataInput {
   name: String
-  quantity: Int
+  quantity: Float
   isPurchased: Boolean
 }
 
 input totalQuantityUpdateInput {
   name: String
-  quantity: Int
+  quantity: Float
   isPurchased: Boolean
 }
 
@@ -1087,14 +1099,14 @@ input totalQuantityWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
-  quantity: Int
-  quantity_not: Int
-  quantity_in: [Int!]
-  quantity_not_in: [Int!]
-  quantity_lt: Int
-  quantity_lte: Int
-  quantity_gt: Int
-  quantity_gte: Int
+  quantity: Float
+  quantity_not: Float
+  quantity_in: [Float!]
+  quantity_not_in: [Float!]
+  quantity_lt: Float
+  quantity_lte: Float
+  quantity_gt: Float
+  quantity_gte: Float
   isPurchased: Boolean
   isPurchased_not: Boolean
   AND: [totalQuantityWhereInput!]
