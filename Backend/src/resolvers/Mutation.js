@@ -39,15 +39,6 @@ const Mutation = {
         info
       );
 
-      console.log(
-        user.id,
-        args.title,
-        args.prepTime,
-        args.servings,
-        args.image,
-        args.url
-      );
-
       const recipe = await context.db.mutation.createRecipe(
         {
           data: {
@@ -61,10 +52,9 @@ const Mutation = {
         },
         info
       );
-      console.log(recipe);
       return recipe;
     } catch (e) {
-      console.log("e.message");
+      console.log(e.message);
     }
   },
 
