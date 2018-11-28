@@ -3,6 +3,32 @@ import Preview from "./Preview";
 import scraper from "../../../utils/scraper";
 import Buttons from "./Buttons";
 import DatePicker from '../../SubComponents/DatePicker.js';
+import {Mutation} from 'react-apollo';
+import gql from 'graphql-tag';
+
+const CREATE_RECIPE_MUTATION = gql`
+  query ( $title: String!
+    $prepTime: Int!
+    $servings: Int!
+    $image: String!
+    $url: String!) {
+      createRecipe (
+        title: $title
+        prepTime: $prepTime
+        servings: $servings
+        image: $image
+        url: $url
+      ) {
+        id
+        title
+        prepTime
+        servings
+        image
+        url
+      }
+    }
+
+`
 
 class Create extends Component {
   constructor(props) {

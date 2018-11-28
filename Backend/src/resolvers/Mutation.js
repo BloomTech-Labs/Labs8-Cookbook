@@ -1,8 +1,6 @@
 //This file defines resolvers for Mutation
 const stripe = require("../stripe");
 
-const { getUserId } = require("../utils");
-
 const Mutation = {
   signup: async (_, args, context, info) => {
     const auth0user = await context.user;
@@ -31,6 +29,7 @@ const Mutation = {
       const contextUser = await context.user;
       const auth0Sub = contextUser.sub;
 
+      //get current user
       const user = await context.db.query.user(
         {
           where: {
@@ -39,21 +38,20 @@ const Mutation = {
         },
         info
       );
-
-      console.log("user.id: ", user.id);
-
       const recipe = await context.db.mutation.createRecipe(
         {
           input: {
             title: args.title,
-            readyInMinutes: args.readyInMinutes,
+            prepTime: args.prepTime,
             servings: args.servings,
             image: args.image,
+            url: args.url,
             createdBy: { connect: { id: user.id } }
           }
         },
         info
       );
+
       return recipe;
     } catch (e) {
       console.log("You must be logged in to do this");
