@@ -15,6 +15,9 @@
     align-items: center;
     background-color: @CBblue;
     color: @CBtan;
+    @media @tablet {
+      height: 50px;
+    }
 
     .link {
       margin-left: 40px;
@@ -59,11 +62,12 @@
       margin-right: 40px;
       @media @tablet {
         margin-right: 30px;
+        padding-top: 12px;
       }
       @media @phone {
         margin-right: 20px;
-        font-size: 1.8rem;
-        padding-top: 17px;
+        font-size: 1.6rem;
+        padding-top: 14px;
       }
     }
   }
@@ -75,6 +79,10 @@
     font-weight: 300;
     text-align: center;
     display: flex;
+    @media @tablet {
+      height: 30px;
+      font-size: 2.2rem;
+    }
 
     .create-nav {
       width: 25%;
@@ -112,7 +120,11 @@
     width: 100%;
     font-size: 2.6rem;
     font-weight: 300;
-    position: static; 
+    position: static;
+    @media @tablet {
+      height: 30px;
+      font-size: 2.2rem;
+    }
 
     .create-cp {
       width: 100%;
