@@ -14,22 +14,19 @@ type Query {
 }
 
 type Mutation {
-  signup(
-    firstName: String!, 
-    lastName: String!
-  ): User!
+  signup(firstName: String!, lastName: String!): User!
   createRecipe(
-    title: String!, 
-    readyInMinutes: Int!, 
-    servings: Int!, 
+    title: String!
+    prepTime: String!
+    servings: String!
     image: String!
-  ): Recipe!
-  createSubscription(token: String!
-  ): Subscription!
+    url: String!
+  ): Recipe
+  createSubscription(token: String!): Subscription!
   createEvent(
-    start: String!, 
-    end: String!, 
-    resourceId: Int!, 
+    start: String!
+    end: String!
+    resourceId: Int!
     title: String!
   ): Event!
 }

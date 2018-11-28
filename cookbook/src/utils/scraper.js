@@ -143,7 +143,6 @@ const scraper = async url => {
       }
     }
 
-    console.log(ingredient_list);
     return {
       og_sitename,
       og_title,
