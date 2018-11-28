@@ -62,25 +62,25 @@ class Header extends Component {
                     {renderIf(this.props.location.pathname !== '/home/settings')(    
                         <Link to='/home/settings' className='settings-nav'>SETTINGS</Link>
                     )}
-                    {renderIf(this.props.location.pathname !== '/home/recipes')(    
+                    {renderIf(!this.props.location.pathname.includes('/home/recipe'))(    
                         <Link to='/home/recipes' className='recipes-nav'>RECIPES</Link>
                     )}
                 </div>
                 <div className='current-page'>
                     {renderIf(this.props.location.pathname === '/home/create')(
-                        <div className='create-cp'>CREATE</div>
+                        <Link to='/home/create' className='create-cp'>CREATE</Link>
                     )}
                     {renderIf(this.props.location.pathname === '/home/calendar')(
-                        <div className='calendar-cp'>CALENDAR</div>
+                        <Link to='/home/calendar' className='calendar-cp'>CALENDAR</Link>
                     )}
                     {renderIf(this.props.location.pathname === '/home/dashboard')(    
-                        <div className='dashboard-cp'>GROCERY LIST</div>
+                        <Link to='/home/dashboard' className='dashboard-cp'>GROCERY LIST</Link>
                     )}
                     {renderIf(this.props.location.pathname === '/home/settings')(    
-                        <div className='settings-cp'>SETTINGS</div>
+                        <Link to='/home/settings' className='settings-cp'>SETTINGS</Link>
                     )}
-                    {renderIf(this.props.location.pathname === '/home/recipes')(    
-                        <div className='recipes-cp'>RECIPES</div>
+                    {renderIf(this.props.location.pathname.includes('/home/recipe'))(    
+                        <Link to='/home/recipes' className='recipes-cp'>RECIPES</Link>
                     )}
                 </div>
             </div> 

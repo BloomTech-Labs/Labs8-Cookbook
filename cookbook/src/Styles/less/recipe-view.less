@@ -1,0 +1,118 @@
+.recipe-page {
+    display: flex;
+    justify-content: space-between;
+    @media @phone {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .left-container {
+        border: 1px solid green;
+        margin-left: 20px;
+        width: 500px;
+        display: flex;
+        flex-wrap: wrap;
+        @media @desktop {
+            width: 400px;
+        }
+        @media @tablet {
+            width: 330px;
+            margin-left: 0px;
+        }
+        @media @phone {
+            width: 100%;
+            margin-left: 0px;
+        }
+
+        .recipe-img {
+            width: 230px;
+            height: 200px;
+            background-position: center;
+            background-size: cover;
+            @media @desktop {
+                width: 180px;
+                height: 180px;
+            }
+            @media @tablet {
+                width: 145px;
+                height: 145px;
+            }
+            @media @phone {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        .scheduled-for {
+            border: 1px solid red;
+            width: 180px;
+            margin-left: 50px;
+            @media @desktop {
+                width: 160px;
+            }
+            @media @tablet {
+                width: 145px;
+                margin-left: 35px;
+            }
+            @media @phone {
+                width: 160px;
+                margin-left: 45px;
+            }
+        }
+
+        .recipe-info {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+
+            .title {
+                width: 100%;
+            }
+
+            .cook-time {
+                width: 150px;
+                border: 1px solid red;
+            }
+
+            .servings {
+                width: 150px;
+                border: 1px solid red;
+            }
+        }
+
+        .ingredients {
+            width: 100%;
+            
+            .title {
+                text-align: center;
+                width: 100%;
+            }
+
+            .ingredient {
+                
+                .amount {
+                    margin-right: 8px 
+                }
+            }
+        }
+    }
+
+    .right-container {
+        border: 1px solid orange;
+        margin-right: 20px;
+        width: 500px;
+        @media @desktop {
+            width: 400px;
+        }
+        @media @tablet {
+            width: 330px;
+            margin-right: 0px;
+        }
+        @media @phone {
+            width: 100%;
+            margin-right: 0px;
+        }
+    }
+}
