@@ -31,6 +31,28 @@ const CREATE_RECIPE_MUTATION = gql`
   }
 `;
 
+const CREATE_EVENT_MUTATION = gql`
+  mutation(
+    $date: String!
+    $mealType: String!
+    $recipeID: String!
+  ) {
+    createEvent(
+      date: $date
+      mealType: $mealType
+      recipeID: $recipeID
+    ) {
+      id
+      mealType
+      date
+      recipe {
+        id
+        title
+      }
+    }
+  }
+`
+
 class Create extends Component {
   constructor(props) {
     super(props);
@@ -80,7 +102,7 @@ class Create extends Component {
   };
 
   render() {
-    const mutationVariables = {
+    const createRecipeVariables = {
       title: this.state.og_title,
       prepTime: this.state.prep_time,
       servings: this.state.servings,
@@ -88,42 +110,60 @@ class Create extends Component {
       url: this.state.og_url
     };
     return (
-      <Mutation mutation={CREATE_RECIPE_MUTATION} variables={mutationVariables}>
-        {createRecipe => (
-          <div className="create-wrapper">
-            <div className="create-content-wrapper">
-              <input
-                type="text"
-                name="query"
-                placeholder="Search Recipe..."
-                onChange={this.handleChange}
-                value={this.state.query}
-              />
-              <button onClick={this.findRecipes}>Search</button>
-              <Preview
-                og_title={this.state.og_title}
-                og_sitename={this.state.og_sitename}
-                og_image={this.state.og_image}
-                og_desc={this.state.og_desc}
-                prep_time={this.state.prep_time}
-                rating={this.state.rating}
-                servings={this.state.servings}
-                loading={this.state.loadingPreview}
-              />
-              <button onClick={createRecipe}>SAVE</button>
-            </div>
-            <div className="create-filter-wrapper">
-              <div className="recipe-btn">
-                <Buttons
-                  mealButtonHandler={this.mealButtonHandler}
-                  type={this.state.type}
-                />
-              </div>
-              <DatePicker handlePickDate={this.handlePickDate} />
-            </div>
+      <div className="create-wrapper">
+        <div className="create-content-wrapper">
+          <input
+            type="text"
+            name="query"
+            placeholder="Search Recipe..."
+            onChange={this.handleChange}
+            value={this.state.query}
+          />
+          <button onClick={this.findRecipes}>Search</button>
+          <Preview
+            og_title={this.state.og_title}
+            og_sitename={this.state.og_sitename}
+            og_image={this.state.og_image}
+            og_desc={this.state.og_desc}
+            prep_time={this.state.prep_time}
+            rating={this.state.rating}
+            servings={this.state.servings}
+            loading={this.state.loadingPreview}
+          />
+          <Mutation mutation={CREATE_RECIPE_MUTATION} variables={createRecipeVariables}>
+            {(createRecipe, { data }) => {
+              if (data) {
+                return (
+                  <Mutation mutation={CREATE_EVENT_MUTATION} variables={{ 
+                    mealType: this.state.type,
+                    date: this.state.onDate, 
+                    recipeID: data.createRecipe.id,
+                  }}>
+                  {(createEvent, { data }) => {
+                    createEvent();
+                    if (data) {
+                      console.log(data)
+                    } return 
+                  }} 
+                </Mutation>
+                )
+              }
+              return(
+                <button onClick={createRecipe}>SAVE</button>
+              )
+            }}
+          </Mutation>
+        </div>
+        <div className="create-filter-wrapper">
+          <div className="recipe-btn">
+            <Buttons
+              mealButtonHandler={this.mealButtonHandler}
+              type={this.state.type}
+            />
           </div>
-        )}
-      </Mutation>
+          <DatePicker handlePickDate={this.handlePickDate} />
+        </div>
+      </div>
     );
   }
 }

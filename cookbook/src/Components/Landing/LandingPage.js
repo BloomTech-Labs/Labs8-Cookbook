@@ -19,13 +19,13 @@ class LandingPage extends Component {
     render() {
         const { isAuthenticated } = auth;
         // Carousel settings:
-        var settings = {
-            infinite: true,
-            speed: 500,
-            slidesToScroll: 4,
-            variableWidth: true,
-            centerMode: true
-          };
+        // var settings = {
+        //     infinite: true,
+        //     speed: 500,
+        //     slidesToScroll: 4,
+        //     variableWidth: true,
+        //     centerMode: true
+        //   };
 
         return ( 
             <div className='containerLP'>
