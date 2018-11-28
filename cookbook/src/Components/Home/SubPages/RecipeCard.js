@@ -17,7 +17,9 @@ class RecipeCard extends Component {
                           (~this.props.recipes.meal.toLowerCase().indexOf(this.props.search.toLowerCase())) ||
                           (~this.props.recipes.date.toLocaleDateString().toLowerCase().indexOf(this.props.search.toLowerCase()));
 
-    return searchInContent;
+    let isInFilter = this.props.filter.size === 0 || this.props.filter.has(this.props.recipes.meal);
+
+    return searchInContent && isInFilter;
   }
 
   render() {

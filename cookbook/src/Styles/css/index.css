@@ -639,18 +639,40 @@ html {
   margin: 10px 0;
   padding: 10px;
 }
-.recipes-container {
+.recipesContainer {
+  display: flex;
+  flex-flow: column;
+}
+.recipesContainer .recipesFunctionBar {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.recipesContainer .recipesFunctionBar .recipesFilterButtonChosen {
+  background: black;
+  color: white;
+  border: 2px black solid;
+  border-radius: 500px;
+}
+.recipesContainer .recipesFunctionBar .recipesFilterButtonNotChosen {
+  background: white;
+  color: grey;
+  border: 2px grey solid;
+  border-radius: 500px;
+}
+.recipesContainer .recipesCards {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  margin-top: 20px;
 }
-.recipes-container .recipeCard {
+.recipesContainer .recipesCards .recipeCard {
   border: 1px solid black;
   width: 180px;
   height: 200px;
   margin: 0 10px 20px 10px;
 }
-.recipes-container .recipeCardInvisible {
+.recipesContainer .recipesCards .recipeCardInvisible {
   display: none;
   border: 1px solid black;
   width: 180px;

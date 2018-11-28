@@ -59,38 +59,46 @@ class Recipes extends Component {
     this.setState({ filter: newFilter });
   }
 
+  filterButtonClassName = (meal) => {
+    return this.state.filter.has(meal) ? "recipesFilterButtonChosen" : "recipesFilterButtonNotChosen";
+  }
+
   render() {
     return (
-      <div>
-        
-        <button onClick={() => this.handleAddRecipe()} className="recipesAddRecipe">+ add recipe</button>
-        
-        <form>
-          <input
-            type="text"
-            name="search"
-            placeholder="search"
-            onChange={this.handleSearch}
-            value={this.state.search}>
-          </input>
-        </form>
+      <div className="recipesContainer">
 
-        <div className="recipesFilterContainer">
-          <button onClick={() => this.handleFilter("breakfast")}>breakfast</button>
-          <button onClick={() => this.handleFilter("lunch")}>lunch</button>
-          <button onClick={() => this.handleFilter("dinner")}>dinner</button>
+        <div className="recipesFunctionBar">
+        
+          <button onClick={() => this.handleAddRecipe()} className="recipesAddRecipe">+ add recipe</button>
+          
+          <form>
+            <input
+              type="text"
+              name="search"
+              placeholder="search"
+              onChange={this.handleSearch}
+              value={this.state.search}>
+            </input>
+          </form>
+
+          <div className="recipesFilterContainer">
+            <button className={this.filterButtonClassName("breakfast")} onClick={() => this.handleFilter("breakfast")}>breakfast</button>
+            <button className={this.filterButtonClassName("lunch")}  onClick={() => this.handleFilter("lunch")}>lunch</button>
+            <button className={this.filterButtonClassName("dinner")} onClick={() => this.handleFilter("dinner")}>dinner</button>
+          </div>
+
         </div>
         
         <Query query={RECIPE_QUERY}>
           {({ loading, error, data }) => {
-            if (loading) return <div>Fetching</div>
-            if (error) return <div>Error</div>
+            // if (loading) return <div>Fetching</div>
+            // if (error) return <div>Error</div>
             
             // const recipesToRender = data.recipes
             const recipesToRender = dummyRecipesData
 
             return (
-              <div className="recipes-container">
+              <div className="recipesCards">
                 {recipesToRender.map(recipes => 
                 <RecipeCard 
                   key={recipes.id} 

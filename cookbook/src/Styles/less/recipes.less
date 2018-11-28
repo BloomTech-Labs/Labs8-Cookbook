@@ -1,20 +1,46 @@
-.recipes-container {
+.recipesContainer {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  flex-flow: column;
 
-  .recipeCard {
-    border: 1px solid black;
-    width: 180px;
-    height: 200px;
-    margin: 0 10px 20px 10px;
+  .recipesFunctionBar {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    .recipesFilterButtonChosen {
+      background: black;
+      color: white;
+      border: 2px black solid;
+      border-radius: 500px;
+    }
+  
+    .recipesFilterButtonNotChosen {
+      background: white;
+      color: grey;
+      border: 2px grey solid;
+      border-radius: 500px;
+    }
   }
 
-  .recipeCardInvisible {
-    display: none;
-    border: 1px solid black;
-    width: 180px;
-    height: 200px;
-    margin: 0 10px 20px 10px;
+  .recipesCards {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+
+    .recipeCard {
+      border: 1px solid black;
+      width: 180px;
+      height: 200px;
+      margin: 0 10px 20px 10px;
+    }
+  
+    .recipeCardInvisible {
+      display: none;
+      border: 1px solid black;
+      width: 180px;
+      height: 200px;
+      margin: 0 10px 20px 10px;
+    }
   }
 }
