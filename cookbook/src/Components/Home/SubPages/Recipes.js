@@ -39,6 +39,7 @@ class Recipes extends Component {
     super(props);
     this.state = {
       search: '',
+      filter: new Set([])
     };
   }
 
@@ -46,9 +47,17 @@ class Recipes extends Component {
     this.props.history.push('create')
   }
 
-  handleChange = e => {
+  handleSearch = e => {
     this.setState({ [e.target.name]: e.target.value});
   };
+
+  handleFilter = (meal) => {
+    let newFilter = this.state.filter;
+    if ( newFilter.has(meal) ) newFilter.delete(meal);
+    else newFilter.add(meal);
+
+    this.setState({ filter: newFilter });
+  }
 
   render() {
     return (
@@ -61,9 +70,16 @@ class Recipes extends Component {
             type="text"
             name="search"
             placeholder="search"
-            onChange={this.handleChange}
-            value={this.state.search}></input>
+            onChange={this.handleSearch}
+            value={this.state.search}>
+          </input>
         </form>
+
+        <div className="recipesFilterContainer">
+          <button onClick={() => this.handleFilter("breakfast")}>breakfast</button>
+          <button onClick={() => this.handleFilter("lunch")}>lunch</button>
+          <button onClick={() => this.handleFilter("dinner")}>dinner</button>
+        </div>
         
         <Query query={RECIPE_QUERY}>
           {({ loading, error, data }) => {
@@ -75,7 +91,13 @@ class Recipes extends Component {
 
             return (
               <div className="recipes-container">
-                {recipesToRender.map(recipes => <RecipeCard key={recipes.id} recipes={recipes} search={this.state.search} />)}
+                {recipesToRender.map(recipes => 
+                <RecipeCard 
+                  key={recipes.id} 
+                  recipes={recipes} 
+                  search={this.state.search}
+                  filter={this.state.filter}
+                />)}
               </div>
             )
           }}

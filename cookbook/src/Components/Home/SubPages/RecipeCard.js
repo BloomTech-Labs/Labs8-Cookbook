@@ -12,6 +12,7 @@ class RecipeCard extends Component {
   }
 
   isSearchedFor() {
+    // searchInContent will only be true if the search term is in the title, meal, or date of the RecipeCard
     let searchInContent = (~this.props.recipes.title.toLowerCase().indexOf(this.props.search.toLowerCase())) ||
                           (~this.props.recipes.meal.toLowerCase().indexOf(this.props.search.toLowerCase())) ||
                           (~this.props.recipes.date.toLocaleDateString().toLowerCase().indexOf(this.props.search.toLowerCase()));
@@ -21,6 +22,7 @@ class RecipeCard extends Component {
 
   render() {
     return (
+      // make the RecipeCard visible only if searched for
       <div className={this.isSearchedFor() ? "recipeCard" : "recipeCardInvisible"}>
         
         <div className="recipeCardTitle">
