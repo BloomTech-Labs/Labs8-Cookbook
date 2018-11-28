@@ -12,7 +12,12 @@ class RecipeView extends Component {
     render() {
         return (
             <div className='recipe-page'>
-                <span>This is the recipes page!</span>
+                <div className='left-container'>
+
+                </div>
+                <div className='right-container'>
+
+                </div>
             </div>
         )
     }

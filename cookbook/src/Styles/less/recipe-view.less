@@ -1,0 +1,43 @@
+.recipe-page {
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    @media @phone {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .left-container {
+        border: 1px solid green;
+        margin-left: 20px;
+        width: 500px;
+        @media @desktop {
+            width: 400px;
+        }
+        @media @tablet {
+            width: 330px;
+            margin-left: 0px;
+        }
+        @media @phone {
+            width: 100%;
+            margin-left: 0px;
+        }
+    }
+
+    .right-container {
+        border: 1px solid orange;
+        margin-right: 20px;
+        width: 500px;
+        @media @desktop {
+            width: 400px;
+        }
+        @media @tablet {
+            width: 330px;
+            margin-right: 0px;
+        }
+        @media @phone {
+            width: 100%;
+            margin-right: 0px;
+        }
+    }
+}
