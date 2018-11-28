@@ -51,19 +51,29 @@ class Header extends Component {
                 </div>
                 <div className='nav'>
                     {renderIf(this.props.location.pathname !== '/home/create')(
-                        <Link to='/home/create' className='create-nav'>CREATE</Link>
+                        <div  className='create-nav'>
+                            <Link to='/home/create' style={{textDecoration: 'none'}}>CREATE</Link>
+                        </div>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/calendar')(
-                        <Link to='/home/calendar' className='calendar-nav'>CALENDAR</Link>
+                        <div className='calendar-nav'>
+                            <Link to='/home/calendar'>CALENDAR</Link>
+                        </div>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/dashboard')(    
-                        <Link to='/home/dashboard' className='dashboard-nav'>GROCERY LIST</Link>
+                        <div className='dashboard-nav'>
+                            <Link to='/home/dashboard'>GROCERY LIST</Link>
+                        </div>
                     )}
                     {renderIf(this.props.location.pathname !== '/home/settings')(    
-                        <Link to='/home/settings' className='settings-nav'>SETTINGS</Link>
+                        <div className='settings-nav'>
+                            <Link to='/home/settings'>SETTINGS</Link>
+                        </div>
                     )}
                     {renderIf(!this.props.location.pathname.includes('/home/recipe'))(    
-                        <Link to='/home/recipes' className='recipes-nav'>RECIPES</Link>
+                        <div className='recipes-nav'>
+                            <Link to='/home/recipes'>RECIPES</Link>
+                        </div>
                     )}
                 </div>
                 <div className='current-page'>
