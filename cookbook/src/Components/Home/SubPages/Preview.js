@@ -5,17 +5,10 @@ const Preview = props => {
 
   const preview = props.og_title ? (
     <React.Fragment>
-      <div>{props.og_sitename}</div>
+      <img src={props.og_image} alt={props.title} />
       <header>{props.og_title}</header>
-      <img
-        src={props.og_image}
-        alt={props.title}
-        // style={{ height: "160px", width: "270" }}
-      />
-      <div>Rating: {props.rating}</div>
-      <div>Prep Time: {props.prep_time}</div>
-      <div>Servings: {props.servings}</div>
       <div>{props.og_desc}</div>
+      <div>{props.og_sitename}</div>
     </React.Fragment>
   ) : null;
 
