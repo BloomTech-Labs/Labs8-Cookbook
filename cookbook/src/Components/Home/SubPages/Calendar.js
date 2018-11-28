@@ -3,24 +3,21 @@ import moment from 'moment';
 import Calendar from 'react-big-calendar';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import Buttons from './Buttons'
+import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-// import gql from "graphql-tag";
-// import { Mutation } from "react-apollo";
+const SCHEDULE_RECIPE = gql`
+  mutation scheduleRecipe($type: String!) {
+    scheduleRecipe(type: $type) {
+      type
+    }
+  }
+`;
 
-// const SCHEDULE_RECIPE = gql`
-//   mutation scheduleRecipe($type: String!) {
-//     scheduleRecipe(type: $type) {
-//       id
-//       type
-//     }
-//   }
-// `;
-
-// a localizer for BigCalendar
-const localizer = Calendar.momentLocalizer(moment) 
+const localizer = Calendar.momentLocalizer(moment)  // a localizer for BigCalendar
 
 const DnDCalendar = withDragAndDrop(Calendar);
 
@@ -33,31 +30,34 @@ const resourceMap = [
 ]
 
 class RecipeCalendar extends Component {
-  state = {
-    events: [
-      {
-        id: 0,
-        start: new Date(),
-        end: new Date(moment().add(0, "days")),
-        title: "Omelette",
-        resourceId: 1
-      },
-      {
-        id: 1,
-        start: new Date(),
-        end: new Date(moment().add(0, "days")),
-        title: "Turkey Sandwich",
-        resourceId: 2
-      },
-      {
-        id: 3,
-        start: new Date(),
-        end: new Date(moment().add(0, "days")),
-        title: "Steak",
-        resourceId: 3
-      }
-    ]
-  };
+  constructor() {
+    super();
+      this.state = {
+        events: [
+          {
+            id: 0,
+            start: new Date(),
+            end: new Date(moment().add(0, "days")),
+            title: "Omelette",
+            resourceId: 1
+          },
+          {
+            id: 1,
+            start: new Date(),
+            end: new Date(moment().add(0, "days")),
+            title: "Turkey Sandwich",
+            resourceId: 2
+          },
+          {
+            id: 3,
+            start: new Date(),
+            end: new Date(moment().add(0, "days")),
+            title: "Steak",
+            resourceId: 3
+          }
+        ]
+      };
+    }
 
   // onEventResize = ({ start, end }) => {
   //   this.setState(state => {
@@ -84,6 +84,7 @@ class RecipeCalendar extends Component {
   }
 
   render() {
+    const { events } = this.state
     return (
       <div className="calendar-page-container">
         <div className="calendar-container">
@@ -106,6 +107,9 @@ class RecipeCalendar extends Component {
           <Buttons>
           </Buttons>
         </div>
+        <Mutation mutation={SCHEDULE_RECIPE} variables={{ events }}>
+          {postMutation => <button onClick={postMutation}>Submit</button>}
+        </Mutation>
       </div>
     )
   }
