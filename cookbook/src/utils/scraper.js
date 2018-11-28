@@ -34,7 +34,11 @@ const convert_quantity = quant => {
     [first, second] = quant.split(" ");
     const first_num = convert_single_quantity(first);
     const second_num = convert_single_quantity(second);
-    return first_num + second_num;
+    if (first_num > second_num) {
+      return first_num + second_num;
+    } else {
+      return second_num;
+    }
   }
 };
 
