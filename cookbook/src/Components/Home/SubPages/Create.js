@@ -132,22 +132,22 @@ class Create extends Component {
           />
           <Mutation mutation={CREATE_RECIPE_MUTATION} variables={createRecipeVariables}>
             {(createRecipe, { data }) => {
-              if (data) {
-                return (
-                  <Mutation mutation={CREATE_EVENT_MUTATION} variables={{ 
-                    mealType: this.state.type,
-                    date: this.state.onDate, 
-                    recipeID: data.createRecipe.id,
-                  }}>
-                  {(createEvent, { data }) => {
-                    createEvent();
-                    if (data) {
-                      console.log(data)
-                    } return 
-                  }} 
-                </Mutation>
-                )
-              }
+              // if (data) {
+              //   return (
+              //     <Mutation mutation={CREATE_EVENT_MUTATION} variables={{ 
+              //       mealType: this.state.type,
+              //       date: this.state.onDate, 
+              //       recipeID: data.createRecipe.id,
+              //     }}>
+              //     {(createEvent, { data }) => {
+              //       createEvent();
+              //       if (data) {
+              //         console.log(data)
+              //       } return 
+              //     }} 
+              //   </Mutation>
+              //   )
+              // }
               return(
                 <button onClick={createRecipe}>SAVE</button>
               )
