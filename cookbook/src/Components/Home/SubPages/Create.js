@@ -3,7 +3,6 @@ import Preview from "./Preview";
 import scraper from "../../../utils/scraper";
 import Buttons from "./Buttons";
 import DatePicker from "../../SubComponents/DatePicker.js";
-import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
 import { graphql, compose } from "react-apollo";
 

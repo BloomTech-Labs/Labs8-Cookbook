@@ -3,7 +3,8 @@ import moment from 'moment';
 import Calendar from 'react-big-calendar';
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import gql from "graphql-tag";
-import { Mutation } from "react-apollo";
+import { Mutation, Query } from "react-apollo";
+import User from './User';
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -15,6 +16,20 @@ const SCHEDULE_RECIPE = gql`
     }
   }
 `;
+
+const QUERY_RECIPE_EVENT = gql`
+  query ($id: String!) {
+    user (id: $id) {
+      recipes {
+        id
+        title
+        events {
+          id date
+        }
+      }
+    }
+  }
+`
 
 const localizer = Calendar.momentLocalizer(moment)  // a localizer for BigCalendar
 
@@ -39,20 +54,6 @@ class RecipeCalendar extends Component {
             end: new Date(moment().add(0, "days")),
             title: "Omelette",
             resourceId: 1
-          },
-          {
-            id: 1,
-            start: new Date(),
-            end: new Date(moment().add(0, "days")),
-            title: "Turkey Sandwich",
-            resourceId: 2
-          },
-          {
-            id: 3,
-            start: new Date(),
-            end: new Date(moment().add(0, "days")),
-            title: "Steak",
-            resourceId: 3
           }
         ],
         type: ""
@@ -86,27 +87,50 @@ class RecipeCalendar extends Component {
   render() {
     const { events } = this.state
     return (
-      <div className="calendar-page-container">
-        <div className="calendar-container">
-          <DnDCalendar
-            localizer={localizer}
-            defaultDate={new Date()}
-            defaultView="month"
-            events={this.state.events}
-            onEventDrop={this.onEventDrop}
-            resources={resourceMap}
-            resourceIdAccessor="resourceId"
-            resourceTitleAccessor="resourceTitle"
-            // onEventResize={this.onEventResize}
-            // resizable
-            selectable
-            style={{ height: "100vh" }}
-          />
-        </div>
-        <Mutation mutation={SCHEDULE_RECIPE} variables={{ events }}>
-          {postMutation => <button onClick={postMutation}>Submit</button>}
-        </Mutation>
-      </div>
+      <User>
+        {({data}, loading, error) => {
+          if (loading) return <div>Fetching</div>
+          if (error) return <div>Error</div>
+          console.log('data', data.currentUser)
+          if (data.currentUser) {
+          return (
+            <Query query={QUERY_RECIPE_EVENT} variables = {{id: data.currentUser.id}}>
+              {({ loading, error, data }) => {
+                if (loading) return <div>Fetching</div>
+                if (error) return <div>Error</div>
+                console.log('id', data.user.recipes)
+                return (
+                  <div className="calendar-page-container">
+                    <div className="calendar-container">
+                      <DnDCalendar
+                        localizer={localizer}
+                        defaultDate={new Date()}
+                        defaultView="month"
+                        events={this.state.events}
+                        onEventDrop={this.onEventDrop}
+                        resources={resourceMap}
+                        resourceIdAccessor="resourceId"
+                        resourceTitleAccessor="resourceTitle"
+                        // onEventResize={this.onEventResize}
+                        // resizable
+                        selectable
+                        style={{ height: "100vh" }}
+                      />
+                    </div>
+                    <Mutation mutation={SCHEDULE_RECIPE} variables={{ events }}>
+                      {postMutation => <button onClick={postMutation}>Submit</button>}
+                    </Mutation>
+                  </div>
+                )
+              }}
+            </Query>
+            )
+            }
+            return (
+              <div>loading..</div>
+            )
+        }}
+      </User>
     )
   }
 }
