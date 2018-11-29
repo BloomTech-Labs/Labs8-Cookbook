@@ -8,7 +8,7 @@
 # Define Mutation and Query to be used by graphqlAPI.
 
 type Query {
-  users: [User]!
+  user(id: String!): User!
   recipes: [Recipe]!
   currentUser(auth0Sub: String): User
 }
