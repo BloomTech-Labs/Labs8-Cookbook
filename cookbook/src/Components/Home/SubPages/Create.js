@@ -32,16 +32,8 @@ const CREATE_RECIPE_MUTATION = gql`
 `;
 
 const CREATE_EVENT_MUTATION = gql`
-  mutation(
-    $date: String!
-    $mealType: String!
-    $recipeID: String!
-  ) {
-    createEvent(
-      date: $date
-      mealType: $mealType
-      recipeID: $recipeID
-    ) {
+  mutation($date: String!, $mealType: String!, $recipe: String!) {
+    createEvent(date: $date, mealType: $mealType, recipe: $recipe) {
       id
       mealType
       date
@@ -51,7 +43,7 @@ const CREATE_EVENT_MUTATION = gql`
       }
     }
   }
-`
+`;
 
 class Create extends Component {
   constructor(props) {
@@ -68,8 +60,13 @@ class Create extends Component {
       servings: "",
       rating: "",
       og_url: "",
-      onDate: null
+      onDate: null,
+      firstload: true
     };
+  }
+
+  componentDidMount() {
+    this.setState({ firstload: false });
   }
 
   handleChange = e => {
@@ -101,6 +98,25 @@ class Create extends Component {
     });
   };
 
+  onSave = async (cb1, vars1, cb2, vars2) => {
+    const { data } = await cb1({
+      variables: vars1
+    });
+
+    const newVars = {
+      ...vars2,
+      recipe: data.createRecipe.id
+    };
+
+    console.log(newVars);
+
+    const data2 = await cb2({
+      variables: newVars
+    });
+
+    return data2;
+  };
+
   render() {
     const createRecipeVariables = {
       title: this.state.og_title,
@@ -109,62 +125,95 @@ class Create extends Component {
       image: this.state.og_image,
       url: this.state.og_url
     };
-    return (
-      <div className="create-wrapper">
-        <div className="create-content-wrapper">
-          <input
-            type="text"
-            name="query"
-            placeholder="Search Recipe..."
-            onChange={this.handleChange}
-            value={this.state.query}
-          />
-          <button onClick={this.findRecipes}>Search</button>
-          <Preview
-            og_title={this.state.og_title}
-            og_sitename={this.state.og_sitename}
-            og_image={this.state.og_image}
-            og_desc={this.state.og_desc}
-            prep_time={this.state.prep_time}
-            rating={this.state.rating}
-            servings={this.state.servings}
-            loading={this.state.loadingPreview}
-          />
-          <Mutation mutation={CREATE_RECIPE_MUTATION} variables={createRecipeVariables}>
-            {(createRecipe, { data }) => {
-              // if (data) {
-              //   return (
-              //     <Mutation mutation={CREATE_EVENT_MUTATION} variables={{ 
-              //       mealType: this.state.type,
-              //       date: this.state.onDate, 
-              //       recipeID: data.createRecipe.id,
-              //     }}>
-              //     {(createEvent, { data }) => {
-              //       createEvent();
-              //       if (data) {
-              //         console.log(data)
-              //       } return 
-              //     }} 
-              //   </Mutation>
-              //   )
-              // }
-              return(
-                <button onClick={createRecipe}>SAVE</button>
-              )
-            }}
-          </Mutation>
-        </div>
-        <div className="create-filter-wrapper">
-          <div className="recipe-btn">
-            <Buttons
-              mealButtonHandler={this.mealButtonHandler}
-              type={this.state.type}
+    console.log(this.state.firstload);
+    if (!this.state.firstload) {
+      return (
+        <div className="create-wrapper">
+          <div className="create-content-wrapper">
+            <input
+              type="text"
+              name="query"
+              placeholder="Search Recipe..."
+              onChange={this.handleChange}
+              value={this.state.query}
             />
+            <button onClick={this.findRecipes}>Search</button>
+            <Preview
+              og_title={this.state.og_title}
+              og_sitename={this.state.og_sitename}
+              og_image={this.state.og_image}
+              og_desc={this.state.og_desc}
+              prep_time={this.state.prep_time}
+              rating={this.state.rating}
+              servings={this.state.servings}
+              loading={this.state.loadingPreview}
+            />
+            <Mutation mutation={CREATE_RECIPE_MUTATION}>
+              {createRecipe => {
+                const createEventVariables = {
+                  mealType: this.state.type,
+                  date: this.state.onDate
+                };
+
+                return (
+                  <Mutation mutation={CREATE_EVENT_MUTATION}>
+                    {createEvent => {
+                      return (
+                        <button
+                          onClick={() =>
+                            this.onSave(
+                              createRecipe,
+                              createRecipeVariables,
+                              createEvent,
+                              createEventVariables
+                            )
+                          }
+                        >
+                          SAVE
+                        </button>
+                      );
+                    }}
+                  </Mutation>
+                );
+              }}
+            </Mutation>
+            {/* <Mutation mutation={CREATE_RECIPE_MUTATION} variables={createRecipeVariables}>
+              {(createRecipe, { data }) => {
+                // if (data) {
+                //   return (
+                //     <Mutation mutation={CREATE_EVENT_MUTATION} variables={{ 
+                //       mealType: this.state.type,
+                //       date: this.state.onDate, 
+                //       IDID: data.createRecipe.id,
+                //     }}>
+                //     {(createEvent, { data }) => {
+                //       createEvent();
+                //       if (data) {
+                //         console.log(data)
+                //       } return 
+                //     }} 
+                //   </Mutation>
+                //   )
+                // }
+                return(
+                  <button onClick={createRecipe}>SAVE</button>
+                )
+              }}
+            </Mutation> */}
           </div>
-          <DatePicker handlePickDate={this.handlePickDate} />
+          <div className="create-filter-wrapper">
+            <div className="ID-btn">
+              <Buttons
+                mealButtonHandler={this.mealButtonHandler}
+                type={this.state.type}
+              />
+            </div>
+            <DatePicker handlePickDate={this.handlePickDate} />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return <p>loading...</p>;
   }
 }
 
