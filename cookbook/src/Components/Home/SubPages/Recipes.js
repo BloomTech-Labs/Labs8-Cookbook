@@ -122,10 +122,10 @@ class Recipes extends Component {
                 }}
               </Query>
               )
-            }
-            return (
-              <div>loading..</div>
-            )
+              }
+              return (
+                <div>loading..</div>
+              )
           }}
         </User>
       </div>
