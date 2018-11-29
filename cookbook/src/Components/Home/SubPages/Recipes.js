@@ -91,10 +91,11 @@ class Recipes extends Component {
         
         <Query query={RECIPE_QUERY}>
           {({ loading, error, data }) => {
-            if (loading) return <div>Fetching</div>
-            if (error) return <div>Error</div>
+            // if (loading) return <div>Fetching</div>
+            // if (error) return <div>Error</div>
             
-            const recipesToRender = data.recipes
+            // const recipesToRender = data.recipes
+            const recipesToRender = dummyRecipesData
 
             return (
               <div className="recipesCards">
