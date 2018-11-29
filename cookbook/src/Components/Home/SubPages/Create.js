@@ -32,6 +32,32 @@ const CREATE_RECIPE_MUTATION = gql`
   }
 `;
 
+const CREATE_INSTRUCTION_MUTATION = gql`
+  mutation($stepNum: Int!, $description: String!, $recipe: String!) {
+    createInstruction(stepNum: $stepNum, description: $description, recipe: $recipe) {
+      stepNum
+      description
+      recipe {
+        id
+        title
+      }
+    }
+  }
+`;
+
+const CREATE_INGREDIENT_MUTATION = gql`
+  mutation($name: String!, $quantity: Float!, $recipe: String!) {
+    createIngredient(name: $name, quantity: $quantity, recipe: $recipe) {
+      name
+      quantity
+      recipe {
+        id
+        title
+      }
+    }
+  }
+`;
+
 const CREATE_EVENT_MUTATION = gql`
   mutation($date: String!, $mealType: String!, $recipe: String!) {
     createEvent(date: $date, mealType: $mealType, recipe: $recipe) {
@@ -61,6 +87,8 @@ class Create extends Component {
       servings: "",
       rating: "",
       og_url: "",
+      instructions: [],
+      ingredient_list: [],
       onDate: null
     };
   }
@@ -114,7 +142,39 @@ class Create extends Component {
     });
     console.log("recipe created: ", data.createRecipe);
 
-    // Variables for createEvent
+    this.state.instructions.forEach( async (instruction, index) => {
+      //variables for createInstruction
+      const instructionVariables = {
+        stepNum: index+1,
+        description: instruction,
+        recipe: data.createRecipe.id
+      }
+
+      //execute createInstruction
+      const instructionData = await this.props.createInstruction({
+        variables: instructionVariables
+      });
+      console.log("instruction created: ", instructionData);
+    });
+
+    this.state.ingredient_list.forEach( async (ingredient) => {
+      //variables for createIngredient
+      const ingredientVariables = {
+        name: ingredient.food,
+        quantity: ingredient.quantity,
+        recipe: data.createRecipe.id
+      }
+
+      console.log(ingredientVariables);
+
+      //execute createIngredient
+      const ingredientData = await this.props.createIngredient({
+        variables: ingredientVariables
+      });
+      console.log("ingredient created: ", ingredientData);
+    });
+
+    //variables for createEvent
     const eventVariables = {
       mealType: this.state.type,
       date: this.state.onDate,
@@ -177,8 +237,16 @@ const createRecipeMutation = graphql(CREATE_RECIPE_MUTATION, {
 const createEventMutation = graphql(CREATE_EVENT_MUTATION, {
   name: "createEvent"
 });
+const createInstructionMutation = graphql(CREATE_INSTRUCTION_MUTATION, {
+  name: "createInstruction"
+});
+const createIngredientMutation = graphql(CREATE_INGREDIENT_MUTATION, {
+  name: "createIngredient"
+});
 
 export default compose(
   createRecipeMutation,
-  createEventMutation
+  createEventMutation,
+  createInstructionMutation,
+  createIngredientMutation
 )(Create);
