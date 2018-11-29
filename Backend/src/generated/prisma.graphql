@@ -58,11 +58,6 @@ input EventCreateManyWithoutRecipeInput {
   connect: [EventWhereUniqueInput!]
 }
 
-input EventCreateOneInput {
-  create: EventCreateInput
-  connect: EventWhereUniqueInput
-}
-
 input EventCreateWithoutRecipeInput {
   date: String!
   mealType: String!
@@ -86,12 +81,6 @@ enum EventOrderByInput {
   updatedAt_DESC
 }
 
-input EventUpdateDataInput {
-  recipe: RecipeUpdateOneRequiredWithoutEventsInput
-  date: String
-  mealType: String
-}
-
 input EventUpdateInput {
   recipe: RecipeUpdateOneRequiredWithoutEventsInput
   date: String
@@ -107,13 +96,6 @@ input EventUpdateManyWithoutRecipeInput {
   upsert: [EventUpsertWithWhereUniqueWithoutRecipeInput!]
 }
 
-input EventUpdateOneRequiredInput {
-  create: EventCreateInput
-  update: EventUpdateDataInput
-  upsert: EventUpsertNestedInput
-  connect: EventWhereUniqueInput
-}
-
 input EventUpdateWithoutRecipeDataInput {
   date: String
   mealType: String
@@ -122,11 +104,6 @@ input EventUpdateWithoutRecipeDataInput {
 input EventUpdateWithWhereUniqueWithoutRecipeInput {
   where: EventWhereUniqueInput!
   data: EventUpdateWithoutRecipeDataInput!
-}
-
-input EventUpsertNestedInput {
-  update: EventUpdateDataInput!
-  create: EventCreateInput!
 }
 
 input EventUpsertWithWhereUniqueWithoutRecipeInput {
@@ -193,6 +170,7 @@ type GroceryList {
   startDate: String!
   endDate: String!
   groceryList(where: totalQuantityWhereInput, orderBy: totalQuantityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [totalQuantity!]
+  user: User!
 }
 
 type GroceryListConnection {
@@ -205,6 +183,7 @@ input GroceryListCreateInput {
   startDate: String!
   endDate: String!
   groceryList: totalQuantityCreateManyInput
+  user: UserCreateOneInput!
 }
 
 type GroceryListEdge {
@@ -229,6 +208,7 @@ input GroceryListUpdateInput {
   startDate: String
   endDate: String
   groceryList: totalQuantityUpdateManyInput
+  user: UserUpdateOneRequiredInput
 }
 
 input GroceryListWhereInput {
@@ -277,6 +257,7 @@ input GroceryListWhereInput {
   groceryList_every: totalQuantityWhereInput
   groceryList_some: totalQuantityWhereInput
   groceryList_none: totalQuantityWhereInput
+  user: UserWhereInput
   AND: [GroceryListWhereInput!]
   OR: [GroceryListWhereInput!]
   NOT: [GroceryListWhereInput!]
@@ -290,7 +271,7 @@ type Ingredient {
   id: ID!
   name: String!
   quantity: Float!
-  event: Event!
+  recipe: Recipe!
 }
 
 type IngredientConnection {
@@ -302,12 +283,17 @@ type IngredientConnection {
 input IngredientCreateInput {
   name: String!
   quantity: Float!
-  event: EventCreateOneInput!
+  recipe: RecipeCreateOneWithoutIngredientsInput!
 }
 
-input IngredientCreateManyInput {
-  create: [IngredientCreateInput!]
+input IngredientCreateManyWithoutRecipeInput {
+  create: [IngredientCreateWithoutRecipeInput!]
   connect: [IngredientWhereUniqueInput!]
+}
+
+input IngredientCreateWithoutRecipeInput {
+  name: String!
+  quantity: Float!
 }
 
 type IngredientEdge {
@@ -328,36 +314,35 @@ enum IngredientOrderByInput {
   updatedAt_DESC
 }
 
-input IngredientUpdateDataInput {
-  name: String
-  quantity: Float
-  event: EventUpdateOneRequiredInput
-}
-
 input IngredientUpdateInput {
   name: String
   quantity: Float
-  event: EventUpdateOneRequiredInput
+  recipe: RecipeUpdateOneRequiredWithoutIngredientsInput
 }
 
-input IngredientUpdateManyInput {
-  create: [IngredientCreateInput!]
-  update: [IngredientUpdateWithWhereUniqueNestedInput!]
-  upsert: [IngredientUpsertWithWhereUniqueNestedInput!]
+input IngredientUpdateManyWithoutRecipeInput {
+  create: [IngredientCreateWithoutRecipeInput!]
   delete: [IngredientWhereUniqueInput!]
   connect: [IngredientWhereUniqueInput!]
   disconnect: [IngredientWhereUniqueInput!]
+  update: [IngredientUpdateWithWhereUniqueWithoutRecipeInput!]
+  upsert: [IngredientUpsertWithWhereUniqueWithoutRecipeInput!]
 }
 
-input IngredientUpdateWithWhereUniqueNestedInput {
-  where: IngredientWhereUniqueInput!
-  data: IngredientUpdateDataInput!
+input IngredientUpdateWithoutRecipeDataInput {
+  name: String
+  quantity: Float
 }
 
-input IngredientUpsertWithWhereUniqueNestedInput {
+input IngredientUpdateWithWhereUniqueWithoutRecipeInput {
   where: IngredientWhereUniqueInput!
-  update: IngredientUpdateDataInput!
-  create: IngredientCreateInput!
+  data: IngredientUpdateWithoutRecipeDataInput!
+}
+
+input IngredientUpsertWithWhereUniqueWithoutRecipeInput {
+  where: IngredientWhereUniqueInput!
+  update: IngredientUpdateWithoutRecipeDataInput!
+  create: IngredientCreateWithoutRecipeInput!
 }
 
 input IngredientWhereInput {
@@ -397,7 +382,7 @@ input IngredientWhereInput {
   quantity_lte: Float
   quantity_gt: Float
   quantity_gte: Float
-  event: EventWhereInput
+  recipe: RecipeWhereInput
   AND: [IngredientWhereInput!]
   OR: [IngredientWhereInput!]
   NOT: [IngredientWhereInput!]
@@ -412,7 +397,7 @@ type Instruction {
   stepNum: Int!
   description: String!
   isCompleted: Boolean!
-  event: Event!
+  recipe: Recipe!
 }
 
 type InstructionConnection {
@@ -425,12 +410,18 @@ input InstructionCreateInput {
   stepNum: Int!
   description: String!
   isCompleted: Boolean
-  event: EventCreateOneInput!
+  recipe: RecipeCreateOneWithoutInstructionsInput!
 }
 
-input InstructionCreateManyInput {
-  create: [InstructionCreateInput!]
+input InstructionCreateManyWithoutRecipeInput {
+  create: [InstructionCreateWithoutRecipeInput!]
   connect: [InstructionWhereUniqueInput!]
+}
+
+input InstructionCreateWithoutRecipeInput {
+  stepNum: Int!
+  description: String!
+  isCompleted: Boolean
 }
 
 type InstructionEdge {
@@ -453,38 +444,37 @@ enum InstructionOrderByInput {
   updatedAt_DESC
 }
 
-input InstructionUpdateDataInput {
-  stepNum: Int
-  description: String
-  isCompleted: Boolean
-  event: EventUpdateOneRequiredInput
-}
-
 input InstructionUpdateInput {
   stepNum: Int
   description: String
   isCompleted: Boolean
-  event: EventUpdateOneRequiredInput
+  recipe: RecipeUpdateOneRequiredWithoutInstructionsInput
 }
 
-input InstructionUpdateManyInput {
-  create: [InstructionCreateInput!]
-  update: [InstructionUpdateWithWhereUniqueNestedInput!]
-  upsert: [InstructionUpsertWithWhereUniqueNestedInput!]
+input InstructionUpdateManyWithoutRecipeInput {
+  create: [InstructionCreateWithoutRecipeInput!]
   delete: [InstructionWhereUniqueInput!]
   connect: [InstructionWhereUniqueInput!]
   disconnect: [InstructionWhereUniqueInput!]
+  update: [InstructionUpdateWithWhereUniqueWithoutRecipeInput!]
+  upsert: [InstructionUpsertWithWhereUniqueWithoutRecipeInput!]
 }
 
-input InstructionUpdateWithWhereUniqueNestedInput {
-  where: InstructionWhereUniqueInput!
-  data: InstructionUpdateDataInput!
+input InstructionUpdateWithoutRecipeDataInput {
+  stepNum: Int
+  description: String
+  isCompleted: Boolean
 }
 
-input InstructionUpsertWithWhereUniqueNestedInput {
+input InstructionUpdateWithWhereUniqueWithoutRecipeInput {
   where: InstructionWhereUniqueInput!
-  update: InstructionUpdateDataInput!
-  create: InstructionCreateInput!
+  data: InstructionUpdateWithoutRecipeDataInput!
+}
+
+input InstructionUpsertWithWhereUniqueWithoutRecipeInput {
+  where: InstructionWhereUniqueInput!
+  update: InstructionUpdateWithoutRecipeDataInput!
+  create: InstructionCreateWithoutRecipeInput!
 }
 
 input InstructionWhereInput {
@@ -526,7 +516,7 @@ input InstructionWhereInput {
   description_not_ends_with: String
   isCompleted: Boolean
   isCompleted_not: Boolean
-  event: EventWhereInput
+  recipe: RecipeWhereInput
   AND: [InstructionWhereInput!]
   OR: [InstructionWhereInput!]
   NOT: [InstructionWhereInput!]
@@ -631,8 +621,8 @@ type Query {
 type Recipe {
   id: ID!
   title: String!
-  prepTime: String!
-  servings: String!
+  prepTime: String
+  servings: String
   image: String!
   url: String!
   createdBy: User!
@@ -649,13 +639,13 @@ type RecipeConnection {
 
 input RecipeCreateInput {
   title: String!
-  prepTime: String!
-  servings: String!
+  prepTime: String
+  servings: String
   image: String!
   url: String!
   createdBy: UserCreateOneWithoutRecipesInput!
-  ingredients: IngredientCreateManyInput
-  instructions: InstructionCreateManyInput
+  ingredients: IngredientCreateManyWithoutRecipeInput
+  instructions: InstructionCreateManyWithoutRecipeInput
   events: EventCreateManyWithoutRecipeInput
 }
 
@@ -669,26 +659,58 @@ input RecipeCreateOneWithoutEventsInput {
   connect: RecipeWhereUniqueInput
 }
 
+input RecipeCreateOneWithoutIngredientsInput {
+  create: RecipeCreateWithoutIngredientsInput
+  connect: RecipeWhereUniqueInput
+}
+
+input RecipeCreateOneWithoutInstructionsInput {
+  create: RecipeCreateWithoutInstructionsInput
+  connect: RecipeWhereUniqueInput
+}
+
 input RecipeCreateWithoutCreatedByInput {
   title: String!
-  prepTime: String!
-  servings: String!
+  prepTime: String
+  servings: String
   image: String!
   url: String!
-  ingredients: IngredientCreateManyInput
-  instructions: InstructionCreateManyInput
+  ingredients: IngredientCreateManyWithoutRecipeInput
+  instructions: InstructionCreateManyWithoutRecipeInput
   events: EventCreateManyWithoutRecipeInput
 }
 
 input RecipeCreateWithoutEventsInput {
   title: String!
-  prepTime: String!
-  servings: String!
+  prepTime: String
+  servings: String
   image: String!
   url: String!
   createdBy: UserCreateOneWithoutRecipesInput!
-  ingredients: IngredientCreateManyInput
-  instructions: InstructionCreateManyInput
+  ingredients: IngredientCreateManyWithoutRecipeInput
+  instructions: InstructionCreateManyWithoutRecipeInput
+}
+
+input RecipeCreateWithoutIngredientsInput {
+  title: String!
+  prepTime: String
+  servings: String
+  image: String!
+  url: String!
+  createdBy: UserCreateOneWithoutRecipesInput!
+  instructions: InstructionCreateManyWithoutRecipeInput
+  events: EventCreateManyWithoutRecipeInput
+}
+
+input RecipeCreateWithoutInstructionsInput {
+  title: String!
+  prepTime: String
+  servings: String
+  image: String!
+  url: String!
+  createdBy: UserCreateOneWithoutRecipesInput!
+  ingredients: IngredientCreateManyWithoutRecipeInput
+  events: EventCreateManyWithoutRecipeInput
 }
 
 type RecipeEdge {
@@ -722,8 +744,8 @@ input RecipeUpdateInput {
   image: String
   url: String
   createdBy: UserUpdateOneRequiredWithoutRecipesInput
-  ingredients: IngredientUpdateManyInput
-  instructions: InstructionUpdateManyInput
+  ingredients: IngredientUpdateManyWithoutRecipeInput
+  instructions: InstructionUpdateManyWithoutRecipeInput
   events: EventUpdateManyWithoutRecipeInput
 }
 
@@ -743,14 +765,28 @@ input RecipeUpdateOneRequiredWithoutEventsInput {
   connect: RecipeWhereUniqueInput
 }
 
+input RecipeUpdateOneRequiredWithoutIngredientsInput {
+  create: RecipeCreateWithoutIngredientsInput
+  update: RecipeUpdateWithoutIngredientsDataInput
+  upsert: RecipeUpsertWithoutIngredientsInput
+  connect: RecipeWhereUniqueInput
+}
+
+input RecipeUpdateOneRequiredWithoutInstructionsInput {
+  create: RecipeCreateWithoutInstructionsInput
+  update: RecipeUpdateWithoutInstructionsDataInput
+  upsert: RecipeUpsertWithoutInstructionsInput
+  connect: RecipeWhereUniqueInput
+}
+
 input RecipeUpdateWithoutCreatedByDataInput {
   title: String
   prepTime: String
   servings: String
   image: String
   url: String
-  ingredients: IngredientUpdateManyInput
-  instructions: InstructionUpdateManyInput
+  ingredients: IngredientUpdateManyWithoutRecipeInput
+  instructions: InstructionUpdateManyWithoutRecipeInput
   events: EventUpdateManyWithoutRecipeInput
 }
 
@@ -761,8 +797,30 @@ input RecipeUpdateWithoutEventsDataInput {
   image: String
   url: String
   createdBy: UserUpdateOneRequiredWithoutRecipesInput
-  ingredients: IngredientUpdateManyInput
-  instructions: InstructionUpdateManyInput
+  ingredients: IngredientUpdateManyWithoutRecipeInput
+  instructions: InstructionUpdateManyWithoutRecipeInput
+}
+
+input RecipeUpdateWithoutIngredientsDataInput {
+  title: String
+  prepTime: String
+  servings: String
+  image: String
+  url: String
+  createdBy: UserUpdateOneRequiredWithoutRecipesInput
+  instructions: InstructionUpdateManyWithoutRecipeInput
+  events: EventUpdateManyWithoutRecipeInput
+}
+
+input RecipeUpdateWithoutInstructionsDataInput {
+  title: String
+  prepTime: String
+  servings: String
+  image: String
+  url: String
+  createdBy: UserUpdateOneRequiredWithoutRecipesInput
+  ingredients: IngredientUpdateManyWithoutRecipeInput
+  events: EventUpdateManyWithoutRecipeInput
 }
 
 input RecipeUpdateWithWhereUniqueWithoutCreatedByInput {
@@ -773,6 +831,16 @@ input RecipeUpdateWithWhereUniqueWithoutCreatedByInput {
 input RecipeUpsertWithoutEventsInput {
   update: RecipeUpdateWithoutEventsDataInput!
   create: RecipeCreateWithoutEventsInput!
+}
+
+input RecipeUpsertWithoutIngredientsInput {
+  update: RecipeUpdateWithoutIngredientsDataInput!
+  create: RecipeCreateWithoutIngredientsInput!
+}
+
+input RecipeUpsertWithoutInstructionsInput {
+  update: RecipeUpdateWithoutInstructionsDataInput!
+  create: RecipeCreateWithoutInstructionsInput!
 }
 
 input RecipeUpsertWithWhereUniqueWithoutCreatedByInput {

@@ -54,25 +54,26 @@ const Mutation = {
       );
       return recipe;
     } catch (e) {
-      console.log(e.message);
+      return e.message;
     }
   },
 
   createEvent: async (_, args, context, info) => {
+    const data = {
+      mealType: args.mealType,
+      date: args.date,
+      recipe: { connect: { id: args.recipe } }
+    };
     try {
       const event = await context.db.mutation.createEvent(
         {
-          data: {
-            date: args.date,
-            mealType: args.mealType,
-            recipe: { connect: { id: args.recipeID } }
-          }
+          data: data
         },
         info
       );
       return event;
-    } catch (e) {
-      console.log(e.message);
+    } catch (error) {
+      return error.message;
     }
   },
 
@@ -80,11 +81,9 @@ const Mutation = {
     const charge = await stripe.charges.create({
       amount: 1000,
       currency: "usd",
-      // customer: userid,
       source: args.token
     });
     console.log(charge);
-    //TODO create actual subscript with userID
   }
 };
 

@@ -13,8 +13,8 @@ type User {
 type Recipe {
   id: ID! @unique
   title: String!
-  prepTime: String!
-  servings: String!
+  prepTime: String
+  servings: String
   image: String!
   url: String!
   createdBy: User!
@@ -35,14 +35,14 @@ type Instruction {
   stepNum: Int!
   description: String!
   isCompleted: Boolean! @default(value: false)
-  event: Event!
+  recipe: Recipe!
 }
 
 type Ingredient {
   id: ID! @unique
   name: String!
   quantity: Float!
-  event: Event!
+  recipe: Recipe!
 }
 
 type GroceryList {
@@ -50,6 +50,7 @@ type GroceryList {
   startDate: String!
   endDate: String!
   groceryList: [totalQuantity!]!
+  user: User!
 }
 
 type totalQuantity {
