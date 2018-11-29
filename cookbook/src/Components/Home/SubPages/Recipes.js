@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import RecipeCard from './RecipeCard';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import User from './User';
+
+
 
 const RECIPE_QUERY = gql`
-  {
-    recipes {
-      id
-      title
-      image
-      events {
-        date
+  query ($id: String!){
+		user (id: $id) {
+      recipes {
         id
+        title
+        events {
+          id
+          date
+        }
       }
     }
   }
@@ -90,27 +94,40 @@ class Recipes extends Component {
           </div>
 
         </div>
-        
-        <Query query={RECIPE_QUERY}>
-          {({ loading, error, data }) => {
+        <User>
+          {({data}, loading, error) => {
             if (loading) return <div>Fetching</div>
             if (error) return <div>Error</div>
-            
-            const recipesToRender = data.recipes
 
+            if (data.currentUser) {
             return (
-              <div className="recipesCards">
-                {recipesToRender.map(recipes => 
-                <RecipeCard 
-                  key={recipes.id} 
-                  recipes={recipes} 
-                  search={this.state.search}
-                  filter={this.state.filter}
-                />)}
-              </div>
+              <Query query={RECIPE_QUERY} variables = {{id: data.currentUser.id}}>
+                {({ loading, error, data }) => {
+                  if (loading) return <div>Fetching</div>
+                  if (error) return <div>Error</div>
+
+                  const recipesToRender = data.user.recipes
+
+                  return (
+                    <div className="recipesCards">
+                      {recipesToRender.map(recipes => 
+                      <RecipeCard 
+                        key={recipes.id} 
+                        recipes={recipes} 
+                        search={this.state.search}
+                        filter={this.state.filter}
+                      />)}
+                    </div>
+                  )
+                }}
+              </Query>
+              )
+            }
+            return (
+              <div>loading..</div>
             )
           }}
-        </Query>
+        </User>
       </div>
     )
   }
