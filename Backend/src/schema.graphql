@@ -9,7 +9,10 @@
 
 type Query {
   user(id: String!): User!
+  recipe: Recipe!
   recipes: [Recipe]!
+  event: Event!
+  events: [Event]!
   currentUser(auth0Sub: String): User
 }
 
