@@ -21,12 +21,7 @@ type Mutation {
     servings: String!
     image: String!
     url: String!
-  ): Recipe
+  ): Recipe!
   createSubscription(token: String!): Subscription!
-  createEvent(
-    start: String!
-    end: String!
-    resourceId: Int!
-    title: String!
-  ): Event!
+  createEvent(date: String!, mealType: String!, recipe: String!): Event!
 }
