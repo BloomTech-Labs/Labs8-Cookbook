@@ -24,7 +24,8 @@ const QUERY_RECIPE_EVENT = gql`
         id
         title
         events {
-          id date
+          id 
+          date
         }
       }
     }
@@ -92,6 +93,7 @@ class RecipeCalendar extends Component {
           if (loading) return <div>Fetching</div>
           if (error) return <div>Error</div>
           console.log('data', data.currentUser)
+
           if (data.currentUser) {
           return (
             <Query query={QUERY_RECIPE_EVENT} variables = {{id: data.currentUser.id}}>
@@ -99,6 +101,7 @@ class RecipeCalendar extends Component {
                 if (loading) return <div>Fetching</div>
                 if (error) return <div>Error</div>
                 console.log('id', data.user.recipes)
+
                 return (
                   <div className="calendar-page-container">
                     <div className="calendar-container">
@@ -113,21 +116,24 @@ class RecipeCalendar extends Component {
                         resourceTitleAccessor="resourceTitle"
                         // onEventResize={this.onEventResize}
                         // resizable
-                        selectable
+                        // selectable
                         style={{ height: "100vh" }}
                       />
                     </div>
+
                     <Mutation mutation={SCHEDULE_RECIPE} variables={{ events }}>
                       {postMutation => <button onClick={postMutation}>Submit</button>}
                     </Mutation>
+
                   </div>
                 )
               }}
             </Query>
             )
             }
+
             return (
-              <div>loading..</div>
+              <div>Loading...</div>
             )
         }}
       </User>
