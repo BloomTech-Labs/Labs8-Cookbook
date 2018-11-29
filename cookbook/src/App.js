@@ -6,15 +6,14 @@ import auth from "./Auth/Auth";
 import Home from "./Components/Home/Home";
 import LandingPage from "./Components/Landing/LandingPage";
 import Footer from "./Components/SubComponents/Footer";
-import Callback from './Auth/Callback.js';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import Callback from "./Auth/Callback.js";
+import { library } from "@fortawesome/fontawesome-svg-core";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // Font Awesome Icons:
-import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 import Signup from "./Components/SubComponents/Signup";
 
 library.add(faUtensils);
-
 
 class App extends Component {
   state = {
@@ -29,7 +28,7 @@ class App extends Component {
     try {
       await auth.silentAuth();
       this.setState({ tryingSilent: false });
-      this.forceUpdate();
+      // this.forceUpdate();
     } catch (err) {
       if (err.error === "login_required") return;
       console.log(err.error);
