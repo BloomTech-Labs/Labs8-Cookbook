@@ -64,7 +64,6 @@ const Mutation = {
       date: args.date,
       recipe: { connect: { id: args.recipe } }
     };
-    console.log(data);
     try {
       const event = await context.db.mutation.createEvent(
         {

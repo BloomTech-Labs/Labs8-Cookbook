@@ -5,6 +5,7 @@ import Buttons from "./Buttons";
 import DatePicker from "../../SubComponents/DatePicker.js";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
+import { graphql, compose } from "react-apollo";
 
 const CREATE_RECIPE_MUTATION = gql`
   mutation(
@@ -60,8 +61,7 @@ class Create extends Component {
       servings: "",
       rating: "",
       og_url: "",
-      onDate: null,
-      firstload: true
+      onDate: null
     };
   }
 
@@ -98,34 +98,39 @@ class Create extends Component {
     });
   };
 
-  onSave = async (cb1, vars1, cb2, vars2) => {
-    const { data } = await cb1({
-      variables: vars1
-    });
-
-    const newVars = {
-      ...vars2,
-      recipe: data.createRecipe.id
-    };
-
-    console.log(newVars);
-
-    const data2 = await cb2({
-      variables: newVars
-    });
-
-    return data2;
-  };
-
-  render() {
-    const createRecipeVariables = {
+  onSave = async () => {
+    //variables for createRecipe
+    const recipeVariables = {
       title: this.state.og_title,
       prepTime: this.state.prep_time,
       servings: this.state.servings,
       image: this.state.og_image,
       url: this.state.og_url
     };
-    console.log(this.state.firstload);
+
+    //Execute createRecipe
+    const { data } = await this.props.createRecipe({
+      variables: recipeVariables
+    });
+    console.log("recipe created: ", data.createRecipe);
+
+    // Variables for createEvent
+    const eventVariables = {
+      mealType: this.state.type,
+      date: this.state.onDate,
+      recipe: data.createRecipe.id
+    };
+
+    //Execute createEvent
+    const eventData = await this.props.createEvent({
+      variables: eventVariables
+    });
+    console.log("event created: ", eventData);
+
+    return eventData;
+  };
+
+  render() {
     if (!this.state.firstload) {
       return (
         <div className="create-wrapper">
@@ -148,58 +153,7 @@ class Create extends Component {
               servings={this.state.servings}
               loading={this.state.loadingPreview}
             />
-            <Mutation mutation={CREATE_RECIPE_MUTATION}>
-              {createRecipe => {
-                const createEventVariables = {
-                  mealType: this.state.type,
-                  date: this.state.onDate
-                };
-
-                return (
-                  <Mutation mutation={CREATE_EVENT_MUTATION}>
-                    {createEvent => {
-                      return (
-                        <button
-                          onClick={() =>
-                            this.onSave(
-                              createRecipe,
-                              createRecipeVariables,
-                              createEvent,
-                              createEventVariables
-                            )
-                          }
-                        >
-                          SAVE
-                        </button>
-                      );
-                    }}
-                  </Mutation>
-                );
-              }}
-            </Mutation>
-            {/* <Mutation mutation={CREATE_RECIPE_MUTATION} variables={createRecipeVariables}>
-              {(createRecipe, { data }) => {
-                // if (data) {
-                //   return (
-                //     <Mutation mutation={CREATE_EVENT_MUTATION} variables={{ 
-                //       mealType: this.state.type,
-                //       date: this.state.onDate, 
-                //       IDID: data.createRecipe.id,
-                //     }}>
-                //     {(createEvent, { data }) => {
-                //       createEvent();
-                //       if (data) {
-                //         console.log(data)
-                //       } return 
-                //     }} 
-                //   </Mutation>
-                //   )
-                // }
-                return(
-                  <button onClick={createRecipe}>SAVE</button>
-                )
-              }}
-            </Mutation> */}
+            <button onClick={this.onSave}>SAVE</button>
           </div>
           <div className="create-filter-wrapper">
             <div className="ID-btn">
@@ -217,4 +171,14 @@ class Create extends Component {
   }
 }
 
-export default Create;
+const createRecipeMutation = graphql(CREATE_RECIPE_MUTATION, {
+  name: "createRecipe"
+});
+const createEventMutation = graphql(CREATE_EVENT_MUTATION, {
+  name: "createEvent"
+});
+
+export default compose(
+  createRecipeMutation,
+  createEventMutation
+)(Create);
