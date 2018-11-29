@@ -27,4 +27,6 @@ type Mutation {
   ): Recipe!
   createSubscription(token: String!): Subscription!
   createEvent(date: String!, mealType: String!, recipe: String!): Event!
+  createInstruction(stepNum: Int!, description: String!, recipe: String!): Instruction!
+  createIngredient(name: String!, quantity: Float!, recipe: String!): Ingredient!
 }

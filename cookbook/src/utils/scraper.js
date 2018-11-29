@@ -45,7 +45,7 @@ const convert_quantity = quant => {
 const scraper = async url => {
   try {
     const response = await axios.get(
-      "https://allorigins.me/get?url=" + encodeURIComponent(url)
+      "http://api.allorigins.ml/get?url=" + encodeURIComponent(url)
     );
     const html = response.data.contents;
     const parser = new DOMParser();
