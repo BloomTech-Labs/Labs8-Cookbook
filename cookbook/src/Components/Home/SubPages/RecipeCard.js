@@ -44,7 +44,7 @@ class RecipeCard extends Component {
           <div className="recipeCardSchedule">
             scheduled for
             <div className="recipeCardMeal">{this.props.recipes.meal}</div>
-            <div className="recipeCardDate">{this.props.recipes.date.toLocaleDateString()}</div>
+            <div className="recipeCardDate">{this.props.recipes.date}</div>
           </div>
           
           <button onClick={() => this.handleDelete()} className="recipeCardLink">Delete</button>

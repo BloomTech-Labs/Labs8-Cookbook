@@ -2,14 +2,10 @@
 const { forwardTo } = require("prisma-binding");
 
 const Query = {
-  recipes: async (_, args, context, info) => {
-    try {
-      const recipes = await context.db.query.recipes();
-      return recipes;
-    } catch (error) {
-      console.log(error.message);
-    }
-  },
+  recipe:  forwardTo("db"),
+  recipes:  forwardTo("db"),
+  event:  forwardTo("db"),
+  events:  forwardTo("db"),
 
   user: async (_, args, context, info) => {
     try {
@@ -43,7 +39,7 @@ const Query = {
     } catch (e) {
       console.log(e.message);
     }
-  }
+  },
 };
 
 module.exports = Query;
