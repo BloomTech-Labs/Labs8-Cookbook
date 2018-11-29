@@ -58,6 +58,24 @@ const Mutation = {
     }
   },
 
+  createEvent: async (_, args, context, info) => {
+    try {
+      const event = await context.db.mutation.createEvent(
+        {
+          data: {
+            date: args.date,
+            mealType: args.mealType,
+            recipe: { connect: { id: args.recipeID } }
+          }
+        },
+        info
+      );
+      return event;
+    } catch (e) {
+      console.log(e.message);
+    }
+  },
+
   createSubscription: async (parent, args, context, info) => {
     const charge = await stripe.charges.create({
       amount: 1000,

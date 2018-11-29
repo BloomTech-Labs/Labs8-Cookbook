@@ -39,7 +39,6 @@ class Buttons extends Component {
             name="dessert">
             {this.props.type === "dessert" ? 'Selected' : 'Dessert'}
           </button>
-          <button>Save</button>
         </div>
       </div>
     )
