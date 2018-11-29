@@ -1,4 +1,6 @@
 //This file defines resolvers for Query
+const { forwardTo } = require("prisma-binding");
+
 const Query = {
   recipes: async (_, args, context, info) => {
     try {
@@ -9,9 +11,20 @@ const Query = {
     }
   },
 
-  users: async (_, args, context, info) => {
-    const users = await context.db.query.users();
-    return users;
+  user: async (_, args, context, info) => {
+    try {
+      const user = await context.db.query.user(
+        {
+          where: {
+            id: args.id
+          }
+        },
+        info
+      );
+      return user;
+    } catch (e) {
+      console.log(e.message);
+    }
   },
 
   currentUser: async (_, args, context, info) => {
