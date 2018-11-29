@@ -77,6 +77,44 @@ const Mutation = {
     }
   },
 
+  createInstruction: async (_, args, context, info) => {
+    const data = {
+      stepNum: args.stepNum,
+      description: args.description,
+      recipe: { connect: { id: args.recipe } }
+    };
+    try {
+      const instruction = await context.db.mutation.createInstruction(
+        {
+          data: data
+        },
+        info
+      );
+      return instruction;
+    } catch (error) {
+      return error.message;
+    }
+  },
+
+  createIngredient: async (_, args, context, info) => {
+    const data = {
+      name: args.name,
+      quantity: args.quantity,
+      recipe: { connect: { id: args.recipe } }
+    };
+    try {
+      const ingredient = await context.db.mutation.createIngredient(
+        {
+          data: data
+        },
+        info
+      );
+      return ingredient;
+    } catch (error) {
+      return error.message;
+    }
+  },
+
   createSubscription: async (parent, args, context, info) => {
     const charge = await stripe.charges.create({
       amount: 1000,
