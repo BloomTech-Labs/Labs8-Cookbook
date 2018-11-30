@@ -23,18 +23,24 @@ const SCHEDULE_RECIPE = gql`
 `;
 
 const QUERY_RECIPE_EVENT = gql`
-  query ($id: String!) {
-    user (id: $id) {
-      recipes {
-        id
-        title
-        events {
-          id 
-          date
-        }
-      }
+  query($id: ID!){
+  events(where:{
+    	recipe: {
+      createdBy:{
+        id: $id
+      	}
+    	}
+  	}
+  )
+  {
+    id
+    date
+    mealType
+    recipe {
+      title
     }
   }
+}
 `
 
 const localizer = Calendar.momentLocalizer(moment)  // a localizer for BigCalendar
@@ -57,7 +63,7 @@ class RecipeCalendar extends Component {
           {
             id: 0,
             start: new Date(),
-            end: new Date(moment().add(0, "days")),
+            end: new Date(moment().add(0, "days").format()),
             title: "Omelette",
             resourceId: 1
           }
@@ -75,49 +81,60 @@ class RecipeCalendar extends Component {
   //   console.log(this.events)
   // };
 
-  onEventDrop = ({ event, start, end, resourceId }) => {
-    const { events } = this.state
-    const idx = events.indexOf(event)
+  // onEventDrop = ({ event, start, end, resourceId }) => {
+  //   const { events } = this.state
+  //   const idx = events.indexOf(event)
     
-    const updatedEvent = { ...event, start, end, resourceId }
+  //   const updatedEvent = { ...event, start, end, resourceId }
 
-    const nextEvents = [...events]
-    nextEvents.splice(idx, 1, updatedEvent)
+  //   const nextEvents = [...events]
+  //   nextEvents.splice(idx, 1, updatedEvent)
 
-    this.setState({
-      events: nextEvents,
-    })
+  //   this.setState({
+  //     events: nextEvents,
+  //   })
 
-  }
+  // }
 
-  onDrop = async () => {
-    const dndEventVariables = {
-      date: this.state.start && this.state.end,
-      mealType: this.state.resourceId
-    };
+  // onDrop = async () => {
+  //   const dndEventVariables = {
+  //     start: new Date(),
+  //     end: new Date(moment().add(0, "days")),
+  //     mealType: this.state.resourceId
+  //   };
 
-    const { data } = await this.props.createEvent({
-      variables: dndEventVariables
-    });
-    console.log("recipe rescheduled: ", data.createEvent)
-  }
+  //   const { data } = await this.props.createEvent({
+  //     variables: dndEventVariables
+  //   });
+  //   console.log("recipe rescheduled: ", data.createEvent)
+  // }
 
   render() {
-    const { events } = this.state
+    console.log('date', this.state.events)
     return (
       <User>
         {({data}, loading, error) => {
           if (loading) return <div>Fetching</div>
           if (error) return <div>Error</div>
-          console.log('User Data: ', data.currentUser)
+         
 
-          if (data.currentUser) {
+          if (data.currentUser) { 
+          console.log('User Data: ', data.currentUser)
           return (
             <Query query={QUERY_RECIPE_EVENT} variables = {{id: data.currentUser.id}}>
               {({ loading, error, data }) => {
                 if (loading) return <div>Fetching</div>
                 if (error) return <div>Error</div>
-                console.log("Recipes in DB: ", data.user.recipes[0].events[0])             
+                console.log("Data: ", data)  
+                const events = data.events.map(i => {
+                  return {
+                    id: i.id,
+                    start: i.date,
+                    end: i.date,
+                    resource: i.mealType,
+                    title: i.recipe.title
+                  }
+                }) 
                 return (
                   <div className="calendar-page-container">
                     <div className="calendar-container">
@@ -125,15 +142,16 @@ class RecipeCalendar extends Component {
                         localizer={localizer}
                         defaultDate={new Date()}
                         defaultView="month"
-                        events={this.state.events}
-                        onEventDrop={this.onEventDrop}
+                        events={events}
+                        // onEventDrop={this.onEventDrop}
                         resources={resourceMap}
                         resourceIdAccessor="resourceId"
                         resourceTitleAccessor="resourceTitle"
+                        onClick={() => alert('pls god work')}
                         // onEventResize={this.onEventResize}
                         // resizable
-                        // selectable
-                        style={{ height: "100vh" }}
+                        selectable
+                        style={{ height: "420px" }}
                       />
                     </div>
 
