@@ -10,9 +10,14 @@ import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const SCHEDULE_RECIPE = gql`
-  mutation scheduleRecipe($type: String!) {
-    scheduleRecipe(type: $type) {
-      type
+  mutation($date: String!) {
+    createEvent(date: $date) {
+      id
+      date
+      recipe {
+        id
+        title
+      }
     }
   }
 `;
@@ -45,8 +50,8 @@ const resourceMap = [
 ]
 
 class RecipeCalendar extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
       this.state = {
         events: [
           {
@@ -85,6 +90,18 @@ class RecipeCalendar extends Component {
 
   }
 
+  onDrop = async () => {
+    const dndEventVariables = {
+      date: this.state.start && this.state.end,
+      mealType: this.state.resourceId
+    };
+
+    const { data } = await this.props.createEvent({
+      variables: dndEventVariables
+    });
+    console.log("recipe rescheduled: ", data.createEvent)
+  }
+
   render() {
     const { events } = this.state
     return (
@@ -92,7 +109,7 @@ class RecipeCalendar extends Component {
         {({data}, loading, error) => {
           if (loading) return <div>Fetching</div>
           if (error) return <div>Error</div>
-          console.log('data', data.currentUser)
+          console.log('User Data: ', data.currentUser)
 
           if (data.currentUser) {
           return (
@@ -100,8 +117,7 @@ class RecipeCalendar extends Component {
               {({ loading, error, data }) => {
                 if (loading) return <div>Fetching</div>
                 if (error) return <div>Error</div>
-                console.log('id', data.user.recipes)
-
+                console.log("Recipes in DB: ", data.user.recipes[0].events[0])             
                 return (
                   <div className="calendar-page-container">
                     <div className="calendar-container">
