@@ -17,7 +17,7 @@ class RecipeView extends Component {
                 <div className='left-container'>
                     <div className='header'>
                         <span className='title'>{this.props.location.state.title}</span>
-                        <a href={'' + this.props.location.state.url}><FontAwesomeIcon icon="link" /></a>
+                        <a href={'' + this.props.location.state.url} rel="noopener noreferrer" target="_blank"><FontAwesomeIcon icon="link" /></a>
                     </div>
                     <div className='recipe-img' style={{backgroundImage: `url(${this.props.location.state.image})`}}></div>
                     <div className='scheduled-for'>
