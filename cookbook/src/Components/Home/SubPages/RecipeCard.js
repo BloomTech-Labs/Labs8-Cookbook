@@ -40,7 +40,7 @@ class RecipeCard extends Component {
                 {this.props.recipe.events.map(event => 
                   <div className='event'>
                     <div>{event.mealType}</div>
-                    <div>{event.date}</div>
+                    <div>{new Date(event.date).toLocaleDateString()}</div>
                   </div>
                 )}
               </div>
