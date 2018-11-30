@@ -12,6 +12,21 @@ const RECIPE_QUERY = gql`
       recipes {
         id
         title
+        prepTime
+        servings
+        image
+        url
+        ingredients {
+          id
+          name
+          quantity
+        }
+        instructions {
+          id
+          stepNum
+          description
+          isCompleted
+        }
         events {
           id
           date
@@ -105,15 +120,14 @@ class Recipes extends Component {
                 {({ loading, error, data }) => {
                   if (loading) return <div>Fetching</div>
                   if (error) return <div>Error</div>
-
                   const recipesToRender = data.user.recipes
 
                   return (
                     <div className="recipesCards">
-                      {recipesToRender.map(recipes => 
+                      {recipesToRender.map(recipe => 
                       <RecipeCard 
-                        key={recipes.id} 
-                        recipes={recipes} 
+                        key={recipe.id} 
+                        recipe={recipe} 
                         search={this.state.search}
                         filter={this.state.filter}
                       />)}
