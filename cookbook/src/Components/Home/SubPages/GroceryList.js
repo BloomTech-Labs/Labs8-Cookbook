@@ -5,21 +5,6 @@ import { Query } from 'react-apollo';
 import User from './User';
 import 'react-day-picker/lib/style.css';
 
-// const EVENT_QUERY = gql`
-//   query ($id: String!){
-// 		events (where:{
-//       recipe:{
-//         createdBy:{
-//           id: $id
-//         }
-//       }
-//     }){
-//       id
-//       date
-//     }
-//   }
-// `
-
 const EVENT_QUERY = gql`
   query ($id: String!){
 		user (id: $id) {
