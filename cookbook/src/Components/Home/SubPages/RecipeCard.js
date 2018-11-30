@@ -31,7 +31,7 @@ class RecipeCard extends Component {
             <div className='image' style={{backgroundImage: `url(${this.props.recipe.image})`}}></div>
           </Link>
           <div className='card-bottom'>  
-              <a href={'' + this.props.recipe.url} target="_blank" className='link-container'>
+              <a href={'' + this.props.recipe.url} rel="noopener noreferrer" target="_blank" className='link-container'>
                 <FontAwesomeIcon icon='link' className='web-link'/>
                 <span className='link-text'>link</span>
               </a>
