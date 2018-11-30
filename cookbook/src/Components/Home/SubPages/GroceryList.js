@@ -5,17 +5,36 @@ import { Query } from 'react-apollo';
 import User from './User';
 import 'react-day-picker/lib/style.css';
 
+// const EVENT_QUERY = gql`
+//   query ($id: String!){
+// 		events (where:{
+//       recipe:{
+//         createdBy:{
+//           id: $id
+//         }
+//       }
+//     }){
+//       id
+//       date
+//     }
+//   }
+// `
+
 const EVENT_QUERY = gql`
   query ($id: String!){
-		events (where:{
-      recipe:{
-        createdBy:{
-          id: $id
+		user (id: $id) {
+      recipes {
+        id
+        title
+        ingredients{
+          name
+          quantity
+        }
+        events {
+          id
+          date
         }
       }
-    }){
-      id
-      date
     }
   }
 `
@@ -85,12 +104,13 @@ class GroceryList extends Component {
 
         <div className='list'>
           <div className='list-header'>Grocery List: {from && to && `${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}{' '}</div>
-
+          
           <User>
             {({data}, loading, error) => {
               if (loading) return <div>Fetching</div>
               if (error) return <div>Error</div>
 
+              //query for the current user 
               if (data.currentUser) {
               return (
                 <Query query={EVENT_QUERY} variables = {{id: data.currentUser.id}}>
@@ -102,7 +122,27 @@ class GroceryList extends Component {
 
                     return (
                       <div>
-                        GroceryListItems
+                        { //loop through all of the user's recipes
+                          data.user.recipes.map(recipe =>
+                          //loop through all of the events for each user
+                          recipe.events.map(event => {
+                            //convert the date strings to date objects for later comparisons
+                            let eventDate = new Date(event.date);
+                            let startDate = new Date(this.state.from);
+                            let stopDate = new Date(this.state.to);
+
+                            //if the event's date lies between the chosen start and stop date
+                            // map through each ingredient and show the quantity and name
+                            if (eventDate >= startDate && eventDate <= stopDate){
+                              recipe.ingredients.map(ingredient => {
+                                console.log(`- ${ingredient.quantity} ${ingredient.name}`)
+                                return `- ${ingredient.quantity} ${ingredient.name}`
+                              })
+                            } else {
+                              return `miss\n`
+                            }
+                          })
+                        )}
                       </div>
                     )
                   }}
