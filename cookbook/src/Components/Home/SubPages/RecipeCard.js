@@ -8,10 +8,10 @@ class RecipeCard extends Component {
   isSearchedFor() {
     // searchInContent will only be true if the search term is in the title, meal, or date of the RecipeCard
     let searchInContent = (~this.props.recipe.title.toLowerCase().indexOf(this.props.search.toLowerCase())) ||
-                          (~this.props.recipe.event.mealType.toLowerCase().indexOf(this.props.search.toLowerCase())) ||
-                          (~this.props.recipe.event.date.toLocaleDateString().toLowerCase().indexOf(this.props.search.toLowerCase()));
+                          (~this.props.recipe.events[0].mealType.toLowerCase().indexOf(this.props.search.toLowerCase())) ||
+                          (~new Date(this.props.recipe.events[0].date).toLocaleDateString().toLowerCase().indexOf(this.props.search.toLowerCase()));
 
-    let isInFilter = this.props.filter.size === 0 || this.props.filter.has(this.props.recipe.meal);
+    let isInFilter = this.props.filter.size === 0 || this.props.filter.has(this.props.recipe.events[0].mealType);
 
     return searchInContent && isInFilter;
   }
