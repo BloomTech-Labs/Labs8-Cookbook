@@ -1,7 +1,24 @@
 import React, { Component } from "react";
 import DayPicker, { DateUtils } from 'react-day-picker';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import User from './User';
 import 'react-day-picker/lib/style.css';
 
+const EVENT_QUERY = gql`
+  query ($id: String!){
+		events (where:{
+      recipe:{
+        createdBy:{
+          id: $id
+        }
+      }
+    }){
+      id
+      date
+    }
+  }
+`
 
 class GroceryList extends Component {
   static defaultProps = {
@@ -37,7 +54,9 @@ class GroceryList extends Component {
 
     return (
       <div className='grocery-list-page'>
+
         <div className='gen-list-container'>
+
           <p>
             {!from && !to && 'Please select the first day.'}
             {from && !to && 'Please select the last day.'}
@@ -52,17 +71,52 @@ class GroceryList extends Component {
                 </button>
               )}
           </p>
+
           <DayPicker
             numberOfMonths={this.props.numberOfMonths}
             selectedDays={[from, { from, to }]}
             modifiers={modifiers}
             onDayClick={this.handleDayClick}
           />
+
           <button>Generate List</button>
+
         </div>
+
         <div className='list'>
           <div className='list-header'>Grocery List: {from && to && `${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}{' '}</div>
+
+          <User>
+            {({data}, loading, error) => {
+              if (loading) return <div>Fetching</div>
+              if (error) return <div>Error</div>
+
+              if (data.currentUser) {
+              return (
+                <Query query={EVENT_QUERY} variables = {{id: data.currentUser.id}}>
+                  {({ loading, error, data }) => {
+                    if (loading) return <div>Fetching</div>
+                    if (error) return <div>Error</div>
+
+                    console.log('EventQueryData: ', data);
+
+                    return (
+                      <div>
+                        GroceryListItems
+                      </div>
+                    )
+                  }}
+                </Query>
+                )
+                }
+                return (
+                  <div>loading..</div>
+                )
+            }}
+          </User>
+
         </div>
+
       </div>
     
     );
