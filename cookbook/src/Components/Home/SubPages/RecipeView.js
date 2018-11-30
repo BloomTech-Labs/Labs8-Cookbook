@@ -25,7 +25,7 @@ class RecipeView extends Component {
                         {this.props.location.state.events.map(event => 
                         <div className='event'>
                             <div className="meal">{event.mealType}</div>
-                            <div className="date">{event.date}</div>
+                            <div className="date">{new Date(event.date).toLocaleDateString()}</div>
                         </div>
                         )}
                     </div>
