@@ -118,8 +118,6 @@ class GroceryList extends Component {
                     if (loading) return <div>Fetching</div>
                     if (error) return <div>Error</div>
 
-                    console.log('EventQueryData: ', data);
-
                     return (
                       <div>
                         { //loop through all of the user's recipes
@@ -134,12 +132,12 @@ class GroceryList extends Component {
                             //if the event's date lies between the chosen start and stop date
                             // map through each ingredient and show the quantity and name
                             if (eventDate >= startDate && eventDate <= stopDate){
-                              recipe.ingredients.map(ingredient => {
-                                console.log(`- ${ingredient.quantity} ${ingredient.name}`)
-                                return `- ${ingredient.quantity} ${ingredient.name}`
-                              })
+                              return (
+                              recipe.ingredients.map(ingredient => 
+                                <div key={ingredient.id}>- {ingredient.quantity} {ingredient.name}</div>
+                              ))
                             } else {
-                              return `miss\n`
+                              return ''
                             }
                           })
                         )}
