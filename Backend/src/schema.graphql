@@ -9,10 +9,10 @@
 
 type Query {
   user(id: String!): User!
-  recipe: Recipe!
-  recipes: [Recipe]!
+  recipe(where: RecipeWhereUniqueInput!): Recipe!
+  recipes(where: RecipeWhereInput): [Recipe]!
   event: Event!
-  events: [Event]!
+  events (where: EventWhereInput): [Event]!
   currentUser(auth0Sub: String): User
 }
 
