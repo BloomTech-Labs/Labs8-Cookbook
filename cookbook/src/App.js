@@ -28,7 +28,7 @@ class App extends Component {
     try {
       await auth.silentAuth();
       this.setState({ tryingSilent: false });
-      // this.forceUpdate();
+      this.forceUpdate();
     } catch (err) {
       if (err.error === "login_required") return;
       console.log(err.error);

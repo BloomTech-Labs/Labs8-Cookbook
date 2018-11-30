@@ -8,10 +8,10 @@ class RecipeCard extends Component {
   isSearchedFor() {
     // searchInContent will only be true if the search term is in the title, meal, or date of the RecipeCard
     let searchInContent = (~this.props.recipe.title.toLowerCase().indexOf(this.props.search.toLowerCase())) ||
-                          (~this.props.recipe.event.mealType.toLowerCase().indexOf(this.props.search.toLowerCase())) ||
-                          (~this.props.recipe.event.date.toLocaleDateString().toLowerCase().indexOf(this.props.search.toLowerCase()));
+                          (~this.props.recipe.events[0].mealType.toLowerCase().indexOf(this.props.search.toLowerCase())) ||
+                          (~new Date(this.props.recipe.events[0].date).toLocaleDateString().toLowerCase().indexOf(this.props.search.toLowerCase()));
 
-    let isInFilter = this.props.filter.size === 0 || this.props.filter.has(this.props.recipe.meal);
+    let isInFilter = this.props.filter.size === 0 || this.props.filter.has(this.props.recipe.events[0].mealType);
 
     return searchInContent && isInFilter;
   }
@@ -31,7 +31,7 @@ class RecipeCard extends Component {
             <div className='image' style={{backgroundImage: `url(${this.props.recipe.image})`}}></div>
           </Link>
           <div className='card-bottom'>  
-              <a href={'' + this.props.recipe.url} className='link-container'>
+              <a href={'' + this.props.recipe.url} rel="noopener noreferrer" target="_blank" className='link-container'>
                 <FontAwesomeIcon icon='link' className='web-link'/>
                 <span className='link-text'>link</span>
               </a>
@@ -40,7 +40,7 @@ class RecipeCard extends Component {
                 {this.props.recipe.events.map(event => 
                   <div className='event'>
                     <div>{event.mealType}</div>
-                    <div>{event.date}</div>
+                    <div>{new Date(event.date).toLocaleDateString()}</div>
                   </div>
                 )}
               </div>
