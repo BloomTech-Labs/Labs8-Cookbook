@@ -731,6 +731,9 @@ html {
     margin-left: 0px;
   }
 }
+.recipe-page .left-container .header {
+  width: 100%;
+}
 .recipe-page .left-container .recipe-img {
   width: 230px;
   height: 200px;

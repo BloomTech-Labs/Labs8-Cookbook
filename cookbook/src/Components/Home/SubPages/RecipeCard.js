@@ -31,6 +31,7 @@ class RecipeCard extends Component {
       // make the RecipeCard visible only if searched for
       <div className={this.isSearchedFor() ? "recipeCard" : "recipeCardInvisible"}>
         <div className='content-container'>
+          
           <div className="title">
             {this.props.recipe.title}
           </div>
@@ -38,20 +39,21 @@ class RecipeCard extends Component {
           <Link to={{pathname: `/home/recipe/${recipeUrl}`, state: this.props.recipe}}>
             <div className='link' style={{backgroundImage: `url(${this.props.recipe.image})`}}></div>
           </Link>
-
-          <div className="body">
             
-            <button onClick={() => this.handleLink()} className="web-link">Link</button>
-            
-            <div className="schedule">
-              scheduled for
-              <div className="meal">{this.props.recipe.meal}</div>
-              <div className="date">{this.props.recipe.date}</div>
-            </div>
-            
-            <button onClick={() => this.handleDelete()} className="del-button">Delete</button>
+          <button onClick={() => this.handleLink()} className="web-link">Link</button>
           
+          <div className="schedule">
+            <span>scheduled for</span>
+            {this.props.recipe.events.map(event => 
+              <div className='event'>
+                <div className="meal">{event.mealType}</div>
+                <div className="date">{event.date}</div>
+              </div>
+            )}
           </div>
+          
+          <button onClick={() => this.handleDelete()} className="del-button">Delete</button>
+
         </div>
       </div>
     )
