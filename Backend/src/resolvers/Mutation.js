@@ -20,7 +20,8 @@ const Mutation = {
       );
       return newUser;
     } catch (error) {
-      console.log(error.message);
+      console.log('Signup Error: ', error.message);
+      return(error.message);
     }
   },
 
@@ -54,6 +55,7 @@ const Mutation = {
       );
       return recipe;
     } catch (e) {
+      console.log('createRecipe Error: ', error.message);
       return e.message;
     }
   },
@@ -73,6 +75,7 @@ const Mutation = {
       );
       return event;
     } catch (error) {
+      console.log('createEvent Error: ', error.message);
       return error.message;
     }
   },
@@ -92,6 +95,7 @@ const Mutation = {
       );
       return instruction;
     } catch (error) {
+      console.log('createInstruction Error: ', error.message);
       return error.message;
     }
   },
@@ -111,6 +115,7 @@ const Mutation = {
       );
       return ingredient;
     } catch (error) {
+      console.log('createIngredient Error: ', error.message);
       return error.message;
     }
   },

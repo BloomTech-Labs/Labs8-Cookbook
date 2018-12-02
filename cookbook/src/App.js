@@ -10,7 +10,11 @@ import Callback from "./Auth/Callback.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // Font Awesome Icons:
-import { faUtensils, faLink, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUtensils,
+  faLink,
+  faTrashAlt
+} from "@fortawesome/free-solid-svg-icons";
 import Signup from "./Components/SubComponents/Signup";
 
 library.add(faUtensils, faLink, faTrashAlt);
@@ -23,15 +27,15 @@ class App extends Component {
   async componentDidMount() {
     if (this.props.location.pathname === "/callback") {
       this.setState({ tryingSilent: false });
-      return;
-    }
-    try {
-      await auth.silentAuth();
-      this.setState({ tryingSilent: false });
-      this.forceUpdate();
-    } catch (err) {
-      if (err.error === "login_required") return;
-      console.log(err.error);
+    } else {
+      try {
+        const authResult = await auth.silentAuth();
+        this.setState({ tryingSilent: false });
+        // this.forceUpdate();
+      } catch (err) {
+        console.log(err.error);
+        if (err.error === "login_required") return;
+      }
     }
   }
 
@@ -47,7 +51,7 @@ class App extends Component {
         </div>
       );
     }
-    return "Loading";
+    return "Loading App...";
   }
 }
 
