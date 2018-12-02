@@ -1,5 +1,5 @@
 //This file defines resolvers for Mutation
-const stripe = require("../stripe");
+const stripe = require("../utils/stripe");
 
 const Mutation = {
   signup: async (_, args, context, info) => {
@@ -20,8 +20,8 @@ const Mutation = {
       );
       return newUser;
     } catch (error) {
-      console.log('Signup Error: ', error.message);
-      return(error.message);
+      console.log("Signup Error: ", error.message);
+      return error.message;
     }
   },
 
@@ -55,7 +55,7 @@ const Mutation = {
       );
       return recipe;
     } catch (e) {
-      console.log('createRecipe Error: ', error.message);
+      console.log("createRecipe Error: ", error.message);
       return e.message;
     }
   },
@@ -75,7 +75,7 @@ const Mutation = {
       );
       return event;
     } catch (error) {
-      console.log('createEvent Error: ', error.message);
+      console.log("createEvent Error: ", error.message);
       return error.message;
     }
   },
@@ -95,7 +95,7 @@ const Mutation = {
       );
       return instruction;
     } catch (error) {
-      console.log('createInstruction Error: ', error.message);
+      console.log("createInstruction Error: ", error.message);
       return error.message;
     }
   },
@@ -115,7 +115,7 @@ const Mutation = {
       );
       return ingredient;
     } catch (error) {
-      console.log('createIngredient Error: ', error.message);
+      console.log("createIngredient Error: ", error.message);
       return error.message;
     }
   },
