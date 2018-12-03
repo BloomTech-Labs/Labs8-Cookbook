@@ -58,7 +58,6 @@ const scraper = async url => {
 
     let prep_time = "N/A";
     let servings = "N/A";
-    let rating = "N/A";
     let ingredient_list = [];
     let instructions = [];
 
@@ -66,7 +65,6 @@ const scraper = async url => {
     if (url.toLowerCase().includes("geniuskitchen")) {
       const prep_time_el = el.querySelector(`td.time`);
       const servings_el = el.querySelector(`span.count`);
-      const rating_el = el.querySelector(`span[class="sr-only"]`);
       const ingredients_el = el.querySelectorAll("li[data-ingredient]");
       const instructions_el = el.querySelectorAll(`div.directions ol li`);
 
@@ -77,10 +75,6 @@ const scraper = async url => {
             .match(/\d+.+/g)[0]
         : "N/A";
       servings = servings_el ? servings_el.textContent : "N/A";
-      rating =
-        rating_el && rating_el.textContent.toLowerCase() !== "close"
-          ? rating_el.textContent
-          : "N/A";
 
       if (ingredients_el.length) {
         ingredients_el.forEach(i => {
@@ -104,7 +98,6 @@ const scraper = async url => {
     if (url.toLowerCase().includes("allrecipes")) {
       const prep_time_el = el.querySelector(`span[class="ready-in-time"]`);
       const servings_el = el.querySelector(`#metaRecipeServings`);
-      const rating_el = el.querySelector(`meta[itemprop="ratingValue"]`);
       const ingredients_el = el.querySelectorAll(
         "span.recipe-ingred_txt.added:not(.white)"
       );
@@ -114,7 +107,6 @@ const scraper = async url => {
 
       prep_time = prep_time_el ? prep_time_el.textContent : "N/A";
       servings = servings_el ? servings_el.content : "N/A";
-      rating = rating_el ? rating_el.content : "N/A";
 
       if (ingredients_el.length) {
         ingredients_el.forEach(i => {
@@ -151,7 +143,6 @@ const scraper = async url => {
       og_url,
       prep_time,
       servings,
-      rating,
       ingredient_list,
       instructions
     };

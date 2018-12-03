@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Preview from "./Preview";
+import gql from "graphql-tag";
+import { graphql, compose } from "react-apollo";
 import scraper from "../../../utils/scraper";
 import Buttons from "./Buttons";
 import DatePicker from "../../SubComponents/DatePicker.js";
-import gql from "graphql-tag";
-import { graphql, compose } from "react-apollo";
 
 const CREATE_RECIPE_MUTATION = gql`
   mutation(
@@ -33,7 +33,11 @@ const CREATE_RECIPE_MUTATION = gql`
 
 const CREATE_INSTRUCTION_MUTATION = gql`
   mutation($stepNum: Int!, $description: String!, $recipe: String!) {
-    createInstruction(stepNum: $stepNum, description: $description, recipe: $recipe) {
+    createInstruction(
+      stepNum: $stepNum
+      description: $description
+      recipe: $recipe
+    ) {
       stepNum
       description
       recipe {
@@ -84,16 +88,11 @@ class Create extends Component {
       og_desc: "",
       prep_time: "",
       servings: "",
-      rating: "",
       og_url: "",
       instructions: [],
       ingredient_list: [],
       onDate: null
     };
-  }
-
-  componentDidMount() {
-    this.setState({ firstload: false });
   }
 
   handleChange = e => {
@@ -117,6 +116,7 @@ class Create extends Component {
         const data = await scraper(this.state.query);
         this.setState({
           ...data,
+          og_title: data.og_title ? data.og_title : "N/A",
           loadingPreview: false
         });
       } catch (error) {
@@ -125,7 +125,10 @@ class Create extends Component {
     });
   };
 
+  saveRecipe = data => {};
+
   onSave = async () => {
+    if (!this.state.og_title || this.state.og_title === "N/A") return;
     //variables for createRecipe
     const recipeVariables = {
       title: this.state.og_title,
@@ -136,97 +139,107 @@ class Create extends Component {
     };
 
     //Execute createRecipe
-    const { data } = await this.props.createRecipe({
-      variables: recipeVariables
-    });
-    console.log("recipe created: ", data.createRecipe);
+    try {
+      const { data } = await this.props.createRecipe({
+        variables: recipeVariables
+      });
 
-    this.state.instructions.forEach( async (instruction, index) => {
-      //variables for createInstruction
-      const instructionVariables = {
-        stepNum: index+1,
-        description: instruction,
-        recipe: data.createRecipe.id
+      console.log("recipe created: ", data.createRecipe);
+
+      if (this.state.instructions.length) {
+        this.state.instructions.forEach(async (instruction, index) => {
+          //variables for createInstruction
+          const instructionVariables = {
+            stepNum: index + 1,
+            description: instruction,
+            recipe: data.createRecipe.id
+          };
+
+          //execute createInstruction
+          const instructionData = await this.props.createInstruction({
+            variables: instructionVariables
+          });
+          console.log("instruction created: ", instructionData);
+        });
       }
 
-      //execute createInstruction
-      const instructionData = await this.props.createInstruction({
-        variables: instructionVariables
-      });
-      console.log("instruction created: ", instructionData);
-    });
+      if (this.state.ingredient_list.length) {
+        this.state.ingredient_list.forEach(async ingredient => {
+          //variables for createIngredient
+          const ingredientVariables = {
+            name: ingredient.food,
+            quantity: ingredient.quantity,
+            recipe: data.createRecipe.id
+          };
 
-    this.state.ingredient_list.forEach( async (ingredient) => {
-      //variables for createIngredient
-      const ingredientVariables = {
-        name: ingredient.food,
-        quantity: ingredient.quantity,
-        recipe: data.createRecipe.id
+          console.log(ingredientVariables);
+
+          //execute createIngredient
+          const ingredientData = await this.props.createIngredient({
+            variables: ingredientVariables
+          });
+          console.log("ingredient created: ", ingredientData);
+        });
       }
 
-      console.log(ingredientVariables);
+      if (this.state.oneDate && this.state.type) {
+        //variables for createEvent
+        const eventVariables = {
+          mealType: this.state.type,
+          date: this.state.onDate,
+          recipe: data.createRecipe.id
+        };
 
-      //execute createIngredient
-      const ingredientData = await this.props.createIngredient({
-        variables: ingredientVariables
-      });
-      console.log("ingredient created: ", ingredientData);
-    });
+        //Execute createEvent
+        const eventData = await this.props.createEvent({
+          variables: eventVariables
+        });
+        console.log("event created: ", eventData);
 
-    //variables for createEvent
-    const eventVariables = {
-      mealType: this.state.type,
-      date: this.state.onDate,
-      recipe: data.createRecipe.id
-    };
-
-    //Execute createEvent
-    const eventData = await this.props.createEvent({
-      variables: eventVariables
-    });
-    console.log("event created: ", eventData);
-
-    return eventData;
+        return eventData;
+      }
+    } catch (error) {
+      console.log("onsave error: ", error.message);
+      return error;
+    }
   };
 
   render() {
-    if (!this.state.firstload) {
-      return (
-        <div className="create-wrapper">
-          <div className="create-content-wrapper">
-            <input
-              type="text"
-              name="query"
-              placeholder="Search Recipe..."
-              onChange={this.handleChange}
-              value={this.state.query}
-            />
-            <button onClick={this.findRecipes}>Search</button>
+    return (
+      <div className="create-wrapper">
+        <div className="create-content-wrapper">
+          <input
+            type="text"
+            name="query"
+            placeholder="Search Recipe..."
+            onChange={this.handleChange}
+            value={this.state.query}
+          />
+          <button onClick={this.findRecipes}>Search</button>
+          {this.state.og_title === "N/A" ? (
+            <div>No preview available</div>
+          ) : (
             <Preview
               og_title={this.state.og_title}
               og_sitename={this.state.og_sitename}
               og_image={this.state.og_image}
               og_desc={this.state.og_desc}
-              prep_time={this.state.prep_time}
-              rating={this.state.rating}
-              servings={this.state.servings}
               loading={this.state.loadingPreview}
             />
-            <button onClick={this.onSave}>SAVE</button>
-          </div>
-          <div className="create-filter-wrapper">
-            <div className="ID-btn">
-              <Buttons
-                mealButtonHandler={this.mealButtonHandler}
-                type={this.state.type}
-              />
-            </div>
-            <DatePicker handlePickDate={this.handlePickDate} />
-          </div>
+          )}
+          <button onClick={this.onSave}>SAVE</button>
         </div>
-      );
-    }
-    return <p>loading...</p>;
+        <div className="create-filter-wrapper">
+          <div className="ID-btn">
+            <Buttons
+              mealButtonHandler={this.mealButtonHandler}
+              type={this.state.type}
+            />
+          </div>
+          <DatePicker handlePickDate={this.handlePickDate} />
+        </div>
+      </div>
+    );
   }
 }
 
