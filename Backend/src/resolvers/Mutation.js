@@ -1,5 +1,6 @@
 //This file defines resolvers for Mutation
 const stripe = require("../utils/stripe");
+const { getUserId, getRecipe } = require("../utils/helper");
 
 const Mutation = {
   signup: async (_, args, context, info) => {
@@ -27,31 +28,12 @@ const Mutation = {
 
   createRecipe: async (_, args, context, info) => {
     try {
-      const contextUser = await context.user;
-      const auth0Sub = contextUser.sub;
+      //check if recipe already exists, if it does return existing recipe
+      const userId = await getUserId(context);
+      const existingRecipe = await getRecipe(context, args.title, userId);
+      if (existingRecipe) return existingRecipe;
 
-      //get current user
-      const user = await context.db.query.user(
-        {
-          where: {
-            auth0Sub: auth0Sub
-          }
-        },
-        info
-      );
-
-      //check if recipe already exists for this user
-      const existingRecipes = await context.db.query.recipes({
-        where: {
-          title: args.title,
-          createdBy: {
-            id: user.id
-          }
-        }
-      });
-      console.log(existingRecipes);
-      if (existingRecipes.length) return existingRecipes[0];
-
+      //else create new recipe
       const recipe = await context.db.mutation.createRecipe(
         {
           data: {
@@ -79,6 +61,19 @@ const Mutation = {
       recipe: { connect: { id: args.recipe } }
     };
     try {
+      //check if event already exists for this recipe, meal type, and date
+      const existingEvent = await context.db.query.events({
+        where: {
+          mealType: args.mealType,
+          date: args.date,
+          recipe: {
+            id: args.recipe
+          }
+        }
+      });
+      if (existingEvent.length) return;
+
+      //else create event
       const event = await context.db.mutation.createEvent(
         {
           data: data
@@ -99,6 +94,20 @@ const Mutation = {
       recipe: { connect: { id: args.recipe } }
     };
     try {
+      //Check if this recipe already created before and has these instructions
+      const instructions = await context.db.query.instructions({
+        where: {
+          stepNum: args.stepNum,
+          description: args.description,
+          recipe: {
+            id: args.recipe
+          }
+        }
+      });
+
+      if (instructions.length) return;
+
+      //If not then add instruction
       const instruction = await context.db.mutation.createInstruction(
         {
           data: data
@@ -119,6 +128,19 @@ const Mutation = {
       recipe: { connect: { id: args.recipe } }
     };
     try {
+      //Check if this recipe already created before and has these ingredient
+      const ingredients = await context.db.query.ingredients({
+        where: {
+          name: args.name,
+          quantity: args.quantity,
+          recipe: {
+            id: args.recipe
+          }
+        }
+      });
+      if (ingredients.length) return;
+
+      //If not then add ingredient
       const ingredient = await context.db.mutation.createIngredient(
         {
           data: data

@@ -121,31 +121,32 @@ class Create extends Component {
         });
       } catch (error) {
         console.log(error.data);
+        return error.data;
       }
     });
   };
 
-  saveRecipe = data => {};
-
   onSave = async () => {
+    //If no recipe title scraped, then save button won't work.
     if (!this.state.og_title || this.state.og_title === "N/A") return;
-    //variables for createRecipe
-    const recipeVariables = {
-      title: this.state.og_title,
-      prepTime: this.state.prep_time,
-      servings: this.state.servings,
-      image: this.state.og_image,
-      url: this.state.og_url
-    };
 
-    //Execute createRecipe
     try {
+      //variables for createRecipe
+      const recipeVariables = {
+        title: this.state.og_title,
+        prepTime: this.state.prep_time,
+        servings: this.state.servings,
+        image: this.state.og_image,
+        url: this.state.og_url
+      };
+
+      //Execute createRecipe
       const { data } = await this.props.createRecipe({
         variables: recipeVariables
       });
-
       console.log("recipe created: ", data.createRecipe);
 
+      //If url is not whitelisted, then no instructions saved
       if (this.state.instructions.length) {
         this.state.instructions.forEach(async (instruction, index) => {
           //variables for createInstruction
@@ -156,13 +157,14 @@ class Create extends Component {
           };
 
           //execute createInstruction
-          const instructionData = await this.props.createInstruction({
+          await this.props.createInstruction({
             variables: instructionVariables
           });
-          console.log("instruction created: ", instructionData);
         });
       }
+      console.log("Instructions created.");
 
+      //If url is not whitelisted, then no ingredients saved
       if (this.state.ingredient_list.length) {
         this.state.ingredient_list.forEach(async ingredient => {
           //variables for createIngredient
@@ -172,15 +174,13 @@ class Create extends Component {
             recipe: data.createRecipe.id
           };
 
-          console.log(ingredientVariables);
-
           //execute createIngredient
-          const ingredientData = await this.props.createIngredient({
+          await this.props.createIngredient({
             variables: ingredientVariables
           });
-          console.log("ingredient created: ", ingredientData);
         });
       }
+      console.log("Ingredients created.");
 
       if (this.state.onDate && this.state.type) {
         //variables for createEvent
@@ -194,7 +194,7 @@ class Create extends Component {
         const eventData = await this.props.createEvent({
           variables: eventVariables
         });
-        console.log("event created: ", eventData);
+        console.log("Event created: ", eventData);
 
         return eventData;
       }
