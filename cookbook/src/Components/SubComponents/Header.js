@@ -34,7 +34,7 @@ class Header extends Component {
     render() {
         const { isAuthenticated } = auth;
 
-        return ( 
+        return (
             <div className='header-nav'>
                 <div className='header'>
                     <Link className='link' to='/home'>

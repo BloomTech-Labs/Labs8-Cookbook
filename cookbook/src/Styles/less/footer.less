@@ -1,59 +1,189 @@
-.footer {
+.footer{
     width: 100%;
-    background-color: #9E9D9E;
-    height: 240px;
-    margin-top: 60px;
+    background: @CBblue;
     display: flex;
     justify-content: center;
-    color: white;
-    font-size: 1.6rem;
-    @media @phone {
-        margin-top: 40px;
-    }
 
-    .content {
-        width: 440px;
-        height: 100%;
+    .footer-container {
+        width: 100%;
+        max-width: 1600px;
+        color: @CBtan;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        @media @tablet {
-            width: 370px;
-        }
-        @media @phone {
-            width: 320px;
+
+        @media (max-width: 790px) {
+            flex-flow: column;
         }
 
-        .logo {
-            height: 130px;
+        .main {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+
             @media @tablet {
-                height: 110px;
+                margin: 20px 20px 0;
             }
-            @media @phone {
-                height: 100px;
+
+            .brand {
+                display: flex;
+                width: 100%;
+                max-width: 350px;
+                align-items: center;
+                justify-content: center;
+
+                @media @phone {
+                    flex-flow: column;
+                    align-items: center;
+                    width: 100%;
+                }
+
+                @media @tablet {
+                    justify-content: space-between;
+                }
+
+                .logo {
+                    display: none;
+
+                    @media @phone {
+                        display: flex;
+                        order: -1;
+                        height: 13vw;
+                        max-height: 60px;
+                    }
+
+                    @media @tablet {
+                        display: flex;
+                        height: 70px;
+                    }
+                }
+        
+                .title {
+                    font-weight: bold;
+                    font-family: @secondary-font;
+                    order: -1;
+                    font-size: 40px;
+                    letter-spacing: 1.5vw;
+                    margin-right: -1.3vw;
+        
+                    @media @phone {
+                        font-size: 2.2rem;
+                        letter-spacing: .4rem;
+                        margin-top: 15px;
+                    }
+
+                    @media @tablet {
+                        font-size: 26px;
+                    }
+                }
+
+            }
+
+
+            .links {
+                display: flex;
+                flex-flow: column;
+                width: 100%;
+                max-width: 500px;
+
+                .line1 {
+                    display: flex;
+                    font-size: 2rem;
+                    justify-content: space-around;
+                    letter-spacing: 2px;
+                }
+                .line1 :hover {
+                    cursor: pointer;
+                }
+
+                .line2 {
+                    margin-top: -25px;
+                    display: flex;
+                    font-size: 2rem;
+                    justify-content: space-around;
+                    letter-spacing: 2px;
+                }
+                .line2 :hover {
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        .bigLogo {
+            height: 10vw;
+            max-height: 140px;
+            width: 50%;
+
+            @media @tablet {
+                display: none;
             }
         }
-    
-        .created-by {
+
+        .info {
             display: flex;
-            flex-wrap: wrap;
-            width: 150px;
+            flex-flow: column;
+            width: 100%;
+            margin-bottom: 10px;
+            justify-content: center;
+
+            @media @desktop {
+                margin-left: 0;
+            }
             @media @tablet {
-                font-size: 1.4rem;
+                margin-left: 40px;
+                align-items: flex-end;
             }
-            @media @phone {
-                font-size: 1.3rem;
-            }
-    
-            h3 {
+
+            .contact-container {
                 width: 100%;
+                font-size: 1.5rem;
+                display: flex;
+                font-weight: bold;
+                letter-spacing: 2px;
+                justify-content: center;
+
+                @media @tablet {
+                    justify-content: flex-start;
+                }
+        
+                .label {
+                    font-weight: normal;
+                    margin-right: 15px;
+                }
             }
-    
-            span {
-                text-align: left;
+
+            .team-container {
                 width: 100%;
-                margin-bottom: 8px;
+                margin: -5px 0 0 -51px;
+                font-size: 1.5rem;
+                display: flex;
+                font-weight: bold;
+                letter-spacing: 2px;
+                justify-content: center;
+
+                @media @tablet {
+                    justify-content: flex-start;
+                    padding-left: 22px;
+                }
+        
+                .label {
+                    font-weight: normal;
+                    margin-right: 15px;
+                    line-height: 10px;
+                }
+        
+                .names {
+                    line-height: 10px;
+                }
             }
         }
     }
+}
+
+.footer :hover{
+    cursor: default;
 }
