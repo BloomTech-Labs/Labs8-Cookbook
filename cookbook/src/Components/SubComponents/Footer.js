@@ -33,7 +33,8 @@ const Footer = (props) => {
                 </div>
             
             </div>
-            
+
+            <img className='bigLogo' src={Logo} alt='company logo'/>
             
             <div className="info">
 

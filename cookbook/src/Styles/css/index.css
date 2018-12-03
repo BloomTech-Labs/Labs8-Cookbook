@@ -391,18 +391,29 @@ html {
     align-items: center;
   }
 }
-.footer .main {
-  display: flex;
-}
-@media (max-width: 600px) {
-  .footer .main {
+@media (max-width: 790px) {
+  .footer {
     flex-flow: column;
     align-items: center;
-    width: 100%;
+  }
+}
+.footer .main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .footer .main {
+    margin: 20px 20px 0;
   }
 }
 .footer .main .brand {
   display: flex;
+  width: 100%;
+  max-width: 350px;
+  align-items: center;
+  justify-content: space-between;
 }
 @media (max-width: 600px) {
   .footer .main .brand {
@@ -411,16 +422,30 @@ html {
     width: 100%;
   }
 }
+.footer .main .brand .logo {
+  display: none;
+}
 @media (max-width: 600px) {
   .footer .main .brand .logo {
+    display: flex;
+    order: -1;
     height: 13vw;
     max-height: 60px;
     margin-top: 20px;
   }
 }
+@media (max-width: 900px) {
+  .footer .main .brand .logo {
+    display: flex;
+    height: 70px;
+  }
+}
 .footer .main .brand .title {
   font-weight: bold;
   font-family: 'Questrial', sans-serif;
+  order: -1;
+  font-size: 26px;
+  letter-spacing: 0.4rem;
 }
 @media (max-width: 600px) {
   .footer .main .brand .title {
@@ -453,6 +478,11 @@ html {
 }
 .footer .main .links .line2 :hover {
   cursor: pointer;
+}
+@media (max-width: 900px) {
+  .footer .bigLogo {
+    display: none;
+  }
 }
 .footer .info {
   display: flex;
