@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class RecipeView extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
         this.state = {
         }
     }
@@ -17,27 +16,30 @@ class RecipeView extends Component {
                 <div className='left-container'>
                     <div className='header'>
                         <span className='title'>{this.props.location.state.title}</span>
-                        <a href={'' + this.props.location.state.url} rel="noopener noreferrer" target="_blank"><FontAwesomeIcon icon="link" /></a>
+                        <a  className='link' href={'' + this.props.location.state.url} rel="noopener noreferrer" target="_blank"><FontAwesomeIcon icon="link" /></a>
                     </div>
-                    <div className='recipe-img' style={{backgroundImage: `url(${this.props.location.state.image})`}}></div>
-                    <div className='scheduled-for'>
-                        <span>scheduled for</span>
-                        {this.props.location.state.events.map(event => 
-                        <div className='event'>
-                            <div className="meal">{event.mealType}</div>
-                            <div className="date">{new Date(event.date).toLocaleDateString()}</div>
-                        </div>
-                        )}
-                    </div>
-                    <div className='recipe-info'>
-                        <span className='title'>Info</span>
-                        <div className='cook-time'>
-                            <span>Cook Time</span>
-                            <span>{this.props.location.state.prepTime}</span>
-                        </div>
-                        <div className='servings'>
-                            <span>Servings</span>
-                            <span>{this.props.location.state.servings}</span>
+                    <div className='left-content'>
+                        <div className='recipe-img' style={{backgroundImage: `url(${this.props.location.state.image})`}}></div>
+                        <div className='info-bar'>
+                            <div className='scheduled-for'>
+                                <span className='text'>scheduled for:</span>
+                                {this.props.location.state.events.map(event => 
+                                <div className='event'>
+                                    <div className="meal">{event.mealType}</div>
+                                    <div className="date">{new Date(event.date).toLocaleDateString()}</div>
+                                </div>
+                                )}
+                            </div>
+                            <div className='recipe-info'>
+                                <div className='cook-time'>
+                                    <span className='title'>Cook Time:</span>
+                                    <span className='time'>{this.props.location.state.prepTime}</span>
+                                </div>
+                                <div className='servings'>
+                                    <span className='title'>Servings:</span>
+                                    <span className='size'>{this.props.location.state.servings}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='ingredients'>
