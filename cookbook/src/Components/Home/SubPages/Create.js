@@ -182,7 +182,7 @@ class Create extends Component {
         });
       }
 
-      if (this.state.oneDate && this.state.type) {
+      if (this.state.onDate && this.state.type) {
         //variables for createEvent
         const eventVariables = {
           mealType: this.state.type,
