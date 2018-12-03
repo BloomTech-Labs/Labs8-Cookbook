@@ -40,6 +40,18 @@ const Mutation = {
         info
       );
 
+      //check if recipe already exists for this user
+      const existingRecipe = await context.db.query.recipe({
+        where: {
+          title: args.title,
+          createBy: {
+            id: user.id
+          }
+        }
+      });
+      console.log(existingRecipe);
+      if (existingRecipe) return existingRecipe;
+
       const recipe = await context.db.mutation.createRecipe(
         {
           data: {
