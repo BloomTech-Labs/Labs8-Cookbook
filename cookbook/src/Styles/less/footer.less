@@ -1,59 +1,92 @@
 .footer {
+    background: @CBblue;
     width: 100%;
-    background-color: #9E9D9E;
-    height: 240px;
-    margin-top: 60px;
+    color: @CBtan;
     display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 1.6rem;
+
     @media @phone {
-        margin-top: 40px;
-    }
-
-    .content {
-        width: 440px;
-        height: 100%;
-        display: flex;
-        justify-content: space-between;
+        flex-flow: column;
         align-items: center;
-        @media @tablet {
-            width: 370px;
-        }
+    }
+
+
+    .logo {
         @media @phone {
-            width: 320px;
+            height: 50px;
+            margin-top: 20px;
+        }
+    }
+
+    .title {
+        font-weight: bold;
+        font-family: @secondary-font;
+
+        @media @phone {
+            font-size: 2.7rem;
+            letter-spacing: .4rem;
+            margin-top: 15px;
+        }
+    }
+
+    .nav {
+        display: flex;
+        flex-flow: wrap;
+
+        @media @phone {
+            margin-top: 20px;
+            font-size: 2rem;
+            justify-content: space-around;
+            letter-spacing: 2px;
+            line-height: 0;
+        }
+    }
+
+    .nav :hover {
+        cursor: pointer;
+    }
+
+    .info {
+        display: flex;
+        flex-flow: column;
+        width: 100%;
+        align-items: flex-end;
+        padding: 0 20px 10px;
+
+        .contact-container {
+            width: 100%;
+            margin: 25px 0 0 10px;
+            font-size: 1.5rem;
+            display: flex;
+            font-weight: bold;
+            letter-spacing: 2px;
+    
+            .label {
+                font-weight: normal;
+                margin-right: 15px;
+            }
         }
 
-        .logo {
-            height: 130px;
-            @media @tablet {
-                height: 110px;
-            }
-            @media @phone {
-                height: 100px;
-            }
-        }
-    
-        .created-by {
+        .team-container {
+            width: 100%;
+            margin: -5px 0 0 71px;
+            font-size: 1.5rem;
             display: flex;
-            flex-wrap: wrap;
-            width: 150px;
-            @media @tablet {
-                font-size: 1.4rem;
-            }
-            @media @phone {
-                font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+    
+            .label {
+                font-weight: normal;
+                margin-right: 15px;
+                line-height: 10px;
             }
     
-            h3 {
-                width: 100%;
-            }
-    
-            span {
-                text-align: left;
-                width: 100%;
-                margin-bottom: 8px;
+            .names {
+                line-height: 10px;
             }
         }
     }
+}
+
+.footer :hover{
+    cursor: default;
 }
