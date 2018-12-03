@@ -1189,8 +1189,8 @@ input totalQuantityWhereUniqueInput {
 type User {
   id: ID!
   auth0Sub: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   email: String!
   isSubscribed: Boolean!
   recipes(where: RecipeWhereInput, orderBy: RecipeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Recipe!]
@@ -1204,8 +1204,8 @@ type UserConnection {
 
 input UserCreateInput {
   auth0Sub: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   email: String!
   isSubscribed: Boolean
   recipes: RecipeCreateManyWithoutCreatedByInput
@@ -1223,8 +1223,8 @@ input UserCreateOneWithoutRecipesInput {
 
 input UserCreateWithoutRecipesInput {
   auth0Sub: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   email: String!
   isSubscribed: Boolean
 }

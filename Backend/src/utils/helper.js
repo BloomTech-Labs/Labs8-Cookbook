@@ -1,13 +1,13 @@
 const getUserId = async ctx => {
   const authUser = await ctx.user;
   const auth0sub = authUser.sub;
-  const user = await ctx.db.query.user({
+  const currentUser = await ctx.db.query.user({
     where: {
       auth0Sub: auth0sub
     }
   });
 
-  return user.id;
+  return currentUser.id;
 };
 
 const getRecipe = async (ctx, title, userId) => {

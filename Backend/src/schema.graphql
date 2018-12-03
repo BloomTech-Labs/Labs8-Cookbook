@@ -11,8 +11,10 @@ type Query {
   user(id: String!): User!
   recipe(where: RecipeWhereUniqueInput!): Recipe!
   recipes(where: RecipeWhereInput): [Recipe]!
+  instructions(where: InstructionWhereInput): [Instruction]!
+  ingredients(where: IngredientWhereInput): [Ingredient]!
   event: Event!
-  events (where: EventWhereInput): [Event]!
+  events(where: EventWhereInput): [Event]!
   currentUser(auth0Sub: String): User
 }
 
@@ -26,7 +28,11 @@ type Mutation {
     url: String!
   ): Recipe!
   createSubscription(token: String!): Subscription!
-  createEvent(date: String!, mealType: String!, recipe: String!): Event!
-  createInstruction(stepNum: Int!, description: String!, recipe: String!): Instruction!
-  createIngredient(name: String!, quantity: Float!, recipe: String!): Ingredient!
+  createEvent(date: String!, mealType: String!, recipe: String!): Event
+  createInstruction(
+    stepNum: Int!
+    description: String!
+    recipe: String!
+  ): Instruction
+  createIngredient(name: String!, quantity: Float!, recipe: String!): Ingredient
 }

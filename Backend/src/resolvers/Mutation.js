@@ -42,7 +42,7 @@ const Mutation = {
             servings: args.servings,
             image: args.image,
             url: args.url,
-            createdBy: { connect: { id: user.id } }
+            createdBy: { connect: { id: userId } }
           }
         },
         info
