@@ -9,18 +9,31 @@ const Footer = (props) => {
 
     return ( 
         <div className='footer'>
+
+            <div className='main'>
+
+                <div className='brand'>
+                
+                    <img className='logo' src={Logo} alt='company logo'/>
+                    
+                    <div className='title'>COOKBOOK</div>
+                
+                </div>
+                
+                <div className='links'>
+                    <div className='line1'>
+                        <p onClick={() => handleRedirect('/home/create')}>CREATE</p>
+                        <p onClick={() => handleRedirect('/home/recipes')}>RECIPES</p>
+                        <p onClick={() => handleRedirect('/home/calendar')}>CALENDAR</p>
+                    </div>
+                    <div className='line2'>
+                        <p onClick={() => handleRedirect('/home/dashboard')}>GROCERY LIST</p>
+                        <p onClick={() => handleRedirect('/home/settings')}>SETTINGS</p>
+                    </div>
+                </div>
             
-            <img className='logo' src={Logo} alt='company logo'/>
-            
-            <div className='title'>COOKBOOK</div>
-            
-            <div className='nav'>
-                <p onClick={() => handleRedirect('/home/create')}>CREATE</p>
-                <p onClick={() => handleRedirect('/home/recipes')}>RECIPES</p>
-                <p onClick={() => handleRedirect('/home/calendar')}>CALENDAR</p>
-                <p onClick={() => handleRedirect('/home/dashboard')}>GROCERY LIST</p>
-                <p onClick={() => handleRedirect('/home/settings')}>SETTINGS</p>
             </div>
+            
             
             <div className="info">
 

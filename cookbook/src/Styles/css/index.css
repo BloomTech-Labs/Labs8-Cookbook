@@ -7,7 +7,7 @@ html {
 .container-margin-top {
   margin-top: 180px;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .container-margin-top {
     margin-top: 120px;
   }
@@ -40,12 +40,12 @@ html {
   z-index: 11;
   top: 0;
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header-nav .header {
     height: 50px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .header-nav .header {
     height: 38px;
   }
@@ -53,7 +53,7 @@ html {
 .header-nav .header .link {
   margin-left: 40px;
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header-nav .header .link {
     margin-left: 30px;
   }
@@ -61,7 +61,7 @@ html {
 .header-nav .header .link .logo {
   height: 40px;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .header-nav .header .link .logo {
     height: 30px;
   }
@@ -75,12 +75,12 @@ html {
     letter-spacing: 3.7rem;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header-nav .header .title {
     letter-spacing: 2.6rem;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .header-nav .header .title {
     display: none;
   }
@@ -99,13 +99,13 @@ html {
   padding-top: 15px;
   margin-right: 40px;
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header-nav .header .signout {
     margin-right: 30px;
     padding-top: 12px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .header-nav .header .signout {
     font-size: 1.6rem;
     padding-top: 8px;
@@ -123,14 +123,14 @@ html {
   z-index: 11;
   top: 60px;
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header-nav .nav {
     height: 30px;
     font-size: 2.2rem;
     top: 50px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .header-nav .nav {
     display: none;
   }
@@ -167,14 +167,14 @@ html {
   font-weight: 300;
   margin-top: 95px;
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header-nav .current-page {
     height: 30px;
     font-size: 2.2rem;
     margin-top: 80px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .header-nav .current-page {
     position: fixed;
     z-index: 1;
@@ -225,7 +225,7 @@ html {
   z-index: 15;
   top: 35px;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .header-nav .phone-nav {
     display: block;
   }
@@ -244,7 +244,7 @@ html {
   width: 100%;
   height: auto;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .containerLP .titleContainer .bckgImg {
     width: 400px;
   }
@@ -257,12 +257,12 @@ html {
   display: flex;
   font-size: 2.4rem;
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .containerLP .titleContainer .landingNav {
     font-size: 2.2rem;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .containerLP .titleContainer .landingNav {
     font-size: 1.6rem;
   }
@@ -276,7 +276,7 @@ html {
   cursor: pointer;
   height: 30px;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .containerLP .titleContainer .landingNav .register {
     margin-top: 5px;
   }
@@ -298,13 +298,13 @@ html {
     height: 180px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .containerLP .titleContainer .logo-title .logo {
     top: 75px;
     height: 130px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .containerLP .titleContainer .logo-title .logo {
     top: 55px;
     height: 75px;
@@ -322,13 +322,13 @@ html {
     font-size: 9rem;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .containerLP .titleContainer .logo-title .title {
     top: 220px;
     font-size: 7.6rem;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .containerLP .titleContainer .logo-title .title {
     top: 140px;
     font-size: 4.8rem;
@@ -346,12 +346,12 @@ html {
     width: 768px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .containerLP .lp-content {
     width: 620px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .containerLP .lp-content {
     width: 360px;
   }
@@ -385,43 +385,73 @@ html {
   color: #f5e9df;
   display: flex;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .footer {
     flex-flow: column;
     align-items: center;
   }
 }
-@media (max-width: 400px) {
-  .footer .logo {
-    height: 50px;
+.footer .main {
+  display: flex;
+}
+@media (max-width: 600px) {
+  .footer .main {
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+.footer .main .brand {
+  display: flex;
+}
+@media (max-width: 600px) {
+  .footer .main .brand {
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .footer .main .brand .logo {
+    height: 13vw;
+    max-height: 60px;
     margin-top: 20px;
   }
 }
-.footer .title {
+.footer .main .brand .title {
   font-weight: bold;
   font-family: 'Questrial', sans-serif;
 }
-@media (max-width: 400px) {
-  .footer .title {
-    font-size: 2.7rem;
+@media (max-width: 600px) {
+  .footer .main .brand .title {
+    font-size: 2.2rem;
     letter-spacing: 0.4rem;
     margin-top: 15px;
   }
 }
-.footer .nav {
+.footer .main .links {
   display: flex;
-  flex-flow: wrap;
+  flex-flow: column;
+  width: 100%;
+  max-width: 500px;
 }
-@media (max-width: 400px) {
-  .footer .nav {
-    margin-top: 20px;
-    font-size: 2rem;
-    justify-content: space-around;
-    letter-spacing: 2px;
-    line-height: 0;
-  }
+.footer .main .links .line1 {
+  display: flex;
+  font-size: 2rem;
+  justify-content: space-around;
+  letter-spacing: 2px;
 }
-.footer .nav :hover {
+.footer .main .links .line1 :hover {
+  cursor: pointer;
+}
+.footer .main .links .line2 {
+  margin-top: -25px;
+  display: flex;
+  font-size: 2rem;
+  justify-content: space-around;
+  letter-spacing: 2px;
+}
+.footer .main .links .line2 :hover {
   cursor: pointer;
 }
 .footer .info {
@@ -469,7 +499,7 @@ html {
   justify-content: center;
   flex-wrap: wrap;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .home-container {
     margin-top: 120px;
   }
@@ -479,12 +509,12 @@ html {
     width: 900px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .home-container {
     width: 700px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .home-container {
     width: 370px;
   }
@@ -551,25 +581,25 @@ html {
     height: 500px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .calendar-page .rbc-calendar {
     font-size: 1.4rem;
     height: 420px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .calendar-page .rbc-calendar {
     font-size: 1rem;
     height: 380px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .calendar-page .rbc-calendar .rbc-toolbar .rbc-btn-group button {
     font-size: 0.8rem;
     width: 40px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .calendar-page .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
     font-size: 1rem;
     padding: 0;
@@ -580,7 +610,7 @@ html {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .grocery-list-page {
     justify-content: center;
   }
@@ -598,7 +628,7 @@ html {
     width: 420px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .grocery-list-page .gen-list-container {
     width: 100%;
   }
@@ -619,13 +649,13 @@ html {
     height: 280px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
     height: 300px;
     width: 90%;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
     height: 240px;
     width: 80%;
@@ -655,12 +685,12 @@ html {
     width: 250px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .grocery-list-page .list {
     width: 100%;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .grocery-list-page .list {
     width: 90%;
   }
@@ -796,7 +826,7 @@ html {
   display: flex;
   justify-content: space-between;
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .recipe-page {
     flex-wrap: wrap;
     justify-content: center;
@@ -814,13 +844,13 @@ html {
     width: 400px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .recipe-page .left-container {
     width: 330px;
     margin-left: 0px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .recipe-page .left-container {
     width: 100%;
     margin-left: 0px;
@@ -841,13 +871,13 @@ html {
     height: 180px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .recipe-page .left-container .recipe-img {
     width: 145px;
     height: 145px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .recipe-page .left-container .recipe-img {
     width: 160px;
     height: 160px;
@@ -863,13 +893,13 @@ html {
     width: 160px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .recipe-page .left-container .scheduled-for {
     width: 145px;
     margin-left: 35px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .recipe-page .left-container .scheduled-for {
     width: 160px;
     margin-left: 45px;
@@ -913,13 +943,13 @@ html {
     width: 400px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .recipe-page .right-container {
     width: 330px;
     margin-right: 0px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .recipe-page .right-container {
     width: 100%;
     margin-right: 0px;
