@@ -18,11 +18,14 @@ class RecipeView extends Component {
     render() {
         return (
             <div className='recipe-page'>
-                <div className='left-container'>
-                    <div className='header'>
-                        <span className='title'>{this.props.location.state.title}</span>
+                <div className='header'>
+                    <span className='title'>{this.props.location.state.title}</span>
+                    <div className='icon-container'>
                         <a  className='link' href={'' + this.props.location.state.url} rel="noopener noreferrer" target="_blank"><FontAwesomeIcon icon="link" /></a>
+                        <FontAwesomeIcon icon='trash-alt' className='delete'/>
                     </div>
+                </div>
+                <div className='left-container'>
                     <div className='left-content'>
                         <div className='recipe-img' style={{backgroundImage: `url(${this.props.location.state.image})`}}></div>
                         <div className='info-bar'>
@@ -60,10 +63,6 @@ class RecipeView extends Component {
                 <div className='right-container'>
                     <div className='header'>
                         <div className='title'>Instructions</div>
-                        <div className='icon-container'>
-                                <FontAwesomeIcon icon='edit' className='edit'/>
-                                <FontAwesomeIcon icon='trash-alt' className='delete'/>
-                        </div>
                     </div>
                     <div className='instructions'>
                         {this.props.location.state.instructions.map(inst => (

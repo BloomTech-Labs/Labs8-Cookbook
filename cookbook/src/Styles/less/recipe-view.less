@@ -1,5 +1,6 @@
 .recipe-page {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     border: 1.5px solid @CBblue;
     border-radius: 30px;
@@ -10,8 +11,52 @@
         justify-content: center;
     }
 
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0 20px;
+        width: 100%;
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 2.7rem;
+        @media @tablet {
+            font-size: 2.4rem;
+        }
+        @media @phone {
+            flex-wrap: wrap-reverse;
+            margin-top: 15px;
+        }
+
+        .title {
+            width: 80%;
+            @media @phone {
+                width: 100%;
+            }
+        }
+
+        .icon-container {
+            margin-right: 10px;
+            cursor: pointer;
+            @media @phone {
+                width: 100%;
+                text-align: right;
+                margin-bottom: 10px;
+                font-size: 2rem;
+            }
+
+            .link {
+                margin-right: 15px;
+                color: @CBblue;
+                @media @phone {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
     .left-container {
-        margin-top: 22px;
+        margin-top: 15px;
         margin-left: 20px;
         width: 500px;
         display: flex;
@@ -31,25 +76,6 @@
             justify-content: center;
         }
 
-        .header {
-            width: 100%;
-            font-weight: bold;
-            font-size: 2.7rem;
-            margin-bottom: 10px;
-            @media @desktop {
-                font-size: 2.4rem;
-            }
-            @media @tablet {
-                font-size: 2.1rem;
-            }
-            
-            .link {
-                margin-left: 8px;
-                color: @CBblue;
-                cursor: pointer;
-            }
-        }
-        
         .left-content {
             position: relative;
             font-size: 1.4rem;
@@ -237,41 +263,28 @@
         }
     }
 
-    .right-container {
-        margin-top: 60px;
+    .right-container {      
         margin-right: 20px;
         width: 500px;
         @media @desktop {
             width: 400px;
+            margin-right: 0;
         }
         @media @tablet {
             width: 330px;
-            margin-right: 10px;
         }
         @media @phone {
             width: 320px;
-            margin-right: 0px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-
-            .title {
-                font-size: 2.6rem;
-                font-weight: 600;
-                margin-left: 20px;
-            }
-
-            .icon-container {
-                font-size: 2.6rem;
-                padding-right: 25px;
-                
-                .edit {
-                    margin-right: 12px;
-                }
-            }
+        .title {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-left: 20px;
+            line-height: 1.8rem;
         }
 
         .instructions {
@@ -280,7 +293,20 @@
             color: @CBtan;
             padding-top: 25px;
             padding-bottom: 15px;
-            margin-top: 15px;
+            // margin-top: 15px;
+            margin-bottom: 25px;
+            @media @desktop {
+                width: 380px;
+            }
+            @media @tablet {
+                width: 310px;
+                margin-left: 10px;
+            }
+            @media @phone {
+                width: 300px;
+                margin-left: 0;
+            }
+            
 
             .instruction {
             display: flex;
