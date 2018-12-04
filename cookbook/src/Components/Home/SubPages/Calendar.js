@@ -112,6 +112,13 @@ class RecipeCalendar extends Component {
                         views={{ month: true }}
                       />
                     </div>
+                    <div>
+                      <button onClick={this.togglePortal}>Portal Button</button>
+                        <Portal>
+                          <Child />
+                        </Portal>
+                    </div>
+                       
                   </div>
                 )
               }}
@@ -127,6 +134,14 @@ class RecipeCalendar extends Component {
       </User>
     )
   }
+}
+
+function Child() {
+  return (
+    <div className="modal">
+      <button onClick={this.togglePortal}>Click</button>
+    </div>
+  )
 }
 
 RecipeCalendar.propTypes = propTypes
