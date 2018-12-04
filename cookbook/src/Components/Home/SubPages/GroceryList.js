@@ -1,32 +1,13 @@
 import React, { Component } from "react";
-import DayPicker, { DateUtils } from 'react-day-picker';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import User from './User';
-import 'react-day-picker/lib/style.css';
-
-const EVENT_QUERY = gql`
-  query ($id: String!){
-		user (id: $id) {
-      recipes {
-        id
-        title
-        ingredients{
-          name
-          quantity
-        }
-        events {
-          id
-          date
-        }
-      }
-    }
-  }
-`
+import DayPicker, { DateUtils } from "react-day-picker";
+import { Query } from "react-apollo";
+import { GET_RECIPES_QUERY } from "./Recipes";
+import "react-day-picker/lib/style.css";
+import GroceryItem from "./GroceryItem";
 
 class GroceryList extends Component {
   static defaultProps = {
-    numberOfMonths: 1,
+    numberOfMonths: 1
   };
   constructor(props) {
     super(props);
@@ -38,7 +19,7 @@ class GroceryList extends Component {
   getInitialState() {
     return {
       from: undefined,
-      to: undefined,
+      to: undefined
     };
   }
 
@@ -51,23 +32,19 @@ class GroceryList extends Component {
     this.setState(this.getInitialState());
   }
 
-
   render() {
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
-
     return (
-      <div className='grocery-list-page'>
-
-        <div className='gen-list-container'>
-
+      <div className="grocery-list-page">
+        <div className="gen-list-container">
           <p>
-            {!from && !to && 'Please select the first day.'}
-            {from && !to && 'Please select the last day.'}
+            {!from && !to && "Please select the first day."}
+            {from && !to && "Please select the last day."}
             {from &&
               to &&
               `Selected from ${from.toLocaleDateString()} to
-                  ${to.toLocaleDateString()}`}{' '}
+                  ${to.toLocaleDateString()}`}{" "}
             {from &&
               to && (
                 <button className="link" onClick={this.handleResetClick}>
@@ -84,66 +61,65 @@ class GroceryList extends Component {
           />
 
           <button>Generate List</button>
-
         </div>
 
-        <div className='list'>
-          <div className='list-header'>Grocery List: {from && to && `${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}{' '}</div>
-          
-          <User>
-            {({data}, loading, error) => {
-              if (loading) return <div>Fetching</div>
-              if (error) return <div>Error</div>
+        <div className="list">
+          <div className="list-header">
+            Grocery List:{" "}
+            {from &&
+              to &&
+              `${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}{" "}
+          </div>
+          <Query query={GET_RECIPES_QUERY}>
+            {({ loading, error, data }) => {
+              if (loading) return <div>Fetching</div>;
+              if (error) return <div>Error</div>;
 
-              //query for the current user 
-              if (data.currentUser) {
+              const ingredients = {};
+              //loop through all of the user's recipes
+              data.recipes.map(recipe =>
+                //loop through all of the events for each recipe
+                recipe.events.map(event => {
+                  //convert the date strings to date objects for later comparisons
+                  let eventDate = new Date(event.date);
+                  let startDate = new Date(this.state.from);
+                  let stopDate = new Date(this.state.to);
+
+                  //if the event's date lies between the chosen start and stop date
+                  // map through each ingredient and show the quantity and name
+                  if (eventDate >= startDate && eventDate <= stopDate) {
+                    return recipe.ingredients.map(ingredient => {
+                      if (ingredient.name in ingredients) {
+                        ingredients[ingredient.name] =
+                          ingredients[ingredient.name] + ingredient.quantity;
+                      } else {
+                        ingredients[ingredient.name] = ingredient.quantity;
+                      }
+                    });
+                  }
+                })
+              );
+
+              const ingredient_list = Object.keys(ingredients).map(i => {
+                return {
+                  name: i,
+                  quantity: ingredients[i]
+                };
+              });
+              console.log(ingredient_list);
               return (
-                <Query query={EVENT_QUERY} variables = {{id: data.currentUser.id}}>
-                  {({ loading, error, data }) => {
-                    if (loading) return <div>Fetching</div>
-                    if (error) return <div>Error</div>
-
-                    return (
-                      <div>
-                        { //loop through all of the user's recipes
-                          data.user.recipes.map(recipe =>
-                          //loop through all of the events for each user
-                          recipe.events.map(event => {
-                            //convert the date strings to date objects for later comparisons
-                            let eventDate = new Date(event.date);
-                            let startDate = new Date(this.state.from);
-                            let stopDate = new Date(this.state.to);
-
-                            //if the event's date lies between the chosen start and stop date
-                            // map through each ingredient and show the quantity and name
-                            if (eventDate >= startDate && eventDate <= stopDate){
-                              return (
-                              recipe.ingredients.map(ingredient => 
-                                <div key={ingredient.id}>- {ingredient.quantity} {ingredient.name}</div>
-                              ))
-                            } else {
-                              return ''
-                            }
-                          })
-                        )}
-                      </div>
-                    )
-                  }}
-                </Query>
-                )
-                }
-                return (
-                  <div>loading..</div>
-                )
+                <div>
+                  {ingredient_list.map((i, idx) => {
+                    return <GroceryItem key={idx} ingredient={i} />;
+                  })}
+                </div>
+              );
             }}
-          </User>
-
+          </Query>
         </div>
-
       </div>
-    
     );
   }
-};
+}
 
 export default GroceryList;

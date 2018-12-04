@@ -34,5 +34,9 @@ type Mutation {
     description: String!
     recipe: String!
   ): Instruction
-  createIngredient(name: String!, quantity: Float!, recipe: String!): Ingredient
+  createIngredient(
+    name: String!
+    quantity: String!
+    recipe: String!
+  ): Ingredient
 }

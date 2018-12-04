@@ -3,7 +3,7 @@ import RecipeCard from "./RecipeCard";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
-const RECIPE_QUERY = gql`
+const GET_RECIPES_QUERY = gql`
   query {
     recipes {
       id
@@ -102,7 +102,7 @@ class Recipes extends Component {
             </button>
           </div>
         </div>
-        <Query query={RECIPE_QUERY}>
+        <Query query={GET_RECIPES_QUERY}>
           {({ loading, error, data }) => {
             if (loading) return <div>Fetching</div>;
             if (error) return <div>Error</div>;
@@ -119,7 +119,6 @@ class Recipes extends Component {
                 .includes(this.state.search.toLowerCase());
               return hasMealType && hasTitle;
             });
-            console.log(recipesToRender);
             return (
               <div className="recipesCards">
                 {recipesToRender.map(recipe => (
@@ -140,3 +139,4 @@ class Recipes extends Component {
 }
 
 export default Recipes;
+export { GET_RECIPES_QUERY };
