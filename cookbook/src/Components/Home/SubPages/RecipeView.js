@@ -7,12 +7,27 @@ class RecipeView extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            instructions: []
         }
     }
 
+    componentDidMount() {
+    this.setState({instructions: this.props.location.state.instructions})
+    // this.props.location.state.instructions.map(inst => {
+    //         this.setState({
+    //             instructions: [...this.state.instructions, inst]
+    //         })
+    //     });
+    }
+
+    // converts recipe ingredient qty data from decimals into a fraction
     decToFrac(num) {
         let frac = new Fraction(num);
         return frac.toFraction(true);
+    }
+
+    toggleCheckBox = e => {
+
     }
 
     render() {
@@ -65,7 +80,7 @@ class RecipeView extends Component {
                         <div className='title'>Instructions</div>
                     </div>
                     <div className='instructions'>
-                        {this.props.location.state.instructions.map(inst => (
+                        {this.state.instructions.map(inst => (
                             <div className='instruction'>
                                 <input type='checkbox' className='checkbox'/>
                                 <div className='description'>{inst.description}</div>
