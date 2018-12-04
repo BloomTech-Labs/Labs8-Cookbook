@@ -23,16 +23,46 @@
         height: 100px;
       }
 
+      @media @tablet {
+        height: 80px;
+      }
+
+      @media @phone {
+        height: 60px;
+      }
+
       .logo {
         height: 75%;
         margin-left: 50px;
+
+        @media @tablet {
+          margin-left: 20px;
+        }
       }
 
       .title {
         font-family: @secondary-font;
         font-weight: bold;
         font-size: 65px;
-        letter-spacing: 50px;
+        letter-spacing: 70px;
+
+        @media @giant {
+          letter-spacing: 3vw;
+        }
+
+        @media @desktop {
+          font-size: 55px;
+          letter-spacing: 2vw;
+        }
+
+        @media @tablet {
+          font-size: 40px;
+          letter-spacing: 1.5vw;
+        }
+
+        @media @phone {
+          display: none;
+        }
       }
 
       .logout {
@@ -48,6 +78,25 @@
         font-family: @secondary-font;
         letter-spacing: 2px;
         margin-right: 50px;
+
+        @media @desktop {
+          height: 120px;
+          width: 120px;
+          font-size: 30px;
+        }
+
+        @media @tablet {
+          margin-right: 20px;
+          height: 100px;
+          width: 100px;
+          font-size: 25px;
+        }
+
+        @media @phone {
+          height: 80px;
+          width: 80px;
+          font-size: 20px;
+        }
       }
 
       .logout :hover {
