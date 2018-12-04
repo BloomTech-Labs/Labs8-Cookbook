@@ -8,9 +8,9 @@ const Footer = (props) => {
     }
 
     return ( 
-        <div className='footer'>
+        <div className='footer-container'>
 
-            <div className='footer-container'>
+            <div className='footer'>
 
                 <div className='main'>
 
