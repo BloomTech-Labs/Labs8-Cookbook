@@ -77,6 +77,8 @@ html {
 .header-nav .header-container {
   width: 100%;
   background: #343e5a;
+  display: flex;
+  justify-content: center;
 }
 .header-nav .header-container .header {
   width: 100%;
