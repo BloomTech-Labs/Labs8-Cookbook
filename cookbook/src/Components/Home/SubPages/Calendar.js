@@ -60,11 +60,13 @@ class RecipeCalendar extends Component {
     super(...args);
       this.state = {
         events: [],
-        type: ""
+        type: "",
+        showModal: false
       };
     }
 
   
+  togglePortal = () => this.setState({ showModal: !this.state.showModal })
 
   render() {
     console.log('date', this.state.events)
@@ -116,9 +118,10 @@ class RecipeCalendar extends Component {
             </Query>
             )
             }
-
+            
             return (
               <div>Loading...</div>
+              
             )
         }}
       </User>
