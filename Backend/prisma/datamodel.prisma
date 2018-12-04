@@ -3,11 +3,11 @@
 type User {
   id: ID! @unique
   auth0Sub: String! @unique
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   email: String! @unique
   isSubscribed: Boolean! @default(value: false)
-  recipes: [Recipe!]!
+  recipes: [Recipe!]! @relation(name: "UserRecipe", onDelete: CASCADE)
 }
 
 type Recipe {
@@ -17,17 +17,19 @@ type Recipe {
   servings: String
   image: String!
   url: String!
-  createdBy: User!
+  createdBy: User! @relation(name:"UserRecipe")
   ingredients: [Ingredient!]!
+    @relation(name: "RecipeIngredient", onDelete: CASCADE)
   instructions: [Instruction!]!
-  events: [Event!]!
+    @relation(name: "RecipeInstruction", onDelete: CASCADE)
+  events: [Event!]! @relation(name: "RecipeEvent", onDelete: CASCADE)
 }
 
-type Event {
+type Ingredient {
   id: ID! @unique
-  recipe: Recipe!
-  date: String!
-  mealType: String!
+  name: String!
+  quantity: String!
+  recipe: Recipe! @relation(name: "RecipeIngredient")
 }
 
 type Instruction {
@@ -35,14 +37,14 @@ type Instruction {
   stepNum: Int!
   description: String!
   isCompleted: Boolean! @default(value: false)
-  recipe: Recipe!
+  recipe: Recipe! @relation(name: "RecipeInstruction")
 }
 
-type Ingredient {
+type Event {
   id: ID! @unique
-  name: String!
-  quantity: Float!
-  recipe: Recipe!
+  recipe: Recipe! @relation(name: "RecipeEvent")
+  date: String!
+  mealType: String!
 }
 
 type GroceryList {

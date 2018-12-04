@@ -270,7 +270,7 @@ input GroceryListWhereUniqueInput {
 type Ingredient {
   id: ID!
   name: String!
-  quantity: Float!
+  quantity: String!
   recipe: Recipe!
 }
 
@@ -282,7 +282,7 @@ type IngredientConnection {
 
 input IngredientCreateInput {
   name: String!
-  quantity: Float!
+  quantity: String!
   recipe: RecipeCreateOneWithoutIngredientsInput!
 }
 
@@ -293,7 +293,7 @@ input IngredientCreateManyWithoutRecipeInput {
 
 input IngredientCreateWithoutRecipeInput {
   name: String!
-  quantity: Float!
+  quantity: String!
 }
 
 type IngredientEdge {
@@ -316,7 +316,7 @@ enum IngredientOrderByInput {
 
 input IngredientUpdateInput {
   name: String
-  quantity: Float
+  quantity: String
   recipe: RecipeUpdateOneRequiredWithoutIngredientsInput
 }
 
@@ -331,7 +331,7 @@ input IngredientUpdateManyWithoutRecipeInput {
 
 input IngredientUpdateWithoutRecipeDataInput {
   name: String
-  quantity: Float
+  quantity: String
 }
 
 input IngredientUpdateWithWhereUniqueWithoutRecipeInput {
@@ -374,14 +374,20 @@ input IngredientWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
-  quantity: Float
-  quantity_not: Float
-  quantity_in: [Float!]
-  quantity_not_in: [Float!]
-  quantity_lt: Float
-  quantity_lte: Float
-  quantity_gt: Float
-  quantity_gte: Float
+  quantity: String
+  quantity_not: String
+  quantity_in: [String!]
+  quantity_not_in: [String!]
+  quantity_lt: String
+  quantity_lte: String
+  quantity_gt: String
+  quantity_gte: String
+  quantity_contains: String
+  quantity_not_contains: String
+  quantity_starts_with: String
+  quantity_not_starts_with: String
+  quantity_ends_with: String
+  quantity_not_ends_with: String
   recipe: RecipeWhereInput
   AND: [IngredientWhereInput!]
   OR: [IngredientWhereInput!]
@@ -1189,8 +1195,8 @@ input totalQuantityWhereUniqueInput {
 type User {
   id: ID!
   auth0Sub: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   email: String!
   isSubscribed: Boolean!
   recipes(where: RecipeWhereInput, orderBy: RecipeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Recipe!]
@@ -1204,8 +1210,8 @@ type UserConnection {
 
 input UserCreateInput {
   auth0Sub: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   email: String!
   isSubscribed: Boolean
   recipes: RecipeCreateManyWithoutCreatedByInput
@@ -1223,8 +1229,8 @@ input UserCreateOneWithoutRecipesInput {
 
 input UserCreateWithoutRecipesInput {
   auth0Sub: String!
-  firstName: String!
-  lastName: String!
+  firstName: String
+  lastName: String
   email: String!
   isSubscribed: Boolean
 }

@@ -17,8 +17,6 @@ class Home extends Component {
   }
 
   render() {
-    // let current = this.props.location.pathname.split("/").pop();
-    // current = current === "home" ? null : current[0].toUpperCase() + current.slice(1);
     return (
       <React.Fragment>
         <Header />

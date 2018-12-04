@@ -11,36 +11,36 @@ const og_scraper = el => {
   };
 };
 
-const convert_single_quantity = quant => {
-  let quantity = 0;
-  if (quant.includes("/")) {
-    let [a, b] = quant.split("/");
-    quantity = Number(a) / Number(b);
-  } else if (quant.includes(String.fromCharCode(8260))) {
-    let [a, b] = quant.split(String.fromCharCode(8260));
-    quantity = Number(a) / Number(b);
-  } else {
-    quantity = Number(quant);
-  }
-  return Math.round(quantity * 100) / 100;
-};
+// const convert_single_quantity = quant => {
+//   let quantity = 0;
+//   if (quant.includes("/")) {
+//     let [a, b] = quant.split("/");
+//     quantity = Number(a) / Number(b);
+//   } else if (quant.includes(String.fromCharCode(8260))) {
+//     let [a, b] = quant.split(String.fromCharCode(8260));
+//     quantity = Number(a) / Number(b);
+//   } else {
+//     quantity = Number(quant);
+//   }
+//   return Math.round(quantity * 100) / 100;
+// };
 
-const convert_quantity = quant => {
-  if (quant.split(" ").length === 1) {
-    return convert_single_quantity(quant);
-  } else {
-    let first, second;
-    if (quant.includes("-")) [first, second] = quant.split("-");
-    [first, second] = quant.split(" ");
-    const first_num = convert_single_quantity(first);
-    const second_num = convert_single_quantity(second);
-    if (first_num > second_num) {
-      return first_num + second_num;
-    } else {
-      return second_num;
-    }
-  }
-};
+// const convert_quantity = quant => {
+//   if (quant.split(" ").length === 1) {
+//     return convert_single_quantity(quant);
+//   } else {
+//     let first, second;
+//     if (quant.includes("-")) [first, second] = quant.split("-");
+//     [first, second] = quant.split(" ");
+//     const first_num = convert_single_quantity(first);
+//     const second_num = convert_single_quantity(second);
+//     if (first_num > second_num) {
+//       return first_num + second_num;
+//     } else {
+//       return second_num;
+//     }
+//   }
+// };
 
 const scraper = async url => {
   try {
@@ -58,7 +58,6 @@ const scraper = async url => {
 
     let prep_time = "N/A";
     let servings = "N/A";
-    let rating = "N/A";
     let ingredient_list = [];
     let instructions = [];
 
@@ -66,7 +65,6 @@ const scraper = async url => {
     if (url.toLowerCase().includes("geniuskitchen")) {
       const prep_time_el = el.querySelector(`td.time`);
       const servings_el = el.querySelector(`span.count`);
-      const rating_el = el.querySelector(`span[class="sr-only"]`);
       const ingredients_el = el.querySelectorAll("li[data-ingredient]");
       const instructions_el = el.querySelectorAll(`div.directions ol li`);
 
@@ -77,16 +75,17 @@ const scraper = async url => {
             .match(/\d+.+/g)[0]
         : "N/A";
       servings = servings_el ? servings_el.textContent : "N/A";
-      rating =
-        rating_el && rating_el.textContent.toLowerCase() !== "close"
-          ? rating_el.textContent
-          : "N/A";
 
       if (ingredients_el.length) {
         ingredients_el.forEach(i => {
+          const quantity = i.children[0].textContent
+            .trim()
+            .replace(String.fromCharCode(8260), "/");
+          const total_quantity = quantity ? quantity : "0";
+
           ingredient_list.push({
-            quantity: convert_quantity(i.children[0].textContent.trim()),
-            food: i.children[1].textContent.trim()
+            quantity: total_quantity,
+            name: i.children[1].textContent.trim()
           });
         });
       }
@@ -104,7 +103,6 @@ const scraper = async url => {
     if (url.toLowerCase().includes("allrecipes")) {
       const prep_time_el = el.querySelector(`span[class="ready-in-time"]`);
       const servings_el = el.querySelector(`#metaRecipeServings`);
-      const rating_el = el.querySelector(`meta[itemprop="ratingValue"]`);
       const ingredients_el = el.querySelectorAll(
         "span.recipe-ingred_txt.added:not(.white)"
       );
@@ -114,7 +112,6 @@ const scraper = async url => {
 
       prep_time = prep_time_el ? prep_time_el.textContent : "N/A";
       servings = servings_el ? servings_el.content : "N/A";
-      rating = rating_el ? rating_el.content : "N/A";
 
       if (ingredients_el.length) {
         ingredients_el.forEach(i => {
@@ -123,12 +120,11 @@ const scraper = async url => {
               .trim()
               .match(/\d+(\/\d+)?(\s\d+\/\d+)?/);
             const quantity = find_quantity ? find_quantity[0].trim() : null;
-            const food = i.textContent.replace(quantity, "").trim();
+            const name = i.textContent.replace(quantity, "").trim();
             const total_quantity = quantity ? quantity : "0";
-
             ingredient_list.push({
-              quantity: convert_quantity(total_quantity),
-              food
+              quantity: total_quantity, //convert_quantity(total_quantity),
+              name
             });
           }
         });
@@ -151,7 +147,6 @@ const scraper = async url => {
       og_url,
       prep_time,
       servings,
-      rating,
       ingredient_list,
       instructions
     };
