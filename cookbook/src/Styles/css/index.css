@@ -19,7 +19,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 2vw;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -171,7 +171,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 2vw;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -196,7 +196,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 2vw;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -220,7 +220,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 2vw;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -244,7 +244,6 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -254,11 +253,16 @@ html {
   user-select: none;
   color: #fed092;
   background-color: #343e5a;
-  letter-spacing: 0;
+  letter-spacing: 2vw;
 }
 @media (max-width: 600px) {
   .header-nav .nav .phone-nav .links .dashboard-phone-nav-active {
     display: flex;
+  }
+}
+@media (max-width: 480px) {
+  .header-nav .nav .phone-nav .links .dashboard-phone-nav-active {
+    letter-spacing: 0;
   }
 }
 .header-nav .nav .phone-nav .links .settings-phone-nav-active {
@@ -269,7 +273,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 2vw;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -292,7 +296,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 2vw;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -315,7 +319,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 2vw;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -338,7 +342,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 2vw;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -361,7 +365,6 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -371,11 +374,16 @@ html {
   user-select: none;
   color: #fed092;
   background-color: #343e5a;
-  letter-spacing: 0;
+  letter-spacing: 2vw;
 }
 @media (max-width: 600px) {
   .header-nav .nav .phone-nav .links .dashboard-phone-nav-show {
     display: flex;
+  }
+}
+@media (max-width: 480px) {
+  .header-nav .nav .phone-nav .links .dashboard-phone-nav-show {
+    letter-spacing: 0;
   }
 }
 .header-nav .nav .phone-nav .links .settings-phone-nav-show {
@@ -385,7 +393,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  letter-spacing: 10px;
+  letter-spacing: 2vw;
   margin: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
