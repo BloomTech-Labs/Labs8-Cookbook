@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import moment from 'moment';
-import Calendar from 'react-big-calendar';
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import BigCalendar from 'react-big-calendar';
 import gql from "graphql-tag";
 import { Mutation, Query } from "react-apollo";
 import User from './User';
+import Portal from '../../SubComponents/Portal';
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+
+const propTypes = {}
 
 const SCHEDULE_RECIPE = gql`
   mutation($date: String!) {
@@ -43,9 +45,7 @@ const QUERY_RECIPE_EVENT = gql`
 }
 `
 
-const localizer = Calendar.momentLocalizer(moment)  // a localizer for BigCalendar
-
-const DnDCalendar = withDragAndDrop(Calendar);
+const localizer = BigCalendar.momentLocalizer(moment)  // a localizer for BigCalendar
 
 const resourceMap = [
   { resourceId: 1, resourceTitle: 'Breakfast' },
@@ -56,58 +56,15 @@ const resourceMap = [
 ]
 
 class RecipeCalendar extends Component {
-  constructor(props) {
-    super(props);
+  constructor(...args) {
+    super(...args);
       this.state = {
-        events: [
-          {
-            id: 0,
-            start: new Date(),
-            end: new Date(moment().add(0, "days").format()),
-            title: "Omelette",
-            resourceId: 1
-          }
-        ],
+        events: [],
         type: ""
       };
     }
 
-  // onEventResize = ({ start, end }) => {
-  //   this.setState(state => {
-  //     state.events[0].start = start;
-  //     state.events[0].end = end;
-  //     return { events: state.events };
-  //   });
-  //   console.log(this.events)
-  // };
-
-  // onEventDrop = ({ event, start, end, resourceId }) => {
-  //   const { events } = this.state
-  //   const idx = events.indexOf(event)
-    
-  //   const updatedEvent = { ...event, start, end, resourceId }
-
-  //   const nextEvents = [...events]
-  //   nextEvents.splice(idx, 1, updatedEvent)
-
-  //   this.setState({
-  //     events: nextEvents,
-  //   })
-
-  // }
-
-  // onDrop = async () => {
-  //   const dndEventVariables = {
-  //     start: new Date(),
-  //     end: new Date(moment().add(0, "days")),
-  //     mealType: this.state.resourceId
-  //   };
-
-  //   const { data } = await this.props.createEvent({
-  //     variables: dndEventVariables
-  //   });
-  //   console.log("recipe rescheduled: ", data.createEvent)
-  // }
+  
 
   render() {
     console.log('date', this.state.events)
@@ -138,27 +95,21 @@ class RecipeCalendar extends Component {
                 return (
                   <div className="calendar-page-container">
                     <div className="calendar-container">
-                      <DnDCalendar
+                      <BigCalendar
+                        selectable
+                        popup
                         localizer={localizer}
                         defaultDate={new Date()}
                         defaultView="month"
+                        onSelectEvent={event => alert(event.title)}
                         events={events}
-                        // onEventDrop={this.onEventDrop}
                         resources={resourceMap}
                         resourceIdAccessor="resourceId"
                         resourceTitleAccessor="resourceTitle"
-                        onClick={() => alert('pls god work')}
-                        // onEventResize={this.onEventResize}
-                        // resizable
-                        selectable
-                        style={{ height: "420px" }}
+                        style={{ height: "100vh" }}
+                        views={{ month: true }}
                       />
                     </div>
-
-                    <Mutation mutation={SCHEDULE_RECIPE} variables={{ events }}>
-                      {postMutation => <button onClick={postMutation}>Submit</button>}
-                    </Mutation>
-
                   </div>
                 )
               }}
@@ -174,5 +125,7 @@ class RecipeCalendar extends Component {
     )
   }
 }
+
+RecipeCalendar.propTypes = propTypes
 
 export default RecipeCalendar;
