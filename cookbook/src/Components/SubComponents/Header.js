@@ -35,7 +35,7 @@ class Header extends Component {
 
     handleTogglePhoneNavClass = () => {
         if (this.props.location.pathname.includes('create')) return 'create-toggle-phone-nav';
-        if (this.props.location.pathname.includes('recipes')) return 'recipes-toggle-phone-nav';
+        if (this.props.location.pathname.includes('recipe')) return 'recipe-toggle-phone-nav';
         if (this.props.location.pathname.includes('calendar')) return 'calendar-toggle-phone-nav';
         if (this.props.location.pathname.includes('dashboard')) return 'dashboard-toggle-phone-nav';
         if (this.props.location.pathname.includes('settings')) return 'settings-toggle-phone-nav';
@@ -71,7 +71,7 @@ class Header extends Component {
                     <div className='phone-nav'>
                         <div className='links'>
                             <p onClick={() => this.handleRedirect('/home/create')} className={this.handlePhoneNavClass('create')}>CREATE</p>
-                            <p onClick={() => this.handleRedirect('/home/recipes')} className={this.handlePhoneNavClass('recipes')}>RECIPES</p>
+                            <p onClick={() => this.handleRedirect('/home/recipes')} className={this.handlePhoneNavClass('recipe')}>RECIPES</p>
                             <p onClick={() => this.handleRedirect('/home/calendar')} className={this.handlePhoneNavClass('calendar')}>CALENDAR</p>
                             <p onClick={() => this.handleRedirect('/home/dashboard')} className={this.handlePhoneNavClass('dashboard')}>GROCERY LIST</p>
                             <p onClick={() => this.handleRedirect('/home/settings')} className={this.handlePhoneNavClass('settings')}>SETTINGS</p>
@@ -81,7 +81,7 @@ class Header extends Component {
 
                     <div className='normal-nav'>
                         <p onClick={() => this.handleRedirect('/home/create')} className={this.handleNormalNavClass('create')}>CREATE</p>
-                        <p onClick={() => this.handleRedirect('/home/recipes')} className={this.handleNormalNavClass('recipes')}>RECIPES</p>
+                        <p onClick={() => this.handleRedirect('/home/recipes')} className={this.handleNormalNavClass('recipe')}>RECIPES</p>
                         <p onClick={() => this.handleRedirect('/home/calendar')} className={this.handleNormalNavClass('calendar')}>CALENDAR</p>
                         <p onClick={() => this.handleRedirect('/home/dashboard')} className={this.handleNormalNavClass('dashboard')}>GROCERY LIST</p>
                         <p onClick={() => this.handleRedirect('/home/settings')} className={this.handleNormalNavClass('settings')}>SETTINGS</p>
