@@ -4,6 +4,7 @@ import BigCalendar from 'react-big-calendar';
 import gql from "graphql-tag";
 import { Mutation, Query } from "react-apollo";
 import User from './User';
+import Portal from '../../SubComponents/Portal';
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -62,6 +63,8 @@ class RecipeCalendar extends Component {
         type: ""
       };
     }
+
+  
 
   render() {
     console.log('date', this.state.events)
