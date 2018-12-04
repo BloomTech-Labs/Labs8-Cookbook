@@ -11,36 +11,36 @@ const og_scraper = el => {
   };
 };
 
-const convert_single_quantity = quant => {
-  let quantity = 0;
-  if (quant.includes("/")) {
-    let [a, b] = quant.split("/");
-    quantity = Number(a) / Number(b);
-  } else if (quant.includes(String.fromCharCode(8260))) {
-    let [a, b] = quant.split(String.fromCharCode(8260));
-    quantity = Number(a) / Number(b);
-  } else {
-    quantity = Number(quant);
-  }
-  return Math.round(quantity * 100) / 100;
-};
+// const convert_single_quantity = quant => {
+//   let quantity = 0;
+//   if (quant.includes("/")) {
+//     let [a, b] = quant.split("/");
+//     quantity = Number(a) / Number(b);
+//   } else if (quant.includes(String.fromCharCode(8260))) {
+//     let [a, b] = quant.split(String.fromCharCode(8260));
+//     quantity = Number(a) / Number(b);
+//   } else {
+//     quantity = Number(quant);
+//   }
+//   return Math.round(quantity * 100) / 100;
+// };
 
-const convert_quantity = quant => {
-  if (quant.split(" ").length === 1) {
-    return convert_single_quantity(quant);
-  } else {
-    let first, second;
-    if (quant.includes("-")) [first, second] = quant.split("-");
-    [first, second] = quant.split(" ");
-    const first_num = convert_single_quantity(first);
-    const second_num = convert_single_quantity(second);
-    if (first_num > second_num) {
-      return first_num + second_num;
-    } else {
-      return second_num;
-    }
-  }
-};
+// const convert_quantity = quant => {
+//   if (quant.split(" ").length === 1) {
+//     return convert_single_quantity(quant);
+//   } else {
+//     let first, second;
+//     if (quant.includes("-")) [first, second] = quant.split("-");
+//     [first, second] = quant.split(" ");
+//     const first_num = convert_single_quantity(first);
+//     const second_num = convert_single_quantity(second);
+//     if (first_num > second_num) {
+//       return first_num + second_num;
+//     } else {
+//       return second_num;
+//     }
+//   }
+// };
 
 const scraper = async url => {
   try {
@@ -78,8 +78,13 @@ const scraper = async url => {
 
       if (ingredients_el.length) {
         ingredients_el.forEach(i => {
+          const quantity = i.children[0].textContent
+            .trim()
+            .replace(String.fromCharCode(8260), "/");
+          const total_quantity = quantity ? quantity : "0";
+
           ingredient_list.push({
-            quantity: convert_quantity(i.children[0].textContent.trim()),
+            quantity: total_quantity,
             food: i.children[1].textContent.trim()
           });
         });
@@ -117,9 +122,8 @@ const scraper = async url => {
             const quantity = find_quantity ? find_quantity[0].trim() : null;
             const food = i.textContent.replace(quantity, "").trim();
             const total_quantity = quantity ? quantity : "0";
-
             ingredient_list.push({
-              quantity: convert_quantity(total_quantity),
+              quantity: total_quantity, //convert_quantity(total_quantity),
               food
             });
           }

@@ -144,7 +144,7 @@ class Create extends Component {
       const { data } = await this.props.createRecipe({
         variables: recipeVariables
       });
-      console.log("recipe created: ", data.createRecipe);
+      console.log("Recipe created: ", data.createRecipe);
 
       //If url is not whitelisted, then no instructions saved
       if (this.state.instructions.length) {
