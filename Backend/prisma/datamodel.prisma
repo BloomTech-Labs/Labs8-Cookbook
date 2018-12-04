@@ -7,7 +7,7 @@ type User {
   lastName: String
   email: String! @unique
   isSubscribed: Boolean! @default(value: false)
-  recipes: [Recipe!]!
+  recipes: [Recipe!]! @relation(name: "UserRecipe", onDelete: CASCADE)
 }
 
 type Recipe {
@@ -17,7 +17,7 @@ type Recipe {
   servings: String
   image: String!
   url: String!
-  createdBy: User!
+  createdBy: User! @relation(name:"UserRecipe")
   ingredients: [Ingredient!]!
     @relation(name: "RecipeIngredient", onDelete: CASCADE)
   instructions: [Instruction!]!
@@ -28,7 +28,7 @@ type Recipe {
 type Ingredient {
   id: ID! @unique
   name: String!
-  quantity: Float!
+  quantity: String!
   recipe: Recipe! @relation(name: "RecipeIngredient")
 }
 

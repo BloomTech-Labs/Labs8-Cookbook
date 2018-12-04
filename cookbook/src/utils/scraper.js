@@ -85,7 +85,7 @@ const scraper = async url => {
 
           ingredient_list.push({
             quantity: total_quantity,
-            food: i.children[1].textContent.trim()
+            name: i.children[1].textContent.trim()
           });
         });
       }
@@ -120,11 +120,11 @@ const scraper = async url => {
               .trim()
               .match(/\d+(\/\d+)?(\s\d+\/\d+)?/);
             const quantity = find_quantity ? find_quantity[0].trim() : null;
-            const food = i.textContent.replace(quantity, "").trim();
+            const name = i.textContent.replace(quantity, "").trim();
             const total_quantity = quantity ? quantity : "0";
             ingredient_list.push({
               quantity: total_quantity, //convert_quantity(total_quantity),
-              food
+              name
             });
           }
         });

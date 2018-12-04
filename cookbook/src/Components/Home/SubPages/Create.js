@@ -49,7 +49,7 @@ const CREATE_INSTRUCTION_MUTATION = gql`
 `;
 
 const CREATE_INGREDIENT_MUTATION = gql`
-  mutation($name: String!, $quantity: Float!, $recipe: String!) {
+  mutation($name: String!, $quantity: String!, $recipe: String!) {
     createIngredient(name: $name, quantity: $quantity, recipe: $recipe) {
       name
       quantity
@@ -169,7 +169,7 @@ class Create extends Component {
         this.state.ingredient_list.forEach(async ingredient => {
           //variables for createIngredient
           const ingredientVariables = {
-            name: ingredient.food,
+            name: ingredient.name,
             quantity: ingredient.quantity,
             recipe: data.createRecipe.id
           };
