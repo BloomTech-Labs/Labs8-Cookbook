@@ -13,7 +13,7 @@ class RecipeView extends Component {
 
     // Adds sorted data for instructions to the components state.
     componentDidMount() {
-        let instructions = this.props.state.location.state.instructions;
+        let instructions = this.props.location.state.instructions;
         this.setState({instructions: this.props.location.state.instructions})
     }
 
