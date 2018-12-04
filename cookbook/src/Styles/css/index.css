@@ -27,6 +27,32 @@ html {
     display: flex;
   }
 }
+#normalNav .basicNavStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+}
+@media (max-width: 1800px) {
+  #normalNav .basicNavStyle {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  #normalNav .basicNavStyle {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  #normalNav .basicNavStyle {
+    display: none;
+  }
+}
 .app {
   width: 100%;
   margin: 0;
@@ -467,6 +493,318 @@ html {
     font-weight: bold;
     letter-spacing: 2px;
     font-size: 30px;
+  }
+}
+.header-nav .nav .normal-nav {
+  display: flex;
+  flex-flow: row wrap;
+  cursor: pointer;
+}
+.header-nav .nav .normal-nav .create-normal-nav-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #de6a5a;
+  background-color: #fed092;
+  cursor: default;
+  order: 1;
+  width: 100% !important;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .create-normal-nav-active {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .create-normal-nav-active {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .create-normal-nav-active {
+    display: none;
+  }
+}
+.header-nav .nav .normal-nav .recipes-normal-nav-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #343e5a;
+  background-color: #f5e9df;
+  cursor: default;
+  order: 1;
+  width: 100% !important;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .recipes-normal-nav-active {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .recipes-normal-nav-active {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .recipes-normal-nav-active {
+    display: none;
+  }
+}
+.header-nav .nav .normal-nav .calendar-normal-nav-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #ebf4f4;
+  background-color: #bcc9d2;
+  cursor: default;
+  order: 1;
+  width: 100% !important;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .calendar-normal-nav-active {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .calendar-normal-nav-active {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .calendar-normal-nav-active {
+    display: none;
+  }
+}
+.header-nav .nav .normal-nav .dashboard-normal-nav-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #fed092;
+  background-color: #343e5a;
+  letter-spacing: 1vw;
+  cursor: default;
+  order: 1;
+  width: 100% !important;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .dashboard-normal-nav-active {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .dashboard-normal-nav-active {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .dashboard-normal-nav-active {
+    display: none;
+  }
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .dashboard-normal-nav-active {
+    letter-spacing: 0.5vw;
+  }
+}
+.header-nav .nav .normal-nav .settings-normal-nav-active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #bcc9d2;
+  background-color: #de6a5a;
+  cursor: default;
+  order: 1;
+  width: 100% !important;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .settings-normal-nav-active {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .settings-normal-nav-active {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .settings-normal-nav-active {
+    display: none;
+  }
+}
+.header-nav .nav .normal-nav .create-normal-nav-inactive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #de6a5a;
+  background-color: #fed092;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .create-normal-nav-inactive {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .create-normal-nav-inactive {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .create-normal-nav-inactive {
+    display: none;
+  }
+}
+.header-nav .nav .normal-nav .recipes-normal-nav-inactive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #343e5a;
+  background-color: #f5e9df;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .recipes-normal-nav-inactive {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .recipes-normal-nav-inactive {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .recipes-normal-nav-inactive {
+    display: none;
+  }
+}
+.header-nav .nav .normal-nav .calendar-normal-nav-inactive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #ebf4f4;
+  background-color: #bcc9d2;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .calendar-normal-nav-inactive {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .calendar-normal-nav-inactive {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .calendar-normal-nav-inactive {
+    display: none;
+  }
+}
+.header-nav .nav .normal-nav .dashboard-normal-nav-inactive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #fed092;
+  background-color: #343e5a;
+  letter-spacing: 1vw;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .dashboard-normal-nav-inactive {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .dashboard-normal-nav-inactive {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .dashboard-normal-nav-inactive {
+    display: none;
+  }
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .dashboard-normal-nav-inactive {
+    letter-spacing: 0.5vw;
+  }
+}
+.header-nav .nav .normal-nav .settings-normal-nav-inactive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 25%;
+  font-size: 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 20px;
+  margin: 0;
+  color: #bcc9d2;
+  background-color: #de6a5a;
+}
+@media (max-width: 1800px) {
+  .header-nav .nav .normal-nav .settings-normal-nav-inactive {
+    letter-spacing: 1vw;
+  }
+}
+@media (max-width: 1200px) {
+  .header-nav .nav .normal-nav .settings-normal-nav-inactive {
+    width: 50%;
+  }
+}
+@media (max-width: 600px) {
+  .header-nav .nav .normal-nav .settings-normal-nav-inactive {
+    display: none;
   }
 }
 .containerLP {

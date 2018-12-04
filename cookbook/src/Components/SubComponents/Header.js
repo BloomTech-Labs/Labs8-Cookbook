@@ -46,6 +46,13 @@ class Header extends Component {
         if (this.props.location.pathname.includes('settings')) return 'settings-toggle-phone-nav';
     }
 
+    handleNormalNavClass = (path) => {
+        if (this.props.location.pathname.includes(path)) {
+            return `${path}-normal-nav-active`
+        }
+        return `${path}-normal-nav-inactive`
+    }
+
     render() {
 
         return (
@@ -75,6 +82,14 @@ class Header extends Component {
                             <p onClick={() => this.handleRedirect('/home/settings')} className={this.handlePhoneNavClass('settings')}>SETTINGS</p>
                         </div>
                         <div onClick={() => this.togglePhoneNav()} className={this.handleTogglePhoneNavClass()}>...</div>
+                    </div>
+
+                    <div className='normal-nav'>
+                        <p onClick={() => this.handleRedirect('/home/create')} className={this.handleNormalNavClass('create')}>CREATE</p>
+                        <p onClick={() => this.handleRedirect('/home/recipes')} className={this.handleNormalNavClass('recipes')}>RECIPES</p>
+                        <p onClick={() => this.handleRedirect('/home/calendar')} className={this.handleNormalNavClass('calendar')}>CALENDAR</p>
+                        <p onClick={() => this.handleRedirect('/home/dashboard')} className={this.handleNormalNavClass('dashboard')}>GROCERY LIST</p>
+                        <p onClick={() => this.handleRedirect('/home/settings')} className={this.handleNormalNavClass('settings')}>SETTINGS</p>
                     </div>
                     
                 </div>

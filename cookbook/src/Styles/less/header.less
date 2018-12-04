@@ -202,5 +202,66 @@
       }
     }
 
+    .normal-nav {
+      display: flex;
+      flex-flow: row wrap;
+      cursor: pointer;
+
+      .create-normal-nav-active {
+        #normalNav > .create;
+        cursor: default;
+        order: 1;
+        width: 100% !important;
+      }
+
+      .recipes-normal-nav-active {
+        #normalNav > .recipes;
+        cursor: default;
+        order: 1;
+        width: 100% !important;
+      }
+
+      .calendar-normal-nav-active {
+        #normalNav > .calendar;
+        cursor: default;
+        order: 1;
+        width: 100% !important;
+      }
+
+      .dashboard-normal-nav-active {
+        #normalNav > .dashboard;
+        cursor: default;
+        order: 1;
+        width: 100% !important;
+      }
+
+      .settings-normal-nav-active {
+        #normalNav > .settings;
+        cursor: default;
+        order: 1;
+        width: 100% !important;
+      }
+
+      .create-normal-nav-inactive {
+        #normalNav > .create;
+      }
+
+      .recipes-normal-nav-inactive {
+        #normalNav > .recipes;
+      }
+
+      .calendar-normal-nav-inactive {
+        #normalNav > .calendar;
+      }
+
+      .dashboard-normal-nav-inactive {
+        #normalNav > .dashboard;
+      }
+
+      .settings-normal-nav-inactive {
+        #normalNav > .settings;
+      }
+    }
+
   }
 }
