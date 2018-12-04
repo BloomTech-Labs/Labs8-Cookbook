@@ -20,7 +20,7 @@ html {
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2vw;
-  margin: 0;
+  margin: -1px 0 0 0;
 }
 @media (max-width: 600px) {
   #phoneNav .basicNavStyle {
@@ -36,7 +36,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
 }
 @media (max-width: 1800px) {
   #normalNav .basicNavStyle {
@@ -77,8 +77,6 @@ html {
 .header-nav .header-container {
   width: 100%;
   background: #343e5a;
-  display: flex;
-  justify-content: center;
 }
 .header-nav .header-container .header {
   width: 100%;
@@ -182,6 +180,12 @@ html {
 .header-nav .header-container .header .logout :hover {
   cursor: pointer;
 }
+.header-nav .nav {
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+}
 .header-nav .nav .phone-nav {
   display: flex;
   flex-flow: column;
@@ -200,7 +204,7 @@ html {
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2vw;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #de6a5a;
   background-color: #fed092;
   order: 1;
@@ -220,7 +224,7 @@ html {
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2vw;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #343e5a;
   background-color: #f5e9df;
   cursor: default;
@@ -239,7 +243,7 @@ html {
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2vw;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #ebf4f4;
   background-color: #bcc9d2;
   cursor: default;
@@ -257,7 +261,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #fed092;
   background-color: #343e5a;
   letter-spacing: 2vw;
@@ -282,7 +286,7 @@ html {
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2vw;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #bcc9d2;
   background-color: #de6a5a;
   cursor: default;
@@ -300,7 +304,7 @@ html {
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2vw;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #de6a5a;
   background-color: #fed092;
 }
@@ -317,7 +321,7 @@ html {
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2vw;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #343e5a;
   background-color: #f5e9df;
 }
@@ -334,7 +338,7 @@ html {
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2vw;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #ebf4f4;
   background-color: #bcc9d2;
 }
@@ -350,7 +354,7 @@ html {
   height: 60px;
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #fed092;
   background-color: #343e5a;
   letter-spacing: 2vw;
@@ -373,7 +377,7 @@ html {
   font-size: 40px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2vw;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #bcc9d2;
   background-color: #de6a5a;
 }
@@ -509,7 +513,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #de6a5a;
   background-color: #fed092;
   cursor: default;
@@ -540,7 +544,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #343e5a;
   background-color: #f5e9df;
   cursor: default;
@@ -571,7 +575,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #ebf4f4;
   background-color: #bcc9d2;
   cursor: default;
@@ -602,7 +606,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #fed092;
   background-color: #343e5a;
   letter-spacing: 1vw;
@@ -639,7 +643,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #bcc9d2;
   background-color: #de6a5a;
   cursor: default;
@@ -670,7 +674,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #de6a5a;
   background-color: #fed092;
 }
@@ -698,7 +702,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #343e5a;
   background-color: #f5e9df;
 }
@@ -726,7 +730,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #ebf4f4;
   background-color: #bcc9d2;
 }
@@ -754,7 +758,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #fed092;
   background-color: #343e5a;
   letter-spacing: 1vw;
@@ -788,7 +792,7 @@ html {
   font-size: 30px;
   font-family: 'Questrial', sans-serif;
   letter-spacing: 20px;
-  margin: 0;
+  margin: -1px 0 0 0;
   color: #bcc9d2;
   background-color: #de6a5a;
 }
@@ -806,6 +810,11 @@ html {
   .header-nav .nav .normal-nav .settings-normal-nav-inactive {
     display: none;
   }
+}
+.header-nav .sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .containerLP {
   width: 100%;

@@ -13,8 +13,8 @@
   .header-container {
     width: 100%;
     background: @CBblue;
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
   
     .header {
       width: 100%;
@@ -114,6 +114,9 @@
   }
 
   .nav {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
 
     .phone-nav {
       display: flex;
@@ -263,5 +266,11 @@
       }
     }
 
+  }
+
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
   }
 }

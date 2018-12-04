@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Logo from '../../designs/Logo/CookBookLogo.svg';
 import auth from '../../Auth/Auth.js';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 class Header extends Component {
     constructor(props) {
@@ -10,10 +9,6 @@ class Header extends Component {
         this.state = {
             showPhoneNav: false,
         };
-    }
-
-    static propTypes = {
-        location: PropTypes.object.isRequired,
     }
 
     logout() {
@@ -53,6 +48,14 @@ class Header extends Component {
         return `${path}-normal-nav-inactive`
     }
 
+    handleStickyNav = () => {
+        let navbar = document.getElementById('nav');
+        let sticky = navbar.offsetTop;
+
+        if (window.pageYOffset >= sticky) navbar.classList.add('sticky');
+        else navbar.classList.remove('sticky');
+    }
+
     render() {
 
         return (
@@ -64,14 +67,16 @@ class Header extends Component {
 
                         <img className='logo' src={Logo} alt='logo'/>
 
-                        <p className="title">COOKBOOK</p>
+                        <p contenteditable className="title">COOKBOOK</p>
 
                         <div onClick={this.logout.bind(this)} className='logout'>logout</div>
 
                     </div>
                 </div>
                 
-                <div className='nav'>
+                <div class='nav'>
+
+                    {/* { window.onscroll = this.handleStickyNav() } */}
 
                     <div className='phone-nav'>
                         <div className='links'>
