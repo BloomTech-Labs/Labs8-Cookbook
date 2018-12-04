@@ -12,6 +12,21 @@ html {
     margin-top: 120px;
   }
 }
+#phoneNav .basicNavStyle {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  #phoneNav .basicNavStyle {
+    display: flex;
+  }
+}
 .app {
   width: 100%;
   margin: 0;
@@ -107,6 +122,7 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 2px;
   margin-right: 50px;
+  cursor: pointer;
 }
 @media (max-width: 1200px) {
   .header-nav .header-container .header .logout {
@@ -133,7 +149,230 @@ html {
 .header-nav .header-container .header .logout :hover {
   cursor: pointer;
 }
-.header-container :hover {
+.header-nav .nav .phone-nav {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+.header-nav .nav .phone-nav .toggle-phone-nav {
+  display: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .toggle-phone-nav {
+    display: flex;
+    padding: 11px 0 0px 2px;
+    margin: 5px 0 0 -25px;
+    justify-content: center;
+    transform: rotate(270deg);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #de6a5a;
+    color: #fed092;
+    font-family: 'Questrial', sans-serif;
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
+}
+.header-nav .nav .phone-nav .links {
+  display: flex;
+  flex-flow: column;
+}
+.header-nav .nav .phone-nav .links .create-phone-nav-active {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #de6a5a;
+  background-color: #fed092;
+  order: -1;
+  margin-top: -55px;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .create-phone-nav-active {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .recipes-phone-nav-active {
+  order: -1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #343e5a;
+  background-color: #f5e9df;
+  margin-top: -55px;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .recipes-phone-nav-active {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .calendar-phone-nav-active {
+  order: -1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #ebf4f4;
+  background-color: #bcc9d2;
+  margin-top: -55px;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .calendar-phone-nav-active {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .dashboard-phone-nav-active {
+  order: -1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #fed092;
+  background-color: #343e5a;
+  letter-spacing: 0;
+  margin-top: -55px;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .dashboard-phone-nav-active {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .settings-phone-nav-active {
+  order: -1;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #bcc9d2;
+  background-color: #de6a5a;
+  margin-top: -55px;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .settings-phone-nav-active {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .create-phone-nav-show {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #de6a5a;
+  background-color: #fed092;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .create-phone-nav-show {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .recipes-phone-nav-show {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #343e5a;
+  background-color: #f5e9df;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .recipes-phone-nav-show {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .calendar-phone-nav-show {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #ebf4f4;
+  background-color: #bcc9d2;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .calendar-phone-nav-show {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .dashboard-phone-nav-show {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #fed092;
+  background-color: #343e5a;
+  letter-spacing: 0;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .dashboard-phone-nav-show {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .settings-phone-nav-show {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  font-size: 40px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 10px;
+  margin: 0;
+  color: #bcc9d2;
+  background-color: #de6a5a;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .links .settings-phone-nav-show {
+    display: flex;
+  }
+}
+.header-nav .nav .phone-nav .links .phone-nav-hide {
+  display: none;
+}
+.header-nav .nav .phone-nav :hover {
+  cursor: pointer;
+}
+.header-nav :hover {
   cursor: default;
 }
 .containerLP {

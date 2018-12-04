@@ -78,6 +78,7 @@
         font-family: @secondary-font;
         letter-spacing: 2px;
         margin-right: 50px;
+        cursor: pointer;
 
         @media @desktop {
           height: 120px;
@@ -104,8 +105,109 @@
       }
     }
   }
+
+  .nav {
+
+    .phone-nav {
+      display: flex;
+      flex-flow: column;
+      width: 100%;
+
+      .toggle-phone-nav {
+        display: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        @media @phone {
+          display: flex;
+          padding: 11px 0 0px 2px;
+          margin: 5px 0 0 -25px;
+          justify-content: center;
+          transform: rotate(270deg);
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          background-color: @CBred;
+          color: @CBorange;
+          font-family: @secondary-font;
+          letter-spacing: 2px;
+          font-size: 30px;
+        }
+
+      }
+
+      .links {
+        display: flex;
+        flex-flow: column;
+
+        .create-phone-nav-active {
+          #phoneNav > .create();
+          order: -1;
+          margin-top: -55px;
+        }
+
+        .recipes-phone-nav-active {
+          order: -1;
+          #phoneNav > .recipes();
+          margin-top: -55px;
+        }
+
+        .calendar-phone-nav-active {
+          order: -1;
+          #phoneNav > .calendar();
+          margin-top: -55px;
+        }
+
+        .dashboard-phone-nav-active {
+          order: -1;
+          #phoneNav > .dashboard();
+          margin-top: -55px;
+        }
+
+        .settings-phone-nav-active {
+          order: -1;
+          #phoneNav > .settings();
+          margin-top: -55px;
+        }
+
+        .create-phone-nav-show {
+          #phoneNav > .create();
+        }
+
+        .recipes-phone-nav-show {
+          #phoneNav > .recipes();
+        }
+
+        .calendar-phone-nav-show {
+          #phoneNav > .calendar();
+        }
+
+        .dashboard-phone-nav-show {
+          #phoneNav > .dashboard();
+        }
+
+        .settings-phone-nav-show {
+          #phoneNav > .settings();
+        }
+
+        .phone-nav-hide {
+          display: none;
+        }
+
+      }
+    }
+
+    .phone-nav :hover {
+      cursor: pointer;
+    }
+    
+  }
 }
 
-.header-container :hover {
+.header-nav :hover {
   cursor: default;
 }
