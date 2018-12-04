@@ -11,13 +11,22 @@ class RecipeView extends Component {
         }
     }
 
+    // Adds sorted data for instructions to the components state.
     componentDidMount() {
-    this.setState({instructions: this.props.location.state.instructions})
-    // this.props.location.state.instructions.map(inst => {
-    //         this.setState({
-    //             instructions: [...this.state.instructions, inst]
-    //         })
-    //     });
+        let instructions = this.props.state.location.state.instructions;
+        this.setState({instructions: this.props.location.state.instructions})
+    }
+
+    compare(a, b) {
+        let comparison = 0;
+        let instA = a.stepNum;
+        let instB = b.stepNum;
+        if (instA > instB) {
+            comparison = 1;
+        } else if (instA < instB) {
+            comparison = -1;
+        }
+        return comparison;
     }
 
     // converts recipe ingredient qty data from decimals into a fraction
@@ -27,7 +36,16 @@ class RecipeView extends Component {
     }
 
     toggleCheckBox = e => {
-
+        // filter through instuction state to find matching instruction by id
+        let inst = this.state.instructions.filter(inst => {
+            return inst.stepNum == e.target.name
+        })
+        // make a copy of the state
+        let copyArr = [...this.state.instructions];
+        // toggle specified instruction's isCompleted field in copy array
+        console.log(e.target.name);
+        // copyArr[inst.stepNum - 1].isCompleted = !copyArr[inst.stepNum - 1].isCompleted;
+        // this.setState({instructions: copyArr});
     }
 
     render() {
@@ -76,13 +94,19 @@ class RecipeView extends Component {
                     </div>
                 </div>
                 <div className='right-container'>
-                    <div className='header'>
-                        <div className='title'>Instructions</div>
-                    </div>
+                    <div className='title'>Instructions</div>
                     <div className='instructions'>
                         {this.state.instructions.map(inst => (
-                            <div className='instruction'>
-                                <input type='checkbox' className='checkbox'/>
+                            <div 
+                                className='instruction'
+                                style={{backgroundColor: `${inst.isCompleted} ? #F5E6DC : #2E3650`}}
+                            >
+                                <input
+                                    type='checkbox'
+                                    className='checkbox'
+                                    onClick={this.toggleCheckBox}
+                                    name={inst.stepNum}
+                                />
                                 <div className='description'>{inst.description}</div>
                             </div>
                         ))}

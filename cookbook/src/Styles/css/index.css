@@ -864,6 +864,7 @@ html {
   .recipe-page .left-container {
     width: 320px;
     margin-left: 0;
+    margin-top: 5px;
     justify-content: center;
   }
 }
@@ -1025,6 +1026,11 @@ html {
     width: 330px;
   }
 }
+@media (max-width: 400px) {
+  .recipe-page .left-container .ingredients {
+    font-size: 1.4rem;
+  }
+}
 .recipe-page .left-container .ingredients .title {
   text-align: center;
   width: 100%;
@@ -1032,6 +1038,11 @@ html {
   font-weight: 600;
   margin-top: 10px;
   margin-bottom: 15px;
+}
+@media (max-width: 400px) {
+  .recipe-page .left-container .ingredients .title {
+    font-size: 2.4rem;
+  }
 }
 .recipe-page .left-container .ingredients .ingredient {
   margin-bottom: 10px;
@@ -1058,6 +1069,7 @@ html {
 .recipe-page .right-container {
   margin-right: 20px;
   width: 500px;
+  margin-top: 25px;
 }
 @media (max-width: 1200px) {
   .recipe-page .right-container {
@@ -1081,8 +1093,19 @@ html {
 .recipe-page .right-container .title {
   font-size: 2.8rem;
   font-weight: 600;
-  margin-left: 20px;
+  margin-left: 30px;
   line-height: 1.8rem;
+}
+@media (max-width: 768px) {
+  .recipe-page .right-container .title {
+    margin-left: 40px;
+  }
+}
+@media (max-width: 400px) {
+  .recipe-page .right-container .title {
+    font-size: 2.4rem;
+    width: 100%;
+  }
 }
 .recipe-page .right-container .instructions {
   border-radius: 25px;
@@ -1114,6 +1137,12 @@ html {
   padding-left: 10px;
   padding-right: 20px;
   margin-bottom: 10px;
+  line-height: 2.8rem;
+}
+@media (max-width: 400px) {
+  .recipe-page .right-container .instructions .instruction {
+    font-size: 1.4rem;
+  }
 }
 .recipe-page .right-container .instructions .instruction .checkbox {
   width: 20px;
