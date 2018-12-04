@@ -1,199 +1,62 @@
 .header-nav {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-family: @primary-font;
+  flex-flow: column;
 
-  .header {
+  .header-container {
     width: 100%;
-    height: 60px;
+    background: @CBblue;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: @CBblue;
-    color: @CBtan;
-    position: fixed;
-    z-index: 11;
-    top: 0;
-    @media @tablet {
-      height: 50px;
-    }
-    @media @phone {
-      height: 38px;
-    }
+    justify-content: center;
+  
+    .header {
+      width: 100%;
+      max-width: 1600px;
+      height: 123px;
+      color: @CBtan;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
 
-    .link {
-      margin-left: 40px;
-      @media @tablet {
-        margin-left: 30px;
+      @media @desktop {
+        height: 100px;
       }
 
       .logo {
-        height: 40px;
-        @media @phone {
-          height: 30px;
-        }
+        height: 75%;
+        margin-left: 50px;
       }
-    }
 
-    .title {
-      font-size: 4rem;
-      letter-spacing: 4.5rem;
-      @media @desktop {
-        letter-spacing: 3.7rem;
+      .title {
+        font-family: @secondary-font;
+        font-weight: bold;
+        font-size: 65px;
+        letter-spacing: 50px;
       }
-      @media @tablet {
-        letter-spacing: 2.6rem;
-      }
-      @media @phone {
-        display: none;
-      }
-    }
 
-    .signout {
-      color: white;
-      font-size: 2rem;
-      cursor: pointer;
-      height: 100%;
-      width: 70px;
-      background: @CBred;
-      color: @CBblue;
-      border-radius: 30px;
-      display: flex;
-      justify-content: center;
-      padding-top: 15px;
-      margin-right: 40px;
-      @media @tablet {
-        margin-right: 30px;
-        padding-top: 12px;
+      .logout {
+        height: 140px;
+        width: 140px;
+        border-radius: 50%;
+        background: @CBred;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: @CBblue;
+        font-size: 35px;
+        font-family: @secondary-font;
+        letter-spacing: 2px;
+        margin-right: 50px;
       }
-      @media @phone {
-        font-size: 1.6rem;
-        padding-top: 8px;
-        width: 60px;
+
+      .logout :hover {
+        cursor: pointer;
       }
     }
   }
+}
 
-  .nav {
-    width: 100%;
-    height: 35px;
-    font-size: 2.6rem;
-    font-weight: 300;
-    text-align: center;
-    display: flex;
-    position: fixed;
-    z-index: 11;
-    top: 60px;
-    @media @tablet {
-      height: 30px;
-      font-size: 2.2rem;
-      top: 50px;
-    }
-    @media @phone {
-      display: none;
-    }
-
-    .create-nav {
-      width: 25%;
-      height: 100%;
-      background-color: @CBorange;
-    }
-
-    .calendar-nav {
-      width: 25%;
-      height: 100%;
-      background-color: @CBgrey;
-    }
-
-    .dashboard-nav {
-      width: 25%;
-      height: 100%;
-      background-color: @CBblue;
-    }
-
-    .settings-nav {
-      width: 25%;
-      height: 100%;
-      background-color: @CBred;
-    }
-
-    .recipes-nav {
-      width: 25%;
-      height: 100%;
-      background-color: @CBtan;
-    }
-  }
-
-  .current-page {
-    height: 35px;
-    width: 100%;
-    font-size: 2.6rem;
-    font-weight: 300;
-    margin-top: 95px;
-    @media @tablet {
-      height: 30px;
-      font-size: 2.2rem;
-      margin-top: 80px;
-    }
-    @media @phone {
-      position: fixed;
-      z-index: 1;
-      top: 35px;
-      margin-top: 0;
-    }
-
-    .create-cp {
-      width: 100%;
-      height: 100%;
-      color: @CBred;
-      background-color: @CBorange;
-      text-align: center;
-    }
-
-    .calendar-cp {
-      width: 100%;
-      height: 100%;
-      color: @CBtan;
-      background-color: @CBgrey;
-      text-align: center;
-    }
-
-    .dashboard-cp {
-      width: 100%;
-      height: 100%;
-      color: @CBorange;
-      background-color: @CBblue;
-      text-align: center;
-    }
-
-    .settings-cp {
-      width: 100%;
-      height: 100%;
-      color: @CBgrey;
-      background-color: @CBred;
-      text-align: center;
-    }
-
-    .recipes-cp {
-      width: 100%;
-      height: 100%;
-      color: @CBblue;
-      background-color: @CBtan;
-      text-align: center;
-    }
-  }
-
-  .phone-nav {
-    border: 1px solid red;
-    display: none;
-    width: 100%;
-    position: fixed;
-    z-index: 15;
-    top: 35px;
-    @media @phone {
-      display: block;
-    }
-  }
+.header-container :hover {
+  cursor: default;
 }
