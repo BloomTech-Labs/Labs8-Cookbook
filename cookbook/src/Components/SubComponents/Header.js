@@ -48,14 +48,6 @@ class Header extends Component {
         return `${path}-normal-nav-inactive`
     }
 
-    handleStickyNav = () => {
-        let navbar = document.getElementById('nav');
-        let sticky = navbar.offsetTop;
-
-        if (window.pageYOffset >= sticky) navbar.classList.add('sticky');
-        else navbar.classList.remove('sticky');
-    }
-
     render() {
 
         return (
@@ -67,16 +59,14 @@ class Header extends Component {
 
                         <img className='logo' src={Logo} alt='logo'/>
 
-                        <p contenteditable className="title">COOKBOOK</p>
+                        <p className="title">COOKBOOK</p>
 
                         <div onClick={this.logout.bind(this)} className='logout'>logout</div>
 
                     </div>
                 </div>
                 
-                <div class='nav'>
-
-                    {/* { window.onscroll = this.handleStickyNav() } */}
+                <div className='nav'>
 
                     <div className='phone-nav'>
                         <div className='links'>
