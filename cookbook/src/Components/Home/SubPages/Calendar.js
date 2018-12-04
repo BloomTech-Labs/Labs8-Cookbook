@@ -114,8 +114,22 @@ class RecipeCalendar extends Component {
                     </div>
                     <div>
                       {this.state.showModal?
-                        <Modal style={{top:"50px", left:"50px"}}>
-                          <button>MODAL BUTTON</button>
+                        <Modal 
+                          style={{
+                            top: '0', 
+                            bottom: '0',
+                            left: '0',
+                            right: '0',
+                            display: 'grid',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            backgroundColor: 'rgba(0,0,0,0.3)',
+                          }}
+                          onClose={this.toggleModal}>
+                          <div style={{maxWidth: 400, position: 'relative'}}>
+                            <h1>Hello World!</h1>
+                            <button onClick={this.toggleModal}>Close</button>
+                          </div>
                         </Modal>
                         :null}
                     </div>
