@@ -16,7 +16,8 @@ class Header extends Component {
     }
 
     handleRedirect = (path) => {
-        this.props.history.push(path);
+        if (this.props.location.pathname.includes(path)) this.togglePhoneNav();
+        else this.props.history.push(path);
     }
 
     handlePhoneNavClass = (path) => {
