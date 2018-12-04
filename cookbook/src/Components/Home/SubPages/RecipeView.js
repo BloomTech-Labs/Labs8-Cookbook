@@ -14,9 +14,11 @@ class RecipeView extends Component {
     // Adds sorted data for instructions to the components state.
     componentDidMount() {
         let instructions = this.props.location.state.instructions;
-        this.setState({instructions: this.props.location.state.instructions})
+        instructions.sort(this.compare);
+        this.setState({instructions})
     }
 
+    // helper function: re-orders instructions based on stepNum
     compare(a, b) {
         let comparison = 0;
         let instA = a.stepNum;
