@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Fraction from 'fraction.js';
 
 
 class RecipeView extends Component {
     constructor(props) {
         super(props);
+        console.log (this.props);
         this.state = {
             instructions: []
         }
@@ -27,12 +27,6 @@ class RecipeView extends Component {
             comparison = -1;
         }
         return comparison;
-    }
-
-    // converts recipe ingredient qty data from decimals into a fraction
-    decToFrac(num) {
-        let frac = new Fraction(num);
-        return frac.toFraction(true);
     }
 
     toggleCheckBox = e => {
@@ -87,7 +81,7 @@ class RecipeView extends Component {
                         <div className='title'>Ingredients</div>
                         {this.props.location.state.ingredients.map(ing => (
                             <div className='ingredient'>
-                                <span className='qty'>{this.decToFrac(ing.quantity)}</span>
+                                <span className='qty'>{ing.quantity}</span>
                                 <span className='name'>{ing.name}</span>
                             </div>
                         ))}
