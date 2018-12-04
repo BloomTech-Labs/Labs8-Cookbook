@@ -20,6 +20,10 @@ class Header extends Component {
         auth.logout();
     }
 
+    handleRedirect = (path) => {
+        this.props.history.push(path);
+    }
+
     handlePhoneNavClass = (path) => {
         if (this.props.location.pathname.includes(path)) {
             return `${path}-phone-nav-active`
@@ -30,12 +34,16 @@ class Header extends Component {
         return 'phone-nav-hide'
     }
 
-    handleRedirect = (path) => {
-        this.props.history.push(path);
-    }
-
     togglePhoneNav = () => {
         this.setState({showPhoneNav: !this.state.showPhoneNav})
+    }
+
+    handleTogglePhoneNavClass = () => {
+        if (this.props.location.pathname.includes('create')) return 'create-toggle-phone-nav';
+        if (this.props.location.pathname.includes('recipes')) return 'recipes-toggle-phone-nav';
+        if (this.props.location.pathname.includes('calendar')) return 'calendar-toggle-phone-nav';
+        if (this.props.location.pathname.includes('dashboard')) return 'dashboard-toggle-phone-nav';
+        if (this.props.location.pathname.includes('settings')) return 'settings-toggle-phone-nav';
     }
 
     render() {
@@ -59,7 +67,6 @@ class Header extends Component {
                 <div className='nav'>
 
                     <div className='phone-nav'>
-                        <div onClick={() => this.togglePhoneNav()} className='toggle-phone-nav'>...</div>
                         <div className='links'>
                             <p onClick={() => this.handleRedirect('/home/create')} className={this.handlePhoneNavClass('create')}>CREATE</p>
                             <p onClick={() => this.handleRedirect('/home/recipes')} className={this.handlePhoneNavClass('recipes')}>RECIPES</p>
@@ -67,6 +74,7 @@ class Header extends Component {
                             <p onClick={() => this.handleRedirect('/home/dashboard')} className={this.handlePhoneNavClass('dashboard')}>GROCERY LIST</p>
                             <p onClick={() => this.handleRedirect('/home/settings')} className={this.handlePhoneNavClass('settings')}>SETTINGS</p>
                         </div>
+                        <div onClick={() => this.togglePhoneNav()} className={this.handleTogglePhoneNavClass()}>...</div>
                     </div>
                     
                 </div>

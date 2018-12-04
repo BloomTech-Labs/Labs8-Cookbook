@@ -113,65 +113,33 @@
       flex-flow: column;
       width: 100%;
 
-      .toggle-phone-nav {
-        display: none;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-
-        @media @phone {
-          display: flex;
-          padding: 11px 0 0px 2px;
-          margin: 5px 0 0 -25px;
-          justify-content: center;
-          transform: rotate(270deg);
-          height: 50px;
-          width: 50px;
-          border-radius: 50%;
-          background-color: @CBred;
-          color: @CBorange;
-          font-family: @secondary-font;
-          letter-spacing: 2px;
-          font-size: 30px;
-        }
-
-      }
-
       .links {
         display: flex;
         flex-flow: column;
 
         .create-phone-nav-active {
           #phoneNav > .create();
-          order: -1;
-          margin-top: -55px;
+          order: 1;
         }
 
         .recipes-phone-nav-active {
-          order: -1;
+          order: 1;
           #phoneNav > .recipes();
-          margin-top: -55px;
         }
 
         .calendar-phone-nav-active {
-          order: -1;
+          order: 1;
           #phoneNav > .calendar();
-          margin-top: -55px;
         }
 
         .dashboard-phone-nav-active {
-          order: -1;
+          order: 1;
           #phoneNav > .dashboard();
-          margin-top: -55px;
         }
 
         .settings-phone-nav-active {
-          order: -1;
+          order: 1;
           #phoneNav > .settings();
-          margin-top: -55px;
         }
 
         .create-phone-nav-show {
@@ -199,12 +167,32 @@
         }
 
       }
+
+      .create-toggle-phone-nav {
+        #phoneNav > .basicToggleStyle(@CBred, @CBorange);
+      }
+
+      .recipes-toggle-phone-nav {
+        #phoneNav > .basicToggleStyle(@CBblue, @CBtan);
+      }
+
+      .calendar-toggle-phone-nav {
+        #phoneNav > .basicToggleStyle(@CBlightBlue, @CBgrey);
+      }
+
+      .dashboard-toggle-phone-nav {
+        #phoneNav > .basicToggleStyle(@CBorange, @CBblue);
+      }
+
+      .settings-toggle-phone-nav {
+        #phoneNav > .basicToggleStyle(@CBgrey, @CBred);
+      }
     }
 
     .phone-nav :hover {
       cursor: pointer;
     }
-    
+
   }
 }
 

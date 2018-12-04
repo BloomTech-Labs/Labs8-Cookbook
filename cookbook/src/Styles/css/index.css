@@ -21,6 +21,12 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 @media (max-width: 600px) {
   #phoneNav .basicNavStyle {
@@ -154,32 +160,6 @@ html {
   flex-flow: column;
   width: 100%;
 }
-.header-nav .nav .phone-nav .toggle-phone-nav {
-  display: none;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-@media (max-width: 600px) {
-  .header-nav .nav .phone-nav .toggle-phone-nav {
-    display: flex;
-    padding: 11px 0 0px 2px;
-    margin: 5px 0 0 -25px;
-    justify-content: center;
-    transform: rotate(270deg);
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    background-color: #de6a5a;
-    color: #fed092;
-    font-family: 'Questrial', sans-serif;
-    letter-spacing: 2px;
-    font-size: 30px;
-  }
-}
 .header-nav .nav .phone-nav .links {
   display: flex;
   flex-flow: column;
@@ -193,10 +173,15 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #de6a5a;
   background-color: #fed092;
-  order: -1;
-  margin-top: -55px;
+  order: 1;
 }
 @media (max-width: 600px) {
   .header-nav .nav .phone-nav .links .create-phone-nav-active {
@@ -204,7 +189,7 @@ html {
   }
 }
 .header-nav .nav .phone-nav .links .recipes-phone-nav-active {
-  order: -1;
+  order: 1;
   display: none;
   justify-content: center;
   align-items: center;
@@ -213,9 +198,14 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #343e5a;
   background-color: #f5e9df;
-  margin-top: -55px;
 }
 @media (max-width: 600px) {
   .header-nav .nav .phone-nav .links .recipes-phone-nav-active {
@@ -223,7 +213,7 @@ html {
   }
 }
 .header-nav .nav .phone-nav .links .calendar-phone-nav-active {
-  order: -1;
+  order: 1;
   display: none;
   justify-content: center;
   align-items: center;
@@ -232,9 +222,14 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #ebf4f4;
   background-color: #bcc9d2;
-  margin-top: -55px;
 }
 @media (max-width: 600px) {
   .header-nav .nav .phone-nav .links .calendar-phone-nav-active {
@@ -242,7 +237,7 @@ html {
   }
 }
 .header-nav .nav .phone-nav .links .dashboard-phone-nav-active {
-  order: -1;
+  order: 1;
   display: none;
   justify-content: center;
   align-items: center;
@@ -251,10 +246,15 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #fed092;
   background-color: #343e5a;
   letter-spacing: 0;
-  margin-top: -55px;
 }
 @media (max-width: 600px) {
   .header-nav .nav .phone-nav .links .dashboard-phone-nav-active {
@@ -262,7 +262,7 @@ html {
   }
 }
 .header-nav .nav .phone-nav .links .settings-phone-nav-active {
-  order: -1;
+  order: 1;
   display: none;
   justify-content: center;
   align-items: center;
@@ -271,9 +271,14 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #bcc9d2;
   background-color: #de6a5a;
-  margin-top: -55px;
 }
 @media (max-width: 600px) {
   .header-nav .nav .phone-nav .links .settings-phone-nav-active {
@@ -289,6 +294,12 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #de6a5a;
   background-color: #fed092;
 }
@@ -306,6 +317,12 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #343e5a;
   background-color: #f5e9df;
 }
@@ -323,6 +340,12 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #ebf4f4;
   background-color: #bcc9d2;
 }
@@ -340,6 +363,12 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #fed092;
   background-color: #343e5a;
   letter-spacing: 0;
@@ -358,6 +387,12 @@ html {
   font-family: 'Questrial', sans-serif;
   letter-spacing: 10px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   color: #bcc9d2;
   background-color: #de6a5a;
 }
@@ -368,6 +403,146 @@ html {
 }
 .header-nav .nav .phone-nav .links .phone-nav-hide {
   display: none;
+}
+.header-nav .nav .phone-nav .create-toggle-phone-nav {
+  display: none;
+  width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .create-toggle-phone-nav {
+    display: flex;
+    padding: 11px 0 0px 2px;
+    margin: -55px 0 0 -25px;
+    justify-content: center;
+    transform: rotate(270deg);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #de6a5a;
+    color: #fed092;
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
+}
+.header-nav .nav .phone-nav .recipes-toggle-phone-nav {
+  display: none;
+  width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .recipes-toggle-phone-nav {
+    display: flex;
+    padding: 11px 0 0px 2px;
+    margin: -55px 0 0 -25px;
+    justify-content: center;
+    transform: rotate(270deg);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #343e5a;
+    color: #f5e9df;
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
+}
+.header-nav .nav .phone-nav .calendar-toggle-phone-nav {
+  display: none;
+  width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .calendar-toggle-phone-nav {
+    display: flex;
+    padding: 11px 0 0px 2px;
+    margin: -55px 0 0 -25px;
+    justify-content: center;
+    transform: rotate(270deg);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #ebf4f4;
+    color: #bcc9d2;
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
+}
+.header-nav .nav .phone-nav .dashboard-toggle-phone-nav {
+  display: none;
+  width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .dashboard-toggle-phone-nav {
+    display: flex;
+    padding: 11px 0 0px 2px;
+    margin: -55px 0 0 -25px;
+    justify-content: center;
+    transform: rotate(270deg);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #fed092;
+    color: #343e5a;
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
+}
+.header-nav .nav .phone-nav .settings-toggle-phone-nav {
+  display: none;
+  width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@media (max-width: 600px) {
+  .header-nav .nav .phone-nav .settings-toggle-phone-nav {
+    display: flex;
+    padding: 11px 0 0px 2px;
+    margin: -55px 0 0 -25px;
+    justify-content: center;
+    transform: rotate(270deg);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #bcc9d2;
+    color: #de6a5a;
+    font-family: 'Questrial', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 30px;
+  }
 }
 .header-nav .nav .phone-nav :hover {
   cursor: pointer;
