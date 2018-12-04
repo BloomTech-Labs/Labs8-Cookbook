@@ -23,10 +23,12 @@
         @media @tablet {
             width: 330px;
             margin-left: 10px;
+            justify-content: flex-start;
         }
         @media @phone {
             width: 320px;
             margin-left: 0;
+            justify-content: center;
         }
 
         .header {
@@ -64,7 +66,7 @@
                     height: 200px;
                 }
                 @media @tablet {
-                    width: 340px;
+                    width: 320px;
                     height: 190px;
                     margin-bottom: 80px;
                 }
@@ -94,11 +96,13 @@
                 }
                 @media @tablet {
                     top: 180px;
-                    left: 20px;
+                    left: 8px;
                     width: 300px;
                 }
                 @media @phone {
                     width: 290px;
+                    left: 20px;
+                    top: 170px;
                 }
 
                 .scheduled-for {
@@ -186,25 +190,55 @@
         }
 
         .ingredients {
-            width: 100%;
+            width: 460px;
+            margin-bottom: 15px;
+            @media @desktop {
+                width: 400px;
+            }
+            @media @tablet {
+                width: 330px;
+            }
+            @media @phone {
+
+            }
             
             .title {
                 text-align: center;
                 width: 100%;
+                font-size: 2.6rem;
+                font-weight: 600;
+                margin-top: 10px;
+                margin-bottom: 15px;
             }
 
             .ingredient {
+                margin-bottom: 10px;
+                display: flex;
                 
-                .amount {
-                    margin-right: 8px 
+                .qty {
+                    text-align: right;
+                    margin-right: 8px;
+                    width: 40px;
+                }
+
+                .name {
+                    width: 420px;
+                    @media @desktop {
+                        width: 360px;
+                    }
+                    @media @tablet {
+                        width: 280px;
+                    }
+                    @media @phone {
+        
+                    }
                 }
             }
         }
     }
 
     .right-container {
-        border: 1px solid orange;
-        margin-top: 22px;
+        margin-top: 60px;
         margin-right: 20px;
         width: 500px;
         @media @desktop {
@@ -217,6 +251,51 @@
         @media @phone {
             width: 320px;
             margin-right: 0px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .title {
+                font-size: 2.6rem;
+                font-weight: 600;
+                margin-left: 20px;
+            }
+
+            .icon-container {
+                font-size: 2.6rem;
+                padding-right: 25px;
+                
+                .edit {
+                    margin-right: 12px;
+                }
+            }
+        }
+
+        .instructions {
+            border-radius: 25px;
+            background-color: @CBblue;
+            color: @CBtan;
+            padding-top: 25px;
+            padding-bottom: 15px;
+            margin-top: 15px;
+
+            .instruction {
+            display: flex;
+            padding-left: 10px;
+            padding-right: 20px;
+            margin-bottom: 10px;
+
+                .checkbox {
+                    width: 20px;
+                }
+    
+                .description {
+                    width: 480px;
+                }
+            }
         }
     }
 }

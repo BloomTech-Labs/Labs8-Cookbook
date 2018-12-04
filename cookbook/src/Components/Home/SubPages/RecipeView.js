@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Fraction from 'fraction.js';
 
 
 class RecipeView extends Component {
@@ -9,6 +10,10 @@ class RecipeView extends Component {
         }
     }
 
+    decToFrac(num) {
+        let frac = new Fraction(num);
+        return frac.toFraction(true);
+    }
 
     render() {
         return (
@@ -46,17 +51,26 @@ class RecipeView extends Component {
                         <div className='title'>Ingredients</div>
                         {this.props.location.state.ingredients.map(ing => (
                             <div className='ingredient'>
-                                <span className='amount'>{ing.quantity}</span>
+                                <span className='qty'>{this.decToFrac(ing.quantity)}</span>
                                 <span className='name'>{ing.name}</span>
                             </div>
                         ))}
                     </div>
                 </div>
                 <div className='right-container'>
-                    <div className='title'>Instructions</div>
+                    <div className='header'>
+                        <div className='title'>Instructions</div>
+                        <div className='icon-container'>
+                                <FontAwesomeIcon icon='edit' className='edit'/>
+                                <FontAwesomeIcon icon='trash-alt' className='delete'/>
+                        </div>
+                    </div>
                     <div className='instructions'>
                         {this.props.location.state.instructions.map(inst => (
-                            <div className='description'>{inst.description}</div>
+                            <div className='instruction'>
+                                <input type='checkbox' className='checkbox'/>
+                                <div className='description'>{inst.description}</div>
+                            </div>
                         ))}
                     </div>
                 </div>

@@ -806,12 +806,14 @@ html {
   .recipe-page .left-container {
     width: 330px;
     margin-left: 10px;
+    justify-content: flex-start;
   }
 }
 @media (max-width: 400px) {
   .recipe-page .left-container {
     width: 320px;
     margin-left: 0;
+    justify-content: center;
   }
 }
 .recipe-page .left-container .header {
@@ -855,7 +857,7 @@ html {
 }
 @media (max-width: 768px) {
   .recipe-page .left-container .left-content .recipe-img {
-    width: 340px;
+    width: 320px;
     height: 190px;
     margin-bottom: 80px;
   }
@@ -890,13 +892,15 @@ html {
 @media (max-width: 768px) {
   .recipe-page .left-container .left-content .info-bar {
     top: 180px;
-    left: 20px;
+    left: 8px;
     width: 300px;
   }
 }
 @media (max-width: 400px) {
   .recipe-page .left-container .left-content .info-bar {
     width: 290px;
+    left: 20px;
+    top: 170px;
   }
 }
 .recipe-page .left-container .left-content .info-bar .scheduled-for {
@@ -978,18 +982,51 @@ html {
   font-weight: 600;
 }
 .recipe-page .left-container .ingredients {
-  width: 100%;
+  width: 460px;
+  margin-bottom: 15px;
+}
+@media (max-width: 1200px) {
+  .recipe-page .left-container .ingredients {
+    width: 400px;
+  }
+}
+@media (max-width: 768px) {
+  .recipe-page .left-container .ingredients {
+    width: 330px;
+  }
 }
 .recipe-page .left-container .ingredients .title {
   text-align: center;
   width: 100%;
+  font-size: 2.6rem;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
-.recipe-page .left-container .ingredients .ingredient .amount {
+.recipe-page .left-container .ingredients .ingredient {
+  margin-bottom: 10px;
+  display: flex;
+}
+.recipe-page .left-container .ingredients .ingredient .qty {
+  text-align: right;
   margin-right: 8px;
+  width: 40px;
+}
+.recipe-page .left-container .ingredients .ingredient .name {
+  width: 420px;
+}
+@media (max-width: 1200px) {
+  .recipe-page .left-container .ingredients .ingredient .name {
+    width: 360px;
+  }
+}
+@media (max-width: 768px) {
+  .recipe-page .left-container .ingredients .ingredient .name {
+    width: 280px;
+  }
 }
 .recipe-page .right-container {
-  border: 1px solid orange;
-  margin-top: 22px;
+  margin-top: 60px;
   margin-right: 20px;
   width: 500px;
 }
@@ -1009,4 +1046,41 @@ html {
     width: 320px;
     margin-right: 0px;
   }
+}
+.recipe-page .right-container .header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.recipe-page .right-container .header .title {
+  font-size: 2.6rem;
+  font-weight: 600;
+  margin-left: 20px;
+}
+.recipe-page .right-container .header .icon-container {
+  font-size: 2.6rem;
+  padding-right: 25px;
+}
+.recipe-page .right-container .header .icon-container .edit {
+  margin-right: 12px;
+}
+.recipe-page .right-container .instructions {
+  border-radius: 25px;
+  background-color: #2E3650;
+  color: #F5E6DC;
+  padding-top: 25px;
+  padding-bottom: 15px;
+  margin-top: 15px;
+}
+.recipe-page .right-container .instructions .instruction {
+  display: flex;
+  padding-left: 10px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+.recipe-page .right-container .instructions .instruction .checkbox {
+  width: 20px;
+}
+.recipe-page .right-container .instructions .instruction .description {
+  width: 480px;
 }
