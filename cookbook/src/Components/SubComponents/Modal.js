@@ -1,10 +1,9 @@
 import { Component } from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 
 const modalRoot = document.getElementById('portal'); // portal div is now root
 
-export default class Portal extends Component {
-
+class Modal extends Component {
   constructor() {
     super();
     this.el = document.createElement('div'); // creates portal div
@@ -19,6 +18,8 @@ export default class Portal extends Component {
   }
 
   render() {
-    return ReactDOM.createPortal(this.props, this.el); // created portal passes child components and element
+    return createPortal(this.props.children, this.el); // created portal passes child components and element
   }
 }
+
+export default Modal;

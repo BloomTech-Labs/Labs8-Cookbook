@@ -4,7 +4,7 @@ import BigCalendar from 'react-big-calendar';
 import gql from "graphql-tag";
 import { Mutation, Query } from "react-apollo";
 import User from './User';
-import Portal from '../../SubComponents/Portal';
+import Modal from '../../SubComponents/Modal';
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -66,7 +66,7 @@ class RecipeCalendar extends Component {
     }
 
   
-  togglePortal = () => this.setState({ showModal: !this.state.showModal })
+  toggleModal = () => this.setState({ showModal: !this.state.showModal })
 
   render() {
     console.log('date', this.state.events)
@@ -103,7 +103,7 @@ class RecipeCalendar extends Component {
                         localizer={localizer}
                         defaultDate={new Date()}
                         defaultView="month"
-                        onSelectEvent={event => alert(event.title)}
+                        onSelectEvent={this.toggleModal}
                         events={events}
                         resources={resourceMap}
                         resourceIdAccessor="resourceId"
@@ -113,12 +113,12 @@ class RecipeCalendar extends Component {
                       />
                     </div>
                     <div>
-                      <button onClick={this.togglePortal}>Portal Button</button>
-                        <Portal>
-                          <Child />
-                        </Portal>
+                      {this.state.showModal?
+                        <Modal style={{top:"50px", left:"50px"}}>
+                          <button>MODAL BUTTON</button>
+                        </Modal>
+                        :null}
                     </div>
-                       
                   </div>
                 )
               }}
@@ -134,14 +134,6 @@ class RecipeCalendar extends Component {
       </User>
     )
   }
-}
-
-function Child() {
-  return (
-    <div className="modal">
-      <button onClick={this.togglePortal}>Click</button>
-    </div>
-  )
 }
 
 RecipeCalendar.propTypes = propTypes

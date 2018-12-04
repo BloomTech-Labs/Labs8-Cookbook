@@ -12,6 +12,7 @@ class RecipeView extends Component {
 
 
     render() {
+        console.log('Data: ', this.props.location.state)
         return (
             <div className='recipe-page'>
                 <div className='left-container'>
