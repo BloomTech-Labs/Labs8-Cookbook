@@ -104,14 +104,9 @@ class RecipeCalendar extends Component {
                         resourceIdAccessor="resourceId"
                         resourceTitleAccessor="resourceTitle"
                         style={{ height: "100vh" }}
-                        views={{ month: true}}
+                        views={{ month: true }}
                       />
                     </div>
-
-                    <Mutation mutation={SCHEDULE_RECIPE} variables={{ events }}>
-                      {postMutation => <button onClick={postMutation}>Submit</button>}
-                    </Mutation>
-
                   </div>
                 )
               }}
