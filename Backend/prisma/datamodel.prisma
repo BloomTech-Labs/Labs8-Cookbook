@@ -17,7 +17,7 @@ type Recipe {
   servings: String
   image: String!
   url: String!
-  createdBy: User! @relation(name:"UserRecipe")
+  createdBy: User! @relation(name: "UserRecipe")
   ingredients: [Ingredient!]!
     @relation(name: "RecipeIngredient", onDelete: CASCADE)
   instructions: [Instruction!]!
@@ -47,25 +47,12 @@ type Event {
   mealType: String!
 }
 
-type GroceryList {
-  id: ID! @unique
-  startDate: String!
-  endDate: String!
-  groceryList: [totalQuantity!]!
-  user: User!
-}
-
-type totalQuantity {
-  id: ID! @unique
-  name: String!
-  quantity: Float!
-  isPurchased: Boolean! @default(value: false)
-}
-
 type Subscription {
   id: ID! @unique
-  type: String!
   amount: Int!
+  currency: String!
   user: User!
   charge: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
