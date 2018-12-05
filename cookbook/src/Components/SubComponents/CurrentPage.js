@@ -34,7 +34,7 @@ class CurrentPage extends Component {
             document.getElementById('nav-icon').style.color = '#bcc9d2';
             document.getElementById('nav-icon').style.backgroundColor = '#ebf4f4';
         } else if (this.props.location.pathname.includes('/home/recipe')) {
-            document.getElementById('nav-icon').style.color = '#f5e9df';
+            document.getElementById('nav-icon').style.color = '#343e5a';
             document.getElementById('nav-icon').style.backgroundColor = '#0C3812';
         }
     }
@@ -44,27 +44,27 @@ class CurrentPage extends Component {
             <div className='cp-phone-nav'>
                 <div className='current-page'>
                     {renderIf(this.props.location.pathname === '/home/create')(
-                        <div className='create-cp'>
+                        <div className='pg-bar create-cp'>
                             <Link to='/home/create' style={{textDecoration: 'none', color: '#D85E50'}}>CREATE</Link>
                         </div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/calendar')(
-                        <div className='calendar-cp'>
+                        <div className='pg-bar calendar-cp'>
                             <Link to='/home/calendar' style={{textDecoration: 'none', color: '#F5E6DC'}}>CALENDAR</Link>
                         </div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/dashboard')(
-                        <div className='dashboard-cp'>    
+                        <div className='pg-bar dashboard-cp'>    
                             <Link to='/home/dashboard' style={{textDecoration: 'none', color: '#ffc988'}}>GROCERY LIST</Link>
                         </div>
                     )}
                     {renderIf(this.props.location.pathname === '/home/settings')(
-                        <div className='settings-cp'>    
+                        <div className='pg-bar settings-cp'>    
                             <Link to='/home/settings' style={{textDecoration: 'none', color: '#B3C1CC'}}>SETTINGS</Link>
                         </div>
                     )}
                     {renderIf(this.props.location.pathname.includes('/home/recipe'))(
-                        <div className='recipes-cp'>    
+                        <div className='pg-bar recipes-cp'>    
                             <Link to='/home/recipes' style={{textDecoration: 'none', color: '#2E3650'}}>RECIPES</Link>
                         </div>
                     )}
