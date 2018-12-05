@@ -10,14 +10,10 @@ import Callback from "./Auth/Callback.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // Font Awesome Icons:
-import {
-  faUtensils,
-  faLink,
-  faTrashAlt
-} from "@fortawesome/free-solid-svg-icons";
+import { faUtensils, faLink, faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
 import Signup from "./Components/SubComponents/Signup";
 
-library.add(faUtensils, faLink, faTrashAlt);
+library.add(faUtensils, faLink, faTrashAlt, faEdit);
 
 class App extends Component {
   state = {
