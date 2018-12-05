@@ -1,8 +1,23 @@
 //This file defines resolvers for Mutation
 const stripe = require("../utils/stripe");
 const { getUserId, getRecipe } = require("../utils/helper");
+const { forwardTo } = require("prisma-binding");
+
+
 
 const Mutation = {
+  updateEvent: async (_, args, context, info) => {
+    console.log('ARGS:' ,args)
+    // try {
+    //   const updatedEvent = await context.db.mutation.updateEvent({
+    //     data:{
+    //       mealType: args.
+    //     }
+    //   })
+    // } catch (error) {
+      
+    // }
+  },
   signup: async (_, args, context, info) => {
     const auth0user = await context.user;
     const auth0Sub = auth0user.sub;

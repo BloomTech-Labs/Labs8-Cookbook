@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
 import gql from "graphql-tag";
-import { Query } from "react-apollo";
+import { Query, graphql, compose } from "react-apollo";
 import User from './User';
 import Modal from '../../SubComponents/Modal';
 import DatePicker from "../../SubComponents/DatePicker.js";
@@ -13,16 +13,19 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const propTypes = {}
 
-const RE_CREATE_EVENT = gql`
-  mutation($date: String!, $mealType: String!, $recipe: String!) {
-    createEvent(date: $date, mealType: $mealType, recipe: $recipe) {
+const UPDATE_EVENT = gql`
+  mutation($date: String!, $mealType: String!, $id: ID!) {
+    updateEvent(where:{
+      id: $id
+    },
+    data: {
+      date: $date
+      mealType: $mealType
+    }
+    ) {
       id
       mealType
       date
-      recipe {
-        id
-        title
-      }
     }
   }
 `;
@@ -62,7 +65,7 @@ class RecipeCalendar extends Component {
   constructor(...args) {
     super(...args);
       this.state = {
-        events: [],
+        currentEvent: '',
         type: "",
         showModal: false,
         onDate: null
@@ -71,7 +74,9 @@ class RecipeCalendar extends Component {
 
   handlePickDate = date => {this.setState({ onDate: date });};
   
-  toggleModal = () => this.setState({ showModal: !this.state.showModal })
+  toggleModal = (event) => {
+    this.setState({ showModal: !this.state.showModal, currentEvent: event.id })
+  }
 
   mealButtonHandler = e => {
     e.preventDefault();
@@ -79,6 +84,32 @@ class RecipeCalendar extends Component {
       type: e.target.name
     });
   };
+
+  onEventSave = async () => {
+    if (this.state.onDate || this.state.type)
+    try {
+        let calendarVariables = {}
+        if (this.state.onDate) calendarVariables.date=this.state.onDate;
+        if (this.state.type) calendarVariables.mealType=this.state.type;
+
+        const eventVariables={
+          data:calendarVariables,
+          where:{
+            id: this.state.currentEvent
+          }
+        }
+        console.log(eventVariables);
+        const eventData = await this.props.updateEvent({
+          variables: eventVariables
+        })
+        console.log("Event updated: ", eventData);
+
+        return eventData;
+    } catch (error) {
+      console.log("onsave error: ", error.message);
+      return error;
+    }
+  }
 
   render() {
     // console.log('date', this.state.events)
@@ -96,7 +127,7 @@ class RecipeCalendar extends Component {
               {({ loading, error, data }) => {
                 if (loading) return <div>Fetching</div>
                 if (error) return <div>Error</div>
-                // console.log("Data: ", data)  
+                  
                 const events = data.events.map(i => {
                   return {
                     id: i.id,
@@ -115,7 +146,7 @@ class RecipeCalendar extends Component {
                         localizer={localizer}
                         defaultDate={new Date()}
                         defaultView="month"
-                        onSelectEvent={this.toggleModal}
+                        onSelectEvent={event => this.toggleModal(event)}
                         events={events}
                         resources={resourceMap}
                         resourceIdAccessor="resourceId"
@@ -141,7 +172,7 @@ class RecipeCalendar extends Component {
                               type={this.state.type}
                             />
                             <DatePicker  handlePickDate={this.handlePickDate}/>
-                            <button className="modal-button" onClick={this.toggleModal}>Save</button>
+                            <button className="modal-button" onClick={this.onEventSave}>Save</button>
                           </div>
                         </Modal>
                         :null}
@@ -165,4 +196,8 @@ class RecipeCalendar extends Component {
 
 RecipeCalendar.propTypes = propTypes
 
-export default RecipeCalendar;
+const updateEventMutation = graphql(UPDATE_EVENT, {
+  name: "updateEvent"
+});
+
+export default compose(updateEventMutation)(RecipeCalendar);
