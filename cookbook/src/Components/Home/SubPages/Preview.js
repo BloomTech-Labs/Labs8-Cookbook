@@ -4,12 +4,16 @@ const Preview = props => {
   let loading = props.loading ? <div>Loading...</div> : null;
 
   const preview = props.og_title ? (
-    <React.Fragment>
-      <img src={props.og_image} alt={props.title} />
-      <header>{props.og_title}</header>
-      <div>{props.og_desc}</div>
-      <div>{props.og_sitename}</div>
-    </React.Fragment>
+    <div className='preview'>
+      <div className='title'>{props.og_title}</div>
+      <div className='image-container'>
+        <img className='image' src={props.og_image} alt={props.title} />
+      </div>
+      <div className='body'>
+        <div className='description'>{props.og_desc}</div>
+        <div className='site'>{props.og_sitename}</div>
+      </div>
+    </div>
   ) : null;
 
   return (

@@ -1223,6 +1223,58 @@ html {
 .create-wrapper .create-content-wrapper input {
   width: 50%;
 }
+.create-wrapper .create-content-wrapper .preview {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  width: 80%;
+}
+.create-wrapper .create-content-wrapper .preview .title {
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 3.5rem;
+  font-weight: bold;
+  font-family: 'Questrial', sans-serif;
+  color: #de6a5a;
+  background: #fed092;
+  width: 100%;
+  border: 3px solid #de6a5a;
+  border-bottom: none;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
+}
+.create-wrapper .create-content-wrapper .preview .image-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  border-left: 3px solid #de6a5a;
+  border-right: 3px solid #de6a5a;
+}
+.create-wrapper .create-content-wrapper .preview .image-container .image {
+  width: 100%;
+  height: auto;
+}
+.create-wrapper .create-content-wrapper .preview .body {
+  text-align: justify;
+  padding: 10px 20px;
+  display: flex;
+  width: 100%;
+  flex-flow: column wrap;
+  border: 3px solid #de6a5a;
+  border-top: none;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  color: #fed092;
+  background: #de6a5a;
+}
+.create-wrapper .create-content-wrapper .preview .body .description {
+  font-size: 2rem;
+  font-family: 'Questrial', sans-serif;
+}
+.create-wrapper .create-content-wrapper .preview .body .site {
+  font-size: 1.6rem;
+  margin-top: 10px;
+}
 .create-wrapper .create-filter-wrapper {
   grid-area: filter;
   display: flex;

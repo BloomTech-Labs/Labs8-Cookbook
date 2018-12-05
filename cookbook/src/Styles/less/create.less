@@ -18,6 +18,66 @@
     input {
       width: 50%;
     }
+
+    .preview {
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      width: 80%;
+
+      .title {
+        text-align: center;
+        padding: 10px 20px;
+        font-size: 3.5rem;
+        font-weight: bold;
+        font-family: @secondary-font;
+        color: @CBred;
+        background: @CBorange;
+        width: 100%;
+        border: 3px solid @CBred;
+        border-bottom: none;
+        border-top-left-radius: 35px;
+        border-top-right-radius: 35px;
+      }
+
+      .image-container {
+        display: flex;
+        width: 100%;
+        // max-height: 300px;
+        overflow: hidden;
+        border-left: 3px solid @CBred;
+        border-right: 3px solid @CBred;
+
+        .image {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .body {
+        text-align: justify;
+        padding: 10px 20px;
+        display: flex;
+        width: 100%;
+        flex-flow: column wrap;
+        border: 3px solid @CBred;
+        border-top: none;
+        border-bottom-left-radius: 35px;
+        border-bottom-right-radius: 35px;
+        color: @CBorange;
+        background: @CBred;
+
+        .description {
+          font-size: 2rem;
+          font-family: @secondary-font;
+        }
+
+        .site {
+          font-size: 1.6rem;
+          margin-top: 10px;
+        }
+      }
+    }
   }
   .create-filter-wrapper {
     grid-area: filter;

@@ -79,7 +79,7 @@ class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "",
+      query: "https://www.allrecipes.com/recipe/10813/best-chocolate-chip-cookies/", //for styling
       type: "",
       loadingPreview: false,
       og_title: "",
@@ -93,6 +93,11 @@ class Create extends Component {
       ingredient_list: [],
       onDate: null
     };
+  }
+
+  //for styling
+  componentDidMount() {
+    this.findRecipes();
   }
 
   handleChange = e => {
@@ -209,6 +214,7 @@ class Create extends Component {
     return (
       <div className="create-wrapper">
         <div className="create-content-wrapper">
+
           <input
             type="text"
             name="query"
@@ -216,7 +222,7 @@ class Create extends Component {
             onChange={this.handleChange}
             value={this.state.query}
           />
-          {/* <button onClick={this.findRecipes}>Search</button> */}
+
           {this.state.og_title === "N/A" ? (
             <div>No preview available</div>
           ) : (
