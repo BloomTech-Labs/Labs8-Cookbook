@@ -28,7 +28,7 @@ class RecipeView extends Component {
     }
     return comparison;
   }
-
+  
   toggleCheckBox = e => {
     // filter through instuction state to find matching instruction by id
     let inst = this.state.instructions.filter(inst => {
