@@ -2,19 +2,21 @@ import React, { Component } from "react";
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
 import gql from "graphql-tag";
-import { Mutation, Query } from "react-apollo";
+import { Query } from "react-apollo";
 import User from './User';
 import Modal from '../../SubComponents/Modal';
+import DatePicker from "../../SubComponents/DatePicker.js";
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const propTypes = {}
 
-const SCHEDULE_RECIPE = gql`
-  mutation($date: String!) {
-    createEvent(date: $date) {
+const RE_CREATE_EVENT = gql`
+  mutation($date: String!, $mealType: String!, $recipe: String!) {
+    createEvent(date: $date, mealType: $mealType, recipe: $recipe) {
       id
+      mealType
       date
       recipe {
         id
@@ -61,10 +63,12 @@ class RecipeCalendar extends Component {
       this.state = {
         events: [],
         type: "",
-        showModal: false
+        showModal: false,
+        onDate: null
       };
     }
 
+  handlePickDate = date => {this.setState({ onDate: date });};
   
   toggleModal = () => this.setState({ showModal: !this.state.showModal })
 
@@ -127,8 +131,14 @@ class RecipeCalendar extends Component {
                           }}
                           onClose={this.toggleModal}>
                           <div style={{maxWidth: 400, position: 'relative'}}>
-                            <h1>Hello World!</h1>
-                            <button onClick={this.toggleModal}>Close</button>
+                            <h1>Please select Meal and Date!</h1>
+                            <DatePicker 
+                              style={{
+                                justifyContent: 'center',
+                                display: 'grid',
+                              }}
+                              handlePickDate={this.handlePickDate} />
+                            <button onClick={this.toggleModal}>Save</button>
                           </div>
                         </Modal>
                         :null}
