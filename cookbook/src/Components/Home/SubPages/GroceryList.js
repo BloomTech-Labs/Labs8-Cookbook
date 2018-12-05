@@ -26,7 +26,10 @@ class GroceryList extends Component {
     };
   }
 
-  handleDayClick = day => {
+  handleDayClick = (day, { disabled }) => {
+    if (disabled) {
+      return window.alert("Please choose a valid date from today.");
+    }
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState(range);
   };
@@ -130,6 +133,7 @@ class GroceryList extends Component {
             selectedDays={[from, { from, to }]}
             modifiers={modifiers}
             onDayClick={this.handleDayClick}
+            disabledDays={{ before: new Date() }}
           />
 
           <button onClick={this.generateList}>Generate List</button>
