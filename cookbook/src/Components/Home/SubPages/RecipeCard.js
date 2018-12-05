@@ -62,7 +62,7 @@ class RecipeCard extends Component {
             <button className="del-button">
               <FontAwesomeIcon icon="trash-alt" className="del-icon" onClick={async() => {
                 const deletedRecipe= await this.props.deleteRecipe({variables: {id: this.props.recipe.id}})
-                console.log(`Recipe deleted: ${deletedRecipe.id}`)
+                console.log(`Recipe deleted: ${deletedRecipe.title}`)
               }}/>
               <span className="del-text">Delete</span>
             </button>
