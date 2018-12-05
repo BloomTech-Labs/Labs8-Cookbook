@@ -136,7 +136,7 @@ class RecipeCalendar extends Component {
                 return (
                   <div className="calendar-page-container">
                     <div className="calendar-container">
-                      <form>
+                      <form className="calendar-search">
                         <input
                           type="text"
                           name="search"
