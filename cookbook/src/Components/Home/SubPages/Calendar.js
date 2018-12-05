@@ -125,11 +125,7 @@ class RecipeCalendar extends Component {
                             position: 'relative',
                           }}>
                             <h1>Please select Meal and Date!</h1>
-                            <DatePicker style={{
-                              marginLeft: 'auto',
-                              marginRight: 'auto',
-                            }}
-                              handlePickDate={this.handlePickDate}/>
+                            <DatePicker handlePickDate={this.handlePickDate}/>
                             <button style={{
                               backgroundColor: '#4CAF50',
                               marginLeft: 'auto',
