@@ -120,7 +120,7 @@ class RecipeCalendar extends Component {
                 // filter function for search
                 let searchedEvents = data.events.filter(
                   (event) => {
-                    return event.recipe.title.indexOf(this.state.search) !== -1;
+                    return event.recipe.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
                   }
                 )
                 // mapping out data to be rendered to screen
