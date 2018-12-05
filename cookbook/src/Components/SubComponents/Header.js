@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import auth from '../../Auth/Auth.js';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import renderIf from 'render-if';
 
 
 class Header extends Component {

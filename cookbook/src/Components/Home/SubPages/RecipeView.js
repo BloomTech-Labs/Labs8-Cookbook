@@ -33,7 +33,7 @@ class RecipeView extends Component {
     toggleCheckBox = e => {
         // filter through instuction state to find matching instruction by id
         let inst = this.state.instructions.filter(inst => {
-            return inst.stepNum == e.target.name
+            return inst.stepNum === e.target.name
         })
         // make a copy of the state
         let copyArr = this.state.instructions;
@@ -52,7 +52,7 @@ class RecipeView extends Component {
 
     // check if ingredient is zero & prevent it from displaying
     errCheckIngredients(qty) {
-        if (qty == 0) {
+        if (qty === 0) {
             return null;
         }
         return qty;

@@ -70,6 +70,7 @@ html {
   align-items: center;
   font-family: 'Muli', sans-serif;
   background-color: #343e5a;
+  border-bottom: 1px solid #343e5a;
   color: #f5e9df;
   z-index: 11;
 }
@@ -202,21 +203,22 @@ html {
   }
 }
 .cp-phone-nav .current-page {
-  height: 35px;
+  line-height: 35px;
   width: 100%;
   font-size: 2.6rem;
   font-weight: 300;
+  vertical-align: middle;
 }
 @media (max-width: 900px) {
   .cp-phone-nav .current-page {
-    height: 30px;
+    line-height: 30px;
     font-size: 2rem;
   }
 }
 @media (max-width: 600px) {
   .cp-phone-nav .current-page {
     top: 35px;
-    height: 35px;
+    line-height: 35px;
   }
 }
 .cp-phone-nav .current-page .create-cp {
@@ -260,7 +262,6 @@ html {
   position: absolute;
   top: 0;
   font-size: 1.6rem;
-  border: 1px solid red;
   border-radius: 20px;
   margin-left: -17px;
   overflow: hidden;

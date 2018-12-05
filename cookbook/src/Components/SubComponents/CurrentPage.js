@@ -6,6 +6,39 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 class CurrentPage extends Component {
+
+    // decides nav icons color when it mounts
+    componentDidMount() {
+        this.navIconColors();
+    }
+
+    // decides colors of nav icon when pathname changes
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.navIconColors();
+        }
+    }
+
+    // helper function: colors of phone nav icon changes depending on path.
+    navIconColors() {
+        if (this.props.location.pathname === '/home/create') {
+            document.getElementById('nav-icon').style.color = '#fed092';
+            document.getElementById('nav-icon').style.backgroundColor = '#de6a5a';
+        } else if (this.props.location.pathname === '/home/calendar') {
+            document.getElementById('nav-icon').style.color = '#ebf4f4';
+            document.getElementById('nav-icon').style.backgroundColor = '#f5e9df';
+        } else if (this.props.location.pathname === '/home/dashboard') {
+            document.getElementById('nav-icon').style.color = '#0C3812';
+            document.getElementById('nav-icon').style.backgroundColor = '#fed092';
+        } else if (this.props.location.pathname === '/home/settings') {
+            document.getElementById('nav-icon').style.color = '#de6a5a';
+            document.getElementById('nav-icon').style.backgroundColor = '#ebf4f4';
+        } else if (this.props.location.pathname.includes('/home/recipe')) {
+            document.getElementById('nav-icon').style.color = '#f5e9df';
+            document.getElementById('nav-icon').style.backgroundColor = '#0C3812';
+        }
+    }
+
     render() {
         return (
             <div className='cp-phone-nav'>
@@ -36,7 +69,7 @@ class CurrentPage extends Component {
                         </div>
                     )}
                 </div>
-                <div className='nav-icon'>
+                <div className='nav-icon' id='nav-icon'>
                     <FontAwesomeIcon icon='ellipsis-v' className='icon'/>
                 </div>
                 <div className='phone-nav'>
