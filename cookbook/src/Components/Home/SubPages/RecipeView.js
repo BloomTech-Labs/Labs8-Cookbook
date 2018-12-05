@@ -59,15 +59,40 @@ class RecipeView extends Component {
     return qty;
   }
 
-    render() {
-        console.log('Data: ', this.props.location.state)
-        return (
-            <div className='recipe-page'>
-                <div className='header'>
-                    <span className='title'>{this.props.location.state.title}</span>
-                    <div className='icon-container'>
-                        <a  className='link' href={'' + this.props.location.state.url} rel="noopener noreferrer" target="_blank"><FontAwesomeIcon icon="link" /></a>
-                        <FontAwesomeIcon icon='trash-alt' className='delete'/>
+  render() {
+    console.log("Data: ", this.props.location.state);
+    return (
+      <div className="recipe-page">
+        <div className="header">
+          <span className="title">{this.props.location.state.title}</span>
+          <div className="icon-container">
+            <a
+              className="link"
+              href={"" + this.props.location.state.url}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <FontAwesomeIcon icon="link" />
+            </a>
+            <FontAwesomeIcon icon="trash-alt" className="delete" />
+          </div>
+        </div>
+        <div className="left-container">
+          <div className="left-content">
+            <div
+              className="recipe-img"
+              style={{
+                backgroundImage: `url(${this.props.location.state.image})`
+              }}
+            />
+            <div className="info-bar">
+              <div className="scheduled-for">
+                <span className="text">scheduled for:</span>
+                {this.props.location.state.events.map(event => (
+                  <div className="event">
+                    <div className="meal">{event.mealType}</div>
+                    <div className="date">
+                      {new Date(event.date).toLocaleDateString()}
                     </div>
                   </div>
                 ))}
