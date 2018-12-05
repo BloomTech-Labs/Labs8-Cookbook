@@ -62,7 +62,8 @@ class RecipeCalendar extends Component {
         type: "",
         showModal: false,
         onDate: null,
-        isUpdated: false
+        isUpdated: false,
+        search: ""
       };
     }
 
@@ -77,6 +78,10 @@ class RecipeCalendar extends Component {
     this.setState({
       type: e.target.name
     });
+  };
+
+  handleSearch = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   onEventSave = async () => {
@@ -95,40 +100,51 @@ class RecipeCalendar extends Component {
         console.log("Event updated: ", eventData);  
         this.setState({isUpdated:true});
     } catch (error) {
-      console.log("onsave error: ", error.message);
+      console.log("onSave error: ", error.message);
       return error;
     }
   }
 
   render() {
-    // console.log('date', this.state.events)
     return (
       <User>
         {({data}, loading, error) => {
           if (loading) return <div>Fetching</div>
           if (error) return <div>Error</div>
-         
-
           if (data.currentUser) { 
-          // console.log('User Data: ', data.currentUser)
           return (
             <Query query={QUERY_RECIPE_EVENT} variables = {{id: data.currentUser.id}}>
               {({ loading, error, data }) => {
                 if (loading) return <div>Fetching</div>
                 if (error) return <div>Error</div>
-                  
-                const events = data.events.map(i => {
+                // filter function for search
+                let searchedEvents = data.events.filter(
+                  (event) => {
+                    return event.recipe.title.indexOf(this.state.search) !== -1;
+                  }
+                )
+                // mapping out data to be rendered to screen
+                const events = searchedEvents.map(event => {
                   return {
-                    id: i.id,
-                    start: i.date,
-                    end: i.date,
-                    resource: i.mealType,
-                    title: i.recipe.title
+                    id: event.id,
+                    start: event.date,
+                    end: event.date,
+                    resource: event.mealType,
+                    title: event.recipe.title
                   }
                 }) 
                 return (
                   <div className="calendar-page-container">
                     <div className="calendar-container">
+                      <form>
+                        <input
+                          type="text"
+                          name="search"
+                          placeholder="search"
+                          onChange={this.handleSearch}
+                          value={this.state.search}
+                        />
+                      </form>
                       <BigCalendar
                         selectable
                         popup
@@ -145,7 +161,7 @@ class RecipeCalendar extends Component {
                       />
                     </div>
                     <div>
-                      {this.state.showModal?
+                      {this.state.showModal? // portal ternary statement to turn on/off
                         <Modal
                           onClose={this.toggleModal}>
                           <div style={{
@@ -162,7 +178,7 @@ class RecipeCalendar extends Component {
                               mealButtonHandler={this.mealButtonHandler}
                               type={this.state.type}
                             />
-                            <DatePicker  handlePickDate={this.handlePickDate}/>
+                            <DatePicker handlePickDate={this.handlePickDate}/>
                             <button className="modal-button" onClick={this.onEventSave}>Save</button>
                             <button className="modal-button" onClick={this.toggleModal}>Cancel</button>
                             </div>:
@@ -170,8 +186,7 @@ class RecipeCalendar extends Component {
                             <p>Updated Meal Successfully!</p>
                             <button className="modal-button" onClick={this.toggleModal}>Close</button>
                             </div>
-                          }
-                            
+                            }
                           </div>
                         </Modal>
                         :null}
