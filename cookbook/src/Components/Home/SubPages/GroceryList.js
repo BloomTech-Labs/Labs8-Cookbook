@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DayPicker, { DateUtils } from "react-day-picker";
-import { Query, ApolloConsumer, graphql } from "react-apollo";
+import { graphql } from "react-apollo";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import "react-day-picker/lib/style.css";
 import GroceryItem from "./GroceryItem";
@@ -50,9 +50,9 @@ class GroceryList extends Component {
     if (this.props.data.recipes && this.props.data.recipes.length) {
       const ingredients = [];
       // loop through all of the user's recipes
-      this.props.data.recipes.map(recipe =>
+      this.props.data.recipes.forEach(recipe =>
         //loop through all of the events for each recipe
-        recipe.events.map(event => {
+        recipe.events.forEach(event => {
           //convert the date strings to date objects for later comparisons
           let eventDate = new Date(event.date);
           let startDate = new Date(this.state.from);
@@ -61,7 +61,7 @@ class GroceryList extends Component {
           //if the event's date lies between the chosen start and stop date
           // map through each ingredient and show the quantity and name
           if (eventDate >= startDate && eventDate <= stopDate) {
-            recipe.ingredients.map(ingredient => {
+            recipe.ingredients.forEach(ingredient => {
               if (ingredient.name in ingredients) {
                 const curQuantity = ingredients[ingredient.name];
                 const newQuantity = ingredient.quantity;

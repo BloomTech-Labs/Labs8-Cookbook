@@ -6,7 +6,7 @@ const GroceryItem = props => {
       <input
         type="checkbox"
         checked={props.ingredient.isCompleted}
-        onClick={() => props.handleItemClick(props.index)}
+        onChange={() => props.handleItemClick(props.index)}
       />
       <span onClick={() => props.handleItemClick(props.index)}>
         {props.ingredient.quantity} {props.ingredient.name}
