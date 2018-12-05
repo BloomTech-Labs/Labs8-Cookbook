@@ -1,266 +1,73 @@
-.header-nav {
+.header {
   width: 100%;
+  height: 50px;
   display: flex;
-  flex-flow: column;
-  cursor: default;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  justify-content: space-between;
+  align-items: center;
+  font-family: @primary-font;
+  background-color: @CBblue;
+  border-bottom: 1px solid @CBblue;
+  color: @CBtan;
+  z-index: 11;
+  @media @phone {
+    height: 38px;
+  }
 
-  .header-container {
-    width: 100%;
-    background: @CBblue;
+  .link {
+    margin-left: 40px;
+    @media @tablet {
+      margin-left: 30px;
+    }
+    @media @phone {
+      margin-left: 20px;
+    }
+
+    .logo {
+      height: 33px;
+      @media @phone {
+        height: 22px;
+      }
+    }
+  }
+
+  .title {
+    font-size: 4rem;
+    letter-spacing: 4.5rem;
+    @media @desktop {
+      letter-spacing: 3.7rem;
+    }
+    @media @tablet {
+      letter-spacing: 2.6rem;
+    }
+    @media @phone {
+      font-size: 2rem;
+      letter-spacing: 1.2rem;
+      margin-left: 15px;
+    }
+  }
+
+  .signout {
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    height: 100%;
+    width: 70px;
+    background: @CBred;
+    color: @CBblue;
+    border-radius: 30px;
     display: flex;
     justify-content: center;
-  
-    .header {
-      width: 100%;
-      max-width: 1600px;
-      height: 123px;
-      color: @CBtan;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      overflow: hidden;
-
-      @media @desktop {
-        height: 100px;
-      }
-
-      @media @tablet {
-        height: 80px;
-      }
-
-      @media @phone {
-        height: 60px;
-      }
-
-      .logo {
-        height: 75%;
-        margin-left: 50px;
-
-        @media @tablet {
-          margin-left: 20px;
-        }
-      }
-
-      .title {
-        font-family: @secondary-font;
-        font-weight: bold;
-        font-size: 65px;
-        letter-spacing: 70px;
-
-        @media @giant {
-          letter-spacing: 3vw;
-        }
-
-        @media @desktop {
-          font-size: 55px;
-          letter-spacing: 2vw;
-        }
-
-        @media @tablet {
-          font-size: 40px;
-          letter-spacing: 1.5vw;
-        }
-
-        @media @phone {
-          display: none;
-        }
-      }
-
-      .logout {
-        height: 140px;
-        width: 140px;
-        border-radius: 50%;
-        background: @CBred;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: @CBblue;
-        font-size: 35px;
-        font-family: @secondary-font;
-        letter-spacing: 2px;
-        margin-right: 50px;
-        cursor: pointer;
-
-        @media @desktop {
-          height: 120px;
-          width: 120px;
-          font-size: 30px;
-        }
-
-        @media @tablet {
-          margin-right: 20px;
-          height: 100px;
-          width: 100px;
-          font-size: 25px;
-        }
-
-        @media @phone {
-          height: 80px;
-          width: 80px;
-          font-size: 20px;
-        }
-      }
-
-      .logout :hover {
-        cursor: pointer;
-      }
+    padding-top: 11px;
+    margin-right: 40px;
+    @media @tablet {
+      margin-right: 30px;
+      padding-top: 12px;
+    }
+    @media @phone {
+      font-size: 1.4rem;
+      padding-top: 8px;
+      width: 50px;
+      margin-right: 20px;
     }
   }
-
-  .nav {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-
-    .phone-nav {
-      display: flex;
-      flex-flow: column;
-      width: 100%;
-      cursor: pointer;
-
-      .links {
-        display: flex;
-        flex-flow: column;
-
-        .create-phone-nav-active {
-          #phoneNav > .create();
-          order: 1;
-        }
-
-        .recipe-phone-nav-active {
-          order: 1;
-          #phoneNav > .recipes();
-        }
-
-        .calendar-phone-nav-active {
-          order: 1;
-          #phoneNav > .calendar();
-        }
-
-        .dashboard-phone-nav-active {
-          order: 1;
-          #phoneNav > .dashboard();
-        }
-
-        .settings-phone-nav-active {
-          order: 1;
-          #phoneNav > .settings();
-        }
-
-        .create-phone-nav-show {
-          #phoneNav > .create();
-        }
-
-        .recipe-phone-nav-show {
-          #phoneNav > .recipes();
-        }
-
-        .calendar-phone-nav-show {
-          #phoneNav > .calendar();
-        }
-
-        .dashboard-phone-nav-show {
-          #phoneNav > .dashboard();
-        }
-
-        .settings-phone-nav-show {
-          #phoneNav > .settings();
-        }
-
-        .phone-nav-hide {
-          display: none;
-        }
-
-      }
-
-      .create-toggle-phone-nav {
-        #phoneNav > .basicToggleStyle(@CBred, @CBorange);
-      }
-
-      .recipe-toggle-phone-nav {
-        #phoneNav > .basicToggleStyle(@CBblue, @CBtan);
-      }
-
-      .calendar-toggle-phone-nav {
-        #phoneNav > .basicToggleStyle(@CBlightBlue, @CBgrey);
-      }
-
-      .dashboard-toggle-phone-nav {
-        #phoneNav > .basicToggleStyle(@CBorange, @CBblue);
-      }
-
-      .settings-toggle-phone-nav {
-        #phoneNav > .basicToggleStyle(@CBgrey, @CBred);
-      }
-    }
-
-    .normal-nav {
-      display: flex;
-      flex-flow: row wrap;
-      cursor: pointer;
-
-      .create-normal-nav-active {
-        #normalNav > .create;
-        cursor: default;
-        order: 1;
-        width: 100% !important;
-      }
-
-      .recipe-normal-nav-active {
-        #normalNav > .recipes;
-        cursor: default;
-        order: 1;
-        width: 100% !important;
-      }
-
-      .calendar-normal-nav-active {
-        #normalNav > .calendar;
-        cursor: default;
-        order: 1;
-        width: 100% !important;
-      }
-
-      .dashboard-normal-nav-active {
-        #normalNav > .dashboard;
-        cursor: default;
-        order: 1;
-        width: 100% !important;
-      }
-
-      .settings-normal-nav-active {
-        #normalNav > .settings;
-        cursor: default;
-        order: 1;
-        width: 100% !important;
-      }
-
-      .create-normal-nav-inactive {
-        #normalNav > .create;
-      }
-
-      .recipe-normal-nav-inactive {
-        #normalNav > .recipes;
-      }
-
-      .calendar-normal-nav-inactive {
-        #normalNav > .calendar;
-      }
-
-      .dashboard-normal-nav-inactive {
-        #normalNav > .dashboard;
-      }
-
-      .settings-normal-nav-inactive {
-        #normalNav > .settings;
-      }
-    }
-
-  }
-
 }
