@@ -1,84 +1,90 @@
 .grocery-list-page {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @media @phone {
+    justify-content: center;
+  }
+
+  .gen-list-container {
+    width: 580px;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-    @media @phone {
-        justify-content: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    @media @desktop {
+      margin-left: 5px;
+      width: 420px;
+    }
+    @media @tablet {
+      width: 100%;
     }
 
-    .gen-list-container {
-        width: 580px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 20px;
+    .DayPicker {
+      width: 100%;
+      margin-bottom: 20px;
 
+      .DayPicker-Caption {
+        text-align: center;
+      }
+
+      .DayPicker-Month {
+        width: 100%;
+        height: 300px;
         @media @desktop {
-            margin-left: 5px;
-            width: 420px;
+          height: 280px;
         }
         @media @tablet {
-            width: 100%;
-        }
-
-        .DayPicker {
-            width: 100%;
-            margin-bottom: 20px;
-
-            .DayPicker-Caption {
-                text-align: center;
-            }
-
-            .DayPicker-Month {
-                width: 100%;
-                height: 300px;
-                @media @desktop {
-                    height: 280px;
-                }
-                @media @tablet {
-                    height: 300px;
-                    width: 90%
-                }
-                @media @phone {
-                    height: 240px;
-                    width: 80%;
-                }
-            }
-
-            .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-                background-color: #f0f8ff !important;
-                color: #4a90e2;
-            }
-            .DayPicker-Day {
-                border-radius: 0 !important;
-            }
-            .DayPicker-Day--start {
-                border-top-left-radius: 50% !important;
-                border-bottom-left-radius: 50% !important;
-            }
-            .DayPicker-Day--end {
-                border-top-right-radius: 50% !important;
-                border-bottom-right-radius: 50% !important;
-            }
-        }
-    }
-
-
-    .list {
-        border: 1px solid black;
-        width: 330px;
-        @media @desktop {
-            width: 250px;
-        }
-        @media @tablet {
-            width: 100%;
+          height: 300px;
+          width: 90%;
         }
         @media @phone {
-            width: 90%;
+          height: 240px;
+          width: 80%;
         }
+      }
 
-        .list-header {
-            font-size: 1.2rem;
-        }
+      .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+        background-color: #f0f8ff !important;
+        color: #4a90e2;
+      }
+      .DayPicker-Day {
+        border-radius: 0 !important;
+      }
+      .DayPicker-Day--start {
+        border-top-left-radius: 50% !important;
+        border-bottom-left-radius: 50% !important;
+      }
+      .DayPicker-Day--end {
+        border-top-right-radius: 50% !important;
+        border-bottom-right-radius: 50% !important;
+      }
     }
+  }
+
+  .list {
+    border: 1px solid black;
+    width: 330px;
+    overflow: hidden;
+    @media @desktop {
+      width: 250px;
+    }
+    @media @tablet {
+      width: 100%;
+    }
+    @media @phone {
+      width: 90%;
+    }
+
+    .list-header {
+      font-size: 1.2rem;
+    }
+
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
 }
