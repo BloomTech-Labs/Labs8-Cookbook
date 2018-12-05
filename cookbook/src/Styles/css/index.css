@@ -93,11 +93,11 @@ html {
   }
 }
 .header .link .logo {
-  height: 40px;
+  height: 33px;
 }
 @media (max-width: 600px) {
   .header .link .logo {
-    height: 30px;
+    height: 22px;
   }
 }
 .header .title {
