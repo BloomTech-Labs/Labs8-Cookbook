@@ -29,13 +29,15 @@ let findSoonestEvent = (sortedEvents) => {
         return new Date(event.date) - now < 0;
     })
 
-    //return the first date on or after today.
-    //if there are none, return the closest date in the past
+    //return the index of the first event with date on or after today.
+    //if there are none, return the index of event with closest date in the past
     if (futureEvents.length > 0) {
-        return futureEvents[0];
+        let index = sortedEvents.indexOf(futureEvents[0]);
+        return index;
     } 
     else if (pastEvents.length > 0) {
-        return pastEvents[pastEvents.length-1];
+        let index = sortedEvents.indexOf(pastEvents[pastEvents.length-1]);
+        return index;
     }
     else return null;
 }
@@ -50,10 +52,9 @@ class CardSchedule extends Component {
     }
 
     componentDidMount() {
-        this.setState({ sortedEvents: sortEvents(this.props.events) });
-        setTimeout(() => {
-            this.setState({ currentEvent: findSoonestEvent(this.state.sortedEvents) });
-        }, 1000)
+        let sortedEvents = sortEvents(this.props.events)
+        this.setState({ sortedEvents });
+        this.setState({ currentEventIndex: findSoonestEvent(sortedEvents) });
     }
 
     render() {
