@@ -97,6 +97,7 @@ class Create extends Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value, loadingPreview: false });
+    this.findRecipes();
   };
 
   handlePickDate = date => {
@@ -215,7 +216,7 @@ class Create extends Component {
             onChange={this.handleChange}
             value={this.state.query}
           />
-          <button onClick={this.findRecipes}>Search</button>
+          {/* <button onClick={this.findRecipes}>Search</button> */}
           {this.state.og_title === "N/A" ? (
             <div>No preview available</div>
           ) : (
