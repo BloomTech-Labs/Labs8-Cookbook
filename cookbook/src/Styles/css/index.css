@@ -1468,11 +1468,62 @@ html {
   width: 120px;
   height: 60px;
   position: relative;
-  padding-left: 8px;
-  padding-top: 3px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 1px 0 0;
 }
-.content-container .card-bottom .schedule .event {
+.content-container .card-bottom .schedule .event-scroller {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
   font-weight: 600;
+}
+.content-container .card-bottom .schedule .event-scroller .scroll-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2px;
+  padding-right: 2px;
+  cursor: pointer;
+  background: #343e5a;
+  color: #f5e9df;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+.content-container .card-bottom .schedule .event-scroller .event {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.content-container .card-bottom .schedule .event-scroller .scroll-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+  padding-left: 2px;
+  cursor: pointer;
+  background: #343e5a;
+  color: #f5e9df;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+.content-container .card-bottom .schedule .event-scroller .scroll-hidden {
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+  padding-left: 2px;
+  cursor: pointer;
+  background: #343e5a;
+  color: #f5e9df;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
 }
 .content-container .card-bottom .del-button {
   width: 65px;
