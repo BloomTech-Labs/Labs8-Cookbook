@@ -1349,6 +1349,7 @@ html {
 .grocery-list-page .list {
   border: 1px solid black;
   width: 330px;
+  padding: 5px;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .list {
@@ -1367,6 +1368,20 @@ html {
 }
 .grocery-list-page .list .list-header {
   font-size: 1.2rem;
+}
+.grocery-list-page .list .item-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.grocery-list-page .list .list-item {
+  cursor: pointer;
+  margin: 3px 0;
+}
+.grocery-list-page .list .completed {
+  order: 1;
+  color: #d4d4d4;
+  background: #555454;
 }
 .recipesContainer {
   display: flex;
@@ -1930,4 +1945,32 @@ html {
 }
 .recipe-page .right-container .instructions .instruction .checked {
   border: 1px solid red;
+}
+.stripe-btn {
+  overflow: hidden;
+  display: inline-block;
+  background: linear-gradient(#28a0e5, #015e94);
+  border: 0px;
+  padding: 1px;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
+  cursor: pointer;
+  visibility: visible;
+  user-select: none;
+}
+.stripe-btn span {
+  background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  position: relative;
+  padding: 0px 12px;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
+  border-radius: 4px;
 }
