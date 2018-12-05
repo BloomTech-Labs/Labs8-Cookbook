@@ -60,28 +60,7 @@ html {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-image: url(../../Images/background-xgiant.jpg);
   font-family: 'Muli', sans-serif;
-}
-@media (max-width: 1800px) {
-  .app {
-    background-image: url(../../Images/background-giant.jpg);
-  }
-}
-@media (max-width: 1200px) {
-  .app {
-    background-image: url(../../Images/background-desktop.jpg);
-  }
-}
-@media (max-width: 900px) {
-  .app {
-    background-image: url(../../Images/background-tablet.jpg);
-  }
-}
-@media (max-width: 600px) {
-  .app {
-    background-image: url(../../Images/background-phone.jpg);
-  }
 }
 .header {
   width: 100%;
