@@ -14,6 +14,7 @@ import RecipeView from "./SubPages/RecipeView";
 class Home extends Component {
   componentDidMount() {
     if (!auth.isAuthenticated()) this.props.history.push("/");
+    else if (this.props.location.pathname === '/home') this.props.history.push("/home/recipes");
   }
 
   render() {
