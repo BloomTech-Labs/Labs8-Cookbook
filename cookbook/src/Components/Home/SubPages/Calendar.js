@@ -6,6 +6,7 @@ import { Query } from "react-apollo";
 import User from './User';
 import Modal from '../../SubComponents/Modal';
 import DatePicker from "../../SubComponents/DatePicker.js";
+import Buttons from './Buttons';
 
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -72,6 +73,13 @@ class RecipeCalendar extends Component {
   
   toggleModal = () => this.setState({ showModal: !this.state.showModal })
 
+  mealButtonHandler = e => {
+    e.preventDefault();
+    this.setState({
+      type: e.target.name
+    });
+  };
+
   render() {
     // console.log('date', this.state.events)
     return (
@@ -123,10 +131,17 @@ class RecipeCalendar extends Component {
                           <div style={{
                             maxWidth: 400, 
                             position: 'relative',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            flexDirection: 'column',
                           }}>
                             <h1>Please select Meal and Date!</h1>
-                            <DatePicker handlePickDate={this.handlePickDate}/>
-                            <button onClick={this.toggleModal}>Save</button>
+                            <Buttons
+                              mealButtonHandler={this.mealButtonHandler}
+                              type={this.state.type}
+                            />
+                            <DatePicker  handlePickDate={this.handlePickDate}/>
+                            <button className="modal-button" onClick={this.toggleModal}>Save</button>
                           </div>
                         </Modal>
                         :null}

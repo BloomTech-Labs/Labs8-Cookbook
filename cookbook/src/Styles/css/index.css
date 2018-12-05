@@ -1275,7 +1275,7 @@ html {
     padding: 0;
   }
 }
-.calendar-page .modal-calendar {
+.calendar-page .DayPicker {
   justify-content: center;
 }
 .grocery-list-page {
