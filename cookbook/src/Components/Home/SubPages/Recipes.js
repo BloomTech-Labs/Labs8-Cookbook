@@ -10,6 +10,8 @@ const GET_RECIPES_QUERY = gql`
       title
       image
       url
+      prepTime
+      servings
       events {
         id
         mealType
@@ -24,6 +26,7 @@ const GET_RECIPES_QUERY = gql`
         id
         stepNum
         description
+        isCompleted
       }
     }
   }
