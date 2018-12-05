@@ -1243,16 +1243,10 @@ html {
   border-top-left-radius: 35px;
   border-top-right-radius: 35px;
 }
-.create-wrapper .create-content-wrapper .preview .image-container {
-  display: flex;
+.create-wrapper .create-content-wrapper .preview .image {
   width: 100%;
-  overflow: hidden;
   border-left: 3px solid #de6a5a;
   border-right: 3px solid #de6a5a;
-}
-.create-wrapper .create-content-wrapper .preview .image-container .image {
-  width: 100%;
-  height: auto;
 }
 .create-wrapper .create-content-wrapper .preview .body {
   text-align: justify;
