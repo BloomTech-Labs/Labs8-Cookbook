@@ -2,10 +2,6 @@ type AggregateEvent {
   count: Int!
 }
 
-type AggregateGroceryList {
-  count: Int!
-}
-
 type AggregateIngredient {
   count: Int!
 }
@@ -22,10 +18,6 @@ type AggregateSubscription {
   count: Int!
 }
 
-type AggregatetotalQuantity {
-  count: Int!
-}
-
 type AggregateUser {
   count: Int!
 }
@@ -33,6 +25,8 @@ type AggregateUser {
 type BatchPayload {
   count: Long!
 }
+
+scalar DateTime
 
 type Event {
   id: ID!
@@ -162,108 +156,6 @@ input EventWhereInput {
 }
 
 input EventWhereUniqueInput {
-  id: ID
-}
-
-type GroceryList {
-  id: ID!
-  startDate: String!
-  endDate: String!
-  groceryList(where: totalQuantityWhereInput, orderBy: totalQuantityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [totalQuantity!]
-  user: User!
-}
-
-type GroceryListConnection {
-  pageInfo: PageInfo!
-  edges: [GroceryListEdge]!
-  aggregate: AggregateGroceryList!
-}
-
-input GroceryListCreateInput {
-  startDate: String!
-  endDate: String!
-  groceryList: totalQuantityCreateManyInput
-  user: UserCreateOneInput!
-}
-
-type GroceryListEdge {
-  node: GroceryList!
-  cursor: String!
-}
-
-enum GroceryListOrderByInput {
-  id_ASC
-  id_DESC
-  startDate_ASC
-  startDate_DESC
-  endDate_ASC
-  endDate_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input GroceryListUpdateInput {
-  startDate: String
-  endDate: String
-  groceryList: totalQuantityUpdateManyInput
-  user: UserUpdateOneRequiredInput
-}
-
-input GroceryListWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  startDate: String
-  startDate_not: String
-  startDate_in: [String!]
-  startDate_not_in: [String!]
-  startDate_lt: String
-  startDate_lte: String
-  startDate_gt: String
-  startDate_gte: String
-  startDate_contains: String
-  startDate_not_contains: String
-  startDate_starts_with: String
-  startDate_not_starts_with: String
-  startDate_ends_with: String
-  startDate_not_ends_with: String
-  endDate: String
-  endDate_not: String
-  endDate_in: [String!]
-  endDate_not_in: [String!]
-  endDate_lt: String
-  endDate_lte: String
-  endDate_gt: String
-  endDate_gte: String
-  endDate_contains: String
-  endDate_not_contains: String
-  endDate_starts_with: String
-  endDate_not_starts_with: String
-  endDate_ends_with: String
-  endDate_not_ends_with: String
-  groceryList_every: totalQuantityWhereInput
-  groceryList_some: totalQuantityWhereInput
-  groceryList_none: totalQuantityWhereInput
-  user: UserWhereInput
-  AND: [GroceryListWhereInput!]
-  OR: [GroceryListWhereInput!]
-  NOT: [GroceryListWhereInput!]
-}
-
-input GroceryListWhereUniqueInput {
   id: ID
 }
 
@@ -541,12 +433,6 @@ type Mutation {
   upsertEvent(where: EventWhereUniqueInput!, create: EventCreateInput!, update: EventUpdateInput!): Event!
   deleteEvent(where: EventWhereUniqueInput!): Event
   deleteManyEvents(where: EventWhereInput): BatchPayload!
-  createGroceryList(data: GroceryListCreateInput!): GroceryList!
-  updateGroceryList(data: GroceryListUpdateInput!, where: GroceryListWhereUniqueInput!): GroceryList
-  updateManyGroceryLists(data: GroceryListUpdateInput!, where: GroceryListWhereInput): BatchPayload!
-  upsertGroceryList(where: GroceryListWhereUniqueInput!, create: GroceryListCreateInput!, update: GroceryListUpdateInput!): GroceryList!
-  deleteGroceryList(where: GroceryListWhereUniqueInput!): GroceryList
-  deleteManyGroceryLists(where: GroceryListWhereInput): BatchPayload!
   createIngredient(data: IngredientCreateInput!): Ingredient!
   updateIngredient(data: IngredientUpdateInput!, where: IngredientWhereUniqueInput!): Ingredient
   updateManyIngredients(data: IngredientUpdateInput!, where: IngredientWhereInput): BatchPayload!
@@ -577,12 +463,6 @@ type Mutation {
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   deleteUser(where: UserWhereUniqueInput!): User
   deleteManyUsers(where: UserWhereInput): BatchPayload!
-  createtotalQuantity(data: totalQuantityCreateInput!): totalQuantity!
-  updatetotalQuantity(data: totalQuantityUpdateInput!, where: totalQuantityWhereUniqueInput!): totalQuantity
-  updateManytotalQuantities(data: totalQuantityUpdateInput!, where: totalQuantityWhereInput): BatchPayload!
-  upserttotalQuantity(where: totalQuantityWhereUniqueInput!, create: totalQuantityCreateInput!, update: totalQuantityUpdateInput!): totalQuantity!
-  deletetotalQuantity(where: totalQuantityWhereUniqueInput!): totalQuantity
-  deleteManytotalQuantities(where: totalQuantityWhereInput): BatchPayload!
 }
 
 interface Node {
@@ -600,9 +480,6 @@ type Query {
   event(where: EventWhereUniqueInput!): Event
   events(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Event]!
   eventsConnection(where: EventWhereInput, orderBy: EventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): EventConnection!
-  groceryList(where: GroceryListWhereUniqueInput!): GroceryList
-  groceryLists(where: GroceryListWhereInput, orderBy: GroceryListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [GroceryList]!
-  groceryListsConnection(where: GroceryListWhereInput, orderBy: GroceryListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GroceryListConnection!
   ingredient(where: IngredientWhereUniqueInput!): Ingredient
   ingredients(where: IngredientWhereInput, orderBy: IngredientOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Ingredient]!
   ingredientsConnection(where: IngredientWhereInput, orderBy: IngredientOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): IngredientConnection!
@@ -618,9 +495,6 @@ type Query {
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
-  totalQuantity(where: totalQuantityWhereUniqueInput!): totalQuantity
-  totalQuantities(where: totalQuantityWhereInput, orderBy: totalQuantityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [totalQuantity]!
-  totalQuantitiesConnection(where: totalQuantityWhereInput, orderBy: totalQuantityOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): totalQuantityConnection!
   node(id: ID!): Node
 }
 
@@ -961,10 +835,12 @@ input RecipeWhereUniqueInput {
 
 type Subscription {
   id: ID!
-  type: String!
   amount: Int!
+  currency: String!
   user: User!
   charge: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type SubscriptionConnection {
@@ -974,8 +850,8 @@ type SubscriptionConnection {
 }
 
 input SubscriptionCreateInput {
-  type: String!
   amount: Int!
+  currency: String!
   user: UserCreateOneInput!
   charge: String!
 }
@@ -988,10 +864,10 @@ type SubscriptionEdge {
 enum SubscriptionOrderByInput {
   id_ASC
   id_DESC
-  type_ASC
-  type_DESC
   amount_ASC
   amount_DESC
+  currency_ASC
+  currency_DESC
   charge_ASC
   charge_DESC
   createdAt_ASC
@@ -1001,8 +877,8 @@ enum SubscriptionOrderByInput {
 }
 
 input SubscriptionUpdateInput {
-  type: String
   amount: Int
+  currency: String
   user: UserUpdateOneRequiredInput
   charge: String
 }
@@ -1022,20 +898,6 @@ input SubscriptionWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  type: String
-  type_not: String
-  type_in: [String!]
-  type_not_in: [String!]
-  type_lt: String
-  type_lte: String
-  type_gt: String
-  type_gte: String
-  type_contains: String
-  type_not_contains: String
-  type_starts_with: String
-  type_not_starts_with: String
-  type_ends_with: String
-  type_not_ends_with: String
   amount: Int
   amount_not: Int
   amount_in: [Int!]
@@ -1044,6 +906,20 @@ input SubscriptionWhereInput {
   amount_lte: Int
   amount_gt: Int
   amount_gte: Int
+  currency: String
+  currency_not: String
+  currency_in: [String!]
+  currency_not_in: [String!]
+  currency_lt: String
+  currency_lte: String
+  currency_gt: String
+  currency_gte: String
+  currency_contains: String
+  currency_not_contains: String
+  currency_starts_with: String
+  currency_not_starts_with: String
+  currency_ends_with: String
+  currency_not_ends_with: String
   user: UserWhereInput
   charge: String
   charge_not: String
@@ -1059,136 +935,28 @@ input SubscriptionWhereInput {
   charge_not_starts_with: String
   charge_ends_with: String
   charge_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
   AND: [SubscriptionWhereInput!]
   OR: [SubscriptionWhereInput!]
   NOT: [SubscriptionWhereInput!]
 }
 
 input SubscriptionWhereUniqueInput {
-  id: ID
-}
-
-type totalQuantity {
-  id: ID!
-  name: String!
-  quantity: Float!
-  isPurchased: Boolean!
-}
-
-type totalQuantityConnection {
-  pageInfo: PageInfo!
-  edges: [totalQuantityEdge]!
-  aggregate: AggregatetotalQuantity!
-}
-
-input totalQuantityCreateInput {
-  name: String!
-  quantity: Float!
-  isPurchased: Boolean
-}
-
-input totalQuantityCreateManyInput {
-  create: [totalQuantityCreateInput!]
-  connect: [totalQuantityWhereUniqueInput!]
-}
-
-type totalQuantityEdge {
-  node: totalQuantity!
-  cursor: String!
-}
-
-enum totalQuantityOrderByInput {
-  id_ASC
-  id_DESC
-  name_ASC
-  name_DESC
-  quantity_ASC
-  quantity_DESC
-  isPurchased_ASC
-  isPurchased_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input totalQuantityUpdateDataInput {
-  name: String
-  quantity: Float
-  isPurchased: Boolean
-}
-
-input totalQuantityUpdateInput {
-  name: String
-  quantity: Float
-  isPurchased: Boolean
-}
-
-input totalQuantityUpdateManyInput {
-  create: [totalQuantityCreateInput!]
-  update: [totalQuantityUpdateWithWhereUniqueNestedInput!]
-  upsert: [totalQuantityUpsertWithWhereUniqueNestedInput!]
-  delete: [totalQuantityWhereUniqueInput!]
-  connect: [totalQuantityWhereUniqueInput!]
-  disconnect: [totalQuantityWhereUniqueInput!]
-}
-
-input totalQuantityUpdateWithWhereUniqueNestedInput {
-  where: totalQuantityWhereUniqueInput!
-  data: totalQuantityUpdateDataInput!
-}
-
-input totalQuantityUpsertWithWhereUniqueNestedInput {
-  where: totalQuantityWhereUniqueInput!
-  update: totalQuantityUpdateDataInput!
-  create: totalQuantityCreateInput!
-}
-
-input totalQuantityWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  quantity: Float
-  quantity_not: Float
-  quantity_in: [Float!]
-  quantity_not_in: [Float!]
-  quantity_lt: Float
-  quantity_lte: Float
-  quantity_gt: Float
-  quantity_gte: Float
-  isPurchased: Boolean
-  isPurchased_not: Boolean
-  AND: [totalQuantityWhereInput!]
-  OR: [totalQuantityWhereInput!]
-  NOT: [totalQuantityWhereInput!]
-}
-
-input totalQuantityWhereUniqueInput {
   id: ID
 }
 
