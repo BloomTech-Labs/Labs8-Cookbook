@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 
 import auth from "../../Auth/Auth.js";
 import Header from "../SubComponents/Header";
+import Nav from '../SubComponents/Nav';
 import CurrentPage from '../SubComponents/CurrentPage';
 import Create from "./SubPages/Create";
 import Recipes from "./SubPages/Recipes";
@@ -22,6 +23,7 @@ class Home extends Component {
     return (
       <React.Fragment>
         <Header />
+        <Nav />
         <CurrentPage />
         <div className="home-container">
           <div className="home-content">

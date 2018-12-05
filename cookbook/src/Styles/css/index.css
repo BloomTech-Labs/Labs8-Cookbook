@@ -62,64 +62,58 @@ html {
   flex-wrap: wrap;
   font-family: 'Muli', sans-serif;
 }
-.header-nav {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-family: 'Muli', sans-serif;
-}
-.header-nav .header {
+.header {
   width: 100%;
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Muli', sans-serif;
   background-color: #343e5a;
   color: #f5e9df;
   z-index: 11;
 }
 @media (max-width: 600px) {
-  .header-nav .header {
+  .header {
     height: 38px;
   }
 }
-.header-nav .header .link {
+.header .link {
   margin-left: 40px;
 }
 @media (max-width: 900px) {
-  .header-nav .header .link {
+  .header .link {
     margin-left: 30px;
   }
 }
-.header-nav .header .link .logo {
+.header .link .logo {
   height: 40px;
 }
 @media (max-width: 600px) {
-  .header-nav .header .link .logo {
+  .header .link .logo {
     height: 30px;
   }
 }
-.header-nav .header .title {
+.header .title {
   font-size: 4rem;
   letter-spacing: 4.5rem;
 }
 @media (max-width: 1200px) {
-  .header-nav .header .title {
+  .header .title {
     letter-spacing: 3.7rem;
   }
 }
 @media (max-width: 900px) {
-  .header-nav .header .title {
+  .header .title {
     letter-spacing: 2.6rem;
   }
 }
 @media (max-width: 600px) {
-  .header-nav .header .title {
+  .header .title {
     display: none;
   }
 }
-.header-nav .header .signout {
+.header .signout {
   color: white;
   font-size: 2rem;
   cursor: pointer;
@@ -134,19 +128,19 @@ html {
   margin-right: 40px;
 }
 @media (max-width: 900px) {
-  .header-nav .header .signout {
+  .header .signout {
     margin-right: 30px;
     padding-top: 12px;
   }
 }
 @media (max-width: 600px) {
-  .header-nav .header .signout {
+  .header .signout {
     font-size: 1.6rem;
     padding-top: 8px;
     width: 60px;
   }
 }
-.header-nav .nav {
+.nav {
   width: 100%;
   height: 35px;
   font-size: 2.6rem;
@@ -159,38 +153,38 @@ html {
   top: 0;
 }
 @media (max-width: 900px) {
-  .header-nav .nav {
+  .nav {
     height: 30px;
     font-size: 2.2rem;
     top: 50px;
   }
 }
 @media (max-width: 600px) {
-  .header-nav .nav {
+  .nav {
     display: none;
   }
 }
-.header-nav .nav .create-nav {
+.nav .create-nav {
   width: 25%;
   height: 100%;
   background-color: #fed092;
 }
-.header-nav .nav .calendar-nav {
+.nav .calendar-nav {
   width: 25%;
   height: 100%;
   background-color: #bcc9d2;
 }
-.header-nav .nav .dashboard-nav {
+.nav .dashboard-nav {
   width: 25%;
   height: 100%;
   background-color: #343e5a;
 }
-.header-nav .nav .settings-nav {
+.nav .settings-nav {
   width: 25%;
   height: 100%;
   background-color: #de6a5a;
 }
-.header-nav .nav .recipes-nav {
+.nav .recipes-nav {
   width: 25%;
   height: 100%;
   background-color: #f5e9df;
