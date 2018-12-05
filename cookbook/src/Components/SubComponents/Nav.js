@@ -31,7 +31,7 @@ class Nav extends Component {
                 )}
                 {renderIf(!this.props.location.pathname.includes('/home/recipe'))(    
                     <div className='recipes-nav'>
-                        <Link to='/home/recipes' style={{textDecoration: 'none', color: '#2E3650'}}>RECIPES</Link>
+                        <Link to='/home/recipes' style={{textDecoration: 'none', color: '#0C3812'}}>RECIPES</Link>
                     </div>
                 )}
             </div>
