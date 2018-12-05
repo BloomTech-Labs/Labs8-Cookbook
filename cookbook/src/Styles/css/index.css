@@ -87,6 +87,11 @@ html {
     margin-left: 30px;
   }
 }
+@media (max-width: 600px) {
+  .header .link {
+    margin-left: 20px;
+  }
+}
 .header .link .logo {
   height: 40px;
 }
@@ -111,7 +116,9 @@ html {
 }
 @media (max-width: 600px) {
   .header .title {
-    display: none;
+    font-size: 2rem;
+    letter-spacing: 1.2rem;
+    margin-left: 15px;
   }
 }
 .header .signout {
@@ -136,9 +143,10 @@ html {
 }
 @media (max-width: 600px) {
   .header .signout {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     padding-top: 8px;
-    width: 60px;
+    width: 50px;
+    margin-right: 20px;
   }
 }
 .nav {
