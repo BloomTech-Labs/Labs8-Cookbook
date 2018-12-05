@@ -4,6 +4,9 @@
     position: sticky;
     top: 35px;
     z-index: 15;
+    @media @tablet {
+        top: 30px;
+    }
     @media @phone {
         top: 0;
     }
@@ -64,33 +67,54 @@
         }
     }
 
-    .nav-icon {
-        height: 35px;
-        width:40px;
-        position: absolute;
-        top: 0;
-        font-size: 1.6rem;
-        border-radius: 20px;
-        margin-left: -17px;
-        overflow: hidden;
-        display: none;
-        @media @phone {
-            display: block;
+    .dropdown {
+
+        .nav-icon {
+            height: 35px;
+            width:40px;
+            position: absolute;
+            top: 0;
+            font-size: 1.6rem;
+            border-radius: 20px;
+            margin-left: -17px;
+            overflow: hidden;
+            display: none;
+            @media @phone {
+                display: block;
+            }
+            
+            .icon {
+                margin-left: 22px;
+                margin-top: 8px;
+            }
         }
-        
-        .icon {
-            margin-left: 22px;
-            margin-top: 8px;
+
+        .phone-nav {
+            display: none;
+            width: 100%;
+            z-index: 16;
+            flex-wrap: wrap;
+            padding-top: 20px;
+            position: absolute;
+            top: 15px;
+
+            .nav-bar {
+                width: 100%;
+                line-height: 35px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                text-decoration: none;
+                font-size: 2rem;
+            }
+        }
+
+        .phone-nav .nav-bar:hover {
+            font-weight: bold;
         }
     }
 
-    .phone-nav {
-        border: 1px solid red;
-        display: none;
-        width: 100%;
-        z-index: 16;
-        @media @phone {
-          display: block;
-        }
+    .dropdown:hover .phone-nav {
+        display: flex;
     }
 }

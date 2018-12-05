@@ -157,7 +157,6 @@ html {
   .nav {
     height: 30px;
     font-size: 2.2rem;
-    top: 50px;
   }
 }
 @media (max-width: 600px) {
@@ -196,6 +195,11 @@ html {
   position: sticky;
   top: 35px;
   z-index: 15;
+}
+@media (max-width: 900px) {
+  .cp-phone-nav {
+    top: 30px;
+  }
 }
 @media (max-width: 600px) {
   .cp-phone-nav {
@@ -256,7 +260,7 @@ html {
   background-color: #f5e9df;
   text-align: center;
 }
-.cp-phone-nav .nav-icon {
+.cp-phone-nav .dropdown .nav-icon {
   height: 35px;
   width: 40px;
   position: absolute;
@@ -268,24 +272,37 @@ html {
   display: none;
 }
 @media (max-width: 600px) {
-  .cp-phone-nav .nav-icon {
+  .cp-phone-nav .dropdown .nav-icon {
     display: block;
   }
 }
-.cp-phone-nav .nav-icon .icon {
+.cp-phone-nav .dropdown .nav-icon .icon {
   margin-left: 22px;
   margin-top: 8px;
 }
-.cp-phone-nav .phone-nav {
-  border: 1px solid red;
+.cp-phone-nav .dropdown .phone-nav {
   display: none;
   width: 100%;
   z-index: 16;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  position: absolute;
+  top: 15px;
 }
-@media (max-width: 600px) {
-  .cp-phone-nav .phone-nav {
-    display: block;
-  }
+.cp-phone-nav .dropdown .phone-nav .nav-bar {
+  width: 100%;
+  line-height: 35px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 2rem;
+}
+.cp-phone-nav .dropdown .phone-nav .nav-bar:hover {
+  font-weight: bold;
+}
+.cp-phone-nav .dropdown:hover .phone-nav {
+  display: flex;
 }
 .containerLP {
   width: 100%;
