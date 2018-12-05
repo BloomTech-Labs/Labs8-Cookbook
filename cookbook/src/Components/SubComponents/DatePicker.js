@@ -25,7 +25,11 @@ class DatePicker extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}>
         <DayPicker
           selectedDays={this.state.selectedDay}
           onDayClick={this.handleDayClick}

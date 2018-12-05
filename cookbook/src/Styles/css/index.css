@@ -468,7 +468,7 @@ html {
   font-family: "verdana";
 }
 .containerLP .lp-content .about-us .about-header {
-  letter-spacing: 0.3rem;
+  letter-spacing: .3rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -766,38 +766,38 @@ html {
   justify-content: center;
   align-items: center;
 }
-.calendar-page {
+.calendar-page-container {
   margin-left: 5px;
 }
-.calendar-page .rbc-calendar {
+.calendar-page-container .rbc-calendar {
   height: 650px;
 }
 @media (max-width: 1200px) {
-  .calendar-page .rbc-calendar {
+  .calendar-page-container .rbc-calendar {
     height: 500px;
   }
 }
 @media (max-width: 900px) {
-  .calendar-page .rbc-calendar {
+  .calendar-page-container .rbc-calendar {
     font-size: 1.4rem;
     height: 420px;
   }
 }
 @media (max-width: 600px) {
-  .calendar-page .rbc-calendar {
-    font-size: 1rem;
+  .calendar-page-container .rbc-calendar {
+    font-size: 1.0rem;
     height: 380px;
   }
 }
 @media (max-width: 600px) {
-  .calendar-page .rbc-calendar .rbc-toolbar .rbc-btn-group button {
-    font-size: 0.8rem;
+  .calendar-page-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
+    font-size: .8rem;
     width: 40px;
   }
 }
 @media (max-width: 600px) {
-  .calendar-page .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
-    font-size: 1rem;
+  .calendar-page-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
+    font-size: 1.0rem;
     padding: 0;
   }
 }
@@ -996,7 +996,7 @@ html {
   width: 36px;
 }
 .content-container .card-bottom .link-container .link-text {
-  font-size: 0.9rem;
+  font-size: .9rem;
   width: 30px;
   text-align: center;
 }
@@ -1082,7 +1082,7 @@ html {
   width: 100%;
 }
 .content-container .card-bottom .del-button .del-text {
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
 .recipe-page {
   display: flex;
