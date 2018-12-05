@@ -73,7 +73,7 @@ class RecipeCalendar extends Component {
   toggleModal = () => this.setState({ showModal: !this.state.showModal })
 
   render() {
-    console.log('date', this.state.events)
+    // console.log('date', this.state.events)
     return (
       <User>
         {({data}, loading, error) => {
@@ -82,13 +82,13 @@ class RecipeCalendar extends Component {
          
 
           if (data.currentUser) { 
-          console.log('User Data: ', data.currentUser)
+          // console.log('User Data: ', data.currentUser)
           return (
             <Query query={QUERY_RECIPE_EVENT} variables = {{id: data.currentUser.id}}>
               {({ loading, error, data }) => {
                 if (loading) return <div>Fetching</div>
                 if (error) return <div>Error</div>
-                console.log("Data: ", data)  
+                // console.log("Data: ", data)  
                 const events = data.events.map(i => {
                   return {
                     id: i.id,
@@ -126,12 +126,7 @@ class RecipeCalendar extends Component {
                           }}>
                             <h1>Please select Meal and Date!</h1>
                             <DatePicker handlePickDate={this.handlePickDate}/>
-                            <button style={{
-                              backgroundColor: '#4CAF50',
-                              marginLeft: 'auto',
-                              marginRight: 'auto',
-                              }}
-                              onClick={this.toggleModal}>Save</button>
+                            <button onClick={this.toggleModal}>Save</button>
                           </div>
                         </Modal>
                         :null}

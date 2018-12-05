@@ -628,7 +628,7 @@ html {
 }
 @media (max-width: 1800px) {
   .header-nav .nav .normal-nav .dashboard-normal-nav-active {
-    letter-spacing: 0.5vw;
+    letter-spacing: .5vw;
   }
 }
 .header-nav .nav .normal-nav .settings-normal-nav-active {
@@ -777,7 +777,7 @@ html {
 }
 @media (max-width: 1800px) {
   .header-nav .nav .normal-nav .dashboard-normal-nav-inactive {
-    letter-spacing: 0.5vw;
+    letter-spacing: .5vw;
   }
 }
 .header-nav .nav .normal-nav .settings-normal-nav-inactive {
@@ -942,7 +942,7 @@ html {
   font-family: "verdana";
 }
 .containerLP .lp-content .about-us .about-header {
-  letter-spacing: 0.3rem;
+  letter-spacing: .3rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1259,21 +1259,24 @@ html {
 }
 @media (max-width: 600px) {
   .calendar-page .rbc-calendar {
-    font-size: 1rem;
+    font-size: 1.0rem;
     height: 380px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page .rbc-calendar .rbc-toolbar .rbc-btn-group button {
-    font-size: 0.8rem;
+    font-size: .8rem;
     width: 40px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
-    font-size: 1rem;
+    font-size: 1.0rem;
     padding: 0;
   }
+}
+.calendar-page .modal-calendar {
+  justify-content: center;
 }
 .grocery-list-page {
   display: flex;
@@ -1455,7 +1458,7 @@ html {
   width: 36px;
 }
 .content-container .card-bottom .link-container .link-text {
-  font-size: 0.9rem;
+  font-size: .9rem;
   width: 30px;
   text-align: center;
 }
@@ -1541,7 +1544,7 @@ html {
   width: 100%;
 }
 .content-container .card-bottom .del-button .del-text {
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
 .recipe-page {
   display: flex;
