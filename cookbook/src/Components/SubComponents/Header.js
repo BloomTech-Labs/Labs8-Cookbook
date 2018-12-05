@@ -16,6 +16,10 @@ class Header extends Component {
     }
 
     handleRedirect = (path) => {
+        this.props.history.push(path);
+    }
+
+    handlePhoneRedirect = (path) => {
         if (this.props.location.pathname.includes(path)) this.togglePhoneNav();
         else this.props.history.push(path);
     }
@@ -71,11 +75,11 @@ class Header extends Component {
 
                     <div className='phone-nav'>
                         <div className='links'>
-                            <p onClick={() => this.handleRedirect('/home/create')} className={this.handlePhoneNavClass('create')}>CREATE</p>
-                            <p onClick={() => this.handleRedirect('/home/recipes')} className={this.handlePhoneNavClass('recipe')}>RECIPES</p>
-                            <p onClick={() => this.handleRedirect('/home/calendar')} className={this.handlePhoneNavClass('calendar')}>CALENDAR</p>
-                            <p onClick={() => this.handleRedirect('/home/dashboard')} className={this.handlePhoneNavClass('dashboard')}>GROCERY LIST</p>
-                            <p onClick={() => this.handleRedirect('/home/settings')} className={this.handlePhoneNavClass('settings')}>SETTINGS</p>
+                            <p onClick={() => this.handlePhoneRedirect('/home/create')} className={this.handlePhoneNavClass('create')}>CREATE</p>
+                            <p onClick={() => this.handlePhoneRedirect('/home/recipes')} className={this.handlePhoneNavClass('recipe')}>RECIPES</p>
+                            <p onClick={() => this.handlePhoneRedirect('/home/calendar')} className={this.handlePhoneNavClass('calendar')}>CALENDAR</p>
+                            <p onClick={() => this.handlePhoneRedirect('/home/dashboard')} className={this.handlePhoneNavClass('dashboard')}>GROCERY LIST</p>
+                            <p onClick={() => this.handlePhoneRedirect('/home/settings')} className={this.handlePhoneNavClass('settings')}>SETTINGS</p>
                         </div>
                         <div onClick={() => this.togglePhoneNav()} className={this.handleTogglePhoneNavClass()}>...</div>
                     </div>
