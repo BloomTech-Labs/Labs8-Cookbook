@@ -118,26 +118,11 @@ class RecipeCalendar extends Component {
                     </div>
                     <div>
                       {this.state.showModal?
-                        <Modal 
-                          style={{
-                            top: '0', 
-                            bottom: '0',
-                            left: '0',
-                            right: '0',
-                            display: 'grid',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            backgroundColor: 'rgba(0,0,0,0.3)',
-                          }}
+                        <Modal
                           onClose={this.toggleModal}>
                           <div style={{maxWidth: 400, position: 'relative'}}>
                             <h1>Please select Meal and Date!</h1>
-                            <DatePicker 
-                              style={{
-                                justifyContent: 'center',
-                                display: 'grid',
-                              }}
-                              handlePickDate={this.handlePickDate} />
+                            <DatePicker handlePickDate={this.handlePickDate}/>
                             <button onClick={this.toggleModal}>Save</button>
                           </div>
                         </Modal>

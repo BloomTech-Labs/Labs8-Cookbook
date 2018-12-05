@@ -31,7 +31,9 @@ class Modal extends React.Component {
           alignItems: 'center',
           backgroundColor: 'rgba(0,0,0,0.3)',
           zIndex: 999,
-        }}>
+        }}
+        onClick={this.props.onClose}
+        >
         <div
           style={{
             padding: 20,
