@@ -1011,7 +1011,7 @@ html {
 @media (max-width: 1200px) {
   .recipe-page .left-container .left-content .recipe-img {
     width: 400px;
-    height: 200px;
+    height: 210px;
   }
 }
 @media (max-width: 900px) {
@@ -1277,4 +1277,7 @@ html {
 }
 .recipe-page .right-container .instructions .instruction .description {
   width: 480px;
+}
+.recipe-page .right-container .instructions .instruction .checked {
+  border: 1px solid red;
 }

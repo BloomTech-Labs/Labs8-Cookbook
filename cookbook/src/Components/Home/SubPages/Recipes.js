@@ -26,6 +26,7 @@ const GET_RECIPES_QUERY = gql`
         id
         stepNum
         description
+        isCompleted
       }
     }
   }

@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class RecipeView extends Component {
     constructor(props) {
         super(props);
-        console.log (this.props);
         this.state = {
             instructions: []
         }
@@ -37,11 +36,26 @@ class RecipeView extends Component {
             return inst.stepNum == e.target.name
         })
         // make a copy of the state
-        let copyArr = [...this.state.instructions];
+        let copyArr = this.state.instructions;
         // toggle specified instruction's isCompleted field in copy array
-        console.log(e.target.name);
-        // copyArr[inst.stepNum - 1].isCompleted = !copyArr[inst.stepNum - 1].isCompleted;
-        // this.setState({instructions: copyArr});
+        copyArr[inst[0].stepNum - 1].isCompleted = !copyArr[inst[0].stepNum - 1].isCompleted;
+        // re-set state with toggled checkmark
+        this.setState({instructions: copyArr});
+        if (copyArr[inst[0].stepNum - 1].isCompleted === true) {
+            document.getElementById('instruction-id').style.backgroundColor = '#bcc9d2';
+            document.getElementById('instruction-id').style.border = '1px solid red';
+        } else {
+            document.getElementById('instruction-id').style.backgroundColor = '#343e5a';
+
+        }
+    }
+
+    // check if ingredient is zero & prevent it from displaying
+    errCheckIngredients(qty) {
+        if (qty == 0) {
+            return null;
+        }
+        return qty;
     }
 
     render() {
@@ -82,8 +96,8 @@ class RecipeView extends Component {
                     <div className='ingredients'>
                         <div className='title'>Ingredients</div>
                         {this.props.location.state.ingredients.map(ing => (
-                            <div className='ingredient'>
-                                <span className='qty'>{ing.quantity}</span>
+                            <div className='ingredient' id='instruction-id'>
+                                <span className='qty'>{this.errCheckIngredients(ing.quantity)}</span>
                                 <span className='name'>{ing.name}</span>
                             </div>
                         ))}
@@ -93,10 +107,7 @@ class RecipeView extends Component {
                     <div className='title'>Instructions</div>
                     <div className='instructions'>
                         {this.state.instructions.map(inst => (
-                            <div 
-                                className='instruction'
-                                style={{backgroundColor: `${inst.isCompleted} ? #F5E6DC : #2E3650`}}
-                            >
+                            <div className='instruction'>
                                 <input
                                     type='checkbox'
                                     className='checkbox'
