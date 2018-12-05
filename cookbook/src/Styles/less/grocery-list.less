@@ -66,7 +66,8 @@
   .list {
     border: 1px solid black;
     width: 330px;
-    overflow: hidden;
+    padding: 5px;
+
     @media @desktop {
       width: 250px;
     }
@@ -85,6 +86,17 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+    }
+
+    .list-item {
+      cursor: pointer;
+      margin: 3px 0;
+    }
+
+    .completed {
+      order: 1;
+      color: rgb(212, 212, 212);
+      background: rgb(85, 84, 84);
     }
   }
 }

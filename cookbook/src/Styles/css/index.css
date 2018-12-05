@@ -1349,7 +1349,7 @@ html {
 .grocery-list-page .list {
   border: 1px solid black;
   width: 330px;
-  overflow: hidden;
+  padding: 5px;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .list {
@@ -1373,6 +1373,15 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+.grocery-list-page .list .list-item {
+  cursor: pointer;
+  margin: 3px 0;
+}
+.grocery-list-page .list .completed {
+  order: 1;
+  color: #d4d4d4;
+  background: #555454;
 }
 .recipesContainer {
   display: flex;
