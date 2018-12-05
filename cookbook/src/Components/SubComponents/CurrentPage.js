@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import renderIf from 'render-if';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 class CurrentPage extends Component {
@@ -34,6 +35,9 @@ class CurrentPage extends Component {
                             <Link to='/home/recipes' style={{textDecoration: 'none', color: '#2E3650'}}>RECIPES</Link>
                         </div>
                     )}
+                </div>
+                <div className='nav-icon'>
+                    <FontAwesomeIcon icon='ellipsis-v' className='icon'/>
                 </div>
                 <div className='phone-nav'>
                     {renderIf(this.props.location.pathname !== '/home/create')(

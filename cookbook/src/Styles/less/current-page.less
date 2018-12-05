@@ -18,8 +18,8 @@
         font-size: 2rem;
         }
         @media @phone {
-        z-index: 1;
         top: 35px;
+        height: 35px;
         }
 
         .create-cp {
@@ -60,6 +60,27 @@
         color: @CBblue;
         background-color: @CBtan;
         text-align: center;
+        }
+    }
+
+    .nav-icon {
+        height: 35px;
+        width:40px;
+        position: absolute;
+        top: 0;
+        font-size: 1.6rem;
+        border: 1px solid red;
+        border-radius: 20px;
+        margin-left: -17px;
+        overflow: hidden;
+        display: none;
+        @media @phone {
+            display: block;
+        }
+        
+        .icon {
+            margin-left: 22px;
+            margin-top: 8px;
         }
     }
 

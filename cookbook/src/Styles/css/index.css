@@ -215,8 +215,8 @@ html {
 }
 @media (max-width: 600px) {
   .cp-phone-nav .current-page {
-    z-index: 1;
     top: 35px;
+    height: 35px;
   }
 }
 .cp-phone-nav .current-page .create-cp {
@@ -253,6 +253,27 @@ html {
   color: #343e5a;
   background-color: #f5e9df;
   text-align: center;
+}
+.cp-phone-nav .nav-icon {
+  height: 35px;
+  width: 40px;
+  position: absolute;
+  top: 0;
+  font-size: 1.6rem;
+  border: 1px solid red;
+  border-radius: 20px;
+  margin-left: -17px;
+  overflow: hidden;
+  display: none;
+}
+@media (max-width: 600px) {
+  .cp-phone-nav .nav-icon {
+    display: block;
+  }
+}
+.cp-phone-nav .nav-icon .icon {
+  margin-left: 22px;
+  margin-top: 8px;
 }
 .cp-phone-nav .phone-nav {
   border: 1px solid red;
