@@ -25,9 +25,8 @@ class App extends Component {
       this.setState({ tryingSilent: false });
     } else {
       try {
-        const authResult = await auth.silentAuth();
+        await auth.silentAuth();
         this.setState({ tryingSilent: false });
-        // this.forceUpdate();
       } catch (err) {
         console.log(err.error);
         if (err.error === "login_required") return;

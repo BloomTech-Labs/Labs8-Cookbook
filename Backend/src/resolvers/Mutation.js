@@ -155,12 +155,41 @@ const Mutation = {
   },
 
   createSubscription: async (parent, args, context, info) => {
-    const charge = await stripe.charges.create({
-      amount: 1000,
-      currency: "usd",
-      source: args.token
-    });
-    console.log(charge);
+    try {
+      const userId = await getUserId(context);
+
+      const charge = await stripe.charges.create({
+        amount: 1000,
+        currency: "usd",
+        source: args.token
+      });
+
+      const subscription = await context.db.mutation.createSubscription(
+        {
+          data: {
+            amount: 10,
+            currency: "USD",
+            user: { connect: { id: userId } },
+            charge: charge.id
+          }
+        },
+        info
+      );
+
+      await context.db.mutation.updateUser({
+        data: {
+          isSubscribed: true
+        },
+        where: {
+          id: userId
+        }
+      });
+
+      return subscription;
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
   }
 };
 
