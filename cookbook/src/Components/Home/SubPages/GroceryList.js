@@ -37,7 +37,7 @@ class GroceryList extends Component {
 
   handleItemClick = index => {
     let updatedList = this.state.groceryList.slice();
-    let item = document.getElementById(updatedList[index].id);
+    let item = document.getElementById(updatedList[index].name);
     item.classList.toggle("completed");
     updatedList[index].isCompleted = !updatedList[index].isCompleted;
     this.setState({ groceryList: updatedList });
@@ -96,8 +96,13 @@ class GroceryList extends Component {
     const modifiers = { start: from, end: to };
     const grocery_list = this.state.groceryList.length ? (
       <div className="item-list">
-        {this.state.groceryList.map(i => (
-          <GroceryItem ingredient={i} handleItemClick={this.handleItemClick} />
+        {this.state.groceryList.map((i, idx) => (
+          <GroceryItem
+            key={idx}
+            index={idx}
+            ingredient={i}
+            handleItemClick={this.handleItemClick}
+          />
         ))}
       </div>
     ) : null;
