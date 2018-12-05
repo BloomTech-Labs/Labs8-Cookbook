@@ -14,15 +14,8 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 const propTypes = {}
 
 const UPDATE_EVENT = gql`
-  mutation($date: String!, $mealType: String!, $id: ID!) {
-    updateEvent(where:{
-      id: $id
-    },
-    data: {
-      date: $date
-      mealType: $mealType
-    }
-    ) {
+  mutation($data: EventUpdateInput!, $where: EventWhereUniqueInput!) {
+    updateEvent(data: $data, where: $where) {
       id
       mealType
       date
@@ -68,14 +61,15 @@ class RecipeCalendar extends Component {
         currentEvent: '',
         type: "",
         showModal: false,
-        onDate: null
+        onDate: null,
+        isUpdated: false
       };
     }
 
   handlePickDate = date => {this.setState({ onDate: date });};
   
   toggleModal = (event) => {
-    this.setState({ showModal: !this.state.showModal, currentEvent: event.id })
+    this.setState({ showModal: !this.state.showModal, currentEvent: event.id, isUpdated: false })
   }
 
   mealButtonHandler = e => {
@@ -92,19 +86,14 @@ class RecipeCalendar extends Component {
         if (this.state.onDate) calendarVariables.date=this.state.onDate;
         if (this.state.type) calendarVariables.mealType=this.state.type;
 
-        const eventVariables={
-          data:calendarVariables,
-          where:{
-            id: this.state.currentEvent
-          }
-        }
-        console.log(eventVariables);
         const eventData = await this.props.updateEvent({
-          variables: eventVariables
+          variables: {
+            data: calendarVariables,
+            where: {id:this.state.currentEvent}
+          }
         })
-        console.log("Event updated: ", eventData);
-
-        return eventData;
+        console.log("Event updated: ", eventData);  
+        this.setState({isUpdated:true});
     } catch (error) {
       console.log("onsave error: ", error.message);
       return error;
@@ -166,6 +155,8 @@ class RecipeCalendar extends Component {
                             justifyContent: 'center',
                             flexDirection: 'column',
                           }}>
+                            {!this.state.isUpdated? 
+                            <div>
                             <h1>Please select Meal and Date!</h1>
                             <Buttons
                               mealButtonHandler={this.mealButtonHandler}
@@ -173,6 +164,14 @@ class RecipeCalendar extends Component {
                             />
                             <DatePicker  handlePickDate={this.handlePickDate}/>
                             <button className="modal-button" onClick={this.onEventSave}>Save</button>
+                            <button className="modal-button" onClick={this.toggleModal}>Cancel</button>
+                            </div>:
+                            <div>
+                            <p>Updated Meal Successfully!</p>
+                            <button className="modal-button" onClick={this.toggleModal}>Close</button>
+                            </div>
+                          }
+                            
                           </div>
                         </Modal>
                         :null}
