@@ -88,7 +88,7 @@
 
             .recipe-img {
                 width: 500px;
-                height: 240px;
+                height: 250px;
                 background-position: center;
                 background-size: cover;
                 margin-top: 10px;
@@ -314,7 +314,7 @@
             border-radius: 25px;
             background-color: @CBblue;
             color: @CBtan;
-            padding-top: 25px;
+            padding-top: 20px;
             padding-bottom: 15px;
             margin-bottom: 25px;
             @media @desktop {
@@ -334,11 +334,16 @@
             display: flex;
             padding-left: 10px;
             padding-right: 20px;
-            margin-bottom: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
             line-height: 2.8rem;
             @media @phone {
                 font-size: 1.4rem;
             }
+
+                .checked {
+                    background-color: @CBgrey;
+                }
 
                 .checkbox {
                     width: 20px;
@@ -351,7 +356,11 @@
             }
 
             .instruction .checked {
-                border: 1px solid red;
+                background-color: @CBgrey;
+            }
+
+            .instruction .not-checked {
+                background-color: @CBblue;
             }
         }
     }

@@ -41,13 +41,6 @@ class RecipeView extends Component {
         copyArr[inst[0].stepNum - 1].isCompleted = !copyArr[inst[0].stepNum - 1].isCompleted;
         // re-set state with toggled checkmark
         this.setState({instructions: copyArr});
-        if (copyArr[inst[0].stepNum - 1].isCompleted === true) {
-            document.getElementById('instruction-id').style.backgroundColor = '#bcc9d2';
-            document.getElementById('instruction-id').style.border = '1px solid red';
-        } else {
-            document.getElementById('instruction-id').style.backgroundColor = '#343e5a';
-
-        }
     }
 
     // check if ingredient is zero & prevent it from displaying
@@ -59,6 +52,11 @@ class RecipeView extends Component {
     }
 
     render() {
+        // Styling to allow for instructions to grey out when checked.
+        let checkedStyle = {
+            backgroundColor: '#bcc9d2'
+        }
+
         return (
             <div className='recipe-page'>
                 <div className='header'>
@@ -96,7 +94,7 @@ class RecipeView extends Component {
                     <div className='ingredients'>
                         <div className='title'>Ingredients</div>
                         {this.props.location.state.ingredients.map(ing => (
-                            <div className='ingredient' id='instruction-id'>
+                            <div className='ingredient'>
                                 <span className='qty'>{this.errCheckIngredients(ing.quantity)}</span>
                                 <span className='name'>{ing.name}</span>
                             </div>
@@ -107,7 +105,7 @@ class RecipeView extends Component {
                     <div className='title'>Instructions</div>
                     <div className='instructions'>
                         {this.state.instructions.map(inst => (
-                            <div className='instruction'>
+                            <div className='instruction' style={(this.state.instructions[inst.stepNum - 1].isCompleted ? checkedStyle : null)}>
                                 <input
                                     type='checkbox'
                                     className='checkbox'
