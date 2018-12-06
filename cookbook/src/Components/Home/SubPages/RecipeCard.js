@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 import { GET_RECIPES_QUERY } from './Recipes';
+import CardSchedule from "../../SubComponents/CardSchedule";
 
 const DELETE_RECIPE_MUTATION = gql`
   mutation($id: ID) {
@@ -51,13 +52,7 @@ class RecipeCard extends Component {
               <span className="link-text">link</span>
             </a>
             <div className="schedule">
-              <span>scheduled for</span>
-              {this.props.recipe.events.map(event => (
-                <div className="event" key={event.id}>
-                  <div>{event.mealType}</div>
-                  <div>{new Date(event.date).toLocaleDateString()}</div>
-                </div>
-              ))}
+              <CardSchedule events={this.props.recipe.events}></CardSchedule>
             </div>
             <button className="del-button">
               <FontAwesomeIcon icon="trash-alt" className="del-icon" onClick={async() => {

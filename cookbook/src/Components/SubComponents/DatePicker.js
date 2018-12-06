@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import React, { Component } from "react";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
 class DatePicker extends Component {
   constructor(props) {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
     this.state = {
-      selectedDay: null,
+      selectedDay: null
     };
   }
-  handleDayClick(day, { selected }) {
-    let selectedDay = selected ? undefined : day
+  handleDayClick(day, { selected, disabled }) {
+    if (disabled) {
+      return window.alert("Please choose a valid date from today.");
+    }
+    let selectedDay = selected ? undefined : day;
     this.setState({
       selectedDay
     });
@@ -22,15 +25,20 @@ class DatePicker extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}>
         <DayPicker
           selectedDays={this.state.selectedDay}
           onDayClick={this.handleDayClick}
+          disabledDays={{ before: new Date() }}
         />
         <p>
           {this.state.selectedDay
             ? this.state.selectedDay.toLocaleDateString()
-            : 'Please select a day 👻'}
+            : "Please select a day 👻"}
         </p>
       </div>
     );
