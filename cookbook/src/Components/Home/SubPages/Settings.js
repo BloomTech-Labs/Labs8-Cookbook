@@ -39,27 +39,70 @@ class Settings extends React.Component {
     }
     return (
       <div className="settings-page">
-        <div className="user-info">
-          <h3>First Name:</h3>
-          <span>{this.props.userData.currentUser.firstName}</span>
-          <h3>Last Name:</h3>
-          <span>{this.props.userData.currentUser.lastName}</span>
-          <h3>Email:</h3>
-          <span>{this.props.userData.currentUser.email}</span>
-        </div>
-        <StripeCheckout
-          stripeKey="pk_test_FyA4hajfxfEQ4jCcEaeQtTIL"
-          name="Cookbook Subscription"
-          zipcode={false}
-          amount={1000}
-          currency="USD"
-          email={this.props.userData.currentUser.email}
-          token={res => this.onToken(res, this.props.createSubscription)}
-        >
-          <button className="stripe-btn">
-            <span>Subscribe</span>
+        <form className="user-info">
+          <div className="form-group">
+            <label className="control-label">First Name</label>
+            <input
+              type="text"
+              id="user-fn"
+              value={this.props.userData.currentUser.firstName}
+            />
+          </div>
+          <div className="form-group">
+            <label className="control-label">Last Name</label>
+            <input
+              type="text"
+              id="user-ln"
+              value={this.props.userData.currentUser.lastName}
+            />
+          </div>
+          <div className="form-group">
+            <label className="control-label">Email Name</label>
+            <input
+              type="email"
+              id="user-email"
+              value={this.props.userData.currentUser.email}
+              readOnly
+            />
+          </div>
+          <div className="form-group">
+            <label className="control-label">Membership</label>
+            <input
+              type="text"
+              id="usser-status"
+              value={
+                this.props.userData.currentUser.isSubscribed
+                  ? "Premium User"
+                  : "Free User"
+              }
+              readOnly
+            />
+          </div>
+          <button className="settings-btn save-btn">
+            <span>Save</span>
           </button>
-        </StripeCheckout>
+          {this.props.userData.currentUser.isSubscribed ? (
+            <span>
+              <button className="settings-btn cancel-btn">
+                <span>Cancel Subscription</span>
+              </button>
+            </span>
+          ) : (
+            <StripeCheckout
+              stripeKey="pk_test_FyA4hajfxfEQ4jCcEaeQtTIL"
+              name="Cookbook Subscription"
+              zipcode={false}
+              amount={1000}
+              currency="USD"
+              email={this.props.userData.currentUser.email}
+              token={res => this.onToken(res, this.props.createSubscription)}
+            >
+              <button className="settings-btn stripe-btn">
+                <span>Subscribe</span>
+              </button>
+            </StripeCheckout>
+          )}
+        </form>
       </div>
     );
   }
