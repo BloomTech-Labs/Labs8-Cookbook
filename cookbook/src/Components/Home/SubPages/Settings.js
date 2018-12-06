@@ -113,14 +113,6 @@ class Settings extends React.Component {
     }
   };
 
-  // onClose = () => {
-  //   if (this.props.userData.currentUser.isSubscribed) {
-  //     this.setState({
-  //       success_msg: "You've subscribed successfully!"
-  //     });
-  //   }
-  // };
-
   render() {
     if (this.props.userData.loading) {
       return <div>Loading...</div>;
