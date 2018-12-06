@@ -1086,6 +1086,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 .content-container .card-bottom .del-button .del-icon {
   height: 15px;
