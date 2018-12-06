@@ -17,7 +17,9 @@ class GroceryList extends Component {
     this.state = {
       from: undefined,
       to: undefined,
-      groceryList: []
+      groceryList: [],
+      groceryListTo: '',
+      groceryListFrom: ''
     };
   }
 

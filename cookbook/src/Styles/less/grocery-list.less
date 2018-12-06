@@ -8,6 +8,7 @@
   @media @phone {
     justify-content: center;
     padding-top: 0;
+    flex-wrap: wrap-reverse;
   }
 
   .gen-list-container {
@@ -119,7 +120,7 @@
       .DayPicker-NavBar {
         position: relative;
         width: 283px;
-        top: 5px;
+        top: 10px;
         @media @desktop {
           width: 215px;
           top: 11px;
@@ -227,8 +228,8 @@
   .list {
     border: 1px solid @CBblue;
     border-radius: 25px;
+    background-color: @CBtan;
     width: 350px;
-    padding: 5px;
 
     @media @desktop {
       width: 330px;
@@ -242,23 +243,36 @@
 
     .list-header {
       font-size: 1.8rem;
+      padding: 8px;
+      text-align: center;
+      border-top-left-radius: 23px;
+      border-top-right-radius: 23px;
+      background-color: @CBblue;
+      color: @CBorange;
     }
 
     .item-list {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      padding: 11px 0 15px;
     }
 
     .list-item {
       cursor: pointer;
-      margin: 3px 0;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      padding-left: 8px;
     }
 
     .completed {
       order: 1;
-      color: rgb(212, 212, 212);
-      background: rgb(85, 84, 84);
+      background: @CBorange;
+    }
+
+    .list-item:not(.completed) {
+      order: 0;
+      background-color: @CBtan;
     }
   }
 }
