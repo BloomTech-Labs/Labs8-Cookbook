@@ -811,6 +811,7 @@ html {
 @media (max-width: 600px) {
   .grocery-list-page {
     justify-content: center;
+    padding-top: 0;
   }
 }
 .grocery-list-page .gen-list-container {
@@ -833,7 +834,7 @@ html {
 }
 @media (max-width: 600px) {
   .grocery-list-page .gen-list-container {
-    width: 370px;
+    width: 400px;
   }
 }
 .grocery-list-page .gen-list-container .DayPicker {
@@ -845,11 +846,43 @@ html {
   width: 283px;
   top: 5px;
 }
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar {
+    width: 215px;
+    top: 11px;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar {
+    width: 283px;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar {
+    width: 143px;
+    top: 7px;
+  }
+}
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
   margin-top: 10px;
 }
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
   left: 445px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+    left: 365px;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+    left: 445px;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+    left: 285px;
+  }
 }
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month {
   width: 100%;
@@ -859,19 +892,20 @@ html {
 }
 @media (max-width: 1200px) {
   .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month {
-    height: 280px;
+    height: 400px;
   }
 }
 @media (max-width: 900px) {
   .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month {
-    height: 300px;
+    height: 450px;
     width: 90%;
   }
 }
 @media (max-width: 600px) {
   .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month {
-    height: 240px;
-    width: 80%;
+    height: 300px;
+    width: 370px;
+    font-size: 1.4rem;
   }
 }
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
@@ -882,6 +916,11 @@ html {
   font-size: 2rem;
   padding-bottom: 5px;
   padding-top: 5px;
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+    font-size: 1.8rem;
+  }
 }
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays {
   border-top: 1px solid #343e5a;
@@ -894,7 +933,7 @@ html {
 }
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
   background-color: #fed092 !important;
-  color: #343e5a;
+  color: white;
 }
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--start {
   border-top-left-radius: 50% !important;
