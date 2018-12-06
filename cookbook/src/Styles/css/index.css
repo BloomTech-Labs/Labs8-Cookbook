@@ -783,19 +783,19 @@ html {
   }
 }
 @media (max-width: 600px) {
-  .calendar-page-container .rbc-calendar {
+  .calendar-page-container .calendar-container .rbc-calendar {
     font-size: 1.0rem;
     height: 380px;
   }
 }
 @media (max-width: 600px) {
-  .calendar-page-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
+  .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
     font-size: .8rem;
     width: 40px;
   }
 }
 @media (max-width: 600px) {
-  .calendar-page-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
+  .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
     font-size: 1.0rem;
     padding: 0;
   }
@@ -808,21 +808,19 @@ html {
   font-size: 1.2rem;
   justify-content: center;
   align-items: stretch;
+  margin-bottom: 8px;
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .search-box-wrapper {
     font-size: 1.0rem;
-    width: 40px;
   }
-}
-.calendar-page-container .calendar-container .search-box-wrapper .search-box-input:focus {
-  border-color: #ddd;
 }
 .calendar-page-container .calendar-container .search-box-wrapper .search-box-input {
   font-size: 20px;
   border: 0.2em solid #343e5a;
   border-radius: 0 0.5em 0.5em 0;
   border-left: 0;
+  width: 100%;
 }
 .calendar-page-container .calendar-container .search-box-wrapper .magnifying-glass {
   font-size: 20px;
