@@ -235,7 +235,6 @@ html {
   font-size: 2.6rem;
   font-weight: 300;
   vertical-align: middle;
-  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 900px) {
   .cp-phone-nav .current-page {
@@ -468,7 +467,7 @@ html {
   font-family: "verdana";
 }
 .containerLP .lp-content .about-us .about-header {
-  letter-spacing: .3rem;
+  letter-spacing: 0.3rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -785,19 +784,19 @@ html {
 }
 @media (max-width: 600px) {
   .calendar-page-container .rbc-calendar {
-    font-size: 1.0rem;
+    font-size: 1rem;
     height: 380px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
-    font-size: .8rem;
+    font-size: 0.8rem;
     width: 40px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
-    font-size: 1.0rem;
+    font-size: 1rem;
     padding: 0;
   }
 }
@@ -996,7 +995,7 @@ html {
   width: 36px;
 }
 .content-container .card-bottom .link-container .link-text {
-  font-size: .9rem;
+  font-size: 0.9rem;
   width: 30px;
   text-align: center;
 }
@@ -1082,7 +1081,7 @@ html {
   width: 100%;
 }
 .content-container .card-bottom .del-button .del-text {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 .recipe-page {
   display: flex;
@@ -1472,31 +1471,75 @@ html {
 .recipe-page .right-container .instructions .instruction .checked {
   border: 1px solid red;
 }
-.stripe-btn {
-  overflow: hidden;
-  display: inline-block;
-  background: linear-gradient(#28a0e5, #015e94);
-  border: 0px;
-  padding: 1px;
-  text-decoration: none;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
-  cursor: pointer;
-  visibility: visible;
-  user-select: none;
+.user-info {
+  max-width: 30%;
+  margin: auto;
 }
-.stripe-btn span {
-  background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  position: relative;
-  padding: 0px 12px;
-  display: block;
-  height: 30px;
-  line-height: 30px;
-  color: #ffffff;
-  font-weight: bold;
-  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
-  text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
+.user-info .form-group {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px 0;
+  padding: 10px 0;
+  line-height: 2;
+}
+.user-info .form-group label {
+  width: 100%;
+  margin-right: 30px;
+  text-align: right;
+}
+.user-info input {
+  padding: 0 10px;
+}
+.user-info #user-email,
+.user-info #user-status {
+  background-color: #eee;
+  opacity: 1;
+}
+.buttons {
+  max-width: 30%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+.buttons .settings-btn {
+  border: 1px solid transparent;
   border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  color: #fff;
+  width: 100px;
+}
+.buttons .save-btn {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.buttons .stripe-btn {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.buttons .cancel-btn {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.success-message {
+  text-align: center;
+  color: green;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+.error-message {
+  text-align: center;
+  color: red;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-top: 20px;
 }

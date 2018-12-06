@@ -3,19 +3,21 @@ const stripe = require("../utils/stripe");
 const { getUserId, getRecipe } = require("../utils/helper");
 const { forwardTo } = require("prisma-binding");
 
-
 const Mutation = {
-  updateEvent: async (_, args, context, info) =>{
-    console.log('ARGS: ', args)
+  updateUser: forwardTo("db"),
+  updateEvent: async (_, args, context, info) => {
     try {
-      const updatedEvent = await context.db.mutation.updateEvent({
-        data: args.data,
-        where: args.where
-      }, info)
-      return updatedEvent
+      const updatedEvent = await context.db.mutation.updateEvent(
+        {
+          data: args.data,
+          where: args.where
+        },
+        info
+      );
+      return updatedEvent;
     } catch (error) {
-      console.log(error.message)
-      return error.message
+      console.log(error.message);
+      return error.message;
     }
   },
   signup: async (_, args, context, info) => {
@@ -27,8 +29,6 @@ const Mutation = {
         {
           data: {
             auth0Sub: auth0Sub,
-            firstName: args.firstName,
-            lastName: args.lastName,
             email: email
           }
         },
@@ -170,12 +170,37 @@ const Mutation = {
   },
 
   createSubscription: async (parent, args, context, info) => {
-    const charge = await stripe.charges.create({
-      amount: 1000,
-      currency: "usd",
-      source: args.token
-    });
-    console.log(charge);
+    try {
+      const userId = await getUserId(context);
+      const charge = await stripe.charges.create({
+        amount: 1000,
+        currency: "usd",
+        source: args.token
+      });
+      const subscription = await context.db.mutation.createSubscription(
+        {
+          data: {
+            amount: 10,
+            currency: "USD",
+            user: { connect: { id: userId } },
+            charge: charge.id
+          }
+        },
+        info
+      );
+      await context.db.mutation.updateUser({
+        data: {
+          isSubscribed: true
+        },
+        where: {
+          id: userId
+        }
+      });
+      return subscription;
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
   }
 };
 
