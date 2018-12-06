@@ -6,7 +6,6 @@ const { forwardTo } = require("prisma-binding");
 const Mutation = {
   updateUser: forwardTo("db"),
   updateEvent: async (_, args, context, info) => {
-    console.log("ARGS: ", args);
     try {
       const updatedEvent = await context.db.mutation.updateEvent(
         {
@@ -30,8 +29,6 @@ const Mutation = {
         {
           data: {
             auth0Sub: auth0Sub,
-            firstName: args.firstName,
-            lastName: args.lastName,
             email: email
           }
         },
