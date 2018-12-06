@@ -35,19 +35,18 @@ class Settings extends React.Component {
     fname: null,
     lname: null,
     error: null,
-    success_msg: null,
-    isSubscribed: false
+    success_msg: null
   };
 
   fetchUser = () => {
-    return {
-      firstName:
-        this.state.fname || this.props.userData.currentUser.firstName || "",
-      lastName:
-        this.state.lname || this.props.userData.currentUser.lastName || "",
-      isSubscribed:
-        this.state.isSubscribed || this.props.userData.currentUser.isSubscribed
-    };
+    if (this.props.userData.currentUser) {
+      return {
+        firstName:
+          this.state.fname || this.props.userData.currentUser.firstName || "",
+        lastName:
+          this.state.lname || this.props.userData.currentUser.lastName || ""
+      };
+    }
   };
 
   changeHandler = e => {
@@ -56,11 +55,17 @@ class Settings extends React.Component {
 
   onToken = async (res, createSubscription) => {
     try {
-      await createSubscription({
+      const { data, loading, error } = await createSubscription({
         variables: {
           token: res.id
-        }
+        },
+        refetchQueries: [{ query: CURRENT_USER_QUERY }]
       });
+      if (data.createSubscription) {
+        this.setState({
+          success_msg: "You've subscribed successfully!"
+        });
+      }
     } catch (error) {
       return error.message;
     }
@@ -96,11 +101,11 @@ class Settings extends React.Component {
         variables: {
           data,
           where: { id: this.props.userData.currentUser.id }
-        }
+        },
+        refetchQueries: [{ query: CURRENT_USER_QUERY }]
       });
       this.setState({
-        success_msg: "Your subscription has been successfully cancelled!",
-        isSubscribed: false
+        success_msg: "Your subscription has been successfully cancelled!"
       });
     } catch (error) {
       console.log(error);
@@ -108,104 +113,110 @@ class Settings extends React.Component {
     }
   };
 
-  onClose = () => {
-    this.setState({
-      success_msg: "You've subscribed successfully!",
-      isSubscribed: true
-    });
-  };
+  // onClose = () => {
+  //   if (this.props.userData.currentUser.isSubscribed) {
+  //     this.setState({
+  //       success_msg: "You've subscribed successfully!"
+  //     });
+  //   }
+  // };
 
   render() {
     if (this.props.userData.loading) {
       return <div>Loading...</div>;
-    }
-    const { firstName, lastName, isSubscribed } = this.fetchUser();
-    const error = this.state.error ? (
-      <div className="error-message">{this.state.error}</div>
-    ) : null;
-    const success = this.state.success_msg ? (
-      <div className="success-message">{this.state.success_msg}</div>
-    ) : null;
-    return (
-      <div className="settings-page">
-        <form className="user-info">
-          <div className="form-group">
-            <label className="control-label">First Name</label>
-            <input
-              type="text"
-              name="fname"
-              id="user-fn"
-              value={firstName}
-              onChange={this.changeHandler}
-            />
-          </div>
-          <div className="form-group">
-            <label className="control-label">Last Name</label>
-            <input
-              type="text"
-              name="lname"
-              id="user-ln"
-              value={lastName}
-              onChange={this.changeHandler}
-            />
-          </div>
-          <div className="form-group">
-            <label className="control-label">Email</label>
-            <input
-              type="email"
-              id="user-email"
-              value={this.props.userData.currentUser.email}
-              readOnly
-            />
-          </div>
-          <div className="form-group">
-            <label className="control-label">Membership</label>
-            <input
-              type="text"
-              id="user-status"
-              value={isSubscribed ? "Premium User" : "Free User"}
-              readOnly
-            />
-          </div>
-          <div className="form-group" />
-        </form>
-        <div className="buttons">
-          <button
-            type="button"
-            className="settings-btn save-btn"
-            onClick={() =>
-              this.updateUserName(this.state.fname, this.state.lname)
-            }
-          >
-            Save
-          </button>
-          {isSubscribed ? (
+    } else {
+      const { firstName, lastName } = this.fetchUser();
+      const error = this.state.error ? (
+        <div className="error-message">{this.state.error}</div>
+      ) : null;
+      const success = this.state.success_msg ? (
+        <div className="success-message">{this.state.success_msg}</div>
+      ) : null;
+      return (
+        <div className="settings-page">
+          <form className="user-info">
+            <div className="form-group">
+              <label className="control-label">First Name</label>
+              <input
+                type="text"
+                name="fname"
+                id="user-fn"
+                value={firstName}
+                onChange={this.changeHandler}
+              />
+            </div>
+            <div className="form-group">
+              <label className="control-label">Last Name</label>
+              <input
+                type="text"
+                name="lname"
+                id="user-ln"
+                value={lastName}
+                onChange={this.changeHandler}
+              />
+            </div>
+            <div className="form-group">
+              <label className="control-label">Email</label>
+              <input
+                type="email"
+                id="user-email"
+                value={this.props.userData.currentUser.email}
+                readOnly
+              />
+            </div>
+            <div className="form-group">
+              <label className="control-label">Membership</label>
+              <input
+                type="text"
+                id="user-status"
+                value={
+                  this.props.userData.currentUser.isSubscribed
+                    ? "Premium User"
+                    : "Free User"
+                }
+                readOnly
+              />
+            </div>
+            <div className="form-group" />
+          </form>
+          <div className="buttons">
             <button
               type="button"
-              className="settings-btn cancel-btn"
-              onClick={this.cancelSubscription}
+              className="settings-btn save-btn"
+              onClick={() =>
+                this.updateUserName(this.state.fname, this.state.lname)
+              }
             >
-              Cancel
+              Save
             </button>
-          ) : (
-            <StripeCheckout
-              stripeKey="pk_test_FyA4hajfxfEQ4jCcEaeQtTIL"
-              name="Cookbook Subscription"
-              zipcode={false}
-              amount={1000}
-              currency="USD"
-              email={this.props.userData.currentUser.email}
-              token={res => this.onToken(res, this.props.createSubscription)}
-              closed={this.onClose}
-            >
-              <button className="settings-btn stripe-btn">Subscribe</button>
-            </StripeCheckout>
-          )}
+            {this.props.userData.currentUser.isSubscribed ? (
+              <button
+                type="button"
+                className="settings-btn cancel-btn"
+                onClick={this.cancelSubscription}
+              >
+                Cancel
+              </button>
+            ) : (
+              <StripeCheckout
+                stripeKey="pk_test_FyA4hajfxfEQ4jCcEaeQtTIL"
+                name="Cookbook Subscription"
+                zipcode={false}
+                amount={1000}
+                currency="USD"
+                email={this.props.userData.currentUser.email}
+                token={res => this.onToken(res, this.props.createSubscription)}
+                // closed={this.onClose}
+              >
+                <button className="settings-btn stripe-btn">Subscribe</button>
+              </StripeCheckout>
+            )}
+          </div>
+          {success}
+          {error}
         </div>
-        {success}
-        {error}
-      </div>
-    );
+      );
+    }
   }
 }
 
