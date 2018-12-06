@@ -8,6 +8,7 @@ import Modal from '../../SubComponents/Modal';
 import DatePicker from "../../SubComponents/DatePicker.js";
 import Buttons from './Buttons';
 
+
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -45,14 +46,6 @@ const QUERY_RECIPE_EVENT = gql`
 `
 
 const localizer = BigCalendar.momentLocalizer(moment)  // a localizer for BigCalendar
-
-const resourceMap = [
-  { resourceId: 1, resourceTitle: 'Breakfast' },
-  { resourceId: 2, resourceTitle: 'Lunch' },
-  { resourceId: 3, resourceTitle: 'Dinner' },
-  { resourceId: 4, resourceTitle: 'Dessert' },
-  { resourceId: 5, resourceTitle: 'Snack' },
-]
 
 class RecipeCalendar extends Component {
   constructor(...args) {
@@ -153,9 +146,6 @@ class RecipeCalendar extends Component {
                         defaultView="month"
                         onSelectEvent={event => this.toggleModal(event)}
                         events={events}
-                        resources={resourceMap}
-                        resourceIdAccessor="resourceId"
-                        resourceTitleAccessor="resourceTitle"
                         style={{ height: "100vh" }}
                         views={{ month: true }}
                       />
