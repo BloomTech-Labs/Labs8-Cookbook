@@ -1,20 +1,17 @@
 .create-wrapper {
   display: flex;
-  justify-content: space-around;
+  flex-flow: column;
+  align-items: center;
 
-  @media @tablet {
-    flex-flow: column;
-    align-items: center;
-    justify-content: unset;
-  }
-
-  .create-content-wrapper {
+  .preview-and-schedule {
     display: flex;
-    flex-flow: column;
 
     .search-and-save {
       .is-searching {
         background: @CBred;
+      }
+      .not-searching {
+        
       }
     }
 
@@ -26,6 +23,10 @@
       border-radius: 30px;
       overflow: hidden;
 
+      @media @tablet{
+        flex-flow: column;
+      }
+
       .image-container {
         width: 40%;
         height: 300px;
@@ -34,6 +35,11 @@
 
         background-size: cover;
         background-position: 50% 50%;
+
+        @media @tablet {
+          height: 150px;
+          width: 100%;
+        }
 
         // .image {
         //   // float: right;
@@ -48,6 +54,8 @@
       .content {
         margin: 20px;
         position: relative;
+        display: flex;
+        flex-flow: column;
 
         .title {
           font-family: @secondary-font;
@@ -89,24 +97,6 @@
 
 
       }
-    }
-  }
-  .create-filter-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-
-    .recipe-btn {
-      display: flex;
-      flex-wrap: row wrap;
-      justify-content: space-evenly;
-    }
-
-    .input-calendar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
 }

@@ -1191,23 +1191,16 @@ html {
 }
 .create-wrapper {
   display: flex;
-  justify-content: space-around;
-}
-@media (max-width: 900px) {
-  .create-wrapper {
-    flex-flow: column;
-    align-items: center;
-    justify-content: unset;
-  }
-}
-.create-wrapper .create-content-wrapper {
-  display: flex;
   flex-flow: column;
+  align-items: center;
 }
-.create-wrapper .create-content-wrapper .search-and-save .is-searching {
+.create-wrapper .preview-and-schedule {
+  display: flex;
+}
+.create-wrapper .preview-and-schedule .search-and-save .is-searching {
   background: #de6a5a;
 }
-.create-wrapper .create-content-wrapper .preview {
+.create-wrapper .preview-and-schedule .preview {
   display: flex;
   width: 100%;
   max-width: 600px;
@@ -1215,7 +1208,12 @@ html {
   border-radius: 30px;
   overflow: hidden;
 }
-.create-wrapper .create-content-wrapper .preview .image-container {
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview {
+    flex-flow: column;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .image-container {
   width: 40%;
   height: 300px;
   text-align: center;
@@ -1223,11 +1221,19 @@ html {
   background-size: cover;
   background-position: 50% 50%;
 }
-.create-wrapper .create-content-wrapper .preview .content {
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .image-container {
+    height: 150px;
+    width: 100%;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content {
   margin: 20px;
   position: relative;
+  display: flex;
+  flex-flow: column;
 }
-.create-wrapper .create-content-wrapper .preview .content .title {
+.create-wrapper .preview-and-schedule .preview .content .title {
   font-family: 'Questrial', sans-serif;
   font-weight: bold;
   font-size: 2rem;
@@ -1236,7 +1242,7 @@ html {
   display: inline;
   line-height: 25px;
 }
-.create-wrapper .create-content-wrapper .preview .content .description {
+.create-wrapper .preview-and-schedule .preview .content .description {
   margin: 40px 0 0;
   font-size: 1.5rem;
   font-family: 'Questrial', sans-serif;
@@ -1244,34 +1250,18 @@ html {
   max-height: 90px;
   overflow: hidden;
 }
-.create-wrapper .create-content-wrapper .preview .content .divide {
+.create-wrapper .preview-and-schedule .preview .content .divide {
   position: absolute;
   bottom: 10px;
   width: 100%;
 }
-.create-wrapper .create-content-wrapper .preview .content .divide .line {
+.create-wrapper .preview-and-schedule .preview .content .divide .line {
   border-top: solid #de6a5a 1px;
   margin: 0 auto 25px;
   width: 15%;
 }
-.create-wrapper .create-content-wrapper .preview .content .divide .site {
+.create-wrapper .preview-and-schedule .preview .content .divide .site {
   font-family: 'Questrial', sans-serif;
-}
-.create-wrapper .create-filter-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.create-wrapper .create-filter-wrapper .recipe-btn {
-  display: flex;
-  flex-wrap: row wrap;
-  justify-content: space-evenly;
-}
-.create-wrapper .create-filter-wrapper .input-calendar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .calendar-page {
   margin-left: 5px;

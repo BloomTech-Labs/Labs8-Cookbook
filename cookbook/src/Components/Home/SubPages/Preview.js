@@ -9,7 +9,9 @@ const Preview = props => {
         {/* <img className='image' src={props.og_image} alt={props.title} /> */}
       </div>
       <div className='content'>
-        <span className='title'>{props.og_title}</span>
+        <div className='title-container'>
+          <span className='title'>{props.og_title}</span>
+        </div>
         <div className='description'>{props.og_desc}</div>
         <div className='divide'>
           <div className='line'/>

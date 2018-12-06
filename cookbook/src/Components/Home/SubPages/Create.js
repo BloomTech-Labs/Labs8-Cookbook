@@ -211,29 +211,30 @@ class Create extends Component {
   };
 
   handleSearchClass = () => {
-    if (this.state.search) return 'is-searching';
+    if (this.state.query) return 'is-searching';
     return 'not-searching';
   }
 
   render() {
     return (
       <div className="create-wrapper">
-        <div className="create-content-wrapper">
 
-          <div className='search-and-save'>
+        <div className='search-and-save'>
 
-            <input
-              className={() => this.handleSearchClass()}
-              type="text"
-              name="query"
-              placeholder="Search Recipe..."
-              onChange={this.handleChange}
-              value={this.state.query}
-            />
+          <input
+            className={this.handleSearchClass()}
+            type="text"
+            name="query"
+            placeholder="Search Recipe..."
+            onChange={this.handleChange}
+            value={this.state.query}
+          />
 
-            <button onClick={this.onSave}>SAVE</button>
+          <button onClick={this.onSave}>SAVE</button>
 
-          </div>
+        </div>
+
+        <div className="preview-and-schedule">
 
           {this.state.og_title === "N/A" ? (
             <div>No preview available</div>
@@ -247,16 +248,16 @@ class Create extends Component {
             />
           )}
 
-        </div>
-        <div className="create-filter-wrapper">
-          <div className="ID-btn">
+          <div className="buttons">
             <Buttons
               mealButtonHandler={this.mealButtonHandler}
               type={this.state.type}
             />
           </div>
           <DatePicker handlePickDate={this.handlePickDate} />
+
         </div>
+
       </div>
     );
   }
