@@ -1516,6 +1516,9 @@ html {
   width: 100%;
   margin-right: 30px;
   text-align: right;
+  display: flex;
+  justify-content: center;
+  color: #343e5a;
 }
 .user-info input {
   padding: 0 10px;
