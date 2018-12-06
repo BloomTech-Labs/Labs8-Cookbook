@@ -1504,29 +1504,42 @@ html {
 .user-info {
   max-width: 30%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 .user-info .form-group {
-  display: flex;
-  justify-content: space-evenly;
   margin: 10px 0;
   padding: 10px 0;
   line-height: 2;
+  display: flex;
+  justify-content: space-evenly;
 }
 .user-info .form-group label {
-  width: 100%;
-  margin-right: 30px;
-  text-align: right;
+  width: 200px;
   display: flex;
   justify-content: center;
   color: #343e5a;
+  font-size: 20px;
 }
 .user-info input {
-  padding: 0 10px;
+  border: 0.15em solid #de6a5a;
+  border-radius: 0.7em;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  width: 20rem;
+  font-size: 1.5rem;
 }
 .user-info #user-email,
 .user-info #user-status {
   background-color: #eee;
   opacity: 1;
+}
+.user-info #user-email:hover,
+.user-info #user-status:hover {
+  background-color: #eee;
+  opacity: 1;
+  cursor: not-allowed;
 }
 .buttons {
   max-width: 30%;

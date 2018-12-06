@@ -1,32 +1,46 @@
 .user-info {
   max-width: 30%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
 
   .form-group {
-    display: flex;
-    justify-content: space-evenly;
     margin: 10px 0;
     padding: 10px 0;
     line-height: 2;
+    display: flex;
+    justify-content: space-evenly;
 
     label {
-      width: 100%;
-      margin-right: 30px;
-      text-align: right;
+      width: 200px;
       display: flex;
       justify-content: center;
       color: @CBblue;
+      font-size: 20px;
     }
   }
 
   input {
-    padding: 0 10px;
+    border: 0.15em solid @CBred;
+    border-radius: 0.7em;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    width: 20rem;
+    font-size: 1.5rem;
   }
 
   #user-email,
   #user-status {
     background-color: #eee;
     opacity: 1;
+  }
+
+  #user-email:hover,
+  #user-status:hover {
+    background-color: #eee;
+    opacity: 1;
+    cursor: not-allowed;
   }
 }
 
