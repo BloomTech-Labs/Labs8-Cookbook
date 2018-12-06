@@ -5,6 +5,7 @@ import { GET_RECIPES_QUERY } from "./Recipes";
 import "react-day-picker/lib/style.css";
 import GroceryItem from "./GroceryItem";
 import * as math from "mathjs";
+import GatedSubscription from "../../SubComponents/GatedSubscription";
 
 class GroceryList extends Component {
   static defaultProps = {
@@ -111,44 +112,46 @@ class GroceryList extends Component {
     ) : null;
 
     return (
-      <div className="grocery-list-page">
-        <div className="gen-list-container">
-          <p>
-            {!from && !to && "Please select the first day."}
-            {from && !to && "Please select the last day."}
-            {from &&
-              to &&
-              `Selected from ${from.toLocaleDateString()} to
-                    ${to.toLocaleDateString()}`}{" "}
-            {from &&
-              to && (
-                <button className="link" onClick={this.handleResetClick}>
-                  Reset
-                </button>
-              )}
-          </p>
+      <GatedSubscription>
+        <div className="grocery-list-page">
+          <div className="gen-list-container">
+            <p>
+              {!from && !to && "Please select the first day."}
+              {from && !to && "Please select the last day."}
+              {from &&
+                to &&
+                `Selected from ${from.toLocaleDateString()} to
+                      ${to.toLocaleDateString()}`}{" "}
+              {from &&
+                to && (
+                  <button className="link" onClick={this.handleResetClick}>
+                    Reset
+                  </button>
+                )}
+            </p>
 
-          <DayPicker
-            numberOfMonths={this.props.numberOfMonths}
-            selectedDays={[from, { from, to }]}
-            modifiers={modifiers}
-            onDayClick={this.handleDayClick}
-            disabledDays={{ before: new Date() }}
-          />
+            <DayPicker
+              numberOfMonths={this.props.numberOfMonths}
+              selectedDays={[from, { from, to }]}
+              modifiers={modifiers}
+              onDayClick={this.handleDayClick}
+              disabledDays={{ before: new Date() }}
+            />
 
-          <button onClick={this.generateList}>Generate List</button>
-        </div>
-
-        <div className="list">
-          <div className="list-header">
-            Grocery List:{" "}
-            {from &&
-              to &&
-              `${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}{" "}
+            <button onClick={this.generateList}>Generate List</button>
           </div>
-          {grocery_list}
+
+          <div className="list">
+            <div className="list-header">
+              Grocery List:{" "}
+              {from &&
+                to &&
+                `${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}{" "}
+            </div>
+            {grocery_list}
+          </div>
         </div>
-      </div>
+      </GatedSubscription>
     );
   }
 }
