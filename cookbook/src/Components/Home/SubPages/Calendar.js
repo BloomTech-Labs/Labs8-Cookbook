@@ -8,7 +8,6 @@ import Modal from '../../SubComponents/Modal';
 import DatePicker from "../../SubComponents/DatePicker.js";
 import Buttons from './Buttons';
 
-import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const propTypes = {}
@@ -45,14 +44,6 @@ const QUERY_RECIPE_EVENT = gql`
 `
 
 const localizer = BigCalendar.momentLocalizer(moment)  // a localizer for BigCalendar
-
-const resourceMap = [
-  { resourceId: 1, resourceTitle: 'Breakfast' },
-  { resourceId: 2, resourceTitle: 'Lunch' },
-  { resourceId: 3, resourceTitle: 'Dinner' },
-  { resourceId: 4, resourceTitle: 'Dessert' },
-  { resourceId: 5, resourceTitle: 'Snack' },
-]
 
 class RecipeCalendar extends Component {
   constructor(...args) {
@@ -136,15 +127,19 @@ class RecipeCalendar extends Component {
                 return (
                   <div className="calendar-page-container">
                     <div className="calendar-container">
-                      <form className="calendar-search">
+                      <div className="search-box-wrapper">
+                        <div className="magnifying-glass">
+                          <span role="img" aria-label="magnifying-glass">&#128269;</span>
+                        </div>
                         <input
                           type="text"
+                          class="search-box-input"
                           name="search"
-                          placeholder="search"
+                          placeholder="Search..."
                           onChange={this.handleSearch}
                           value={this.state.search}
                         />
-                      </form>
+                      </div>
                       <BigCalendar
                         selectable
                         popup
@@ -153,9 +148,6 @@ class RecipeCalendar extends Component {
                         defaultView="month"
                         onSelectEvent={event => this.toggleModal(event)}
                         events={events}
-                        resources={resourceMap}
-                        resourceIdAccessor="resourceId"
-                        resourceTitleAccessor="resourceTitle"
                         style={{ height: "100vh" }}
                         views={{ month: true }}
                       />
