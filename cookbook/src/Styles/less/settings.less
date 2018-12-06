@@ -1,83 +1,80 @@
 .user-info {
+  max-width: 30%;
   margin: auto;
-  display: grid;
+
+  .form-group {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+    padding: 10px 0;
+    line-height: 2;
+    label {
+      width: 100%;
+      margin-right: 30px;
+      text-align: right;
+    }
+  }
+
+  input {
+    padding: 0 10px;
+  }
+
+  #user-email,
+  #user-status {
+    background-color: #eee;
+    opacity: 1;
+  }
+}
+
+.buttons {
+  max-width: 30%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
 
   .settings-btn {
-    overflow: hidden;
-    display: inline-block;
-    border: 0px;
-    padding: 1px;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
+    border: 1px solid transparent;
+    border-radius: 4px;
     cursor: pointer;
-    visibility: visible;
-    user-select: none;
-
-    .stripe-btn {
-      background: linear-gradient(rgb(40, 160, 229), rgb(1, 94, 148));
-    }
-
-    .save-btn {
-      background: linear-gradient(rgb(38, 197, 104), rgb(1, 148, 62));
-    }
-
-    .stripe-btn {
-      background: linear-gradient(rgb(229, 68, 40), rgb(148, 35, 1));
-    }
-
-    span {
-      background-image: linear-gradient(
-        rgb(125, 197, 238),
-        rgb(0, 140, 221) 85%,
-        rgb(48, 162, 228)
-      );
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      position: relative;
-      padding: 0px 12px;
-      display: block;
-      height: 30px;
-      line-height: 30px;
-      color: rgb(255, 255, 255);
-      font-weight: bold;
-      box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
-      text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
-      border-radius: 4px;
-    }
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    color: #fff;
+    width: 100px;
   }
 
+  .save-btn {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
   .stripe-btn {
-    overflow: hidden;
-    display: inline-block;
-    background: linear-gradient(rgb(40, 160, 229), rgb(1, 94, 148));
-    border: 0px;
-    padding: 1px;
-    text-decoration: none;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
-    cursor: pointer;
-    visibility: visible;
-    user-select: none;
-
-    span {
-      background-image: linear-gradient(
-        rgb(125, 197, 238),
-        rgb(0, 140, 221) 85%,
-        rgb(48, 162, 228)
-      );
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      position: relative;
-      padding: 0px 12px;
-      display: block;
-      height: 30px;
-      line-height: 30px;
-      color: rgb(255, 255, 255);
-      font-weight: bold;
-      box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
-      text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
-      border-radius: 4px;
-    }
+    background-color: #5bc0de;
+    border-color: #46b8da;
   }
+  .cancel-btn {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+  }
+}
+
+.success-message {
+  text-align: center;
+  color: green;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+
+.error-message {
+  text-align: center;
+  color: red;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-top: 20px;
 }

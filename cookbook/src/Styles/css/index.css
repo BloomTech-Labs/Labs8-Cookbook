@@ -1472,70 +1472,74 @@ html {
   border: 1px solid red;
 }
 .user-info {
+  max-width: 30%;
   margin: auto;
-  display: grid;
 }
-.user-info .settings-btn {
-  overflow: hidden;
-  display: inline-block;
-  border: 0px;
-  padding: 1px;
-  text-decoration: none;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
-  cursor: pointer;
-  visibility: visible;
-  user-select: none;
+.user-info .form-group {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px 0;
+  padding: 10px 0;
+  line-height: 2;
 }
-.user-info .settings-btn .stripe-btn {
-  background: linear-gradient(#28a0e5, #015e94);
+.user-info .form-group label {
+  width: 100%;
+  margin-right: 30px;
+  text-align: right;
 }
-.user-info .settings-btn .save-btn {
-  background: linear-gradient(#26c568, #01943e);
+.user-info input {
+  padding: 0 10px;
 }
-.user-info .settings-btn .stripe-btn {
-  background: linear-gradient(#e54428, #942301);
+.user-info #user-email,
+.user-info #user-status {
+  background-color: #eee;
+  opacity: 1;
 }
-.user-info .settings-btn span {
-  background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  position: relative;
-  padding: 0px 12px;
-  display: block;
-  height: 30px;
-  line-height: 30px;
-  color: #ffffff;
-  font-weight: bold;
-  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
-  text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
+.buttons {
+  max-width: 30%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+.buttons .settings-btn {
+  border: 1px solid transparent;
   border-radius: 4px;
-}
-.user-info .stripe-btn {
-  overflow: hidden;
-  display: inline-block;
-  background: linear-gradient(#28a0e5, #015e94);
-  border: 0px;
-  padding: 1px;
-  text-decoration: none;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
   cursor: pointer;
-  visibility: visible;
-  user-select: none;
-}
-.user-info .stripe-btn span {
-  background-image: linear-gradient(#7dc5ee, #008cdd 85%, #30a2e4);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
   font-size: 14px;
-  position: relative;
-  padding: 0px 12px;
-  display: block;
-  height: 30px;
-  line-height: 30px;
-  color: #ffffff;
-  font-weight: bold;
-  box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
-  text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px;
-  border-radius: 4px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  color: #fff;
+  width: 100px;
+}
+.buttons .save-btn {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.buttons .stripe-btn {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.buttons .cancel-btn {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.success-message {
+  text-align: center;
+  color: green;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+.error-message {
+  text-align: center;
+  color: red;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-top: 20px;
 }
