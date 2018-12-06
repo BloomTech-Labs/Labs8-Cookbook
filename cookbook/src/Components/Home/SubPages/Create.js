@@ -225,12 +225,12 @@ class Create extends Component {
             className={this.handleSearchClass()}
             type="text"
             name="query"
-            placeholder="Search Recipe..."
+            placeholder="recipe url"
             onChange={this.handleChange}
             value={this.state.query}
           />
 
-          <button onClick={this.onSave}>SAVE</button>
+          <button onClick={this.onSave}>save</button>
 
         </div>
 
