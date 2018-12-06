@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 import loading from "../designs/Logo/Logo.png";
 import auth from "../Auth/Auth";
-import { Query } from "react-apollo";
+import { Query, graphql, compose } from "react-apollo";
+import gql from "graphql-tag";
 import { CURRENT_USER_QUERY } from "../Components/Home/SubPages/User";
 import { Redirect } from "react-router-dom";
+
+const CREATE_USER_MUTATION = gql`
+  mutation {
+    signup {
+      id
+      auth0Sub
+      email
+      firstName
+      lastName
+    }
+  }
+`;
 
 class Callback extends Component {
   state = {
@@ -21,11 +34,17 @@ class Callback extends Component {
     }
   }
 
+  createNewUser = async () => {
+    await this.props.createUser({
+      refetchQueries: [{ query: CURRENT_USER_QUERY }]
+    });
+  };
+
   render() {
     if (!this.state.isAuthenticated) {
       return (
         <div>
-          <img src={loading} alt="lading" />
+          <img src={loading} alt="landing" />
         </div>
       );
     } else {
@@ -34,7 +53,9 @@ class Callback extends Component {
           {({ data: { currentUser }, loading, error }) => {
             if (loading) return <p>loading...</p>;
             if (error) return <p>{error.message}</p>;
-            if (!currentUser) return <Redirect to="/signup" />;
+            if (!currentUser) {
+              this.createNewUser();
+            }
             return <Redirect to="/home" />;
           }}
         </Query>
@@ -43,4 +64,6 @@ class Callback extends Component {
   }
 }
 
-export default Callback;
+export default graphql(CREATE_USER_MUTATION, {
+  name: "createUser"
+})(Callback);
