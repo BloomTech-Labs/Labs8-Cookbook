@@ -1,5 +1,12 @@
 html {
   font-size: 62.5%;
+  position: relative;
+  min-height: 100%;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 * {
   box-sizing: border-box;
@@ -487,6 +494,8 @@ html {
   background: #343e5a;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
 }
 .footer-container .footer {
   width: 100%;
@@ -688,6 +697,7 @@ html {
   cursor: default;
 }
 .home-container {
+  margin-bottom: 200px;
   margin-top: 40px;
   width: 1100px;
   display: flex;
