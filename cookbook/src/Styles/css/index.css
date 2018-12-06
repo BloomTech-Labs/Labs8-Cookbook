@@ -345,6 +345,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 250px;
 }
 .containerLP .titleContainer {
   width: 100%;
