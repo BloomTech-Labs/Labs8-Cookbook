@@ -5,6 +5,8 @@ import { GET_RECIPES_QUERY } from "./Recipes";
 import "react-day-picker/lib/style.css";
 import GroceryItem from "./GroceryItem";
 import * as math from "mathjs";
+import { Link } from 'react-router-dom';
+
 
 class GroceryList extends Component {
   static defaultProps = {
@@ -25,6 +27,7 @@ class GroceryList extends Component {
       to: undefined
     };
   }
+
 
   handleDayClick = (day, { disabled }) => {
     if (disabled) {
@@ -108,7 +111,7 @@ class GroceryList extends Component {
           />
         ))}
       </div>
-    ) : null;
+    ) : <div>Oh no! It looks like there are no meals scheduled for these dates. Please refer to your <Link to='/home/calendar'>calendar</Link> if you would like to reschedule any or your current meals, or check out your <Link to='/home/recipes'>recipe database</Link> to add more meals to your schedule.</div>;
 
     return (
       <div className="grocery-list-page">
@@ -118,7 +121,7 @@ class GroceryList extends Component {
             {from && !to && "Please select the last day."}
             {from &&
               to &&
-              `Selected from ${from.toLocaleDateString()} to
+              `Schedule for ${from.toLocaleDateString()} to
                     ${to.toLocaleDateString()}`}{" "}
             {from &&
               to && (
@@ -127,7 +130,7 @@ class GroceryList extends Component {
                 </button>
               )}
           </p>
-
+          <button onClick={this.generateList}>Generate List</button>
           <DayPicker
             numberOfMonths={this.props.numberOfMonths}
             selectedDays={[from, { from, to }]}
@@ -135,8 +138,6 @@ class GroceryList extends Component {
             onDayClick={this.handleDayClick}
             disabledDays={{ before: new Date() }}
           />
-
-          <button onClick={this.generateList}>Generate List</button>
         </div>
 
         <div className="list">
