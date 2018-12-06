@@ -232,21 +232,6 @@
     border-radius: 25px;
     background-color: @CBtan;
     width: 350px;
-    height: 640px;
-    @media @desktop {
-      width: 330px;
-      height: 560px;
-      font-size: 1.4rem;
-    }
-    @media @tablet {
-      width: 650px;
-      height: 300px;
-      font-size: 1.6rem;
-    }
-    @media @phone {
-      width: 370px;
-      font-size: 1.2rem;
-    }
 
     .list-header {
       font-size: 1.8rem;
@@ -257,31 +242,39 @@
       background-color: @CBblue;
       color: @CBorange;
     }
-
+    // commented out code for scrollbar
     .item-list {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       padding: 11px 0 15px;
-      overflow: auto;
+      // height: 620px;
+      // overflow-y: scroll;
+      @media @desktop {
+        width: 330px;
+        // height: 500px;
+        font-size: 1.4rem;
+      }
+      @media @tablet {
+        width: 650px;
+        // height: 280px;
+        font-size: 1.6rem;
+      }
+      @media @phone {
+        width: 350px;
+        font-size: 1.2rem;
+      }
     }
 
-    .list-item {
-      cursor: pointer;
-      padding-top: 3px;
-      padding-bottom: 3px;
-      padding-left: 8px;
-      padding-right: 8px;
-    }
+    .no-list-text {
+      padding: 12px 10px;
+      line-height: 2.2rem;
 
-    .completed {
-      order: 1;
-      background: @CBorange;
-    }
-
-    .list-item:not(.completed) {
-      order: 0;
-      background-color: @CBtan;
+      .link {
+        color: @CBblue;
+        text-shadow: 2px 1px white;
+        cursor: pointer;
+      }
     }
   }
 }

@@ -3,7 +3,7 @@ import DayPicker, { DateUtils } from "react-day-picker";
 import { graphql } from "react-apollo";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import "react-day-picker/lib/style.css";
-import GroceryItem from "./GroceryItem";
+import GroceryItem from "../../SubComponents/GroceryItem";
 import * as math from "mathjs";
 import { Link } from 'react-router-dom';
 
@@ -95,6 +95,8 @@ class GroceryList extends Component {
       });
 
       this.setState({ groceryList: ingredient_list });
+      // set state to be used for grocery list display date rage
+      this.setState({groceryListTo: this.state.to, groceryListFrom: this.state.from});
     }
     return null;
   };
@@ -113,7 +115,11 @@ class GroceryList extends Component {
           />
         ))}
       </div>
-    ) : <div>Oh no! It looks like there are no meals scheduled for these dates. Please refer to your <Link to='/home/calendar'>calendar</Link> if you would like to reschedule any or your current meals, or check out your <Link to='/home/recipes'>recipe database</Link> to add more meals to your schedule.</div>;
+    ) : <div className='no-list-text'>Oh no! It looks like there are no meals scheduled for these dates. Please refer to your <Link className='link' to='/home/calendar'>calendar</Link> if you would like to reschedule any of your current meals, or check out your <Link className='link' to='/home/recipes'>recipe database</Link> to add more meals to your schedule.</div>;
+    // displays text if no grocery list has been generated yet
+    const groceryDateRange = this.state.groceryListTo ? (
+      <div>{this.state.groceryListFrom.toLocaleDateString()} - {this.state.groceryListTo.toLocaleDateString()}</div>
+      ) : <div>No grocery list generated yet.</div>
 
     return (
       <div className="grocery-list-page">
@@ -145,10 +151,7 @@ class GroceryList extends Component {
         </div>
         <div className="list">
           <div className="list-header">
-            {" "}
-            {from &&
-              to &&
-              `${from.toLocaleDateString()} - ${to.toLocaleDateString()}`}{" "}
+            {groceryDateRange}
           </div>
           {grocery_list}
         </div>

@@ -1054,27 +1054,6 @@ html {
   border-radius: 25px;
   background-color: #f5e9df;
   width: 350px;
-  height: 640px;
-}
-@media (max-width: 1200px) {
-  .grocery-list-page .list {
-    width: 330px;
-    height: 560px;
-    font-size: 1.4rem;
-  }
-}
-@media (max-width: 900px) {
-  .grocery-list-page .list {
-    width: 650px;
-    height: 300px;
-    font-size: 1.6rem;
-  }
-}
-@media (max-width: 600px) {
-  .grocery-list-page .list {
-    width: 370px;
-    font-size: 1.2rem;
-  }
 }
 .grocery-list-page .list .list-header {
   font-size: 1.8rem;
@@ -1090,20 +1069,71 @@ html {
   flex-direction: column;
   justify-content: flex-start;
   padding: 11px 0 15px;
-  overflow: auto;
 }
-.grocery-list-page .list .list-item {
+@media (max-width: 1200px) {
+  .grocery-list-page .list .item-list {
+    width: 330px;
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .list .item-list {
+    width: 650px;
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .list .item-list {
+    width: 350px;
+    font-size: 1.2rem;
+  }
+}
+.grocery-list-page .list .no-list-text {
+  padding: 12px 10px;
+  line-height: 2.2rem;
+}
+.grocery-list-page .list .no-list-text .link {
+  color: #343e5a;
+  text-shadow: 2px 1px white;
+  cursor: pointer;
+}
+.list-item {
   cursor: pointer;
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 8px;
   padding-right: 8px;
+  display: flex;
+  line-height: 2.2rem;
 }
-.grocery-list-page .list .completed {
+.list-item .checkbox-container {
+  width: 20px;
+  margin-right: 10px;
+}
+.list-item .item-text {
+  width: 290px;
+  font-size: 1.3rem;
+}
+@media (max-width: 1200px) {
+  .list-item .item-text {
+    width: 270px;
+  }
+}
+@media (max-width: 900px) {
+  .list-item .item-text {
+    width: 580px;
+  }
+}
+@media (max-width: 600px) {
+  .list-item .item-text {
+    width: 310px;
+  }
+}
+.completed {
   order: 1;
   background: #fed092;
 }
-.grocery-list-page .list .list-item:not(.completed) {
+.list-item:not(.completed) {
   order: 0;
   background-color: #f5e9df;
 }
