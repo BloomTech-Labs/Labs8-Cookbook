@@ -15,7 +15,6 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
-    border: 1px solid red;
     @media @desktop {
       width: 550px;
     }
@@ -32,17 +31,32 @@
     .DayPicker {
       width: 100%;
       margin-bottom: 20px;
-      border:1px solid @CBblue;
 
       .DayPicker-NavBar {
+        position: relative;
+        width: 283px;
+        top: 5px;
 
+        .DayPicker-NavButton {
+          margin-top: 10px;
+        }
+
+        .DayPicker-NavButton--prev {
+        }
+
+        .DayPicker-NavButton--next {
+          // margin-right: 20px;
+          left: 445px;
+        }
       }
 
       .DayPicker-Months {
 
         .DayPicker-Month {
           width: 100%;
-          height: 300px;
+          height: 500px;
+          border-radius: 25px;
+          font-size: 1.8rem; 
           @media @desktop {
             height: 280px;
           }
@@ -57,9 +71,19 @@
 
           .DayPicker-Caption {
             text-align: center;
+            border-radius: 25px; 
+            background-color: @CBblue;
+            color: @CBorange;
+            font-size: 2rem;
+            padding-bottom: 5px;
+            padding-top: 5px;
           }
 
           .DayPicker-Weekdays {
+            border-top: 1px solid @CBblue;
+            border-bottom: 1px solid @CBblue;
+            background-color: @CBtan;
+            color: @CBblue;
 
             .DayPicker-WeekdaysRow {
 
@@ -78,18 +102,22 @@
               }
 
               .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-                background-color: #f0f8ff !important;
-                color: #4a90e2;
+                background-color: @CBorange !important;
+                color: @CBblue;
               }
 
               .DayPicker-Day--start {
                 border-top-left-radius: 50% !important;
                 border-bottom-left-radius: 50% !important;
+                background-color: @CBblue;
+                color: @CBorange;
               }
 
               .DayPicker-Day--end {
                 border-top-right-radius: 50% !important;
                 border-bottom-right-radius: 50% !important;
+                background-color: @CBblue;
+                color: @CBorange;
               }
             }
           }
