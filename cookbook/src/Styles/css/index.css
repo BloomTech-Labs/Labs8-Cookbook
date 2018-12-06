@@ -808,11 +808,15 @@ html {
   color: #343e5a;
   font-weight: 600;
 }
+@media (max-width: 900px) {
+  .grocery-list-page {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+  }
+}
 @media (max-width: 600px) {
   .grocery-list-page {
-    justify-content: center;
     padding-top: 0;
-    flex-wrap: wrap-reverse;
   }
 }
 .grocery-list-page .gen-list-container {
@@ -1050,15 +1054,19 @@ html {
   border-radius: 25px;
   background-color: #f5e9df;
   width: 350px;
+  height: 640px;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .list {
     width: 330px;
+    height: 560px;
+    font-size: 1.4rem;
   }
 }
 @media (max-width: 900px) {
   .grocery-list-page .list {
-    width: 100%;
+    width: 650px;
+    height: 300px;
   }
 }
 @media (max-width: 600px) {
@@ -1086,6 +1094,7 @@ html {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 8px;
+  padding-right: 8px;
 }
 .grocery-list-page .list .completed {
   order: 1;
