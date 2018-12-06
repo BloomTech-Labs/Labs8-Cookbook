@@ -232,6 +232,18 @@
     border-radius: 25px;
     background-color: @CBtan;
     width: 350px;
+    @media @desktop {
+      width: 330px;
+      font-size: 1.4rem;
+    }
+    @media @tablet {
+      width: 630px;
+      font-size: 1.6rem;
+    }
+    @media @phone {
+      width: 350px;
+      font-size: 1.2rem;
+    }
 
     .list-header {
       font-size: 1.8rem;
@@ -242,32 +254,16 @@
       background-color: @CBblue;
       color: @CBorange;
     }
-    // commented out code for scrollbar
     .item-list {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       padding: 11px 0 15px;
-      // height: 620px;
-      // overflow-y: scroll;
-      @media @desktop {
-        width: 330px;
-        // height: 500px;
-        font-size: 1.4rem;
-      }
-      @media @tablet {
-        width: 650px;
-        // height: 280px;
-        font-size: 1.6rem;
-      }
-      @media @phone {
-        width: 350px;
-        font-size: 1.2rem;
-      }
     }
 
     .no-list-text {
       padding: 12px 10px;
+      padding-left: 15px;
       line-height: 2.2rem;
 
       .link {
