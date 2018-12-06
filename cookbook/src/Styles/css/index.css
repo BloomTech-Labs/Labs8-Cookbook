@@ -1067,11 +1067,13 @@ html {
   .grocery-list-page .list {
     width: 650px;
     height: 300px;
+    font-size: 1.6rem;
   }
 }
 @media (max-width: 600px) {
   .grocery-list-page .list {
     width: 370px;
+    font-size: 1.2rem;
   }
 }
 .grocery-list-page .list .list-header {
@@ -1088,6 +1090,7 @@ html {
   flex-direction: column;
   justify-content: flex-start;
   padding: 11px 0 15px;
+  overflow: auto;
 }
 .grocery-list-page .list .list-item {
   cursor: pointer;
