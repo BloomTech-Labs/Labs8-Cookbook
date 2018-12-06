@@ -8,8 +8,6 @@ import Modal from '../../SubComponents/Modal';
 import DatePicker from "../../SubComponents/DatePicker.js";
 import Buttons from './Buttons';
 
-
-import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const propTypes = {}
@@ -129,15 +127,19 @@ class RecipeCalendar extends Component {
                 return (
                   <div className="calendar-page-container">
                     <div className="calendar-container">
-                      <form className="calendar-search">
+                      <div className="search-box-wrapper">
+                        <div className="magnifying-glass">
+                          <span role="img" aria-label="magnifying-glass">&#128269;</span>
+                        </div>
                         <input
                           type="text"
+                          class="search-box-input"
                           name="search"
-                          placeholder="search"
+                          placeholder="Search..."
                           onChange={this.handleSearch}
                           value={this.state.search}
                         />
-                      </form>
+                      </div>
                       <BigCalendar
                         selectable
                         popup
