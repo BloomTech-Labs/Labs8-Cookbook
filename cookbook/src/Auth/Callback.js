@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import loading from "../designs/Logo/Logo.png";
 import auth from "../Auth/Auth";
-import { Query, graphql, compose } from "react-apollo";
+import { Query, graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { CURRENT_USER_QUERY } from "../Components/Home/SubPages/User";
 import { Redirect } from "react-router-dom";
