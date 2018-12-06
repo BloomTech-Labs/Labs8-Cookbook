@@ -116,21 +116,23 @@ class GroceryList extends Component {
     return (
       <div className="grocery-list-page">
         <div className="gen-list-container">
-          <p>
-            {!from && !to && "Please select the first day."}
-            {from && !to && "Please select the last day."}
-            {from &&
-              to &&
-              `Schedule for ${from.toLocaleDateString()} to
-                    ${to.toLocaleDateString()}`}{" "}
+          <p className='reset-gen-buttons'>
+            <span className='text'>
+              {!from && !to && "Please select the first day."}
+              {from && !to && "Please select the last day."}
+              {from &&
+                to &&
+                `Schedule for ${from.toLocaleDateString()} to
+                      ${to.toLocaleDateString()}`}{" "}
+            </span>
             {from &&
               to && (
-                <button className="link" onClick={this.handleResetClick}>
+                <button className="reset" onClick={this.handleResetClick}>
                   Reset
                 </button>
-              )}
+            )}
+            <button onClick={this.generateList} className='generate'>Generate List</button>
           </p>
-          <button onClick={this.generateList}>Generate List</button>
           <DayPicker
             numberOfMonths={this.props.numberOfMonths}
             selectedDays={[from, { from, to }]}
@@ -139,13 +141,12 @@ class GroceryList extends Component {
             disabledDays={{ before: new Date() }}
           />
         </div>
-
         <div className="list">
           <div className="list-header">
-            Grocery List:{" "}
+            {" "}
             {from &&
               to &&
-              `${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}{" "}
+              `${from.toLocaleDateString()} - ${to.toLocaleDateString()}`}{" "}
           </div>
           {grocery_list}
         </div>

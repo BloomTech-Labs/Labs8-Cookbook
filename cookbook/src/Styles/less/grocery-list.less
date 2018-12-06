@@ -16,6 +16,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
+    position: relative;
     @media @desktop {
       width: 550px;
     }
@@ -25,6 +26,88 @@
     }
     @media @phone {
       width: 400px;
+    }
+
+    .reset-gen-buttons {
+      width: 100%;
+      line-height: 2.4rem;
+      margin-left: 50px;
+      @media @desktop {
+        margin-left: 20px;
+      }
+      @media @tablet {
+        margin-left: 40px;
+      }
+      @media @phone {
+        margin-left: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .text {
+        @media @phone {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+      }
+
+      .reset {
+        background-color: @CBblue;
+        color: @CBorange;
+        position: absolute;
+        top: 12px;
+        left: 450px;
+        line-height: 2.4rem;
+        font-size: 1.6rem;
+        border-radius: 15px;
+        padding: 2px 15px;
+        @media @desktop {
+          left: 340px;
+          line-height: 2rem;
+          font-size: 1.4rem;
+          top: 15px;
+        }
+        @media @tablet {
+          left: 450px;
+          line-height: 2.4rem;
+          font-size: 1.6rem;
+          top: 15px;
+        }
+        @media @phone {
+          position: static;
+          margin-right: 8px;
+        }
+      }
+
+      .generate {
+        background-color: @CBorange;
+        color: @CBblue;
+        position: absolute;
+        top: 12px;
+        left: 530px;
+        line-height: 2.4rem;
+        font-size: 1.6rem;
+        border-radius: 15px;
+        padding: 2px 15px;
+        @media @desktop {
+          left: 420px;
+          line-height: 2rem;
+          font-size: 1.4rem;
+          top: 15px;
+        }
+        @media @tablet {
+          left: 530px;
+          line-height: 2.4rem;
+          font-size: 1.6rem;
+          top: 15px;
+        }
+        @media @phone {
+          position: static;
+          margin-left: 8px;
+        }
+      }
     }
 
     // Calendar Styles
@@ -142,7 +225,8 @@
   }
 
   .list {
-    border: 1px solid black;
+    border: 1px solid @CBblue;
+    border-radius: 25px;
     width: 350px;
     padding: 5px;
 
@@ -157,7 +241,7 @@
     }
 
     .list-header {
-      font-size: 1.2rem;
+      font-size: 1.8rem;
     }
 
     .item-list {
