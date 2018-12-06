@@ -783,19 +783,19 @@ html {
   }
 }
 @media (max-width: 600px) {
-  .calendar-page-container .calendar-container .rbc-calendar {
+  .calendar-page-container .rbc-calendar {
     font-size: 1.0rem;
     height: 380px;
   }
 }
 @media (max-width: 600px) {
-  .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
+  .calendar-page-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
     font-size: .8rem;
     width: 40px;
   }
 }
 @media (max-width: 600px) {
-  .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
+  .calendar-page-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
     font-size: 1.0rem;
     padding: 0;
   }
