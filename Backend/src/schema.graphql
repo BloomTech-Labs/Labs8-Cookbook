@@ -20,6 +20,7 @@ type Query {
 
 type Mutation {
   signup(firstName: String!, lastName: String!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   createRecipe(
     title: String!
     prepTime: String!
