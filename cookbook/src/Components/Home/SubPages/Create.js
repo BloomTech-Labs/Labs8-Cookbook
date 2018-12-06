@@ -210,18 +210,30 @@ class Create extends Component {
     }
   };
 
+  handleSearchClass = () => {
+    if (this.state.search) return 'is-searching';
+    return 'not-searching';
+  }
+
   render() {
     return (
       <div className="create-wrapper">
         <div className="create-content-wrapper">
 
-          <input
-            type="text"
-            name="query"
-            placeholder="Search Recipe..."
-            onChange={this.handleChange}
-            value={this.state.query}
-          />
+          <div className='search-and-save'>
+
+            <input
+              className={() => this.handleSearchClass()}
+              type="text"
+              name="query"
+              placeholder="Search Recipe..."
+              onChange={this.handleChange}
+              value={this.state.query}
+            />
+
+            <button onClick={this.onSave}>SAVE</button>
+
+          </div>
 
           {this.state.og_title === "N/A" ? (
             <div>No preview available</div>
@@ -234,7 +246,7 @@ class Create extends Component {
               loading={this.state.loadingPreview}
             />
           )}
-          <button onClick={this.onSave}>SAVE</button>
+
         </div>
         <div className="create-filter-wrapper">
           <div className="ID-btn">

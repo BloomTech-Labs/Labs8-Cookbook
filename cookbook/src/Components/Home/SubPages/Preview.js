@@ -5,8 +5,8 @@ const Preview = props => {
 
   const preview = props.og_title ? (
     <div className='preview'>
-      <div className='image-container'>
-        <img className='image' src={props.og_image} alt={props.title} />
+      <div className='image-container' style={{backgroundImage: `url(${props.og_image})`}}>
+        {/* <img className='image' src={props.og_image} alt={props.title} /> */}
       </div>
       <div className='content'>
         <span className='title'>{props.og_title}</span>
