@@ -8,6 +8,7 @@
   .search-and-save {
     display: flex;
     width: 100%;
+    padding: 0 30px;
 
     @media @tablet {
       flex-flow: column;
@@ -15,6 +16,7 @@
     }
 
     .is-searching {
+      margin-right: 30px;
       font-family: @secondary-font;
       font-size: 1.8rem;
       letter-spacing: 1.5px;
@@ -22,20 +24,15 @@
       border: 2px @CBred solid;
       color: white;
       height: 40px;
-      width: 92%;
+      width: 100%;
       border-radius: 20px;
-      margin: 0 30px;
       padding: 0 20px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
 
       @media @tablet {
-        margin: 30px 30px 0;
-      }
-
-      @media @phone {
-        width: 85%;
+        margin: 30px 0 0 0;
       }
     }
 
@@ -67,7 +64,6 @@
       color: white;
       height: 40px;
       width: 70px;
-      margin-right: 30px;
 
       @media @tablet {
         order: -1;

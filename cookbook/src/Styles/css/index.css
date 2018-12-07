@@ -734,6 +734,7 @@ html {
 .create-wrapper .search-and-save {
   display: flex;
   width: 100%;
+  padding: 0 30px;
 }
 @media (max-width: 900px) {
   .create-wrapper .search-and-save {
@@ -742,6 +743,7 @@ html {
   }
 }
 .create-wrapper .search-and-save .is-searching {
+  margin-right: 30px;
   font-family: 'Questrial', sans-serif;
   font-size: 1.8rem;
   letter-spacing: 1.5px;
@@ -749,9 +751,8 @@ html {
   border: 2px #de6a5a solid;
   color: white;
   height: 40px;
-  width: 92%;
+  width: 100%;
   border-radius: 20px;
-  margin: 0 30px;
   padding: 0 20px;
   overflow: hidden;
   white-space: nowrap;
@@ -759,15 +760,11 @@ html {
 }
 @media (max-width: 900px) {
   .create-wrapper .search-and-save .is-searching {
-    margin: 30px 30px 0;
-  }
-}
-@media (max-width: 600px) {
-  .create-wrapper .search-and-save .is-searching {
-    width: 85%;
+    margin: 30px 0 0 0;
   }
 }
 .create-wrapper .search-and-save .not-searching {
+  margin-right: 30px;
   font-family: 'Questrial', sans-serif;
   font-size: 1.8rem;
   letter-spacing: 1.5px;
@@ -775,9 +772,8 @@ html {
   border: 2px #de6a5a solid;
   color: white;
   height: 40px;
-  width: 92%;
+  width: 100%;
   border-radius: 20px;
-  margin: 0 30px;
   padding: 0 20px;
   overflow: hidden;
   white-space: nowrap;
@@ -786,12 +782,7 @@ html {
 }
 @media (max-width: 900px) {
   .create-wrapper .search-and-save .not-searching {
-    margin: 30px 30px 0;
-  }
-}
-@media (max-width: 600px) {
-  .create-wrapper .search-and-save .not-searching {
-    width: 85%;
+    margin: 30px 0 0 0;
   }
 }
 .create-wrapper .search-and-save ::-webkit-input-placeholder {
@@ -820,7 +811,6 @@ html {
   color: white;
   height: 40px;
   width: 70px;
-  margin-right: 30px;
 }
 @media (max-width: 900px) {
   .create-wrapper .search-and-save button {
