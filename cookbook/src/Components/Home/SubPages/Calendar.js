@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import BigCalendar from "react-big-calendar";
 import gql from "graphql-tag";
-import { Query, graphql, compose } from "react-apollo";
+import { Query, graphql } from "react-apollo";
 import Modal from "../../SubComponents/Modal";
 import DatePicker from "../../SubComponents/DatePicker.js";
 import Buttons from "./Buttons";
@@ -210,5 +210,5 @@ const updateEventMutation = graphql(UPDATE_EVENT, {
   name: "updateEvent"
 });
 
-export default compose(updateEventMutation)(RecipeCalendar);
+export default updateEventMutation(RecipeCalendar);
 export { QUERY_RECIPE_EVENT };
