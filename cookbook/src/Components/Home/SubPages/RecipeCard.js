@@ -1,27 +1,36 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
-import { GET_RECIPES_QUERY } from './Recipes';
+import gql from "graphql-tag";
+import { graphql } from "react-apollo";
+import { GET_RECIPES_QUERY } from "./Recipes";
 import CardSchedule from "../../SubComponents/CardSchedule";
 
 const DELETE_RECIPE_MUTATION = gql`
   mutation($id: ID) {
-    deleteRecipe (
-      where: {
-        id: $id 
-      }
-    )
-    {
+    deleteRecipe(where: { id: $id }) {
       id
       title
     }
   }
 `;
 
-
 class RecipeCard extends Component {
+  deleteHandler = async () => {
+    try {
+      const deletedRecipe = await this.props.deleteRecipe({
+        variables: { id: this.props.recipe.id },
+        refetchQueries: [{ query: GET_RECIPES_QUERY }]
+      });
+
+      console.log("Deleted recipe: ", deletedRecipe);
+      return deletedRecipe;
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
+  };
+
   render() {
     // URL for each individual recipe to be passed in to route
     const recipeUrl = this.props.recipe.title.split(" ").join("-");
@@ -52,13 +61,14 @@ class RecipeCard extends Component {
               <span className="link-text">link</span>
             </a>
             <div className="schedule">
-              <CardSchedule events={this.props.recipe.events}></CardSchedule>
+                <CardSchedule events={this.props.recipe.events} />
             </div>
             <button className="del-button">
-              <FontAwesomeIcon icon="trash-alt" className="del-icon" onClick={async() => {
-                const deletedRecipe= await this.props.deleteRecipe({variables: {id: this.props.recipe.id}})
-                console.log(`Recipe deleted: ${deletedRecipe.title}`)
-              }}/>
+              <FontAwesomeIcon
+                icon="trash-alt"
+                className="del-icon"
+                onClick={this.deleteHandler}
+              />
               <span className="del-text">Delete</span>
             </button>
           </div>
@@ -68,4 +78,8 @@ class RecipeCard extends Component {
   }
 }
 
-export default graphql(DELETE_RECIPE_MUTATION, {name: 'deleteRecipe', options: {refetchQueries: [{queries: GET_RECIPES_QUERY}]}})(RecipeCard);
+export default graphql(DELETE_RECIPE_MUTATION, {
+  name: "deleteRecipe"
+})(RecipeCard);
+
+export { DELETE_RECIPE_MUTATION };

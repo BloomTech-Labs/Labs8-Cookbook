@@ -1,5 +1,12 @@
 html {
   font-size: 62.5%;
+  position: relative;
+  min-height: 100%;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 * {
   box-sizing: border-box;
@@ -338,6 +345,7 @@ html {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 250px;
 }
 .containerLP .titleContainer {
   width: 100%;
@@ -487,6 +495,8 @@ html {
   background: #343e5a;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
 }
 .footer-container .footer {
   width: 100%;
@@ -698,6 +708,7 @@ html {
   cursor: default;
 }
 .home-container {
+  margin-bottom: 201px;
   margin-top: 40px;
   width: 100%;
   max-width: 1400px;
@@ -1624,6 +1635,7 @@ html {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 .content-container .card-bottom .del-button .del-icon {
   height: 15px;
