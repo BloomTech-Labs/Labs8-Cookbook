@@ -1321,7 +1321,7 @@ body {
 @media (max-width: 900px) {
   .grocery-list-page .gen-list-container .reset-gen-buttons {
     margin-left: 40px;
-    margin-bottom: 0;
+    margin-bottom: 25px;
     margin-top: 15px;
   }
 }
