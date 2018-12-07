@@ -1502,14 +1502,17 @@ html {
   border: 1px solid red;
 }
 .user-info {
-  max-width: 60%;
+  max-width: 400px;
   margin: auto;
   display: flex;
   flex-direction: column;
 }
 @media (max-width: 600px) {
   .user-info {
-    max-width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    margin: 15px;
   }
 }
 .user-info .form-group {
@@ -1517,7 +1520,7 @@ html {
   padding: 10px 0;
   line-height: 2;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 .user-info .form-group label {
   width: 40%;
@@ -1548,7 +1551,7 @@ html {
   cursor: not-allowed;
 }
 .buttons {
-  max-width: 30%;
+  max-width: 60%;
   margin: auto;
   display: flex;
   justify-content: space-evenly;
@@ -1557,7 +1560,8 @@ html {
   border: 1px solid transparent;
   border-radius: 4px;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: space-evenly;
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
@@ -1567,7 +1571,8 @@ html {
   white-space: nowrap;
   vertical-align: middle;
   color: #fff;
-  width: 100px;
+  width: 150px;
+  margin: 0 8px 8px 8px;
 }
 .buttons .save-btn {
   background-color: #5cb85c;
