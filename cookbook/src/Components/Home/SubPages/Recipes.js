@@ -74,15 +74,13 @@ class Recipes extends Component {
             + add recipe
           </button>
 
-          <form>
-            <input
-              type="text"
-              name="search"
-              placeholder="search"
-              onChange={this.handleSearch}
-              value={this.state.search}
-            />
-          </form>
+          <input
+            type="text"
+            name="search"
+            placeholder="search"
+            onChange={this.handleSearch}
+            value={this.state.search}
+          />
 
           <div className="recipesFilterContainer">
             <button

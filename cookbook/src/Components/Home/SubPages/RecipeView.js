@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { graphql } from "react-apollo";
+import { DELETE_RECIPE_MUTATION } from "./RecipeCard";
+import { GET_RECIPES_QUERY } from "./Recipes";
 
 class RecipeView extends Component {
   constructor(props) {
@@ -16,6 +19,21 @@ class RecipeView extends Component {
     this.setState({ instructions });
   }
 
+  deleteHandler = async () => {
+    try {
+      const deletedRecipe = await this.props.deleteRecipe({
+        variables: { id: this.props.location.state.id },
+        refetchQueries: [{ query: GET_RECIPES_QUERY }]
+      });
+
+      console.log("Deleted recipe: ", deletedRecipe);
+      this.props.history.replace("/home/recipes");
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
+  };
+
   // helper function: re-orders instructions based on stepNum
   compare(a, b) {
     let comparison = 0;
@@ -28,7 +46,7 @@ class RecipeView extends Component {
     }
     return comparison;
   }
-  
+
   toggleCheckBox = e => {
     // filter through instuction state to find matching instruction by id
     let inst = this.state.instructions.filter(inst => {
@@ -63,8 +81,8 @@ class RecipeView extends Component {
     console.log("Data: ", this.props.location.state);
     return (
       <div className="recipe-page">
-        <div className="header">
-          <span className="title">{this.props.location.state.title}</span>
+        <div className="recipe-header">
+          <span className="recipe-title">{this.props.location.state.title}</span>
           <div className="icon-container">
             <a
               className="link"
@@ -74,7 +92,11 @@ class RecipeView extends Component {
             >
               <FontAwesomeIcon icon="link" />
             </a>
-            <FontAwesomeIcon icon="trash-alt" className="delete" />
+            <FontAwesomeIcon
+              icon="trash-alt"
+              className="delete"
+              onClick={this.deleteHandler}
+            />
           </div>
         </div>
         <div className="left-container">
@@ -146,4 +168,6 @@ class RecipeView extends Component {
   }
 }
 
-export default RecipeView;
+export default graphql(DELETE_RECIPE_MUTATION, {
+  name: "deleteRecipe"
+})(RecipeView);

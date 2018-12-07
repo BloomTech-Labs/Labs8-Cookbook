@@ -8,6 +8,8 @@ type User {
   email: String! @unique
   isSubscribed: Boolean! @default(value: false)
   recipes: [Recipe!]! @relation(name: "UserRecipe", onDelete: CASCADE)
+  subscriptions: [Subscription!]!
+    @relation(name: "UserSubscription", onDelete: CASCADE)
 }
 
 type Recipe {
@@ -51,7 +53,7 @@ type Subscription {
   id: ID! @unique
   amount: Int!
   currency: String!
-  user: User!
+  user: User! @relation(name: "UserSubscription")
   charge: String!
   createdAt: DateTime!
   updatedAt: DateTime!

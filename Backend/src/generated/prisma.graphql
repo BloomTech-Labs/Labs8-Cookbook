@@ -852,7 +852,18 @@ type SubscriptionConnection {
 input SubscriptionCreateInput {
   amount: Int!
   currency: String!
-  user: UserCreateOneInput!
+  user: UserCreateOneWithoutSubscriptionsInput!
+  charge: String!
+}
+
+input SubscriptionCreateManyWithoutUserInput {
+  create: [SubscriptionCreateWithoutUserInput!]
+  connect: [SubscriptionWhereUniqueInput!]
+}
+
+input SubscriptionCreateWithoutUserInput {
+  amount: Int!
+  currency: String!
   charge: String!
 }
 
@@ -879,8 +890,34 @@ enum SubscriptionOrderByInput {
 input SubscriptionUpdateInput {
   amount: Int
   currency: String
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneRequiredWithoutSubscriptionsInput
   charge: String
+}
+
+input SubscriptionUpdateManyWithoutUserInput {
+  create: [SubscriptionCreateWithoutUserInput!]
+  delete: [SubscriptionWhereUniqueInput!]
+  connect: [SubscriptionWhereUniqueInput!]
+  disconnect: [SubscriptionWhereUniqueInput!]
+  update: [SubscriptionUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [SubscriptionUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input SubscriptionUpdateWithoutUserDataInput {
+  amount: Int
+  currency: String
+  charge: String
+}
+
+input SubscriptionUpdateWithWhereUniqueWithoutUserInput {
+  where: SubscriptionWhereUniqueInput!
+  data: SubscriptionUpdateWithoutUserDataInput!
+}
+
+input SubscriptionUpsertWithWhereUniqueWithoutUserInput {
+  where: SubscriptionWhereUniqueInput!
+  update: SubscriptionUpdateWithoutUserDataInput!
+  create: SubscriptionCreateWithoutUserInput!
 }
 
 input SubscriptionWhereInput {
@@ -968,6 +1005,7 @@ type User {
   email: String!
   isSubscribed: Boolean!
   recipes(where: RecipeWhereInput, orderBy: RecipeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Recipe!]
+  subscriptions(where: SubscriptionWhereInput, orderBy: SubscriptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Subscription!]
 }
 
 type UserConnection {
@@ -983,15 +1021,16 @@ input UserCreateInput {
   email: String!
   isSubscribed: Boolean
   recipes: RecipeCreateManyWithoutCreatedByInput
-}
-
-input UserCreateOneInput {
-  create: UserCreateInput
-  connect: UserWhereUniqueInput
+  subscriptions: SubscriptionCreateManyWithoutUserInput
 }
 
 input UserCreateOneWithoutRecipesInput {
   create: UserCreateWithoutRecipesInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutSubscriptionsInput {
+  create: UserCreateWithoutSubscriptionsInput
   connect: UserWhereUniqueInput
 }
 
@@ -1001,6 +1040,16 @@ input UserCreateWithoutRecipesInput {
   lastName: String
   email: String!
   isSubscribed: Boolean
+  subscriptions: SubscriptionCreateManyWithoutUserInput
+}
+
+input UserCreateWithoutSubscriptionsInput {
+  auth0Sub: String!
+  firstName: String
+  lastName: String
+  email: String!
+  isSubscribed: Boolean
+  recipes: RecipeCreateManyWithoutCreatedByInput
 }
 
 type UserEdge {
@@ -1027,15 +1076,6 @@ enum UserOrderByInput {
   updatedAt_DESC
 }
 
-input UserUpdateDataInput {
-  auth0Sub: String
-  firstName: String
-  lastName: String
-  email: String
-  isSubscribed: Boolean
-  recipes: RecipeUpdateManyWithoutCreatedByInput
-}
-
 input UserUpdateInput {
   auth0Sub: String
   firstName: String
@@ -1043,13 +1083,7 @@ input UserUpdateInput {
   email: String
   isSubscribed: Boolean
   recipes: RecipeUpdateManyWithoutCreatedByInput
-}
-
-input UserUpdateOneRequiredInput {
-  create: UserCreateInput
-  update: UserUpdateDataInput
-  upsert: UserUpsertNestedInput
-  connect: UserWhereUniqueInput
+  subscriptions: SubscriptionUpdateManyWithoutUserInput
 }
 
 input UserUpdateOneRequiredWithoutRecipesInput {
@@ -1059,22 +1093,39 @@ input UserUpdateOneRequiredWithoutRecipesInput {
   connect: UserWhereUniqueInput
 }
 
+input UserUpdateOneRequiredWithoutSubscriptionsInput {
+  create: UserCreateWithoutSubscriptionsInput
+  update: UserUpdateWithoutSubscriptionsDataInput
+  upsert: UserUpsertWithoutSubscriptionsInput
+  connect: UserWhereUniqueInput
+}
+
 input UserUpdateWithoutRecipesDataInput {
   auth0Sub: String
   firstName: String
   lastName: String
   email: String
   isSubscribed: Boolean
+  subscriptions: SubscriptionUpdateManyWithoutUserInput
 }
 
-input UserUpsertNestedInput {
-  update: UserUpdateDataInput!
-  create: UserCreateInput!
+input UserUpdateWithoutSubscriptionsDataInput {
+  auth0Sub: String
+  firstName: String
+  lastName: String
+  email: String
+  isSubscribed: Boolean
+  recipes: RecipeUpdateManyWithoutCreatedByInput
 }
 
 input UserUpsertWithoutRecipesInput {
   update: UserUpdateWithoutRecipesDataInput!
   create: UserCreateWithoutRecipesInput!
+}
+
+input UserUpsertWithoutSubscriptionsInput {
+  update: UserUpdateWithoutSubscriptionsDataInput!
+  create: UserCreateWithoutSubscriptionsInput!
 }
 
 input UserWhereInput {
@@ -1153,6 +1204,9 @@ input UserWhereInput {
   recipes_every: RecipeWhereInput
   recipes_some: RecipeWhereInput
   recipes_none: RecipeWhereInput
+  subscriptions_every: SubscriptionWhereInput
+  subscriptions_some: SubscriptionWhereInput
+  subscriptions_none: SubscriptionWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]

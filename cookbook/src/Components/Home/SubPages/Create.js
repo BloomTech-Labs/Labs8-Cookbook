@@ -5,6 +5,8 @@ import { graphql, compose } from "react-apollo";
 import scraper from "../../../utils/scraper";
 import Buttons from "./Buttons";
 import DatePicker from "../../SubComponents/DatePicker.js";
+import { GET_RECIPES_QUERY } from "./Recipes";
+import { QUERY_RECIPE_EVENT } from "./Calendar";
 
 const CREATE_RECIPE_MUTATION = gql`
   mutation(
@@ -97,6 +99,7 @@ class Create extends Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value, loadingPreview: false });
+    this.findRecipes();
   };
 
   handlePickDate = date => {
@@ -105,9 +108,11 @@ class Create extends Component {
 
   mealButtonHandler = e => {
     e.preventDefault();
-    this.setState({
-      type: e.target.name
-    });
+    if (this.state.type === e.target.name) {
+      this.setState({ type: "" })
+    } else {
+      this.setState({ type: e.target.name });
+    }
   };
 
   findRecipes = () => {
@@ -142,7 +147,8 @@ class Create extends Component {
 
       //Execute createRecipe
       const { data } = await this.props.createRecipe({
-        variables: recipeVariables
+        variables: recipeVariables,
+        refetchQueries: [{ query: GET_RECIPES_QUERY }]
       });
       console.log("Recipe created: ", data.createRecipe);
 
@@ -192,30 +198,50 @@ class Create extends Component {
 
         //Execute createEvent
         const eventData = await this.props.createEvent({
-          variables: eventVariables
+          variables: eventVariables,
+          refetchQueries: [
+            { query: QUERY_RECIPE_EVENT },
+            { query: GET_RECIPES_QUERY }
+          ]
         });
         console.log("Event created: ", eventData);
 
-        return eventData;
+        return this.props.history.push("/home/recipes");
       }
+
+      return this.props.history.push("/home/recipes");
     } catch (error) {
       console.log("onsave error: ", error.message);
       return error;
     }
   };
 
+  handleSearchClass = () => {
+    if (this.state.query) return 'is-searching';
+    return 'not-searching';
+  }
+
   render() {
     return (
       <div className="create-wrapper">
-        <div className="create-content-wrapper">
+
+        <div className='search-and-save'>
+
           <input
+            className={this.handleSearchClass()}
             type="text"
             name="query"
-            placeholder="Search Recipe..."
+            placeholder="recipe url"
             onChange={this.handleChange}
             value={this.state.query}
           />
-          <button onClick={this.findRecipes}>Search</button>
+
+          <button onClick={this.onSave}>save</button>
+
+        </div>
+
+        <div className="preview-and-schedule">
+
           {this.state.og_title === "N/A" ? (
             <div>No preview available</div>
           ) : (
@@ -227,17 +253,22 @@ class Create extends Component {
               loading={this.state.loadingPreview}
             />
           )}
-          <button onClick={this.onSave}>SAVE</button>
-        </div>
-        <div className="create-filter-wrapper">
-          <div className="ID-btn">
+
+          <div className='schedule'>
+
             <Buttons
               mealButtonHandler={this.mealButtonHandler}
               type={this.state.type}
             />
+            
+            <div className='create-date-picker'>
+              <DatePicker handlePickDate={this.handlePickDate} />
+            </div>
+
           </div>
-          <DatePicker handlePickDate={this.handlePickDate} />
+
         </div>
+
       </div>
     );
   }

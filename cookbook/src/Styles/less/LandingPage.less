@@ -1,138 +1,138 @@
 .containerLP {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 250px;
+
+  .titleContainer {
     width: 100%;
+
+    .bckgImg {
+      position: relative;
+      width: 100%;
+      height: auto;
+      @media @phone {
+        width: 400px;
+      }
+    }
+
+    .landingNav {
+      width: 100%;
+      position: absolute;
+      top: 10px;
+      display: flex;
+      justify-content: flex-end;
+      display: flex;
+      font-size: 2.4rem;
+      @media @tablet {
+        font-size: 2.2rem;
+      }
+      @media @phone {
+        font-size: 1.6rem;
+      }
+
+      .register {
+        margin-right: 15px;
+        margin-top: 15px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        height: 30px;
+        @media @phone {
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .logo-title {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .logo {
+        position: absolute;
+        display: block;
+        top: 140px;
+        height: 220px;
+        @media @desktop {
+          top: 90px;
+          height: 180px;
+        }
+        @media @tablet {
+          top: 75px;
+          height: 130px;
+        }
+        @media @phone {
+          top: 55px;
+          height: 75px;
+        }
+      }
+
+      .title {
+        position: absolute;
+        color: white;
+        top: 390px;
+        font-size: 10.5rem;
+
+        @media @desktop {
+          top: 300px;
+          font-size: 9rem;
+        }
+        @media @tablet {
+          top: 220px;
+          font-size: 7.6rem;
+        }
+        @media @phone {
+          top: 140px;
+          font-size: 4.8rem;
+        }
+      }
+    }
+  }
+
+  .lp-content {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
-    .titleContainer {
-        width: 100%;
-
-
-        .bckgImg {
-            position: relative;
-            width: 100%;
-            height: auto;
-            @media @phone {
-                width: 400px;
-            }
-        }
-
-        .landingNav {
-            width: 100%;
-            position: absolute;
-            top: 10px;
-            display: flex;
-            justify-content: flex-end;
-            display: flex;
-            font-size: 2.4rem;
-            @media @tablet {
-                font-size: 2.2rem;
-            }
-            @media @phone {
-                font-size: 1.6rem;
-            }
-
-            .register {
-                margin-right: 15px;
-                margin-top: 15px;
-                text-decoration: none;
-                color: white;
-                font-weight: bold;
-                cursor: pointer;
-                height: 30px;
-                @media @phone {
-                    margin-top: 5px;
-                }
-            }
-        }
-
-        .logo-title {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-
-            .logo {
-                position: absolute;
-                display: block;
-                top: 140px;
-                height: 220px;
-                @media @desktop {
-                    top: 90px;
-                    height: 180px;
-                }
-                @media @tablet {
-                    top: 75px;
-                    height: 130px;
-                }
-                @media @phone {
-                    top: 55px;
-                    height: 75px;
-                }
-            }
-    
-            .title {
-                position: absolute;
-                color: white;
-                top: 390px;
-                font-size: 10.5rem;
-
-                @media @desktop {
-                    top: 300px;
-                    font-size: 9rem;
-                }
-                @media @tablet {
-                    top: 220px;
-                    font-size: 7.6rem;
-                }
-                @media @phone {
-                    top: 140px;
-                    font-size: 4.8rem;
-                }
-            }
-        }
+    border: 1px solid red;
+    width: 1000px;
+    @media @desktop {
+      width: 768px;
+    }
+    @media @tablet {
+      width: 620px;
+    }
+    @media @phone {
+      width: 360px;
     }
 
-    .lp-content {
+    .about-us {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      font-family: "verdana";
+
+      .about-header {
+        letter-spacing: 0.3rem;
+        width: 100%;
         display: flex;
         justify-content: center;
-        flex-wrap: wrap;
-        border: 1px solid red;
-        width: 1000px;
-        @media @desktop {
-            width: 768px;
-        }
-        @media @tablet {
-            width: 620px;
-        }
-        @media @phone {
-            width: 360px;
-        }
 
-        .about-us {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-            font-family: "verdana";
-            
-            .about-header {
-                letter-spacing: .3rem;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-    
-                .fa {
-                    margin-right: 30px;
-                    margin-left: 30px;
-                    height: 15px;
-                    margin-top: 4px;
-                }
-            }
-            
-            .about-content {
-                width: 350px;
-                font-size: 1.6rem;
-            }
+        .fa {
+          margin-right: 30px;
+          margin-left: 30px;
+          height: 15px;
+          margin-top: 4px;
         }
+      }
+
+      .about-content {
+        width: 350px;
+        font-size: 1.6rem;
+      }
     }
+  }
 }

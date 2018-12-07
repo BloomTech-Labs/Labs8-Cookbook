@@ -1,5 +1,13 @@
 html {
   font-size: 62.5%;
+  position: relative;
+  min-height: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 * {
@@ -14,9 +22,9 @@ html {
 
 @import "header.less";
 
-@import 'nav.less';
+@import "nav.less";
 
-@import 'current-page.less';
+@import "current-page.less";
 
 @import "landingPage.less";
 
@@ -26,9 +34,13 @@ html {
 
 @import "create.less";
 
+@import "date-picker.less";
+
 @import "calendar.less";
 
 @import "grocery-list.less";
+
+@import 'grocery-item.less';
 
 @import "recipes.less";
 

@@ -1,37 +1,99 @@
 .calendar-page-container{
     margin-left: 5px;
 
-    .rbc-calendar {
-        height: 650px;
-        @media @desktop {
-            height: 500px;
-        }
-        @media @tablet {
-            font-size: 1.4rem;
-            height: 420px;
-        }
-        @media @phone {
-            font-size: 1.0rem;
-            height: 380px;
-        }
+    .calendar-container {
 
-        .rbc-toolbar {
+    
+        .rbc-calendar {
+            height: 650px;
+            @media @desktop {
+                height: 500px;
+            }
+            @media @tablet {
+                font-size: 1.4rem;
+                height: 420px;
+            }
+            @media @phone {
+                font-size: 1.0rem;
+                height: 380px;
+            }
 
-            .rbc-btn-group {
+            .rbc-toolbar {
+                .rbc-btn-group {
 
-                button {
+                    button {
+                        @media @phone {
+                            font-size: .8rem;
+                            width: 40px;
+                        }
+                    }
+                }
+
+                .rbc-toolbar-label {
                     @media @phone {
-                        font-size: .8rem;
-                        width: 40px;
+                        font-size: 1.0rem;
+                        padding: 0;
                     }
                 }
             }
+            
+            .rbc-month-view {
 
-            .rbc-toolbar-label {
-                @media @phone {
-                    font-size: 1.0rem;
-                    padding: 0;
+                .rbc-month-row {
+
+                    .rbc-row-content {
+
+                        .rbc-row {
+
+                            .rbc-row-segment {
+
+                                .rbc-event {
+                                    background-color: @CBblue;
+                                
+                                    .rbc-event-content {
+
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+        }
+
+        .search-box-wrapper {
+            display: flex;
+            font-size: 1.2rem;
+            justify-content: center;
+            align-items: stretch;
+
+            @media @phone {
+                font-size: 1.0rem;
+                width: 40px;
+            }
+
+        .search-box-input:hover {
+
+        }
+
+        .search-box-input:focus {
+            border-color: #ddd
+
+        }   
+            .search-box-input {
+                font-size: 20px;
+                border: 0.2em solid @CBblue;
+                border-radius: 0 0.5em 0.5em 0; 
+                border-left: 0;
+            }
+        
+            .magnifying-glass {
+                font-size: 20px;
+                border: 0.2em solid @CBblue;
+                border-radius: 0.5em 0 0 0.5em;
+                border-right: 0;
+                padding: 0 0.1em 0.1em 0;
+                color: white;
             }
         }
     }

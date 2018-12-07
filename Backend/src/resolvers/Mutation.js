@@ -5,6 +5,8 @@ const { forwardTo } = require("prisma-binding");
 
 const Mutation = {
   updateUser: forwardTo("db"),
+  deleteRecipe: forwardTo("db"),
+
   updateEvent: async (_, args, context, info) => {
     try {
       const updatedEvent = await context.db.mutation.updateEvent(
@@ -20,6 +22,7 @@ const Mutation = {
       return error.message;
     }
   },
+
   signup: async (_, args, context, info) => {
     const auth0user = await context.user;
     const auth0Sub = auth0user.sub;
