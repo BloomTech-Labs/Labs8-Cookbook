@@ -129,7 +129,7 @@ class RecipeCalendar extends Component {
                   </div>
                   <input
                     type="text"
-                    class="search-box-input"
+                    className="search-box-input"
                     name="search"
                     placeholder="Search..."
                     onChange={this.handleSearch}
