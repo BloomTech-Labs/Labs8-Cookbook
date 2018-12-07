@@ -79,7 +79,7 @@ class Create extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "https://www.allrecipes.com/recipe/10813/best-chocolate-chip-cookies/", //for styling
+      query: "",
       type: "",
       loadingPreview: false,
       og_title: "",
@@ -93,11 +93,6 @@ class Create extends Component {
       ingredient_list: [],
       onDate: null
     };
-  }
-
-  //for styling
-  componentDidMount() {
-    this.findRecipes();
   }
 
   handleChange = e => {
