@@ -41,4 +41,5 @@ type Mutation {
     recipe: String!
   ): Ingredient
   updateEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event
+  deleteRecipe(where: RecipeWhereUniqueInput!): Recipe
 }

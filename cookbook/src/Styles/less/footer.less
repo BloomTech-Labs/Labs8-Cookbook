@@ -3,6 +3,8 @@
     background: @CBblue;
     display: flex;
     justify-content: center;
+    position: absolute;
+    bottom: 0;
 
     .footer {
         width: 100%;
@@ -25,7 +27,7 @@
             margin-top: 10px;
 
             @media @tablet {
-                margin: 20px 20px 0;
+                margin: 20px 0px 0;
             }
 
             .brand {
@@ -141,9 +143,18 @@
             @media @desktop {
                 margin-left: 0;
             }
+
             @media @tablet {
                 margin-left: 40px;
                 align-items: flex-end;
+            }
+
+            @media (max-width: 790px) {
+                width: 90%;
+            }
+
+            @media (max-width: 408px) {
+                width: 85%;
             }
 
             .contact-container {
