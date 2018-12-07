@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import DayPicker from "react-day-picker";
-import "react-day-picker/lib/style.css";
+import React, { Component } from 'react';
+import DayPicker from 'react-day-picker';
 
 class DatePicker extends Component {
   constructor(props) {
@@ -25,7 +24,11 @@ class DatePicker extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}>
         <DayPicker
           selectedDays={this.state.selectedDay}
           onDayClick={this.handleDayClick}

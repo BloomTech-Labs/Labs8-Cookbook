@@ -10,8 +10,13 @@ import Callback from "./Auth/Callback.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // Font Awesome Icons:
-import { faUtensils, faLink, faTrashAlt, faEdit, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-import Signup from "./Components/SubComponents/Signup";
+import {
+  faUtensils,
+  faLink,
+  faTrashAlt,
+  faEdit,
+  faEllipsisV
+} from "@fortawesome/free-solid-svg-icons";
 
 library.add(faUtensils, faLink, faTrashAlt, faEdit, faEllipsisV);
 
@@ -41,7 +46,6 @@ class App extends Component {
           <Route exact path="/" component={LandingPage} />
           <Route path="/home" component={Home} />
           <Route exact path="/callback" component={Callback} />
-          <Route exact path="/signup" component={Signup} />
           <Footer />
         </div>
       );
