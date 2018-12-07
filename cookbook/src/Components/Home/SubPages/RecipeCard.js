@@ -61,11 +61,7 @@ class RecipeCard extends Component {
               <span className="link-text">link</span>
             </a>
             <div className="schedule">
-              {this.props.recipe.events.length ? (
                 <CardSchedule events={this.props.recipe.events} />
-              ) : (
-                <div>"No meal scheduled."</div>
-              )}
             </div>
             <button className="del-button">
               <FontAwesomeIcon
