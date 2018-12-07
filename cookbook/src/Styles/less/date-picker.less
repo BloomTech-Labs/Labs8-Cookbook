@@ -30,9 +30,9 @@
   .DayPicker-Month {
     display: table;
     margin: 0 1em;
-    margin-top: 1em;
     border-spacing: 0;
     border-collapse: collapse;
+    border: 2px @CBred solid;
   
     -webkit-user-select: none;
   
@@ -47,28 +47,15 @@
   }
   
   .DayPicker-NavButton {
-    position: absolute;
-    top: 1em;
-    right: 1.5em;
-    left: auto;
-  
-    display: inline-block;
-    margin-top: 2px;
-    width: 1.25em;
-    height: 1.25em;
-    background-position: center;
-    background-size: 50%;
-    background-repeat: no-repeat;
-    color: #8B9898;
     cursor: pointer;
   }
   
   .DayPicker-NavButton:hover {
-    opacity: 0.8;
+    opacity: 0.1;
   }
   
   .DayPicker-NavButton--prev {
-    margin-right: 50px;
+    padding-left: -100px;
     width: 0; 
     height: 0; 
     border-top: 8px solid @CBred;
@@ -92,17 +79,20 @@
   
   .DayPicker-Caption {
     display: table-caption;
-    margin-bottom: 0.5em;
-    padding: 0 0.5em;
-    text-align: left;
+    text-align: center;
     background: @CBred;
-    color: @CBorange;
-    
+    color: white;
+    height: 30px;
+    width: 200px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   
   .DayPicker-Caption > div {
-    font-weight: bold;
-    font-size: 5.0rem;
+    text-align: center;
+    padding: 4px;
   }
   
   .DayPicker-Weekdays {
@@ -119,7 +109,7 @@
     padding: 0.5em;
     color: #8B9898;
     text-align: center;
-    font-size: 0.875em;
+    font-size: 2.0rem;
   }
   
   .DayPicker-Weekday abbr[title] {
@@ -169,7 +159,7 @@
     background-color: transparent;
     background-image: none;
     box-shadow: none;
-    color: #4A90E2;
+    color: @CBred;
     font-size: 0.875em;
     cursor: pointer;
   }
@@ -177,8 +167,8 @@
   /* Default modifiers */
   
   .DayPicker-Day--today {
-    color: #D0021B;
-    font-weight: 700;
+    color: @CBred;
+    font-weight: bold;
   }
   
   .DayPicker-Day--outside {
@@ -205,12 +195,13 @@
   .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
     position: relative;
   
-    background-color: #4A90E2;
+    background-color: @CBred;
     color: #F0F8FF;
+    font-weight: bold;
   }
   
   .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
-    background-color: #51A0FA;
+    background-color: @CBred;
   }
   
   .DayPicker:not(.DayPicker--interactionDisabled)
