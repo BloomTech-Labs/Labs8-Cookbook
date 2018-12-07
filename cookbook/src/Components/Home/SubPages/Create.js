@@ -5,6 +5,8 @@ import { graphql, compose } from "react-apollo";
 import scraper from "../../../utils/scraper";
 import Buttons from "./Buttons";
 import DatePicker from "../../SubComponents/DatePicker.js";
+import { GET_RECIPES_QUERY } from "./Recipes";
+import { QUERY_RECIPE_EVENT } from "./Calendar";
 
 const CREATE_RECIPE_MUTATION = gql`
   mutation(
@@ -142,7 +144,8 @@ class Create extends Component {
 
       //Execute createRecipe
       const { data } = await this.props.createRecipe({
-        variables: recipeVariables
+        variables: recipeVariables,
+        refetchQueries: [{ query: GET_RECIPES_QUERY }]
       });
       console.log("Recipe created: ", data.createRecipe);
 
@@ -192,12 +195,18 @@ class Create extends Component {
 
         //Execute createEvent
         const eventData = await this.props.createEvent({
-          variables: eventVariables
+          variables: eventVariables,
+          refetchQueries: [
+            { query: QUERY_RECIPE_EVENT },
+            { query: GET_RECIPES_QUERY }
+          ]
         });
         console.log("Event created: ", eventData);
 
-        return eventData;
+        return this.props.history.push("/home/recipes");
       }
+
+      return this.props.history.push("/home/recipes");
     } catch (error) {
       console.log("onsave error: ", error.message);
       return error;
