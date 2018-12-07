@@ -111,9 +111,11 @@ class Create extends Component {
 
   mealButtonHandler = e => {
     e.preventDefault();
-    this.setState({
-      type: e.target.name
-    });
+    if (this.state.type === e.target.name) {
+      this.setState({ type: "" })
+    } else {
+      this.setState({ type: e.target.name });
+    }
   };
 
   findRecipes = () => {
@@ -250,13 +252,12 @@ class Create extends Component {
 
           <div className='schedule'>
 
-            <div className="buttons">
-              <Buttons
-                mealButtonHandler={this.mealButtonHandler}
-                type={this.state.type}
-              />
-            </div>
-            <div className='date-picker-component'>
+            <Buttons
+              mealButtonHandler={this.mealButtonHandler}
+              type={this.state.type}
+            />
+            
+            <div className='create-date-picker'>
               <DatePicker handlePickDate={this.handlePickDate} />
             </div>
 

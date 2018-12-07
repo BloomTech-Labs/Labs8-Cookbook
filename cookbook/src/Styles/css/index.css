@@ -745,18 +745,19 @@ html {
 .create-wrapper .search-and-save .is-searching {
   margin-right: 30px;
   font-family: 'Questrial', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   letter-spacing: 1.5px;
   background: #de6a5a;
   border: 2px #de6a5a solid;
   color: white;
-  height: 40px;
+  height: 30px;
   width: 100%;
   border-radius: 20px;
   padding: 0 20px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  outline: none;
 }
 @media (max-width: 900px) {
   .create-wrapper .search-and-save .is-searching {
@@ -766,24 +767,28 @@ html {
 .create-wrapper .search-and-save .not-searching {
   margin-right: 30px;
   font-family: 'Questrial', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   letter-spacing: 1.5px;
   background: #de6a5a;
   border: 2px #de6a5a solid;
   color: white;
-  height: 40px;
+  height: 30px;
   width: 100%;
   border-radius: 20px;
   padding: 0 20px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  outline: none;
   background: white;
 }
 @media (max-width: 900px) {
   .create-wrapper .search-and-save .not-searching {
     margin: 30px 0 0 0;
   }
+}
+.create-wrapper .search-and-save .not-searching:hover {
+  background: #fed092;
 }
 .create-wrapper .search-and-save ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
@@ -803,14 +808,15 @@ html {
 }
 .create-wrapper .search-and-save button {
   font-family: 'Questrial', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   letter-spacing: 1.5px;
   border: #de6a5a solid 2px;
   border-radius: 20px;
   background: #de6a5a;
   color: white;
-  height: 40px;
+  height: 30px;
   width: 70px;
+  outline: none;
 }
 @media (max-width: 900px) {
   .create-wrapper .search-and-save button {
@@ -850,16 +856,21 @@ html {
 }
 @media (max-width: 600px) {
   .create-wrapper .preview-and-schedule .preview .image-container {
-    height: 150px;
+    height: calc(250px - 25vw);
     width: 100%;
   }
 }
 .create-wrapper .preview-and-schedule .preview .content {
   width: 60%;
   height: 100%;
-  margin: 20px;
+  padding: 20px;
   display: flex;
   flex-flow: column;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .content {
+    width: 100%;
+  }
 }
 .create-wrapper .preview-and-schedule .preview .content .title-container {
   width: 100%;
@@ -873,6 +884,11 @@ html {
   display: inline;
   line-height: 25px;
 }
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .title-container .title {
+    font-size: 1.7rem;
+  }
+}
 .create-wrapper .preview-and-schedule .preview .content .description {
   margin: 40px 0 0;
   font-size: 1.5rem;
@@ -880,16 +896,97 @@ html {
   line-height: 18px;
   overflow: hidden;
 }
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .content .description {
+    margin: 30px 0 0;
+  }
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .description {
+    margin: 20px 0 0;
+    font-size: 1.3rem;
+  }
+}
 .create-wrapper .preview-and-schedule .preview .content .divide {
   width: 100%;
 }
 .create-wrapper .preview-and-schedule .preview .content .divide .line {
   border-top: solid #de6a5a 1px;
-  margin: 40px auto 25px;
+  margin: 40px auto 0;
   width: 15%;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .content .divide .line {
+    margin: 35px auto 0;
+  }
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .divide .line {
+    margin: 30px auto 0;
+  }
 }
 .create-wrapper .preview-and-schedule .preview .content .divide .site {
   font-family: 'Questrial', sans-serif;
+  margin-top: 25px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .divide .site {
+    margin: 20px 0 0;
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .schedule {
+    order: -1;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 350px;
+  flex-flow: wrap;
+  padding: 0 15px 0;
+  margin-top: -20px;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+    margin-top: 0;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-selected {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  margin-top: 20px;
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  margin-top: 20px;
+  color: #de6a5a;
+  background: white;
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected:hover {
+  background: #fed092;
+  font-weight: bold;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker {
+  outline: none;
 }
 .calendar-page-container {
   margin-left: 5px;

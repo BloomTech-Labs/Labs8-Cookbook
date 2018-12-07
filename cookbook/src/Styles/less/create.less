@@ -18,18 +18,19 @@
     .is-searching {
       margin-right: 30px;
       font-family: @secondary-font;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       letter-spacing: 1.5px;
       background: @CBred;
       border: 2px @CBred solid;
       color: white;
-      height: 40px;
+      height: 30px;
       width: 100%;
       border-radius: 20px;
       padding: 0 20px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      outline: none;
 
       @media @tablet {
         margin: 30px 0 0 0;
@@ -39,6 +40,9 @@
     .not-searching {
       .is-searching;
       background: white;
+    }
+    .not-searching:hover {
+      background: @CBorange;
     }
 
     ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -56,14 +60,15 @@
 
     button {
       font-family: @secondary-font;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       letter-spacing: 1.5px;
       border: @CBred solid 2px;
       border-radius: 20px;
       background: @CBred;
       color: white;
-      height: 40px;
+      height: 30px;
       width: 70px;
+      outline: none;
 
       @media @tablet {
         order: -1;
@@ -102,7 +107,7 @@
         background-position: 50% 50%;
 
         @media @phone {
-          height: 150px;
+          height: calc(250px - 25vw);
           width: 100%;
         }
       }
@@ -110,9 +115,13 @@
       .content {
         width: 60%;
         height: 100%;
-        margin: 20px;
+        padding: 20px;
         display: flex;
         flex-flow: column;
+
+        @media @tablet {
+          width: 100%;
+        }
 
         .title-container {
           width: 100%;
@@ -127,6 +136,10 @@
               inset 0 -0.25rem @CBred;
             display: inline;
             line-height: 25px;
+
+            @media @phone {
+              font-size: 1.7rem;
+            }
           }
 
         }
@@ -137,6 +150,15 @@
           font-family: @secondary-font;
           line-height: 18px;
           overflow: hidden;
+
+          @media @tablet {
+            margin: 30px 0 0;
+          }
+
+          @media @phone {
+            margin: 20px 0 0;
+            font-size: 1.3rem;
+          }
         }
 
         .divide {
@@ -144,12 +166,26 @@
 
           .line {
             border-top: solid @CBred 1px;
-            margin: 40px auto 25px;
+            margin: 40px auto 0;
             width: 15%;
+
+            @media @tablet {
+              margin: 35px auto 0;
+            }
+  
+            @media @phone {
+              margin: 30px auto 0;
+            }
           }
     
           .site {
             font-family: @secondary-font;
+            margin-top: 25px;
+
+            @media @phone {
+              margin: 20px 0 0;
+              font-size: 1.3rem;
+            }
           }
         
         }
@@ -158,13 +194,55 @@
       }
     }
 
-    // .schedule {
-    //   width: 100%;
+    .schedule {
 
-    //   .buttons {
+      @media @tablet {
+        order: -1;
+      }
 
-    //   }
-    // }
+      .recipe-buttons {
+        display: flex;
+        justify-content: space-evenly;
+        max-width: 350px;
+        flex-flow: wrap;
+        padding: 0 15px 0;
+        margin-top: -20px;
+
+        @media @tablet {
+          margin-top: 0;
+        }
+
+        .button-selected {
+          font-family: @secondary-font;
+          font-size: 1.5rem;
+          letter-spacing: 1.5px;
+          border: @CBred solid 2px;
+          border-radius: 20px;
+          background: @CBred;
+          color: white;
+          height: 30px;
+          padding: 0 12px;
+          outline: none;
+          margin-top: 20px;
+        }
+
+        .button-not-selected {
+          .button-selected;
+          color: @CBred;
+          background: white;
+        }
+        .button-not-selected:hover {
+          background: @CBorange;
+          font-weight: bold;
+        }
+
+      }
+
+      .create-date-picker {
+        outline: none;
+      }
+
+    }
 
   }
 }
