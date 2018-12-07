@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Logo from '../../designs/Logo/CookBookLogo.svg';
+import { Link } from 'react-router-dom';
 import auth from '../../Auth/Auth.js';
 import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showPhoneNav: false,
-        };
+    static propTypes = {
+        location: PropTypes.object.isRequired,
     }
 
     logout() {
@@ -61,48 +61,22 @@ class Header extends Component {
     }
 
     render() {
+        const { isAuthenticated } = auth;
 
         return (
-
-            <div className='header-nav'>
-
-                <div className='header-container'>
-                    <div className='header'>
-
-                        <img className='logo' src={Logo} alt='logo'/>
-
-                        <p className="title">COOKBOOK</p>
-
-                        <div onClick={this.logout.bind(this)} className='logout'>logout</div>
-
+            <div className='header'>
+                <Link className='link' to='/home'>
+                    <img className='logo' src={Logo} alt='COOKBOOK logo'/>
+                </Link>
+                <span className="title">COOKBOOK</span>
+                {
+                    isAuthenticated() && (
+                    <div className="signout" onClick={this.logout.bind(this)}>
+                        logout
                     </div>
-                </div>
-                
-                <div className='nav'>
-
-                    <div className='phone-nav'>
-                        <div className='links'>
-                            <p onClick={() => this.handlePhoneRedirect('/home/create')} className={this.handlePhoneNavClass('create')}>CREATE</p>
-                            <p onClick={() => this.handlePhoneRedirect('/home/recipes')} className={this.handlePhoneNavClass('recipe')}>RECIPES</p>
-                            <p onClick={() => this.handlePhoneRedirect('/home/calendar')} className={this.handlePhoneNavClass('calendar')}>CALENDAR</p>
-                            <p onClick={() => this.handlePhoneRedirect('/home/dashboard')} className={this.handlePhoneNavClass('dashboard')}>GROCERY LIST</p>
-                            <p onClick={() => this.handlePhoneRedirect('/home/settings')} className={this.handlePhoneNavClass('settings')}>SETTINGS</p>
-                        </div>
-                        <div onClick={() => this.togglePhoneNav()} className={this.handleTogglePhoneNavClass()}>...</div>
-                    </div>
-
-                    <div className='normal-nav'>
-                        <p onClick={() => this.handleRedirect('/home/create')} className={this.handleNormalNavClass('create')}>CREATE</p>
-                        <p onClick={() => this.handleRedirect('/home/recipes')} className={this.handleNormalNavClass('recipe')}>RECIPES</p>
-                        <p onClick={() => this.handleRedirect('/home/calendar')} className={this.handleNormalNavClass('calendar')}>CALENDAR</p>
-                        <p onClick={() => this.handleRedirect('/home/dashboard')} className={this.handleNormalNavClass('dashboard')}>GROCERY LIST</p>
-                        <p onClick={() => this.handleRedirect('/home/settings')} className={this.handleNormalNavClass('settings')}>SETTINGS</p>
-                    </div>
-                    
-                </div>
-
+                    )
+                }
             </div>
-
         );
     }
 }

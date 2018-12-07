@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 //sort the events in ascending order by date
 let sortEvents = (events) => {
@@ -43,61 +43,78 @@ let findSoonestEvent = (sortedEvents) => {
 }
 
 class CardSchedule extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            sortedEvents: null,
-            currentEventIndex: -1
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      sortedEvents: null,
+      currentEventIndex: -1
+    };
+  }
 
-    componentDidMount() {
-        let sortedEvents = sortEvents(this.props.events)
-        this.setState({ sortedEvents });
-        this.setState({ currentEventIndex: findSoonestEvent(sortedEvents) });
-    }
+  componentDidMount() {
+    let sortedEvents = sortEvents(this.props.events);
+    this.setState({ sortedEvents });
+    this.setState({ currentEventIndex: findSoonestEvent(sortedEvents) });
+  }
 
-    handleEventScroll = (amount) => {
-        if (amount > 0 && this.state.currentEventIndex < this.state.sortedEvents.length-1) {
-            this.setState({ currentEventIndex: this.state.currentEventIndex + amount })
-        } else if (amount < 0 && this.state.currentEventIndex > 0) {
-            this.setState({ currentEventIndex: this.state.currentEventIndex + amount })
-        }
-    }
+  handleEventScroll = (amount) => {
+      if (amount > 0 && this.state.currentEventIndex < this.state.sortedEvents.length-1) {
+          this.setState({ currentEventIndex: this.state.currentEventIndex + amount })
+      } else if (amount < 0 && this.state.currentEventIndex > 0) {
+          this.setState({ currentEventIndex: this.state.currentEventIndex + amount })
+      }
+  }
 
-    handleScrollClass = (direction) => {
-        if (this.state.currentEventIndex < 0) return 'scroll-hidden';
-        if (direction === 'right') {
-            if (this.state.currentEventIndex < this.state.sortedEvents.length-1) return 'scroll-right';
-            else return 'scroll-hidden';
-        }
-        if (direction === 'left') {
-            if (this.state.currentEventIndex > 0) return 'scroll-left';
-            else return `scroll-hidden`;
-        }
-    }
+  handleScrollClass = (direction) => {
+      if (this.state.currentEventIndex < 0) return 'scroll-hidden';
+      if (direction === 'right') {
+          if (this.state.currentEventIndex < this.state.sortedEvents.length-1) return 'scroll-right';
+          else return 'scroll-hidden';
+      }
+      if (direction === 'left') {
+          if (this.state.currentEventIndex > 0) return 'scroll-left';
+          else return `scroll-hidden`;
+      }
+  }
 
-    render() {
-        return (
-            <React.Fragment>
+  render() {
+    return (
+      <React.Fragment>
+        <span>scheduled for</span>
 
-                <span>scheduled for</span>
+        <div className="event-scroller">
+          <div
+            className={this.handleScrollClass("left")}
+            onClick={() => this.handleEventScroll(-1)}
+          >
+            &lt;
+          </div>
 
-                <div className='event-scroller'>
-                    <div className={this.handleScrollClass('left')} onClick={() => this.handleEventScroll(-1)}>&lt;</div>
+          <div className="event">
+            <div className="meal">
+              {this.state.currentEventIndex >= 0
+                ? this.state.sortedEvents[this.state.currentEventIndex].mealType
+                : "no events"}
+            </div>
+            <div className="date">
+              {this.state.currentEventIndex >= 0
+                ? new Date(
+                    this.state.sortedEvents[this.state.currentEventIndex].date
+                  ).toLocaleDateString()
+                : "scheduled"}
+            </div>
+          </div>
 
-                    <div className='event'>
-                        <div className="meal">{this.state.currentEventIndex >= 0 ? this.state.sortedEvents[this.state.currentEventIndex].mealType : 'no events'}</div>
-                        <div className="date">{this.state.currentEventIndex >= 0 ? new Date(this.state.sortedEvents[this.state.currentEventIndex].date).toLocaleDateString() : 'scheduled'}</div>
-                    </div>
-
-                    <div className={this.handleScrollClass('right')} onClick={() => this.handleEventScroll(1)}>&gt;</div>
-
-                </div>
-                
-            </React.Fragment>
-        )
-    }
+          <div
+            className={this.handleScrollClass("right")}
+            onClick={() => this.handleEventScroll(1)}
+          >
+            &gt;
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 export default CardSchedule;

@@ -1,7 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+import { GET_RECIPES_QUERY } from './Recipes';
 import CardSchedule from "../../SubComponents/CardSchedule";
+
+const DELETE_RECIPE_MUTATION = gql`
+  mutation($id: ID) {
+    deleteRecipe (
+      where: {
+        id: $id 
+      }
+    )
+    {
+      id
+      title
+    }
+  }
+`;
+
 
 class RecipeCard extends Component {
   render() {
@@ -37,7 +55,10 @@ class RecipeCard extends Component {
               <CardSchedule events={this.props.recipe.events}></CardSchedule>
             </div>
             <button className="del-button">
-              <FontAwesomeIcon icon="trash-alt" className="del-icon" />
+              <FontAwesomeIcon icon="trash-alt" className="del-icon" onClick={async() => {
+                const deletedRecipe= await this.props.deleteRecipe({variables: {id: this.props.recipe.id}})
+                console.log(`Recipe deleted: ${deletedRecipe.title}`)
+              }}/>
               <span className="del-text">Delete</span>
             </button>
           </div>
@@ -47,4 +68,4 @@ class RecipeCard extends Component {
   }
 }
 
-export default RecipeCard;
+export default graphql(DELETE_RECIPE_MUTATION, {name: 'deleteRecipe', options: {refetchQueries: [{queries: GET_RECIPES_QUERY}]}})(RecipeCard);

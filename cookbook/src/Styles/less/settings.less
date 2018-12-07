@@ -1,0 +1,80 @@
+.user-info {
+  max-width: 30%;
+  margin: auto;
+
+  .form-group {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+    padding: 10px 0;
+    line-height: 2;
+    label {
+      width: 100%;
+      margin-right: 30px;
+      text-align: right;
+    }
+  }
+
+  input {
+    padding: 0 10px;
+  }
+
+  #user-email,
+  #user-status {
+    background-color: #eee;
+    opacity: 1;
+  }
+}
+
+.buttons {
+  max-width: 30%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+
+  .settings-btn {
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    color: #fff;
+    width: 100px;
+  }
+
+  .save-btn {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+  }
+  .stripe-btn {
+    background-color: #5bc0de;
+    border-color: #46b8da;
+  }
+  .cancel-btn {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+  }
+}
+
+.success-message {
+  text-align: center;
+  color: green;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+
+.error-message {
+  text-align: center;
+  color: red;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
