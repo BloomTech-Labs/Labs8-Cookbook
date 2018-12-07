@@ -730,7 +730,6 @@ html {
   flex-flow: column;
   align-items: center;
   width: 100%;
-  overflow: hidden;
 }
 .create-wrapper .search-and-save {
   display: flex;
@@ -831,7 +830,9 @@ html {
 .create-wrapper .preview-and-schedule {
   display: flex;
   margin-top: 30px;
+  padding: 0 30px;
   width: 100%;
+  justify-content: space space-around;
 }
 @media (max-width: 900px) {
   .create-wrapper .preview-and-schedule {
@@ -844,7 +845,6 @@ html {
   border: solid #de6a5a 3px;
   border-radius: 30px;
   overflow: hidden;
-  margin: 30px 30px 0;
 }
 @media (max-width: 600px) {
   .create-wrapper .preview-and-schedule .preview {
@@ -900,9 +900,6 @@ html {
 }
 .create-wrapper .preview-and-schedule .preview .content .divide .site {
   font-family: 'Questrial', sans-serif;
-}
-.create-wrapper .preview-and-schedule .schedule {
-  width: 100%;
 }
 .calendar-page-container {
   margin-left: 5px;

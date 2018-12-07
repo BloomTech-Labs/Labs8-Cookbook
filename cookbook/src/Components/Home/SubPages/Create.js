@@ -248,7 +248,7 @@ class Create extends Component {
             />
           )}
 
-          {/* <div className='schedule'>
+          <div className='schedule'>
 
             <div className="buttons">
               <Buttons
@@ -260,7 +260,7 @@ class Create extends Component {
               <DatePicker handlePickDate={this.handlePickDate} />
             </div>
 
-          </div> */}
+          </div>
 
         </div>
 
