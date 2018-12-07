@@ -66,9 +66,8 @@ class CardSchedule extends Component {
     }
 
     handleScrollClass = (direction) => {
-        if (this.state.currentEventIndex < 0) return '';
+        if (this.state.currentEventIndex < 0) return 'scroll-hidden';
         if (direction === 'right') {
-            if (this.state.currentEventIndex < 0) return 'scroll-hidden'
             if (this.state.currentEventIndex < this.state.sortedEvents.length-1) return 'scroll-right';
             else return 'scroll-hidden';
         }
