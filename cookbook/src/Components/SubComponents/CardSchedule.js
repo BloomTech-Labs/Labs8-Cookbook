@@ -39,7 +39,7 @@ let findSoonestEvent = (sortedEvents) => {
         let index = sortedEvents.indexOf(pastEvents[pastEvents.length-1]);
         return index;
     }
-    else return null;
+    else return -1;
 }
 
 class CardSchedule extends Component {
@@ -68,6 +68,7 @@ class CardSchedule extends Component {
     handleScrollClass = (direction) => {
         if (this.state.currentEventIndex < 0) return '';
         if (direction === 'right') {
+            if (this.state.currentEventIndex < 0) return 'scroll-hidden'
             if (this.state.currentEventIndex < this.state.sortedEvents.length-1) return 'scroll-right';
             else return 'scroll-hidden';
         }

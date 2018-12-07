@@ -1295,6 +1295,11 @@ html {
   display: flex;
   margin-top: 30px;
 }
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule {
+    flex-flow: column;
+  }
+}
 .create-wrapper .preview-and-schedule .preview {
   display: flex;
   width: 100%;
@@ -1302,10 +1307,12 @@ html {
   border: solid #de6a5a 3px;
   border-radius: 30px;
   overflow: hidden;
+  margin: 30px 30px 0;
 }
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .create-wrapper .preview-and-schedule .preview {
     flex-flow: column;
+    height: 150%;
   }
 }
 .create-wrapper .preview-and-schedule .preview .image-container {
@@ -1316,7 +1323,7 @@ html {
   background-size: cover;
   background-position: 50% 50%;
 }
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .create-wrapper .preview-and-schedule .preview .image-container {
     height: 150px;
     width: 100%;
