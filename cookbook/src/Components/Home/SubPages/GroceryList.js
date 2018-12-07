@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import DayPicker, { DateUtils } from "react-day-picker";
 import { graphql } from "react-apollo";
 import { GET_RECIPES_QUERY } from "./Recipes";
-import "react-day-picker/lib/style.css";
 import GroceryItem from "../../SubComponents/GroceryItem";
 import * as math from "mathjs";
 import GatedSubscription from "../../SubComponents/GatedSubscription";
@@ -177,6 +176,7 @@ class GroceryList extends Component {
               <button onClick={this.generateList} className='generate'>Generate List</button>
             </p>
             <DayPicker
+              id='grocery-list-calendar'
               numberOfMonths={this.props.numberOfMonths}
               selectedDays={[from, { from, to }]}
               modifiers={modifiers}
