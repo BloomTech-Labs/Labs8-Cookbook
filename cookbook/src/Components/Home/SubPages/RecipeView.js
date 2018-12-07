@@ -81,8 +81,8 @@ class RecipeView extends Component {
     console.log("Data: ", this.props.location.state);
     return (
       <div className="recipe-page">
-        <div className="header">
-          <span className="title">{this.props.location.state.title}</span>
+        <div className="recipe-header">
+          <span className="recipe-title">{this.props.location.state.title}</span>
           <div className="icon-container">
             <a
               className="link"

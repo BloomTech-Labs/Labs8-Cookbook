@@ -475,7 +475,7 @@ body {
   font-family: "verdana";
 }
 .containerLP .lp-content .about-us .about-header {
-  letter-spacing: .3rem;
+  letter-spacing: 0.3rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -521,7 +521,7 @@ body {
 }
 @media (max-width: 900px) {
   .footer-container .footer .main {
-    margin: 20px 20px 0;
+    margin: 20px 0px 0;
   }
 }
 .footer-container .footer .main .brand {
@@ -643,6 +643,16 @@ body {
     align-items: flex-end;
   }
 }
+@media (max-width: 790px) {
+  .footer-container .footer .info {
+    width: 90%;
+  }
+}
+@media (max-width: 408px) {
+  .footer-container .footer .info {
+    width: 85%;
+  }
+}
 .footer-container .footer .info .contact-container {
   width: 100%;
   font-size: 15px;
@@ -700,7 +710,8 @@ body {
 .home-container {
   margin-bottom: 201px;
   margin-top: 40px;
-  width: 1100px;
+  width: 100%;
+  max-width: 1400px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -708,21 +719,6 @@ body {
 @media (max-width: 600px) {
   .home-container {
     margin-top: 90px;
-  }
-}
-@media (max-width: 1200px) {
-  .home-container {
-    width: 900px;
-  }
-}
-@media (max-width: 900px) {
-  .home-container {
-    width: 700px;
-  }
-}
-@media (max-width: 600px) {
-  .home-container {
-    width: 370px;
   }
 }
 .home-container .home-path {
@@ -741,40 +737,267 @@ body {
   margin-bottom: 30px;
 }
 .create-wrapper {
-  display: grid;
-  gap: 10px;
-  grid-template-areas: "content filter";
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: auto;
-}
-.create-wrapper button {
-  width: 20%;
-  padding: 0;
-  margin: 0;
-  height: 3rem;
-}
-.create-wrapper .create-content-wrapper {
-  grid-area: content;
-}
-.create-wrapper .create-content-wrapper input {
-  width: 50%;
-}
-.create-wrapper .create-filter-wrapper {
-  grid-area: filter;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-flow: column;
   align-items: center;
+  width: 100%;
 }
-.create-wrapper .create-filter-wrapper .recipe-btn {
+.create-wrapper .search-and-save {
   display: flex;
-  flex-wrap: row wrap;
+  width: 100%;
+  padding: 0 30px;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save {
+    flex-flow: column;
+    align-items: flex-end;
+  }
+}
+.create-wrapper .search-and-save .is-searching {
+  margin-right: 30px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  background: #de6a5a;
+  border: 2px #de6a5a solid;
+  color: white;
+  height: 30px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  outline: none;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save .is-searching {
+    margin: 30px 0 0 0;
+  }
+}
+.create-wrapper .search-and-save .not-searching {
+  margin-right: 30px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  background: #de6a5a;
+  border: 2px #de6a5a solid;
+  color: white;
+  height: 30px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  outline: none;
+  background: white;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save .not-searching {
+    margin: 30px 0 0 0;
+  }
+}
+.create-wrapper .search-and-save .not-searching:hover {
+  background: #fed092;
+}
+.create-wrapper .search-and-save ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #de6a5a;
+}
+.create-wrapper .search-and-save ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #de6a5a;
+}
+.create-wrapper .search-and-save :-ms-input-placeholder {
+  /* IE 10+ */
+  color: #de6a5a;
+}
+.create-wrapper .search-and-save :-moz-placeholder {
+  /* Firefox 18- */
+  color: #de6a5a;
+}
+.create-wrapper .search-and-save button {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  width: 70px;
+  outline: none;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save button {
+    order: -1;
+  }
+}
+.create-wrapper .preview-and-schedule {
+  display: flex;
+  margin-top: 30px;
+  padding: 0 30px;
+  width: 100%;
+  justify-content: space space-around;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule {
+    flex-flow: column;
+  }
+}
+.create-wrapper .preview-and-schedule .preview {
+  display: flex;
+  width: 100%;
+  border: solid #de6a5a 3px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview {
+    flex-flow: column;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .image-container {
+  width: 40%;
+  text-align: center;
+  overflow: hidden;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .image-container {
+    height: calc(250px - 25vw);
+    width: 100%;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content {
+  width: 60%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .content {
+    width: 100%;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content .title-container {
+  width: 100%;
+}
+.create-wrapper .preview-and-schedule .preview .content .title-container .title {
+  font-family: 'Questrial', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  background-size: 1px 1em;
+  box-shadow: inset 0 0rem white, inset 0 -0.25rem #de6a5a;
+  display: inline;
+  line-height: 25px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .title-container .title {
+    font-size: 1.7rem;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content .description {
+  margin: 40px 0 0;
+  font-size: 1.5rem;
+  font-family: 'Questrial', sans-serif;
+  line-height: 18px;
+  overflow: hidden;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .content .description {
+    margin: 30px 0 0;
+  }
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .description {
+    margin: 20px 0 0;
+    font-size: 1.3rem;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content .divide {
+  width: 100%;
+}
+.create-wrapper .preview-and-schedule .preview .content .divide .line {
+  border-top: solid #de6a5a 1px;
+  margin: 40px auto 0;
+  width: 15%;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .content .divide .line {
+    margin: 35px auto 0;
+  }
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .divide .line {
+    margin: 30px auto 0;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content .divide .site {
+  font-family: 'Questrial', sans-serif;
+  margin-top: 25px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .divide .site {
+    margin: 20px 0 0;
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .schedule {
+    order: -1;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+  display: flex;
   justify-content: space-evenly;
+  max-width: 350px;
+  flex-flow: wrap;
+  padding: 0 15px 0;
+  margin-top: -20px;
 }
-.create-wrapper .create-filter-wrapper .input-calendar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+    margin-top: 0;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-selected {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  margin-top: 20px;
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  margin-top: 20px;
+  color: #de6a5a;
+  background: white;
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected:hover {
+  background: #fed092;
+  font-weight: bold;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker {
+  outline: none;
 }
 .calendar-page-container {
   margin-left: 5px;
@@ -795,19 +1018,19 @@ body {
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar {
-    font-size: 1.0rem;
+    font-size: 1rem;
     height: 380px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
-    font-size: .8rem;
+    font-size: 0.8rem;
     width: 40px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
-    font-size: 1.0rem;
+    font-size: 1rem;
     padding: 0;
   }
 }
@@ -822,7 +1045,7 @@ body {
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .search-box-wrapper {
-    font-size: 1.0rem;
+    font-size: 1rem;
     width: 40px;
   }
 }
@@ -847,109 +1070,403 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding-top: 25px;
+  color: #343e5a;
+  font-weight: 600;
 }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .grocery-list-page {
+    flex-wrap: wrap-reverse;
     justify-content: center;
   }
 }
+@media (max-width: 600px) {
+  .grocery-list-page {
+    padding-top: 0;
+  }
+}
 .grocery-list-page .gen-list-container {
-  width: 580px;
+  width: 700px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 20px;
+  position: relative;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .gen-list-container {
-    margin-left: 5px;
-    width: 420px;
+    width: 550px;
   }
 }
 @media (max-width: 900px) {
   .grocery-list-page .gen-list-container {
+    margin-left: 0;
+    width: 700px;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container {
+    width: 400px;
+  }
+}
+.grocery-list-page .gen-list-container .reset-gen-buttons {
+  width: 100%;
+  line-height: 2.4rem;
+  margin-left: 50px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons {
+    margin-left: 20px;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons {
+    margin-left: 40px;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons {
+    margin-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons .text {
     width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+.grocery-list-page .gen-list-container .reset-gen-buttons .reset {
+  background-color: #343e5a;
+  color: #fed092;
+  position: absolute;
+  top: 12px;
+  left: 450px;
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+  border-radius: 15px;
+  padding: 2px 15px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons .reset {
+    left: 340px;
+    line-height: 2rem;
+    font-size: 1.4rem;
+    top: 15px;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons .reset {
+    left: 450px;
+    line-height: 2.4rem;
+    font-size: 1.6rem;
+    top: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons .reset {
+    position: static;
+    margin-right: 8px;
+  }
+}
+.grocery-list-page .gen-list-container .reset-gen-buttons .generate {
+  background-color: #fed092;
+  color: #343e5a;
+  position: absolute;
+  top: 12px;
+  left: 530px;
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+  border-radius: 15px;
+  padding: 2px 15px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons .generate {
+    left: 420px;
+    line-height: 2rem;
+    font-size: 1.4rem;
+    top: 15px;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons .generate {
+    left: 530px;
+    line-height: 2.4rem;
+    font-size: 1.6rem;
+    top: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons .generate {
+    position: static;
+    margin-left: 8px;
   }
 }
 .grocery-list-page .gen-list-container .DayPicker {
   width: 100%;
   margin-bottom: 20px;
 }
-.grocery-list-page .gen-list-container .DayPicker .DayPicker-Caption {
-  text-align: center;
-}
-.grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
-  width: 100%;
-  height: 300px;
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar {
+  position: relative;
+  width: 283px;
+  top: 10px;
 }
 @media (max-width: 1200px) {
-  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
-    height: 280px;
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar {
+    width: 215px;
+    top: 11px;
   }
 }
 @media (max-width: 900px) {
-  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
-    height: 300px;
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar {
+    width: 283px;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar {
+    width: 143px;
+    top: 7px;
+  }
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
+  margin-top: 10px;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+  left: 445px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+    left: 365px;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+    left: 445px;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+    left: 285px;
+  }
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month {
+  width: 100%;
+  height: 500px;
+  border-radius: 25px;
+  font-size: 1.8rem;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month {
+    height: 400px;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month {
+    height: 450px;
     width: 90%;
   }
 }
 @media (max-width: 600px) {
-  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Month {
-    height: 240px;
-    width: 80%;
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month {
+    height: 300px;
+    width: 370px;
+    font-size: 1.4rem;
   }
 }
-.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-  background-color: #f0f8ff !important;
-  color: #4a90e2;
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+  text-align: center;
+  border-radius: 25px;
+  background-color: #343e5a;
+  color: #fed092;
+  font-size: 2rem;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
-.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day {
+@media (max-width: 600px) {
+  .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+    font-size: 1.8rem;
+  }
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays {
+  border-top: 1px solid #343e5a;
+  border-bottom: 1px solid #343e5a;
+  background-color: #f5e9df;
+  color: #343e5a;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
   border-radius: 0 !important;
 }
-.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day--start {
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: #fed092 !important;
+  color: white;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--start {
   border-top-left-radius: 50% !important;
   border-bottom-left-radius: 50% !important;
+  background-color: #343e5a;
+  color: #fed092;
 }
-.grocery-list-page .gen-list-container .DayPicker .DayPicker-Day--end {
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--end {
   border-top-right-radius: 50% !important;
   border-bottom-right-radius: 50% !important;
+  background-color: #343e5a;
+  color: #fed092;
 }
 .grocery-list-page .list {
-  border: 1px solid black;
-  width: 330px;
-  padding: 5px;
+  border: 1px solid #343e5a;
+  border-radius: 25px;
+  background-color: #f5e9df;
+  width: 350px;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .list {
-    width: 250px;
+    width: 330px;
+    font-size: 1.4rem;
   }
 }
 @media (max-width: 900px) {
   .grocery-list-page .list {
-    width: 100%;
+    width: 630px;
+    font-size: 1.6rem;
   }
 }
 @media (max-width: 600px) {
   .grocery-list-page .list {
-    width: 90%;
+    width: 350px;
+    font-size: 1.2rem;
   }
 }
 .grocery-list-page .list .list-header {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
+  padding: 8px;
+  text-align: center;
+  border-top-left-radius: 23px;
+  border-top-right-radius: 23px;
+  background-color: #343e5a;
+  color: #fed092;
+  margin-bottom: 15px;
+}
+.grocery-list-page .list .meals-header {
+  font-size: 1.8rem;
+  margin-left: 82px;
+  letter-spacing: 0.3rem;
+  font-weight: bold;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .list .meals-header {
+    margin-left: 80px;
+    font-size: 1.7rem;
+    letter-spacing: 0.2rem;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .list .meals-header {
+    margin-left: 230px;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .list .meals-header {
+    margin-left: 95px;
+    font-size: 1.6rem;
+  }
+}
+.grocery-list-page .list .scheduled-meals-container {
+  margin: 10px 12px;
+  margin-bottom: 16px;
+}
+.grocery-list-page .list .scheduled-meals-container .scheduled-meals {
+  padding: 3px 0;
+}
+.grocery-list-page .list .scheduled-meals-container .scheduled-meals .icon {
+  color: #bcc9d2;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.grocery-list-page .list .grocery-header {
+  font-size: 1.8rem;
+  margin-left: 105px;
+  letter-spacing: 0.3rem;
+  font-weight: bold;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .list .grocery-header {
+    margin-left: 100px;
+    font-size: 1.7rem;
+    letter-spacing: 0.2rem;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .list .grocery-header {
+    margin-left: 240px;
+    letter-spacing: 0.3rem;
+  }
+}
+@media (max-width: 600px) {
+  .grocery-list-page .list .grocery-header {
+    margin-left: 115px;
+    font-size: 1.6rem;
+    letter-spacing: 0.2rem;
+  }
 }
 .grocery-list-page .list .item-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 11px 0 15px;
+  padding-top: 5px;
 }
-.grocery-list-page .list .list-item {
+.grocery-list-page .list .no-list-text {
+  padding: 12px 10px;
+  padding-left: 15px;
+  line-height: 2.2rem;
+}
+.grocery-list-page .list .no-list-text .link {
+  color: #343e5a;
+  text-shadow: 2px 1px white;
   cursor: pointer;
-  margin: 3px 0;
 }
-.grocery-list-page .list .completed {
+.list-item {
+  cursor: pointer;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: flex;
+  line-height: 2.2rem;
+}
+.list-item .checkbox-container {
+  width: 20px;
+  margin-right: 10px;
+}
+.list-item .item-text {
+  width: 290px;
+  font-size: 1.3rem;
+}
+@media (max-width: 1200px) {
+  .list-item .item-text {
+    width: 270px;
+  }
+}
+@media (max-width: 900px) {
+  .list-item .item-text {
+    width: 580px;
+  }
+}
+@media (max-width: 600px) {
+  .list-item .item-text {
+    width: 310px;
+  }
+}
+.completed {
   order: 1;
-  color: #d4d4d4;
-  background: #555454;
+  background: #fed092;
+}
+.list-item:not(.completed) {
+  order: 0;
+  background-color: #f5e9df;
 }
 .recipesContainer {
   display: flex;
@@ -1038,7 +1555,7 @@ body {
   width: 36px;
 }
 .content-container .card-bottom .link-container .link-text {
-  font-size: .9rem;
+  font-size: 0.9rem;
   width: 30px;
   text-align: center;
 }
@@ -1125,7 +1642,7 @@ body {
   width: 100%;
 }
 .content-container .card-bottom .del-button .del-text {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 .recipe-page {
   display: flex;
@@ -1142,7 +1659,7 @@ body {
     justify-content: center;
   }
 }
-.recipe-page .header {
+.recipe-page .recipe-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -1150,45 +1667,41 @@ body {
   width: 100%;
   margin-top: 20px;
   font-weight: bold;
-  font-size: 2.8rem;
-}
-@media (max-width: 900px) {
-  .recipe-page .header {
-    font-size: 2.4rem;
-  }
+  font-size: 2.4rem;
+  letter-spacing: 0.2rem;
 }
 @media (max-width: 600px) {
-  .recipe-page .header {
+  .recipe-page .recipe-header {
     flex-wrap: wrap-reverse;
     margin-top: 15px;
   }
 }
-.recipe-page .header .title {
+.recipe-page .recipe-header .recipe-title {
   width: 80%;
 }
 @media (max-width: 600px) {
-  .recipe-page .header .title {
+  .recipe-page .recipe-header .recipe-title {
     width: 100%;
   }
 }
-.recipe-page .header .icon-container {
+.recipe-page .recipe-header .icon-container {
   margin-right: 10px;
   cursor: pointer;
 }
 @media (max-width: 600px) {
-  .recipe-page .header .icon-container {
+  .recipe-page .recipe-header .icon-container {
     width: 100%;
     text-align: right;
     margin-bottom: 10px;
     font-size: 2rem;
   }
 }
-.recipe-page .header .icon-container .link {
+.recipe-page .recipe-header .icon-container .link {
   margin-right: 15px;
   color: #343e5a;
 }
 @media (max-width: 600px) {
-  .recipe-page .header .icon-container .link {
+  .recipe-page .recipe-header .icon-container .link {
     margin-right: 10px;
   }
 }
@@ -1396,7 +1909,7 @@ body {
   font-size: 2.6rem;
   margin-top: 10px;
   margin-bottom: 15px;
-  margin-left: 30px;
+  margin-left: 35px;
   position: absolute;
   top: -30px;
 }
@@ -1412,19 +1925,25 @@ body {
 .recipe-page .left-container .ingredients .ingredient .qty {
   text-align: right;
   margin-right: 8px;
+  margin-left: 15px;
   width: 40px;
 }
 .recipe-page .left-container .ingredients .ingredient .name {
-  width: 420px;
+  width: 405px;
 }
 @media (max-width: 1200px) {
   .recipe-page .left-container .ingredients .ingredient .name {
-    width: 360px;
+    width: 310px;
   }
 }
 @media (max-width: 900px) {
   .recipe-page .left-container .ingredients .ingredient .name {
-    width: 280px;
+    width: 240px;
+  }
+}
+@media (max-width: 600px) {
+  .recipe-page .left-container .ingredients .ingredient .name {
+    width: 235px;
   }
 }
 .recipe-page .right-container {
@@ -1521,6 +2040,184 @@ body {
 }
 .recipe-page .right-container .instructions .instruction .not-checked {
   background-color: #343e5a;
+}
+/* DayPicker styles */
+.DayPicker {
+  display: inline-block;
+  font-size: 1rem;
+}
+.DayPicker-wrapper {
+  position: relative;
+  flex-direction: row;
+  padding-bottom: 1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.DayPicker-Months {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.DayPicker-Month {
+  display: table;
+  margin: 0 1em;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 2px #de6a5a solid;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.DayPicker-NavButton {
+  cursor: pointer;
+}
+.DayPicker-NavButton:hover {
+  opacity: 0.1;
+}
+.DayPicker-NavButton--prev {
+  padding-left: -100px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid #de6a5a;
+  border-bottom: 8px solid #de6a5a;
+  border-right: 8px solid #fed092;
+  border-left: 8px solid #de6a5a;
+}
+.DayPicker-NavButton--next {
+  width: 0;
+  height: 0;
+  border-top: 8px solid #de6a5a;
+  border-bottom: 8px solid #de6a5a;
+  border-left: 8px solid #fed092;
+  border-right: 8px solid #de6a5a;
+}
+.DayPicker-NavButton--interactionDisabled {
+  display: none;
+}
+.DayPicker-Caption {
+  display: table-caption;
+  text-align: center;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  width: 200px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.DayPicker-Caption > div {
+  text-align: center;
+  padding: 4px;
+}
+.DayPicker-Weekdays {
+  display: table-header-group;
+  margin-top: 1em;
+}
+.DayPicker-WeekdaysRow {
+  display: table-row;
+}
+.DayPicker-Weekday {
+  display: table-cell;
+  padding: 0.5em;
+  color: #8B9898;
+  text-align: center;
+  font-size: 2rem;
+}
+.DayPicker-Weekday abbr[title] {
+  border-bottom: none;
+  text-decoration: none;
+}
+.DayPicker-Body {
+  display: table-row-group;
+}
+.DayPicker-Week {
+  display: table-row;
+}
+.DayPicker-Day {
+  display: table-cell;
+  padding: 0.5em;
+  border-radius: 50%;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+}
+.DayPicker-WeekNumber {
+  display: table-cell;
+  padding: 0.5em;
+  min-width: 1em;
+  border-right: 1px solid #EAECEC;
+  color: #8B9898;
+  vertical-align: middle;
+  text-align: right;
+  font-size: 0.75em;
+  cursor: pointer;
+}
+.DayPicker--interactionDisabled .DayPicker-Day {
+  cursor: default;
+}
+.DayPicker-Footer {
+  padding-top: 0.5em;
+}
+.DayPicker-TodayButton {
+  border: none;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  color: #de6a5a;
+  font-size: 0.875em;
+  cursor: pointer;
+}
+/* Default modifiers */
+.DayPicker-Day--today {
+  color: #de6a5a;
+  font-weight: bold;
+}
+.DayPicker-Day--outside {
+  color: #8B9898;
+  cursor: default;
+}
+.DayPicker-Day--disabled {
+  color: #DCE0E0;
+  cursor: default;
+  /* background-color: #eff1f1; */
+}
+/* Example modifiers */
+.DayPicker-Day--sunday {
+  background-color: #F7F8F8;
+}
+.DayPicker-Day--sunday:not(.DayPicker-Day--today) {
+  color: #DCE0E0;
+}
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  position: relative;
+  background-color: #de6a5a;
+  color: #F0F8FF;
+  font-weight: bold;
+}
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
+  background-color: #de6a5a;
+}
+.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  background-color: #F0F8FF;
+}
+/* DayPickerInput */
+.DayPickerInput {
+  display: inline-block;
+}
+.DayPickerInput-OverlayWrapper {
+  position: relative;
+}
+.DayPickerInput-Overlay {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 .user-info {
   max-width: 30%;

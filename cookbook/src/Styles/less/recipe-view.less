@@ -11,7 +11,7 @@
         justify-content: center;
     }
 
-    .header {
+    .recipe-header {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -19,16 +19,14 @@
         width: 100%;
         margin-top: 20px;
         font-weight: bold;
-        font-size: 2.8rem;
-        @media @tablet {
-            font-size: 2.4rem;
-        }
+        font-size: 2.4rem;
+        letter-spacing: .2rem;
         @media @phone {
             flex-wrap: wrap-reverse;
             margin-top: 15px;
         }
 
-        .title {
+        .recipe-title {
             width: 80%;
             @media @phone {
                 width: 100%;
@@ -229,10 +227,6 @@
             position: relative;
             border: 1px solid @CBblue;
             border-radius: 25px;
-            @media @desktop {
-            }
-            @media @tablet {
-            }
             @media @phone {
                 font-size: 1.4rem;
             }
@@ -244,7 +238,7 @@
                 font-size: 2.6rem;
                 margin-top: 10px;
                 margin-bottom: 15px;
-                margin-left: 30px;
+                margin-left: 35px;
                 position: absolute;
                 top: -30px;
                 @media @phone {
@@ -259,19 +253,20 @@
                 .qty {
                     text-align: right;
                     margin-right: 8px;
+                    margin-left: 15px;
                     width: 40px;
                 }
 
                 .name {
-                    width: 420px;
+                    width: 405px;
                     @media @desktop {
-                        width: 360px;
+                        width: 310px;
                     }
                     @media @tablet {
-                        width: 280px;
+                        width: 240px;
                     }
                     @media @phone {
-        
+                        width: 235px;
                     }
                 }
             }

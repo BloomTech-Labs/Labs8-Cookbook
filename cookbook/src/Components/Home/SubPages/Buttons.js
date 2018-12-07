@@ -10,36 +10,44 @@ class Buttons extends Component {
     })
   };
 
+  handleButtonClass = (button) => {
+    if (this.props.type === button) return 'button-selected'
+    return 'button-not-selected'
+  }
+
   render() {
     return (
-      <div className="recipe-inputs">
-        <div className="recipe-buttons">
-          <button 
-            onClick={this.props.mealButtonHandler}
-            name="breakfast">
-            {this.props.type === "breakfast" ? 'Selected' : 'Breakfast'}
-          </button>
-          <button
-            onClick={this.props.mealButtonHandler}
-            name="lunch">
-            {this.props.type === "lunch" ? 'Selected' : 'Lunch'}
-          </button>
-          <button
-            onClick={this.props.mealButtonHandler}
-            name="dinner">
-            {this.props.type === "dinner" ? 'Selected' : 'Dinner'}
-          </button>
-          <button 
-            onClick={this.props.mealButtonHandler}
-            name="snack">
-            {this.props.type === "snack" ? 'Selected' : 'Snack'}
-          </button>
-          <button 
-            onClick={this.props.mealButtonHandler}
-            name="dessert">
-            {this.props.type === "dessert" ? 'Selected' : 'Dessert'}
-          </button>
-        </div>
+      <div className="recipe-buttons">
+        <button 
+          className={this.handleButtonClass('breakfast')}
+          onClick={this.props.mealButtonHandler}
+          name="breakfast">
+          breakfast
+        </button>
+        <button
+          className={this.handleButtonClass('lunch')}
+          onClick={this.props.mealButtonHandler}
+          name="lunch">
+          lunch
+        </button>
+        <button
+          className={this.handleButtonClass('dinner')}
+          onClick={this.props.mealButtonHandler}
+          name="dinner">
+          dinner
+        </button>
+        <button 
+          className={this.handleButtonClass('snack')}
+          onClick={this.props.mealButtonHandler}
+          name="snack">
+          snack
+        </button>
+        <button 
+          className={this.handleButtonClass('dessert')}
+          onClick={this.props.mealButtonHandler}
+          name="dessert">
+          dessert
+        </button>
       </div>
     )
   }

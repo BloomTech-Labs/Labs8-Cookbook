@@ -3,9 +3,12 @@ import DayPicker, { DateUtils } from "react-day-picker";
 import { graphql } from "react-apollo";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import "react-day-picker/lib/style.css";
-import GroceryItem from "./GroceryItem";
+import GroceryItem from "../../SubComponents/GroceryItem";
 import * as math from "mathjs";
 import GatedSubscription from "../../SubComponents/GatedSubscription";
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 class GroceryList extends Component {
   static defaultProps = {
@@ -16,7 +19,10 @@ class GroceryList extends Component {
     this.state = {
       from: undefined,
       to: undefined,
-      groceryList: []
+      groceryList: [],
+      groceryListTo: '',
+      groceryListFrom: '',
+      scheduledMeals: []
     };
   }
 
@@ -26,6 +32,7 @@ class GroceryList extends Component {
       to: undefined
     };
   }
+
 
   handleDayClick = (day, { disabled }) => {
     if (disabled) {
@@ -51,6 +58,11 @@ class GroceryList extends Component {
     if (this.props.data.loading) {
       return <p>Loading...</p>;
     }
+
+
+    //temporaryholder for scheduled recipes
+    let recipeNames = [];
+
     if (this.props.data.recipes && this.props.data.recipes.length) {
       const ingredients = [];
       // loop through all of the user's recipes
@@ -77,6 +89,8 @@ class GroceryList extends Component {
                 ingredients[ingredient.name] = ingredient.quantity;
               }
             });
+            // adds each scheduled recipe that meets criteria into an array
+            recipeNames.push(recipe);
           }
         })
       );
@@ -91,13 +105,20 @@ class GroceryList extends Component {
       });
 
       this.setState({ groceryList: ingredient_list });
+      // set state to be used for grocery list display date rage
+      this.setState({groceryListTo: this.state.to, groceryListFrom: this.state.from});
+      //add schedules recipes to state
+      this.setState({scheduledMeals: recipeNames});
+
     }
     return null;
   };
 
   render() {
+
     const { from, to } = this.state;
     const modifiers = { start: from, end: to };
+    // maps through each item in the grovcery list & error checking if GL has no values
     const grocery_list = this.state.groceryList.length ? (
       <div className="item-list">
         {this.state.groceryList.map((i, idx) => (
@@ -109,27 +130,52 @@ class GroceryList extends Component {
           />
         ))}
       </div>
+    ) : <div className='no-list-text'>Oh no! It looks like there are no meals scheduled for these dates. Please refer to your <Link className='link' to='/home/calendar'>calendar</Link> if you would like to reschedule any of your current meals, or check out your <Link className='link' to='/home/recipes'>recipe database</Link> to add more meals to your schedule.</div>;
+    // displays text in header if no grocery list has been generated yet
+    const groceryDateRange = this.state.groceryListTo ? (
+      <div>{this.state.groceryListFrom.toLocaleDateString()} - {this.state.groceryListTo.toLocaleDateString()}</div>
+      ) : <div>No grocery list generated yet.</div>
+    //Maps through scheduled recipes for grocery list.
+    const scheduledMeals = this.state.scheduledMeals.length ? (
+      <div className='scheduled-meals-container'>
+        {this.state.scheduledMeals.map(meal => (
+          <div className='scheduled-meals'>
+            <span className='title'>{meal.title}</span>
+            <a href={"" + meal.url} target="_blank" rel="noopener noreferrer" className='link'><FontAwesomeIcon icon='link' className='icon'/></a>
+          </div>
+        ))}
+      </div>
     ) : null;
+    // shows scheduled meals header if there are schedules meals
+    const schedMealsHeader = this.state.scheduledMeals.length ? (
+      <span className='meals-header'>Scheduled Meals:</span>
+    ): null;
+    // shows grocery list items header if there are items in the list
+    const groceryListHeader = this.state.groceryList.length ? (
+      <span className='grocery-header'>Grocery List:</span>
+    ): null
 
     return (
       <GatedSubscription>
         <div className="grocery-list-page">
           <div className="gen-list-container">
-            <p>
-              {!from && !to && "Please select the first day."}
-              {from && !to && "Please select the last day."}
-              {from &&
-                to &&
-                `Selected from ${from.toLocaleDateString()} to
-                      ${to.toLocaleDateString()}`}{" "}
+            <p className='reset-gen-buttons'>
+              <span className='text'>
+                {!from && !to && "Please select the first day."}
+                {from && !to && "Please select the last day."}
+                {from &&
+                  to &&
+                  `Schedule for ${from.toLocaleDateString()} to
+                        ${to.toLocaleDateString()}`}{" "}
+              </span>
               {from &&
                 to && (
-                  <button className="link" onClick={this.handleResetClick}>
+                  <button className="reset" onClick={this.handleResetClick}>
                     Reset
                   </button>
-                )}
+              )}
+              <button onClick={this.generateList} className='generate'>Generate List</button>
             </p>
-
             <DayPicker
               numberOfMonths={this.props.numberOfMonths}
               selectedDays={[from, { from, to }]}
@@ -137,18 +183,17 @@ class GroceryList extends Component {
               onDayClick={this.handleDayClick}
               disabledDays={{ before: new Date() }}
             />
-
-            <button onClick={this.generateList}>Generate List</button>
           </div>
-
           <div className="list">
             <div className="list-header">
-              Grocery List:{" "}
-              {from &&
-                to &&
-                `${from.toLocaleDateString()} to ${to.toLocaleDateString()}`}{" "}
+              {groceryDateRange}
             </div>
-            {grocery_list}
+            <div className='scroll-container'>
+              {schedMealsHeader}
+              {scheduledMeals}
+              {groceryListHeader}
+              {grocery_list}
+            </div>
           </div>
         </div>
       </GatedSubscription>
