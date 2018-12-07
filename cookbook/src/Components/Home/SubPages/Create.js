@@ -248,13 +248,19 @@ class Create extends Component {
             />
           )}
 
-          <div className="buttons">
-            <Buttons
-              mealButtonHandler={this.mealButtonHandler}
-              type={this.state.type}
-            />
-          </div>
-          <DatePicker handlePickDate={this.handlePickDate} />
+          {/* <div className='schedule'>
+
+            <div className="buttons">
+              <Buttons
+                mealButtonHandler={this.mealButtonHandler}
+                type={this.state.type}
+              />
+            </div>
+            <div className='date-picker-component'>
+              <DatePicker handlePickDate={this.handlePickDate} />
+            </div>
+
+          </div> */}
 
         </div>
 

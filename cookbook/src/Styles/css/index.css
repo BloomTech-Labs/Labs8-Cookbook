@@ -1174,7 +1174,8 @@ html {
 }
 .home-container {
   margin-top: 40px;
-  width: 1100px;
+  width: 100%;
+  max-width: 1400px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -1204,6 +1205,7 @@ html {
   flex-flow: column;
   align-items: center;
   width: 100%;
+  overflow: hidden;
 }
 .create-wrapper .search-and-save {
   display: flex;
@@ -1304,6 +1306,7 @@ html {
 .create-wrapper .preview-and-schedule {
   display: flex;
   margin-top: 30px;
+  width: 100%;
 }
 @media (max-width: 900px) {
   .create-wrapper .preview-and-schedule {
@@ -1313,7 +1316,6 @@ html {
 .create-wrapper .preview-and-schedule .preview {
   display: flex;
   width: 100%;
-  max-width: 600px;
   border: solid #de6a5a 3px;
   border-radius: 30px;
   overflow: hidden;
@@ -1322,12 +1324,10 @@ html {
 @media (max-width: 600px) {
   .create-wrapper .preview-and-schedule .preview {
     flex-flow: column;
-    height: 150%;
   }
 }
 .create-wrapper .preview-and-schedule .preview .image-container {
   width: 40%;
-  height: 300px;
   text-align: center;
   overflow: hidden;
   background-size: cover;
@@ -1340,12 +1340,16 @@ html {
   }
 }
 .create-wrapper .preview-and-schedule .preview .content {
+  width: 60%;
+  height: 100%;
   margin: 20px;
-  position: relative;
   display: flex;
   flex-flow: column;
 }
-.create-wrapper .preview-and-schedule .preview .content .title {
+.create-wrapper .preview-and-schedule .preview .content .title-container {
+  width: 100%;
+}
+.create-wrapper .preview-and-schedule .preview .content .title-container .title {
   font-family: 'Questrial', sans-serif;
   font-weight: bold;
   font-size: 2rem;
@@ -1359,21 +1363,21 @@ html {
   font-size: 1.5rem;
   font-family: 'Questrial', sans-serif;
   line-height: 18px;
-  max-height: 90px;
   overflow: hidden;
 }
 .create-wrapper .preview-and-schedule .preview .content .divide {
-  position: absolute;
-  bottom: 10px;
   width: 100%;
 }
 .create-wrapper .preview-and-schedule .preview .content .divide .line {
   border-top: solid #de6a5a 1px;
-  margin: 0 auto 25px;
+  margin: 40px auto 25px;
   width: 15%;
 }
 .create-wrapper .preview-and-schedule .preview .content .divide .site {
   font-family: 'Questrial', sans-serif;
+}
+.create-wrapper .preview-and-schedule .schedule {
+  width: 100%;
 }
 .calendar-page {
   margin-left: 5px;

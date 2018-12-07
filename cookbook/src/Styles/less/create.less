@@ -3,6 +3,7 @@
   flex-flow: column;
   align-items: center;
   width: 100%;
+  overflow: hidden;
 
   .search-and-save {
     display: flex;
@@ -77,6 +78,7 @@
   .preview-and-schedule {
     display: flex;
     margin-top: 30px;
+    width: 100%;
 
     @media @tablet {
       flex-flow: column;
@@ -85,7 +87,6 @@
     .preview {
       display: flex;
       width: 100%;
-      max-width: 600px;
       border: solid @CBred 3px;
       border-radius: 30px;
       overflow: hidden;
@@ -93,12 +94,10 @@
 
       @media @phone{
         flex-flow: column;
-        height: 150%;
       }
 
       .image-container {
         width: 40%;
-        height: 300px;
         text-align: center;
         overflow: hidden;
 
@@ -109,33 +108,30 @@
           height: 150px;
           width: 100%;
         }
-
-        // .image {
-        //   // float: right;
-        //   height: 100%;
-        //   // margin-right: -50%;
-        //   position: relative;
-        //   left: 50%;
-        //   transform: translate(-50%, 0);
-        // }
       }
 
       .content {
+        width: 60%;
+        height: 100%;
         margin: 20px;
-        position: relative;
         display: flex;
         flex-flow: column;
 
-        .title {
-          font-family: @secondary-font;
-          font-weight: bold;
-          font-size: 2rem;
-          background-size: 1px 1em;
-          box-shadow:
-            inset 0 0rem white,
-            inset 0 -0.25rem @CBred;
-          display: inline;
-          line-height: 25px;
+        .title-container {
+          width: 100%;
+
+          .title {
+            font-family: @secondary-font;
+            font-weight: bold;
+            font-size: 2rem;
+            background-size: 1px 1em;
+            box-shadow:
+              inset 0 0rem white,
+              inset 0 -0.25rem @CBred;
+            display: inline;
+            line-height: 25px;
+          }
+
         }
   
         .description {
@@ -143,18 +139,15 @@
           font-size: 1.5rem;
           font-family: @secondary-font;
           line-height: 18px;
-          max-height: 90px;
           overflow: hidden;
         }
 
         .divide {
-          position: absolute;
-          bottom: 10px;
           width: 100%;
 
           .line {
             border-top: solid @CBred 1px;
-            margin: 0 auto 25px;
+            margin: 40px auto 25px;
             width: 15%;
           }
     
@@ -167,5 +160,14 @@
 
       }
     }
+
+    .schedule {
+      width: 100%;
+
+      .buttons {
+
+      }
+    }
+
   }
 }
