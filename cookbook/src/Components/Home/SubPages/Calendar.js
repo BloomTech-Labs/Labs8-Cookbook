@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import moment from "moment";
 import BigCalendar from "react-big-calendar";
 import gql from "graphql-tag";
-import { Query, graphql } from "react-apollo";
+import { Query, graphql, compose } from "react-apollo";
 import Modal from "../../SubComponents/Modal";
 import DatePicker from "../../SubComponents/DatePicker.js";
 import Buttons from "./Buttons";
-
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const propTypes = {};
@@ -27,6 +26,20 @@ const QUERY_RECIPE_EVENT = gql`
       id
       date
       mealType
+      recipe {
+        id
+        title
+      }
+    }
+  }
+`;
+
+const CREATE_EVENT_MUTATION = gql`
+  mutation($date: String!, $mealType: String!, $recipe: String!) {
+    createEvent(date: $date, mealType: $mealType, recipe: $recipe) {
+      id
+      mealType
+      date
       recipe {
         id
         title
@@ -94,12 +107,67 @@ class RecipeCalendar extends Component {
       }
   };
 
+  getDates = () => {
+    let dates = [];
+    for (let i = 7; i >= 2; i--) {
+      dates.push(
+        new Date(
+          moment()
+            .startOf("week")
+            .subtract(i, "days")
+            .startOf("day")
+        )
+      );
+    }
+    const lastSat = new Date(
+      moment()
+        .endOf("week")
+        .subtract(7, "days")
+        .endOf("day")
+    );
+    dates.push(lastSat);
+    return dates;
+  };
+
+  duplicateMeals = searchedEvents => {
+    try {
+      //Get dates from last week
+      const lastWeekDates = this.getDates();
+      const from = lastWeekDates[0];
+      const to = lastWeekDates[lastWeekDates.length - 1];
+
+      const lastWeekEvents = searchedEvents.filter(
+        event => new Date(event.date) >= from && new Date(event.date) <= to
+      );
+
+      lastWeekEvents.forEach(async event => {
+        const eventVariables = {
+          mealType: event.mealType,
+          date: moment(event.date)
+            .add(7, "d")
+            .toISOString(),
+          recipe: event.recipe.id
+        };
+
+        const eventData = await this.props.createEvent({
+          variables: eventVariables,
+          refetchQueries: [{ query: QUERY_RECIPE_EVENT }]
+        });
+        console.log("Events created: ", eventData);
+      });
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
+  };
+
   render() {
     return (
       <Query query={QUERY_RECIPE_EVENT}>
         {({ loading, error, data }) => {
           if (loading) return <div>Fetching</div>;
           if (error) return <div>Error</div>;
+
           // filter function for search
           let searchedEvents = data.events.filter(event => {
             return (
@@ -108,6 +176,7 @@ class RecipeCalendar extends Component {
                 .indexOf(this.state.search.toLowerCase()) !== -1
             );
           });
+
           // mapping out data to be rendered to screen
           const events = searchedEvents.map(event => {
             return {
@@ -135,6 +204,9 @@ class RecipeCalendar extends Component {
                     onChange={this.handleSearch}
                     value={this.state.search}
                   />
+                  <button onClick={() => this.duplicateMeals(searchedEvents)}>
+                    Duplicate previous week
+                  </button>
                 </div>
                 <BigCalendar
                   selectable
@@ -210,5 +282,12 @@ const updateEventMutation = graphql(UPDATE_EVENT, {
   name: "updateEvent"
 });
 
-export default updateEventMutation(RecipeCalendar);
+const createEventMutation = graphql(CREATE_EVENT_MUTATION, {
+  name: "createEvent"
+});
+
+export default compose(
+  updateEventMutation,
+  createEventMutation
+)(RecipeCalendar);
 export { QUERY_RECIPE_EVENT };
