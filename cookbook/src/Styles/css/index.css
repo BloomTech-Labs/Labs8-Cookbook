@@ -708,10 +708,8 @@ body {
   cursor: default;
 }
 .home-container {
-  margin-bottom: 201px;
   margin-top: 40px;
-  width: 100%;
-  max-width: 1400px;
+  width: 1100px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -719,6 +717,21 @@ body {
 @media (max-width: 600px) {
   .home-container {
     margin-top: 90px;
+  }
+}
+@media (max-width: 1200px) {
+  .home-container {
+    width: 900px;
+  }
+}
+@media (max-width: 900px) {
+  .home-container {
+    width: 700px;
+  }
+}
+@media (max-width: 600px) {
+  .home-container {
+    width: 370px;
   }
 }
 .home-container .home-path {

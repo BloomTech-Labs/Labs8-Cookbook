@@ -1,12 +1,19 @@
 .home-container {
-  margin-bottom: 201px;
-
   .container-margin-top();
-  width: 100%;
-  max-width: 1400px;
+  width: 1100px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  @media @desktop {
+    width: 900px;
+  }
+  @media @tablet {
+    width: 700px;
+  }
+
+  @media @phone {
+    width: 370px;
+  }
 
   .home-path {
     padding: 20px;
