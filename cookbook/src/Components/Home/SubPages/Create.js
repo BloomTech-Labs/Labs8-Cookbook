@@ -97,6 +97,7 @@ class Create extends Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value, loadingPreview: false });
+    this.findRecipes();
   };
 
   handlePickDate = date => {
@@ -105,9 +106,11 @@ class Create extends Component {
 
   mealButtonHandler = e => {
     e.preventDefault();
-    this.setState({
-      type: e.target.name
-    });
+    if (this.state.type === e.target.name) {
+      this.setState({ type: "" })
+    } else {
+      this.setState({ type: e.target.name });
+    }
   };
 
   findRecipes = () => {
@@ -204,18 +207,32 @@ class Create extends Component {
     }
   };
 
+  handleSearchClass = () => {
+    if (this.state.query) return 'is-searching';
+    return 'not-searching';
+  }
+
   render() {
     return (
       <div className="create-wrapper">
-        <div className="create-content-wrapper">
+
+        <div className='search-and-save'>
+
           <input
+            className={this.handleSearchClass()}
             type="text"
             name="query"
-            placeholder="Search Recipe..."
+            placeholder="recipe url"
             onChange={this.handleChange}
             value={this.state.query}
           />
-          <button onClick={this.findRecipes}>Search</button>
+
+          <button onClick={this.onSave}>save</button>
+
+        </div>
+
+        <div className="preview-and-schedule">
+
           {this.state.og_title === "N/A" ? (
             <div>No preview available</div>
           ) : (
@@ -227,17 +244,22 @@ class Create extends Component {
               loading={this.state.loadingPreview}
             />
           )}
-          <button onClick={this.onSave}>SAVE</button>
-        </div>
-        <div className="create-filter-wrapper">
-          <div className="ID-btn">
+
+          <div className='schedule'>
+
             <Buttons
               mealButtonHandler={this.mealButtonHandler}
               type={this.state.type}
             />
+            
+            <div className='create-date-picker'>
+              <DatePicker handlePickDate={this.handlePickDate} />
+            </div>
+
           </div>
-          <DatePicker handlePickDate={this.handlePickDate} />
+
         </div>
+
       </div>
     );
   }

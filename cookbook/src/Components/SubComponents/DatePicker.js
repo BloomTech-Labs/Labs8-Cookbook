@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import DayPicker from "react-day-picker";
-import "react-day-picker/lib/style.css";
+import React, { Component } from 'react';
+import DayPicker from 'react-day-picker';
 
 class DatePicker extends Component {
   constructor(props) {
