@@ -986,7 +986,7 @@ html {
 }
 @media (max-width: 900px) {
   .footer-container .footer .main {
-    margin: 20px 20px 0;
+    margin: 20px 0px 0;
   }
 }
 .footer-container .footer .main .brand {
@@ -1106,6 +1106,16 @@ html {
   .footer-container .footer .info {
     margin-left: 40px;
     align-items: flex-end;
+  }
+}
+@media (max-width: 790px) {
+  .footer-container .footer .info {
+    width: 90%;
+  }
+}
+@media (max-width: 408px) {
+  .footer-container .footer .info {
+    width: 85%;
   }
 }
 .footer-container .footer .info .contact-container {
