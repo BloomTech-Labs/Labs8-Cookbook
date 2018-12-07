@@ -5,6 +5,7 @@ import { GET_RECIPES_QUERY } from "./Recipes";
 import "react-day-picker/lib/style.css";
 import GroceryItem from "../../SubComponents/GroceryItem";
 import * as math from "mathjs";
+import GatedSubscription from "../../SubComponents/GatedSubscription";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -155,46 +156,47 @@ class GroceryList extends Component {
     ): null
 
     return (
-      <div className="grocery-list-page">
-        <div className="gen-list-container">
-          <p className='reset-gen-buttons'>
-            <span className='text'>
-              {!from && !to && "Please select the first day."}
-              {from && !to && "Please select the last day."}
+      <GatedSubscription>
+        <div className="grocery-list-page">
+          <div className="gen-list-container">
+            <p className='reset-gen-buttons'>
+              <span className='text'>
+                {!from && !to && "Please select the first day."}
+                {from && !to && "Please select the last day."}
+                {from &&
+                  to &&
+                  `Schedule for ${from.toLocaleDateString()} to
+                        ${to.toLocaleDateString()}`}{" "}
+              </span>
               {from &&
-                to &&
-                `Schedule for ${from.toLocaleDateString()} to
-                      ${to.toLocaleDateString()}`}{" "}
-            </span>
-            {from &&
-              to && (
-                <button className="reset" onClick={this.handleResetClick}>
-                  Reset
-                </button>
-            )}
-            <button onClick={this.generateList} className='generate'>Generate List</button>
-          </p>
-          <DayPicker
-            numberOfMonths={this.props.numberOfMonths}
-            selectedDays={[from, { from, to }]}
-            modifiers={modifiers}
-            onDayClick={this.handleDayClick}
-            disabledDays={{ before: new Date() }}
-          />
-        </div>
-        <div className="list">
-          <div className="list-header">
-            {groceryDateRange}
+                to && (
+                  <button className="reset" onClick={this.handleResetClick}>
+                    Reset
+                  </button>
+              )}
+              <button onClick={this.generateList} className='generate'>Generate List</button>
+            </p>
+            <DayPicker
+              numberOfMonths={this.props.numberOfMonths}
+              selectedDays={[from, { from, to }]}
+              modifiers={modifiers}
+              onDayClick={this.handleDayClick}
+              disabledDays={{ before: new Date() }}
+            />
           </div>
-          <div className='scroll-container'>
-            {schedMealsHeader}
-            {scheduledMeals}
-            {groceryListHeader}
-            {grocery_list}
+          <div className="list">
+            <div className="list-header">
+              {groceryDateRange}
+            </div>
+            <div className='scroll-container'>
+              {schedMealsHeader}
+              {scheduledMeals}
+              {groceryListHeader}
+              {grocery_list}
+            </div>
           </div>
-          
         </div>
-      </div>
+      </GatedSubscription>
     );
   }
 }

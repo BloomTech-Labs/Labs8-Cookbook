@@ -5,7 +5,30 @@ const { getUserId } = require("../utils/helper");
 const Query = {
   recipe: forwardTo("db"),
   event: forwardTo("db"),
-  events: forwardTo("db"),
+
+  events: async (_, args, context, info) => {
+    try {
+      const userid = await getUserId(context);
+
+      const events = await context.db.query.events(
+        {
+          where: {
+            recipe: {
+              createdBy: {
+                id: userid
+              }
+            }
+          }
+        },
+        info
+      );
+
+      return events;
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
+  },
 
   recipes: async (_, args, context, info) => {
     try {
