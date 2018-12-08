@@ -1,0 +1,69 @@
+.modal-portal {
+
+
+  .portal-container {
+    border: 1.5px solid @CBblue;
+
+    .modal-container {
+
+
+      .modal-sub-container {
+
+
+        .modal-text {
+          display:flex;
+          justify-content: center;
+          color: @CBblue;
+          font-size: 23px;
+        }
+
+        .recipe-buttons {
+          display: flex;
+          justify-content: space-evenly;
+          max-width: 350px;
+          flex-flow: wrap;
+          padding: 0 15px 0;
+
+          .button-selected {
+            font-family: @secondary-font;
+            font-size: 1.5rem;
+            letter-spacing: 1.5px;
+            border: @CBblue solid 2px;
+            border-radius: 20px;
+            background: @CBblue;
+            color: white;
+            height: 30px;
+            padding: 0 12px;
+            outline: none;
+            margin-top: 10px;
+            width: 140px;
+          }
+
+          .button-not-selected {
+            .button-selected;
+            color: @CBblue;
+            background: white;
+          }
+
+          .button-not-selected:hover {
+            background: @CBgrey;
+            font-weight: bold;
+          }
+        }
+
+        .modal-button {
+          display: flex;
+          justify-content: space-evenly;
+          max-width: 200px;
+          flex-flow: wrap;
+          padding: 0 15px 0;
+          font-size: 1.5rem;
+          font-family: @secondary-font;
+          border: @CBblue solid 2px;
+          border-radius: 20px;
+          background: #fffefe;
+        }
+      }
+    }
+  }
+}

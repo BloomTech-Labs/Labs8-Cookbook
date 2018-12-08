@@ -224,6 +224,7 @@ class RecipeCalendar extends Component {
                 {this.state.showModal ? ( // portal ternary statement to turn on/off
                   <Modal onClose={this.toggleModal}>
                     <div
+                      className="modal-container"
                       style={{
                         maxWidth: 400,
                         position: "relative",
@@ -233,9 +234,16 @@ class RecipeCalendar extends Component {
                       }}
                     >
                       {!this.state.isUpdated ? (
-                        <div>
-                          <h1>Please select Meal and Date!</h1>
+                        <div className="modal-sub-container">
+                          <h1 className="modal-text">Please select Meal and Date!</h1>
                           <Buttons
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'space-evenly',
+                              maxWidth: '300px',
+                              flexFlow: 'wrap',
+                              
+                            }}
                             mealButtonHandler={this.mealButtonHandler}
                             type={this.state.type}
                           />
