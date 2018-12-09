@@ -8,6 +8,7 @@ const Mutation = {
   //use default resolvers from prisma db
   updateUser: forwardTo("db"),
   deleteRecipe: forwardTo("db"),
+  deleteEvent: forwardTo("db"),
 
   //resolver for update event
   updateEvent: async (_, args, context, info) => {
