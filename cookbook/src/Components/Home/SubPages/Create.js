@@ -254,18 +254,22 @@ class Create extends Component {
             />
           )}
 
-          <div className='schedule'>
+          {(this.state.og_title === "N/A" || this.state.og_title === "") ? (
+            <div></div>
+          ) : (
+            <div className='schedule'>
 
-            <Buttons
-              mealButtonHandler={this.mealButtonHandler}
-              type={this.state.type}
-            />
-            
-            <div className='create-date-picker'>
-              <DatePicker handlePickDate={this.handlePickDate} />
+              <Buttons
+                mealButtonHandler={this.mealButtonHandler}
+                type={this.state.type}
+              />
+              
+              <div className='create-date-picker'>
+                <DatePicker handlePickDate={this.handlePickDate} />
+              </div>
+
             </div>
-
-          </div>
+          )}
 
         </div>
 

@@ -986,7 +986,11 @@ body {
   }
 }
 .create-wrapper .preview-and-schedule .schedule {
-  margin-left: 75px;
+  margin-left: 35px;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 @media (max-width: 900px) {
   .create-wrapper .preview-and-schedule .schedule {
@@ -997,10 +1001,16 @@ body {
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
   display: flex;
   justify-content: space-evenly;
-  max-width: 350px;
+  width: 100%;
+  max-width: 363px;
   flex-flow: wrap;
   padding: 0 15px 0;
   margin-top: -20px;
+}
+@media (max-width: 1200px) {
+  .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+    max-width: 100%;
+  }
 }
 @media (max-width: 900px) {
   .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
@@ -1043,6 +1053,7 @@ body {
 }
 .create-wrapper .preview-and-schedule .schedule .create-date-picker {
   margin-top: 30px;
+  width: 100%;
   outline: none;
 }
 /* DayPicker styles */
@@ -1132,9 +1143,9 @@ body {
 .DayPicker-Weekday {
   display: table-cell;
   padding: 0.5em;
-  color: #8B9898;
+  color: black;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .DayPicker-Weekday abbr[title] {
   border-bottom: none;
@@ -1233,16 +1244,11 @@ body {
 .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
   margin-top: 12px;
   position: absolute;
-  margin-left: 15%;
-}
-@media (max-width: 1200px) {
-  .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
-    margin-left: 15%;
-  }
+  margin-left: 9%;
 }
 @media (max-width: 900px) {
   .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
-    margin-left: 22%;
+    margin-left: 27%;
   }
 }
 @media (max-width: 600px) {
@@ -1255,17 +1261,12 @@ body {
   border-bottom: 8px solid #de6a5a;
   border-right: 8px solid #de6a5a;
   border-left: 8px solid white;
-  margin-left: 80%;
+  margin-left: 85%;
   height: 5px;
-}
-@media (max-width: 1200px) {
-  .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
-    margin-left: 80%;
-  }
 }
 @media (max-width: 900px) {
   .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
-    margin-left: 75%;
+    margin-left: 70%;
   }
 }
 @media (max-width: 600px) {
@@ -1282,23 +1283,23 @@ body {
 .DayPicker .DayPicker-Months .DayPicker-Month {
   width: 100%;
   height: 300px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 @media (max-width: 1200px) {
   .DayPicker .DayPicker-Months .DayPicker-Month {
-    height: 400px;
+    height: 300px;
   }
 }
 @media (max-width: 900px) {
   .DayPicker .DayPicker-Months .DayPicker-Month {
-    height: 450px;
-    width: 90%;
+    height: 300px;
+    width: 300px;
   }
 }
 @media (max-width: 600px) {
   .DayPicker .DayPicker-Months .DayPicker-Month {
     height: 300px;
-    width: 370px;
+    width: 100%;
     font-size: 1.4rem;
   }
 }
