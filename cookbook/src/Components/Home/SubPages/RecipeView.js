@@ -25,8 +25,6 @@ class RecipeView extends Component {
         variables: { id: this.props.location.state.id },
         refetchQueries: [{ query: GET_RECIPES_QUERY }]
       });
-
-      console.log("Deleted recipe: ", deletedRecipe);
       this.props.history.replace("/home/recipes");
     } catch (error) {
       console.log(error.message);
@@ -78,11 +76,12 @@ class RecipeView extends Component {
   }
 
   render() {
-    console.log("Data: ", this.props.location.state);
     return (
       <div className="recipe-page">
         <div className="recipe-header">
-          <span className="recipe-title">{this.props.location.state.title}</span>
+          <span className="recipe-title">
+            {this.props.location.state.title}
+          </span>
           <div className="icon-container">
             <a
               className="link"
@@ -110,8 +109,8 @@ class RecipeView extends Component {
             <div className="info-bar">
               <div className="scheduled-for">
                 <span className="text">scheduled for:</span>
-                {this.props.location.state.events.map(event => (
-                  <div className="event">
+                {this.props.location.state.events.map((event, index) => (
+                  <div className="event" key={index}>
                     <div className="meal">{event.mealType}</div>
                     <div className="date">
                       {new Date(event.date).toLocaleDateString()}
@@ -137,8 +136,8 @@ class RecipeView extends Component {
           </div>
           <div className="ingredients">
             <div className="title">Ingredients</div>
-            {this.props.location.state.ingredients.map(ing => (
-              <div className="ingredient" id="instruction-id">
+            {this.props.location.state.ingredients.map((ing, index) => (
+              <div className="ingredient" id="instruction-id" key={index}>
                 <span className="qty">
                   {this.errCheckIngredients(ing.quantity)}
                 </span>
@@ -150,8 +149,8 @@ class RecipeView extends Component {
         <div className="right-container">
           <div className="title">Instructions</div>
           <div className="instructions">
-            {this.state.instructions.map(inst => (
-              <div className="instruction">
+            {this.state.instructions.map((inst, index) => (
+              <div className="instruction" key={index}>
                 <input
                   type="checkbox"
                   className="checkbox"

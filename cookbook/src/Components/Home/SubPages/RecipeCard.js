@@ -22,8 +22,6 @@ class RecipeCard extends Component {
         variables: { id: this.props.recipe.id },
         refetchQueries: [{ query: GET_RECIPES_QUERY }]
       });
-
-      console.log("Deleted recipe: ", deletedRecipe);
       return deletedRecipe;
     } catch (error) {
       console.log(error.message);
@@ -61,7 +59,10 @@ class RecipeCard extends Component {
               <span className="link-text">link</span>
             </a>
             <div className="schedule">
-                <CardSchedule events={this.props.recipe.events} />
+              <CardSchedule
+                key={this.props.recipe.events.length}
+                events={this.props.recipe.events}
+              />
             </div>
             <button className="del-button">
               <FontAwesomeIcon

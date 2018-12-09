@@ -120,6 +120,7 @@ class Recipes extends Component {
                 .includes(this.state.search.toLowerCase());
               return hasMealType && hasTitle;
             });
+            console.log(recipesToRender);
             return (
               <div className="recipesCards">
                 {recipesToRender.map(recipe => (
