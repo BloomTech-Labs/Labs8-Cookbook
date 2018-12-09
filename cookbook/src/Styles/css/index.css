@@ -1250,6 +1250,7 @@ body .portal .modal-portal {
   border-radius: 0 0.5em 0.5em 0;
   border-left: 0;
   width: 100%;
+  outline: none;
 }
 .calendar-page-container .calendar-container .search-box-wrapper .magnifying-glass {
   font-size: 20px;
@@ -2401,6 +2402,7 @@ body .portal .modal-portal {
   background: #fffefe;
   margin: auto;
   margin-top: 10px;
+  outline: none;
 }
 .modal-portal .portal-container .modal-container .modal-confirmation .modal-button:hover {
   background: #bcc9d2;
@@ -2454,6 +2456,9 @@ body .portal .modal-portal {
   background: #bcc9d2;
   font-weight: bold;
 }
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper {
+  outline: none;
+}
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar {
   margin-top: 10px;
 }
@@ -2461,6 +2466,7 @@ body .portal .modal-portal {
   margin-top: 7px;
   position: absolute;
   margin-left: 80px;
+  outline: none;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar .DayPicker-NavButton--next {
   border-top: 8px solid #343e5a;
@@ -2488,16 +2494,21 @@ body .portal .modal-portal {
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
   font-size: 12px;
+  outline: none;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--today {
   color: #343e5a;
   font-weight: bold;
 }
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--selected {
+  background-color: #343e5a;
+  color: white;
+}
 .modal-portal .portal-container .modal-container .modal-sub-container .modal-button {
   display: flex;
   height: 30px;
   justify-content: space-evenly;
-  width: 100%;
+  width: 88%;
   flex-flow: wrap;
   padding: 0 15px 0;
   font-size: 1.5rem;
@@ -2507,6 +2518,7 @@ body .portal .modal-portal {
   background: #fffefe;
   margin: auto;
   margin-top: 10px;
+  outline: none;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .modal-button:hover {
   background: #bcc9d2;
