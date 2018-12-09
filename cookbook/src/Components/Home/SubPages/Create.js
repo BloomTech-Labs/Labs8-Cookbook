@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Preview from "./Preview";
+import Loading from "../Home/SubComponents/Loading.js";
 import gql from "graphql-tag";
 import { graphql, compose } from "react-apollo";
 import scraper from "../../../utils/scraper";

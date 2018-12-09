@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:900');
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	
+	&.is-animated {
+		
+		#transition-container path {
+			transform: translateX(-800px);
+
+			&:nth-of-type(1) {
+				animation: toRight 500ms cubic-bezier(.53,-0.38,.81,.18) forwards;	
+			}
+
+			&:nth-of-type(2) {
+				animation: toRight 550ms 75ms cubic-bezier(.53,-0.38,.81,.18) forwards;	
+			}
+
+			&:nth-of-type(3) {
+				animation: toRight 600ms 150ms cubic-bezier(.53,-0.38,.81,.18) forwards;	
+			}
+
+			&:nth-of-type(4) {
+				animation: toRight 650ms 225ms cubic-bezier(.53,-0.38,.81,.18) forwards;	
+			}
+
+			&:nth-of-type(5) {
+				animation: toRight 700ms 300ms cubic-bezier(.53,-0.38,.81,.18) forwards;	
+			}
+
+			&:nth-of-type(6) {
+				animation: toRight 750ms 375ms cubic-bezier(.53,-0.38,.81,.18) forwards;	
+			}
+
+		}
+		
+	}
+	
+}
+
+#transition-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+}
+
+@keyframes toRight {
+	
+	100% {
+		transform: translateX(0px);
+	}
+	
+}
