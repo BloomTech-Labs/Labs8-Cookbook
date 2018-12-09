@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Preview from "./Preview";
-import Loading from "../../SubComponents/Loading.js";
 import gql from "graphql-tag";
 import { graphql, compose } from "react-apollo";
 import scraper from "../../../utils/scraper";
@@ -225,8 +224,6 @@ class Create extends Component {
   render() {
     return (
       <div className="create-wrapper">
-
-        <Loading></Loading>
 
         <div className='search-and-save'>
 
