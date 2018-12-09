@@ -1,3 +1,4 @@
+//This file contains code for /recipes page
 import React, { Component } from "react";
 import Preview from "./Preview";
 import gql from "graphql-tag";
@@ -8,6 +9,7 @@ import DatePicker from "../../SubComponents/DatePicker.js";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import { QUERY_RECIPE_EVENT } from "./Calendar";
 
+//Mutation for creating recipe
 const CREATE_RECIPE_MUTATION = gql`
   mutation(
     $title: String!
@@ -16,7 +18,7 @@ const CREATE_RECIPE_MUTATION = gql`
     $image: String!
     $url: String!
     $mealType: String
-    $date: String
+    $dates: [String]!
   ) {
     createRecipe(
       title: $title
@@ -25,7 +27,7 @@ const CREATE_RECIPE_MUTATION = gql`
       image: $image
       url: $url
       mealType: $mealType
-      date: $date
+      dates: $dates
     ) {
       id
       title
@@ -37,6 +39,7 @@ const CREATE_RECIPE_MUTATION = gql`
   }
 `;
 
+//Mutation for creating instructions
 const CREATE_INSTRUCTION_MUTATION = gql`
   mutation($stepNum: Int!, $description: String!, $recipe: String!) {
     createInstruction(
@@ -54,6 +57,7 @@ const CREATE_INSTRUCTION_MUTATION = gql`
   }
 `;
 
+//Mutation for creating ingredients
 const CREATE_INGREDIENT_MUTATION = gql`
   mutation($name: String!, $quantity: String!, $recipe: String!) {
     createIngredient(name: $name, quantity: $quantity, recipe: $recipe) {
@@ -83,19 +87,22 @@ class Create extends Component {
       og_url: "",
       instructions: [],
       ingredient_list: [],
-      onDate: null
+      onDates: []
     };
   }
 
+  //handle text change in url search box
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value, loadingPreview: false });
     this.findRecipes();
   };
 
-  handlePickDate = date => {
-    this.setState({ onDate: date });
+  //handle date picks in calendar
+  handlePickDate = dates => {
+    this.setState({ onDates: dates });
   };
 
+  //handle meal selection buttons
   mealButtonHandler = e => {
     e.preventDefault();
     if (this.state.type === e.target.name) {
@@ -105,6 +112,7 @@ class Create extends Component {
     }
   };
 
+  //call scraper to extract data from url and save to state
   findRecipes = () => {
     this.setState({ loadingPreview: true }, async () => {
       try {
@@ -121,6 +129,7 @@ class Create extends Component {
     });
   };
 
+  //handle save button
   onSave = async () => {
     //If no recipe title scraped, then save button won't work.
     if (!this.state.og_title || this.state.og_title === "N/A") return;
@@ -134,17 +143,15 @@ class Create extends Component {
         image: this.state.og_image,
         url: this.state.og_url,
         mealType: this.state.type,
-        date: this.state.onDate
+        dates: this.state.onDates
       };
 
-      //Execute createRecipe
+      //run mutation for creating new recipe
       const { data } = await this.props.createRecipe({
         variables: recipeVariables
       });
 
-      console.log(data);
-
-      //If url is not whitelisted, then no instructions saved
+      //lopp through each instruction and run createInstruction mutation
       if (this.state.instructions.length) {
         this.state.instructions.forEach(async (instruction, index) => {
           //variables for createInstruction
@@ -160,9 +167,8 @@ class Create extends Component {
           });
         });
       }
-      console.log("Instructions created.");
 
-      //If url is not whitelisted, then no ingredients saved
+      //lopp through each ingredient and run createIngredient mutation
       if (this.state.ingredient_list.length) {
         this.state.ingredient_list.forEach(async ingredient => {
           //variables for createIngredient
@@ -182,8 +188,8 @@ class Create extends Component {
           });
         });
       }
-      console.log("Ingredients created.");
 
+      //redirect to recipes
       return this.props.history.push("/home/recipes");
     } catch (error) {
       console.log("onsave error: ", error.message);
@@ -191,6 +197,7 @@ class Create extends Component {
     }
   };
 
+  //Switch classname of search input for styles
   handleSearchClass = () => {
     if (this.state.query) return "is-searching";
     return "not-searching";
@@ -241,6 +248,7 @@ class Create extends Component {
   }
 }
 
+//Define and expose queries/mutations to Create component
 const createRecipeMutation = graphql(CREATE_RECIPE_MUTATION, {
   name: "createRecipe"
 });
