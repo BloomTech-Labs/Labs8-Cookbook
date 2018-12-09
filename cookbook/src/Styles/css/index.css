@@ -2384,6 +2384,7 @@ body .portal .modal-portal {
   justify-content: center;
   color: #343e5a;
   font-size: 23px;
+  font-family: 'Muli', sans-serif;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons {
   display: flex;
@@ -2449,7 +2450,7 @@ body .portal .modal-portal {
   border-left: 8px solid #343e5a;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months {
-  margin-bottom: -20px;
+  margin-bottom: -25px;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month {
   border: 2px #343e5a solid;
