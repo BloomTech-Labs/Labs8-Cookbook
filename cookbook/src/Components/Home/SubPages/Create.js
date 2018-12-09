@@ -67,20 +67,6 @@ const CREATE_INGREDIENT_MUTATION = gql`
   }
 `;
 
-// const CREATE_EVENT_MUTATION = gql`
-//   mutation($date: String!, $mealType: String!, $recipe: String!) {
-//     createEvent(date: $date, mealType: $mealType, recipe: $recipe) {
-//       id
-//       mealType
-//       date
-//       recipe {
-//         id
-//         title
-//       }
-//     }
-//   }
-// `;
-
 class Create extends Component {
   constructor(props) {
     super(props);
@@ -153,12 +139,10 @@ class Create extends Component {
 
       //Execute createRecipe
       const { data } = await this.props.createRecipe({
-        variables: recipeVariables,
-        refetchQueries: [
-          { query: GET_RECIPES_QUERY },
-          { query: QUERY_RECIPE_EVENT }
-        ]
+        variables: recipeVariables
       });
+
+      console.log(data);
 
       //If url is not whitelisted, then no instructions saved
       if (this.state.instructions.length) {
@@ -190,7 +174,11 @@ class Create extends Component {
 
           //execute createIngredient
           await this.props.createIngredient({
-            variables: ingredientVariables
+            variables: ingredientVariables,
+            refetchQueries: [
+              { query: GET_RECIPES_QUERY },
+              { query: QUERY_RECIPE_EVENT }
+            ]
           });
         });
       }
