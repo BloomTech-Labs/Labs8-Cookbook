@@ -37,7 +37,7 @@ class DatePicker extends Component {
         <p>
           {this.state.selectedDay
             ? this.state.selectedDay.toLocaleDateString()
-            : "Please select a day 👻"}
+            : null}
         </p>
       </div>
     );

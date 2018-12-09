@@ -2428,8 +2428,9 @@ body .portal .modal-portal {
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .modal-button {
   display: flex;
+  height: 30px;
   justify-content: space-evenly;
-  max-width: 200px;
+  width: 100%;
   flex-flow: wrap;
   padding: 0 15px 0;
   font-size: 1.5rem;
