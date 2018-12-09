@@ -770,369 +770,41 @@ body {
   width: 100%;
   margin-bottom: 30px;
 }
-.create-wrapper {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  width: 100%;
-}
-.create-wrapper .search-and-save {
-  display: flex;
-  width: 100%;
-  padding: 0 30px;
-}
-@media (max-width: 900px) {
-  .create-wrapper .search-and-save {
-    flex-flow: column;
-    align-items: flex-end;
-  }
-}
-.create-wrapper .search-and-save .is-searching {
-  margin-right: 30px;
-  font-family: 'Questrial', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
-  background: #de6a5a;
-  border: 2px #de6a5a solid;
-  color: white;
-  height: 30px;
-  width: 100%;
-  border-radius: 20px;
-  padding: 0 20px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  outline: none;
-}
-@media (max-width: 900px) {
-  .create-wrapper .search-and-save .is-searching {
-    margin: 30px 0 0 0;
-  }
-}
-.create-wrapper .search-and-save .not-searching {
-  margin-right: 30px;
-  font-family: 'Questrial', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
-  background: #de6a5a;
-  border: 2px #de6a5a solid;
-  color: white;
-  height: 30px;
-  width: 100%;
-  border-radius: 20px;
-  padding: 0 20px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  outline: none;
-  background: white;
-}
-@media (max-width: 900px) {
-  .create-wrapper .search-and-save .not-searching {
-    margin: 30px 0 0 0;
-  }
-}
-.create-wrapper .search-and-save .not-searching:hover {
-  background: #fed092;
-}
-.create-wrapper .search-and-save ::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: #de6a5a;
-}
-.create-wrapper .search-and-save ::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #de6a5a;
-}
-.create-wrapper .search-and-save :-ms-input-placeholder {
-  /* IE 10+ */
-  color: #de6a5a;
-}
-.create-wrapper .search-and-save :-moz-placeholder {
-  /* Firefox 18- */
-  color: #de6a5a;
-}
-.create-wrapper .search-and-save button {
-  font-family: 'Questrial', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
-  border: #de6a5a solid 2px;
-  border-radius: 20px;
-  background: #de6a5a;
-  color: white;
-  height: 30px;
-  width: 70px;
-  outline: none;
-}
-@media (max-width: 900px) {
-  .create-wrapper .search-and-save button {
-    order: -1;
-  }
-}
-.create-wrapper .search-and-save button:hover {
-  cursor: pointer;
-  color: #fed092;
-  font-weight: bold;
-}
-.create-wrapper .preview-and-schedule {
-  display: flex;
-  margin-top: 30px;
-  padding: 0 30px;
-  width: 100%;
-  justify-content: space space-around;
-}
-@media (max-width: 900px) {
-  .create-wrapper .preview-and-schedule {
-    flex-flow: column;
-  }
-}
-.create-wrapper .preview-and-schedule .preview {
-  display: flex;
-  width: 100%;
-  border: solid #de6a5a 3px;
-  border-radius: 30px;
-  overflow: hidden;
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .preview {
-    flex-flow: column;
-  }
-}
-.create-wrapper .preview-and-schedule .preview .image-container {
-  width: 40%;
-  text-align: center;
-  overflow: hidden;
-  background-size: cover;
-  background-position: 50% 50%;
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .preview .image-container {
-    height: calc(250px - 25vw);
-    width: 100%;
-  }
-}
-.create-wrapper .preview-and-schedule .preview .content {
-  width: 60%;
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  flex-flow: column;
-}
-@media (max-width: 900px) {
-  .create-wrapper .preview-and-schedule .preview .content {
-    width: 100%;
-  }
-}
-.create-wrapper .preview-and-schedule .preview .content .title-container {
-  width: 100%;
-}
-.create-wrapper .preview-and-schedule .preview .content .title-container .title {
-  font-family: 'Questrial', sans-serif;
-  font-weight: bold;
-  font-size: 2rem;
-  background-size: 1px 1em;
-  box-shadow: inset 0 0rem white, inset 0 -0.25rem #de6a5a;
-  display: inline;
-  line-height: 25px;
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .preview .content .title-container .title {
-    font-size: 1.7rem;
-  }
-}
-.create-wrapper .preview-and-schedule .preview .content .description {
-  margin: 40px 0 0;
-  font-size: 1.5rem;
-  font-family: 'Questrial', sans-serif;
-  line-height: 18px;
-  overflow: hidden;
-}
-@media (max-width: 900px) {
-  .create-wrapper .preview-and-schedule .preview .content .description {
-    margin: 30px 0 0;
-  }
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .preview .content .description {
-    margin: 20px 0 0;
-    font-size: 1.3rem;
-  }
-}
-.create-wrapper .preview-and-schedule .preview .content .divide {
-  width: 100%;
-}
-.create-wrapper .preview-and-schedule .preview .content .divide .line {
-  border-top: solid #de6a5a 1px;
-  margin: 40px auto 0;
-  width: 15%;
-}
-@media (max-width: 900px) {
-  .create-wrapper .preview-and-schedule .preview .content .divide .line {
-    margin: 35px auto 0;
-  }
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .preview .content .divide .line {
-    margin: 30px auto 0;
-  }
-}
-.create-wrapper .preview-and-schedule .preview .content .divide .site {
-  font-family: 'Questrial', sans-serif;
-  margin-top: 25px;
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .preview .content .divide .site {
-    margin: 20px 0 0;
-    font-size: 1.3rem;
-  }
-}
-.create-wrapper .preview-and-schedule .schedule {
-  margin-left: 35px;
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-}
-@media (max-width: 900px) {
-  .create-wrapper .preview-and-schedule .schedule {
-    margin-left: 0;
-    order: -1;
-  }
-}
-.create-wrapper .preview-and-schedule .schedule .recipe-buttons {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  max-width: 363px;
-  flex-flow: wrap;
-  padding: 0 15px 0;
-  margin-top: -20px;
-}
-@media (max-width: 1200px) {
-  .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
-    max-width: 100%;
-  }
-}
-@media (max-width: 900px) {
-  .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
-    margin-top: 0;
-  }
-}
-.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-selected {
-  font-family: 'Questrial', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
-  border: #de6a5a solid 2px;
-  border-radius: 20px;
-  background: #de6a5a;
-  color: white;
-  height: 30px;
-  padding: 0 12px;
-  outline: none;
-  margin-top: 20px;
-  cursor: pointer;
-}
-.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected {
-  font-family: 'Questrial', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
-  border: #de6a5a solid 2px;
-  border-radius: 20px;
-  background: #de6a5a;
-  color: white;
-  height: 30px;
-  padding: 0 12px;
-  outline: none;
-  margin-top: 20px;
-  cursor: pointer;
-  color: #de6a5a;
-  background: white;
-}
-.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected:hover {
-  background: #fed092;
-  font-weight: bold;
-}
-.create-wrapper .preview-and-schedule .schedule .create-date-picker {
-  margin-top: 30px;
-  width: 100%;
+/* DayPicker styles */
+.scheduled-for {
   display: flex;
   justify-content: center;
-  outline: none;
+  align-items: center;
 }
-.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker {
-  width: 100%;
-  max-width: 300px;
-}
-.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
-  margin-top: 12px;
-  position: absolute;
-  margin-left: 9%;
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
-    margin-left: 7%;
-  }
-}
-.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
-  border-top: 8px solid #de6a5a;
-  border-bottom: 8px solid #de6a5a;
-  border-right: 8px solid #de6a5a;
-  border-left: 8px solid white;
-  margin-left: 85%;
-  height: 5px;
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
-    margin-left: 87%;
-  }
-}
-.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--prev {
-  border-top: 8px solid #de6a5a;
-  border-bottom: 8px solid #de6a5a;
-  border-right: 8px solid white;
-  border-left: 8px solid #de6a5a;
-}
-.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month {
-  width: 100%;
-  height: 200px;
-  font-size: 1.3rem;
-  border: 2px #de6a5a solid;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  padding: 0 10px 10px;
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month {
-    font-size: 1.2rem;
-  }
-}
-.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
-  text-align: center;
-  background-color: #de6a5a;
-  width: 100%;
-  line-height: 2.2rem;
-  height: 40px;
+.scheduled-for .chosen-date {
+  width: 120px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  border: solid black 2px;
+  background: black;
   color: white;
-  font-size: 2rem;
-  padding-bottom: 5px;
-  padding-top: 5px;
-}
-@media (max-width: 600px) {
-  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
-    font-size: 1.8rem;
-  }
-}
-.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays {
   font-weight: bold;
-  color: #de6a5a;
+  letter-spacing: 1px;
+  border-radius: 50px;
 }
-.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
-  border-radius: 500px !important;
-}
-.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-  background-color: #de6a5a !important;
+.scheduled-for .no-date-chosen {
+  width: 120px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  border: solid black 2px;
+  background: black;
   color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  background: white;
 }
-/* DayPicker styles */
 .DayPicker {
   display: inline-block;
   font-size: 1rem;
@@ -1311,6 +983,387 @@ body {
   z-index: 1;
   background: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+.create-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+}
+.create-wrapper .search-and-save {
+  display: flex;
+  width: 100%;
+  padding: 0 30px;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save {
+    flex-flow: column;
+    align-items: flex-end;
+  }
+}
+.create-wrapper .search-and-save .is-searching {
+  margin-right: 30px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  background: #de6a5a;
+  border: 2px #de6a5a solid;
+  color: white;
+  height: 30px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  outline: none;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save .is-searching {
+    margin: 30px 0 0 0;
+  }
+}
+.create-wrapper .search-and-save .not-searching {
+  margin-right: 30px;
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  background: #de6a5a;
+  border: 2px #de6a5a solid;
+  color: white;
+  height: 30px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 0 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  outline: none;
+  background: white;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save .not-searching {
+    margin: 30px 0 0 0;
+  }
+}
+.create-wrapper .search-and-save .not-searching:hover {
+  background: #fed092;
+}
+.create-wrapper .search-and-save ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #de6a5a;
+}
+.create-wrapper .search-and-save ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #de6a5a;
+}
+.create-wrapper .search-and-save :-ms-input-placeholder {
+  /* IE 10+ */
+  color: #de6a5a;
+}
+.create-wrapper .search-and-save :-moz-placeholder {
+  /* Firefox 18- */
+  color: #de6a5a;
+}
+.create-wrapper .search-and-save button {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  width: 70px;
+  outline: none;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save button {
+    order: -1;
+  }
+}
+.create-wrapper .search-and-save button:hover {
+  cursor: pointer;
+  color: #fed092;
+  font-weight: bold;
+}
+.create-wrapper .preview-and-schedule {
+  display: flex;
+  margin-top: 30px;
+  padding: 0 30px;
+  width: 100%;
+  justify-content: space space-around;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule {
+    flex-flow: column;
+  }
+}
+.create-wrapper .preview-and-schedule .preview {
+  display: flex;
+  width: 100%;
+  border: solid #de6a5a 3px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview {
+    margin-top: 50px;
+  }
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview {
+    flex-flow: column;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .image-container {
+  width: 40%;
+  text-align: center;
+  overflow: hidden;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .image-container {
+    height: calc(250px - 25vw);
+    width: 100%;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content {
+  width: 60%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .content {
+    width: 100%;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content .title-container {
+  width: 100%;
+}
+.create-wrapper .preview-and-schedule .preview .content .title-container .title {
+  font-family: 'Questrial', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  background-size: 1px 1em;
+  box-shadow: inset 0 0rem white, inset 0 -0.25rem #de6a5a;
+  display: inline;
+  line-height: 25px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .title-container .title {
+    font-size: 1.7rem;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content .description {
+  margin: 40px 0 0;
+  font-size: 1.5rem;
+  font-family: 'Questrial', sans-serif;
+  line-height: 18px;
+  overflow: hidden;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .content .description {
+    margin: 30px 0 0;
+  }
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .description {
+    margin: 20px 0 0;
+    font-size: 1.3rem;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content .divide {
+  width: 100%;
+}
+.create-wrapper .preview-and-schedule .preview .content .divide .line {
+  border-top: solid #de6a5a 1px;
+  margin: 40px auto 0;
+  width: 15%;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview .content .divide .line {
+    margin: 35px auto 0;
+  }
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .divide .line {
+    margin: 30px auto 0;
+  }
+}
+.create-wrapper .preview-and-schedule .preview .content .divide .site {
+  font-family: 'Questrial', sans-serif;
+  margin-top: 25px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .preview .content .divide .site {
+    margin: 20px 0 0;
+    font-size: 1.3rem;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule {
+  margin-left: 35px;
+  width: 100%;
+  max-width: 363px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .schedule {
+    max-width: none;
+    margin-left: 0;
+    order: -1;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 363px;
+  flex-flow: wrap;
+  padding: 0 15px 0;
+  margin-top: -20px;
+}
+@media (max-width: 1200px) {
+  .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+    max-width: 100%;
+  }
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+    margin-top: 0;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-selected {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  margin-top: 20px;
+  cursor: pointer;
+  color: #de6a5a;
+  background: white;
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected:hover {
+  background: #fed092;
+  font-weight: bold;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  outline: none;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .scheduled-for {
+  color: #de6a5a;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .scheduled-for .chosen-date {
+  border: solid #de6a5a 2px;
+  background: #de6a5a;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .scheduled-for .no-date-chosen {
+  border: solid #de6a5a 2px;
+  background: #de6a5a;
+  background: white;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker {
+  width: 100%;
+  max-width: 300px;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
+  margin-top: 12px;
+  position: absolute;
+  margin-left: 9%;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
+    margin-left: 7%;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+  border-top: 8px solid #de6a5a;
+  border-bottom: 8px solid #de6a5a;
+  border-right: 8px solid #de6a5a;
+  border-left: 8px solid white;
+  margin-left: 85%;
+  height: 5px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+    margin-left: 87%;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--prev {
+  border-top: 8px solid #de6a5a;
+  border-bottom: 8px solid #de6a5a;
+  border-right: 8px solid white;
+  border-left: 8px solid #de6a5a;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month {
+  width: 100%;
+  height: 200px;
+  font-size: 1.3rem;
+  border: 2px #de6a5a solid;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 0 10px 10px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month {
+    font-size: 1.2rem;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+  text-align: center;
+  background-color: #de6a5a;
+  width: 100%;
+  line-height: 2.2rem;
+  height: 40px;
+  color: white;
+  font-size: 2rem;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+    font-size: 1.8rem;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays {
+  font-weight: bold;
+  color: #de6a5a;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
+  border-radius: 500px !important;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: #de6a5a !important;
+  color: white;
 }
 .calendar-page-container {
   margin-left: 5px;

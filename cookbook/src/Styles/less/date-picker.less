@@ -1,5 +1,32 @@
 /* DayPicker styles */
 
+.scheduled-for {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .chosen-date {
+    @primary-color: black;
+    width: 120px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    border: solid @primary-color 2px;
+    background: @primary-color;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 50px;
+  }
+
+  .no-date-chosen {
+    .chosen-date;
+    background: white;
+  }
+}
+
 .DayPicker {
     display: inline-block;
     font-size: 1rem;

@@ -100,6 +100,10 @@
       border-radius: 30px;
       overflow: hidden;
 
+      @media @tablet {
+        margin-top: 50px;
+      }
+
       @media @phone{
         flex-flow: column;
       }
@@ -203,11 +207,13 @@
     .schedule {
       margin-left: 35px;
       width: 100%;
+      max-width: 363px;
       display: flex;
       flex-flow: column;
       align-items: center;
 
       @media @tablet {
+        max-width: none;
         margin-left: 0;
         order: -1;
       }
@@ -257,15 +263,28 @@
       }
 
       .create-date-picker {
-        margin-top: 30px;
+        margin-top: 20px;
         width: 100%;
         display: flex;
         justify-content: center;
         outline: none;
         @primary-color: @CBred;
-        @secondary-color: @CBorange;
 
         // Calendar Styles
+        .scheduled-for {
+          color: @primary-color;
+
+          .chosen-date {
+            border: solid @primary-color 2px;
+            background: @primary-color;
+          }
+
+          .no-date-chosen {
+            .chosen-date;
+            background: white;
+          }
+        }
+
         .DayPicker {
           width: 100%;
           max-width: 300px;
