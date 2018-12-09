@@ -1,14 +1,36 @@
 .modal-portal {
 
-
   .portal-container {
     border: 1.5px solid @CBblue;
-
     .modal-container {
 
+      .modal-confirmation {
+        .modal-text-confirmation {
+          display:flex;
+          justify-content: center;
+          color: @CBblue;
+          font-size: 20px;
+          font-family: @primary-font;
+          font-weight: bold;
+        }
+        .modal-button {
+          display: flex;
+          height: 30px;
+          justify-content: space-evenly;
+          width: 100%;
+          flex-flow: wrap;
+          padding: 0 15px 0;
+          font-size: 1.5rem;
+          font-family: @secondary-font;
+          border: @CBblue solid 2px;
+          border-radius: 20px;
+          background: #fffefe;
+          margin: auto;
+          margin-top: 10px;
+        }
+      }
 
       .modal-sub-container {
-
 
         .modal-text {
           display:flex;
@@ -53,14 +75,18 @@
         }
 
         .DayPicker {
+
           .DayPicker-wrapper {
+
             .DayPicker-NavBar {
               margin-top: 10px;
+
               .DayPicker-NavButton {
                 margin-top: 7px;
                 position: absolute;
                 margin-left: 80px;
               }
+
               .DayPicker-NavButton--next {
                 border-top: 8px solid @CBblue;
                 border-bottom:8px solid @CBblue; 
@@ -69,6 +95,7 @@
                 margin-left: 250px;
                 height: 3px;
               }
+
               .DayPicker-NavButton--prev {
                 border-top: 8px solid @CBblue;
                 border-bottom:8px solid @CBblue; 
@@ -77,15 +104,16 @@
               }
             }
             .DayPicker-Months {
-              margin-bottom: -25px;
+              margin-bottom: -8px;
+
               .DayPicker-Month {
                 border: 2px @CBblue solid;
+
                 .DayPicker-Caption {
                   background: @CBblue;
                   width: 100%;
                 }
                 .DayPicker-Weekdays {
-
                 }
                 .DayPicker-Body {
                   .DayPicker-Week {

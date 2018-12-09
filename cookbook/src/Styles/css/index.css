@@ -2379,6 +2379,29 @@ body .portal .modal-portal {
 .modal-portal .portal-container {
   border: 1.5px solid #343e5a;
 }
+.modal-portal .portal-container .modal-container .modal-confirmation .modal-text-confirmation {
+  display: flex;
+  justify-content: center;
+  color: #343e5a;
+  font-size: 20px;
+  font-family: 'Muli', sans-serif;
+  font-weight: bold;
+}
+.modal-portal .portal-container .modal-container .modal-confirmation .modal-button {
+  display: flex;
+  height: 30px;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-flow: wrap;
+  padding: 0 15px 0;
+  font-size: 1.5rem;
+  font-family: 'Questrial', sans-serif;
+  border: #343e5a solid 2px;
+  border-radius: 20px;
+  background: #fffefe;
+  margin: auto;
+  margin-top: 10px;
+}
 .modal-portal .portal-container .modal-container .modal-sub-container .modal-text {
   display: flex;
   justify-content: center;
@@ -2450,7 +2473,7 @@ body .portal .modal-portal {
   border-left: 8px solid #343e5a;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months {
-  margin-bottom: -25px;
+  margin-bottom: -8px;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month {
   border: 2px #343e5a solid;

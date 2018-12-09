@@ -257,8 +257,8 @@ class RecipeCalendar extends Component {
                           </button>
                         </div>
                       ) : (
-                        <div>
-                          <p>Updated Meal Successfully!</p>
+                        <div className="modal-confirmation">
+                          <p className="modal-text-confirmation">Updated Meal Successfully!</p>
                           <button
                             className="modal-button"
                             onClick={this.toggleModal}
