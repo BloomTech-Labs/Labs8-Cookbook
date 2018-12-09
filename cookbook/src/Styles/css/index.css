@@ -2426,6 +2426,45 @@ body .portal .modal-portal {
   background: #bcc9d2;
   font-weight: bold;
 }
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar {
+  margin-top: 10px;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar .DayPicker-NavButton {
+  margin-top: 7px;
+  position: absolute;
+  margin-left: 80px;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar .DayPicker-NavButton--next {
+  border-top: 8px solid #343e5a;
+  border-bottom: 8px solid #343e5a;
+  border-right: 8px solid #343e5a;
+  border-left: 8px solid white;
+  margin-left: 250px;
+  height: 3px;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar .DayPicker-NavButton--prev {
+  border-top: 8px solid #343e5a;
+  border-bottom: 8px solid #343e5a;
+  border-right: 8px solid white;
+  border-left: 8px solid #343e5a;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months {
+  margin-bottom: -20px;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month {
+  border: 2px #343e5a solid;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+  background: #343e5a;
+  width: 100%;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
+  font-size: 12px;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--today {
+  color: #343e5a;
+  font-weight: bold;
+}
 .modal-portal .portal-container .modal-container .modal-sub-container .modal-button {
   display: flex;
   height: 30px;
@@ -2438,4 +2477,6 @@ body .portal .modal-portal {
   border: #343e5a solid 2px;
   border-radius: 20px;
   background: #fffefe;
+  margin: auto;
+  margin-top: 10px;
 }
