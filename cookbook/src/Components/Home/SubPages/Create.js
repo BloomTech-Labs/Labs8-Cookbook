@@ -15,6 +15,8 @@ const CREATE_RECIPE_MUTATION = gql`
     $servings: String!
     $image: String!
     $url: String!
+    $mealType: String
+    $date: String
   ) {
     createRecipe(
       title: $title
@@ -22,6 +24,8 @@ const CREATE_RECIPE_MUTATION = gql`
       servings: $servings
       image: $image
       url: $url
+      mealType: $mealType
+      date: $date
     ) {
       id
       title
@@ -63,19 +67,19 @@ const CREATE_INGREDIENT_MUTATION = gql`
   }
 `;
 
-const CREATE_EVENT_MUTATION = gql`
-  mutation($date: String!, $mealType: String!, $recipe: String!) {
-    createEvent(date: $date, mealType: $mealType, recipe: $recipe) {
-      id
-      mealType
-      date
-      recipe {
-        id
-        title
-      }
-    }
-  }
-`;
+// const CREATE_EVENT_MUTATION = gql`
+//   mutation($date: String!, $mealType: String!, $recipe: String!) {
+//     createEvent(date: $date, mealType: $mealType, recipe: $recipe) {
+//       id
+//       mealType
+//       date
+//       recipe {
+//         id
+//         title
+//       }
+//     }
+//   }
+// `;
 
 class Create extends Component {
   constructor(props) {
@@ -109,7 +113,7 @@ class Create extends Component {
   mealButtonHandler = e => {
     e.preventDefault();
     if (this.state.type === e.target.name) {
-      this.setState({ type: "" })
+      this.setState({ type: "" });
     } else {
       this.setState({ type: e.target.name });
     }
@@ -142,15 +146,19 @@ class Create extends Component {
         prepTime: this.state.prep_time,
         servings: this.state.servings,
         image: this.state.og_image,
-        url: this.state.og_url
+        url: this.state.og_url,
+        mealType: this.state.type,
+        date: this.state.onDate
       };
 
       //Execute createRecipe
       const { data } = await this.props.createRecipe({
         variables: recipeVariables,
-        refetchQueries: [{ query: GET_RECIPES_QUERY }]
+        refetchQueries: [
+          { query: GET_RECIPES_QUERY },
+          { query: QUERY_RECIPE_EVENT }
+        ]
       });
-      console.log("Recipe created: ", data.createRecipe);
 
       //If url is not whitelisted, then no instructions saved
       if (this.state.instructions.length) {
@@ -188,27 +196,6 @@ class Create extends Component {
       }
       console.log("Ingredients created.");
 
-      if (this.state.onDate && this.state.type) {
-        //variables for createEvent
-        const eventVariables = {
-          mealType: this.state.type,
-          date: this.state.onDate,
-          recipe: data.createRecipe.id
-        };
-
-        //Execute createEvent
-        const eventData = await this.props.createEvent({
-          variables: eventVariables,
-          refetchQueries: [
-            { query: QUERY_RECIPE_EVENT },
-            { query: GET_RECIPES_QUERY }
-          ]
-        });
-        console.log("Event created: ", eventData);
-
-        return this.props.history.push("/home/recipes");
-      }
-
       return this.props.history.push("/home/recipes");
     } catch (error) {
       console.log("onsave error: ", error.message);
@@ -217,16 +204,14 @@ class Create extends Component {
   };
 
   handleSearchClass = () => {
-    if (this.state.query) return 'is-searching';
-    return 'not-searching';
-  }
+    if (this.state.query) return "is-searching";
+    return "not-searching";
+  };
 
   render() {
     return (
       <div className="create-wrapper">
-
-        <div className='search-and-save'>
-
+        <div className="search-and-save">
           <input
             className={this.handleSearchClass()}
             type="text"
@@ -237,11 +222,9 @@ class Create extends Component {
           />
 
           <button onClick={this.onSave}>save</button>
-
         </div>
 
         <div className="preview-and-schedule">
-
           {this.state.og_title === "N/A" ? (
             <div>No preview available</div>
           ) : (
@@ -254,21 +237,17 @@ class Create extends Component {
             />
           )}
 
-          <div className='schedule'>
-
+          <div className="schedule">
             <Buttons
               mealButtonHandler={this.mealButtonHandler}
               type={this.state.type}
             />
-            
-            <div className='create-date-picker'>
+
+            <div className="create-date-picker">
               <DatePicker handlePickDate={this.handlePickDate} />
             </div>
-
           </div>
-
         </div>
-
       </div>
     );
   }
@@ -276,9 +255,6 @@ class Create extends Component {
 
 const createRecipeMutation = graphql(CREATE_RECIPE_MUTATION, {
   name: "createRecipe"
-});
-const createEventMutation = graphql(CREATE_EVENT_MUTATION, {
-  name: "createEvent"
 });
 const createInstructionMutation = graphql(CREATE_INSTRUCTION_MUTATION, {
   name: "createInstruction"
@@ -289,7 +265,6 @@ const createIngredientMutation = graphql(CREATE_INGREDIENT_MUTATION, {
 
 export default compose(
   createRecipeMutation,
-  createEventMutation,
   createInstructionMutation,
   createIngredientMutation
 )(Create);
