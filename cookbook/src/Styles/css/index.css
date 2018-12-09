@@ -1054,7 +1054,83 @@ body {
 .create-wrapper .preview-and-schedule .schedule .create-date-picker {
   margin-top: 30px;
   width: 100%;
+  display: flex;
+  justify-content: center;
   outline: none;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker {
+  width: 100%;
+  max-width: 300px;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
+  margin-top: 12px;
+  position: absolute;
+  margin-left: 9%;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
+    margin-left: 7%;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+  border-top: 8px solid #de6a5a;
+  border-bottom: 8px solid #de6a5a;
+  border-right: 8px solid #de6a5a;
+  border-left: 8px solid white;
+  margin-left: 85%;
+  height: 5px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+    margin-left: 87%;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--prev {
+  border-top: 8px solid #de6a5a;
+  border-bottom: 8px solid #de6a5a;
+  border-right: 8px solid white;
+  border-left: 8px solid #de6a5a;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month {
+  width: 100%;
+  height: 200px;
+  font-size: 1.3rem;
+  border: 2px #de6a5a solid;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 0 10px 10px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month {
+    font-size: 1.2rem;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+  text-align: center;
+  background-color: #de6a5a;
+  width: 100%;
+  line-height: 2.2rem;
+  height: 40px;
+  color: white;
+  font-size: 2rem;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+    font-size: 1.8rem;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays {
+  font-weight: bold;
+  color: #de6a5a;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
+  border-radius: 500px !important;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: #de6a5a !important;
+  color: white;
 }
 /* DayPicker styles */
 .DayPicker {
@@ -1081,8 +1157,6 @@ body {
   display: table;
   margin: 0 1em;
   border-spacing: 0;
-  border-collapse: collapse;
-  border: 2px #de6a5a solid;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1237,100 +1311,6 @@ body {
   z-index: 1;
   background: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-.DayPicker {
-  width: 100%;
-}
-.DayPicker .DayPicker-NavBar .DayPicker-NavButton {
-  margin-top: 12px;
-  position: absolute;
-  margin-left: 9%;
-}
-@media (max-width: 900px) {
-  .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
-    margin-left: 27%;
-  }
-}
-@media (max-width: 600px) {
-  .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
-    margin-left: 5%;
-  }
-}
-.DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
-  border-top: 8px solid #de6a5a;
-  border-bottom: 8px solid #de6a5a;
-  border-right: 8px solid #de6a5a;
-  border-left: 8px solid white;
-  margin-left: 85%;
-  height: 5px;
-}
-@media (max-width: 900px) {
-  .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
-    margin-left: 70%;
-  }
-}
-@media (max-width: 600px) {
-  .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
-    margin-left: 90%;
-  }
-}
-.DayPicker .DayPicker-NavBar .DayPicker-NavButton--prev {
-  border-top: 8px solid #de6a5a;
-  border-bottom: 8px solid #de6a5a;
-  border-right: 8px solid white;
-  border-left: 8px solid #de6a5a;
-}
-.DayPicker .DayPicker-Months .DayPicker-Month {
-  width: 100%;
-  height: 300px;
-  font-size: 1.3rem;
-}
-@media (max-width: 1200px) {
-  .DayPicker .DayPicker-Months .DayPicker-Month {
-    height: 300px;
-  }
-}
-@media (max-width: 900px) {
-  .DayPicker .DayPicker-Months .DayPicker-Month {
-    height: 300px;
-    width: 300px;
-  }
-}
-@media (max-width: 600px) {
-  .DayPicker .DayPicker-Months .DayPicker-Month {
-    height: 300px;
-    width: 100%;
-    font-size: 1.4rem;
-  }
-}
-.DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
-  text-align: center;
-  border-radius: 25px;
-  background-color: #de6a5a;
-  width: 100%;
-  line-height: 2.2rem;
-  height: 40px;
-  color: white;
-  font-size: 2rem;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  margin-bottom: 15px;
-}
-@media (max-width: 600px) {
-  .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
-    font-size: 1.8rem;
-  }
-}
-.DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays {
-  font-weight: bold;
-  color: #de6a5a;
-}
-.DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
-  border-radius: 500px !important;
-}
-.DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-  background-color: #de6a5a !important;
-  color: white;
 }
 .calendar-page-container {
   margin-left: 5px;
