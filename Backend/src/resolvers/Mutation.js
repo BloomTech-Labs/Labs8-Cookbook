@@ -10,24 +10,6 @@ const Mutation = {
   deleteRecipe: forwardTo("db"),
   deleteEvent: forwardTo("db"),
 
-  //resolver for update event
-  updateEvent: async (_, args, context, info) => {
-    try {
-      //run updateEvent mutation, and return result
-      const updatedEvent = await context.db.mutation.updateEvent(
-        {
-          data: args.data,
-          where: args.where
-        },
-        info
-      );
-      return updatedEvent;
-    } catch (error) {
-      console.log(error.message);
-      return error.message;
-    }
-  },
-
   //resolver for creating new user
   signup: async (_, args, context, info) => {
     //extract user auth0 id and email from context
@@ -84,34 +66,37 @@ const Mutation = {
       }
 
       //If use chose a date and mealtype, then proceed to create new events for the recipe created above
-      if (args.date && args.mealType) {
-        //Check if user scheduled a meal for this recipe on the provided date
-        const existingEvent = await context.db.query.events({
-          where: {
-            mealType: args.mealType,
-            date: args.date,
-            recipe: {
-              id: recipe.id
+      if (args.dates.length && args.mealType) {
+        args.dates.forEach(async date => {
+          //Check if user scheduled a meal for this recipe on the provided date
+          const existingEvent = await context.db.query.events({
+            where: {
+              mealType: args.mealType,
+              date: date,
+              recipe: {
+                id: recipe.id
+              }
             }
+          });
+
+          //if there's already a meal scheduled then skip, if not then run createEvent mutation to create event
+          if (!existingEvent.length) {
+            const eventVariables = {
+              mealType: args.mealType,
+              date: date,
+              recipe: { connect: { id: recipe.id } }
+            };
+
+            await context.db.mutation.createEvent(
+              {
+                data: eventVariables
+              },
+              info
+            );
           }
         });
-        //if there's already a meal scheduled then skip, if not then run createEvent mutation to create event
-        if (!existingEvent.length) {
-          const eventVariables = {
-            mealType: args.mealType,
-            date: args.date,
-            recipe: { connect: { id: recipe.id } }
-          };
-
-          const event = await context.db.mutation.createEvent(
-            {
-              data: eventVariables
-            },
-            info
-          );
-        }
       }
-      //finally return the recipe.
+      //return the recipe.
       return recipe;
     } catch (e) {
       console.log("createRecipe Error: ", e.message);
