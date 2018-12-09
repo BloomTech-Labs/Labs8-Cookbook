@@ -6,6 +6,8 @@ import { Query, graphql, compose } from "react-apollo";
 import Modal from "../../SubComponents/Modal";
 import DatePicker from "../../SubComponents/DatePicker.js";
 import Buttons from "./Buttons";
+import { GET_RECIPES_QUERY } from "./Recipes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const propTypes = {};
@@ -13,6 +15,16 @@ const propTypes = {};
 const UPDATE_EVENT = gql`
   mutation($data: EventUpdateInput!, $where: EventWhereUniqueInput!) {
     updateEvent(data: $data, where: $where) {
+      id
+      mealType
+      date
+    }
+  }
+`;
+
+const DELETE_EVENT_MUTATION = gql`
+  mutation($where: EventWhereUniqueInput!) {
+    deleteEvent(where: $where) {
       id
       mealType
       date
@@ -84,6 +96,23 @@ class RecipeCalendar extends Component {
 
   handleSearch = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  deleteHandler = async () => {
+    try {
+      const deletedEvent = await this.props.deleteEvent({
+        variables: { where: { id: this.state.currentEvent } },
+        refetchQueries: [
+          { query: QUERY_RECIPE_EVENT },
+          { query: GET_RECIPES_QUERY }
+        ]
+      });
+      console.log("deleted: ", deletedEvent);
+      return deletedEvent;
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
   };
 
   onEventSave = async () => {
@@ -252,6 +281,13 @@ class RecipeCalendar extends Component {
                           >
                             Cancel
                           </button>
+                          <button className="del-button">
+                            <FontAwesomeIcon
+                              icon="trash-alt"
+                              className="del-icon"
+                              onClick={this.deleteHandler}
+                            />
+                          </button>
                         </div>
                       ) : (
                         <div>
@@ -286,8 +322,13 @@ const createEventMutation = graphql(CREATE_EVENT_MUTATION, {
   name: "createEvent"
 });
 
+const deleteEventMutation = graphql(DELETE_EVENT_MUTATION, {
+  name: "deleteEvent"
+});
+
 export default compose(
   updateEventMutation,
-  createEventMutation
+  createEventMutation,
+  deleteEventMutation
 )(RecipeCalendar);
 export { QUERY_RECIPE_EVENT };
