@@ -6,7 +6,6 @@ import GroceryItem from "../../SubComponents/GroceryItem";
 import * as math from "mathjs";
 import GatedSubscription from "../../SubComponents/GatedSubscription";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class GroceryList extends Component {
   static defaultProps = {
@@ -149,28 +148,29 @@ class GroceryList extends Component {
     ) : (
       <div>No grocery list generated yet.</div>
     );
-    //Maps through scheduled recipes for grocery list.
-    const scheduledMeals = this.state.scheduledMeals.length ? (
-      <div className="scheduled-meals-container">
-        {this.state.scheduledMeals.map(meal => (
-          <div className="scheduled-meals">
-            <span className="title">{meal.title}</span>
-            <a
-              href={"" + meal.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link"
-            >
-              <FontAwesomeIcon icon="link" className="icon" />
-            </a>
-          </div>
-        ))}
-      </div>
-    ) : null;
-    // shows scheduled meals header if there are schedules meals
-    const schedMealsHeader = this.state.scheduledMeals.length ? (
-      <span className="meals-header">Scheduled Meals:</span>
-    ) : null;
+    // //Maps through scheduled recipes for grocery list.
+    // const scheduledMeals = this.state.scheduledMeals.length ? (
+    //   <div className="scheduled-meals-container">
+    //     {this.state.scheduledMeals.map(meal => (
+    //       <div className="scheduled-meals">
+    //         <span className="title">{meal.title}</span>
+    //         <a
+    //           href={"" + meal.url}
+    //           target="_blank"
+    //           rel="noopener noreferrer"
+    //           className="link"
+    //         >
+    //           <FontAwesomeIcon icon="link" className="icon" />
+    //         </a>
+    //       </div>
+    //     ))}
+    //   </div>
+    // ) : null;
+    // // shows scheduled meals header if there are schedules meals
+    // const schedMealsHeader = this.state.scheduledMeals.length ? (
+    //   <span className="meals-header">Scheduled Meals:</span>
+    // ) : null;
+
     // shows grocery list items header if there are items in the list
     const groceryListHeader = this.state.groceryList.length ? (
       <span className="grocery-header">Grocery List:</span>
@@ -210,10 +210,10 @@ class GroceryList extends Component {
           </div>
           <div className="list">
             <div className="list-header">{groceryDateRange}</div>
+            {groceryListHeader}
             <div className="scroll-container">
-              {schedMealsHeader}
-              {scheduledMeals}
-              {groceryListHeader}
+              {/* {schedMealsHeader}
+              {scheduledMeals} */}
               {grocery_list}
             </div>
           </div>
