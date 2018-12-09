@@ -162,6 +162,7 @@ class RecipeCalendar extends Component {
   };
 
   render() {
+
     return (
       <Query query={QUERY_RECIPE_EVENT}>
         {({ loading, error, data }) => {
@@ -190,6 +191,10 @@ class RecipeCalendar extends Component {
           return (
             <div className="calendar-page-container">
               <div className="calendar-container">
+                <div className='recipes-modal'>
+                  <div className='modal-header'>Today</div>
+                  <div className='modal-content'></div>
+                </div>
                 <div className="search-box-wrapper">
                   <div className="magnifying-glass">
                     <span role="img" aria-label="magnifying-glass">
@@ -204,8 +209,10 @@ class RecipeCalendar extends Component {
                     onChange={this.handleSearch}
                     value={this.state.search}
                   />
+                </div>
+                <div className='calendar-toolbar'>
                   <button onClick={() => this.duplicateMeals(searchedEvents)}>
-                    Duplicate previous week
+                      Duplicate previous week
                   </button>
                 </div>
                 <BigCalendar

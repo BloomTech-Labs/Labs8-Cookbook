@@ -3,43 +3,197 @@
 
     .calendar-container {
 
-    
-        .rbc-calendar {
-            height: 650px;
-            @media @desktop {
-                height: 500px;
+        .recipes-modal {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+            
+            .modal-header {
+                border-top-left-radius: 25px;
+                border-top-right-radius: 25px;
+                width: 100%;
+                background-color: @CBblue;
+                color: @CBtan;
+                font-size: 1.8rem;
+                font-weight: bold;
+                letter-spacing: .4rem;
+                padding: 6px 0;
+                @media @phone {
+                    font-size: 1.6rem;
+                }
             }
-            @media @tablet {
-                font-size: 1.4rem;
-                height: 420px;
+
+            .modal-content {
+                border-bottom-left-radius: 25px;
+                border-bottom-right-radius: 25px;
+                height: 250px;
+                background-color: @CBgrey;
             }
+        }
+
+        .search-box-wrapper {
+            display: flex;
+            font-size: 1.2rem;
+            justify-content: center;
+            align-items: stretch;
+            margin-bottom: 20px;
+
             @media @phone {
                 font-size: 1.0rem;
-                height: 380px;
+                margin-bottom: 15px;
+            }
+                    
+            .magnifying-glass {
+                font-size: 1.8rem;
+                color: white;
+                border: 1.5px solid @CBblue;
+                border-right: 0;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                padding: 3px;
+                padding-left: 8px;
+                @media @phone {
+                    font-size: 1.4rem;
+                }
             }
 
+            .search-box-input {
+                border: 1.5px solid @CBblue;
+                border-left: 0;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                width: 100%;
+                font-size: 1.4rem;
+                color: @CBblue;
+                padding-right: 8px;
+                padding-left: 8px;
+            }
+
+            .search-box-input:hover {
+
+            }
+
+            .search-box-input:focus {
+                border-color: #ddd
+
+            }   
+        }
+
+        .calendar-toolbar {
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 15px;
+            @media @phone {
+                padding: 5px;
+                margin-bottom: 8px;
+            }
+            
+            button {
+                border: 1.5px solid @CBblue;
+                background-color: @CBtan;
+                font-size: 1.4rem;
+                padding: 5px 12px;
+                border-radius: 20px;
+                font-weight: 300;
+                @media @phone {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        .rbc-calendar {
+
             .rbc-toolbar {
+                border-top-left-radius: 25px;
+                border-top-right-radius: 25px;
+                background-color: @CBblue;
+                color: @CBtan;
+                font-weight: bold;
+                font-size: 1.8rem;
+                letter-spacing: .2rem;
+                padding: 5px 0;
+                @media @phone {
+                    padding: 0;
+                }
+
                 .rbc-btn-group {
+                    position: relative;
 
                     button {
+                        position: absolute;
+                        border: 1.5px solid @CBblue;
+                        background-color: @CBtan;
+                        font-size: 1.4rem;
+                        padding: 5px 8px;
+                        border-radius: 20px;
+                        font-weight: 300;
+                        top: -58px;
+                        
                         @media @phone {
-                            font-size: .8rem;
-                            width: 40px;
+                            font-size: 1.2rem;
+                            top: -53px;
+                        }
+                    }
+
+                    button:first-of-type {
+                        left: 10px;
+                        @media @phone {
+                            left: 5px;
+                        }
+                    }
+
+                    button:nth-child(2) {
+                        left: 78px;
+                        @media @phone {
+                            left: 65px;
+                        }
+                    }
+
+                    button:nth-child(3) {
+                        left: 138px;
+                        @media @phone {
+                            left: 118px;
                         }
                     }
                 }
 
                 .rbc-toolbar-label {
                     @media @phone {
-                        font-size: 1.0rem;
-                        padding: 0;
+                        font-size: 1.4rem;
+                        padding: 4px 0;
                     }
                 }
             }
             
             .rbc-month-view {
+                @media @tablet {
+                    font-size: 1.4rem;
+                }
+                @media @phone {
+                    font-size: 1.2rem;
+                }
+
+                .rbc-month-header {
+                    background-color: @CBtan;
+                }
 
                 .rbc-month-row {
+
+                    .rbc-row-bg {
+
+                        .rbc-day-bg {
+
+                        }
+
+                        .rbc-today {
+                            background-color: @CBtan;
+                        }
+
+                        .rbc-off-range-bg {
+                            background-color: @CBgrey;
+                        }
+                    }
 
                     .rbc-row-content {
 
@@ -49,6 +203,9 @@
 
                                 .rbc-event {
                                     background-color: @CBblue;
+                                    @media @phone {
+                                        font-size: 1.0rem;
+                                    }
                                 
                                     .rbc-event-content {
 
@@ -58,42 +215,6 @@
                         }
                     }
                 }
-            }
-        }
-
-        .search-box-wrapper {
-            display: flex;
-            font-size: 1.2rem;
-            justify-content: center;
-            align-items: stretch;
-
-            @media @phone {
-                font-size: 1.0rem;
-                width: 40px;
-            }
-
-        .search-box-input:hover {
-
-        }
-
-        .search-box-input:focus {
-            border-color: #ddd
-
-        }   
-            .search-box-input {
-                font-size: 20px;
-                border: 0.2em solid @CBblue;
-                border-radius: 0 0.5em 0.5em 0; 
-                border-left: 0;
-            }
-        
-            .magnifying-glass {
-                font-size: 20px;
-                border: 0.2em solid @CBblue;
-                border-radius: 0.5em 0 0 0.5em;
-                border-right: 0;
-                padding: 0 0.1em 0.1em 0;
-                color: white;
             }
         }
     }

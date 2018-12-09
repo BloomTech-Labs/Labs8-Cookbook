@@ -46,7 +46,7 @@ class App extends Component {
           <Route exact path="/" component={LandingPage} />
           <Route path="/home" component={Home} />
           <Route exact path="/callback" component={Callback} />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       );
     }
