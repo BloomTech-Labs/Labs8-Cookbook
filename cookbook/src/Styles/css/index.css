@@ -868,6 +868,11 @@ body {
     order: -1;
   }
 }
+.create-wrapper .search-and-save button:hover {
+  cursor: pointer;
+  color: #fed092;
+  font-weight: bold;
+}
 .create-wrapper .preview-and-schedule {
   display: flex;
   margin-top: 30px;
@@ -1014,6 +1019,7 @@ body {
   padding: 0 12px;
   outline: none;
   margin-top: 20px;
+  cursor: pointer;
 }
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected {
   font-family: 'Questrial', sans-serif;
@@ -1027,6 +1033,7 @@ body {
   padding: 0 12px;
   outline: none;
   margin-top: 20px;
+  cursor: pointer;
   color: #de6a5a;
   background: white;
 }
