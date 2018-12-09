@@ -1065,7 +1065,7 @@ body {
   /* Firefox 18- */
   color: #de6a5a;
 }
-.create-wrapper .search-and-save button {
+.create-wrapper .search-and-save .save-button {
   font-family: 'Questrial', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 1.5px;
@@ -1078,14 +1078,33 @@ body {
   outline: none;
 }
 @media (max-width: 900px) {
-  .create-wrapper .search-and-save button {
+  .create-wrapper .search-and-save .save-button {
     order: -1;
   }
 }
-.create-wrapper .search-and-save button:hover {
+.create-wrapper .search-and-save .save-button:hover {
   cursor: pointer;
   color: #fed092;
   font-weight: bold;
+}
+.create-wrapper .search-and-save .save-button-inactive {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  width: 70px;
+  outline: none;
+  background: white;
+  color: #de6a5a;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save .save-button-inactive {
+    order: -1;
+  }
 }
 .create-wrapper .preview-and-schedule {
   display: flex;

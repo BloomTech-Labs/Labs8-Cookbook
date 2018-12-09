@@ -236,7 +236,10 @@ class Create extends Component {
             value={this.state.query}
           />
 
-          <button onClick={this.onSave}>save</button>
+          <button 
+            className={this.state.og_title === "N/A" || this.state.og_title === "" ? "save-button-inactive" : "save-button"} 
+            onClick={this.state.og_title === "N/A" || this.state.og_title === "" ? null : this.onSave}
+          >save</button>
 
         </div>
 

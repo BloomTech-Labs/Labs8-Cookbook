@@ -58,7 +58,7 @@
       color: @CBred;
     }
 
-    button {
+    .save-button {
       font-family: @secondary-font;
       font-size: 1.5rem;
       letter-spacing: 1.5px;
@@ -74,11 +74,16 @@
         order: -1;
       }
     }
-
-    button:hover {
+    .save-button:hover {
       cursor: pointer;
       color: @CBorange;
       font-weight: bold;
+    }
+
+    .save-button-inactive {
+      .save-button;
+      background: white;
+      color: @CBred;
     }
   }
 
