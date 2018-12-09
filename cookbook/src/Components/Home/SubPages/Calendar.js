@@ -77,9 +77,11 @@ class RecipeCalendar extends Component {
 
   mealButtonHandler = e => {
     e.preventDefault();
-    this.setState({
-      type: e.target.name
-    });
+    if (this.state.type === e.target.name) {
+      this.setState({ type: "" })
+    } else {
+      this.setState({ type: e.target.name });
+    }
   };
 
   handleSearch = e => {
@@ -237,13 +239,6 @@ class RecipeCalendar extends Component {
                         <div className="modal-sub-container">
                           <h1 className="modal-text">Please select Meal and Date!</h1>
                           <Buttons
-                            style={{
-                              display: 'flex',
-                              justifyContent: 'space-evenly',
-                              maxWidth: '300px',
-                              flexFlow: 'wrap',
-                              
-                            }}
                             mealButtonHandler={this.mealButtonHandler}
                             type={this.state.type}
                           />
