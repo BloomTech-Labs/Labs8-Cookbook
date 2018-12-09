@@ -2508,3 +2508,7 @@ body .portal .modal-portal {
   margin: auto;
   margin-top: 10px;
 }
+.modal-portal .portal-container .modal-container .modal-sub-container .modal-button:hover {
+  background: #bcc9d2;
+  font-weight: bold;
+}
