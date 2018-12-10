@@ -2649,6 +2649,19 @@ body .portal .modal-portal {
   background: #bcc9d2;
   font-weight: bold;
 }
+.modal-portal .portal-container .modal-container .modal-sub-container .scheduled-for .scheduled-for-text {
+  font-family: 'Muli', sans-serif;
+  font-size: 2rem;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .scheduled-for .chosen-date {
+  outline: none;
+  background: #343e5a;
+  border: 2px #343e5a solid;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .scheduled-for .no-date-chose {
+  border: 2px #343e5a solid;
+  outline: none;
+}
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper {
   outline: none;
 }

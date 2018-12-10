@@ -30,7 +30,7 @@ class DatePicker extends Component {
         flexDirection: 'column',
       }}>
         <div className='scheduled-for'>
-          <p>scheduled for</p>
+          <p className="scheduled-for-text">scheduled for</p>
 
           {this.state.selectedDay
             ? <p className='chosen-date'>{this.state.selectedDay.toLocaleDateString()}</p>
