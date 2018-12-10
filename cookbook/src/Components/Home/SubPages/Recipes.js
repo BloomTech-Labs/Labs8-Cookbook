@@ -101,6 +101,18 @@ class Recipes extends Component {
             >
               dinner
             </button>
+            <button
+              className={this.filterButtonClassName("snack")}
+              onClick={() => this.handleFilter("snack")}
+            >
+              snack
+            </button>
+            <button
+              className={this.filterButtonClassName("dessert")}
+              onClick={() => this.handleFilter("dessert")}
+            >
+              dessert
+            </button>
           </div>
         </div>
         <Query query={GET_RECIPES_QUERY}>
