@@ -66,6 +66,7 @@ class RecipeCard extends Component {
               <CardSchedule
                 key={this.props.recipe.events.length}
                 events={this.props.recipe.events}
+                recipeId={this.props.recipe.id}
               />
             </div>
             <button className="del-button">
