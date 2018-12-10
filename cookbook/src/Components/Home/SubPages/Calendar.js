@@ -305,12 +305,11 @@ class RecipeCalendar extends Component {
                           >
                             Cancel
                           </button>
-                          <button className="del-button" name="delete-btn">
-                            <FontAwesomeIcon
-                              icon="trash-alt"
-                              className="del-icon"
-                              onClick={this.deleteHandler}
-                            />
+                          <button
+                            className="modal-button"
+                            onClick={this.deleteHandler}
+                          >
+                            Delete
                           </button>
                         </div>
                       ) : (
