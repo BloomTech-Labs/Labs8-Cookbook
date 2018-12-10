@@ -20,6 +20,7 @@ class Modal extends React.Component {
   render() {
     return createPortal(
       <div
+        className="modal-portal"
         style={{
           position: 'fixed',
           top: '0',
@@ -35,6 +36,7 @@ class Modal extends React.Component {
         // onClick={this.props.onClose}
         >
         <div
+          className="portal-container"
           style={{
             padding: 20,
             background: '#fff',
