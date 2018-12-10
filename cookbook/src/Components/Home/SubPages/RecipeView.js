@@ -53,7 +53,7 @@ class RecipeView extends Component {
   toggleCheckBox = e => {
     // filter through instuction state to find matching instruction by id
     let inst = this.state.instructions.filter(inst => {
-      return inst.stepNum === e.target.name;
+      return inst.stepNum == e.target.name;
     });
     // make a copy of the state
     let copyArr = this.state.instructions;
@@ -62,14 +62,6 @@ class RecipeView extends Component {
       .isCompleted;
     // re-set state with toggled checkmark
     this.setState({ instructions: copyArr });
-    if (copyArr[inst[0].stepNum - 1].isCompleted === true) {
-      document.getElementById("instruction-id").style.backgroundColor =
-        "#bcc9d2";
-      document.getElementById("instruction-id").style.border = "1px solid red";
-    } else {
-      document.getElementById("instruction-id").style.backgroundColor =
-        "#343e5a";
-    }
   };
 
   render() {
@@ -80,7 +72,7 @@ class RecipeView extends Component {
     const instructions = whitelisted ? (
       <div className="instructions">
         {this.state.instructions.map((inst, index) => (
-          <div className="instruction" key={index}>
+          <div className={inst.isCompleted ? "instruction-checked" : "instruction"} key={index}>
             <input
               type="checkbox"
               className="checkbox"
@@ -187,7 +179,7 @@ class RecipeView extends Component {
             <div className="ingredients">
               <div className="title">Ingredients</div>
               {this.props.location.state.ingredients.map((ing, index) => (
-                <div className="ingredient" id="instruction-id" key={index}>
+                <div className="ingredient" key={index}>
                   <span className="qty">
                     {ing.quantity !== "0" ? ing.quantity : ""}
                   </span>
