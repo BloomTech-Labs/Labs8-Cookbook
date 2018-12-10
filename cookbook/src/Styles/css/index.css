@@ -1915,17 +1915,55 @@ body {
   flex-flow: row;
   justify-content: space-between;
 }
+@media (max-width: 600px) {
+  .recipesContainer .recipesFunctionBar {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+.recipesContainer .recipesFunctionBar .recipesAddRecipe {
+  background-color: #343e5a;
+  color: #fed092;
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+  border-radius: 15px;
+  padding: 2px 15px;
+  border: 2px solid #343e5a;
+}
+@media (max-width: 600px) {
+  .recipesContainer .recipesFunctionBar .recipesAddRecipe {
+    position: static;
+    margin-bottom: 10px;
+    height: 30px;
+  }
+}
+@media (max-width: 600px) {
+  .recipesContainer .recipesFunctionBar .recipes-search {
+    margin-bottom: 10px;
+    width: 80%;
+  }
+}
+@media (max-width: 600px) {
+  .recipesContainer .recipesFunctionBar .recipesFilterContainer {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
 .recipesContainer .recipesFunctionBar .recipesFilterButtonChosen {
   background: black;
   color: white;
   border: 2px black solid;
   border-radius: 500px;
+  margin-right: 5px;
 }
 .recipesContainer .recipesFunctionBar .recipesFilterButtonNotChosen {
   background: white;
   color: grey;
   border: 2px grey solid;
   border-radius: 500px;
+  margin-right: 5px;
 }
 .recipesContainer .recipesCards {
   display: flex;

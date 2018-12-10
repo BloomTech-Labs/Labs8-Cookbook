@@ -78,6 +78,7 @@ class Recipes extends Component {
             type="text"
             name="search"
             placeholder="search"
+            className="recipes-search"
             onChange={this.handleSearch}
             value={this.state.search}
           />
