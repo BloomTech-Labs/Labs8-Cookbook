@@ -92,7 +92,7 @@ class RecipeCalendar extends Component {
 
   deleteHandler = async () => {
     try {
-      const deletedEvent = await this.props.deleteEvent({
+      await this.props.deleteEvent({
         variables: { where: { id: this.state.currentEvent.id } },
         refetchQueries: [
           { query: QUERY_RECIPE_EVENT },
@@ -340,4 +340,4 @@ export default compose(
   createEventMutation,
   deleteEventMutation
 )(RecipeCalendar);
-export { QUERY_RECIPE_EVENT };
+export { QUERY_RECIPE_EVENT, CREATE_EVENT_MUTATION };

@@ -55,7 +55,7 @@ class Settings extends React.Component {
 
   onToken = async (res, createSubscription) => {
     try {
-      const { data, loading, error } = await createSubscription({
+      const { data } = await createSubscription({
         variables: {
           token: res.id
         },

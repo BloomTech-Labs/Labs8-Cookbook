@@ -22,7 +22,7 @@ class RecipeView extends Component {
 
   deleteHandler = async () => {
     try {
-      const deletedRecipe = await this.props.deleteRecipe({
+      await this.props.deleteRecipe({
         variables: { id: this.props.location.state.id },
         refetchQueries: [
           { query: GET_RECIPES_QUERY },
