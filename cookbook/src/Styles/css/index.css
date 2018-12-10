@@ -8,6 +8,10 @@ body {
   margin: 0;
   padding: 0;
 }
+html .portal .modal-portal,
+body .portal .modal-portal {
+  border: 2px solid red;
+}
 * {
   box-sizing: border-box;
 }
@@ -841,7 +845,7 @@ body {
   cursor: pointer;
 }
 .DayPicker-NavButton:hover {
-  opacity: 0.6;
+  opacity: .6;
 }
 .DayPicker-NavButton--prev {
   width: 0;
@@ -1403,19 +1407,19 @@ body {
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar {
-    font-size: 1rem;
+    font-size: 1.0rem;
     height: 380px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
-    font-size: 0.8rem;
+    font-size: .8rem;
     width: 40px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
-    font-size: 1rem;
+    font-size: 1.0rem;
     padding: 0;
   }
 }
@@ -1427,25 +1431,24 @@ body {
   font-size: 1.2rem;
   justify-content: center;
   align-items: stretch;
+  margin-bottom: 8px;
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .search-box-wrapper {
-    font-size: 1rem;
-    width: 40px;
+    font-size: 1.0rem;
   }
-}
-.calendar-page-container .calendar-container .search-box-wrapper .search-box-input:focus {
-  border-color: #ddd;
 }
 .calendar-page-container .calendar-container .search-box-wrapper .search-box-input {
   font-size: 20px;
-  border: 0.2em solid #343e5a;
+  border: 0.1em solid #343e5a;
   border-radius: 0 0.5em 0.5em 0;
   border-left: 0;
+  width: 100%;
+  outline: none;
 }
 .calendar-page-container .calendar-container .search-box-wrapper .magnifying-glass {
   font-size: 20px;
-  border: 0.2em solid #343e5a;
+  border: 0.1em solid #343e5a;
   border-radius: 0.5em 0 0 0.5em;
   border-right: 0;
   padding: 0 0.1em 0.1em 0;
@@ -1779,14 +1782,14 @@ body {
 .grocery-list-page .list .meals-header {
   font-size: 1.8rem;
   margin-left: 82px;
-  letter-spacing: 0.3rem;
+  letter-spacing: .3rem;
   font-weight: bold;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .list .meals-header {
     margin-left: 80px;
     font-size: 1.7rem;
-    letter-spacing: 0.2rem;
+    letter-spacing: .2rem;
   }
 }
 @media (max-width: 900px) {
@@ -1999,7 +2002,7 @@ body {
   width: 36px;
 }
 .content-container .card-bottom .link-container .link-text {
-  font-size: 0.9rem;
+  font-size: .9rem;
   width: 30px;
   text-align: center;
 }
@@ -2086,7 +2089,7 @@ body {
   width: 100%;
 }
 .content-container .card-bottom .del-button .del-text {
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
 .recipe-page {
   display: flex;
@@ -2112,7 +2115,7 @@ body {
   margin-top: 20px;
   font-weight: bold;
   font-size: 2.4rem;
-  letter-spacing: 0.2rem;
+  letter-spacing: .2rem;
 }
 @media (max-width: 600px) {
   .recipe-page .recipe-header {
@@ -2486,31 +2489,56 @@ body {
   background-color: #343e5a;
 }
 .user-info {
-  max-width: 30%;
+  max-width: 400px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 600px) {
+  .user-info {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    margin: 15px;
+  }
 }
 .user-info .form-group {
-  display: flex;
-  justify-content: space-evenly;
   margin: 10px 0;
   padding: 10px 0;
   line-height: 2;
+  display: flex;
+  justify-content: center;
 }
 .user-info .form-group label {
-  width: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  color: #343e5a;
+  font-size: 20px;
   margin-right: 30px;
-  text-align: right;
 }
 .user-info input {
-  padding: 0 10px;
+  border: 0.15em solid #de6a5a;
+  border-radius: 0.7em;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  width: 20rem;
+  font-size: 1.5rem;
 }
 .user-info #user-email,
 .user-info #user-status {
   background-color: #eee;
   opacity: 1;
 }
+.user-info #user-email:hover,
+.user-info #user-status:hover {
+  background-color: #9e9d9d;
+  opacity: 1;
+  cursor: not-allowed;
+}
 .buttons {
-  max-width: 30%;
+  max-width: 60%;
   margin: auto;
   display: flex;
   justify-content: space-evenly;
@@ -2519,7 +2547,8 @@ body {
   border: 1px solid transparent;
   border-radius: 4px;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: space-evenly;
   padding: 6px 12px;
   margin-bottom: 0;
   font-size: 14px;
@@ -2529,7 +2558,8 @@ body {
   white-space: nowrap;
   vertical-align: middle;
   color: #fff;
-  width: 100px;
+  width: 150px;
+  margin: 0 8px 8px 8px;
 }
 .buttons .save-btn {
   background-color: #5cb85c;
@@ -2556,6 +2586,166 @@ body {
   font-weight: 700;
   font-size: 1.8rem;
   margin-top: 20px;
+}
+.modal-portal .portal-container {
+  border: 1.5px solid #343e5a;
+}
+.modal-portal .portal-container .modal-container .modal-confirmation .modal-text-confirmation {
+  display: flex;
+  justify-content: center;
+  color: #343e5a;
+  font-size: 20px;
+  font-family: 'Muli', sans-serif;
+  font-weight: bold;
+}
+.modal-portal .portal-container .modal-container .modal-confirmation .modal-button {
+  display: flex;
+  height: 30px;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-flow: wrap;
+  padding: 0 15px 0;
+  font-size: 1.5rem;
+  font-family: 'Questrial', sans-serif;
+  border: #343e5a solid 2px;
+  border-radius: 20px;
+  background: #fffefe;
+  margin: auto;
+  margin-top: 10px;
+  outline: none;
+}
+.modal-portal .portal-container .modal-container .modal-confirmation .modal-button:hover {
+  background: #bcc9d2;
+  font-weight: bold;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .modal-text {
+  display: flex;
+  justify-content: center;
+  color: #343e5a;
+  font-size: 23px;
+  font-family: 'Muli', sans-serif;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 350px;
+  flex-flow: wrap;
+  padding: 0 15px 0;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons .button-selected {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #343e5a solid 2px;
+  border-radius: 20px;
+  background: #343e5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  margin-top: 10px;
+  width: 140px;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons .button-not-selected {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #343e5a solid 2px;
+  border-radius: 20px;
+  background: #343e5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  margin-top: 10px;
+  width: 140px;
+  color: #343e5a;
+  background: white;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons .button-not-selected:hover {
+  background: #bcc9d2;
+  font-weight: bold;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .scheduled-for .scheduled-for-text {
+  font-family: 'Muli', sans-serif;
+  font-size: 2rem;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .scheduled-for .chosen-date {
+  outline: none;
+  background: #343e5a;
+  border: 2px #343e5a solid;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .scheduled-for .no-date-chose {
+  border: 2px #343e5a solid;
+  outline: none;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper {
+  outline: none;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar {
+  margin-top: 10px;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar .DayPicker-NavButton {
+  margin-top: 7px;
+  position: absolute;
+  margin-left: 80px;
+  outline: none;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar .DayPicker-NavButton--next {
+  border-top: 8px solid #343e5a;
+  border-bottom: 8px solid #343e5a;
+  border-right: 8px solid #343e5a;
+  border-left: 8px solid white;
+  margin-left: 250px;
+  height: 3px;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-NavBar .DayPicker-NavButton--prev {
+  border-top: 8px solid #343e5a;
+  border-bottom: 8px solid #343e5a;
+  border-right: 8px solid white;
+  border-left: 8px solid #343e5a;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months {
+  margin-bottom: -8px;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month {
+  border: 2px #343e5a solid;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+  background: #343e5a;
+  width: 100%;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
+  font-size: 12px;
+  outline: none;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--today {
+  color: #343e5a;
+  font-weight: bold;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--selected {
+  background-color: #343e5a;
+  color: white;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .modal-button {
+  display: flex;
+  height: 30px;
+  justify-content: space-evenly;
+  width: 88%;
+  flex-flow: wrap;
+  padding: 0 15px 0;
+  font-size: 1.5rem;
+  font-family: 'Questrial', sans-serif;
+  border: #343e5a solid 2px;
+  border-radius: 20px;
+  background: #fffefe;
+  margin: auto;
+  margin-top: 10px;
+  outline: none;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .modal-button:hover {
+  background: #bcc9d2;
+  font-weight: bold;
 }
 *,
 *::before,

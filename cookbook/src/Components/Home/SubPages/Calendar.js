@@ -81,9 +81,11 @@ class RecipeCalendar extends Component {
 
   mealButtonHandler = e => {
     e.preventDefault();
-    this.setState({
-      type: e.target.name
-    });
+    if (this.state.type === e.target.name) {
+      this.setState({ type: "" });
+    } else {
+      this.setState({ type: e.target.name });
+    }
   };
 
   handleSearch = e => {
@@ -266,6 +268,7 @@ class RecipeCalendar extends Component {
                 {this.state.showModal ? ( // portal ternary statement to turn on/off
                   <Modal onClose={this.toggleModal}>
                     <div
+                      className="modal-container"
                       style={{
                         maxWidth: 400,
                         position: "relative",
@@ -275,13 +278,15 @@ class RecipeCalendar extends Component {
                       }}
                     >
                       {!this.state.isUpdated ? (
-                        <div>
-                          <h1>Please select Meal and Date!</h1>
+                        <div className="modal-sub-container">
+                          <h1 className="modal-text">
+                            Please select Meal and Date!
+                          </h1>
                           <Buttons
                             mealButtonHandler={this.mealButtonHandler}
                             type={this.state.type}
                           />
-                          <div className='modal-date-picker'>
+                          <div className="modal-date-picker">
                             <DatePicker handlePickDate={this.handlePickDate} />
                           </div>
                           <button
@@ -306,8 +311,10 @@ class RecipeCalendar extends Component {
                           </button>
                         </div>
                       ) : (
-                        <div>
-                          <p>{this.state.message}</p>
+                        <div className="modal-confirmation">
+                          <p className="modal-text-confirmation">
+                            {this.state.message}
+                          </p>
                           <button
                             className="modal-button"
                             onClick={this.toggleModal}
