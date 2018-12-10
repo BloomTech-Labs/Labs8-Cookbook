@@ -348,10 +348,6 @@
           font-size: 1.4rem;
         }
 
-        .checked {
-          background-color: @CBgrey;
-        }
-
         .checkbox {
           width: 20px;
           margin-top: 8px;
@@ -362,8 +358,26 @@
         }
       }
 
-      .instruction .checked {
+      .instruction-checked {
         background-color: @CBgrey;
+        display: flex;
+        padding-left: 10px;
+        padding-right: 20px;
+        line-height: 2.8rem;
+        margin-top: 10px;
+
+        @media @phone {
+        font-size: 1.4rem;
+        }
+
+        .checkbox {
+        width: 20px;
+        margin-top: 8px;
+        }
+
+        .description {
+        width: 480px;
+        }
       }
 
       .instruction .not-checked {
