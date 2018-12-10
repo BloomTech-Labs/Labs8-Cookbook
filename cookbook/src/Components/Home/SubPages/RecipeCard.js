@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 import { GET_RECIPES_QUERY } from "./Recipes";
+import { QUERY_RECIPE_EVENT } from "./Calendar";
 import CardSchedule from "../../SubComponents/CardSchedule";
 
 const DELETE_RECIPE_MUTATION = gql`
@@ -20,10 +21,11 @@ class RecipeCard extends Component {
     try {
       const deletedRecipe = await this.props.deleteRecipe({
         variables: { id: this.props.recipe.id },
-        refetchQueries: [{ query: GET_RECIPES_QUERY }]
+        refetchQueries: [
+          { query: GET_RECIPES_QUERY },
+          { query: QUERY_RECIPE_EVENT }
+        ]
       });
-
-      console.log("Deleted recipe: ", deletedRecipe);
       return deletedRecipe;
     } catch (error) {
       console.log(error.message);
@@ -61,7 +63,11 @@ class RecipeCard extends Component {
               <span className="link-text">link</span>
             </a>
             <div className="schedule">
-                <CardSchedule events={this.props.recipe.events} />
+              <CardSchedule
+                key={this.props.recipe.events.length}
+                events={this.props.recipe.events}
+                recipeId={this.props.recipe.id}
+              />
             </div>
             <button className="del-button">
               <FontAwesomeIcon

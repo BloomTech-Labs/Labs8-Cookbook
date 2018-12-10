@@ -78,6 +78,7 @@ class Recipes extends Component {
             type="text"
             name="search"
             placeholder="search"
+            className="recipes-search"
             onChange={this.handleSearch}
             value={this.state.search}
           />
@@ -100,6 +101,18 @@ class Recipes extends Component {
               onClick={() => this.handleFilter("dinner")}
             >
               dinner
+            </button>
+            <button
+              className={this.filterButtonClassName("snack")}
+              onClick={() => this.handleFilter("snack")}
+            >
+              snack
+            </button>
+            <button
+              className={this.filterButtonClassName("dessert")}
+              onClick={() => this.handleFilter("dessert")}
+            >
+              dessert
             </button>
           </div>
         </div>

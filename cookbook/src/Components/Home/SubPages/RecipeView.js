@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
 import { DELETE_RECIPE_MUTATION } from "./RecipeCard";
 import { GET_RECIPES_QUERY } from "./Recipes";
+import { QUERY_RECIPE_EVENT } from "./Calendar";
+import Iframe from "react-iframe";
 
 class RecipeView extends Component {
   constructor(props) {
@@ -21,12 +23,13 @@ class RecipeView extends Component {
 
   deleteHandler = async () => {
     try {
-      const deletedRecipe = await this.props.deleteRecipe({
+      await this.props.deleteRecipe({
         variables: { id: this.props.location.state.id },
-        refetchQueries: [{ query: GET_RECIPES_QUERY }]
+        refetchQueries: [
+          { query: GET_RECIPES_QUERY },
+          { query: QUERY_RECIPE_EVENT }
+        ]
       });
-
-      console.log("Deleted recipe: ", deletedRecipe);
       this.props.history.replace("/home/recipes");
     } catch (error) {
       console.log(error.message);
@@ -69,20 +72,53 @@ class RecipeView extends Component {
     }
   };
 
-  // check if ingredient is zero & prevent it from displaying
-  errCheckIngredients(qty) {
-    if (qty === 0) {
-      return null;
-    }
-    return qty;
-  }
-
   render() {
-    console.log("Data: ", this.props.location.state);
+    let whitelisted =
+      this.props.location.state.url.includes("www.allrecipes.com") ||
+      this.props.location.state.url.includes("www.geniuskitchen.com");
+
+    const instructions = whitelisted ? (
+      <div className="instructions">
+        {this.state.instructions.map((inst, index) => (
+          <div className="instruction" key={index}>
+            <input
+              type="checkbox"
+              className="checkbox"
+              onClick={this.toggleCheckBox}
+              name={inst.stepNum}
+            />
+            <div className="description">{inst.description}</div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div className="iframe-container">
+        <Iframe
+          url={this.props.location.state.url}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            border: 0,
+            marginRight: "20px"
+          }}
+          id="iframe"
+          className="iframe"
+          display="initial"
+          position="relative"
+          allowFullScreen
+        />
+      </div>
+    );
+
     return (
       <div className="recipe-page">
         <div className="recipe-header">
-          <span className="recipe-title">{this.props.location.state.title}</span>
+          <span className="recipe-title">
+            {this.props.location.state.title}
+          </span>
           <div className="icon-container">
             <a
               className="link"
@@ -110,14 +146,26 @@ class RecipeView extends Component {
             <div className="info-bar">
               <div className="scheduled-for">
                 <span className="text">scheduled for:</span>
-                {this.props.location.state.events.map(event => (
+                {this.props.location.state.events.length ? (
                   <div className="event">
-                    <div className="meal">{event.mealType}</div>
+                    <div className="meal">
+                      {
+                        this.props.location.state.events[
+                          this.props.location.state.events.length - 1
+                        ].mealType
+                      }
+                    </div>
                     <div className="date">
-                      {new Date(event.date).toLocaleDateString()}
+                      {new Date(
+                        this.props.location.state.events[
+                          this.props.location.state.events.length - 1
+                        ].date
+                      ).toLocaleDateString()}
                     </div>
                   </div>
-                ))}
+                ) : (
+                  <div>No events scheduled</div>
+                )}
               </div>
               <div className="recipe-info">
                 <div className="cook-time">
@@ -135,33 +183,23 @@ class RecipeView extends Component {
               </div>
             </div>
           </div>
-          <div className="ingredients">
-            <div className="title">Ingredients</div>
-            {this.props.location.state.ingredients.map(ing => (
-              <div className="ingredient" id="instruction-id">
-                <span className="qty">
-                  {this.errCheckIngredients(ing.quantity)}
-                </span>
-                <span className="name">{ing.name}</span>
-              </div>
-            ))}
-          </div>
+          {whitelisted ? (
+            <div className="ingredients">
+              <div className="title">Ingredients</div>
+              {this.props.location.state.ingredients.map((ing, index) => (
+                <div className="ingredient" id="instruction-id" key={index}>
+                  <span className="qty">
+                    {ing.quantity !== "0" ? ing.quantity : ""}
+                  </span>
+                  <span className="name">{ing.name}</span>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
         <div className="right-container">
           <div className="title">Instructions</div>
-          <div className="instructions">
-            {this.state.instructions.map(inst => (
-              <div className="instruction">
-                <input
-                  type="checkbox"
-                  className="checkbox"
-                  onClick={this.toggleCheckBox}
-                  name={inst.stepNum}
-                />
-                <div className="description">{inst.description}</div>
-              </div>
-            ))}
-          </div>
+          {instructions}
         </div>
       </div>
     );

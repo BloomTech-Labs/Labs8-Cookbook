@@ -6,13 +6,15 @@ import { Query, graphql, compose } from "react-apollo";
 import Modal from "../../SubComponents/Modal";
 import DatePicker from "../../SubComponents/DatePicker.js";
 import Buttons from "./Buttons";
+import { GET_RECIPES_QUERY } from "./Recipes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const propTypes = {};
 
-const UPDATE_EVENT = gql`
-  mutation($data: EventUpdateInput!, $where: EventWhereUniqueInput!) {
-    updateEvent(data: $data, where: $where) {
+const DELETE_EVENT_MUTATION = gql`
+  mutation($where: EventWhereUniqueInput!) {
+    deleteEvent(where: $where) {
       id
       mealType
       date
@@ -54,31 +56,33 @@ class RecipeCalendar extends Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      currentEvent: "",
+      currentEvent: {},
       type: "",
       showModal: false,
-      onDate: null,
+      onDates: [],
       isUpdated: false,
-      search: ""
+      search: "",
+      message: ""
     };
   }
 
-  handlePickDate = date => {
-    this.setState({ onDate: date });
+  handlePickDate = dates => {
+    this.setState({ onDates: dates });
   };
 
   toggleModal = event => {
     this.setState({
       showModal: !this.state.showModal,
-      currentEvent: event.id,
-      isUpdated: false
+      currentEvent: event,
+      isUpdated: false,
+      message: ""
     });
   };
 
   mealButtonHandler = e => {
     e.preventDefault();
     if (this.state.type === e.target.name) {
-      this.setState({ type: "" })
+      this.setState({ type: "" });
     } else {
       this.setState({ type: e.target.name });
     }
@@ -88,25 +92,66 @@ class RecipeCalendar extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onEventSave = async () => {
-    if (this.state.onDate || this.state.type)
-      try {
-        let calendarVariables = {};
-        if (this.state.onDate) calendarVariables.date = this.state.onDate;
-        if (this.state.type) calendarVariables.mealType = this.state.type;
+  deleteHandler = async () => {
+    try {
+      await this.props.deleteEvent({
+        variables: { where: { id: this.state.currentEvent.id } },
+        refetchQueries: [
+          { query: QUERY_RECIPE_EVENT },
+          { query: GET_RECIPES_QUERY }
+        ]
+      });
+      this.setState({ isUpdated: true, message: "Deleted meal successfully!" });
+    } catch (error) {
+      console.log(error.message);
+      return error.message;
+    }
+  };
 
-        const eventData = await this.props.updateEvent({
-          variables: {
-            data: calendarVariables,
-            where: { id: this.state.currentEvent }
+  onEventSave = () => {
+    if (this.state.onDates.length || this.state.type) {
+      let events = [];
+      if (!this.state.onDates.length) {
+        events.push({
+          date: this.state.currentEvent.start,
+          mealType: this.state.type
+        });
+      } else {
+        this.state.onDates.forEach(i => {
+          const event = {
+            date: i,
+            mealType: this.state.type || this.state.currentEvent.resource,
+            recipe: this.state.currentEvent.recipeId
+          };
+          events.push(event);
+        });
+      }
+
+      try {
+        events.forEach(async (data, index) => {
+          if (index === events.length - 1) {
+            await this.props.createEvent({
+              variables: data,
+              refetchQueries: [
+                { query: QUERY_RECIPE_EVENT },
+                { query: GET_RECIPES_QUERY }
+              ]
+            });
+          } else {
+            await this.props.createEvent({
+              variables: data
+            });
           }
         });
-        console.log("Event updated: ", eventData);
-        this.setState({ isUpdated: true });
+        this.setState({
+          isUpdated: true,
+          message: "Updated meals Successfully"
+        });
       } catch (error) {
         console.log("onSave error: ", error.message);
         return error;
       }
+    }
   };
 
   getDates = () => {
@@ -115,19 +160,17 @@ class RecipeCalendar extends Component {
       dates.push(
         new Date(
           moment()
-            .startOf("week")
             .subtract(i, "days")
             .startOf("day")
         )
       );
     }
-    const lastSat = new Date(
+    const yesterday = new Date(
       moment()
-        .endOf("week")
-        .subtract(7, "days")
+        .subtract(1, "days")
         .endOf("day")
     );
-    dates.push(lastSat);
+    dates.push(yesterday);
     return dates;
   };
 
@@ -151,14 +194,12 @@ class RecipeCalendar extends Component {
           recipe: event.recipe.id
         };
 
-        const eventData = await this.props.createEvent({
+        await this.props.createEvent({
           variables: eventVariables,
           refetchQueries: [{ query: QUERY_RECIPE_EVENT }]
         });
-        console.log("Events created: ", eventData);
       });
     } catch (error) {
-      console.log(error.message);
       return error.message;
     }
   };
@@ -186,7 +227,8 @@ class RecipeCalendar extends Component {
               start: event.date,
               end: event.date,
               resource: event.mealType,
-              title: event.recipe.title
+              title: event.recipe.title,
+              recipeId: event.recipe.id
             };
           });
           return (
@@ -206,8 +248,11 @@ class RecipeCalendar extends Component {
                     onChange={this.handleSearch}
                     value={this.state.search}
                   />
-                  <button onClick={() => this.duplicateMeals(searchedEvents)}>
-                    Duplicate previous week
+                  <button
+                    className="duplicate-btn"
+                    onClick={() => this.duplicateMeals(searchedEvents)}
+                  >
+                    Duplicate last 7 days
                   </button>
                 </div>
                 <BigCalendar
@@ -237,17 +282,20 @@ class RecipeCalendar extends Component {
                     >
                       {!this.state.isUpdated ? (
                         <div className="modal-sub-container">
-                          <h1 className="modal-text">Please select Meal and Date!</h1>
+                          <h1 className="modal-text">
+                            Please select Meal and Date!
+                          </h1>
                           <Buttons
                             mealButtonHandler={this.mealButtonHandler}
                             type={this.state.type}
                           />
-                          <div className='modal-date-picker'>
+                          <div className="modal-date-picker">
                             <DatePicker handlePickDate={this.handlePickDate} />
                           </div>
                           <button
                             className="modal-button"
                             onClick={this.onEventSave}
+                            name="save-btn"
                           >
                             Save
                           </button>
@@ -257,10 +305,19 @@ class RecipeCalendar extends Component {
                           >
                             Cancel
                           </button>
+                          <button className="del-button" name="delete-btn">
+                            <FontAwesomeIcon
+                              icon="trash-alt"
+                              className="del-icon"
+                              onClick={this.deleteHandler}
+                            />
+                          </button>
                         </div>
                       ) : (
                         <div className="modal-confirmation">
-                          <p className="modal-text-confirmation">Updated Meal Successfully!</p>
+                          <p className="modal-text-confirmation">
+                            {this.state.message}
+                          </p>
                           <button
                             className="modal-button"
                             onClick={this.toggleModal}
@@ -283,16 +340,16 @@ class RecipeCalendar extends Component {
 
 RecipeCalendar.propTypes = propTypes;
 
-const updateEventMutation = graphql(UPDATE_EVENT, {
-  name: "updateEvent"
-});
-
 const createEventMutation = graphql(CREATE_EVENT_MUTATION, {
   name: "createEvent"
 });
 
+const deleteEventMutation = graphql(DELETE_EVENT_MUTATION, {
+  name: "deleteEvent"
+});
+
 export default compose(
-  updateEventMutation,
-  createEventMutation
+  createEventMutation,
+  deleteEventMutation
 )(RecipeCalendar);
-export { QUERY_RECIPE_EVENT };
+export { QUERY_RECIPE_EVENT, CREATE_EVENT_MUTATION };

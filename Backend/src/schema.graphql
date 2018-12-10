@@ -27,9 +27,11 @@ type Mutation {
     servings: String!
     image: String!
     url: String!
+    mealType: String
+    dates: [String]!
   ): Recipe!
+  deleteRecipe(where: RecipeWhereUniqueInput!): Recipe
   createSubscription(token: String!): Subscription!
-  createEvent(date: String!, mealType: String!, recipe: String!): Event
   createInstruction(
     stepNum: Int!
     description: String!
@@ -40,6 +42,6 @@ type Mutation {
     quantity: String!
     recipe: String!
   ): Ingredient
-  updateEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event
-  deleteRecipe(where: RecipeWhereUniqueInput!): Recipe
+  createEvent(date: String!, mealType: String!, recipe: String!): Event
+  deleteEvent(where: EventWhereUniqueInput!): Event
 }
