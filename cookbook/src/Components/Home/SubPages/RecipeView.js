@@ -71,14 +71,6 @@ class RecipeView extends Component {
     }
   };
 
-  // check if ingredient is zero & prevent it from displaying
-  errCheckIngredients(qty) {
-    if (qty === 0) {
-      return null;
-    }
-    return qty;
-  }
-
   render() {
     return (
       <div className="recipe-page">
@@ -143,7 +135,7 @@ class RecipeView extends Component {
             {this.props.location.state.ingredients.map((ing, index) => (
               <div className="ingredient" id="instruction-id" key={index}>
                 <span className="qty">
-                  {this.errCheckIngredients(ing.quantity)}
+                  {ing.quantity !== "0" ? ing.quantity : ""}
                 </span>
                 <span className="name">{ing.name}</span>
               </div>

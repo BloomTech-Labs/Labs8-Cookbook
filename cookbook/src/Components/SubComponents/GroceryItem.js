@@ -20,7 +20,9 @@ const GroceryItem = props => {
         className="item-text"
         onClick={() => props.handleItemClick(props.index)}
       >
-        {props.ingredient.quantity} {props.ingredient.name}
+        {`${
+          props.ingredient.quantity !== "0" ? props.ingredient.quantity : ""
+        } ${props.ingredient.name}`}
       </span>
     </div>
   );
