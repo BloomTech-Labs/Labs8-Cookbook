@@ -1,5 +1,32 @@
 /* DayPicker styles */
 
+.scheduled-for {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .chosen-date {
+    @primary-color: black;
+    width: 120px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    border: solid @primary-color 2px;
+    background: @primary-color;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 50px;
+  }
+
+  .no-date-chosen {
+    .chosen-date;
+    background: white;
+  }
+}
+
 .DayPicker {
     display: inline-block;
     font-size: 1rem;
@@ -28,11 +55,10 @@
   }
   
   .DayPicker-Month {
+    height: 300px;
     display: table;
     margin: 0 1em;
     border-spacing: 0;
-    border-collapse: collapse;
-    border: 2px @CBred solid;
   
     -webkit-user-select: none;
   
@@ -44,6 +70,7 @@
   }
   
   .DayPicker-NavBar {
+    width: 20px;
   }
   
   .DayPicker-NavButton {
@@ -51,26 +78,26 @@
   }
   
   .DayPicker-NavButton:hover {
-    opacity: 0.1;
+    opacity: .6;
   }
   
   .DayPicker-NavButton--prev {
-    padding-left: -100px;
     width: 0; 
     height: 0; 
-    border-top: 8px solid @CBred;
-    border-bottom:8px solid @CBred; 
-    border-right: 8px solid @CBorange;
-    border-left:8px solid @CBred;
+    border-top: 2px solid @CBred;
+    border-bottom:2px solid @CBred; 
+    border-right: 2px solid @CBorange;
+    border-left:2px solid @CBred;
   }
   
   .DayPicker-NavButton--next {
     width: 0; 
-    height: 0; 
-    border-top: 8px solid @CBred;
-    border-bottom:8px solid @CBred; 
-    border-left: 8px solid @CBorange;
-    border-right:8px solid @CBred;
+    height: 0;
+    margin: 3px;
+    border-top: 10px solid @CBred;
+    border-bottom:10px solid @CBred; 
+    border-left: 10px solid @CBorange;
+    border-right:10px solid @CBred;
   }
   
   .DayPicker-NavButton--interactionDisabled {
@@ -83,7 +110,7 @@
     background: @CBred;
     color: white;
     height: 30px;
-    width: 200px;
+    width: 100%;
     font-size: 1.5rem;
     font-weight: bold;
     border-top-left-radius: 20px;
@@ -107,9 +134,9 @@
   .DayPicker-Weekday {
     display: table-cell;
     padding: 0.5em;
-    color: #8B9898;
+    color: black;
     text-align: center;
-    font-size: 2.0rem;
+    font-size: 1.5rem;
   }
   
   .DayPicker-Weekday abbr[title] {
@@ -139,7 +166,7 @@
     padding: 0.5em;
     min-width: 1em;
     border-right: 1px solid #EAECEC;
-    color: #8B9898;
+    color: black;
     vertical-align: middle;
     text-align: right;
     font-size: 0.75em;
@@ -151,7 +178,7 @@
   }
   
   .DayPicker-Footer {
-    padding-top: 0.5em;
+    padding-top: 0.5rem;
   }
   
   .DayPicker-TodayButton {
@@ -160,7 +187,7 @@
     background-image: none;
     box-shadow: none;
     color: @CBred;
-    font-size: 0.875em;
+    font-size: 0.875rem;
     cursor: pointer;
   }
   

@@ -216,7 +216,16 @@ class Create extends Component {
             value={this.state.query}
           />
 
-          <button onClick={this.onSave}>save</button>
+          <button
+            className={
+              this.state.og_title === "N/A" || this.state.og_title === ""
+                ? "save-button-inactive"
+                : "save-button"
+            }
+            onClick={this.onSave}
+          >
+            save
+          </button>
         </div>
 
         <div className="preview-and-schedule">
@@ -232,16 +241,20 @@ class Create extends Component {
             />
           )}
 
-          <div className="schedule">
-            <Buttons
-              mealButtonHandler={this.mealButtonHandler}
-              type={this.state.type}
-            />
+          {this.state.og_title === "N/A" || this.state.og_title === "" ? (
+            <div />
+          ) : (
+            <div className="schedule">
+              <Buttons
+                mealButtonHandler={this.mealButtonHandler}
+                type={this.state.type}
+              />
 
-            <div className="create-date-picker">
-              <DatePicker handlePickDate={this.handlePickDate} />
+              <div className="create-date-picker">
+                <DatePicker handlePickDate={this.handlePickDate} />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     );

@@ -41,11 +41,6 @@ class DatePicker extends Component {
           onDayClick={this.handleDayClick}
           disabledDays={{ before: new Date() }}
         />
-        <p>
-          {this.state.selectedDay
-            ? this.state.selectedDay.toLocaleDateString()
-            : "Please select a day 👻"}
-        </p>
       </div>
     );
   }
