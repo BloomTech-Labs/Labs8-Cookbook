@@ -7,18 +7,71 @@
     flex-flow: row;
     justify-content: space-between;
 
-    .recipesFilterButtonChosen {
-      background: black;
-      color: white;
-      border: 2px black solid;
-      border-radius: 500px;
+    @media @phone {
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
     }
-  
+
+    .recipesAddRecipe {
+      background-color: @CBblue;
+      color: @CBorange;
+      line-height: 2.4rem;
+      font-size: 1.6rem;
+      border-radius: 15px;
+      padding: 2px 15px;
+      border: 2px solid @CBblue;
+      cursor: pointer;
+      // @media @desktop {
+      //   left: 340px;
+      //   line-height: 2rem;
+      //   font-size: 1.4rem;
+      //   top: 15px;
+      // }
+      // @media @tablet {
+      //   left: 450px;
+      //   line-height: 2.4rem;
+      //   font-size: 1.6rem;
+      //   top: 15px;
+      // }
+      @media @phone {
+        position: static;
+        margin-bottom: 10px;
+        height: 30px;
+      }
+    }
+
+    .recipes-search {
+      @media @phone {
+        margin-bottom: 10px;
+        width: 80%;
+      }
+    }
+
+    .recipesFilterContainer {
+      @media @phone {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+
+    .recipesFilterButtonChosen {
+      background: @CBblue;
+      color: white;
+      border: 2px solid @CBblue;
+      border-radius: 500px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+
     .recipesFilterButtonNotChosen {
       background: white;
       color: grey;
       border: 2px grey solid;
       border-radius: 500px;
+      margin-right: 5px;
+      cursor: pointer;
     }
   }
 
