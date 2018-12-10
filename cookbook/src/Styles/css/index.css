@@ -2082,6 +2082,7 @@ body {
 }
 .content-container .card-bottom .schedule .event-scroller .scroll-left:hover {
   transform: scale(1.2);
+  transition-duration: 0.3s;
 }
 .content-container .card-bottom .schedule .event-scroller .event {
   display: flex;
@@ -2093,6 +2094,7 @@ body {
   font-weight: bold;
   text-decoration: underline;
   transform: scale(1.1);
+  transition-duration: 0.3s;
 }
 .content-container .card-bottom .schedule .event-scroller .scroll-right {
   display: flex;
@@ -2109,6 +2111,7 @@ body {
 }
 .content-container .card-bottom .schedule .event-scroller .scroll-right:hover {
   transform: scale(1.2);
+  transition-duration: 0.3s;
 }
 .content-container .card-bottom .schedule .event-scroller .scroll-hidden {
   visibility: hidden;
@@ -2448,9 +2451,8 @@ body {
   }
 }
 .recipe-page .right-container {
-  margin-right: 20px;
   width: 500px;
-  margin-top: 25px;
+  margin: 25px 0 20px 20px;
   font-weight: 600;
 }
 @media (max-width: 1200px) {
@@ -2472,9 +2474,17 @@ body {
     justify-content: center;
   }
 }
+.recipe-page .right-container .iframe-container {
+  position: relative;
+  overflow: hidden;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  height: 450px;
+}
 .recipe-page .right-container .title {
   font-size: 2.8rem;
   margin-left: 30px;
+  margin-bottom: 20px;
   line-height: 1.8rem;
 }
 @media (max-width: 900px) {
