@@ -148,7 +148,8 @@ class Create extends Component {
 
       //run mutation for creating new recipe
       const { data } = await this.props.createRecipe({
-        variables: recipeVariables
+        variables: recipeVariables,
+        refetchQueries: [{ query: GET_RECIPES_QUERY }]
       });
 
       //lopp through each instruction and run createInstruction mutation
