@@ -1,9 +1,18 @@
 // Container Styles (prevents content from appearing underneath header when initially loaded)
 
 .container-margin-top {
-    margin-top: 40px;
+    margin: 40px 0 211px ;
+
+    @media @tablet {
+        margin-bottom: 237px;
+    }
+
+    @media (max-width: 790px){
+        margin-bottom: 406px;
+    }
+
     @media @phone {
-        margin-top: 35px;
+        margin: 35px 0 375px;
     }
 }
 

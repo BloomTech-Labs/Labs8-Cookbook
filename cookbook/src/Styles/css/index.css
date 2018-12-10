@@ -16,11 +16,21 @@ body .portal .modal-portal {
   box-sizing: border-box;
 }
 .container-margin-top {
-  margin-top: 40px;
+  margin: 40px 0 211px ;
+}
+@media (max-width: 900px) {
+  .container-margin-top {
+    margin-bottom: 237px;
+  }
+}
+@media (max-width: 790px) {
+  .container-margin-top {
+    margin-bottom: 406px;
+  }
 }
 @media (max-width: 600px) {
   .container-margin-top {
-    margin-top: 35px;
+    margin: 35px 0 375px;
   }
 }
 #phoneNav .basicNavStyle {
@@ -501,6 +511,7 @@ body .portal .modal-portal {
   justify-content: center;
   position: absolute;
   bottom: 0;
+  z-index: 15;
 }
 .footer-container .footer {
   width: 100%;
@@ -712,15 +723,25 @@ body .portal .modal-portal {
   cursor: default;
 }
 .home-container {
-  margin-top: 40px;
+  margin: 40px 0 211px ;
   width: 1100px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
+@media (max-width: 900px) {
+  .home-container {
+    margin-bottom: 237px;
+  }
+}
+@media (max-width: 790px) {
+  .home-container {
+    margin-bottom: 406px;
+  }
+}
 @media (max-width: 600px) {
   .home-container {
-    margin-top: 35px;
+    margin: 35px 0 375px;
   }
 }
 @media (max-width: 1200px) {
@@ -752,6 +773,220 @@ body .portal .modal-portal {
   font-size: 1.6rem;
   width: 100%;
   margin-bottom: 30px;
+}
+/* DayPicker styles */
+.scheduled-for {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scheduled-for .chosen-date {
+  width: 120px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  border: solid black 2px;
+  background: black;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 50px;
+}
+.scheduled-for .no-date-chosen {
+  width: 120px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  border: solid black 2px;
+  background: black;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  background: white;
+}
+.DayPicker {
+  display: inline-block;
+  font-size: 1rem;
+}
+.DayPicker-wrapper {
+  position: relative;
+  flex-direction: row;
+  padding-bottom: 1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.DayPicker-Months {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.DayPicker-Month {
+  height: 300px;
+  display: table;
+  margin: 0 1em;
+  border-spacing: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.DayPicker-NavBar {
+  width: 20px;
+}
+.DayPicker-NavButton {
+  cursor: pointer;
+}
+.DayPicker-NavButton:hover {
+  opacity: .6;
+}
+.DayPicker-NavButton--prev {
+  width: 0;
+  height: 0;
+  border-top: 2px solid #de6a5a;
+  border-bottom: 2px solid #de6a5a;
+  border-right: 2px solid #fed092;
+  border-left: 2px solid #de6a5a;
+}
+.DayPicker-NavButton--next {
+  width: 0;
+  height: 0;
+  margin: 3px;
+  border-top: 10px solid #de6a5a;
+  border-bottom: 10px solid #de6a5a;
+  border-left: 10px solid #fed092;
+  border-right: 10px solid #de6a5a;
+}
+.DayPicker-NavButton--interactionDisabled {
+  display: none;
+}
+.DayPicker-Caption {
+  display: table-caption;
+  text-align: center;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  width: 100%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.DayPicker-Caption > div {
+  text-align: center;
+  padding: 4px;
+}
+.DayPicker-Weekdays {
+  display: table-header-group;
+  margin-top: 1em;
+}
+.DayPicker-WeekdaysRow {
+  display: table-row;
+}
+.DayPicker-Weekday {
+  display: table-cell;
+  padding: 0.5em;
+  color: black;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.DayPicker-Weekday abbr[title] {
+  border-bottom: none;
+  text-decoration: none;
+}
+.DayPicker-Body {
+  display: table-row-group;
+}
+.DayPicker-Week {
+  display: table-row;
+}
+.DayPicker-Day {
+  display: table-cell;
+  padding: 0.5em;
+  border-radius: 50%;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+}
+.DayPicker-WeekNumber {
+  display: table-cell;
+  padding: 0.5em;
+  min-width: 1em;
+  border-right: 1px solid #EAECEC;
+  color: black;
+  vertical-align: middle;
+  text-align: right;
+  font-size: 0.75em;
+  cursor: pointer;
+}
+.DayPicker--interactionDisabled .DayPicker-Day {
+  cursor: default;
+}
+.DayPicker-Footer {
+  padding-top: 0.5rem;
+}
+.DayPicker-TodayButton {
+  border: none;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  color: #de6a5a;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+/* Default modifiers */
+.DayPicker-Day--today {
+  color: #de6a5a;
+  font-weight: bold;
+}
+.DayPicker-Day--outside {
+  color: #8B9898;
+  cursor: default;
+}
+.DayPicker-Day--disabled {
+  color: #DCE0E0;
+  cursor: default;
+  /* background-color: #eff1f1; */
+}
+/* Example modifiers */
+.DayPicker-Day--sunday {
+  background-color: #F7F8F8;
+}
+.DayPicker-Day--sunday:not(.DayPicker-Day--today) {
+  color: #DCE0E0;
+}
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  position: relative;
+  background-color: #de6a5a;
+  color: #F0F8FF;
+  font-weight: bold;
+}
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
+  background-color: #de6a5a;
+}
+.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  background-color: #F0F8FF;
+}
+/* DayPickerInput */
+.DayPickerInput {
+  display: inline-block;
+}
+.DayPickerInput-OverlayWrapper {
+  position: relative;
+}
+.DayPickerInput-Overlay {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 .create-wrapper {
   display: flex;
@@ -834,7 +1069,7 @@ body .portal .modal-portal {
   /* Firefox 18- */
   color: #de6a5a;
 }
-.create-wrapper .search-and-save button {
+.create-wrapper .search-and-save .save-button {
   font-family: 'Questrial', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 1.5px;
@@ -847,7 +1082,31 @@ body .portal .modal-portal {
   outline: none;
 }
 @media (max-width: 900px) {
-  .create-wrapper .search-and-save button {
+  .create-wrapper .search-and-save .save-button {
+    order: -1;
+  }
+}
+.create-wrapper .search-and-save .save-button:hover {
+  cursor: pointer;
+  color: #fed092;
+  font-weight: bold;
+}
+.create-wrapper .search-and-save .save-button-inactive {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  border: #de6a5a solid 2px;
+  border-radius: 20px;
+  background: #de6a5a;
+  color: white;
+  height: 30px;
+  width: 70px;
+  outline: none;
+  background: white;
+  color: #de6a5a;
+}
+@media (max-width: 900px) {
+  .create-wrapper .search-and-save .save-button-inactive {
     order: -1;
   }
 }
@@ -869,6 +1128,11 @@ body .portal .modal-portal {
   border: solid #de6a5a 3px;
   border-radius: 30px;
   overflow: hidden;
+}
+@media (max-width: 900px) {
+  .create-wrapper .preview-and-schedule .preview {
+    margin-top: 50px;
+  }
 }
 @media (max-width: 600px) {
   .create-wrapper .preview-and-schedule .preview {
@@ -963,18 +1227,34 @@ body .portal .modal-portal {
     font-size: 1.3rem;
   }
 }
+.create-wrapper .preview-and-schedule .schedule {
+  margin-left: 35px;
+  width: 100%;
+  max-width: 363px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
 @media (max-width: 900px) {
   .create-wrapper .preview-and-schedule .schedule {
+    max-width: none;
+    margin-left: 0;
     order: -1;
   }
 }
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
   display: flex;
   justify-content: space-evenly;
-  max-width: 350px;
+  width: 100%;
+  max-width: 363px;
   flex-flow: wrap;
   padding: 0 15px 0;
   margin-top: -20px;
+}
+@media (max-width: 1200px) {
+  .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+    max-width: 100%;
+  }
 }
 @media (max-width: 900px) {
   .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
@@ -993,6 +1273,7 @@ body .portal .modal-portal {
   padding: 0 12px;
   outline: none;
   margin-top: 20px;
+  cursor: pointer;
 }
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected {
   font-family: 'Questrial', sans-serif;
@@ -1006,6 +1287,7 @@ body .portal .modal-portal {
   padding: 0 12px;
   outline: none;
   margin-top: 20px;
+  cursor: pointer;
   color: #de6a5a;
   background: white;
 }
@@ -1014,185 +1296,97 @@ body .portal .modal-portal {
   font-weight: bold;
 }
 .create-wrapper .preview-and-schedule .schedule .create-date-picker {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   outline: none;
 }
-/* DayPicker styles */
-.DayPicker {
-  display: inline-block;
-  font-size: 1rem;
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .scheduled-for {
+  color: #de6a5a;
 }
-.DayPicker-wrapper {
-  position: relative;
-  flex-direction: row;
-  padding-bottom: 1em;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .scheduled-for .chosen-date {
+  border: solid #de6a5a 2px;
+  background: #de6a5a;
 }
-.DayPicker-Months {
-  display: flex;
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .scheduled-for .no-date-chosen {
+  border: solid #de6a5a 2px;
+  background: #de6a5a;
+  background: white;
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker {
   width: 100%;
-  flex-wrap: wrap;
-  justify-content: center;
+  max-width: 300px;
 }
-.DayPicker-Month {
-  display: table;
-  margin: 0 1em;
-  border-spacing: 0;
-  border-collapse: collapse;
-  border: 2px #de6a5a solid;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
+  margin-top: 12px;
+  position: absolute;
+  margin-left: 9%;
 }
-.DayPicker-NavButton {
-  cursor: pointer;
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton {
+    margin-left: 7%;
+  }
 }
-.DayPicker-NavButton:hover {
-  opacity: 0.1;
-}
-.DayPicker-NavButton--prev {
-  padding-left: -100px;
-  width: 0;
-  height: 0;
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
   border-top: 8px solid #de6a5a;
   border-bottom: 8px solid #de6a5a;
-  border-right: 8px solid #fed092;
+  border-right: 8px solid #de6a5a;
+  border-left: 8px solid white;
+  margin-left: 85%;
+  height: 5px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--next {
+    margin-left: 87%;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-NavBar .DayPicker-NavButton--prev {
+  border-top: 8px solid #de6a5a;
+  border-bottom: 8px solid #de6a5a;
+  border-right: 8px solid white;
   border-left: 8px solid #de6a5a;
 }
-.DayPicker-NavButton--next {
-  width: 0;
-  height: 0;
-  border-top: 8px solid #de6a5a;
-  border-bottom: 8px solid #de6a5a;
-  border-left: 8px solid #fed092;
-  border-right: 8px solid #de6a5a;
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month {
+  width: 100%;
+  height: 200px;
+  font-size: 1.3rem;
+  border: 2px #de6a5a solid;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 0 10px 10px;
 }
-.DayPicker-NavButton--interactionDisabled {
-  display: none;
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month {
+    font-size: 1.2rem;
+  }
 }
-.DayPicker-Caption {
-  display: table-caption;
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
   text-align: center;
-  background: #de6a5a;
+  background-color: #de6a5a;
+  width: 100%;
+  line-height: 2.2rem;
+  height: 40px;
   color: white;
-  height: 30px;
-  width: 200px;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+@media (max-width: 600px) {
+  .create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
+    font-size: 1.8rem;
+  }
+}
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays {
   font-weight: bold;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-.DayPicker-Caption > div {
-  text-align: center;
-  padding: 4px;
-}
-.DayPicker-Weekdays {
-  display: table-header-group;
-  margin-top: 1em;
-}
-.DayPicker-WeekdaysRow {
-  display: table-row;
-}
-.DayPicker-Weekday {
-  display: table-cell;
-  padding: 0.5em;
-  color: #8B9898;
-  text-align: center;
-  font-size: 2.0rem;
-}
-.DayPicker-Weekday abbr[title] {
-  border-bottom: none;
-  text-decoration: none;
-}
-.DayPicker-Body {
-  display: table-row-group;
-}
-.DayPicker-Week {
-  display: table-row;
-}
-.DayPicker-Day {
-  display: table-cell;
-  padding: 0.5em;
-  border-radius: 50%;
-  vertical-align: middle;
-  text-align: center;
-  cursor: pointer;
-}
-.DayPicker-WeekNumber {
-  display: table-cell;
-  padding: 0.5em;
-  min-width: 1em;
-  border-right: 1px solid #EAECEC;
-  color: #8B9898;
-  vertical-align: middle;
-  text-align: right;
-  font-size: 0.75em;
-  cursor: pointer;
-}
-.DayPicker--interactionDisabled .DayPicker-Day {
-  cursor: default;
-}
-.DayPicker-Footer {
-  padding-top: 0.5em;
-}
-.DayPicker-TodayButton {
-  border: none;
-  background-color: transparent;
-  background-image: none;
-  box-shadow: none;
   color: #de6a5a;
-  font-size: 0.875em;
-  cursor: pointer;
 }
-/* Default modifiers */
-.DayPicker-Day--today {
-  color: #de6a5a;
-  font-weight: bold;
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
+  border-radius: 500px !important;
 }
-.DayPicker-Day--outside {
-  color: #8B9898;
-  cursor: default;
-}
-.DayPicker-Day--disabled {
-  color: #DCE0E0;
-  cursor: default;
-  /* background-color: #eff1f1; */
-}
-/* Example modifiers */
-.DayPicker-Day--sunday {
-  background-color: #F7F8F8;
-}
-.DayPicker-Day--sunday:not(.DayPicker-Day--today) {
-  color: #DCE0E0;
-}
-.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-  position: relative;
-  background-color: #de6a5a;
-  color: #F0F8FF;
-  font-weight: bold;
-}
-.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
-  background-color: #de6a5a;
-}
-.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-  background-color: #F0F8FF;
-}
-/* DayPickerInput */
-.DayPickerInput {
-  display: inline-block;
-}
-.DayPickerInput-OverlayWrapper {
-  position: relative;
-}
-.DayPickerInput-Overlay {
-  position: absolute;
-  left: 0;
-  z-index: 1;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+.create-wrapper .preview-and-schedule .schedule .create-date-picker .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: #de6a5a !important;
+  color: white;
 }
 .calendar-page-container {
   margin-left: 5px;
@@ -1267,7 +1461,6 @@ body .portal .modal-portal {
   color: #343e5a;
   font-weight: 600;
   height: 690px;
-  margin-bottom: 200px;
 }
 @media (max-width: 1200px) {
   .grocery-list-page {
@@ -2523,4 +2716,64 @@ body .portal .modal-portal {
 .modal-portal .portal-container .modal-container .modal-sub-container .modal-button:hover {
   background: #bcc9d2;
   font-weight: bold;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.loading-container {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.loading-container .text {
+  padding-left: 0;
+  margin-right: 0;
+  z-index: 50;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 4px;
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+}
+.loading-container .color-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+}
+.loading-container .color-container.is-animated #transition-container path {
+  transform: translateX(-100%);
+}
+.loading-container .color-container.is-animated #transition-container path:nth-of-type(1) {
+  animation: toRight 1000ms cubic-bezier(0.53, -0.38, 0.81, 0.18) forwards;
+}
+.loading-container .color-container.is-animated #transition-container path:nth-of-type(2) {
+  animation: toRight 2050ms 100ms cubic-bezier(0.53, -0.38, 0.81, 0.18) forwards;
+}
+.loading-container .color-container.is-animated #transition-container path:nth-of-type(3) {
+  animation: toRight 2100ms 200ms cubic-bezier(0.53, -0.38, 0.81, 0.18) forwards;
+}
+.loading-container .color-container.is-animated #transition-container path:nth-of-type(4) {
+  animation: toRight 2150ms 300ms cubic-bezier(0.53, -0.38, 0.81, 0.18) forwards;
+}
+.loading-container .color-container.is-animated #transition-container path:nth-of-type(5) {
+  animation: toRight 2200ms 400ms cubic-bezier(0.53, -0.38, 0.81, 0.18) forwards;
+}
+.loading-container .color-container.is-animated #transition-container path:nth-of-type(6) {
+  animation: toRight 2250ms 500ms cubic-bezier(0.53, -0.38, 0.81, 0.18) forwards;
+}
+.loading-container #transition-container {
+  width: 100%;
+  height: 50px;
+}
+@keyframes toRight {
+  100% {
+    transform: translateX(0px);
+  }
 }

@@ -242,7 +242,9 @@ class RecipeCalendar extends Component {
                             mealButtonHandler={this.mealButtonHandler}
                             type={this.state.type}
                           />
-                          <DatePicker handlePickDate={this.handlePickDate} />
+                          <div className='modal-date-picker'>
+                            <DatePicker handlePickDate={this.handlePickDate} />
+                          </div>
                           <button
                             className="modal-button"
                             onClick={this.onEventSave}
