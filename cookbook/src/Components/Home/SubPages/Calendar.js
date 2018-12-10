@@ -191,7 +191,8 @@ class RecipeCalendar extends Component {
           return (
             <div className="calendar-page-container">
               <div className="calendar-container">
-                {/* <div className='recipes-modal'>
+              {/* Commented out code for recipe modal to be added
+                <div className='recipes-modal'>
                   <div className='modal-header'>Today</div>
                   <div className='modal-content'></div>
                 </div> */}

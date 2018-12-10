@@ -1225,7 +1225,7 @@ body {
   font-size: 1.2rem;
   justify-content: center;
   align-items: stretch;
-  margin-bottom: 20px;
+  margin-bottom: 19px;
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .search-box-wrapper {
@@ -2380,9 +2380,6 @@ body {
     font-size: 1.4rem;
   }
 }
-.recipe-page .right-container .instructions .instruction .checked {
-  background-color: #bcc9d2;
-}
 .recipe-page .right-container .instructions .instruction .checkbox {
   width: 20px;
   margin-top: 8px;
@@ -2390,8 +2387,26 @@ body {
 .recipe-page .right-container .instructions .instruction .description {
   width: 480px;
 }
-.recipe-page .right-container .instructions .instruction .checked {
+.recipe-page .right-container .instructions .instruction-checked {
   background-color: #bcc9d2;
+  display: flex;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  line-height: 2.8rem;
+}
+@media (max-width: 600px) {
+  .recipe-page .right-container .instructions .instruction-checked {
+    font-size: 1.4rem;
+  }
+}
+.recipe-page .right-container .instructions .instruction-checked .checkbox {
+  width: 20px;
+  margin-top: 8px;
+}
+.recipe-page .right-container .instructions .instruction-checked .description {
+  width: 480px;
 }
 .recipe-page .right-container .instructions .instruction .not-checked {
   background-color: #343e5a;

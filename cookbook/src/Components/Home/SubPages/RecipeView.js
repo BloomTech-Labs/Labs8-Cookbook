@@ -50,23 +50,14 @@ class RecipeView extends Component {
   toggleCheckBox = e => {
     // filter through instuction state to find matching instruction by id
     let inst = this.state.instructions.filter(inst => {
-      return inst.stepNum === e.target.name;
+      return inst.stepNum == e.target.name;
     });
     // make a copy of the state
     let copyArr = this.state.instructions;
     // toggle specified instruction's isCompleted field in copy array
-    copyArr[inst[0].stepNum - 1].isCompleted = !copyArr[inst[0].stepNum - 1]
-      .isCompleted;
+    copyArr[inst[0].stepNum - 1].isCompleted = !copyArr[inst[0].stepNum - 1].isCompleted;
     // re-set state with toggled checkmark
     this.setState({ instructions: copyArr });
-    if (copyArr[inst[0].stepNum - 1].isCompleted === true) {
-      document.getElementById("instruction-id").style.backgroundColor =
-        "#bcc9d2";
-      document.getElementById("instruction-id").style.border = "1px solid red";
-    } else {
-      document.getElementById("instruction-id").style.backgroundColor =
-        "#343e5a";
-    }
   };
 
   // check if ingredient is zero & prevent it from displaying
@@ -138,7 +129,7 @@ class RecipeView extends Component {
           <div className="ingredients">
             <div className="title">Ingredients</div>
             {this.props.location.state.ingredients.map(ing => (
-              <div className="ingredient" id="instruction-id">
+              <div className="ingredient">
                 <span className="qty">
                   {this.errCheckIngredients(ing.quantity)}
                 </span>
@@ -151,7 +142,7 @@ class RecipeView extends Component {
           <div className="title">Instructions</div>
           <div className="instructions">
             {this.state.instructions.map(inst => (
-              <div className="instruction">
+              <div className={inst.isCompleted ? "instruction-checked" : "instruction"} id="instruction-id">
                 <input
                   type="checkbox"
                   className="checkbox"
