@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
 import { DELETE_RECIPE_MUTATION } from "./RecipeCard";
 import { GET_RECIPES_QUERY } from "./Recipes";
+import { QUERY_RECIPE_EVENT } from "./Calendar";
 
 class RecipeView extends Component {
   constructor(props) {
@@ -23,7 +24,10 @@ class RecipeView extends Component {
     try {
       const deletedRecipe = await this.props.deleteRecipe({
         variables: { id: this.props.location.state.id },
-        refetchQueries: [{ query: GET_RECIPES_QUERY }]
+        refetchQueries: [
+          { query: GET_RECIPES_QUERY },
+          { query: QUERY_RECIPE_EVENT }
+        ]
       });
       this.props.history.replace("/home/recipes");
     } catch (error) {
