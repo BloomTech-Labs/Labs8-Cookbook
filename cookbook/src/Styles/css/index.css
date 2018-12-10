@@ -1426,8 +1426,7 @@ body {
 .calendar-page-container .calendar-container .search-box-wrapper {
   display: flex;
   font-size: 1.2rem;
-  justify-content: center;
-  align-items: stretch;
+  justify-content: space-between;
   margin-bottom: 8px;
 }
 @media (max-width: 600px) {
@@ -1440,8 +1439,9 @@ body {
   border: 0.1em solid #343e5a;
   border-radius: 0 0.5em 0.5em 0;
   border-left: 0;
-  width: 100%;
+  width: 80%;
   outline: none;
+  margin-right: 10px;
 }
 .calendar-page-container .calendar-container .search-box-wrapper .magnifying-glass {
   font-size: 20px;
@@ -1450,6 +1450,14 @@ body {
   border-right: 0;
   padding: 0 0.1em 0.1em 0;
   color: white;
+}
+.calendar-page-container .calendar-container .search-box-wrapper .duplicate-btn {
+  background-color: #343e5a;
+  color: #fed092;
+  font-size: 1.6rem;
+  border-radius: 15px;
+  border: 2px solid #343e5a;
+  cursor: pointer;
 }
 .grocery-list-page {
   display: flex;
@@ -1930,6 +1938,7 @@ body {
   border-radius: 15px;
   padding: 2px 15px;
   border: 2px solid #343e5a;
+  cursor: pointer;
 }
 @media (max-width: 600px) {
   .recipesContainer .recipesFunctionBar .recipesAddRecipe {
@@ -1952,11 +1961,12 @@ body {
   }
 }
 .recipesContainer .recipesFunctionBar .recipesFilterButtonChosen {
-  background: black;
+  background: #343e5a;
   color: white;
-  border: 2px black solid;
+  border: 2px solid #343e5a;
   border-radius: 500px;
   margin-right: 5px;
+  cursor: pointer;
 }
 .recipesContainer .recipesFunctionBar .recipesFilterButtonNotChosen {
   background: white;
@@ -1964,6 +1974,7 @@ body {
   border: 2px grey solid;
   border-radius: 500px;
   margin-right: 5px;
+  cursor: pointer;
 }
 .recipesContainer .recipesCards {
   display: flex;
@@ -2069,10 +2080,19 @@ body {
   width: 15px;
   border-radius: 50%;
 }
+.content-container .card-bottom .schedule .event-scroller .scroll-left:hover {
+  transform: scale(1.2);
+}
 .content-container .card-bottom .schedule .event-scroller .event {
   display: flex;
   flex-flow: column;
   align-items: center;
+  cursor: pointer;
+}
+.content-container .card-bottom .schedule .event-scroller .event:hover {
+  font-weight: bold;
+  text-decoration: underline;
+  transform: scale(1.1);
 }
 .content-container .card-bottom .schedule .event-scroller .scroll-right {
   display: flex;
@@ -2086,6 +2106,9 @@ body {
   height: 15px;
   width: 15px;
   border-radius: 50%;
+}
+.content-container .card-bottom .schedule .event-scroller .scroll-right:hover {
+  transform: scale(1.2);
 }
 .content-container .card-bottom .schedule .event-scroller .scroll-hidden {
   visibility: hidden;

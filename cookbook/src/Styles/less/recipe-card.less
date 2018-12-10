@@ -1,164 +1,176 @@
 .recipeCardInvisible {
-display: none;
+  display: none;
 }
 
 .content-container {
-    border: 1px solid @CBblue;
-    margin: 0 10px 20px 10px;
-    width: 250px;
+  border: 1px solid @CBblue;
+  margin: 0 10px 20px 10px;
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: @CBtan;
+  border-radius: 26px;
+  position: relative;
+
+  .title {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 4px;
+    height: 42px;
+    text-align: center;
+    font-weight: 500;
+    color: @CBblue;
+  }
+
+  .image {
+    width: 248px;
+    height: 160px;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+  }
+
+  .card-bottom {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: @CBtan;
-    border-radius: 26px;
-    position: relative;
+    justify-content: space-between;
+    background-color: @CBblue;
+    border-radius: 25px;
+    width: 100%;
+    color: @CBtan;
+    margin-top: 90px;
+    height: 110px;
+    align-items: flex-end;
 
-    .title {
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 4px;
-        height: 42px;
-        text-align: center;
-        font-weight: 500;
-        color: @CBblue;
-    }
+    .link-container {
+      width: 65px;
+      background-color: @CBblue;
+      border: none;
+      border-radius: 25px;
+      color: @CBtan;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 7px;
+      text-decoration: none;
 
-    .image {
-        width: 248px;
-        height: 160px; 
-        background-position: center;
-        background-size: cover;
-        position: absolute;
-        left: 0;
-    }
-
-    .card-bottom {
-        display: flex;
-        justify-content: space-between;
-        background-color: @CBblue;
-        border-radius: 25px;
-        width: 100%;
+      .web-link {
         color: @CBtan;
-        margin-top: 90px;
-        height: 110px;
-        align-items: flex-end;;
+        height: 15px;
+        width: 36px;
+      }
 
-        .link-container {
-            width: 65px;
-            background-color: @CBblue;
-            border: none;
-            border-radius: 25px;
-            color: @CBtan;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 7px;
-            text-decoration: none;
-
-            .web-link {
-                color: @CBtan;
-                height: 15px;
-                width: 36px;
-            }
-            
-            .link-text {
-                font-size: .9rem;
-                width: 30px;
-                text-align: center;
-            }
-        }
-
-        .schedule {
-            border: 1px solid @CBblue;
-            border-radius: 8px;
-            font-size: 1.4rem;
-            background-color: @CBtan;
-            color: @CBblue;
-            width: 120px;
-            height: 60px;
-            position: relative;
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-            padding: 1px 0 0;
-
-            .event-scroller {
-                display: flex;
-                width: 100%;
-                align-items: center;
-                justify-content: space-between;
-                font-weight: 600;
-
-                .scroll-left {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-right: 2px;
-                    padding-right: 2px;
-                    cursor: pointer;
-                    background: @CBblue;
-                    color: @CBtan;
-                    height: 15px;
-                    width: 15px;
-                    border-radius: 50%;
-                }
-
-                .event {
-                    display: flex;
-                    flex-flow: column;
-                    align-items: center;
-                }
-
-                .scroll-right {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-left: 2px;
-                    padding-left: 2px;
-                    cursor: pointer;
-                    background: @CBblue;
-                    color: @CBtan;
-                    height: 15px;
-                    width: 15px;
-                    border-radius: 50%;
-                }
-
-                .scroll-hidden {
-                    visibility: hidden;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-left: 2px;
-                    padding-left: 2px;
-                    cursor: pointer;
-                    background: @CBblue;
-                    color: @CBtan;
-                    height: 15px;
-                    width: 15px;
-                    border-radius: 50%;
-                }
-            }
-        }
-
-        .del-button {
-            width: 65px;
-            background-color: @CBblue;
-            border: none;
-            border-radius: 25px;
-            color: @CBtan;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 5px;
-            cursor: pointer;
-
-            .del-icon {
-                height: 15px;
-                width: 100%;
-            }
-            .del-text {
-                font-size: .9rem;
-            }
-        }
+      .link-text {
+        font-size: 0.9rem;
+        width: 30px;
+        text-align: center;
+      }
     }
+
+    .schedule {
+      border: 1px solid @CBblue;
+      border-radius: 8px;
+      font-size: 1.4rem;
+      background-color: @CBtan;
+      color: @CBblue;
+      width: 120px;
+      height: 60px;
+      position: relative;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      padding: 1px 0 0;
+
+      .event-scroller {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+
+        .scroll-left {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 2px;
+          padding-right: 2px;
+          cursor: pointer;
+          background: @CBblue;
+          color: @CBtan;
+          height: 15px;
+          width: 15px;
+          border-radius: 50%;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+
+        .event {
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          cursor: pointer;
+          &:hover {
+            font-weight: bold;
+            text-decoration: underline;
+            transform: scale(1.1);
+          }
+        }
+
+        .scroll-right {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 2px;
+          padding-left: 2px;
+          cursor: pointer;
+          background: @CBblue;
+          color: @CBtan;
+          height: 15px;
+          width: 15px;
+          border-radius: 50%;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+
+        .scroll-hidden {
+          visibility: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 2px;
+          padding-left: 2px;
+          cursor: pointer;
+          background: @CBblue;
+          color: @CBtan;
+          height: 15px;
+          width: 15px;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .del-button {
+      width: 65px;
+      background-color: @CBblue;
+      border: none;
+      border-radius: 25px;
+      color: @CBtan;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 5px;
+      cursor: pointer;
+
+      .del-icon {
+        height: 15px;
+        width: 100%;
+      }
+      .del-text {
+        font-size: 0.9rem;
+      }
+    }
+  }
 }

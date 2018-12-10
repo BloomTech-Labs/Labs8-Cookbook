@@ -165,7 +165,6 @@ class CardSchedule extends Component {
     return (
       <React.Fragment>
         <span>scheduled for</span>
-
         <div className="event-scroller">
           <div
             className={this.handleScrollClass("left")}
