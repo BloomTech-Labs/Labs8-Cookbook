@@ -1246,7 +1246,7 @@ body .portal .modal-portal {
 }
 .calendar-page-container .calendar-container .search-box-wrapper .search-box-input {
   font-size: 20px;
-  border: 0.2em solid #343e5a;
+  border: 0.1em solid #343e5a;
   border-radius: 0 0.5em 0.5em 0;
   border-left: 0;
   width: 100%;
@@ -1254,7 +1254,7 @@ body .portal .modal-portal {
 }
 .calendar-page-container .calendar-container .search-box-wrapper .magnifying-glass {
   font-size: 20px;
-  border: 0.2em solid #343e5a;
+  border: 0.1em solid #343e5a;
   border-radius: 0.5em 0 0 0.5em;
   border-right: 0;
   padding: 0 0.1em 0.1em 0;
