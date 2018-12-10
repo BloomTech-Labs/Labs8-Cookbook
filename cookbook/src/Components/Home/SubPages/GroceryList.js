@@ -148,28 +148,6 @@ class GroceryList extends Component {
     ) : (
       <div>No grocery list generated yet.</div>
     );
-    // //Maps through scheduled recipes for grocery list.
-    // const scheduledMeals = this.state.scheduledMeals.length ? (
-    //   <div className="scheduled-meals-container">
-    //     {this.state.scheduledMeals.map(meal => (
-    //       <div className="scheduled-meals">
-    //         <span className="title">{meal.title}</span>
-    //         <a
-    //           href={"" + meal.url}
-    //           target="_blank"
-    //           rel="noopener noreferrer"
-    //           className="link"
-    //         >
-    //           <FontAwesomeIcon icon="link" className="icon" />
-    //         </a>
-    //       </div>
-    //     ))}
-    //   </div>
-    // ) : null;
-    // // shows scheduled meals header if there are schedules meals
-    // const schedMealsHeader = this.state.scheduledMeals.length ? (
-    //   <span className="meals-header">Scheduled Meals:</span>
-    // ) : null;
 
     // shows grocery list items header if there are items in the list
     const groceryListHeader = this.state.groceryList.length ? (

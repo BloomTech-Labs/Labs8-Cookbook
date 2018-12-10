@@ -4,6 +4,7 @@ import { graphql } from "react-apollo";
 import { DELETE_RECIPE_MUTATION } from "./RecipeCard";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import { QUERY_RECIPE_EVENT } from "./Calendar";
+import Iframe from "react-iframe";
 
 class RecipeView extends Component {
   constructor(props) {
@@ -72,6 +73,46 @@ class RecipeView extends Component {
   };
 
   render() {
+    let whitelisted =
+      this.props.location.state.url.includes("www.allrecipes.com") ||
+      this.props.location.state.url.includes("www.geniuskitchen.com");
+
+    const instructions = whitelisted ? (
+      <div className="instructions">
+        {this.state.instructions.map((inst, index) => (
+          <div className="instruction" key={index}>
+            <input
+              type="checkbox"
+              className="checkbox"
+              onClick={this.toggleCheckBox}
+              name={inst.stepNum}
+            />
+            <div className="description">{inst.description}</div>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div className="iframe-container">
+        <Iframe
+          url={this.props.location.state.url}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            border: 0,
+            marginRight: "20px"
+          }}
+          id="iframe"
+          className="iframe"
+          display="initial"
+          position="relative"
+          allowFullScreen
+        />
+      </div>
+    );
+
     return (
       <div className="recipe-page">
         <div className="recipe-header">
@@ -142,33 +183,23 @@ class RecipeView extends Component {
               </div>
             </div>
           </div>
-          <div className="ingredients">
-            <div className="title">Ingredients</div>
-            {this.props.location.state.ingredients.map((ing, index) => (
-              <div className="ingredient" id="instruction-id" key={index}>
-                <span className="qty">
-                  {ing.quantity !== "0" ? ing.quantity : ""}
-                </span>
-                <span className="name">{ing.name}</span>
-              </div>
-            ))}
-          </div>
+          {whitelisted ? (
+            <div className="ingredients">
+              <div className="title">Ingredients</div>
+              {this.props.location.state.ingredients.map((ing, index) => (
+                <div className="ingredient" id="instruction-id" key={index}>
+                  <span className="qty">
+                    {ing.quantity !== "0" ? ing.quantity : ""}
+                  </span>
+                  <span className="name">{ing.name}</span>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
         <div className="right-container">
           <div className="title">Instructions</div>
-          <div className="instructions">
-            {this.state.instructions.map((inst, index) => (
-              <div className="instruction" key={index}>
-                <input
-                  type="checkbox"
-                  className="checkbox"
-                  onClick={this.toggleCheckBox}
-                  name={inst.stepNum}
-                />
-                <div className="description">{inst.description}</div>
-              </div>
-            ))}
-          </div>
+          {instructions}
         </div>
       </div>
     );
