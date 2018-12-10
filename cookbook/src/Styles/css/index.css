@@ -2290,6 +2290,8 @@ body {
   height: 74px;
   width: 175px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 @media (max-width: 1200px) {
   .recipe-page .left-container .left-content .info-bar .scheduled-for {
@@ -2470,6 +2472,7 @@ body {
   padding-top: 20px;
   padding-bottom: 15px;
   margin-bottom: 25px;
+  margin-top: 20px;
 }
 @media (max-width: 1200px) {
   .recipe-page .right-container .instructions {
@@ -2492,9 +2495,8 @@ body {
   display: flex;
   padding-left: 10px;
   padding-right: 20px;
-  padding-top: 5px;
-  padding-bottom: 5px;
   line-height: 2.8rem;
+  margin-top: 10px;
 }
 @media (max-width: 600px) {
   .recipe-page .right-container .instructions .instruction {

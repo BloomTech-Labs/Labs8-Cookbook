@@ -1,362 +1,366 @@
 .recipe-page {
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 1.5px solid @CBblue;
+  border-radius: 30px;
+  background-color: @CBtan;
+  color: @CBblue;
+  @media @phone {
     flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .recipe-header {
+    display: flex;
     justify-content: space-between;
-    border: 1.5px solid @CBblue;
-    border-radius: 30px;
-    background-color: @CBtan;
-    color: @CBblue;
+    align-items: flex-start;
+    padding: 0 20px;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 2.4rem;
+    letter-spacing: 0.2rem;
     @media @phone {
-        flex-wrap: wrap;
-        justify-content: center;
+      flex-wrap: wrap-reverse;
+      margin-top: 15px;
     }
 
-    .recipe-header {
+    .recipe-title {
+      width: 80%;
+      @media @phone {
+        width: 100%;
+      }
+    }
+
+    .icon-container {
+      margin-right: 10px;
+      cursor: pointer;
+      @media @phone {
+        width: 100%;
+        text-align: right;
+        margin-bottom: 10px;
+        font-size: 2rem;
+      }
+
+      .link {
+        margin-right: 15px;
+        color: @CBblue;
+        @media @phone {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .left-container {
+    margin-top: 15px;
+    margin-left: 20px;
+    width: 500px;
+    @media @desktop {
+      width: 400px;
+    }
+    @media @tablet {
+      width: 330px;
+      margin-left: 10px;
+    }
+    @media @phone {
+      width: 320px;
+      margin-left: 0;
+      margin-top: 5px;
+    }
+
+    .left-content {
+      position: relative;
+      font-size: 1.4rem;
+      height: 310px;
+      @media @desktop {
+        height: 270px;
+      }
+      @media @tablet {
+        height: 270px;
+      }
+      @media @phone {
+        height: 280px;
+      }
+
+      .recipe-img {
+        width: 500px;
+        height: 250px;
+        background-position: center;
+        background-size: cover;
+        margin-top: 10px;
+        @media @desktop {
+          width: 400px;
+          height: 210px;
+        }
+        @media @tablet {
+          width: 330px;
+          height: 190px;
+        }
+        @media @phone {
+          width: 320px;
+          height: 190px;
+        }
+      }
+
+      .info-bar {
+        background-color: @CBblue;
+        color: @CBtan;
+        border: 1px solid @CBtan;
+        border-radius: 20px;
+        position: absolute;
+        top: 205px;
+        left: 75px;
+        width: 350px;
+        height: 90px;
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
-        padding: 0 20px;
-        width: 100%;
-        margin-top: 20px;
-        font-weight: bold;
-        font-size: 2.4rem;
-        letter-spacing: .2rem;
-        @media @phone {
-            flex-wrap: wrap-reverse;
-            margin-top: 15px;
-        }
-
-        .recipe-title {
-            width: 80%;
-            @media @phone {
-                width: 100%;
-            }
-        }
-
-        .icon-container {
-            margin-right: 10px;
-            cursor: pointer;
-            @media @phone {
-                width: 100%;
-                text-align: right;
-                margin-bottom: 10px;
-                font-size: 2rem;
-            }
-
-            .link {
-                margin-right: 15px;
-                color: @CBblue;
-                @media @phone {
-                    margin-right: 10px;
-                }
-            }
-        }
-    }
-
-    .left-container {
-        margin-top: 15px;
-        margin-left: 20px;
-        width: 500px;
+        align-items: center;
         @media @desktop {
-            width: 400px;
+          top: 165px;
+          left: 45px;
+          width: 310px;
         }
         @media @tablet {
-            width: 330px;
-            margin-left: 10px;
+          top: 165px;
+          left: 15px;
+          width: 300px;
         }
         @media @phone {
-            width: 320px;
+          width: 290px;
+          left: 20px;
+          top: 170px;
+        }
+
+        .scheduled-for {
+          border-right: 1px solid @CBtan;
+          padding-right: 25px;
+          height: 74px;
+          width: 175px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+
+          @media @desktop {
+            width: 140px;
+            padding-right: 15px;
+            margin-left: 5px;
+          }
+          @media @tablet {
+            width: 130px;
+          }
+          @media @phone {
+            padding-right: 0;
             margin-left: 0;
-            margin-top: 5px;
-        }
+          }
 
-        .left-content {
-            position: relative;
-            font-size: 1.4rem;
-            height: 310px;
-            @media @desktop {
-                height: 270px;
-            }
-            @media @tablet {
-                height: 270px;
-            }
-            @media @phone {
-                height: 280px;
-            }
-
-            .recipe-img {
-                width: 500px;
-                height: 250px;
-                background-position: center;
-                background-size: cover;
-                margin-top: 10px;
-                @media @desktop {
-                    width: 400px;
-                    height: 210px;
-                }
-                @media @tablet {
-                    width: 330px;
-                    height: 190px;
-                }
-                @media @phone {
-                    width: 320px;
-                    height: 190px;
-                }
-            }
-
-            .info-bar {
-                background-color: @CBblue;
-                color: @CBtan;
-                border: 1px solid @CBtan;
-                border-radius: 20px;
-                position: absolute;
-                top: 205px;
-                left: 75px;
-                width: 350px;
-                height: 90px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                @media @desktop {
-                    top: 165px;
-                    left: 45px;
-                    width: 310px;
-                }
-                @media @tablet {
-                    top: 165px;
-                    left: 15px;
-                    width: 300px;
-                }
-                @media @phone {
-                    width: 290px;
-                    left: 20px;
-                    top: 170px;
-                }
-
-                .scheduled-for {
-                    border-right: 1px solid @CBtan;
-                    padding-right: 25px;
-                    height: 74px;
-                    width: 175px;
-                    text-align: center;
-                    @media @desktop {
-                        width: 140px;
-                        padding-right: 15px;
-                        margin-left: 5px;
-                    }
-                    @media @tablet {
-                        width: 130px;
-                    }
-                    @media @phone {
-                        padding-right: 0;
-                        margin-left: 0;
-                    }
-
-                    .text {
-                        width: 100%;
-                        height: 20px;
-                        width: 100%;
-                    }
-
-                    .event {
-                        padding-top: 10px;
-                        font-weight: 600;
-
-                        .meal {
-                            margin-bottom: 8px;
-                        }
-                    }
-                }
-
-                .recipe-info {
-                    width: 130px;
-                    margin-right: 20px;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    text-align: center;
-                    @media @desktop {
-                        margin-right: 17px;
-                    }
-
-                    .cook-time {
-                        width: 100%;
-                        height: 45px;
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: center;
-                        align-items: center;
-                        border-bottom: 1px solid @CBtan;
-
-                        .title {
-                            margin-right: 5px;
-                        }
-
-                        .time {
-                            font-weight: 600;
-                        }
-                    }
-
-                    .servings {
-                        width: 100%;
-                        height: 45px;
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: center;
-                        align-items: center;
-
-                        .title {
-                            margin-right: 5px;
-                        }
-
-                        .size {
-                            font-weight: 600;
-                        }
-                    }
-                }
-            }
-        }
-
-        .ingredients {
+          .text {
             width: 100%;
-            margin-bottom: 15px;
+            height: 20px;
+            width: 100%;
+          }
+
+          .event {
+            padding-top: 10px;
             font-weight: 600;
-            padding-top: 20px;
-            padding-bottom: 10px;
-            margin-top: 30px;
-            position: relative;
-            border: 1px solid @CBblue;
-            border-radius: 25px;
-            @media @phone {
-                font-size: 1.4rem;
-            }
-            
-            .title {
-                text-align: center;
-                padding: 0 5px;
-                background-color: @CBtan;
-                font-size: 2.6rem;
-                margin-top: 10px;
-                margin-bottom: 15px;
-                margin-left: 35px;
-                position: absolute;
-                top: -30px;
-                @media @phone {
-                    font-size: 2.4rem;
-                }
-            }
 
-            .ingredient {
-                margin-bottom: 10px;
-                display: flex;
-                
-                .qty {
-                    text-align: right;
-                    margin-right: 8px;
-                    margin-left: 15px;
-                    width: 40px;
-                }
-
-                .name {
-                    width: 405px;
-                    @media @desktop {
-                        width: 310px;
-                    }
-                    @media @tablet {
-                        width: 240px;
-                    }
-                    @media @phone {
-                        width: 235px;
-                    }
-                }
+            .meal {
+              margin-bottom: 8px;
             }
+          }
         }
-    }
 
-    .right-container {      
-        margin-right: 20px;
-        width: 500px;
-        margin-top: 25px;
-        font-weight: 600;
-        @media @desktop {
-            width: 400px;
-            margin-right: 0;
-        }
-        @media @tablet {
-            width: 330px;
-        }
-        @media @phone {
-            width: 320px;
+        .recipe-info {
+          width: 130px;
+          margin-right: 20px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          text-align: center;
+          @media @desktop {
+            margin-right: 17px;
+          }
+
+          .cook-time {
+            width: 100%;
+            height: 45px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-        }
+            align-items: center;
+            border-bottom: 1px solid @CBtan;
 
-        .title {
-            font-size: 2.8rem;
-            margin-left: 30px;
-            line-height: 1.8rem;
-            @media @tablet {
-                margin-left: 40px;
+            .title {
+              margin-right: 5px;
             }
-            @media @phone {
-                font-size: 2.4rem;
-                width: 100%;
-            }
-        }
 
-        .instructions {
-            border-radius: 25px;
-            background-color: @CBblue;
-            color: @CBtan;
-            padding-top: 20px;
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-            @media @desktop {
-                width: 380px;
+            .time {
+              font-weight: 600;
             }
-            @media @tablet {
-                width: 310px;
-                margin-left: 10px;
-            }
-            @media @phone {
-                width: 300px;
-                margin-left: 0;
-            }
-            
+          }
 
-            .instruction {
+          .servings {
+            width: 100%;
+            height: 45px;
             display: flex;
-            padding-left: 10px;
-            padding-right: 20px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            line-height: 2.8rem;
-            @media @phone {
-                font-size: 1.4rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+
+            .title {
+              margin-right: 5px;
             }
 
-                .checked {
-                    background-color: @CBgrey;
-                }
-
-                .checkbox {
-                    width: 20px;
-                    margin-top: 8px;
-                }
-    
-                .description {
-                    width: 480px;
-                }
+            .size {
+              font-weight: 600;
             }
-
-            .instruction .checked {
-                background-color: @CBgrey;
-            }
-
-            .instruction .not-checked {
-                background-color: @CBblue;
-            }
+          }
         }
+      }
     }
+
+    .ingredients {
+      width: 100%;
+      margin-bottom: 15px;
+      font-weight: 600;
+      padding-top: 20px;
+      padding-bottom: 10px;
+      margin-top: 30px;
+      position: relative;
+      border: 1px solid @CBblue;
+      border-radius: 25px;
+      @media @phone {
+        font-size: 1.4rem;
+      }
+
+      .title {
+        text-align: center;
+        padding: 0 5px;
+        background-color: @CBtan;
+        font-size: 2.6rem;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        margin-left: 35px;
+        position: absolute;
+        top: -30px;
+        @media @phone {
+          font-size: 2.4rem;
+        }
+      }
+
+      .ingredient {
+        margin-bottom: 10px;
+        display: flex;
+
+        .qty {
+          text-align: right;
+          margin-right: 8px;
+          margin-left: 15px;
+          width: 40px;
+        }
+
+        .name {
+          width: 405px;
+          @media @desktop {
+            width: 310px;
+          }
+          @media @tablet {
+            width: 240px;
+          }
+          @media @phone {
+            width: 235px;
+          }
+        }
+      }
+    }
+  }
+
+  .right-container {
+    margin-right: 20px;
+    width: 500px;
+    margin-top: 25px;
+    font-weight: 600;
+    @media @desktop {
+      width: 400px;
+      margin-right: 0;
+    }
+    @media @tablet {
+      width: 330px;
+    }
+    @media @phone {
+      width: 320px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .title {
+      font-size: 2.8rem;
+      margin-left: 30px;
+      line-height: 1.8rem;
+      @media @tablet {
+        margin-left: 40px;
+      }
+      @media @phone {
+        font-size: 2.4rem;
+        width: 100%;
+      }
+    }
+
+    .instructions {
+      border-radius: 25px;
+      background-color: @CBblue;
+      color: @CBtan;
+      padding-top: 20px;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      margin-top: 20px;
+
+      @media @desktop {
+        width: 380px;
+      }
+      @media @tablet {
+        width: 310px;
+        margin-left: 10px;
+      }
+      @media @phone {
+        width: 300px;
+        margin-left: 0;
+      }
+
+      .instruction {
+        display: flex;
+        padding-left: 10px;
+        padding-right: 20px;
+        line-height: 2.8rem;
+        margin-top: 10px;
+
+        @media @phone {
+          font-size: 1.4rem;
+        }
+
+        .checked {
+          background-color: @CBgrey;
+        }
+
+        .checkbox {
+          width: 20px;
+          margin-top: 8px;
+        }
+
+        .description {
+          width: 480px;
+        }
+      }
+
+      .instruction .checked {
+        background-color: @CBgrey;
+      }
+
+      .instruction .not-checked {
+        background-color: @CBblue;
+      }
+    }
+  }
 }

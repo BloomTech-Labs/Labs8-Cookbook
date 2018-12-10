@@ -105,14 +105,26 @@ class RecipeView extends Component {
             <div className="info-bar">
               <div className="scheduled-for">
                 <span className="text">scheduled for:</span>
-                {this.props.location.state.events.map((event, index) => (
-                  <div className="event" key={index}>
-                    <div className="meal">{event.mealType}</div>
+                {this.props.location.state.events.length ? (
+                  <div className="event">
+                    <div className="meal">
+                      {
+                        this.props.location.state.events[
+                          this.props.location.state.events.length - 1
+                        ].mealType
+                      }
+                    </div>
                     <div className="date">
-                      {new Date(event.date).toLocaleDateString()}
+                      {new Date(
+                        this.props.location.state.events[
+                          this.props.location.state.events.length - 1
+                        ].date
+                      ).toLocaleDateString()}
                     </div>
                   </div>
-                ))}
+                ) : (
+                  <div>No events scheduled</div>
+                )}
               </div>
               <div className="recipe-info">
                 <div className="cook-time">
