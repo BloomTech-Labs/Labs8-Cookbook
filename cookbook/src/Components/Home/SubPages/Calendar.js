@@ -191,10 +191,10 @@ class RecipeCalendar extends Component {
           return (
             <div className="calendar-page-container">
               <div className="calendar-container">
-                <div className='recipes-modal'>
+                {/* <div className='recipes-modal'>
                   <div className='modal-header'>Today</div>
                   <div className='modal-content'></div>
-                </div>
+                </div> */}
                 <div className="search-box-wrapper">
                   <div className="magnifying-glass">
                     <span role="img" aria-label="magnifying-glass">
