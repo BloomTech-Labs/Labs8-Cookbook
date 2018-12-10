@@ -29,16 +29,20 @@ class DatePicker extends Component {
         justifyContent: 'center',
         flexDirection: 'column',
       }}>
+        <div className='scheduled-for'>
+          <p>scheduled for</p>
+
+          {this.state.selectedDay
+            ? <p className='chosen-date'>{this.state.selectedDay.toLocaleDateString()}</p>
+            : <p className='no-date-chosen'></p>
+          }
+        </div>
+        
         <DayPicker
           selectedDays={this.state.selectedDay}
           onDayClick={this.handleDayClick}
           disabledDays={{ before: new Date() }}
         />
-        <p>
-          {this.state.selectedDay
-            ? this.state.selectedDay.toLocaleDateString()
-            : "Please select a day 👻"}
-        </p>
       </div>
     );
   }
