@@ -8,12 +8,9 @@ body {
   margin: 0;
   padding: 0;
 }
-html .portal .modal-portal,
-body .portal .modal-portal {
-  border: 2px solid red;
-}
 * {
   box-sizing: border-box;
+  outline: none;
 }
 .container-margin-top {
   margin: 40px 0 211px ;
@@ -845,7 +842,7 @@ body .portal .modal-portal {
   cursor: pointer;
 }
 .DayPicker-NavButton:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 .DayPicker-NavButton--prev {
   width: 0;
@@ -1407,19 +1404,19 @@ body .portal .modal-portal {
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar {
-    font-size: 1.0rem;
+    font-size: 1rem;
     height: 380px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
-    font-size: .8rem;
+    font-size: 0.8rem;
     width: 40px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
-    font-size: 1.0rem;
+    font-size: 1rem;
     padding: 0;
   }
 }
@@ -1435,7 +1432,7 @@ body .portal .modal-portal {
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .search-box-wrapper {
-    font-size: 1.0rem;
+    font-size: 1rem;
   }
 }
 .calendar-page-container .calendar-container .search-box-wrapper .search-box-input {
@@ -1460,24 +1457,16 @@ body .portal .modal-portal {
   flex-wrap: wrap;
   color: #343e5a;
   font-weight: 600;
-  height: 690px;
-}
-@media (max-width: 1200px) {
-  .grocery-list-page {
-    height: 600px;
-  }
 }
 @media (max-width: 900px) {
   .grocery-list-page {
     justify-content: center;
-    height: 900px;
   }
 }
 @media (max-width: 600px) {
   .grocery-list-page {
     padding-top: 0;
     align-items: flex-start;
-    height: 700px;
   }
 }
 .grocery-list-page .gen-list-container {
@@ -1549,6 +1538,7 @@ body .portal .modal-portal {
   font-size: 1.6rem;
   border-radius: 15px;
   padding: 2px 15px;
+  border: 2px solid #343e5a;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .gen-list-container .reset-gen-buttons .reset {
@@ -1583,6 +1573,7 @@ body .portal .modal-portal {
   font-size: 1.6rem;
   border-radius: 15px;
   padding: 2px 15px;
+  border: 2px solid #343e5a;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .gen-list-container .reset-gen-buttons .generate {
@@ -1765,7 +1756,6 @@ body .portal .modal-portal {
   .grocery-list-page .list {
     width: 350px;
     font-size: 1.2rem;
-    position: absolute;
     top: 570px;
   }
 }
@@ -1782,14 +1772,14 @@ body .portal .modal-portal {
 .grocery-list-page .list .meals-header {
   font-size: 1.8rem;
   margin-left: 82px;
-  letter-spacing: .3rem;
+  letter-spacing: 0.3rem;
   font-weight: bold;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .list .meals-header {
     margin-left: 80px;
     font-size: 1.7rem;
-    letter-spacing: .2rem;
+    letter-spacing: 0.2rem;
   }
 }
 @media (max-width: 900px) {
@@ -1842,6 +1832,7 @@ body .portal .modal-portal {
 .grocery-list-page .list .scroll-container {
   height: 585px;
   overflow: auto;
+  margin-bottom: 30px;
 }
 .grocery-list-page .list .scroll-container::-webkit-scrollbar {
   width: 12px;
@@ -1861,7 +1852,7 @@ body .portal .modal-portal {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 11px 0 15px;
+  padding: 11px 0 5px;
   padding-top: 5px;
   margin-top: 5px;
 }
@@ -2002,7 +1993,7 @@ body .portal .modal-portal {
   width: 36px;
 }
 .content-container .card-bottom .link-container .link-text {
-  font-size: .9rem;
+  font-size: 0.9rem;
   width: 30px;
   text-align: center;
 }
@@ -2089,7 +2080,7 @@ body .portal .modal-portal {
   width: 100%;
 }
 .content-container .card-bottom .del-button .del-text {
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 .recipe-page {
   display: flex;
@@ -2115,7 +2106,7 @@ body .portal .modal-portal {
   margin-top: 20px;
   font-weight: bold;
   font-size: 2.4rem;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
 }
 @media (max-width: 600px) {
   .recipe-page .recipe-header {
