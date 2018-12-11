@@ -248,12 +248,9 @@ class RecipeCalendar extends Component {
                     onChange={this.handleSearch}
                     value={this.state.search}
                   />
-                  <button
-                    className="duplicate-btn"
-                    onClick={() => this.duplicateMeals(searchedEvents)}
-                  >
-                    Duplicate last 7 days
-                  </button>
+                </div>
+                <div className='btn-wrapper'>
+                  <button className="duplicate-btn" onClick={() => this.duplicateMeals(searchedEvents)}>Duplicate last 7 days</button>
                 </div>
                 <BigCalendar
                   selectable
