@@ -3,6 +3,7 @@ import StripeCheckout from "react-stripe-checkout";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { CURRENT_USER_QUERY } from "../SubPages/User";
+import { Helmet } from "react-helmet";
 
 const CREATE_SUBSCRIPTION_MUTATION = gql`
   mutation createSubscription($token: String!) {
@@ -125,6 +126,9 @@ class Settings extends React.Component {
         <div className="success-message">{this.state.success_msg}</div>
       ) : null;
       return (
+        <Helmet>
+          <title>Settings | COOKBOOK</title>
+        
         <div className="settings-page">
           <form className="user-info">
             <div className="form-group">
@@ -207,6 +211,7 @@ class Settings extends React.Component {
           {success}
           {error}
         </div>
+        </Helmet>
       );
     }
   }
