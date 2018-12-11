@@ -1,138 +1,110 @@
-.containerLP {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 250px;
+.landing-container {
 
-  .titleContainer {
-    width: 100%;
+  .above-the-fold {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    overflow: hidden;
+    background-size: cover;
+    background-position: 50% 50%;
+    color: @CBtan;
 
-    .bckgImg {
-      position: relative;
+    .branding {
+      display: flex;
       width: 100%;
-      height: auto;
+      max-width: 1700px;
+      justify-content: space-around;
+      align-items: center;
+      padding: 50px 30px 0;
+
+      @media @desktop {
+        flex-flow: column;
+      }
+
       @media @phone {
-        width: 400px;
+        padding-top: 30px;
       }
-    }
-
-    .landingNav {
-      width: 100%;
-      position: absolute;
-      top: 10px;
-      display: flex;
-      justify-content: flex-end;
-      display: flex;
-      font-size: 2.4rem;
-      @media @tablet {
-        font-size: 2.2rem;
-      }
-      @media @phone {
-        font-size: 1.6rem;
-      }
-
-      .register {
-        margin-right: 15px;
-        margin-top: 15px;
-        text-decoration: none;
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        height: 30px;
-        @media @phone {
-          margin-top: 5px;
-        }
-      }
-    }
-
-    .logo-title {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
 
       .logo {
-        position: absolute;
-        display: block;
-        top: 140px;
-        height: 220px;
+        width: 250px;
+
         @media @desktop {
-          top: 90px;
-          height: 180px;
+          width: 200px;
         }
-        @media @tablet {
-          top: 75px;
-          height: 130px;
-        }
+
         @media @phone {
-          top: 55px;
-          height: 75px;
+          width: 150px;
         }
       }
 
       .title {
-        position: absolute;
-        color: white;
-        top: 390px;
-        font-size: 10.5rem;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        width: 70%;
 
         @media @desktop {
-          top: 300px;
-          font-size: 9rem;
+          width: 90%;
+          max-width: 900px;
         }
-        @media @tablet {
-          top: 220px;
-          font-size: 7.6rem;
-        }
+
         @media @phone {
-          top: 140px;
-          font-size: 4.8rem;
+          width: 100%;
+          max-width: 420px;
+        }
+
+        .name {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          font-family: @secondary-font;
+          font-size: 100px;
+          font-weight: bold;
+          margin-top: 50px;
+  
+          @media @desktop {
+            margin-top: 40px;
+            font-size: 75px;
+          }
+  
+          @media @phone {
+            font-size: 40px;
+            margin-top: 30px;
+          }
+        }
+
+        .hook {
+          width: 100%;
+          font-family: @primary-font;
+          font-size: 30px;
+          letter-spacing: 4px;
+          margin: 0px 0 0;
+
+          @media @desktop {
+            font-size: 21px;
+          }
+
+          @media @phone {
+            font-size: 12px;
+            letter-spacing: 1px;
+          }
         }
       }
     }
-  }
 
-  .lp-content {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    border: 1px solid red;
-    width: 1000px;
-    @media @desktop {
-      width: 768px;
-    }
-    @media @tablet {
-      width: 620px;
-    }
-    @media @phone {
-      width: 360px;
-    }
-
-    .about-us {
+    .call-to-action {
       display: flex;
+      width: 100%;
+      margin-top: 18vh;
       justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 30px;
-      font-family: "verdana";
-
-      .about-header {
-        letter-spacing: 0.3rem;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-        .fa {
-          margin-right: 30px;
-          margin-left: 30px;
-          height: 15px;
-          margin-top: 4px;
-        }
-      }
-
-      .about-content {
-        width: 350px;
-        font-size: 1.6rem;
-      }
+      align-items: center;
+      font-family: @secondary-font;
+      font-size: 60px;
+      text-shadow: 3px 3px rgba(0,0,0,.25);
+      cursor: pointer;
     }
   }
 }
