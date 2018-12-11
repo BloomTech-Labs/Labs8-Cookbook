@@ -7,7 +7,7 @@ import Modal from "../../SubComponents/Modal";
 import DatePicker from "../../SubComponents/DatePicker.js";
 import Buttons from "./Buttons";
 import { GET_RECIPES_QUERY } from "./Recipes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Helmet } from "react-helmet";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const propTypes = {};
@@ -206,6 +206,7 @@ class RecipeCalendar extends Component {
 
   render() {
     return (
+      
       <Query query={QUERY_RECIPE_EVENT}>
         {({ loading, error, data }) => {
           if (loading) return <div>Fetching</div>;
@@ -233,6 +234,9 @@ class RecipeCalendar extends Component {
           });
           return (
             <div className="calendar-page-container">
+              <Helmet>
+                <title>Calendar | COOKBOOK</title>
+              </Helmet>
               <div className="calendar-container">
                 <div className="search-box-wrapper">
                   <div className="magnifying-glass">
@@ -330,6 +334,7 @@ class RecipeCalendar extends Component {
           );
         }}
       </Query>
+      
     );
   }
 }

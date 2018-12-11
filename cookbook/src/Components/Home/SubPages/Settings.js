@@ -3,6 +3,7 @@ import StripeCheckout from "react-stripe-checkout";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { CURRENT_USER_QUERY } from "../SubPages/User";
+import { Helmet } from "react-helmet";
 
 const CREATE_SUBSCRIPTION_MUTATION = gql`
   mutation createSubscription($token: String!) {
@@ -126,6 +127,9 @@ class Settings extends React.Component {
       ) : null;
       return (
         <div className="settings-page">
+          <Helmet>
+            <title>Settings | COOKBOOK</title>
+          </Helmet>
           <form className="user-info">
             <div className="form-group">
               <label className="control-label">First Name</label>
