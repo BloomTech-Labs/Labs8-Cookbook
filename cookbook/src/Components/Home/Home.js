@@ -11,6 +11,7 @@ import Calendar from "./SubPages/Calendar";
 import GroceryList from "./SubPages/GroceryList";
 import Settings from "./SubPages/Settings";
 import RecipeView from "./SubPages/RecipeView";
+import { Helmet } from 'react-helmet';
 
 class Home extends Component {
   componentDidMount() {
@@ -24,16 +25,19 @@ class Home extends Component {
         <Header />
         <Nav />
         <CurrentPage />
-        <div className="home-container">
-          <div className="home-content">
-            <Route path="/home/create" component={Create} />
-            <Route path="/home/recipes" component={Recipes} />
-            <Route path="/home/calendar" component={Calendar} />
-            <Route path="/home/dashboard" component={GroceryList} />
-            <Route path="/home/settings" component={Settings} />
-            <Route path="/home/recipe/" component={RecipeView} />
-          </div>
-        </div>
+          <Helmet>
+            <title>COOKBOOK</title>
+          </Helmet>
+            <div className="home-container">
+              <div className="home-content">
+                <Route path="/home/create" component={Create} />
+                <Route path="/home/recipes" component={Recipes} />
+                <Route path="/home/calendar" component={Calendar} />
+                <Route path="/home/dashboard" component={GroceryList} />
+                <Route path="/home/settings" component={Settings} />
+                <Route path="/home/recipe/" component={RecipeView} />
+              </div>
+            </div>
       </React.Fragment>
     );
   }
