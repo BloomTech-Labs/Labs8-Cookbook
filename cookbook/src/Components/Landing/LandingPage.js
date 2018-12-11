@@ -4,6 +4,10 @@ import auth from '../../Auth/Auth.js';
 import titleImg from '../../Images/titleImg.jpeg';
 import logo from '../../designs/Logo/CookBookLogoWithShadow.svg';
 import chevron from '../../designs/Misc/Chevron.svg';
+import add_recipe from '../../designs/LandingPage/add_recipe.svg';
+import recipes from '../../designs/LandingPage/recipes.svg';
+import calendar from '../../designs/LandingPage/calendar.svg';
+import grocery from '../../designs/LandingPage/grocery.svg';
 
 const { isAuthenticated } = auth;
 
@@ -49,9 +53,36 @@ class LandingPage extends Component {
 
                 </div>
 
-                <div className='landing-add-recipe'>
-                    <img className="add-recipe-image" src={logo} alt='company logo'/>
-                    <p className='add-recipe-text'>Add a recipe from any website into COOKBOOK.</p>
+                <div className='below-the-fold'>
+                
+                    <div className='landing-add-recipe'>
+                        <img className="add-recipe-image" src={add_recipe} alt='add_recipe'/>
+                        <p className='add-recipe-text'>
+                            Add recipes from any website into your collection.
+                        </p>
+                    </div>
+
+                    <div className='landing-recipes'>
+                        <p className='recipes-text'>
+                            Easily search and filter the recipes in your collection, and view all of the information for any recipe.
+                        </p>
+                        <img className="recipes-image" src={recipes} alt='recipes'/>
+                    </div>
+
+                    <div className='landing-calendar'>
+                        <img className="calendar-image" src={calendar} alt='calendar'/>
+                        <p className='calendar-text'>
+                            Plan your meals by scheduling recipes for any amount of days.
+                        </p>
+                    </div>
+
+                    <div className='landing-grocery'>
+                        <p className='grocery-text'>
+                            Generate a grocery list of the ingredients you'll need for your recipes.
+                        </p>
+                        <img className="grocery-image" src={grocery} alt='grocery'/>
+                    </div>
+                
                 </div>
 
             </div>

@@ -161,17 +161,85 @@
     }
   }
 
-  .landing-add-recipe {
+  .below-the-fold {
     width: 100%;
     display: flex;
+    flex-flow: column;
+    background: @CBtan;
+  }
+
+  .landing-add-recipe {
+    width: 100%;
+    height: 50vw;
+    max-height: 400px;
+    display: flex;
     overflow: hidden;
+    @border-radius: 50px;
+    // margin: 20px 0;
 
     .add-recipe-image {
+      background: @CBtan;
+      padding: 50px;
       width: 50%;
     }
 
     .add-recipe-text {
+      margin: 0;
+      padding: 50px;
+      background: @CBred;
       width: 50%;
+      color: @CBtan;
+      font-size: 30px;
+      font-weight: bold;
+      border-bottom-left-radius: @border-radius;
+    }
+  }
+
+  .landing-recipes {
+    .landing-add-recipe;
+
+    .recipes-image {
+      .add-recipe-image;
+    }
+
+    .recipes-text {
+      .add-recipe-text;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: @border-radius;
+      border-bottom-right-radius: @border-radius;
+      background: @CBblue;
+    }
+  }
+
+  .landing-calendar {
+    .landing-add-recipe;
+
+    .calendar-image {
+      .add-recipe-image;
+    }
+
+    .calendar-text {
+      .add-recipe-text;
+      border-top-left-radius: @border-radius;
+      background: @CBgrey;
+      color: @CBblue;
+    }
+  }
+
+  .landing-grocery {
+    .landing-add-recipe;
+
+    .grocery-image {
+      .add-recipe-image;
+    }
+
+    .grocery-text {
+      .add-recipe-text;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: @border-radius;
+      border-bottom-right-radius: @border-radius;
+      background: @CBorange;
+      color: @CBblue;
     }
   }
 
