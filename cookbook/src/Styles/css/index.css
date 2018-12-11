@@ -1544,6 +1544,10 @@ body {
   background-color: #343e5a;
   color: #f5e9df;
 }
+.calendar-page-container .calendar-container .rbc-calendar .rbc-month-view .rbc-overlay .rbc-event {
+  background-color: #343e5a;
+  color: #f5e9df;
+}
 .grocery-list-page {
   display: flex;
   justify-content: space-between;
