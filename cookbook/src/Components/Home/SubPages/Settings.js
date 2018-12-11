@@ -126,10 +126,10 @@ class Settings extends React.Component {
         <div className="success-message">{this.state.success_msg}</div>
       ) : null;
       return (
-        <Helmet>
-          <title>Settings | COOKBOOK</title>
-        
         <div className="settings-page">
+          <Helmet>
+            <title>Settings | COOKBOOK</title>
+          </Helmet>
           <form className="user-info">
             <div className="form-group">
               <label className="control-label">First Name</label>
@@ -211,7 +211,6 @@ class Settings extends React.Component {
           {success}
           {error}
         </div>
-        </Helmet>
       );
     }
   }
