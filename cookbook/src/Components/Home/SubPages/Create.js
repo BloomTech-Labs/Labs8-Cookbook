@@ -207,9 +207,10 @@ class Create extends Component {
 
   render() {
     return (
-      <Helmet>
-      <title>Create | COOKBOOK</title>
       <div className="create-wrapper">
+        <Helmet>
+          <title>Create | COOKBOOK</title>
+        </Helmet>
         <div className="search-and-save">
           <input
             className={this.handleSearchClass()}
@@ -261,7 +262,6 @@ class Create extends Component {
           )}
         </div>
       </div>
-      </Helmet>
     );
   }
 }

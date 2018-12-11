@@ -206,8 +206,7 @@ class RecipeCalendar extends Component {
 
   render() {
     return (
-      <Helmet>
-        <title>Calendar | COOKBOOK</title>
+      
       <Query query={QUERY_RECIPE_EVENT}>
         {({ loading, error, data }) => {
           if (loading) return <div>Fetching</div>;
@@ -235,6 +234,9 @@ class RecipeCalendar extends Component {
           });
           return (
             <div className="calendar-page-container">
+              <Helmet>
+                <title>Calendar | COOKBOOK</title>
+              </Helmet>
               <div className="calendar-container">
                 <div className="search-box-wrapper">
                   <div className="magnifying-glass">
@@ -332,7 +334,7 @@ class RecipeCalendar extends Component {
           );
         }}
       </Query>
-      </Helmet>
+      
     );
   }
 }

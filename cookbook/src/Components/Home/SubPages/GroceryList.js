@@ -6,6 +6,7 @@ import GroceryItem from "../../SubComponents/GroceryItem";
 import * as math from "mathjs";
 import GatedSubscription from "../../SubComponents/GatedSubscription";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 class GroceryList extends Component {
   static defaultProps = {
@@ -157,6 +158,9 @@ class GroceryList extends Component {
     return (
       <GatedSubscription>
         <div className="grocery-list-page">
+          <Helmet>
+            <title>GroceryList | COOKBOOK</title>
+          </Helmet>
           <div className="gen-list-container">
             <p className="reset-gen-buttons">
               <span className="text">
