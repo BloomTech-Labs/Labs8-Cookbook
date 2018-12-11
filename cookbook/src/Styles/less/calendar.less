@@ -1,94 +1,172 @@
 .calendar-page-container {
   margin-left: 5px;
 
-  .calendar-container {
-    .rbc-calendar {
-      height: 650px;
-      @media @desktop {
-        height: 500px;
-      }
+  .search-box-wrapper {
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    //   align-items: stretch;
+    margin-bottom: 15px;
+    height: 35px;
+
+    @media @phone {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .search-box-input {
+      font-size: 1.8rem;
+      border: 1.5px solid @CBblue;;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      border-left: 0;
+      width: 100%;
+      outline: none;
+      padding-left: 10px;
       @media @tablet {
-        font-size: 1.4rem;
-        height: 420px;
+        font-size: 1.6rem;
       }
       @media @phone {
+        font-size: 1.2rem;
+        height: 28px;
+      }
+    }
+
+    .magnifying-glass {
+      font-size: 1.8rem;
+      border: 1.5px solid @CBblue;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border-right: 0;
+      padding-left: 10px;
+      padding-top: 2px;
+      color: white;
+      @media @phone {
+        font-size: 1.2rem;
+        height: 28px;
+      }
+    }
+  }
+  .btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    padding-right: 10px;
+    @media @phone {
+      padding-right: 5px;
+    }
+
+    .duplicate-btn {
+      background-color: @CBtan;
+      color: @CBblue;
+      padding: 5px 8px;
+      border-radius: 15px;
+      border: 2px solid @CBblue;
+      cursor: pointer;
+      @media @phone {
         font-size: 1rem;
-        height: 380px;
+      }
+    }
+  }
+
+  .calendar-container {
+    color:@CBblue;
+
+    .rbc-calendar {
+      @media @tablet {
+        font-size: 1.4rem;
+      }
+      @media @phone {
+        font-size: 1.2rem;
       }
 
       .rbc-toolbar {
+        background-color: @CBblue;
+        color: @CBgrey;
+        font-weight: bold;
+        padding: 5px 0;
+        border-top-left-radius: 25px;
+        border-top-right-radius: 25px;
+
         .rbc-btn-group {
+          position: relative;
+
           button {
+            position: absolute;
+            border: 2px solid @CBblue;
+            background-color: @CBtan;
+            border-radius: 15px;
+            top: -50px;
             @media @phone {
-              font-size: 0.8rem;
-              width: 40px;
+              font-size: 1rem;
+              top: -48px;
+            }
+          }
+
+          button:nth-child(1) {
+            left: 10px;
+            @media @phone {
+              left: 5px;
+            }
+          }
+
+          button:nth-child(2) {
+            left: 75px;
+            @media @phone {
+              left: 68px;
+            }
+          }
+
+          button:nth-child(3) {
+            left: 133px;
+            @media @phone {
+              left: 125px;
             }
           }
         }
 
         .rbc-toolbar-label {
           @media @phone {
-            font-size: 1rem;
+            font-size: 1.4rem;
             padding: 0;
           }
         }
       }
 
       .rbc-month-view {
+        
+        .rbc-header {
+          background-color: @CBtan;
+        }
+
         .rbc-month-row {
+
+          .rbc-row-bg {
+
+            .rbc-off-range-bg {
+              background-color: @CBgrey;
+            }
+
+            .rbc-today {
+              background-color: @CBtan;
+            }
+          }
+
           .rbc-row-content {
+            
             .rbc-row {
+
               .rbc-row-segment {
+
                 .rbc-event {
                   background-color: @CBblue;
-
-                  .rbc-event-content {
-                  }
+                  color: @CBtan;
                 }
               }
             }
           }
         }
-      }
-    }
-
-    .search-box-wrapper {
-      display: flex;
-      font-size: 1.2rem;
-      justify-content: space-between;
-      //   align-items: stretch;
-      margin-bottom: 8px;
-
-      @media @phone {
-        font-size: 1rem;
-      }
-
-      .search-box-input {
-        font-size: 20px;
-        border: 0.1em solid @CBblue;
-        border-radius: 0 0.5em 0.5em 0;
-        border-left: 0;
-        width: 80%;
-        outline: none;
-        margin-right: 10px;
-      }
-
-      .magnifying-glass {
-        font-size: 20px;
-        border: 0.1em solid @CBblue;
-        border-radius: 0.5em 0 0 0.5em;
-        border-right: 0;
-        padding: 0 0.1em 0.1em 0;
-        color: white;
-      }
-
-      .duplicate-btn {
-        background-color: @CBblue;
-        color: @CBorange;
-        font-size: 1.6rem;
-        border-radius: 15px;
-        border: 2px solid @CBblue;
-        cursor: pointer;
       }
     }
   }

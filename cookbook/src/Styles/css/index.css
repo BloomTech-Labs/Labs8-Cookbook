@@ -86,7 +86,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Muli', sans-serif;
+  font-family: 'Questrial', sans-serif;
   background-color: #343e5a;
   border-bottom: 1px solid #343e5a;
   color: #f5e9df;
@@ -144,25 +144,26 @@ body {
   font-size: 2rem;
   cursor: pointer;
   height: 100%;
-  width: 70px;
+  width: 75px;
   background: #de6a5a;
   color: #343e5a;
   border-radius: 30px;
   display: flex;
   justify-content: center;
-  padding-top: 11px;
-  margin-right: 40px;
+  padding-top: 13px;
+  margin-right: 30px;
 }
 @media (max-width: 900px) {
   .header .signout {
-    margin-right: 30px;
-    padding-top: 12px;
+    margin-right: 25px;
+    width: 75px;
+    padding-top: 14px;
   }
 }
 @media (max-width: 600px) {
   .header .signout {
     font-size: 1.4rem;
-    padding-top: 8px;
+    padding-top: 11px;
     width: 50px;
     margin-right: 20px;
   }
@@ -1388,76 +1389,160 @@ body {
 .calendar-page-container {
   margin-left: 5px;
 }
-.calendar-page-container .calendar-container .rbc-calendar {
-  height: 650px;
+.calendar-page-container .search-box-wrapper {
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  height: 35px;
 }
-@media (max-width: 1200px) {
-  .calendar-page-container .calendar-container .rbc-calendar {
-    height: 500px;
+@media (max-width: 600px) {
+  .calendar-page-container .search-box-wrapper {
+    font-size: 1rem;
+    margin-bottom: 12px;
   }
+}
+.calendar-page-container .search-box-wrapper .search-box-input {
+  font-size: 1.8rem;
+  border: 1.5px solid #343e5a;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-left: 0;
+  width: 100%;
+  outline: none;
+  padding-left: 10px;
+}
+@media (max-width: 900px) {
+  .calendar-page-container .search-box-wrapper .search-box-input {
+    font-size: 1.6rem;
+  }
+}
+@media (max-width: 600px) {
+  .calendar-page-container .search-box-wrapper .search-box-input {
+    font-size: 1.2rem;
+    height: 28px;
+  }
+}
+.calendar-page-container .search-box-wrapper .magnifying-glass {
+  font-size: 1.8rem;
+  border: 1.5px solid #343e5a;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-right: 0;
+  padding-left: 10px;
+  padding-top: 2px;
+  color: white;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .search-box-wrapper .magnifying-glass {
+    font-size: 1.2rem;
+    height: 28px;
+  }
+}
+.calendar-page-container .btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .btn-wrapper {
+    padding-right: 5px;
+  }
+}
+.calendar-page-container .btn-wrapper .duplicate-btn {
+  background-color: #f5e9df;
+  color: #343e5a;
+  padding: 5px 8px;
+  border-radius: 15px;
+  border: 2px solid #343e5a;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .btn-wrapper .duplicate-btn {
+    font-size: 1rem;
+  }
+}
+.calendar-page-container .calendar-container {
+  color: #343e5a;
 }
 @media (max-width: 900px) {
   .calendar-page-container .calendar-container .rbc-calendar {
     font-size: 1.4rem;
-    height: 420px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar {
-    font-size: 1rem;
-    height: 380px;
+    font-size: 1.2rem;
   }
+}
+.calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar {
+  background-color: #343e5a;
+  color: #bcc9d2;
+  font-weight: bold;
+  padding: 5px 0;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group {
+  position: relative;
+}
+.calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
+  position: absolute;
+  border: 2px solid #343e5a;
+  background-color: #f5e9df;
+  border-radius: 15px;
+  top: -50px;
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
-    font-size: 0.8rem;
-    width: 40px;
+    font-size: 1rem;
+    top: -48px;
+  }
+}
+.calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button:nth-child(1) {
+  left: 10px;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button:nth-child(1) {
+    left: 5px;
+  }
+}
+.calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button:nth-child(2) {
+  left: 75px;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button:nth-child(2) {
+    left: 68px;
+  }
+}
+.calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button:nth-child(3) {
+  left: 133px;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button:nth-child(3) {
+    left: 125px;
   }
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-toolbar-label {
-    font-size: 1rem;
+    font-size: 1.4rem;
     padding: 0;
   }
 }
+.calendar-page-container .calendar-container .rbc-calendar .rbc-month-view .rbc-header {
+  background-color: #f5e9df;
+}
+.calendar-page-container .calendar-container .rbc-calendar .rbc-month-view .rbc-month-row .rbc-row-bg .rbc-off-range-bg {
+  background-color: #bcc9d2;
+}
+.calendar-page-container .calendar-container .rbc-calendar .rbc-month-view .rbc-month-row .rbc-row-bg .rbc-today {
+  background-color: #f5e9df;
+}
 .calendar-page-container .calendar-container .rbc-calendar .rbc-month-view .rbc-month-row .rbc-row-content .rbc-row .rbc-row-segment .rbc-event {
   background-color: #343e5a;
-}
-.calendar-page-container .calendar-container .search-box-wrapper {
-  display: flex;
-  font-size: 1.2rem;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-@media (max-width: 600px) {
-  .calendar-page-container .calendar-container .search-box-wrapper {
-    font-size: 1rem;
-  }
-}
-.calendar-page-container .calendar-container .search-box-wrapper .search-box-input {
-  font-size: 20px;
-  border: 0.1em solid #343e5a;
-  border-radius: 0 0.5em 0.5em 0;
-  border-left: 0;
-  width: 80%;
-  outline: none;
-  margin-right: 10px;
-}
-.calendar-page-container .calendar-container .search-box-wrapper .magnifying-glass {
-  font-size: 20px;
-  border: 0.1em solid #343e5a;
-  border-radius: 0.5em 0 0 0.5em;
-  border-right: 0;
-  padding: 0 0.1em 0.1em 0;
-  color: white;
-}
-.calendar-page-container .calendar-container .search-box-wrapper .duplicate-btn {
-  background-color: #343e5a;
-  color: #fed092;
-  font-size: 1.6rem;
-  border-radius: 15px;
-  border: 2px solid #343e5a;
-  cursor: pointer;
+  color: #f5e9df;
 }
 .grocery-list-page {
   display: flex;
@@ -1997,13 +2082,16 @@ body {
   position: relative;
 }
 .content-container .title {
+  margin-bottom: 5px;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 4px;
   height: 42px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 700;
   color: #343e5a;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .content-container .image {
   width: 248px;
@@ -2536,9 +2624,6 @@ body {
     font-size: 1.4rem;
   }
 }
-.recipe-page .right-container .instructions .instruction .checked {
-  background-color: #bcc9d2;
-}
 .recipe-page .right-container .instructions .instruction .checkbox {
   width: 20px;
   margin-top: 8px;
@@ -2546,8 +2631,25 @@ body {
 .recipe-page .right-container .instructions .instruction .description {
   width: 480px;
 }
-.recipe-page .right-container .instructions .instruction .checked {
+.recipe-page .right-container .instructions .instruction-checked {
   background-color: #bcc9d2;
+  display: flex;
+  padding-left: 10px;
+  padding-right: 20px;
+  line-height: 2.8rem;
+  margin-top: 10px;
+}
+@media (max-width: 600px) {
+  .recipe-page .right-container .instructions .instruction-checked {
+    font-size: 1.4rem;
+  }
+}
+.recipe-page .right-container .instructions .instruction-checked .checkbox {
+  width: 20px;
+  margin-top: 8px;
+}
+.recipe-page .right-container .instructions .instruction-checked .description {
+  width: 480px;
 }
 .recipe-page .right-container .instructions .instruction .not-checked {
   background-color: #343e5a;
@@ -2695,6 +2797,7 @@ body {
   max-width: 350px;
   flex-flow: wrap;
   padding: 0 15px 0;
+  cursor: pointer;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons .button-selected {
   font-family: 'Questrial', sans-serif;
@@ -2709,6 +2812,7 @@ body {
   outline: none;
   margin-top: 10px;
   width: 140px;
+  cursor: pointer;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons .button-not-selected {
   font-family: 'Questrial', sans-serif;
@@ -2725,6 +2829,7 @@ body {
   width: 140px;
   color: #343e5a;
   background: white;
+  cursor: pointer;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons .button-not-selected:hover {
   background: #bcc9d2;
@@ -2806,6 +2911,7 @@ body {
   margin: auto;
   margin-top: 10px;
   outline: none;
+  cursor: pointer;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .modal-button:hover {
   background: #bcc9d2;

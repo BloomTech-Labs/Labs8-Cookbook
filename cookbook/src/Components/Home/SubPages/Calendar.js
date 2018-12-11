@@ -248,12 +248,9 @@ class RecipeCalendar extends Component {
                     onChange={this.handleSearch}
                     value={this.state.search}
                   />
-                  <button
-                    className="duplicate-btn"
-                    onClick={() => this.duplicateMeals(searchedEvents)}
-                  >
-                    Duplicate last 7 days
-                  </button>
+                </div>
+                <div className='btn-wrapper'>
+                  <button className="duplicate-btn" onClick={() => this.duplicateMeals(searchedEvents)}>Duplicate last 7 days</button>
                 </div>
                 <BigCalendar
                   selectable
@@ -305,12 +302,11 @@ class RecipeCalendar extends Component {
                           >
                             Cancel
                           </button>
-                          <button className="del-button" name="delete-btn">
-                            <FontAwesomeIcon
-                              icon="trash-alt"
-                              className="del-icon"
-                              onClick={this.deleteHandler}
-                            />
+                          <button
+                            className="modal-button"
+                            onClick={this.deleteHandler}
+                          >
+                            Delete
                           </button>
                         </div>
                       ) : (

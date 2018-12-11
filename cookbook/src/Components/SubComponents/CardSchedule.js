@@ -199,6 +199,7 @@ class CardSchedule extends Component {
           {this.state.showModal ? ( // portal ternary statement to turn on/off
             <Modal onClose={this.toggleModal}>
               <div
+                className="modal-container"
                 style={{
                   maxWidth: 400,
                   position: "relative",
@@ -208,13 +209,15 @@ class CardSchedule extends Component {
                 }}
               >
                 {!this.state.isUpdated ? (
-                  <div>
-                    <h1>Please select Meal and Date!</h1>
+                  <div className="modal-sub-container">
+                    <h1 className="modal-text">Please select Meal and Date!</h1>
                     <Buttons
                       mealButtonHandler={this.mealButtonHandler}
                       type={this.state.type}
                     />
-                    <DatePicker handlePickDate={this.handlePickDate} />
+                    <div className="modal-date-picker">
+                      <DatePicker handlePickDate={this.handlePickDate} />
+                    </div>
                     <button
                       className="modal-button"
                       onClick={this.onSave}
@@ -227,8 +230,10 @@ class CardSchedule extends Component {
                     </button>
                   </div>
                 ) : (
-                  <div>
-                    <p>{this.state.message}</p>
+                  <div className="modal-confirmation">
+                    <p className="modal-text-confirmation">
+                      {this.state.message}
+                    </p>
                     <button className="modal-button" onClick={this.toggleModal}>
                       Close
                     </button>

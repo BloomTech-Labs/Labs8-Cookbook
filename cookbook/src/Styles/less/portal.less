@@ -2,10 +2,9 @@
   .portal-container {
     border: 1.5px solid @CBblue;
     .modal-container {
-
       .modal-confirmation {
         .modal-text-confirmation {
-          display:flex;
+          display: flex;
           justify-content: center;
           color: @CBblue;
           font-size: 20px;
@@ -35,9 +34,8 @@
       }
 
       .modal-sub-container {
-
         .modal-text {
-          display:flex;
+          display: flex;
           justify-content: center;
           color: @CBblue;
           font-size: 23px;
@@ -50,6 +48,7 @@
           max-width: 350px;
           flex-flow: wrap;
           padding: 0 15px 0;
+          cursor: pointer;
 
           .button-selected {
             font-family: @secondary-font;
@@ -64,12 +63,14 @@
             outline: none;
             margin-top: 10px;
             width: 140px;
+            cursor: pointer;
           }
 
           .button-not-selected {
             .button-selected;
             color: @CBblue;
             background: white;
+            cursor: pointer;
           }
 
           .button-not-selected:hover {
@@ -86,7 +87,7 @@
           .chosen-date {
             outline: none;
             background: @CBblue;
-            border: 2px @CBblue solid; 
+            border: 2px @CBblue solid;
           }
           .no-date-chose {
             border: 2px @CBblue solid;
@@ -95,7 +96,6 @@
         }
 
         .DayPicker {
-
           .DayPicker-wrapper {
             outline: none;
             .DayPicker-NavBar {
@@ -110,18 +110,18 @@
 
               .DayPicker-NavButton--next {
                 border-top: 8px solid @CBblue;
-                border-bottom:8px solid @CBblue; 
+                border-bottom: 8px solid @CBblue;
                 border-right: 8px solid @CBblue;
-                border-left:8px solid white;
+                border-left: 8px solid white;
                 margin-left: 250px;
                 height: 3px;
               }
 
               .DayPicker-NavButton--prev {
                 border-top: 8px solid @CBblue;
-                border-bottom:8px solid @CBblue; 
+                border-bottom: 8px solid @CBblue;
                 border-right: 8px solid white;
-                border-left:8px solid @CBblue;
+                border-left: 8px solid @CBblue;
               }
             }
             .DayPicker-Months {
@@ -172,6 +172,7 @@
           margin: auto;
           margin-top: 10px;
           outline: none;
+          cursor: pointer;
         }
         .modal-button:hover {
           background: @CBgrey;
