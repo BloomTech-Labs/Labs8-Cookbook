@@ -3,6 +3,7 @@ import auth from '../../Auth/Auth.js';
 
 import titleImg from '../../Images/titleImg.jpeg';
 import logo from '../../designs/Logo/CookBookLogoWithShadow.svg';
+import chevron from '../../designs/Misc/Chevron.svg';
 
 const { isAuthenticated } = auth;
 
@@ -19,6 +20,7 @@ class LandingPage extends Component {
 
         return (
             <div className='landing-container'>
+
                 <div className='above-the-fold' style={{backgroundImage: `url(${titleImg})`}}>
 
                     <div className='branding'>
@@ -40,7 +42,13 @@ class LandingPage extends Component {
 
                     <div className='call-to-action' onClick={this.login.bind(this)}>login / register</div>
 
+                    <div className='learn-more'>
+                        <p>learn more</p>
+                        <img className="chevron" src={chevron} alt='v'/>
+                    </div>
+
                 </div>
+
             </div>
         )
 
