@@ -1,4 +1,7 @@
 .landing-container {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
 
   .above-the-fold {
     display: flex;
@@ -6,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     text-align: center;
     overflow: hidden;
     background-size: cover;
@@ -99,7 +102,6 @@
 
     .call-to-action {
       display: flex;
-      width: 100%;
       margin-top: -18vh;
       justify-content: center;
       align-items: center;
@@ -158,4 +160,19 @@
       }
     }
   }
+
+  .landing-add-recipe {
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+
+    .add-recipe-image {
+      width: 50%;
+    }
+
+    .add-recipe-text {
+      width: 50%;
+    }
+  }
+
 }

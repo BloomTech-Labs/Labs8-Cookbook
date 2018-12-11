@@ -77,6 +77,12 @@ body {
   -ms-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
 }
+::-webkit-scrollbar {
+  width: 0px;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */
+}
 .app {
   width: 100%;
   margin: 0;
@@ -358,13 +364,18 @@ body {
 .cp-phone-nav .dropdown:hover .phone-nav {
   display: flex;
 }
+.landing-container {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
 .landing-container .above-the-fold {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
   align-items: center;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   text-align: center;
   overflow: hidden;
   background-size: cover;
@@ -462,7 +473,6 @@ body {
 }
 .landing-container .above-the-fold .call-to-action {
   display: flex;
-  width: 100%;
   margin-top: -18vh;
   justify-content: center;
   align-items: center;
@@ -524,6 +534,17 @@ body {
   .landing-container .above-the-fold .learn-more .chevron {
     width: 20px;
   }
+}
+.landing-container .landing-add-recipe {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+.landing-container .landing-add-recipe .add-recipe-image {
+  width: 50%;
+}
+.landing-container .landing-add-recipe .add-recipe-text {
+  width: 50%;
 }
 .footer-container {
   width: 100%;

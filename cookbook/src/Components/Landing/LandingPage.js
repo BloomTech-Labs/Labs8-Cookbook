@@ -49,6 +49,11 @@ class LandingPage extends Component {
 
                 </div>
 
+                <div className='landing-add-recipe'>
+                    <img className="add-recipe-image" src={logo} alt='company logo'/>
+                    <p className='add-recipe-text'>Add a recipe from any website into COOKBOOK.</p>
+                </div>
+
             </div>
         )
 
