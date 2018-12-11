@@ -8,7 +8,49 @@ const Footer = (props) => {
     }
 
     if (props.location.pathname === '/') {
-        return (<div></div>)
+        return (
+            <div className='footer-container'>
+    
+                <div className='footer'>
+    
+                    <div className='main'>
+    
+                        <div className='brand'>
+                        
+                            <img className='logo' src={Logo} alt='company logo'/>
+                            
+                            <div className='title'>COOKBOOK</div>
+                        
+                        </div>
+                    
+                    </div>
+    
+                    <img className='bigLogo' src={Logo} alt='company logo'/>
+                    
+                    <div className="info">
+    
+                        <div className="contact-container">
+                            <p className="label">contact</p>
+                            <p>cookbook_project@yahoo.com</p>
+                        </div>
+    
+                        <div className="team-container">
+                            <p className="label">team</p>
+    
+                            <div className='names'>
+                                <p>vu cao</p>
+                                <p>katie gorbell</p>
+                                <p>arthur pisakhov</p>
+                                <p>braden walker</p>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+        )
     } else {
         return ( 
             <div className='footer-container'>
