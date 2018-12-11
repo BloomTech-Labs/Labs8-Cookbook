@@ -71,6 +71,12 @@ body {
     display: none;
   }
 }
+* {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
 .app {
   width: 100%;
   margin: 0;
@@ -364,6 +370,7 @@ body {
   background-size: cover;
   background-position: 25% 50%;
   color: #f5e9df;
+  cursor: default;
 }
 .landing-container .above-the-fold .branding {
   display: flex;
@@ -473,6 +480,19 @@ body {
   .landing-container .above-the-fold .call-to-action {
     font-size: 35px;
     margin-top: -16vh;
+  }
+}
+.landing-container .above-the-fold .call-to-action:hover {
+  font-size: 64px;
+}
+@media (max-width: 1200px) {
+  .landing-container .above-the-fold .call-to-action:hover {
+    font-size: 53px;
+  }
+}
+@media (max-width: 600px) {
+  .landing-container .above-the-fold .call-to-action:hover {
+    font-size: 37px;
   }
 }
 .landing-container .above-the-fold .learn-more {
