@@ -8,6 +8,7 @@ import Buttons from "./Buttons";
 import DatePicker from "../../SubComponents/DatePicker.js";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import { QUERY_RECIPE_EVENT } from "./Calendar";
+import { Helmet } from "react-helmet";
 
 //Mutation for creating recipe
 const CREATE_RECIPE_MUTATION = gql`
@@ -206,6 +207,8 @@ class Create extends Component {
 
   render() {
     return (
+      <Helmet>
+      <title>Create | COOKBOOK</title>
       <div className="create-wrapper">
         <div className="search-and-save">
           <input
@@ -258,6 +261,7 @@ class Create extends Component {
           )}
         </div>
       </div>
+      </Helmet>
     );
   }
 }
