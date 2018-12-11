@@ -2704,7 +2704,7 @@ body {
   cursor: not-allowed;
 }
 .buttons {
-  max-width: 60%;
+  max-width: 30%;
   margin: auto;
   display: flex;
   justify-content: space-evenly;
@@ -2732,8 +2732,8 @@ body {
   border-color: #4cae4c;
 }
 .buttons .stripe-btn {
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  background-color: #ffa048;
+  border-color: #ffa048;
 }
 .buttons .cancel-btn {
   background-color: #d9534f;
