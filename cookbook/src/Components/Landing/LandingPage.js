@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import auth from "../../Auth/Auth.js";
 
-import titleImg from "../../Images/titleImg.jpeg";
+import titleImg from "../../Images/titleImg-min.jpeg";
 import { HashLink as Link } from "react-router-hash-link";
 import logo from "../../designs/Logo/CookBookLogoWithShadow.svg";
 import chevron from "../../designs/Misc/Chevron.svg";
