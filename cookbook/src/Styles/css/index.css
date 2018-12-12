@@ -3314,7 +3314,7 @@ body {
 }
 @media (max-width: 600px) {
   .modal-portal .portal-container {
-    transform: scale(0.85);
+    transform: scale(0.8);
   }
 }
 .modal-portal .portal-container .modal-container .modal-confirmation .modal-text-confirmation {
@@ -3437,13 +3437,28 @@ body {
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months {
   margin-bottom: -8px;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month {
   border: 2px #343e5a solid;
+  height: 300px;
+  display: table;
+  margin: 0 1em;
+  border-spacing: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
   background: #343e5a;
   width: 100%;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body {
+  display: table-row-group;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
   font-size: 12px;
