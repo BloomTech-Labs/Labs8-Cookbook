@@ -6,6 +6,7 @@ import { graphql } from "react-apollo";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import { QUERY_RECIPE_EVENT } from "./Calendar";
 import CardSchedule from "../../SubComponents/CardSchedule";
+import { toastMessage } from "../../../utils/toastify";
 
 const DELETE_RECIPE_MUTATION = gql`
   mutation($id: ID) {
@@ -19,14 +20,14 @@ const DELETE_RECIPE_MUTATION = gql`
 class RecipeCard extends Component {
   deleteHandler = async () => {
     try {
-      const deletedRecipe = await this.props.deleteRecipe({
+      await this.props.deleteRecipe({
         variables: { id: this.props.recipe.id },
         refetchQueries: [
           { query: GET_RECIPES_QUERY },
           { query: QUERY_RECIPE_EVENT }
         ]
       });
-      return deletedRecipe;
+      toastMessage("success", "Deleted recipe succesfully!");
     } catch (error) {
       console.log(error.message);
       return error.message;
