@@ -403,6 +403,7 @@ body::-webkit-scrollbar-track {
   justify-content: space-between;
   align-items: center;
   height: 100vh;
+  min-height: 600px;
   width: 100%;
   text-align: center;
   overflow: hidden;
@@ -410,6 +411,16 @@ body::-webkit-scrollbar-track {
   background-position: 25% 50%;
   color: #f5e9df;
   cursor: default;
+}
+@media (max-width: 1200px) {
+  .landing-container .above-the-fold {
+    min-height: 700px;
+  }
+}
+@media (max-width: 600px) {
+  .landing-container .above-the-fold {
+    min-height: 450px;
+  }
 }
 .landing-container .above-the-fold .branding {
   display: flex;
