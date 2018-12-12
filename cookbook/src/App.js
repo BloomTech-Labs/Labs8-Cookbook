@@ -15,10 +15,13 @@ import {
   faLink,
   faTrashAlt,
   faEdit,
-  faEllipsisV
+  faEllipsisV,
+  faCoffee,
+  faCookieBite,
+  faAppleAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faUtensils, faLink, faTrashAlt, faEdit, faEllipsisV);
+library.add(faUtensils, faLink, faTrashAlt, faEdit, faEllipsisV, faCoffee, faCookieBite, faAppleAlt);
 
 class App extends Component {
   state = {

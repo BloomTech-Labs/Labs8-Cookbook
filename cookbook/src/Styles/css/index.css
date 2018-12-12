@@ -1810,7 +1810,7 @@ body {
 }
 @media (max-width: 600px) {
   .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays {
