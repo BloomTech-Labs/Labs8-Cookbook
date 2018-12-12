@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RecipeCard from "./RecipeCard";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import { Helmet } from "react-helmet";
 
 const GET_RECIPES_QUERY = gql`
   query {
@@ -66,6 +67,9 @@ class Recipes extends Component {
   render() {
     return (
       <div className="recipesContainer">
+        <Helmet>
+          <title>Recipes | COOKBOOK</title>
+        </Helmet>
         <div className="recipesFunctionBar">
           <button
             onClick={() => this.handleAddRecipe()}

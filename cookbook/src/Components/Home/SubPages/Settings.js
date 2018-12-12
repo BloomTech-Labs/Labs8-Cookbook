@@ -3,6 +3,8 @@ import StripeCheckout from "react-stripe-checkout";
 import { graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
 import { CURRENT_USER_QUERY } from "../SubPages/User";
+import { Helmet } from "react-helmet";
+import { toastMessage } from "../../../utils/toastify";
 
 const CREATE_SUBSCRIPTION_MUTATION = gql`
   mutation createSubscription($token: String!) {
@@ -33,9 +35,7 @@ const UPDATE_USER_MUTATION = gql`
 class Settings extends React.Component {
   state = {
     fname: null,
-    lname: null,
-    error: null,
-    success_msg: null
+    lname: null
   };
 
   fetchUser = () => {
@@ -62,12 +62,10 @@ class Settings extends React.Component {
         refetchQueries: [{ query: CURRENT_USER_QUERY }]
       });
       if (data.createSubscription) {
-        this.setState({
-          success_msg: "You've subscribed successfully!"
-        });
+        toastMessage("success", "You've subscribed successfully!");
       }
     } catch (error) {
-      return error.message;
+      toastMessage("error", "There was an error! Failed to subscribed.");
     }
   };
 
@@ -77,20 +75,16 @@ class Settings extends React.Component {
       if (fn) data.firstName = fn;
       if (ln) data.lastName = ln;
       if (fn || ln) {
-        const newNames = await this.props.updateUser({
+        await this.props.updateUser({
           variables: {
             data: data,
             where: { id: this.props.userData.currentUser.id }
           }
         });
-        console.log(newNames);
-        this.setState({
-          success_msg: "Your names have been successfully updated!"
-        });
+        toastMessage("success", "Your names have been successfully updated!");
       }
     } catch (error) {
-      console.log(error);
-      this.setState({ error: error.message });
+      toastMessage("error", "There was an error! Failed to change names.");
     }
   };
 
@@ -104,12 +98,16 @@ class Settings extends React.Component {
         },
         refetchQueries: [{ query: CURRENT_USER_QUERY }]
       });
-      this.setState({
-        success_msg: "Your subscription has been successfully cancelled!"
-      });
+      toastMessage(
+        "success",
+        "Your subscription has been successfully cancelled!"
+      );
     } catch (error) {
       console.log(error);
-      this.setState({ error: error.message });
+      toastMessage(
+        "error",
+        "There was an error! Failed to cancel subscription."
+      );
     }
   };
 
@@ -118,14 +116,11 @@ class Settings extends React.Component {
       return <div>Loading...</div>;
     } else {
       const { firstName, lastName } = this.fetchUser();
-      const error = this.state.error ? (
-        <div className="error-message">{this.state.error}</div>
-      ) : null;
-      const success = this.state.success_msg ? (
-        <div className="success-message">{this.state.success_msg}</div>
-      ) : null;
       return (
         <div className="settings-page">
+          <Helmet>
+            <title>Settings | COOKBOOK</title>
+          </Helmet>
           <form className="user-info">
             <div className="form-group">
               <label className="control-label">First Name</label>
@@ -204,8 +199,6 @@ class Settings extends React.Component {
               </StripeCheckout>
             )}
           </div>
-          {success}
-          {error}
         </div>
       );
     }

@@ -6,6 +6,8 @@ import GroceryItem from "../../SubComponents/GroceryItem";
 import * as math from "mathjs";
 import GatedSubscription from "../../SubComponents/GatedSubscription";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { toastMessage } from "../../../utils/toastify";
 
 class GroceryList extends Component {
   static defaultProps = {
@@ -32,7 +34,7 @@ class GroceryList extends Component {
 
   handleDayClick = (day, { disabled }) => {
     if (disabled) {
-      return window.alert("Please choose a valid date from today.");
+      return toastMessage("error", "Cannot select past dates");
     }
     const range = DateUtils.addDayToRange(day, this.state);
     this.setState(range);
@@ -157,6 +159,9 @@ class GroceryList extends Component {
     return (
       <GatedSubscription>
         <div className="grocery-list-page">
+          <Helmet>
+            <title>GroceryList | COOKBOOK</title>
+          </Helmet>
           <div className="gen-list-container">
             <p className="reset-gen-buttons">
               <span className="text">

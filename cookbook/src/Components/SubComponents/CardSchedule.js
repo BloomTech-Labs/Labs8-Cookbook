@@ -8,6 +8,7 @@ import {
   CREATE_EVENT_MUTATION
 } from "../Home/SubPages/Calendar";
 import { GET_RECIPES_QUERY } from "../Home/SubPages/Recipes";
+import { toastMessage } from "../../utils/toastify";
 
 //sort the events in ascending order by date
 let sortEvents = events => {
@@ -56,9 +57,8 @@ class CardSchedule extends Component {
       sortedEvents: null,
       currentEventIndex: -1,
       showModal: false,
-      isUpdated: false,
-      message: "",
-      onDates: []
+      onDates: [],
+      type: ""
     };
   }
 
@@ -71,8 +71,6 @@ class CardSchedule extends Component {
   toggleModal = () => {
     this.setState({
       showModal: !this.state.showModal,
-      isUpdated: false,
-      message: "",
       type: ""
     });
   };
@@ -92,8 +90,8 @@ class CardSchedule extends Component {
 
   onSave = async () => {
     //If no recipe title scraped, then save button won't work.
-    if (!this.state.type || !this.state.onDates.length) {
-      return alert("Please select both meal type and dates!");
+    if (!(this.state.type && this.state.onDates.length)) {
+      return toastMessage("error", "Please select both meal type and dates");
     }
 
     let events = [];
@@ -123,13 +121,10 @@ class CardSchedule extends Component {
           });
         }
       });
-      this.setState({
-        isUpdated: true,
-        message: "Updated meals Successfully"
-      });
+      toastMessage("success", "Updated meal succesfully!");
     } catch (error) {
       console.log("onSave error: ", error.message);
-      return error;
+      toastMessage("error", "There was an error! Failed to update meal.");
     }
   };
 
@@ -170,7 +165,7 @@ class CardSchedule extends Component {
             className={this.handleScrollClass("left")}
             onClick={() => this.handleEventScroll(-1)}
           >
-            &lt;
+            <div className='left-arrow'></div>
           </div>
 
           <div className="event" onClick={this.toggleModal}>
@@ -188,11 +183,8 @@ class CardSchedule extends Component {
             </div>
           </div>
 
-          <div
-            className={this.handleScrollClass("right")}
-            onClick={() => this.handleEventScroll(1)}
-          >
-            &gt;
+          <div className={this.handleScrollClass("right")} onClick={() => this.handleEventScroll(1)}>
+            <div className='right-arrow'></div>
           </div>
         </div>
         <div>

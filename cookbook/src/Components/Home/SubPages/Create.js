@@ -8,6 +8,8 @@ import Buttons from "./Buttons";
 import DatePicker from "../../SubComponents/DatePicker.js";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import { QUERY_RECIPE_EVENT } from "./Calendar";
+import { Helmet } from "react-helmet";
+import { toastMessage } from "../../../utils/toastify";
 
 //Mutation for creating recipe
 const CREATE_RECIPE_MUTATION = gql`
@@ -124,7 +126,7 @@ class Create extends Component {
         });
       } catch (error) {
         console.log(error.data);
-        return error.data;
+        toastMessage("error", "There was an error! Failed to find recipe");
       }
     });
   };
@@ -189,12 +191,15 @@ class Create extends Component {
           });
         });
       }
-
+      toastMessage(
+        "success",
+        "Saved recipe successfully. You can find it in this page."
+      );
       //redirect to recipes
       return this.props.history.push("/home/recipes");
     } catch (error) {
       console.log("onsave error: ", error.message);
-      return error;
+      toastMessage("error", "There was an error! Failed to save recipe");
     }
   };
 
@@ -207,6 +212,9 @@ class Create extends Component {
   render() {
     return (
       <div className="create-wrapper">
+        <Helmet>
+          <title>Create | COOKBOOK</title>
+        </Helmet>
         <div className="search-and-save">
           <input
             className={this.handleSearchClass()}
