@@ -79,12 +79,12 @@
           font-size: 100px;
           font-weight: bold;
           margin-top: 50px;
-  
+
           @media @desktop {
             margin-top: 40px;
             font-size: 75px;
           }
-  
+
           @media @phone {
             font-size: 40px;
             margin-top: 30px;
@@ -117,7 +117,7 @@
       align-items: center;
       font-family: @secondary-font;
       font-size: 60px;
-      text-shadow: 3px 3px rgba(0,0,0,.25);
+      text-shadow: 3px 3px rgba(0, 0, 0, 0.25);
       cursor: pointer;
 
       @media @desktop {
@@ -144,6 +144,15 @@
     .learn-more {
       font-size: 30px;
       margin-bottom: 20px;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
 
       @media @tablet {
         font-size: 25px;
@@ -178,11 +187,11 @@
     background: @CBtan;
     padding: 30px 0;
 
-    @media @tablet{
+    @media @tablet {
       padding: 20px 0;
     }
 
-    @media @phone{
+    @media @phone {
       padding: 10px 0;
     }
   }
@@ -197,7 +206,7 @@
     margin: 40px 0;
     @variable-padding: 10vw;
 
-    @media @desktop{
+    @media @desktop {
       margin: 25px 0;
     }
 
@@ -295,5 +304,4 @@
       color: @CBblue;
     }
   }
-
 }
