@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 class Buttons extends Component {
@@ -22,7 +23,7 @@ class Buttons extends Component {
           className={this.handleButtonClass('breakfast')}
           onClick={this.props.mealButtonHandler}
           name="breakfast">
-          breakfast
+          <FontAwesomeIcon className='icon' icon='coffee'/> breakfast
         </button>
         <button
           className={this.handleButtonClass('lunch')}
@@ -34,19 +35,19 @@ class Buttons extends Component {
           className={this.handleButtonClass('dinner')}
           onClick={this.props.mealButtonHandler}
           name="dinner">
-          dinner
+          <FontAwesomeIcon className='icon' icon='utensils'/> dinner
         </button>
         <button 
           className={this.handleButtonClass('snack')}
           onClick={this.props.mealButtonHandler}
           name="snack">
-          snack
+          <FontAwesomeIcon className='icon' icon='apple-alt'/> snack
         </button>
         <button 
           className={this.handleButtonClass('dessert')}
           onClick={this.props.mealButtonHandler}
           name="dessert">
-          dessert
+          <FontAwesomeIcon className='icon' icon='cookie-bite'/> dessert
         </button>
       </div>
     )
