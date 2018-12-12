@@ -165,7 +165,7 @@ class CardSchedule extends Component {
             className={this.handleScrollClass("left")}
             onClick={() => this.handleEventScroll(-1)}
           >
-            &lt;
+            <div className='left-arrow'></div>
           </div>
 
           <div className="event" onClick={this.toggleModal}>
@@ -183,11 +183,8 @@ class CardSchedule extends Component {
             </div>
           </div>
 
-          <div
-            className={this.handleScrollClass("right")}
-            onClick={() => this.handleEventScroll(1)}
-          >
-            &gt;
+          <div className={this.handleScrollClass("right")} onClick={() => this.handleEventScroll(1)}>
+            <div className='right-arrow'></div>
           </div>
         </div>
         <div>

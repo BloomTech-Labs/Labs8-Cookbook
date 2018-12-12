@@ -2673,7 +2673,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 2px;
   padding-right: 2px;
   cursor: pointer;
   background: #343e5a;
@@ -2682,10 +2681,21 @@ body {
   width: 20px;
   border-radius: 50%;
 }
+.recipe-card-container .image-and-bottom .card-bottom .schedule-container .event-scroller .scroll-left:hover {
+  transform: scale(1.1);
+}
+.recipe-card-container .image-and-bottom .card-bottom .schedule-container .event-scroller .scroll-left .left-arrow {
+  width: 0;
+  height: 0;
+  border-top: 6px solid #343e5a;
+  border-bottom: 6px solid #343e5a;
+  border-right: 8px solid white;
+}
 .recipe-card-container .image-and-bottom .card-bottom .schedule-container .event-scroller .event {
   display: flex;
   flex-flow: column;
   align-items: center;
+  width: 120px;
   font-family: 'Questrial', sans-serif;
   font-weight: bold;
   line-height: 18px;
@@ -2698,8 +2708,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 2px;
-  padding-right: 2px;
+  padding-left: 2px;
   cursor: pointer;
   background: #343e5a;
   color: white;
@@ -2707,13 +2716,21 @@ body {
   width: 20px;
   border-radius: 50%;
 }
-.recipe-card-container .image-and-bottom .card-bottom .schedule-container .scroll-hidden {
+.recipe-card-container .image-and-bottom .card-bottom .schedule-container .event-scroller .scroll-right:hover {
+  transform: scale(1.1);
+}
+.recipe-card-container .image-and-bottom .card-bottom .schedule-container .event-scroller .scroll-right .right-arrow {
+  width: 0;
+  height: 0;
+  border-top: 6px solid #343e5a;
+  border-bottom: 6px solid #343e5a;
+  border-left: 8px solid white;
+}
+.recipe-card-container .image-and-bottom .card-bottom .schedule-container .event-scroller .scroll-hidden {
   visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 2px;
-  padding-right: 2px;
   cursor: pointer;
   opacity: 0.01;
   height: 20px;
