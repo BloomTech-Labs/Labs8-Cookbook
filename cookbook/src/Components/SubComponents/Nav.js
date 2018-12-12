@@ -17,6 +17,16 @@ class Nav extends Component {
             </Link>
           </div>
         )}
+        {renderIf(!this.props.location.pathname.includes("/home/recipe"))(
+          <div className="recipes-nav">
+            <Link
+              to="/home/recipes"
+              style={{ textDecoration: "none", color: "#343e5a" }}
+            >
+              <span className="span">RECIPES</span>
+            </Link>
+          </div>
+        )}
         {renderIf(this.props.location.pathname !== "/home/calendar")(
           <div className="calendar-nav">
             <Link
@@ -44,16 +54,6 @@ class Nav extends Component {
               style={{ textDecoration: "none", color: "#B3C1CC" }}
             >
               <span className="span">SETTINGS</span>
-            </Link>
-          </div>
-        )}
-        {renderIf(!this.props.location.pathname.includes("/home/recipe"))(
-          <div className="recipes-nav">
-            <Link
-              to="/home/recipes"
-              style={{ textDecoration: "none", color: "#343e5a" }}
-            >
-              <span className="span">RECIPES</span>
             </Link>
           </div>
         )}
