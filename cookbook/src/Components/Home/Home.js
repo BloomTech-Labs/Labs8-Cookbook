@@ -37,7 +37,7 @@ class Home extends Component {
               <Route exact path="/home/calendar" component={Calendar} />
               <Route exact path="/home/dashboard" component={GroceryList} />
               <Route exact path="/home/settings" component={Settings} />
-              <Route exact path="/home/recipe/" component={RecipeView} />
+              <Route path="/home/recipe/" component={RecipeView} />
               <Redirect to="/404" />
             </Switch>
           </div>

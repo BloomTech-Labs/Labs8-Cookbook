@@ -53,7 +53,7 @@ class RecipeView extends Component {
   toggleCheckBox = e => {
     // filter through instuction state to find matching instruction by id
     let inst = this.state.instructions.filter(inst => {
-      return inst.stepNum == e.target.name;
+      return String(inst.stepNum) === e.target.name;
     });
     // make a copy of the state
     let copyArr = this.state.instructions;
@@ -72,7 +72,10 @@ class RecipeView extends Component {
     const instructions = whitelisted ? (
       <div className="instructions">
         {this.state.instructions.map((inst, index) => (
-          <div className={inst.isCompleted ? "instruction-checked" : "instruction"} key={index}>
+          <div
+            className={inst.isCompleted ? "instruction-checked" : "instruction"}
+            key={index}
+          >
             <input
               type="checkbox"
               className="checkbox"
