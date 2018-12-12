@@ -18,6 +18,7 @@ const DELETE_RECIPE_MUTATION = gql`
 `;
 
 class RecipeCard extends Component {
+
   deleteHandler = async () => {
     try {
       await this.props.deleteRecipe({
@@ -34,6 +35,10 @@ class RecipeCard extends Component {
     }
   };
 
+  handleRecipeView = () => {
+    
+  }
+
   render() {
     // URL for each individual recipe to be passed in to route
     const recipeUrl = this.props.recipe.title.split(" ").join("-");
@@ -43,12 +48,16 @@ class RecipeCard extends Component {
 
         <div className='image-and-bottom'>
 
-          <div className='image-container' style={{backgroundImage: `url(${this.props.recipe.image})`}}></div>
+          <Link className='image-container' style={{backgroundImage: `url(${this.props.recipe.image})`}}
+            to={{ pathname: `/home/recipe/${recipeUrl}`, state: this.props.recipe }}
+          ></Link>
 
           <div className='card-bottom'>
 
             <div className='title-container'>
-              <span className='title'>{this.props.recipe.title}</span>
+              <Link className='title' 
+                to={{ pathname: `/home/recipe/${recipeUrl}`, state: this.props.recipe }}
+              >{this.props.recipe.title}</Link>
             </div>
 
             <div className="schedule-container">
