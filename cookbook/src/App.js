@@ -49,7 +49,7 @@ class App extends Component {
             className="toast-container"
             toastClassName="toast-content"
             position="top-right"
-            autoClose={3000}
+            autoClose={2000}
             draggable
             closeOnClick
           />
