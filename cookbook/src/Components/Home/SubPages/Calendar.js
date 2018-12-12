@@ -9,6 +9,7 @@ import Buttons from "./Buttons";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import { Helmet } from "react-helmet";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import { toastMessage } from "../../../utils/toastify";
 
 const propTypes = {};
 
@@ -60,9 +61,7 @@ class RecipeCalendar extends Component {
       type: "",
       showModal: false,
       onDates: [],
-      isUpdated: false,
-      search: "",
-      message: ""
+      search: ""
     };
   }
 
@@ -73,9 +72,7 @@ class RecipeCalendar extends Component {
   toggleModal = event => {
     this.setState({
       showModal: !this.state.showModal,
-      currentEvent: event,
-      isUpdated: false,
-      message: ""
+      currentEvent: event
     });
   };
 
@@ -101,10 +98,10 @@ class RecipeCalendar extends Component {
           { query: GET_RECIPES_QUERY }
         ]
       });
-      this.setState({ isUpdated: true, message: "Deleted meal successfully!" });
+      toastMessage("success", "Deleted meal succesfully!");
     } catch (error) {
       console.log(error.message);
-      return error.message;
+      toastMessage("error", "There was an error! Failed to delete meal.");
     }
   };
 
@@ -143,14 +140,13 @@ class RecipeCalendar extends Component {
             });
           }
         });
-        this.setState({
-          isUpdated: true,
-          message: "Updated meals Successfully"
-        });
+        toastMessage("success", "Updated meal succesfully!");
       } catch (error) {
         console.log("onSave error: ", error.message);
-        return error;
+        toastMessage("error", "There was an error! Failed to update meal");
       }
+    } else {
+      toastMessage("error", "Please select meal and date");
     }
   };
 
@@ -199,14 +195,15 @@ class RecipeCalendar extends Component {
           refetchQueries: [{ query: QUERY_RECIPE_EVENT }]
         });
       });
+
+      toastMessage("success", "Duplicated meals successfullly!");
     } catch (error) {
-      return error.message;
+      toastMessage("error", "There was an error! Failed to duplicate meal");
     }
   };
 
   render() {
     return (
-      
       <Query query={QUERY_RECIPE_EVENT}>
         {({ loading, error, data }) => {
           if (loading) return <div>Fetching</div>;
@@ -253,8 +250,13 @@ class RecipeCalendar extends Component {
                     value={this.state.search}
                   />
                 </div>
-                <div className='btn-wrapper'>
-                  <button className="duplicate-btn" onClick={() => this.duplicateMeals(searchedEvents)}>Duplicate last 7 days</button>
+                <div className="btn-wrapper">
+                  <button
+                    className="duplicate-btn"
+                    onClick={() => this.duplicateMeals(searchedEvents)}
+                  >
+                    Duplicate last 7 days
+                  </button>
                 </div>
                 <BigCalendar
                   selectable
@@ -334,7 +336,6 @@ class RecipeCalendar extends Component {
           );
         }}
       </Query>
-      
     );
   }
 }
