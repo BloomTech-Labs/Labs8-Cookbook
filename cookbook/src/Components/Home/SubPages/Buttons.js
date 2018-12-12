@@ -1,20 +1,34 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import burgerRed from '../../../designs/Icons/burgerRed.svg';
+import burgerWhite from '../../../designs/Icons/burgerWhite.svg';
 
 
 class Buttons extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      burgerClicked: false
+    }
+  }
 
-  mealButtonHandler = (e) =>  {
+  mealButtonHandlerBurger = (e) =>  {
     e.preventDefault();
-    this.setState({
-      type: e.target.name
-    })
+    this.setState({burgerClicked: !this.state.burgerClicked });
+    if (this.state.type === e.target.name) {
+      this.setState({ type: "" });
+    } else {
+      this.setState({ type: e.target.name });
+    }
   };
 
   handleButtonClass = (button) => {
-    if (this.props.type === button) return 'button-selected'
+    if (this.props.type === button) {
+      return 'button-selected'
+    }
     return 'button-not-selected'
   }
+
 
   render() {
     return (
@@ -26,10 +40,10 @@ class Buttons extends Component {
           <FontAwesomeIcon className='icon' icon='coffee'/> breakfast
         </button>
         <button
-          className={this.handleButtonClass('lunch')}
-          onClick={this.props.mealButtonHandler}
+          className={this.state.burgerClicked ? 'button-selected' : 'button-not-selected'}
+          onClick={this.mealButtonHandlerBurger}
           name="lunch">
-          lunch
+          <img src={this.state.burgerClicked ? burgerWhite : burgerRed} alt='burger' className='burger-icon'/> lunch
         </button>
         <button
           className={this.handleButtonClass('dinner')}

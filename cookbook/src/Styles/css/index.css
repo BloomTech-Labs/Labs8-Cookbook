@@ -1780,13 +1780,14 @@ body {
   }
 }
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
+  border: 1px solid red;
   display: flex;
   justify-content: space-evenly;
   width: 100%;
   max-width: 363px;
   flex-flow: wrap;
   padding: 0 15px 0;
-  margin-top: -20px;
+  margin-top: -10px;
 }
 @media (max-width: 1200px) {
   .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
@@ -1798,6 +1799,14 @@ body {
     margin-top: 0;
   }
 }
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .icon {
+  margin-right: 3px;
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .burger-icon {
+  height: 15px;
+  color: #de6a5a;
+  margin-right: 3px;
+}
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-selected {
   font-family: 'Questrial', sans-serif;
   font-size: 1.5rem;
@@ -1807,9 +1816,11 @@ body {
   background: #de6a5a;
   color: white;
   height: 30px;
+  display: flex;
+  align-items: center;
   padding: 0 12px;
   outline: none;
-  margin-top: 20px;
+  margin-top: 10px;
   cursor: pointer;
 }
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected {
@@ -1821,9 +1832,11 @@ body {
   background: #de6a5a;
   color: white;
   height: 30px;
+  display: flex;
+  align-items: center;
   padding: 0 12px;
   outline: none;
-  margin-top: 20px;
+  margin-top: 10px;
   cursor: pointer;
   color: #de6a5a;
   background: white;
