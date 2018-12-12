@@ -70,7 +70,7 @@ class CurrentPage extends Component {
               to="/home/dashboard"
               style={{ textDecoration: "none", color: "#ffc988" }}
             >
-              <div className="pg-bar dashboard-cp">GROCERY LIST</div>GROCERY LIST
+              <div className="pg-bar dashboard-cp">GROCERY LIST</div>
             </Link>
           )}
           {renderIf(this.props.location.pathname === "/home/settings")(
