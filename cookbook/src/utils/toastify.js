@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-function createToast(type, message) {
+function toastMessage(type, message) {
   if (type === "error") {
     return toast.error(message, { className: "toast-error" });
   } else if (type === "success") {
@@ -8,4 +8,16 @@ function createToast(type, message) {
   }
 }
 
-export { createToast };
+function toastLoading(message) {
+  return toast(message, {
+    type: toast.TYPE.INFO,
+    className: "toast-loading",
+    autoClose: false
+  });
+}
+
+function toastUpdate(id, message) {
+  return toast.update(id, { render: message, autoClose: 3000 });
+}
+
+export { toastLoading, toastUpdate, toastMessage };
