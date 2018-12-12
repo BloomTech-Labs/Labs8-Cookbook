@@ -78,7 +78,7 @@ class LandingPage extends Component {
 
                     <div className='landing-grocery'>
                         <p className='grocery-text'>
-                            Generate a grocery list of the ingredients you'll need for your recipes.
+                            Generate a grocery list of the ingredients you'll need for a customized date range.
                         </p>
                         <img className="grocery-image" src={grocery} alt='grocery'/>
                     </div>

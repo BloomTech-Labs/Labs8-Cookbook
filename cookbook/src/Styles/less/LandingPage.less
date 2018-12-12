@@ -176,38 +176,84 @@
     display: flex;
     flex-flow: column;
     background: @CBtan;
-    padding: 40px 0;
+    padding: 30px 0;
+
+    @media @tablet{
+      padding: 20px 0;
+    }
+
+    @media @phone{
+      padding: 10px 0;
+    }
   }
 
   .landing-add-recipe {
     width: 100%;
     height: 50vw;
-    max-height: 250px;
+    max-height: 180px;
     display: flex;
     overflow: hidden;
-    @border-radius: 0px;
+    justify-content: flex-end;
     margin: 40px 0;
+    @variable-padding: 10vw;
+
+    @media @desktop{
+      margin: 25px 0;
+    }
+
+    @media @tablet {
+      max-height: 150px;
+      margin: 20px 0;
+    }
 
     .add-recipe-image {
       background: @CBtan;
-      padding: 50px;
-      width: 55%;
+      margin: 0 100px;
+      padding: 10px 0;
+      height: 100%;
+
+      @media @tablet {
+        margin: 0 25px;
+      }
+
+      @media @phone {
+        margin: 0 -10px;
+      }
     }
 
     .add-recipe-text {
+      display: flex;
+      align-items: center;
       margin: 0;
-      padding: 50px;
+      padding-left: 50px;
+      padding-right: @variable-padding;
       background: @CBred;
       width: 45%;
+      height: 100%;
       color: @CBtan;
-      font-size: 30px;
+      font-size: 23px;
       font-weight: bold;
-      border-bottom-left-radius: @border-radius;
+      z-index: 1;
+
+      @media @desktop {
+        padding: 0 30px;
+      }
+
+      @media @tablet {
+        font-size: 18px;
+        padding: 0 20px;
+      }
+
+      @media @phone {
+        font-size: 14px;
+        padding: 0 10px;
+      }
     }
   }
 
   .landing-recipes {
     .landing-add-recipe;
+    justify-content: flex-start;
 
     .recipes-image {
       .add-recipe-image;
@@ -215,10 +261,9 @@
 
     .recipes-text {
       .add-recipe-text;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: @border-radius;
-      border-bottom-right-radius: @border-radius;
       background: @CBblue;
+      padding-right: 50px;
+      padding-left: @variable-padding;
     }
   }
 
@@ -231,23 +276,21 @@
 
     .calendar-text {
       .add-recipe-text;
-      border-top-left-radius: @border-radius;
       background: @CBgrey;
       color: @CBblue;
     }
   }
 
   .landing-grocery {
-    .landing-add-recipe;
+    .landing-recipes;
+    justify-content: flex-start;
 
     .grocery-image {
       .add-recipe-image;
     }
 
     .grocery-text {
-      .add-recipe-text;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: @border-radius;
+      .recipes-text;
       background: @CBorange;
       color: @CBblue;
     }
