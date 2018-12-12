@@ -277,18 +277,12 @@ body::-webkit-scrollbar-track {
     line-height: 35px;
   }
 }
-.cp-phone-nav .current-page .pg-bar:hover {
-  font-weight: bold;
-}
 .cp-phone-nav .current-page .create-cp {
   width: 100%;
   height: 100%;
   color: #de6a5a;
   background-color: #fed092;
   text-align: center;
-}
-.cp-phone-nav .current-page .create-cp:hover {
-  font-weight: bold;
 }
 .cp-phone-nav .current-page .calendar-cp {
   width: 100%;
@@ -320,12 +314,12 @@ body::-webkit-scrollbar-track {
 }
 .cp-phone-nav .dropdown .nav-icon {
   height: 35px;
-  width: 40px;
+  width: 50px;
   position: absolute;
   top: 0;
   font-size: 1.6rem;
-  border-radius: 20px;
-  margin-left: -17px;
+  border-radius: 50px;
+  margin-left: -15px;
   overflow: hidden;
   display: none;
 }
@@ -335,8 +329,8 @@ body::-webkit-scrollbar-track {
   }
 }
 .cp-phone-nav .dropdown .nav-icon .icon {
-  margin-left: 22px;
-  margin-top: 8px;
+  margin-left: 30px;
+  margin-top: 9px;
 }
 .cp-phone-nav .dropdown .phone-nav {
   display: none;
