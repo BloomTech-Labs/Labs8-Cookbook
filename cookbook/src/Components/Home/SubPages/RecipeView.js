@@ -5,6 +5,7 @@ import { DELETE_RECIPE_MUTATION } from "./RecipeCard";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import { QUERY_RECIPE_EVENT } from "./Calendar";
 import Iframe from "react-iframe";
+import { toastMessage } from "../../../utils/toastify";
 
 class RecipeView extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class RecipeView extends Component {
       this.props.history.replace("/home/recipes");
     } catch (error) {
       console.log(error.message);
-      return error.message;
+      toastMessage("error", "There was an error! Failed to delete recipe");
     }
   };
 
