@@ -3312,6 +3312,11 @@ body {
 .modal-portal .portal-container {
   border: 1.5px solid #343e5a;
 }
+@media (max-width: 600px) {
+  .modal-portal .portal-container {
+    transform: scale(0.85);
+  }
+}
 .modal-portal .portal-container .modal-container .modal-confirmation .modal-text-confirmation {
   display: flex;
   justify-content: center;
