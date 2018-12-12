@@ -520,6 +520,10 @@ body {
   font-size: 30px;
   margin-bottom: 20px;
 }
+.landing-container .above-the-fold .learn-more a {
+  text-decoration: none;
+  color: white;
+}
 @media (max-width: 900px) {
   .landing-container .above-the-fold .learn-more {
     font-size: 25px;
