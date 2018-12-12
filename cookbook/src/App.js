@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./Styles/css/index.css";
 
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Switch, Redirect } from "react-router-dom";
 import auth from "./Auth/Auth";
 import Home from "./Components/Home/Home";
 import LandingPage from "./Components/Landing/LandingPage";
 import Footer from "./Components/SubComponents/Footer";
 import Callback from "./Auth/Callback.js";
+import NotFound from "./Components/Home/SubPages/NotFound";
 import { ToastContainer } from "react-toastify";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import "react-toastify/dist/ReactToastify.css";
@@ -47,14 +48,18 @@ class App extends Component {
           <ToastContainer
             className="toast-container"
             toastClassName="toast-content"
-            position="bottom-center"
+            position="top-right"
             autoClose={3000}
             draggable
             closeOnClick
           />
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/home" component={Home} />
-          <Route exact path="/callback" component={Callback} />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/home" component={Home} />
+            <Route exact path="/callback" component={Callback} />
+            <Route exact path="/404" component={NotFound} />
+            <Redirect to="/404" />
+          </Switch>
           <Footer />
         </div>
       );
