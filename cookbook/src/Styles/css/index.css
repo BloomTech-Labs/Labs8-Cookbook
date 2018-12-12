@@ -221,40 +221,25 @@ body::-webkit-scrollbar-track {
   height: 100%;
   background-color: #fed092;
 }
-.nav .create-nav .span:hover {
-  font-weight: bold;
-}
 .nav .calendar-nav {
   width: 25%;
   height: 100%;
   background-color: #bcc9d2;
-}
-.nav .calendar-nav .span:hover {
-  font-weight: bold;
 }
 .nav .dashboard-nav {
   width: 25%;
   height: 100%;
   background-color: #343e5a;
 }
-.nav .dashboard-nav .span:hover {
-  font-weight: bold;
-}
 .nav .settings-nav {
   width: 25%;
   height: 100%;
   background-color: #de6a5a;
 }
-.nav .settings-nav .span:hover {
-  font-weight: bold;
-}
 .nav .recipes-nav {
   width: 25%;
   height: 100%;
   background-color: #f5e9df;
-}
-.nav .recipes-nav .span:hover {
-  font-weight: bold;
 }
 .cp-phone-nav {
   width: 100%;
