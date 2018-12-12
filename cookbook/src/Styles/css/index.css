@@ -2612,7 +2612,7 @@ body {
 }
 .recipe-card-container {
   width: 220px;
-  height: 300px;
+  height: 310px;
   border: 2px solid #343e5a;
   border-radius: 10px;
   overflow: hidden;
@@ -2652,7 +2652,6 @@ body {
 }
 .recipe-card-container .image-and-bottom .card-bottom .schedule-container {
   width: 100%;
-  height: 110px;
   margin-top: 15px;
   display: flex;
   flex-flow: column;
@@ -2735,6 +2734,58 @@ body {
   opacity: 0.01;
   height: 20px;
   width: 20px;
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .small-line {
+  width: 35px;
+  border-top: 1px solid #343e5a;
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .link-and-delete {
+  display: flex;
+  width: 100%;
+  padding: 20px 20px 0;
+  justify-content: space-between;
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .link-and-delete .link-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .link-and-delete .link-container:hover {
+  transform: scale(1.1);
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .link-and-delete .link-container .link-icon {
+  height: 15px;
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .link-and-delete .link-container .link-text {
+  margin-top: 2px;
+  font-size: 1.3rem;
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .link-and-delete .delete-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .link-and-delete .delete-container:hover {
+  transform: scale(1.1);
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .link-and-delete .delete-container .delete-icon {
+  height: 15px;
+}
+.recipe-card-container .image-and-bottom .card-bottom .options-container .link-and-delete .delete-container .delete-text {
+  margin-top: 2px;
+  font-size: 1.3rem;
 }
 .recipe-page {
   display: flex;

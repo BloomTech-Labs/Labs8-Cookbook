@@ -59,6 +59,32 @@ class RecipeCard extends Component {
               />
             </div>
 
+            <div className='options-container'>
+
+              <div className='small-line'></div>
+
+              <div className='link-and-delete'>
+
+                <a href={"" + this.props.recipe.url} rel="noopener noreferrer" target="_blank" className="link-container">
+
+                  <FontAwesomeIcon icon="link" className="link-icon" />
+
+                  <span className="link-text">link</span>
+
+                </a>
+
+                <div className="delete-container" onClick={this.deleteHandler}>
+
+                  <FontAwesomeIcon icon="trash-alt" className="delete-icon" />
+
+                  <span className="delete-text">delete</span>
+
+                </div>
+              
+              </div>
+
+            </div>
+
           </div>
         
         </div>
@@ -87,16 +113,16 @@ class RecipeCard extends Component {
 
     //       <div className="card-bottom">
 
-    //         <a
-    //           href={"" + this.props.recipe.url}
-    //           rel="noopener noreferrer"
-    //           target="_blank"
-    //           className="link-container"
-    //         >
-    //           <FontAwesomeIcon icon="link" className="web-link" />
+            // <a
+            //   href={"" + this.props.recipe.url}
+            //   rel="noopener noreferrer"
+            //   target="_blank"
+            //   className="link-container"
+            // >
+            //   <FontAwesomeIcon icon="link" className="web-link" />
 
-    //           <span className="link-text">link</span>
-    //         </a>
+            //   <span className="link-text">link</span>
+            // </a>
 
     //         <div className="schedule">
     //           <CardSchedule
@@ -106,17 +132,17 @@ class RecipeCard extends Component {
     //           />
     //         </div>
 
-    //         <button className="del-button">
+            // <button className="del-button">
 
-    //           <FontAwesomeIcon
-    //             icon="trash-alt"
-    //             className="del-icon"
-    //             onClick={this.deleteHandler}
-    //           />
+            //   <FontAwesomeIcon
+            //     icon="trash-alt"
+            //     className="del-icon"
+            //     onClick={this.deleteHandler}
+            //   />
 
-    //           <span className="del-text">Delete</span>
+            //   <span className="del-text">Delete</span>
 
-    //         </button>
+            // </button>
 
     //       </div>
 
