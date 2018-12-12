@@ -843,7 +843,7 @@ body {
   cursor: pointer;
 }
 .DayPicker-NavButton:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 .DayPicker-NavButton--prev {
   width: 0;

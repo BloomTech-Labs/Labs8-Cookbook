@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DayPicker, { DateUtils } from "react-day-picker";
+import { createToast } from "../../utils/toastify";
 
 class DatePicker extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class DatePicker extends Component {
   }
   handleDayClick = (day, { selected, disabled }) => {
     if (disabled) {
-      return window.alert("Please choose a valid date from today.");
+      return createToast("error", "Cannot select past dates.");
     }
     const { selectedDays } = this.state;
     if (selected) {
