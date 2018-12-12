@@ -2,7 +2,7 @@
 //   background-color: @bg;
 // }
 
-.container {
+.notfound-container {
   width: 80%;
   height: 60%;
   position: absolute;
@@ -11,14 +11,14 @@
   transform: translate(-50%, -50%);
 }
 
-.caption {
+.notfound-caption {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.head-text {
+.notfound-head-text {
   font-family: "Satisfy", cursive;
   color: @pri-color;
   font-size: 60px;
@@ -26,7 +26,7 @@
   left: 30px;
 }
 
-.hat-cont {
+.notfound-hat-cont {
   width: 75px;
   height: 75px;
   position: relative;
@@ -35,7 +35,7 @@
   animation: hat 1s infinite forwards;
 }
 
-.hat {
+.notfound-hat {
   width: 40px;
   height: 30px;
   border: 2px solid black;
@@ -55,36 +55,36 @@
   }
 }
 
-.line {
+.notfound-line {
   width: 0px;
   height: 6px;
   border: 1px solid black;
   position: absolute;
 }
-.lines {
-  &:extend(.line);
+.notfound-lines {
+  &:extend(.notfound-line);
   top: 50px;
   left: 45%;
   &:after {
-    &:extend(.line);
+    &:extend(.notfound-line);
     content: "";
     top: -1px;
     left: 10px;
   }
   &:before {
-    &:extend(.line);
+    &:extend(.notfound-line);
     content: "";
     top: -1px;
     right: 10px;
   }
 }
-.hat-base {
+.notfound-hat-base {
   height: 30px;
   width: 15px;
   position: absolute;
 }
-.left {
-  &:extend(.hat-base);
+.notfound-left {
+  &:extend(.notfound-hat-base);
   border-bottom-left-radius: 30px;
   border-top-left-radius: 30px;
   border: 2px solid black;
@@ -93,12 +93,12 @@
   z-index: 2;
   background: @bg;
 }
-.left-opp {
-  &:extend(.left);
+.notfound-left-opp {
+  &:extend(.notfound-left);
   transform: rotate(180deg);
   right: 5px;
 }
-.top {
+.notfound-top {
   height: 20px;
   width: 40px;
   position: absolute;
@@ -109,13 +109,13 @@
   border-bottom: none;
 }
 
-.pan-wrapper {
+.notfound-pan-wrapper {
   transform: scale(0.6);
   position: relative;
   left: 20%;
 }
 
-.center {
+.notfound-center {
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -124,7 +124,7 @@
   z-index: 2;
   border: 1px solid black;
 
-  .sub-center {
+  .notfound-sub-center {
     width: 270px;
     height: 270px;
     border-radius: 50%;
@@ -138,7 +138,7 @@
   }
 }
 
-.handle {
+.notfound-handle {
   width: 40px;
   height: 150px;
   position: absolute;
@@ -150,7 +150,7 @@
   border-radius: 2px;
 }
 
-.handle-sub {
+.notfound-handle-sub {
   width: 25px;
   height: 50px;
   content: "";
@@ -162,7 +162,7 @@
   background: @sec-color;
 }
 
-.egg {
+.notfound-egg {
   width: 130px;
   height: 130px;
   background: white;
@@ -176,7 +176,7 @@
   animation: egg 2s ease-in infinite forwards;
 }
 
-.yolk {
+.notfound-yolk {
   position: absolute;
   top: 0;
   right: 0;
@@ -192,7 +192,7 @@
     inset rgba(white, 0.3) -2px -2px 12px 12px, rgba(black, 0.05) 0 0 2px 2px;
 }
 
-.text {
+.notfound-text {
   font-size: 240px;
   font-family: "Satisfy", cursive;
   position: absolute;
@@ -200,13 +200,13 @@
   color: @pri-color;
 }
 
-.center::after {
-  &:extend(.text);
+.notfound-center::after {
+  &:extend(.notfound-text);
   content: "4";
   right: -150px;
 }
-.center::before {
-  &:extend(.text);
+.notfound-center::before {
+  &:extend(.notfound-text);
   content: "4";
   left: -150px;
 }
@@ -232,7 +232,7 @@
 }
 
 @media only screen and (min-width: 1000px) {
-  .pan-wrapper {
+  .notfound-pan-wrapper {
     left: 22%;
   }
 }

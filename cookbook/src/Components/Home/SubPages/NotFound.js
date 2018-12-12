@@ -5,31 +5,31 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <div className="container">
-      <div className="caption">
-        <div className="hat-cont">
-          <div className="lines" />
-          <div className="hat" />
-          <div className="left" />
-          <div className="top" />
-          <div className="left-opp" />
+    <div className="notfound-container">
+      <div className="notfound-caption">
+        <div className="notfound-hat-cont">
+          <div className="notfound-lines" />
+          <div className="notfound-hat" />
+          <div className="notfound-left" />
+          <div className="notfound-top" />
+          <div className="notfound-left-opp" />
         </div>
-        <div className="head-text">
+        <div className="notfound-head-text">
           Recipe not Found! Please click <Link to="/home/recipes">here</Link> to
           go back!
         </div>
       </div>
-      <div className="head">
-        <div className="pan-wrapper">
-          <div className="center">
-            <div className="sub-center">
-              <div className="egg">
-                <div className="yolk" />
+      <div className="notfound-head">
+        <div className="notfound-pan-wrapper">
+          <div className="notfound-center">
+            <div className="notfound-sub-center">
+              <div className="notfound-egg">
+                <div className="notfound-yolk" />
               </div>
             </div>
           </div>
-          <div className="handle" />
-          <div className="handle-sub" />
+          <div className="notfound-handle" />
+          <div className="notfound-handle-sub" />
         </div>
       </div>
     </div>
