@@ -520,6 +520,9 @@ body {
   font-size: 30px;
   margin-bottom: 20px;
 }
+.landing-container .above-the-fold .learn-more:hover {
+  transform: scale(1.1);
+}
 .landing-container .above-the-fold .learn-more a {
   text-decoration: none;
   color: white;
