@@ -8,10 +8,12 @@ class Buttons extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // state to allow button image to toggle
       burgerClicked: false
     }
   }
 
+  // handler specific for lunch button. The lunch icon is an image which requires a different procedure in order to change the image that appears on the screen.
   mealButtonHandlerBurger = (e) =>  {
     e.preventDefault();
     this.setState({burgerClicked: !this.state.burgerClicked });

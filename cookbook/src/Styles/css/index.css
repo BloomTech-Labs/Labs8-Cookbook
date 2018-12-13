@@ -1780,7 +1780,6 @@ body {
   }
 }
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
-  border: 1px solid red;
   display: flex;
   justify-content: space-evenly;
   width: 100%;
@@ -2822,7 +2821,6 @@ body {
   justify-content: space-between;
   background-color: white;
   color: #343e5a;
-  border: 1px solid red;
 }
 @media (max-width: 600px) {
   .recipe-page {
