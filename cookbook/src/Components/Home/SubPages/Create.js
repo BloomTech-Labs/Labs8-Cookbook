@@ -258,8 +258,8 @@ class Create extends Component {
 
               <p>Paste in the url of a recipe from any website in order to save and schedule it.</p>
 
-              <p>We currently support advanced features like instructions checklists and grocery list ingredients 
-                only for recipes from <b>allrecipes.com</b> and <b>geniuskitchen.com</b></p>
+              <p>Only recipes from <b>allrecipes.com</b> and <b>geniuskitchen.com</b> currently 
+                support advanced features like instructions checklists and grocery list ingredients.</p>
 
               <p>Contact the team at <b>cookbook_project@yahoo.com</b> to request support for your favorite recipe website.</p>
 
