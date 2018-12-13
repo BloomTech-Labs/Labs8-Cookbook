@@ -5,6 +5,13 @@ import renderIf from "render-if";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class CurrentPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayNav: false
+    };
+  }
+
   // decides nav icons color when it mounts
   componentDidMount() {
     this.navIconColors();
@@ -37,58 +44,76 @@ class CurrentPage extends Component {
     }
   }
 
+  toggleNav = () => {
+    this.setState({ displayNav: !this.state.displayNav });
+  }
+
+  handleNavClass = () => {
+    if (this.state.displayNav) {
+      return 'phone-nav-show';
+    } else {
+      return 'phone-nav-hide';
+    }
+  }
+
   render() {
     return (
       <div className="cp-phone-nav">
         <div className="current-page">
           {renderIf(this.props.location.pathname === "/home/create")(
             <Link
+              onClick={() => this.toggleNav()}
               to="/home/create"
               style={{ textDecoration: "none", color: "#D85E50" }}
             >
-              <div className="pg-bar create-cp">ADD RECIPE</div>
+              <div onClick={() => this.toggleNav()} className="pg-bar create-cp">ADD RECIPE</div>
             </Link>
           )}
           {renderIf(this.props.location.pathname.includes("/home/recipe"))(
             <Link
+              onClick={() => this.toggleNav()}
               to="/home/recipes"
               style={{ textDecoration: "none", color: "#2E3650" }}
             >
-              <div className="pg-bar recipes-cp">RECIPES</div>
+              <div onClick={() => this.toggleNav()} className="pg-bar recipes-cp">RECIPES</div>
             </Link>
           )}
           {renderIf(this.props.location.pathname === "/home/calendar")(
             <Link
+              onClick={() => this.toggleNav()}
               to="/home/calendar"
               style={{ textDecoration: "none", color: "#F5E6DC" }}
             >
-              <div className="pg-bar calendar-cp">CALENDAR</div>
+              <div onClick={() => this.toggleNav()} className="pg-bar calendar-cp">CALENDAR</div>
             </Link>
           )}
           {renderIf(this.props.location.pathname === "/home/dashboard")(
             <Link
+              onClick={() => this.toggleNav()}
               to="/home/dashboard"
               style={{ textDecoration: "none", color: "#ffc988" }}
             >
-              <div className="pg-bar dashboard-cp">GROCERY LIST</div>
+              <div onClick={() => this.toggleNav()} className="pg-bar dashboard-cp">GROCERY LIST</div>
             </Link>
           )}
           {renderIf(this.props.location.pathname === "/home/settings")(
             <Link
+              onClick={() => this.toggleNav()}
               to="/home/settings"
               style={{ textDecoration: "none", color: "#B3C1CC" }}
             >
-              <div className="pg-bar settings-cp">SETTINGS</div>
+              <div onClick={() => this.toggleNav()} className="pg-bar settings-cp">SETTINGS</div>
             </Link>
           )}
         </div>
+
         <div className="dropdown">
 
-          <div className="nav-icon" id="nav-icon">
+          <div className="nav-icon" id="nav-icon" onClick={() => this.toggleNav()}>
             <FontAwesomeIcon icon="ellipsis-v" className="icon" />
           </div>
 
-          <div className="phone-nav">
+          <div className={this.handleNavClass()}>
             {renderIf(this.props.location.pathname !== "/home/create")(
               <Link
                 className="nav-bar"

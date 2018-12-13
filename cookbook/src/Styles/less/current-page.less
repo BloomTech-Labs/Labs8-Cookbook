@@ -89,7 +89,7 @@
             }
         }
 
-        .phone-nav {
+        .phone-nav-hide {
             display: none;
             width: 100%;
             z-index: 16;
@@ -109,12 +109,28 @@
             }
         }
 
-        .phone-nav .nav-bar:hover {
-            font-weight: bold;
-        }
-    }
+        .phone-nav-show {
+            display: none;
+            width: 100%;
+            z-index: 16;
+            flex-wrap: wrap;
+            padding-top: 20px;
+            position: absolute;
+            top: 15px;
 
-    .dropdown:hover .phone-nav {
-        display: flex;
+            @media @phone {
+                display: flex;
+            }
+
+            .nav-bar {
+                width: 100%;
+                line-height: 35px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                text-decoration: none;
+                font-size: 2rem;
+            }
+        }
     }
 }

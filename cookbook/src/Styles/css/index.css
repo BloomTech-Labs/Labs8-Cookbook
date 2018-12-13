@@ -332,7 +332,7 @@ body::-webkit-scrollbar-track {
   margin-left: 30px;
   margin-top: 9px;
 }
-.cp-phone-nav .dropdown .phone-nav {
+.cp-phone-nav .dropdown .phone-nav-hide {
   display: none;
   width: 100%;
   z-index: 16;
@@ -341,7 +341,7 @@ body::-webkit-scrollbar-track {
   position: absolute;
   top: 15px;
 }
-.cp-phone-nav .dropdown .phone-nav .nav-bar {
+.cp-phone-nav .dropdown .phone-nav-hide .nav-bar {
   width: 100%;
   line-height: 35px;
   text-align: center;
@@ -350,11 +350,28 @@ body::-webkit-scrollbar-track {
   text-decoration: none;
   font-size: 2rem;
 }
-.cp-phone-nav .dropdown .phone-nav .nav-bar:hover {
-  font-weight: bold;
+.cp-phone-nav .dropdown .phone-nav-show {
+  display: none;
+  width: 100%;
+  z-index: 16;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  position: absolute;
+  top: 15px;
 }
-.cp-phone-nav .dropdown:hover .phone-nav {
+@media (max-width: 600px) {
+  .cp-phone-nav .dropdown .phone-nav-show {
+    display: flex;
+  }
+}
+.cp-phone-nav .dropdown .phone-nav-show .nav-bar {
+  width: 100%;
+  line-height: 35px;
+  text-align: center;
   display: flex;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 2rem;
 }
 .landing-container {
   display: flex;
