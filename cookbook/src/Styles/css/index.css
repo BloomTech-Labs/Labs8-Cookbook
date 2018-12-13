@@ -25,6 +25,10 @@ body::-webkit-scrollbar-track {
   box-sizing: border-box;
   outline: none;
 }
+@font-face {
+  font-family: 'burger-b';
+  src: local('burger-b'), url(../../designs/Icons/burger-b.woff) format('woff');
+}
 .container-margin-top {
   margin: 40px 0 211px ;
 }
