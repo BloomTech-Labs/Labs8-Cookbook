@@ -2,9 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  border: 1.5px solid @CBblue;
-  border-radius: 30px;
-  background-color: @CBtan;
+  background-color: white;
   color: @CBblue;
   @media @phone {
     flex-wrap: wrap;
@@ -136,6 +134,7 @@
         .scheduled-for {
           border-right: 1px solid @CBtan;
           padding-right: 25px;
+          padding-left: 10px;
           height: 74px;
           width: 175px;
           text-align: center;
@@ -145,6 +144,7 @@
           @media @desktop {
             width: 140px;
             padding-right: 15px;
+            padding-left: 0;
             margin-left: 5px;
           }
           @media @tablet {
@@ -237,7 +237,7 @@
       .title {
         text-align: center;
         padding: 0 5px;
-        background-color: @CBtan;
+        background-color: white;
         font-size: 2.6rem;
         margin-top: 10px;
         margin-bottom: 15px;
@@ -278,14 +278,14 @@
 
   .right-container {
     width: 500px;
-    margin: 25px 0 20px 20px;
+    margin: 25px 20px 20px 20px;
     font-weight: 600;
     @media @desktop {
       width: 400px;
-      margin-right: 0;
     }
     @media @tablet {
       width: 330px;
+      margin-right: 0px;
     }
     @media @phone {
       width: 320px;
