@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loading from "../../SubComponents/Loading.js";
 import RecipeCard from "./RecipeCard";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
@@ -126,7 +127,7 @@ class Recipes extends Component {
         </div>
         <Query query={GET_RECIPES_QUERY}>
           {({ loading, error, data }) => {
-            if (loading) return <div>Fetching</div>;
+            if (loading) return <Loading></Loading>;
             if (error) return <div>Error</div>;
             const recipesToRender = data.recipes.filter(recipe => {
               let hasMealType = true;

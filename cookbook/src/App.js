@@ -8,6 +8,7 @@ import LandingPage from "./Components/Landing/LandingPage";
 import Footer from "./Components/SubComponents/Footer";
 import Callback from "./Auth/Callback.js";
 import NotFound from "./Components/Home/SubPages/NotFound";
+import Loading from "./Components/SubComponents/Loading.js";
 import { ToastContainer } from "react-toastify";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import "react-toastify/dist/ReactToastify.css";
@@ -68,7 +69,7 @@ class App extends Component {
         </div>
       );
     }
-    return "Loading App...";
+    return <Loading></Loading>;
   }
 }
 

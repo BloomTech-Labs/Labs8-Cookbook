@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loading from "../../SubComponents/Loading.js";
 import DayPicker, { DateUtils } from "react-day-picker";
 import { graphql } from "react-apollo";
 import { GET_RECIPES_QUERY } from "./Recipes";
@@ -52,7 +53,7 @@ class GroceryList extends Component {
 
   generateList = () => {
     if (this.props.data.loading) {
-      return <p>Loading...</p>;
+      return <Loading></Loading>;
     }
 
     //temporaryholder for scheduled recipes

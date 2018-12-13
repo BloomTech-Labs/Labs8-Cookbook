@@ -95,7 +95,21 @@ class Create extends Component {
 
   //handle text change in url search box
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value, loadingPreview: false });
+    this.setState({ 
+      [e.target.name]: e.target.value,
+      type: "",
+      loadingPreview: false,
+      og_title: "",
+      og_sitename: "",
+      og_image: "",
+      og_desc: "",
+      prep_time: "",
+      servings: "",
+      og_url: "",
+      instructions: [],
+      ingredient_list: [],
+      onDates: []
+    });
     this.findRecipes();
   };
 
@@ -237,9 +251,26 @@ class Create extends Component {
           </button>
         </div>
 
+        {!this.state.query &&
+          <div className='tutorial-container'>
+
+            <div className='tutorial'>
+
+              <p>Paste in the url of a recipe from any website in order to save and schedule it.</p>
+
+              <p>Only recipes from <b>allrecipes.com</b> and <b>geniuskitchen.com</b> currently 
+                support advanced features like instructions checklists and grocery list ingredients.</p>
+
+              <p>Contact the team at <b>cookbook_project@yahoo.com</b> to request support for your favorite recipe website.</p>
+
+            </div>
+
+          </div>
+        }
+
         <div className="preview-and-schedule">
           {this.state.og_title === "N/A" ? (
-            <div>No preview available</div>
+            <div></div>
           ) : (
             <Preview
               og_title={this.state.og_title}
