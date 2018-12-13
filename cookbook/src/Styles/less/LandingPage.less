@@ -19,6 +19,7 @@
     justify-content: space-between;
     align-items: center;
     height: 100vh;
+    min-height: 600px;
     width: 100%;
     text-align: center;
     overflow: hidden;
@@ -26,6 +27,14 @@
     background-position: 25% 50%;
     color: @CBtan;
     cursor: default;
+
+    @media @desktop {
+      min-height: 700px;
+    }
+
+    @media @phone {
+      min-height: 450px;
+    }
 
     .branding {
       display: flex;
