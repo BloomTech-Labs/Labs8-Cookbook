@@ -45,16 +45,20 @@
       background: @CBorange;
     }
 
-    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    ::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
       color: @CBred;
     }
-    ::-moz-placeholder { /* Firefox 19+ */
+    ::-moz-placeholder {
+      /* Firefox 19+ */
       color: @CBred;
     }
-    :-ms-input-placeholder { /* IE 10+ */
+    :-ms-input-placeholder {
+      /* IE 10+ */
       color: @CBred;
     }
-    :-moz-placeholder { /* Firefox 18- */
+    :-moz-placeholder {
+      /* Firefox 18- */
       color: @CBred;
     }
 
@@ -109,7 +113,7 @@
         margin-top: 50px;
       }
 
-      @media @phone{
+      @media @phone {
         flex-flow: column;
       }
 
@@ -146,9 +150,7 @@
             font-weight: bold;
             font-size: 2rem;
             background-size: 1px 1em;
-            box-shadow:
-              inset 0 0rem white,
-              inset 0 -0.25rem @CBred;
+            box-shadow: inset 0 0rem white, inset 0 -0.25rem @CBred;
             display: inline;
             line-height: 25px;
 
@@ -156,9 +158,8 @@
               font-size: 1.7rem;
             }
           }
-
         }
-  
+
         .description {
           margin: 40px 0 0;
           font-size: 1.5rem;
@@ -187,12 +188,12 @@
             @media @tablet {
               margin: 35px auto 0;
             }
-  
+
             @media @phone {
               margin: 30px auto 0;
             }
           }
-    
+
           .site {
             font-family: @secondary-font;
             margin-top: 25px;
@@ -202,10 +203,7 @@
               font-size: 1.3rem;
             }
           }
-        
         }
-
-
       }
     }
 
@@ -276,7 +274,6 @@
           background: @CBorange;
           font-weight: bold;
         }
-
       }
 
       .create-date-picker {
@@ -307,7 +304,6 @@
           max-width: 300px;
 
           .DayPicker-NavBar {
-
             .DayPicker-NavButton {
               margin-top: 12px;
               position: absolute;
@@ -319,9 +315,9 @@
 
             .DayPicker-NavButton--next {
               border-top: 8px solid @CBred;
-              border-bottom:8px solid @CBred; 
+              border-bottom: 8px solid @CBred;
               border-right: 8px solid @CBred;
-              border-left:8px solid white;
+              border-left: 8px solid white;
               margin-left: 85%;
               height: 5px;
               @media @phone {
@@ -331,14 +327,13 @@
 
             .DayPicker-NavButton--prev {
               border-top: 8px solid @CBred;
-              border-bottom:8px solid @CBred; 
+              border-bottom: 8px solid @CBred;
               border-right: 8px solid white;
-              border-left:8px solid @CBred;
+              border-left: 8px solid @CBred;
             }
           }
 
           .DayPicker-Months {
-
             .DayPicker-Month {
               width: 100%;
               height: 200px;
@@ -372,9 +367,7 @@
               }
 
               .DayPicker-Body {
-                
                 .DayPicker-Week {
-
                   .DayPicker-Day {
                     border-radius: 500px !important;
                   }
@@ -389,8 +382,6 @@
           }
         } // end calendar styles
       }
-
     }
-
   }
 }

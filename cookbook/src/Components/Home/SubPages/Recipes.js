@@ -60,8 +60,8 @@ class Recipes extends Component {
 
   filterButtonClassName = meal => {
     return this.state.filter.has(meal)
-      ? "recipesFilterButtonChosen"
-      : "recipesFilterButtonNotChosen";
+      ? "button-selected"
+      : "button-not-selected";
   };
 
   render() {
@@ -77,15 +77,17 @@ class Recipes extends Component {
           >
             + add recipe
           </button>
-
-          <input
-            type="text"
-            name="search"
-            placeholder="search"
-            className="recipes-search"
-            onChange={this.handleSearch}
-            value={this.state.search}
-          />
+          <div className="search-input">
+            <input
+              type="text"
+              name="search"
+              placeholder="search"
+              className="recipes-search"
+              onChange={this.handleSearch}
+              value={this.state.search}
+            />
+            <span className="searchicon" />
+          </div>
 
           <div className="recipesFilterContainer">
             <button
