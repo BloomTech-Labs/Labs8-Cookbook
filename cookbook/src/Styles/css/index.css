@@ -2707,9 +2707,7 @@ body::-webkit-scrollbar-track {
 }
 .recipesContainer .recipesFunctionBar .recipesFilterContainer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
+  flex-flow: row wrap;
   width: 350px;
 }
 @media (max-width: 600px) {
@@ -2730,8 +2728,8 @@ body::-webkit-scrollbar-track {
 }
 .recipesContainer .recipesFunctionBar .button-selected {
   font-family: 'Questrial', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
+  font-size: 1.3rem;
+  letter-spacing: 1.1px;
   border: #343e5a solid 2px;
   border-radius: 20px;
   background: #343e5a;
@@ -2739,13 +2737,14 @@ body::-webkit-scrollbar-track {
   height: 30px;
   padding: 0 12px;
   outline: none;
-  margin-bottom: 10px;
+  width: 30%;
+  margin: 2px;
   cursor: pointer;
 }
 .recipesContainer .recipesFunctionBar .button-not-selected {
   font-family: 'Questrial', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
+  font-size: 1.3rem;
+  letter-spacing: 1.1px;
   border: #343e5a solid 2px;
   border-radius: 20px;
   background: #343e5a;
@@ -2753,7 +2752,8 @@ body::-webkit-scrollbar-track {
   height: 30px;
   padding: 0 12px;
   outline: none;
-  margin-bottom: 10px;
+  width: 30%;
+  margin: 2px;
   color: #343e5a;
   background: white;
   cursor: pointer;
