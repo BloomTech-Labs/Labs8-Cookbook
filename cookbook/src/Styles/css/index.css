@@ -8,6 +8,19 @@ body {
   margin: 0;
   padding: 0;
 }
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 12px;
+}
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #343e5a;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background-color: #f5e9df;
+}
 * {
   box-sizing: border-box;
   outline: none;
@@ -208,40 +221,25 @@ body {
   height: 100%;
   background-color: #fed092;
 }
-.nav .create-nav .span:hover {
-  font-weight: bold;
-}
 .nav .calendar-nav {
   width: 25%;
   height: 100%;
   background-color: #bcc9d2;
-}
-.nav .calendar-nav .span:hover {
-  font-weight: bold;
 }
 .nav .dashboard-nav {
   width: 25%;
   height: 100%;
   background-color: #343e5a;
 }
-.nav .dashboard-nav .span:hover {
-  font-weight: bold;
-}
 .nav .settings-nav {
   width: 25%;
   height: 100%;
   background-color: #de6a5a;
 }
-.nav .settings-nav .span:hover {
-  font-weight: bold;
-}
 .nav .recipes-nav {
   width: 25%;
   height: 100%;
   background-color: #f5e9df;
-}
-.nav .recipes-nav .span:hover {
-  font-weight: bold;
 }
 .cp-phone-nav {
   width: 100%;
@@ -279,18 +277,12 @@ body {
     line-height: 35px;
   }
 }
-.cp-phone-nav .current-page .pg-bar:hover {
-  font-weight: bold;
-}
 .cp-phone-nav .current-page .create-cp {
   width: 100%;
   height: 100%;
   color: #de6a5a;
   background-color: #fed092;
   text-align: center;
-}
-.cp-phone-nav .current-page .create-cp:hover {
-  font-weight: bold;
 }
 .cp-phone-nav .current-page .calendar-cp {
   width: 100%;
@@ -322,12 +314,12 @@ body {
 }
 .cp-phone-nav .dropdown .nav-icon {
   height: 35px;
-  width: 40px;
+  width: 50px;
   position: absolute;
   top: 0;
   font-size: 1.6rem;
-  border-radius: 20px;
-  margin-left: -17px;
+  border-radius: 50px;
+  margin-left: -15px;
   overflow: hidden;
   display: none;
 }
@@ -337,10 +329,10 @@ body {
   }
 }
 .cp-phone-nav .dropdown .nav-icon .icon {
-  margin-left: 22px;
-  margin-top: 8px;
+  margin-left: 30px;
+  margin-top: 9px;
 }
-.cp-phone-nav .dropdown .phone-nav {
+.cp-phone-nav .dropdown .phone-nav-hide {
   display: none;
   width: 100%;
   z-index: 16;
@@ -349,7 +341,7 @@ body {
   position: absolute;
   top: 15px;
 }
-.cp-phone-nav .dropdown .phone-nav .nav-bar {
+.cp-phone-nav .dropdown .phone-nav-hide .nav-bar {
   width: 100%;
   line-height: 35px;
   text-align: center;
@@ -358,11 +350,28 @@ body {
   text-decoration: none;
   font-size: 2rem;
 }
-.cp-phone-nav .dropdown .phone-nav .nav-bar:hover {
-  font-weight: bold;
+.cp-phone-nav .dropdown .phone-nav-show {
+  display: none;
+  width: 100%;
+  z-index: 16;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  position: absolute;
+  top: 15px;
 }
-.cp-phone-nav .dropdown:hover .phone-nav {
+@media (max-width: 600px) {
+  .cp-phone-nav .dropdown .phone-nav-show {
+    display: flex;
+  }
+}
+.cp-phone-nav .dropdown .phone-nav-show .nav-bar {
+  width: 100%;
+  line-height: 35px;
+  text-align: center;
   display: flex;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 2rem;
 }
 .landing-container {
   display: flex;
@@ -386,6 +395,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100vh;
+  min-height: 600px;
   width: 100%;
   text-align: center;
   overflow: hidden;
@@ -393,6 +403,16 @@ body {
   background-position: 25% 50%;
   color: #f5e9df;
   cursor: default;
+}
+@media (max-width: 1200px) {
+  .landing-container .above-the-fold {
+    min-height: 700px;
+  }
+}
+@media (max-width: 600px) {
+  .landing-container .above-the-fold {
+    min-height: 450px;
+  }
 }
 .landing-container .above-the-fold .branding {
   display: flex;
@@ -1786,7 +1806,7 @@ body {
   max-width: 363px;
   flex-flow: wrap;
   padding: 0 15px 0;
-  margin-top: -20px;
+  margin-top: -10px;
 }
 @media (max-width: 1200px) {
   .create-wrapper .preview-and-schedule .schedule .recipe-buttons {
@@ -1798,6 +1818,14 @@ body {
     margin-top: 0;
   }
 }
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .icon {
+  margin-right: 3px;
+}
+.create-wrapper .preview-and-schedule .schedule .recipe-buttons .burger-icon {
+  height: 15px;
+  color: #de6a5a;
+  margin-right: 3px;
+}
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-selected {
   font-family: 'Questrial', sans-serif;
   font-size: 1.5rem;
@@ -1807,9 +1835,11 @@ body {
   background: #de6a5a;
   color: white;
   height: 30px;
+  display: flex;
+  align-items: center;
   padding: 0 12px;
   outline: none;
-  margin-top: 20px;
+  margin-top: 10px;
   cursor: pointer;
 }
 .create-wrapper .preview-and-schedule .schedule .recipe-buttons .button-not-selected {
@@ -1821,9 +1851,11 @@ body {
   background: #de6a5a;
   color: white;
   height: 30px;
+  display: flex;
+  align-items: center;
   padding: 0 12px;
   outline: none;
-  margin-top: 20px;
+  margin-top: 10px;
   cursor: pointer;
   color: #de6a5a;
   background: white;
@@ -2131,17 +2163,19 @@ body {
 }
 .grocery-list-page .gen-list-container .reset-gen-buttons {
   width: 100%;
+  height: 70px;
   line-height: 2.4rem;
-  margin-left: 50px;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 @media (max-width: 1200px) {
   .grocery-list-page .gen-list-container .reset-gen-buttons {
-    margin-left: 20px;
+    height: 65px;
   }
 }
 @media (max-width: 900px) {
   .grocery-list-page .gen-list-container .reset-gen-buttons {
-    margin-left: 40px;
     margin-bottom: 25px;
     margin-top: 15px;
   }
@@ -2149,15 +2183,27 @@ body {
 @media (max-width: 600px) {
   .grocery-list-page .gen-list-container .reset-gen-buttons {
     margin-left: 0;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     margin-top: 0;
     margin-bottom: 25px;
   }
 }
+.grocery-list-page .gen-list-container .reset-gen-buttons .text {
+  margin-right: 35px;
+}
+@media (max-width: 1200px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons .text {
+    margin-right: 25px;
+  }
+}
+@media (max-width: 900px) {
+  .grocery-list-page .gen-list-container .reset-gen-buttons .text {
+    margin-right: 40px;
+  }
+}
 @media (max-width: 600px) {
   .grocery-list-page .gen-list-container .reset-gen-buttons .text {
+    margin-right: 0;
     width: 100%;
     text-align: center;
     height: 5px;
@@ -2168,7 +2214,7 @@ body {
   background-color: #343e5a;
   color: #fed092;
   position: absolute;
-  top: 12px;
+  top: 50px;
   left: 450px;
   line-height: 2.4rem;
   font-size: 1.6rem;
@@ -2178,10 +2224,9 @@ body {
 }
 @media (max-width: 1200px) {
   .grocery-list-page .gen-list-container .reset-gen-buttons .reset {
-    left: 340px;
+    left: 330px;
     line-height: 2rem;
     font-size: 1.4rem;
-    top: 15px;
   }
 }
 @media (max-width: 900px) {
@@ -2189,7 +2234,7 @@ body {
     left: 450px;
     line-height: 2.4rem;
     font-size: 1.6rem;
-    top: 15px;
+    top: 45px;
   }
 }
 @media (max-width: 600px) {
@@ -2203,8 +2248,8 @@ body {
   background-color: #fed092;
   color: #343e5a;
   position: absolute;
-  top: 12px;
-  left: 530px;
+  top: 50px;
+  left: 535px;
   line-height: 2.4rem;
   font-size: 1.6rem;
   border-radius: 15px;
@@ -2213,10 +2258,9 @@ body {
 }
 @media (max-width: 1200px) {
   .grocery-list-page .gen-list-container .reset-gen-buttons .generate {
-    left: 420px;
+    left: 410px;
     line-height: 2rem;
     font-size: 1.4rem;
-    top: 15px;
   }
 }
 @media (max-width: 900px) {
@@ -2224,7 +2268,7 @@ body {
     left: 530px;
     line-height: 2.4rem;
     font-size: 1.6rem;
-    top: 15px;
+    top: 45px;
   }
 }
 @media (max-width: 600px) {
@@ -2341,14 +2385,16 @@ body {
 }
 @media (max-width: 600px) {
   .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Caption {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays {
-  border-top: 1px solid #343e5a;
-  border-bottom: 1px solid #343e5a;
   background-color: #f5e9df;
   color: #343e5a;
+}
+.grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Weekdays .DayPicker-WeekdaysRow .DayPicker-Weekday {
+  border-top: 1px solid #343e5a;
+  border-bottom: 1px solid #343e5a;
 }
 .grocery-list-page .gen-list-container .DayPicker .DayPicker-Months .DayPicker-Month .DayPicker-Body .DayPicker-Week .DayPicker-Day {
   border-radius: 0 !important;
@@ -2794,9 +2840,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  border: 1.5px solid #343e5a;
-  border-radius: 30px;
-  background-color: #f5e9df;
+  background-color: white;
   color: #343e5a;
 }
 @media (max-width: 600px) {
@@ -2957,6 +3001,7 @@ body {
 .recipe-page .left-container .left-content .info-bar .scheduled-for {
   border-right: 1px solid #f5e9df;
   padding-right: 25px;
+  padding-left: 10px;
   height: 74px;
   width: 175px;
   text-align: center;
@@ -2967,6 +3012,7 @@ body {
   .recipe-page .left-container .left-content .info-bar .scheduled-for {
     width: 140px;
     padding-right: 15px;
+    padding-left: 0;
     margin-left: 5px;
   }
 }
@@ -3053,7 +3099,7 @@ body {
 .recipe-page .left-container .ingredients .title {
   text-align: center;
   padding: 0 5px;
-  background-color: #f5e9df;
+  background-color: white;
   font-size: 2.6rem;
   margin-top: 10px;
   margin-bottom: 15px;
@@ -3096,18 +3142,18 @@ body {
 }
 .recipe-page .right-container {
   width: 500px;
-  margin: 25px 0 20px 20px;
+  margin: 25px 20px 20px 20px;
   font-weight: 600;
 }
 @media (max-width: 1200px) {
   .recipe-page .right-container {
     width: 400px;
-    margin-right: 0;
   }
 }
 @media (max-width: 900px) {
   .recipe-page .right-container {
     width: 330px;
+    margin-right: 0px;
   }
 }
 @media (max-width: 600px) {

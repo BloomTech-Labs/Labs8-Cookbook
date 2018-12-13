@@ -160,7 +160,7 @@ class RecipeView extends Component {
                     </div>
                   </div>
                 ) : (
-                  <div>No events scheduled</div>
+                  <div style={{fontWeight: 'bold'}}>No events scheduled</div>
                 )}
               </div>
               <div className="recipe-info">

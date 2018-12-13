@@ -14,56 +14,6 @@ class Header extends Component {
     auth.logout();
   }
 
-  //change routes on nav click
-  handleRedirect = path => {
-    this.props.history.push(path);
-  };
-
-  //change routes on nav click
-  //if the user clicks on the current page it will toggle the nav bar
-  handlePhoneRedirect = path => {
-    if (this.props.location.pathname.includes(path)) this.togglePhoneNav();
-    else this.props.history.push(path);
-  };
-
-  //determine whether a nav item is active, shown, or hidden
-  handlePhoneNavClass = path => {
-    if (this.props.location.pathname.includes(path)) {
-      return `${path}-phone-nav-active`;
-    }
-    if (this.state.showPhoneNav) {
-      return `${path}-phone-nav-show`;
-    }
-    return "phone-nav-hide";
-  };
-
-  //toggle the expanded phone nav bar
-  togglePhoneNav = () => {
-    this.setState({ showPhoneNav: !this.state.showPhoneNav });
-  };
-
-  //determine the className of the phone toggle button for appropriate color change
-  handleTogglePhoneNavClass = () => {
-    if (this.props.location.pathname.includes("create"))
-      return "create-toggle-phone-nav";
-    if (this.props.location.pathname.includes("recipe"))
-      return "recipe-toggle-phone-nav";
-    if (this.props.location.pathname.includes("calendar"))
-      return "calendar-toggle-phone-nav";
-    if (this.props.location.pathname.includes("dashboard"))
-      return "dashboard-toggle-phone-nav";
-    if (this.props.location.pathname.includes("settings"))
-      return "settings-toggle-phone-nav";
-  };
-
-  //determine if a navbar item should go across the entire screen or not
-  handleNormalNavClass = path => {
-    if (this.props.location.pathname.includes(path)) {
-      return `${path}-normal-nav-active`;
-    }
-    return `${path}-normal-nav-inactive`;
-  };
-
   render() {
     const { isAuthenticated } = auth;
 
