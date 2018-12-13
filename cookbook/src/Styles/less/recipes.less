@@ -113,24 +113,9 @@
     .recipesFilterContainer {
       display: flex;
       flex-wrap: wrap;
-      justify-content: flex-start;
+      justify-content: space-around;
+      align-items: flex-start;
       width: 350px;
-      border: 2px solid black;
-      background-color: @CBblue;
-      transform: scale(0.9);
-
-      .recipes-text {
-        color: white;
-        font-family: @primary-font;
-        font-size: 20px;
-        margin: 5px;
-        width: 50px;
-      }
-
-      .recipe-button-container {
-        align-content: flex-start;
-        width: 350px;
-      }
 
       @media @phone {
         margin-bottom: 10px;
@@ -153,13 +138,14 @@
       font-size: 1.5rem;
       letter-spacing: 1.5px;
       border: @CBblue solid 2px;
+      border-radius: 20px;
       background: @CBblue;
       color: white;
       height: 30px;
+      padding: 0 12px;
       outline: none;
+      margin-bottom: 10px;
       cursor: pointer;
-      border-radius: 0px;
-      border: 0px solid white;
     }
 
     .button-not-selected {

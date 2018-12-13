@@ -2708,21 +2708,8 @@ body::-webkit-scrollbar-track {
 .recipesContainer .recipesFunctionBar .recipesFilterContainer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 350px;
-  border: 2px solid black;
-  background-color: #343e5a;
-  transform: scale(0.9);
-}
-.recipesContainer .recipesFunctionBar .recipesFilterContainer .recipes-text {
-  color: white;
-  font-family: 'Muli', sans-serif;
-  font-size: 20px;
-  margin: 5px;
-  width: 50px;
-}
-.recipesContainer .recipesFunctionBar .recipesFilterContainer .recipe-button-container {
-  align-content: flex-start;
+  justify-content: space-around;
+  align-items: flex-start;
   width: 350px;
 }
 @media (max-width: 600px) {
@@ -2746,25 +2733,27 @@ body::-webkit-scrollbar-track {
   font-size: 1.5rem;
   letter-spacing: 1.5px;
   border: #343e5a solid 2px;
+  border-radius: 20px;
   background: #343e5a;
   color: white;
   height: 30px;
+  padding: 0 12px;
   outline: none;
+  margin-bottom: 10px;
   cursor: pointer;
-  border-radius: 0px;
-  border: 0px solid white;
 }
 .recipesContainer .recipesFunctionBar .button-not-selected {
   font-family: 'Questrial', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 1.5px;
   border: #343e5a solid 2px;
+  border-radius: 20px;
   background: #343e5a;
   color: white;
   height: 30px;
+  padding: 0 12px;
   outline: none;
-  border-radius: 0px;
-  border: 0px solid white;
+  margin-bottom: 10px;
   color: #343e5a;
   background: white;
   cursor: pointer;

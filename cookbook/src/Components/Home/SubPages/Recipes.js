@@ -90,7 +90,6 @@ class Recipes extends Component {
           </div>
 
           <div className="recipesFilterContainer">
-            <h1 className="recipes-text">Filter:</h1>
             <div className="recipe-button-container">
               <button
                 className={this.filterButtonClassName("breakfast")}
