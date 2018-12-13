@@ -1406,7 +1406,7 @@ body::-webkit-scrollbar-track {
   cursor: pointer;
 }
 .DayPicker-NavButton:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 .DayPicker-NavButton--prev {
   width: 0;
@@ -2674,7 +2674,7 @@ body::-webkit-scrollbar-track {
 }
 @media (max-width: 1200px) {
   .recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input .recipes-search {
-    width: 500px;
+    width: 460px;
   }
 }
 @media (max-width: 900px) {
@@ -2714,18 +2714,13 @@ body::-webkit-scrollbar-track {
 .recipesContainer .recipesFunctionBar .recipesFilterContainer {
   display: flex;
   flex-flow: row wrap;
-  width: 350px;
-}
-@media (max-width: 1200px) {
-  .recipesContainer .recipesFunctionBar .recipesFilterContainer {
-    width: 320px;
-  }
+  width: 380px;
+  justify-content: space-around;
 }
 @media (max-width: 600px) {
   .recipesContainer .recipesFunctionBar .recipesFilterContainer {
     margin-bottom: 10px;
     display: flex;
-    justify-content: space-around;
   }
 }
 @media (max-width: 900px) {
@@ -2744,8 +2739,9 @@ body::-webkit-scrollbar-track {
   height: 30px;
   padding: 0 12px;
   outline: none;
-  width: 30%;
   margin: 2px;
+  width: 120px;
+  margin-bottom: 5px;
   cursor: pointer;
 }
 .recipesContainer .recipesFunctionBar .button-not-selected {
@@ -2759,8 +2755,9 @@ body::-webkit-scrollbar-track {
   height: 30px;
   padding: 0 12px;
   outline: none;
-  width: 30%;
   margin: 2px;
+  width: 120px;
+  margin-bottom: 5px;
   color: #343e5a;
   background: white;
   cursor: pointer;
@@ -2931,7 +2928,7 @@ body::-webkit-scrollbar-track {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  opacity: .01;
+  opacity: 0.01;
   height: 20px;
   width: 20px;
 }
