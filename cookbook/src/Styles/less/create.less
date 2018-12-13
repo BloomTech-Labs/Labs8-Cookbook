@@ -35,6 +35,10 @@
       @media @tablet {
         margin: 30px 0 0 0;
       }
+
+      &:hover {
+        transform: scale(1.01);
+      }
     }
 
     .not-searching {
@@ -77,17 +81,51 @@
       @media @tablet {
         order: -1;
       }
-    }
-    .save-button:hover {
-      cursor: pointer;
-      color: @CBorange;
-      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.07);
+      }
     }
 
     .save-button-inactive {
       .save-button;
+      display: none;
       background: white;
       color: @CBred;
+    }
+  }
+
+  .tutorial-container {
+    width: 100%;
+    padding: 30px;
+
+    .tutorial {
+      border: 2px dashed @CBred;
+      border-radius: 30px;
+      width: 60%;
+      padding: 30px 30px 0;
+
+      @media @tablet {
+        width: 100%;
+      }
+
+      p{
+        margin: 0 0 30px;
+        font-family: @secondary-font;
+        letter-spacing: .1rem;
+        line-height: 2rem;
+        font-size: 1.6rem;
+
+        @media @phone {
+          font-size: 1.3rem;
+          margin: 0 0 15px;
+        }
+
+        b {
+          color: @CBred;
+        }
+      }
     }
   }
 
@@ -100,6 +138,11 @@
 
     @media @tablet {
       flex-flow: column;
+    }
+
+    .loading {
+      width: 100%;
+      display: flex;
     }
 
     .preview {

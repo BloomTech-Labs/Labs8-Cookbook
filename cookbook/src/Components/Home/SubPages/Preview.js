@@ -1,7 +1,8 @@
 import React from "react";
+import Loading from "../../SubComponents/Loading.js";
 
 const Preview = props => {
-  let loading = props.loading ? <div>Loading...</div> : null;
+  let loading = props.loading ? <Loading className='loading'></Loading> : null;
 
   const preview = props.og_title ? (
     <div className='preview'>

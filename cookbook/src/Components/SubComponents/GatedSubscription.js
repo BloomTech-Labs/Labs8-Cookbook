@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "../SubComponents/Loading.js";
 import { Query } from "react-apollo";
 import { CURRENT_USER_QUERY } from "../Home/SubPages/User";
 import { Link } from "react-router-dom";
@@ -7,7 +8,7 @@ const GatedSubscription = props => {
   return (
     <Query query={CURRENT_USER_QUERY}>
       {({ data, loading }) => {
-        if (loading) return <div>Loading...</div>;
+        if (loading) return <Loading></Loading>;
         if (!data.currentUser.isSubscribed) {
           return (
             <div>

@@ -6,6 +6,7 @@ import { Query, graphql, compose } from "react-apollo";
 import Modal from "../../SubComponents/Modal";
 import DatePicker from "../../SubComponents/DatePicker.js";
 import Buttons from "./Buttons";
+import Loading from "../../SubComponents/Loading.js";
 import { GET_RECIPES_QUERY } from "./Recipes";
 import { Helmet } from "react-helmet";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -230,7 +231,7 @@ class RecipeCalendar extends Component {
       // calling the query from gql, passes data from backend to front-end
       <Query query={QUERY_RECIPE_EVENT}>
         {({ loading, error, data }) => {
-          if (loading) return <div>Fetching</div>;
+          if (loading) return <Loading></Loading>;
           if (error) return <div>Error</div>;
 
           // search function to filter events based on title name, not case sensitive
