@@ -237,6 +237,12 @@ class Create extends Component {
           </button>
         </div>
 
+        {!this.state.query &&
+          <div className='tutorial-container'>
+            
+          </div>
+        }
+
         <div className="preview-and-schedule">
           {this.state.og_title === "N/A" ? (
             <div>No preview available</div>

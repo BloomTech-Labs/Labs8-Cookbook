@@ -1584,6 +1584,9 @@ body::-webkit-scrollbar-track {
     margin: 30px 0 0 0;
   }
 }
+.create-wrapper .search-and-save .is-searching:hover {
+  transform: scale(1.01);
+}
 .create-wrapper .search-and-save .not-searching {
   margin-right: 30px;
   font-family: 'Questrial', sans-serif;
@@ -1606,6 +1609,9 @@ body::-webkit-scrollbar-track {
   .create-wrapper .search-and-save .not-searching {
     margin: 30px 0 0 0;
   }
+}
+.create-wrapper .search-and-save .not-searching:hover {
+  transform: scale(1.01);
 }
 .create-wrapper .search-and-save .not-searching:hover {
   background: #fed092;
@@ -1645,8 +1651,7 @@ body::-webkit-scrollbar-track {
 }
 .create-wrapper .search-and-save .save-button:hover {
   cursor: pointer;
-  color: #fed092;
-  font-weight: bold;
+  transform: scale(1.07);
 }
 .create-wrapper .search-and-save .save-button-inactive {
   font-family: 'Questrial', sans-serif;
@@ -1659,6 +1664,7 @@ body::-webkit-scrollbar-track {
   height: 30px;
   width: 70px;
   outline: none;
+  display: none;
   background: white;
   color: #de6a5a;
 }
@@ -1666,6 +1672,10 @@ body::-webkit-scrollbar-track {
   .create-wrapper .search-and-save .save-button-inactive {
     order: -1;
   }
+}
+.create-wrapper .search-and-save .save-button-inactive:hover {
+  cursor: pointer;
+  transform: scale(1.07);
 }
 .create-wrapper .preview-and-schedule {
   display: flex;

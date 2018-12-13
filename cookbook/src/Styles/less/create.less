@@ -35,6 +35,10 @@
       @media @tablet {
         margin: 30px 0 0 0;
       }
+
+      &:hover {
+        transform: scale(1.01);
+      }
     }
 
     .not-searching {
@@ -77,15 +81,16 @@
       @media @tablet {
         order: -1;
       }
-    }
-    .save-button:hover {
-      cursor: pointer;
-      color: @CBorange;
-      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.07);
+      }
     }
 
     .save-button-inactive {
       .save-button;
+      display: none;
       background: white;
       color: @CBred;
     }
