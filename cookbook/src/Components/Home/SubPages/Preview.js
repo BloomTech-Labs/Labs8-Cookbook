@@ -2,7 +2,7 @@ import React from "react";
 import Loading from "../../SubComponents/Loading.js";
 
 const Preview = props => {
-  let loading = props.loading ? <Loading className='loading'></Loading> : <Loading className='loading'></Loading>;
+  let loading = props.loading ? <Loading className='loading'></Loading> : null;
 
   const preview = props.og_title ? (
     <div className='preview'>
