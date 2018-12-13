@@ -1,52 +1,62 @@
 .calendar-page-container {
   margin-left: 5px;
 
-  .search-box-wrapper {
-    display: flex;
-    font-size: 1.2rem;
-    justify-content: space-between;
-    //   align-items: stretch;
-    margin-bottom: 15px;
-    height: 35px;
+  .search-input {
+    position: relative;
+    margin: 10px;
 
     @media @phone {
       font-size: 1rem;
-      margin-bottom: 12px;
+      margin: 10px 5px;
     }
 
-    .search-box-input {
-      font-size: 1.8rem;
-      border: 1.5px solid @CBblue;;
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
-      border-left: 0;
+    .recipes-search {
+      position: relative;
+      border: 2px solid @CBblue;
+      height: 35px;
+      width: 400px;
+      border-radius: 50px;
+      padding-left: 31px;
+      padding-right: 11px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      font-size: 13px;
+      color: #555;
       width: 100%;
-      outline: none;
-      padding-left: 10px;
-      @media @tablet {
-        font-size: 1.6rem;
+
+      &:focus {
+        outline: none;
       }
+
       @media @phone {
-        font-size: 1.2rem;
-        height: 28px;
+        height: 30px;
       }
     }
 
-    .magnifying-glass {
-      font-size: 1.8rem;
-      border: 1.5px solid @CBblue;
-      border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
-      border-right: 0;
-      padding-left: 10px;
-      padding-top: 2px;
-      color: white;
-      @media @phone {
-        font-size: 1.2rem;
-        height: 28px;
+    .searchicon {
+      position: absolute;
+      height: 15px;
+      width: 15px;
+      background: transparent;
+      border: 2px solid @CBblue;
+      left: 12px;
+      top: 7px;
+      border-radius: 100%;
+      opacity: 0.8;
+      &:after {
+        content: "";
+        position: absolute;
+        background: @CBblue;
+        height: 7px;
+        width: 2px;
+        bottom: -5px;
+        right: -3px;
+        transform: rotate(-45deg);
+        opacity: 0.8;
       }
     }
   }
+
   .btn-wrapper {
     width: 100%;
     display: flex;
@@ -57,21 +67,71 @@
       padding-right: 5px;
     }
 
+    .recipesFilterContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      width: 500px;
+      margin-right: 120px;
+
+      @media @phone {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      @media @tablet {
+        flex: 1 0 40%;
+      }
+
+      .button-selected {
+        font-family: @secondary-font;
+        letter-spacing: 1.5px;
+        border: @CBblue solid 2px;
+        border-radius: 20px;
+        background: @CBblue;
+        color: white;
+        height: 30px;
+        padding: 0 12px;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .button-not-selected {
+        .button-selected;
+        color: @CBblue;
+        background: white;
+        cursor: pointer;
+      }
+
+      .button-not-selected:hover {
+        background: @CBgrey;
+        font-weight: bold;
+      }
+    }
+
     .duplicate-btn {
-      background-color: @CBtan;
+      background-color: white;
       color: @CBblue;
       padding: 5px 8px;
       border-radius: 15px;
       border: 2px solid @CBblue;
+      font-family: @secondary-font;
       cursor: pointer;
       @media @phone {
         font-size: 1rem;
+      }
+
+      &:hover {
+        background: @CBgrey;
+        font-weight: bold;
       }
     }
   }
 
   .calendar-container {
-    color:@CBblue;
+    color: @CBblue;
 
     .rbc-calendar {
       @media @tablet {
@@ -93,14 +153,21 @@
           position: relative;
 
           button {
+            font-family: @secondary-font;
             position: absolute;
             border: 2px solid @CBblue;
-            background-color: @CBtan;
+            background-color: white;
             border-radius: 15px;
             top: -50px;
+            cursor: pointer;
             @media @phone {
               font-size: 1rem;
               top: -48px;
+            }
+
+            &:hover {
+              background: @CBgrey;
+              font-weight: bold;
             }
           }
 
@@ -135,15 +202,12 @@
       }
 
       .rbc-month-view {
-        
         .rbc-header {
           background-color: @CBtan;
         }
 
         .rbc-month-row {
-
           .rbc-row-bg {
-
             .rbc-off-range-bg {
               background-color: @CBgrey;
             }
@@ -154,11 +218,8 @@
           }
 
           .rbc-row-content {
-            
             .rbc-row {
-
               .rbc-row-segment {
-
                 .rbc-event {
                   background-color: @CBblue;
                   color: @CBtan;

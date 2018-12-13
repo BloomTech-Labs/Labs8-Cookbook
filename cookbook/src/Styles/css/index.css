@@ -1960,55 +1960,59 @@ body::-webkit-scrollbar-track {
 .calendar-page-container {
   margin-left: 5px;
 }
-.calendar-page-container .search-box-wrapper {
-  display: flex;
-  font-size: 1.2rem;
-  justify-content: space-between;
-  margin-bottom: 15px;
-  height: 35px;
+.calendar-page-container .search-input {
+  position: relative;
+  margin: 10px;
 }
 @media (max-width: 600px) {
-  .calendar-page-container .search-box-wrapper {
+  .calendar-page-container .search-input {
     font-size: 1rem;
-    margin-bottom: 12px;
+    margin: 10px 5px;
   }
 }
-.calendar-page-container .search-box-wrapper .search-box-input {
-  font-size: 1.8rem;
-  border: 1.5px solid #343e5a;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-left: 0;
+.calendar-page-container .search-input .recipes-search {
+  position: relative;
+  border: 2px solid #343e5a;
+  height: 35px;
+  width: 400px;
+  border-radius: 50px;
+  padding-left: 31px;
+  padding-right: 11px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-size: 13px;
+  color: #555;
   width: 100%;
+}
+.calendar-page-container .search-input .recipes-search:focus {
   outline: none;
-  padding-left: 10px;
-}
-@media (max-width: 900px) {
-  .calendar-page-container .search-box-wrapper .search-box-input {
-    font-size: 1.6rem;
-  }
 }
 @media (max-width: 600px) {
-  .calendar-page-container .search-box-wrapper .search-box-input {
-    font-size: 1.2rem;
-    height: 28px;
+  .calendar-page-container .search-input .recipes-search {
+    height: 30px;
   }
 }
-.calendar-page-container .search-box-wrapper .magnifying-glass {
-  font-size: 1.8rem;
-  border: 1.5px solid #343e5a;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-right: 0;
-  padding-left: 10px;
-  padding-top: 2px;
-  color: white;
+.calendar-page-container .search-input .searchicon {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  background: transparent;
+  border: 2px solid #343e5a;
+  left: 12px;
+  top: 7px;
+  border-radius: 100%;
+  opacity: 0.8;
 }
-@media (max-width: 600px) {
-  .calendar-page-container .search-box-wrapper .magnifying-glass {
-    font-size: 1.2rem;
-    height: 28px;
-  }
+.calendar-page-container .search-input .searchicon:after {
+  content: "";
+  position: absolute;
+  background: #343e5a;
+  height: 7px;
+  width: 2px;
+  bottom: -5px;
+  right: -3px;
+  transform: rotate(-45deg);
+  opacity: 0.8;
 }
 .calendar-page-container .btn-wrapper {
   width: 100%;
@@ -2022,18 +2026,73 @@ body::-webkit-scrollbar-track {
     padding-right: 5px;
   }
 }
+.calendar-page-container .btn-wrapper .recipesFilterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 500px;
+  margin-right: 120px;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .btn-wrapper .recipesFilterContainer {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+@media (max-width: 900px) {
+  .calendar-page-container .btn-wrapper .recipesFilterContainer {
+    flex: 1 0 40%;
+  }
+}
+.calendar-page-container .btn-wrapper .recipesFilterContainer .button-selected {
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 1.5px;
+  border: #343e5a solid 2px;
+  border-radius: 20px;
+  background: #343e5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  cursor: pointer;
+}
+.calendar-page-container .btn-wrapper .recipesFilterContainer .button-not-selected {
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 1.5px;
+  border: #343e5a solid 2px;
+  border-radius: 20px;
+  background: #343e5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  color: #343e5a;
+  background: white;
+  cursor: pointer;
+}
+.calendar-page-container .btn-wrapper .recipesFilterContainer .button-not-selected:hover {
+  background: #bcc9d2;
+  font-weight: bold;
+}
 .calendar-page-container .btn-wrapper .duplicate-btn {
-  background-color: #f5e9df;
+  background-color: white;
   color: #343e5a;
   padding: 5px 8px;
   border-radius: 15px;
   border: 2px solid #343e5a;
+  font-family: 'Questrial', sans-serif;
   cursor: pointer;
 }
 @media (max-width: 600px) {
   .calendar-page-container .btn-wrapper .duplicate-btn {
     font-size: 1rem;
   }
+}
+.calendar-page-container .btn-wrapper .duplicate-btn:hover {
+  background: #bcc9d2;
+  font-weight: bold;
 }
 .calendar-page-container .calendar-container {
   color: #343e5a;
@@ -2060,17 +2119,23 @@ body::-webkit-scrollbar-track {
   position: relative;
 }
 .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
+  font-family: 'Questrial', sans-serif;
   position: absolute;
   border: 2px solid #343e5a;
-  background-color: #f5e9df;
+  background-color: white;
   border-radius: 15px;
   top: -50px;
+  cursor: pointer;
 }
 @media (max-width: 600px) {
   .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button {
     font-size: 1rem;
     top: -48px;
   }
+}
+.calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button:hover {
+  background: #bcc9d2;
+  font-weight: bold;
 }
 .calendar-page-container .calendar-container .rbc-calendar .rbc-toolbar .rbc-btn-group button:nth-child(1) {
   left: 10px;
@@ -2710,7 +2775,7 @@ body::-webkit-scrollbar-track {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: flex-start;
-  width: 350px;
+  width: 330px;
 }
 @media (max-width: 600px) {
   .recipesContainer .recipesFunctionBar .recipesFilterContainer {
@@ -2724,11 +2789,7 @@ body::-webkit-scrollbar-track {
     flex: 1 0 40%;
   }
 }
-.recipesContainer .recipesFunctionBar .burger-icon {
-  height: 15px;
-  margin-right: 3px;
-}
-.recipesContainer .recipesFunctionBar .button-selected {
+.recipesContainer .recipesFunctionBar .recipesFilterContainer .button-selected {
   font-family: 'Questrial', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 1.5px;
@@ -2742,7 +2803,7 @@ body::-webkit-scrollbar-track {
   margin-bottom: 10px;
   cursor: pointer;
 }
-.recipesContainer .recipesFunctionBar .button-not-selected {
+.recipesContainer .recipesFunctionBar .recipesFilterContainer .button-not-selected {
   font-family: 'Questrial', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 1.5px;
@@ -2758,9 +2819,13 @@ body::-webkit-scrollbar-track {
   background: white;
   cursor: pointer;
 }
-.recipesContainer .recipesFunctionBar .button-not-selected:hover {
+.recipesContainer .recipesFunctionBar .recipesFilterContainer .button-not-selected:hover {
   background: #bcc9d2;
   font-weight: bold;
+}
+.recipesContainer .recipesFunctionBar .burger-icon {
+  height: 15px;
+  margin-right: 3px;
 }
 .recipesContainer .recipesCards {
   display: flex;
