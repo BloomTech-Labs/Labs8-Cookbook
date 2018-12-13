@@ -2538,6 +2538,9 @@ body::-webkit-scrollbar-track {
   padding-top: 5px;
   margin-top: 5px;
 }
+.grocery-list-page .list .scroll-container .item-list > .list-item {
+  transition: all 0.5s linear;
+}
 .grocery-list-page .list .scroll-container .no-list-text {
   padding: 12px 10px;
   padding-left: 15px;
