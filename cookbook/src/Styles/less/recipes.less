@@ -5,117 +5,125 @@
   .recipesFunctionBar {
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 15px;
-
-    @media @phone {
-      flex-direction: column;
-      align-items: center;
-    }
+    justify-content: space-between;
+    padding: 0 25px;
 
     @media @tablet {
-      flex-flow: row wrap;
+      flex-wrap: wrap;
     }
 
-    .recipesAddRecipe {
-      background-color: @CBblue;
-      color: white;
-      height: 30px;
-      font-size: 1.6rem;
-      border-radius: 15px;
-      padding: 2px 15px;
-      border: 2px solid @CBblue;
-      cursor: pointer;
+    @media @phone {
+    }
 
-      &:hover {
-        color: @CBorange;
-      }
+    .search-and-add-recipe {
 
-      @media @tablet {
-        width: 150px;
-        font-size: 1.6rem;
-        top: 15px;
-        margin-bottom: 30px;
-        flex: 0 1 100%;
-        margin-right: 80%;
-      }
       @media @phone {
-        position: static;
-        margin-bottom: 30px;
-        height: 30px;
-        align-self: flex-start;
-        width: 150px;
-        margin-right: 60%;
+        width: 100%;
       }
-    }
 
-    .search-input {
-      position: relative;
-
-      .recipes-search {
-        position: relative;
-        border: 2px solid @CBblue;
+      .recipesAddRecipe {
+        background-color: @CBblue;
+        color: white;
         height: 30px;
-        width: 400px;
-        border-radius: 50px;
-        padding-left: 31px;
-        padding-right: 11px;
-        padding-top: 4px;
-        padding-bottom: 4px;
-        font-size: 13px;
-        color: #555;
+        font-size: 1.6rem;
+        border-radius: 15px;
+        padding: 2px 15px;
+        border: 2px solid @CBblue;
+        cursor: pointer;
 
-        &:focus {
-          outline: none;
-        }
-
-        @media @phone {
-          margin-bottom: 30px;
-          width: 330px;
+        &:hover {
+          color: @CBorange;
         }
 
         @media @tablet {
-          margin-bottom: 30px;
-          width: 350px;
-          flex: 1 0 40%;
+          width: 150px;
+          font-size: 1.6rem;
+          top: 15px;
+          flex: 0 1 100%;
+          margin-right: 80%;
+          margin-bottom: 5px;
         }
-
-        @media @desktop {
-          width: 350px;
+        @media @phone {
+          position: static;
+          height: 30px;
+          align-self: flex-start;
+          width: 150px;
+          margin-right: 60%;
         }
       }
 
-      .searchicon {
-        position: absolute;
-        height: 15px;
-        width: 15px;
-        background: transparent;
-        border: 2px solid @CBblue;
-        left: 12px;
-        top: 7px;
-        border-radius: 100%;
-        opacity: 0.8;
-        &:after {
-          content: "";
+      .search-input {
+        position: relative;
+        @media @phone {
+          width: 100%;
+        }
+
+        .recipes-search {
+          position: relative;
+          border: 2px solid @CBblue;
+          height: 30px;
+          width: 650px;
+          border-radius: 50px;
+          padding-left: 31px;
+          padding-right: 11px;
+          padding-top: 4px;
+          padding-bottom: 4px;
+          margin-top: 11px;
+          font-size: 13px;
+          color: #555;
+
+          &:focus {
+            outline: none;
+          }
+          
+          @media @desktop {
+            width: 500px;
+          }
+
+          @media @tablet {
+            margin-bottom: 15px;
+            flex: 1 0 40%;
+            width: 648px;
+          }
+
+          @media @phone {
+            width: 100%;
+          }
+        }
+
+        .searchicon {
           position: absolute;
-          background: @CBblue;
-          height: 7px;
-          width: 2px;
-          bottom: -5px;
-          right: -3px;
-          transform: rotate(-45deg);
+          height: 15px;
+          width: 15px;
+          background: transparent;
+          border: 2px solid @CBblue;
+          left: 12px;
+          top: 17px;
+          border-radius: 100%;
           opacity: 0.8;
+          &:after {
+            content: "";
+            position: absolute;
+            background: @CBblue;
+            height: 7px;
+            width: 2px;
+            bottom: -5px;
+            right: -3px;
+            transform: rotate(-45deg);
+            opacity: 0.8;
+          }
         }
       }
     }
 
     .recipesFilterContainer {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: flex-start;
+      flex-flow: row wrap;
       width: 350px;
+
+      @media @desktop {
+        width: 320px;
+      }
 
       @media @phone {
         margin-bottom: 10px;
@@ -128,15 +136,10 @@
       }
     }
 
-    .burger-icon {
-      height: 15px;
-      margin-right: 3px;
-    }
-
     .button-selected {
       font-family: @secondary-font;
-      font-size: 1.5rem;
-      letter-spacing: 1.5px;
+      font-size: 1.3rem;
+      letter-spacing: 1.1px;
       border: @CBblue solid 2px;
       border-radius: 20px;
       background: @CBblue;
@@ -144,7 +147,8 @@
       height: 30px;
       padding: 0 12px;
       outline: none;
-      margin-bottom: 10px;
+      width: 30%;
+      margin: 2px;
       cursor: pointer;
     }
 
@@ -165,7 +169,7 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 10px;
 
     /* Prevents :hover from triggering in the gaps between items */
     visibility: hidden;
@@ -195,6 +199,7 @@
 
     @media @phone {
       justify-content: center;
+      margin-top: 0;
     }
 
     @media @tablet {
