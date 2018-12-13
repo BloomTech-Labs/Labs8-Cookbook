@@ -5,7 +5,7 @@ class Loading extends Component {
         super(props);
         this.state = {
             animate: true,
-            colors: ["#bcc9d2", "#de6a5a", "#fed092", "#343e5a", "#f5e9df"]
+            colors: ["#343e5a", "#de6a5a", "#fed092", "#f5e9df", "#bcc9d2"]
         };
     }
 
@@ -64,7 +64,7 @@ class Loading extends Component {
                     
                 </div>
 
-                <span className='text'>loading...</span>
+                <span className='text' style={{ color: this.state.colors[0] }}>loading...</span>
 
             </div>
         );
