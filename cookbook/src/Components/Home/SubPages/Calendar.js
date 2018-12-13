@@ -61,7 +61,8 @@ class RecipeCalendar extends Component {
       type: "",
       showModal: false,
       onDates: [],
-      search: ""
+      search: "",
+      filter: new Set([])
     };
   }
 
@@ -87,6 +88,20 @@ class RecipeCalendar extends Component {
 
   handleSearch = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleFilter = meal => {
+    let newFilter = new Set(this.state.filter);
+    if (newFilter.has(meal)) newFilter.delete(meal);
+    else newFilter.add(meal);
+
+    this.setState({ filter: newFilter });
+  };
+
+  filterButtonClassName = meal => {
+    return this.state.filter.has(meal)
+      ? "button-selected"
+      : "button-not-selected";
   };
 
   deleteHandler = async () => {
@@ -214,7 +229,10 @@ class RecipeCalendar extends Component {
             return (
               event.recipe.title
                 .toLowerCase()
-                .indexOf(this.state.search.toLowerCase()) !== -1
+                .indexOf(this.state.search.toLowerCase()) !== -1 &&
+              ((this.state.filter.size &&
+                this.state.filter.has(event.mealType)) ||
+                !this.state.filter.size)
             );
           });
 
@@ -235,22 +253,50 @@ class RecipeCalendar extends Component {
                 <title>Calendar | COOKBOOK</title>
               </Helmet>
               <div className="calendar-container">
-                <div className="search-box-wrapper">
-                  <div className="magnifying-glass">
-                    <span role="img" aria-label="magnifying-glass">
-                      &#128269;
-                    </span>
-                  </div>
+                <div className="search-input">
                   <input
                     type="text"
-                    className="search-box-input"
                     name="search"
-                    placeholder="Search..."
+                    placeholder="search"
+                    className="recipes-search"
                     onChange={this.handleSearch}
                     value={this.state.search}
                   />
+                  <span className="searchicon" />
                 </div>
                 <div className="btn-wrapper">
+                  <div className="recipesFilterContainer">
+                    <button
+                      className={this.filterButtonClassName("breakfast")}
+                      onClick={() => this.handleFilter("breakfast")}
+                    >
+                      breakfast
+                    </button>
+                    <button
+                      className={this.filterButtonClassName("lunch")}
+                      onClick={() => this.handleFilter("lunch")}
+                    >
+                      lunch
+                    </button>
+                    <button
+                      className={this.filterButtonClassName("dinner")}
+                      onClick={() => this.handleFilter("dinner")}
+                    >
+                      dinner
+                    </button>
+                    <button
+                      className={this.filterButtonClassName("snack")}
+                      onClick={() => this.handleFilter("snack")}
+                    >
+                      snack
+                    </button>
+                    <button
+                      className={this.filterButtonClassName("dessert")}
+                      onClick={() => this.handleFilter("dessert")}
+                    >
+                      dessert
+                    </button>
+                  </div>
                   <button
                     className="duplicate-btn"
                     onClick={() => this.duplicateMeals(searchedEvents)}
