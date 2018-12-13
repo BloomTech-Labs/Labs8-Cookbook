@@ -15,7 +15,7 @@ const propTypes = {};
 
 // mutation from prisma/gql to persist DELETE functionality to backend
 
-const DELETE_EVENT_MUTATION = gql` 
+const DELETE_EVENT_MUTATION = gql`
   mutation($where: EventWhereUniqueInput!) {
     deleteEvent(where: $where) {
       id
@@ -85,7 +85,8 @@ class RecipeCalendar extends Component {
 
   mealButtonHandler = e => {
     e.preventDefault();
-    if (this.state.type === e.target.name) { // changes the current type of meal of event based on the target name of the button that is click ex; 'Lunch'
+    if (this.state.type === e.target.name) {
+      // changes the current type of meal of event based on the target name of the button that is click ex; 'Lunch'
       this.setState({ type: "" });
     } else {
       this.setState({ type: e.target.name });
@@ -126,7 +127,8 @@ class RecipeCalendar extends Component {
     }
   };
 
-  onEventSave = () => { // save function within Modal, gets the data from event onClick and saves based on onEventSave onclick, data that is updated can include meal type and date
+  onEventSave = () => {
+    // save function within Modal, gets the data from event onClick and saves based on onEventSave onclick, data that is updated can include meal type and date
     if (this.state.onDates.length || this.state.type) {
       let events = [];
       if (!this.state.onDates.length) {
@@ -224,14 +226,15 @@ class RecipeCalendar extends Component {
   };
 
   render() {
-    return ( // calling the query from gql, passes data from backend to front-end
-      <Query query={QUERY_RECIPE_EVENT}> 
+    return (
+      // calling the query from gql, passes data from backend to front-end
+      <Query query={QUERY_RECIPE_EVENT}>
         {({ loading, error, data }) => {
           if (loading) return <div>Fetching</div>;
           if (error) return <div>Error</div>;
 
           // search function to filter events based on title name, not case sensitive
-          let searchedEvents = data.events.filter(event => { 
+          let searchedEvents = data.events.filter(event => {
             return (
               event.recipe.title
                 .toLowerCase()
@@ -243,7 +246,7 @@ class RecipeCalendar extends Component {
           });
 
           // mapping out data to be rendered to screen
-          const events = searchedEvents.map(event => { 
+          const events = searchedEvents.map(event => {
             return {
               id: event.id,
               start: event.date,
@@ -259,18 +262,18 @@ class RecipeCalendar extends Component {
                 <title>Calendar | COOKBOOK</title>
               </Helmet>
               <div className="calendar-container">
-                <div className="search-input">
-                  <input
-                    type="text"
-                    name="search"
-                    placeholder="search"
-                    className="recipes-search"
-                    onChange={this.handleSearch}
-                    value={this.state.search}
-                  />
-                  <span className="searchicon" />
-                </div>
-                <div className="btn-wrapper">
+                <div className="search-filter-bar">
+                  <div className="search-input">
+                    <input
+                      type="text"
+                      name="search"
+                      placeholder="search"
+                      className="recipes-search"
+                      onChange={this.handleSearch}
+                      value={this.state.search}
+                    />
+                    <span className="searchicon" />
+                  </div>
                   <div className="recipesFilterContainer">
                     <button
                       className={this.filterButtonClassName("breakfast")}
@@ -303,6 +306,8 @@ class RecipeCalendar extends Component {
                       dessert
                     </button>
                   </div>
+                </div>
+                <div className="btn-wrapper">
                   <button
                     className="duplicate-btn"
                     onClick={() => this.duplicateMeals(searchedEvents)}

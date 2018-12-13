@@ -25,6 +25,9 @@ body::-webkit-scrollbar-track {
   box-sizing: border-box;
   outline: none;
 }
+button:hover {
+  transform: scale(1.15);
+}
 .container-margin-top {
   margin: 40px 0 211px ;
 }
@@ -1960,20 +1963,37 @@ body::-webkit-scrollbar-track {
 .calendar-page-container {
   margin-left: 5px;
 }
-.calendar-page-container .search-input {
+.calendar-page-container .search-filter-bar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+.calendar-page-container .search-filter-bar .search-input {
   position: relative;
-  margin: 10px;
+  margin: 0 10px 10px 10px;
+  flex: 40%;
 }
 @media (max-width: 600px) {
-  .calendar-page-container .search-input {
+  .calendar-page-container .search-filter-bar .search-input {
     font-size: 1rem;
     margin: 10px 5px;
   }
 }
-.calendar-page-container .search-input .recipes-search {
+@media (max-width: 900px) {
+  .calendar-page-container .search-filter-bar .search-input {
+    flex: 50%;
+  }
+}
+@media (max-width: 1200px) {
+  .calendar-page-container .search-filter-bar .search-input {
+    flex: 40%;
+  }
+}
+.calendar-page-container .search-filter-bar .search-input .recipes-search {
   position: relative;
   border: 2px solid #343e5a;
-  height: 35px;
+  height: 30px;
   width: 400px;
   border-radius: 50px;
   padding-left: 31px;
@@ -1984,15 +2004,15 @@ body::-webkit-scrollbar-track {
   color: #555;
   width: 100%;
 }
-.calendar-page-container .search-input .recipes-search:focus {
+.calendar-page-container .search-filter-bar .search-input .recipes-search:focus {
   outline: none;
 }
 @media (max-width: 600px) {
-  .calendar-page-container .search-input .recipes-search {
+  .calendar-page-container .search-filter-bar .search-input .recipes-search {
     height: 30px;
   }
 }
-.calendar-page-container .search-input .searchicon {
+.calendar-page-container .search-filter-bar .search-input .searchicon {
   position: absolute;
   height: 15px;
   width: 15px;
@@ -2003,7 +2023,7 @@ body::-webkit-scrollbar-track {
   border-radius: 100%;
   opacity: 0.8;
 }
-.calendar-page-container .search-input .searchicon:after {
+.calendar-page-container .search-filter-bar .search-input .searchicon:after {
   content: "";
   position: absolute;
   background: #343e5a;
@@ -2013,6 +2033,78 @@ body::-webkit-scrollbar-track {
   right: -3px;
   transform: rotate(-45deg);
   opacity: 0.8;
+}
+.calendar-page-container .search-filter-bar .recipesFilterContainer {
+  flex: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .search-filter-bar .recipesFilterContainer {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+@media (max-width: 900px) {
+  .calendar-page-container .search-filter-bar .recipesFilterContainer {
+    flex: 30%;
+  }
+}
+@media (max-width: 1200px) {
+  .calendar-page-container .search-filter-bar .recipesFilterContainer {
+    flex: 60%;
+  }
+}
+.calendar-page-container .search-filter-bar .recipesFilterContainer .button-selected {
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 1.5px;
+  border: #343e5a solid 2px;
+  border-radius: 20px;
+  background: #343e5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  cursor: pointer;
+  width: 100px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .search-filter-bar .recipesFilterContainer .button-selected {
+    font-size: 1rem;
+    height: 25px;
+  }
+}
+.calendar-page-container .search-filter-bar .recipesFilterContainer .button-not-selected {
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 1.5px;
+  border: #343e5a solid 2px;
+  border-radius: 20px;
+  background: #343e5a;
+  color: white;
+  height: 30px;
+  padding: 0 12px;
+  outline: none;
+  width: 100px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  color: #343e5a;
+  background: white;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .calendar-page-container .search-filter-bar .recipesFilterContainer .button-not-selected {
+    font-size: 1rem;
+    height: 25px;
+  }
+}
+.calendar-page-container .search-filter-bar .recipesFilterContainer .button-not-selected:hover {
+  background: #bcc9d2;
+  font-weight: bold;
 }
 .calendar-page-container .btn-wrapper {
   width: 100%;
@@ -2025,56 +2117,6 @@ body::-webkit-scrollbar-track {
   .calendar-page-container .btn-wrapper {
     padding-right: 5px;
   }
-}
-.calendar-page-container .btn-wrapper .recipesFilterContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-  width: 500px;
-  margin-right: 120px;
-}
-@media (max-width: 600px) {
-  .calendar-page-container .btn-wrapper .recipesFilterContainer {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-around;
-  }
-}
-@media (max-width: 900px) {
-  .calendar-page-container .btn-wrapper .recipesFilterContainer {
-    flex: 1 0 40%;
-  }
-}
-.calendar-page-container .btn-wrapper .recipesFilterContainer .button-selected {
-  font-family: 'Questrial', sans-serif;
-  letter-spacing: 1.5px;
-  border: #343e5a solid 2px;
-  border-radius: 20px;
-  background: #343e5a;
-  color: white;
-  height: 30px;
-  padding: 0 12px;
-  outline: none;
-  cursor: pointer;
-}
-.calendar-page-container .btn-wrapper .recipesFilterContainer .button-not-selected {
-  font-family: 'Questrial', sans-serif;
-  letter-spacing: 1.5px;
-  border: #343e5a solid 2px;
-  border-radius: 20px;
-  background: #343e5a;
-  color: white;
-  height: 30px;
-  padding: 0 12px;
-  outline: none;
-  color: #343e5a;
-  background: white;
-  cursor: pointer;
-}
-.calendar-page-container .btn-wrapper .recipesFilterContainer .button-not-selected:hover {
-  background: #bcc9d2;
-  font-weight: bold;
 }
 .calendar-page-container .btn-wrapper .duplicate-btn {
   background-color: white;
