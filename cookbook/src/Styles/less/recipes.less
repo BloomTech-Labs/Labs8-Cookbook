@@ -118,9 +118,7 @@
 
     .recipesFilterContainer {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: flex-start;
+      flex-flow: row wrap;
       width: 350px;
 
       @media @desktop {
@@ -140,8 +138,8 @@
 
     .button-selected {
       font-family: @secondary-font;
-      font-size: 1.5rem;
-      letter-spacing: 1.5px;
+      font-size: 1.3rem;
+      letter-spacing: 1.1px;
       border: @CBblue solid 2px;
       border-radius: 20px;
       background: @CBblue;
@@ -149,7 +147,8 @@
       height: 30px;
       padding: 0 12px;
       outline: none;
-      margin-bottom: 10px;
+      width: 30%;
+      margin: 2px;
       cursor: pointer;
     }
 

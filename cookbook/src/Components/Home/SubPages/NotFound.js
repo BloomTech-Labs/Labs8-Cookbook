@@ -2,10 +2,14 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const NotFound = () => {
   return (
     <div className="notfound-container">
+      <Helmet>
+        <title>404 | COOKBOOK</title>
+      </Helmet>
       <div className="notfound-caption">
         <div className="notfound-hat-cont">
           <div className="notfound-lines" />
