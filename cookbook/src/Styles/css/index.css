@@ -1677,6 +1677,37 @@ body::-webkit-scrollbar-track {
   cursor: pointer;
   transform: scale(1.07);
 }
+.create-wrapper .tutorial-container {
+  width: 100%;
+  padding: 30px;
+}
+.create-wrapper .tutorial-container .tutorial {
+  border: 2px dashed #de6a5a;
+  border-radius: 30px;
+  width: 60%;
+  padding: 30px 30px 0;
+}
+@media (max-width: 900px) {
+  .create-wrapper .tutorial-container .tutorial {
+    width: 100%;
+  }
+}
+.create-wrapper .tutorial-container .tutorial p {
+  margin: 0 0 30px;
+  font-family: 'Questrial', sans-serif;
+  letter-spacing: 0.1rem;
+  line-height: 2rem;
+  font-size: 1.6rem;
+}
+@media (max-width: 600px) {
+  .create-wrapper .tutorial-container .tutorial p {
+    font-size: 1.3rem;
+    margin: 0 0 15px;
+  }
+}
+.create-wrapper .tutorial-container .tutorial p b {
+  color: #de6a5a;
+}
 .create-wrapper .preview-and-schedule {
   display: flex;
   margin-top: 30px;

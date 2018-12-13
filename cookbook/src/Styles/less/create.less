@@ -96,6 +96,39 @@
     }
   }
 
+  .tutorial-container {
+    width: 100%;
+    padding: 30px;
+
+    .tutorial {
+      border: 2px dashed @CBred;
+      border-radius: 30px;
+      width: 60%;
+      padding: 30px 30px 0;
+
+      @media @tablet {
+        width: 100%;
+      }
+
+      p{
+        margin: 0 0 30px;
+        font-family: @secondary-font;
+        letter-spacing: .1rem;
+        line-height: 2rem;
+        font-size: 1.6rem;
+
+        @media @phone {
+          font-size: 1.3rem;
+          margin: 0 0 15px;
+        }
+
+        b {
+          color: @CBred;
+        }
+      }
+    }
+  }
+
   .preview-and-schedule {
     display: flex;
     margin-top: 30px;
