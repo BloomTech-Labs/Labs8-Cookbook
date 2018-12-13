@@ -3,6 +3,7 @@ import RecipeCard from "./RecipeCard";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const GET_RECIPES_QUERY = gql`
   query {
@@ -71,54 +72,55 @@ class Recipes extends Component {
           <title>Recipes | COOKBOOK</title>
         </Helmet>
         <div className="recipesFunctionBar">
-          <button
-            onClick={() => this.handleAddRecipe()}
-            className="recipesAddRecipe"
-          >
-            + add recipe
-          </button>
-          <div className="search-input">
-            <input
-              type="text"
-              name="search"
-              placeholder="search"
-              className="recipes-search"
-              onChange={this.handleSearch}
-              value={this.state.search}
-            />
-            <span className="searchicon" />
+          <div className='search-and-add-recipe'>
+            <button
+              onClick={() => this.handleAddRecipe()}
+              className="recipesAddRecipe"
+            >
+              + add recipe
+            </button>
+            <div className="search-input">
+              <input
+                type="text"
+                name="search"
+                placeholder="search"
+                className="recipes-search"
+                onChange={this.handleSearch}
+                value={this.state.search}
+              />
+              <span className="searchicon" />
           </div>
-
+          </div>
           <div className="recipesFilterContainer">
             <button
               className={this.filterButtonClassName("breakfast")}
               onClick={() => this.handleFilter("breakfast")}
             >
-              breakfast
+              <FontAwesomeIcon icon='coffee'/> breakfast
             </button>
             <button
               className={this.filterButtonClassName("lunch")}
               onClick={() => this.handleFilter("lunch")}
             >
-              lunch
+              <span style={{fontFamily: 'burger-b'}}>b</span> lunch
             </button>
             <button
               className={this.filterButtonClassName("dinner")}
               onClick={() => this.handleFilter("dinner")}
             >
-              dinner
+              <FontAwesomeIcon icon='utensils'/> dinner
             </button>
             <button
               className={this.filterButtonClassName("snack")}
               onClick={() => this.handleFilter("snack")}
             >
-              snack
+              <FontAwesomeIcon icon='apple-alt'/> snack
             </button>
             <button
               className={this.filterButtonClassName("dessert")}
               onClick={() => this.handleFilter("dessert")}
             >
-              dessert
+              <FontAwesomeIcon icon='cookie-bite'/> dessert
             </button>
           </div>
         </div>

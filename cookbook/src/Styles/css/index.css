@@ -2602,22 +2602,20 @@ body::-webkit-scrollbar-track {
 .recipesContainer .recipesFunctionBar {
   display: flex;
   flex-flow: row;
-  justify-content: space-around;
-  align-items: flex-start;
-  padding: 15px;
-}
-@media (max-width: 600px) {
-  .recipesContainer .recipesFunctionBar {
-    flex-direction: column;
-    align-items: center;
-  }
+  justify-content: space-between;
+  padding: 0 25px;
 }
 @media (max-width: 900px) {
   .recipesContainer .recipesFunctionBar {
-    flex-flow: row wrap;
+    flex-wrap: wrap;
   }
 }
-.recipesContainer .recipesFunctionBar .recipesAddRecipe {
+@media (max-width: 600px) {
+  .recipesContainer .recipesFunctionBar .search-and-add-recipe {
+    width: 100%;
+  }
+}
+.recipesContainer .recipesFunctionBar .search-and-add-recipe .recipesAddRecipe {
   background-color: #343e5a;
   color: white;
   height: 30px;
@@ -2627,78 +2625,82 @@ body::-webkit-scrollbar-track {
   border: 2px solid #343e5a;
   cursor: pointer;
 }
-.recipesContainer .recipesFunctionBar .recipesAddRecipe:hover {
+.recipesContainer .recipesFunctionBar .search-and-add-recipe .recipesAddRecipe:hover {
   color: #fed092;
 }
 @media (max-width: 900px) {
-  .recipesContainer .recipesFunctionBar .recipesAddRecipe {
+  .recipesContainer .recipesFunctionBar .search-and-add-recipe .recipesAddRecipe {
     width: 150px;
     font-size: 1.6rem;
     top: 15px;
-    margin-bottom: 30px;
     flex: 0 1 100%;
     margin-right: 80%;
+    margin-bottom: 5px;
   }
 }
 @media (max-width: 600px) {
-  .recipesContainer .recipesFunctionBar .recipesAddRecipe {
+  .recipesContainer .recipesFunctionBar .search-and-add-recipe .recipesAddRecipe {
     position: static;
-    margin-bottom: 30px;
     height: 30px;
     align-self: flex-start;
     width: 150px;
     margin-right: 60%;
   }
 }
-.recipesContainer .recipesFunctionBar .search-input {
+.recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input {
   position: relative;
 }
-.recipesContainer .recipesFunctionBar .search-input .recipes-search {
+@media (max-width: 600px) {
+  .recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input {
+    width: 100%;
+  }
+}
+.recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input .recipes-search {
   position: relative;
   border: 2px solid #343e5a;
   height: 30px;
-  width: 400px;
+  width: 650px;
   border-radius: 50px;
   padding-left: 31px;
   padding-right: 11px;
   padding-top: 4px;
   padding-bottom: 4px;
+  margin-top: 11px;
   font-size: 13px;
   color: #555;
 }
-.recipesContainer .recipesFunctionBar .search-input .recipes-search:focus {
+.recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input .recipes-search:focus {
   outline: none;
 }
-@media (max-width: 600px) {
-  .recipesContainer .recipesFunctionBar .search-input .recipes-search {
-    margin-bottom: 30px;
-    width: 330px;
+@media (max-width: 1200px) {
+  .recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input .recipes-search {
+    width: 500px;
   }
 }
 @media (max-width: 900px) {
-  .recipesContainer .recipesFunctionBar .search-input .recipes-search {
-    margin-bottom: 30px;
-    width: 350px;
+  .recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input .recipes-search {
+    margin-bottom: 15px;
     flex: 1 0 40%;
+    width: 648px;
   }
 }
-@media (max-width: 1200px) {
-  .recipesContainer .recipesFunctionBar .search-input .recipes-search {
-    width: 350px;
+@media (max-width: 600px) {
+  .recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input .recipes-search {
+    width: 100%;
   }
 }
-.recipesContainer .recipesFunctionBar .search-input .searchicon {
+.recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input .searchicon {
   position: absolute;
   height: 15px;
   width: 15px;
   background: transparent;
   border: 2px solid #343e5a;
   left: 12px;
-  top: 7px;
+  top: 17px;
   border-radius: 100%;
   opacity: 0.8;
 }
-.recipesContainer .recipesFunctionBar .search-input .searchicon:after {
+.recipesContainer .recipesFunctionBar .search-and-add-recipe .search-input .searchicon:after {
   content: "";
   position: absolute;
   background: #343e5a;
@@ -2716,6 +2718,11 @@ body::-webkit-scrollbar-track {
   align-items: flex-start;
   width: 350px;
 }
+@media (max-width: 1200px) {
+  .recipesContainer .recipesFunctionBar .recipesFilterContainer {
+    width: 320px;
+  }
+}
 @media (max-width: 600px) {
   .recipesContainer .recipesFunctionBar .recipesFilterContainer {
     margin-bottom: 10px;
@@ -2727,10 +2734,6 @@ body::-webkit-scrollbar-track {
   .recipesContainer .recipesFunctionBar .recipesFilterContainer {
     flex: 1 0 40%;
   }
-}
-.recipesContainer .recipesFunctionBar .burger-icon {
-  height: 15px;
-  margin-right: 3px;
 }
 .recipesContainer .recipesFunctionBar .button-selected {
   font-family: 'Questrial', sans-serif;
@@ -2770,7 +2773,7 @@ body::-webkit-scrollbar-track {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 10px;
   /* Prevents :hover from triggering in the gaps between items */
   visibility: hidden;
   /* Brings the child items back in, even though the parent is `hidden` */
@@ -2796,6 +2799,7 @@ body::-webkit-scrollbar-track {
 @media (max-width: 600px) {
   .recipesContainer .recipesCards {
     justify-content: center;
+    margin-top: 0;
   }
 }
 @media (max-width: 900px) {
