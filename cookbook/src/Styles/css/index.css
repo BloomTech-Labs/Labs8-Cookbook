@@ -2721,6 +2721,10 @@ body::-webkit-scrollbar-track {
     flex: 1 0 40%;
   }
 }
+.recipesContainer .recipesFunctionBar .burger-icon {
+  height: 15px;
+  margin-right: 3px;
+}
 .recipesContainer .recipesFunctionBar .button-selected {
   font-family: 'Questrial', sans-serif;
   font-size: 1.5rem;
@@ -2733,7 +2737,6 @@ body::-webkit-scrollbar-track {
   padding: 0 12px;
   outline: none;
   margin-bottom: 10px;
-  width: 100px;
   cursor: pointer;
 }
 .recipesContainer .recipesFunctionBar .button-not-selected {
@@ -2748,7 +2751,6 @@ body::-webkit-scrollbar-track {
   padding: 0 12px;
   outline: none;
   margin-bottom: 10px;
-  width: 100px;
   color: #343e5a;
   background: white;
   cursor: pointer;
@@ -3537,6 +3539,10 @@ body::-webkit-scrollbar-track {
   flex-flow: wrap;
   padding: 0 15px 0;
   cursor: pointer;
+}
+.modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons .burger-icon {
+  height: 15px;
+  margin-right: 3px;
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .recipe-buttons .button-selected {
   font-family: 'Questrial', sans-serif;
