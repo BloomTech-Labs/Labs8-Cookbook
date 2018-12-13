@@ -2574,6 +2574,9 @@ body {
   border: 2px solid #343e5a;
   cursor: pointer;
 }
+.recipesContainer .recipesFunctionBar .recipesAddRecipe:hover {
+  color: #fed092;
+}
 @media (max-width: 900px) {
   .recipesContainer .recipesFunctionBar .recipesAddRecipe {
     width: 150px;
