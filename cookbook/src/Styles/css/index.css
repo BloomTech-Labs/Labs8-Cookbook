@@ -8,6 +8,19 @@ body {
   margin: 0;
   padding: 0;
 }
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 12px;
+}
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #343e5a;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background-color: #f5e9df;
+}
 * {
   box-sizing: border-box;
   outline: none;
@@ -208,40 +221,25 @@ body {
   height: 100%;
   background-color: #fed092;
 }
-.nav .create-nav .span:hover {
-  font-weight: bold;
-}
 .nav .calendar-nav {
   width: 25%;
   height: 100%;
   background-color: #bcc9d2;
-}
-.nav .calendar-nav .span:hover {
-  font-weight: bold;
 }
 .nav .dashboard-nav {
   width: 25%;
   height: 100%;
   background-color: #343e5a;
 }
-.nav .dashboard-nav .span:hover {
-  font-weight: bold;
-}
 .nav .settings-nav {
   width: 25%;
   height: 100%;
   background-color: #de6a5a;
 }
-.nav .settings-nav .span:hover {
-  font-weight: bold;
-}
 .nav .recipes-nav {
   width: 25%;
   height: 100%;
   background-color: #f5e9df;
-}
-.nav .recipes-nav .span:hover {
-  font-weight: bold;
 }
 .cp-phone-nav {
   width: 100%;
@@ -279,18 +277,12 @@ body {
     line-height: 35px;
   }
 }
-.cp-phone-nav .current-page .pg-bar:hover {
-  font-weight: bold;
-}
 .cp-phone-nav .current-page .create-cp {
   width: 100%;
   height: 100%;
   color: #de6a5a;
   background-color: #fed092;
   text-align: center;
-}
-.cp-phone-nav .current-page .create-cp:hover {
-  font-weight: bold;
 }
 .cp-phone-nav .current-page .calendar-cp {
   width: 100%;
@@ -322,12 +314,12 @@ body {
 }
 .cp-phone-nav .dropdown .nav-icon {
   height: 35px;
-  width: 40px;
+  width: 50px;
   position: absolute;
   top: 0;
   font-size: 1.6rem;
-  border-radius: 20px;
-  margin-left: -17px;
+  border-radius: 50px;
+  margin-left: -15px;
   overflow: hidden;
   display: none;
 }
@@ -337,10 +329,10 @@ body {
   }
 }
 .cp-phone-nav .dropdown .nav-icon .icon {
-  margin-left: 22px;
-  margin-top: 8px;
+  margin-left: 30px;
+  margin-top: 9px;
 }
-.cp-phone-nav .dropdown .phone-nav {
+.cp-phone-nav .dropdown .phone-nav-hide {
   display: none;
   width: 100%;
   z-index: 16;
@@ -349,7 +341,7 @@ body {
   position: absolute;
   top: 15px;
 }
-.cp-phone-nav .dropdown .phone-nav .nav-bar {
+.cp-phone-nav .dropdown .phone-nav-hide .nav-bar {
   width: 100%;
   line-height: 35px;
   text-align: center;
@@ -358,11 +350,28 @@ body {
   text-decoration: none;
   font-size: 2rem;
 }
-.cp-phone-nav .dropdown .phone-nav .nav-bar:hover {
-  font-weight: bold;
+.cp-phone-nav .dropdown .phone-nav-show {
+  display: none;
+  width: 100%;
+  z-index: 16;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  position: absolute;
+  top: 15px;
 }
-.cp-phone-nav .dropdown:hover .phone-nav {
+@media (max-width: 600px) {
+  .cp-phone-nav .dropdown .phone-nav-show {
+    display: flex;
+  }
+}
+.cp-phone-nav .dropdown .phone-nav-show .nav-bar {
+  width: 100%;
+  line-height: 35px;
+  text-align: center;
   display: flex;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 2rem;
 }
 .landing-container {
   display: flex;
@@ -386,6 +395,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100vh;
+  min-height: 600px;
   width: 100%;
   text-align: center;
   overflow: hidden;
@@ -393,6 +403,16 @@ body {
   background-position: 25% 50%;
   color: #f5e9df;
   cursor: default;
+}
+@media (max-width: 1200px) {
+  .landing-container .above-the-fold {
+    min-height: 700px;
+  }
+}
+@media (max-width: 600px) {
+  .landing-container .above-the-fold {
+    min-height: 450px;
+  }
 }
 .landing-container .above-the-fold .branding {
   display: flex;
