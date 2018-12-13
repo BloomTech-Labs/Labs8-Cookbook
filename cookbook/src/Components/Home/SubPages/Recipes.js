@@ -90,38 +90,36 @@ class Recipes extends Component {
           </div>
 
           <div className="recipesFilterContainer">
-            <div className="recipe-button-container">
-              <button
-                className={this.filterButtonClassName("breakfast")}
-                onClick={() => this.handleFilter("breakfast")}
-              >
-                breakfast
-              </button>
-              <button
-                className={this.filterButtonClassName("lunch")}
-                onClick={() => this.handleFilter("lunch")}
-              >
-                lunch
-              </button>
-              <button
-                className={this.filterButtonClassName("dinner")}
-                onClick={() => this.handleFilter("dinner")}
-              >
-                dinner
-              </button>
-              <button
-                className={this.filterButtonClassName("snack")}
-                onClick={() => this.handleFilter("snack")}
-              >
-                snack
-              </button>
-              <button
-                className={this.filterButtonClassName("dessert")}
-                onClick={() => this.handleFilter("dessert")}
-              >
-                dessert
-              </button>
-            </div>
+            <button
+              className={this.filterButtonClassName("breakfast")}
+              onClick={() => this.handleFilter("breakfast")}
+            >
+              breakfast
+            </button>
+            <button
+              className={this.filterButtonClassName("lunch")}
+              onClick={() => this.handleFilter("lunch")}
+            >
+              lunch
+            </button>
+            <button
+              className={this.filterButtonClassName("dinner")}
+              onClick={() => this.handleFilter("dinner")}
+            >
+              dinner
+            </button>
+            <button
+              className={this.filterButtonClassName("snack")}
+              onClick={() => this.handleFilter("snack")}
+            >
+              snack
+            </button>
+            <button
+              className={this.filterButtonClassName("dessert")}
+              onClick={() => this.handleFilter("dessert")}
+            >
+              dessert
+            </button>
           </div>
         </div>
         <Query query={GET_RECIPES_QUERY}>
