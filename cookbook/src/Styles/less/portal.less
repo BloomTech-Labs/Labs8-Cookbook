@@ -1,6 +1,9 @@
 .modal-portal {
   .portal-container {
     border: 1.5px solid @CBblue;
+    @media @phone {
+      transform: scale(0.8);
+    }
     .modal-container {
       .modal-confirmation {
         .modal-text-confirmation {
@@ -131,9 +134,21 @@
             }
             .DayPicker-Months {
               margin-bottom: -8px;
+              display: flex;
+              width: 100%;
+              flex-wrap: wrap;
+              justify-content: center;
 
               .DayPicker-Month {
                 border: 2px @CBblue solid;
+                height: 300px;
+                display: table;
+                margin: 0 1em;
+                border-spacing: 0;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
 
                 .DayPicker-Caption {
                   background: @CBblue;
@@ -142,6 +157,7 @@
                 .DayPicker-Weekdays {
                 }
                 .DayPicker-Body {
+                  display: table-row-group;
                   .DayPicker-Week {
                     .DayPicker-Day {
                       font-size: 12px;

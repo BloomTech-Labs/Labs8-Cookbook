@@ -13,7 +13,9 @@ import { toastMessage } from "../../../utils/toastify";
 
 const propTypes = {};
 
-const DELETE_EVENT_MUTATION = gql`
+// mutation from prisma/gql to persist DELETE functionality to backend
+
+const DELETE_EVENT_MUTATION = gql` 
   mutation($where: EventWhereUniqueInput!) {
     deleteEvent(where: $where) {
       id
@@ -22,6 +24,8 @@ const DELETE_EVENT_MUTATION = gql`
     }
   }
 `;
+
+// query from prisma/gql to GET data from backend
 
 const QUERY_RECIPE_EVENT = gql`
   query {
@@ -37,6 +41,8 @@ const QUERY_RECIPE_EVENT = gql`
   }
 `;
 
+// mutation from prisma/gql to POST/UPDATE data from here to backend
+
 const CREATE_EVENT_MUTATION = gql`
   mutation($date: String!, $mealType: String!, $recipe: String!) {
     createEvent(date: $date, mealType: $mealType, recipe: $recipe) {
@@ -51,7 +57,7 @@ const CREATE_EVENT_MUTATION = gql`
   }
 `;
 
-const localizer = BigCalendar.momentLocalizer(moment); // a localizer for BigCalendar
+const localizer = BigCalendar.momentLocalizer(moment); // a localizer for BigCalendar - gets current local time in realtime
 
 class RecipeCalendar extends Component {
   constructor(...args) {
@@ -66,19 +72,19 @@ class RecipeCalendar extends Component {
   }
 
   handlePickDate = dates => {
-    this.setState({ onDates: dates });
+    this.setState({ onDates: dates }); // updates current date to new selected date
   };
 
   toggleModal = event => {
     this.setState({
-      showModal: !this.state.showModal,
+      showModal: !this.state.showModal, // changes the current event to new selected event
       currentEvent: event
     });
   };
 
   mealButtonHandler = e => {
     e.preventDefault();
-    if (this.state.type === e.target.name) {
+    if (this.state.type === e.target.name) { // changes the current type of meal of event based on the target name of the button that is click ex; 'Lunch'
       this.setState({ type: "" });
     } else {
       this.setState({ type: e.target.name });
@@ -86,10 +92,10 @@ class RecipeCalendar extends Component {
   };
 
   handleSearch = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value }); // search function that updates based on value of each key input
   };
 
-  deleteHandler = async () => {
+  deleteHandler = async () => { // delete function within Modal, gets the data from event onClick and deletes based on DeleteHandler onclick
     try {
       await this.props.deleteEvent({
         variables: { where: { id: this.state.currentEvent.id } },
@@ -105,7 +111,7 @@ class RecipeCalendar extends Component {
     }
   };
 
-  onEventSave = () => {
+  onEventSave = () => { // save function within Modal, gets the data from event onClick and saves based on onEventSave onclick, data that is updated can include meal type and date
     if (this.state.onDates.length || this.state.type) {
       let events = [];
       if (!this.state.onDates.length) {
@@ -203,14 +209,14 @@ class RecipeCalendar extends Component {
   };
 
   render() {
-    return (
-      <Query query={QUERY_RECIPE_EVENT}>
+    return ( // calling the query from gql, passes data from backend to front-end
+      <Query query={QUERY_RECIPE_EVENT}> 
         {({ loading, error, data }) => {
           if (loading) return <div>Fetching</div>;
           if (error) return <div>Error</div>;
 
-          // filter function for search
-          let searchedEvents = data.events.filter(event => {
+          // search function to filter events based on title name, not case sensitive
+          let searchedEvents = data.events.filter(event => { 
             return (
               event.recipe.title
                 .toLowerCase()
@@ -219,7 +225,7 @@ class RecipeCalendar extends Component {
           });
 
           // mapping out data to be rendered to screen
-          const events = searchedEvents.map(event => {
+          const events = searchedEvents.map(event => { 
             return {
               id: event.id,
               start: event.date,
@@ -258,7 +264,7 @@ class RecipeCalendar extends Component {
                     Duplicate last 7 days
                   </button>
                 </div>
-                <BigCalendar
+                <BigCalendar // react-calendar that passes data from backend as event
                   selectable
                   popup
                   localizer={localizer}
@@ -273,7 +279,7 @@ class RecipeCalendar extends Component {
               <div>
                 {this.state.showModal ? ( // portal ternary statement to turn on/off
                   <Modal onClose={this.toggleModal}>
-                    <div
+                    <div // inline styling for modal
                       className="modal-container"
                       style={{
                         maxWidth: 400,
@@ -283,7 +289,7 @@ class RecipeCalendar extends Component {
                         flexDirection: "column"
                       }}
                     >
-                      {!this.state.isUpdated ? (
+                      {!this.state.isUpdated ? ( // modal on
                         <div className="modal-sub-container">
                           <h1 className="modal-text">
                             Please select Meal and Date!
