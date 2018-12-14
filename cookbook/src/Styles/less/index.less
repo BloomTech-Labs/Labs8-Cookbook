@@ -28,9 +28,15 @@ body {
   outline: none;
 }
 
+button {
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
 @font-face {
-  font-family: 'burger-b';
-  src: local('burger-b'), url(../../designs/Icons/burger-b.woff) format('woff');
+  font-family: "burger-b";
+  src: local("burger-b"), url(../../designs/Icons/burger-b.woff) format("woff");
 }
 
 @import "variables.less";

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import loading from "../designs/Logo/Logo.png";
 import auth from "../Auth/Auth";
 import { Query, graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { CURRENT_USER_QUERY } from "../Components/Home/SubPages/User";
 import { Redirect } from "react-router-dom";
+import Loading from "../Components/SubComponents/Loading";
 
 const CREATE_USER_MUTATION = gql`
   mutation {
@@ -42,21 +42,17 @@ class Callback extends Component {
 
   render() {
     if (!this.state.isAuthenticated) {
-      return (
-        <div>
-          <img src={loading} alt="landing" />
-        </div>
-      );
+      return <Loading />;
     } else {
       return (
         <Query {...this.props} query={CURRENT_USER_QUERY}>
           {({ data: { currentUser }, loading, error }) => {
-            if (loading) return <p>loading...</p>;
+            if (loading) return <Loading />;
             if (error) return <p>{error.message}</p>;
             if (!currentUser) {
               this.createNewUser();
             }
-            return <Redirect to="/home" />;
+            return <Redirect to="/home/recipes" />;
           }}
         </Query>
       );

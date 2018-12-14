@@ -10,7 +10,6 @@ const GatedSubscription = props => {
       {({ data, loading }) => {
         if (loading) return <Loading></Loading>;
         if (!data.currentUser.isSubscribed) {
-          console.log(data.currentUser.isSubscribed);
           return (
             <div>
               <p>This content is only available to premium user.</p>

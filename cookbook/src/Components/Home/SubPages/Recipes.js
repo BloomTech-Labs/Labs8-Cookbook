@@ -73,7 +73,7 @@ class Recipes extends Component {
           <title>Recipes | COOKBOOK</title>
         </Helmet>
         <div className="recipesFunctionBar">
-          <div className='search-and-add-recipe'>
+          <div className="search-and-add-recipe">
             <button
               onClick={() => this.handleAddRecipe()}
               className="recipesAddRecipe"
@@ -90,44 +90,44 @@ class Recipes extends Component {
                 value={this.state.search}
               />
               <span className="searchicon" />
-          </div>
+            </div>
           </div>
           <div className="recipesFilterContainer">
             <button
               className={this.filterButtonClassName("breakfast")}
               onClick={() => this.handleFilter("breakfast")}
             >
-              <FontAwesomeIcon icon='coffee'/> breakfast
+              <FontAwesomeIcon icon="coffee" /> breakfast
             </button>
             <button
               className={this.filterButtonClassName("lunch")}
               onClick={() => this.handleFilter("lunch")}
             >
-              <span style={{fontFamily: 'burger-b'}}>b</span> lunch
+              <span style={{ fontFamily: "burger-b" }}>b</span> lunch
             </button>
             <button
               className={this.filterButtonClassName("dinner")}
               onClick={() => this.handleFilter("dinner")}
             >
-              <FontAwesomeIcon icon='utensils'/> dinner
+              <FontAwesomeIcon icon="utensils" /> dinner
             </button>
             <button
               className={this.filterButtonClassName("snack")}
               onClick={() => this.handleFilter("snack")}
             >
-              <FontAwesomeIcon icon='apple-alt'/> snack
+              <FontAwesomeIcon icon="apple-alt" /> snack
             </button>
             <button
               className={this.filterButtonClassName("dessert")}
               onClick={() => this.handleFilter("dessert")}
             >
-              <FontAwesomeIcon icon='cookie-bite'/> dessert
+              <FontAwesomeIcon icon="cookie-bite" /> dessert
             </button>
           </div>
         </div>
         <Query query={GET_RECIPES_QUERY}>
           {({ loading, error, data }) => {
-            if (loading) return <Loading></Loading>;
+            if (loading) return <Loading />;
             if (error) return <div>Error</div>;
             const recipesToRender = data.recipes.filter(recipe => {
               let hasMealType = true;

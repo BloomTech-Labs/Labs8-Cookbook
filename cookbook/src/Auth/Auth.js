@@ -48,7 +48,6 @@ class Auth {
     );
     //Save token returned by auth0 to auth
     this.idToken = authResult.idToken;
-    console.log(this.idToken);
     //Set authFlag in local storage to true
     localStorage.setItem(this.authFlag, JSON.stringify(true));
   };

@@ -11,12 +11,13 @@ import { GET_RECIPES_QUERY } from "./Recipes";
 import { Helmet } from "react-helmet";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { toastMessage } from "../../../utils/toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const propTypes = {};
 
 // mutation from prisma/gql to persist DELETE functionality to backend
 
-const DELETE_EVENT_MUTATION = gql` 
+const DELETE_EVENT_MUTATION = gql`
   mutation($where: EventWhereUniqueInput!) {
     deleteEvent(where: $where) {
       id
@@ -68,7 +69,8 @@ class RecipeCalendar extends Component {
       type: "",
       showModal: false,
       onDates: [],
-      search: ""
+      search: "",
+      filter: new Set([])
     };
   }
 
@@ -85,7 +87,8 @@ class RecipeCalendar extends Component {
 
   mealButtonHandler = e => {
     e.preventDefault();
-    if (this.state.type === e.target.name) { // changes the current type of meal of event based on the target name of the button that is click ex; 'Lunch'
+    if (this.state.type === e.target.name) {
+      // changes the current type of meal of event based on the target name of the button that is click ex; 'Lunch'
       this.setState({ type: "" });
     } else {
       this.setState({ type: e.target.name });
@@ -96,7 +99,21 @@ class RecipeCalendar extends Component {
     this.setState({ [e.target.name]: e.target.value }); // search function that updates based on value of each key input
   };
 
-  deleteHandler = async () => { // delete function within Modal, gets the data from event onClick and deletes based on DeleteHandler onclick
+  handleFilter = meal => {
+    let newFilter = new Set(this.state.filter);
+    if (newFilter.has(meal)) newFilter.delete(meal);
+    else newFilter.add(meal);
+
+    this.setState({ filter: newFilter });
+  };
+
+  filterButtonClassName = meal => {
+    return this.state.filter.has(meal)
+      ? "button-selected"
+      : "button-not-selected";
+  };
+
+  deleteHandler = async () => {
     try {
       await this.props.deleteEvent({
         variables: { where: { id: this.state.currentEvent.id } },
@@ -112,7 +129,8 @@ class RecipeCalendar extends Component {
     }
   };
 
-  onEventSave = () => { // save function within Modal, gets the data from event onClick and saves based on onEventSave onclick, data that is updated can include meal type and date
+  onEventSave = () => {
+    // save function within Modal, gets the data from event onClick and saves based on onEventSave onclick, data that is updated can include meal type and date
     if (this.state.onDates.length || this.state.type) {
       let events = [];
       if (!this.state.onDates.length) {
@@ -210,23 +228,27 @@ class RecipeCalendar extends Component {
   };
 
   render() {
-    return ( // calling the query from gql, passes data from backend to front-end
-      <Query query={QUERY_RECIPE_EVENT}> 
+    return (
+      // calling the query from gql, passes data from backend to front-end
+      <Query query={QUERY_RECIPE_EVENT}>
         {({ loading, error, data }) => {
-          if (loading) return <Loading></Loading>;
+          if (loading) return <Loading />;
           if (error) return <div>Error</div>;
 
           // search function to filter events based on title name, not case sensitive
-          let searchedEvents = data.events.filter(event => { 
+          let searchedEvents = data.events.filter(event => {
             return (
               event.recipe.title
                 .toLowerCase()
-                .indexOf(this.state.search.toLowerCase()) !== -1
+                .indexOf(this.state.search.toLowerCase()) !== -1 &&
+              ((this.state.filter.size &&
+                this.state.filter.has(event.mealType)) ||
+                !this.state.filter.size)
             );
           });
 
           // mapping out data to be rendered to screen
-          const events = searchedEvents.map(event => { 
+          const events = searchedEvents.map(event => {
             return {
               id: event.id,
               start: event.date,
@@ -242,20 +264,50 @@ class RecipeCalendar extends Component {
                 <title>Calendar | COOKBOOK</title>
               </Helmet>
               <div className="calendar-container">
-                <div className="search-box-wrapper">
-                  <div className="magnifying-glass">
-                    <span role="img" aria-label="magnifying-glass">
-                      &#128269;
-                    </span>
+                <div className="search-filter-bar">
+                  <div className="search-input">
+                    <input
+                      type="text"
+                      name="search"
+                      placeholder="search"
+                      className="recipes-search"
+                      onChange={this.handleSearch}
+                      value={this.state.search}
+                    />
+                    <span className="searchicon" />
                   </div>
-                  <input
-                    type="text"
-                    className="search-box-input"
-                    name="search"
-                    placeholder="Search..."
-                    onChange={this.handleSearch}
-                    value={this.state.search}
-                  />
+                  <div className="recipesFilterContainer">
+                    <button
+                      className={this.filterButtonClassName("breakfast")}
+                      onClick={() => this.handleFilter("breakfast")}
+                    >
+                      <FontAwesomeIcon icon="coffee" /> breakfast
+                    </button>
+                    <button
+                      className={this.filterButtonClassName("lunch")}
+                      onClick={() => this.handleFilter("lunch")}
+                    >
+                      <span style={{ fontFamily: "burger-b" }}>b</span> lunch
+                    </button>
+                    <button
+                      className={this.filterButtonClassName("dinner")}
+                      onClick={() => this.handleFilter("dinner")}
+                    >
+                      <FontAwesomeIcon icon="utensils" /> dinner
+                    </button>
+                    <button
+                      className={this.filterButtonClassName("snack")}
+                      onClick={() => this.handleFilter("snack")}
+                    >
+                      <FontAwesomeIcon icon="apple-alt" /> snack
+                    </button>
+                    <button
+                      className={this.filterButtonClassName("dessert")}
+                      onClick={() => this.handleFilter("dessert")}
+                    >
+                      <FontAwesomeIcon icon="cookie-bite" /> dessert
+                    </button>
+                  </div>
                 </div>
                 <div className="btn-wrapper">
                   <button
