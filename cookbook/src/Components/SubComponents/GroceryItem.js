@@ -10,16 +10,8 @@ const GroceryItem = props => {
       }`}
     >
       <Checkbox isCompleted={props.ingredient.isCompleted} 
-        index={props.index} handleItemClick={props.handleItemClick}>
+        callbackArg={props.index} callback={props.handleItemClick}>
       </Checkbox>
-      {/* <div className="checkbox-container">
-        <input
-          className="gl-checkbox"
-          type="checkbox"
-          checked={props.ingredient.isCompleted}
-          onChange={() => props.handleItemClick(props.index)}
-        />
-      </div> */}
       <span
         className="item-text"
         onClick={() => props.handleItemClick(props.index)}

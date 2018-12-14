@@ -1352,7 +1352,7 @@ body::-webkit-scrollbar-track {
   fill-opacity: 1;
 }
 .checkbox-container .check-back-off {
-  stroke: #fed092;
+  stroke: #f5e9df;
   stroke-width: 0px;
   fill: none;
   stroke-opacity: 0;
@@ -3445,12 +3445,36 @@ body::-webkit-scrollbar-track {
     font-size: 1.4rem;
   }
 }
-.recipe-page .right-container .instructions .instruction .checkbox {
-  width: 20px;
-  margin-top: 8px;
-}
 .recipe-page .right-container .instructions .instruction .description {
   width: 480px;
+}
+.recipe-page .right-container .instructions .instruction .checkbox-container {
+  width: 20px;
+  height: 20px;
+  margin: 3px 3px 0 0;
+}
+@media (max-width: 1200px) {
+  .recipe-page .right-container .instructions .instruction .checkbox-container {
+    width: 28px;
+  }
+}
+@media (max-width: 900px) {
+  .recipe-page .right-container .instructions .instruction .checkbox-container {
+    width: 35px;
+  }
+}
+.recipe-page .right-container .instructions .instruction .checkbox-container .circle {
+  stroke: #bcc9d2;
+}
+.recipe-page .right-container .instructions .instruction .checkbox-container .check-back-off {
+  stroke: #f5e9df;
+  stroke-width: 0px;
+  fill: none;
+  stroke-opacity: 0;
+}
+.recipe-page .right-container .instructions .instruction .checkbox-container .check-off {
+  fill: #343e5a;
+  fill-opacity: 0;
 }
 .recipe-page .right-container .instructions .instruction-checked {
   background-color: #bcc9d2;
@@ -3465,9 +3489,32 @@ body::-webkit-scrollbar-track {
     font-size: 1.4rem;
   }
 }
-.recipe-page .right-container .instructions .instruction-checked .checkbox {
+.recipe-page .right-container .instructions .instruction-checked .checkbox-container {
   width: 20px;
-  margin-top: 8px;
+  height: 20px;
+  margin: 3px 3px 0 0;
+}
+@media (max-width: 1200px) {
+  .recipe-page .right-container .instructions .instruction-checked .checkbox-container {
+    width: 28px;
+  }
+}
+@media (max-width: 900px) {
+  .recipe-page .right-container .instructions .instruction-checked .checkbox-container {
+    width: 35px;
+  }
+}
+.recipe-page .right-container .instructions .instruction-checked .checkbox-container .circle {
+  stroke: #343e5a;
+}
+.recipe-page .right-container .instructions .instruction-checked .checkbox-container .check-back-on {
+  stroke: #bcc9d2;
+  stroke-width: 5px;
+  fill: none;
+}
+.recipe-page .right-container .instructions .instruction-checked .checkbox-container .check-on {
+  fill: #343e5a;
+  fill-opacity: 1;
 }
 .recipe-page .right-container .instructions .instruction-checked .description {
   width: 480px;

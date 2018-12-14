@@ -6,6 +6,7 @@ import { GET_RECIPES_QUERY } from "./Recipes";
 import { QUERY_RECIPE_EVENT } from "./Calendar";
 import Iframe from "react-iframe";
 import { toastMessage } from "../../../utils/toastify";
+import Checkbox from "../../SubComponents/Checkbox";
 
 class RecipeView extends Component {
   constructor(props) {
@@ -51,10 +52,10 @@ class RecipeView extends Component {
     return comparison;
   }
 
-  toggleCheckBox = e => {
+  toggleCheckBox = (stepNumArg) => {
     // filter through instuction state to find matching instruction by id
     let inst = this.state.instructions.filter(inst => {
-      return String(inst.stepNum) === e.target.name;
+      return String(inst.stepNum) == stepNumArg;
     });
     // make a copy of the state
     let copyArr = this.state.instructions;
@@ -77,12 +78,9 @@ class RecipeView extends Component {
             className={inst.isCompleted ? "instruction-checked" : "instruction"}
             key={index}
           >
-            <input
-              type="checkbox"
-              className="checkbox"
-              onClick={this.toggleCheckBox}
-              name={inst.stepNum}
-            />
+            <Checkbox isCompleted={inst.isCompleted} 
+              callbackArg={inst.stepNum} callback={this.toggleCheckBox}>
+            </Checkbox>
             <div className="description">{inst.description}</div>
           </div>
         ))}

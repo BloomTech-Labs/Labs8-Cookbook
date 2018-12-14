@@ -348,14 +348,38 @@
           font-size: 1.4rem;
         }
 
-        .checkbox {
-          width: 20px;
-          margin-top: 8px;
-        }
-
         .description {
           width: 480px;
         }
+
+        .checkbox-container {
+          width: 20px;
+          height: 20px;
+          margin: 3px 3px 0 0;
+          @media @desktop {
+            width: 28px;
+          }
+          @media @tablet {
+            width: 35px;
+          }
+      
+          .circle {
+              stroke: @CBgrey;
+          }
+      
+          .check-back-off {
+              stroke: @CBtan;
+              stroke-width: 0px;
+              fill: none;
+              stroke-opacity: 0;
+          }
+      
+          .check-off {
+              fill: @CBblue;
+              fill-opacity: 0;
+          }
+        }
+
       }
 
       .instruction-checked {
@@ -370,14 +394,37 @@
         font-size: 1.4rem;
         }
 
-        .checkbox {
-        width: 20px;
-        margin-top: 8px;
+        .checkbox-container {
+          width: 20px;
+          height: 20px;
+          margin: 3px 3px 0 0;
+          @media @desktop {
+            width: 28px;
+          }
+          @media @tablet {
+            width: 35px;
+          }
+      
+          .circle {
+              stroke: @CBblue;
+          }
+      
+          .check-back-on {
+              stroke: @CBgrey;
+              stroke-width: 5px;
+              fill: none;
+          }
+      
+          .check-on {
+              fill: @CBblue;
+              fill-opacity: 1;
+          }
         }
 
         .description {
         width: 480px;
         }
+
       }
 
       .instruction .not-checked {

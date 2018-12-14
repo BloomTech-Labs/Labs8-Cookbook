@@ -9,7 +9,7 @@ class Checkbox extends Component {
     
     render() {
         return (
-            <div className='checkbox-container' onClick={() => this.props.handleItemClick(this.props.index)}>
+            <div className='checkbox-container' onClick={() => this.props.callback(this.props.callbackArg)}>
             
             <svg
                 viewBox="0 0 33.421566 33.421566"
