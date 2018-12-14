@@ -29,8 +29,8 @@ button:hover {
   transform: scale(1.15);
 }
 @font-face {
-  font-family: 'burger-b';
-  src: local('burger-b'), url(../../designs/Icons/burger-b.woff) format('woff');
+  font-family: "burger-b";
+  src: local("burger-b"), url(../../designs/Icons/burger-b.woff) format("woff");
 }
 .container-margin-top {
   margin: 40px 0 211px ;
@@ -2021,22 +2021,13 @@ button:hover {
 .calendar-page-container .search-filter-bar .search-input {
   position: relative;
   margin: 0 10px 10px 10px;
-  flex: 40%;
+  flex: 30%;
 }
 @media (max-width: 600px) {
   .calendar-page-container .search-filter-bar .search-input {
+    flex: 100%;
     font-size: 1rem;
     margin: 10px 5px;
-  }
-}
-@media (max-width: 900px) {
-  .calendar-page-container .search-filter-bar .search-input {
-    flex: 50%;
-  }
-}
-@media (max-width: 1200px) {
-  .calendar-page-container .search-filter-bar .search-input {
-    flex: 40%;
   }
 }
 .calendar-page-container .search-filter-bar .search-input .recipes-search {
@@ -2084,27 +2075,26 @@ button:hover {
   opacity: 0.8;
 }
 .calendar-page-container .search-filter-bar .recipesFilterContainer {
-  flex: 40%;
+  flex: 60%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 @media (max-width: 600px) {
   .calendar-page-container .search-filter-bar .recipesFilterContainer {
     margin-bottom: 10px;
-    display: flex;
-    justify-content: space-around;
   }
 }
 @media (max-width: 900px) {
   .calendar-page-container .search-filter-bar .recipesFilterContainer {
-    flex: 30%;
+    justify-content: center;
   }
 }
 @media (max-width: 1200px) {
   .calendar-page-container .search-filter-bar .recipesFilterContainer {
-    flex: 60%;
+    flex: 50%;
+    justify-content: center;
   }
 }
 .calendar-page-container .search-filter-bar .recipesFilterContainer .button-selected {
@@ -2118,14 +2108,16 @@ button:hover {
   padding: 0 12px;
   outline: none;
   cursor: pointer;
-  width: 100px;
-  margin-right: 5px;
+  width: 120px;
+  margin-right: 15px;
   margin-bottom: 10px;
 }
 @media (max-width: 600px) {
   .calendar-page-container .search-filter-bar .recipesFilterContainer .button-selected {
     font-size: 1rem;
     height: 25px;
+    width: 110px;
+    margin-right: 10px;
   }
 }
 .calendar-page-container .search-filter-bar .recipesFilterContainer .button-not-selected {
@@ -2138,8 +2130,8 @@ button:hover {
   height: 30px;
   padding: 0 12px;
   outline: none;
-  width: 100px;
-  margin-right: 5px;
+  width: 120px;
+  margin-right: 15px;
   margin-bottom: 10px;
   color: #343e5a;
   background: white;
@@ -2149,6 +2141,8 @@ button:hover {
   .calendar-page-container .search-filter-bar .recipesFilterContainer .button-not-selected {
     font-size: 1rem;
     height: 25px;
+    width: 110px;
+    margin-right: 10px;
   }
 }
 .calendar-page-container .search-filter-bar .recipesFilterContainer .button-not-selected:hover {
@@ -2786,7 +2780,8 @@ button:hover {
     font-size: 1.6rem;
     top: 15px;
     flex: 0 1 100%;
-    margin-right: 75%;
+    margin-right: 80%;
+    margin-bottom: 5px;
   }
 }
 @media (max-width: 600px) {
@@ -2865,7 +2860,6 @@ button:hover {
 .recipesContainer .recipesFunctionBar .recipesFilterContainer {
   display: flex;
   flex-flow: row wrap;
-  align-items: flex-start;
   width: 380px;
   justify-content: space-around;
 }
@@ -2880,10 +2874,10 @@ button:hover {
     flex: 1 0 40%;
   }
 }
-.recipesContainer .recipesFunctionBar .recipesFilterContainer .button-selected {
+.recipesContainer .recipesFunctionBar .button-selected {
   font-family: 'Questrial', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
+  font-size: 1.3rem;
+  letter-spacing: 1.1px;
   border: #343e5a solid 2px;
   border-radius: 20px;
   background: #343e5a;
@@ -2891,18 +2885,15 @@ button:hover {
   height: 30px;
   padding: 0 12px;
   outline: none;
-  width: 100px;
-  margin-bottom: 10px;
-  margin-right: 5px;
   margin: 2px;
   width: 120px;
   margin-bottom: 5px;
   cursor: pointer;
 }
-.recipesContainer .recipesFunctionBar .recipesFilterContainer .button-not-selected {
+.recipesContainer .recipesFunctionBar .button-not-selected {
   font-family: 'Questrial', sans-serif;
-  font-size: 1.5rem;
-  letter-spacing: 1.5px;
+  font-size: 1.3rem;
+  letter-spacing: 1.1px;
   border: #343e5a solid 2px;
   border-radius: 20px;
   background: #343e5a;
@@ -2910,9 +2901,6 @@ button:hover {
   height: 30px;
   padding: 0 12px;
   outline: none;
-  width: 100px;
-  margin-bottom: 10px;
-  margin-right: 5px;
   margin: 2px;
   width: 120px;
   margin-bottom: 5px;
@@ -2920,13 +2908,9 @@ button:hover {
   background: white;
   cursor: pointer;
 }
-.recipesContainer .recipesFunctionBar .recipesFilterContainer .button-not-selected:hover {
+.recipesContainer .recipesFunctionBar .button-not-selected:hover {
   background: #bcc9d2;
   font-weight: bold;
-}
-.recipesContainer .recipesFunctionBar .burger-icon {
-  height: 15px;
-  margin-right: 3px;
 }
 .recipesContainer .recipesCards {
   display: flex;

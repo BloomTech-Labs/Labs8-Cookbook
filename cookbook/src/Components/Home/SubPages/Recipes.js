@@ -127,7 +127,7 @@ class Recipes extends Component {
         </div>
         <Query query={GET_RECIPES_QUERY}>
           {({ loading, error, data }) => {
-            if (loading) return <Loading></Loading>;
+            if (loading) return <Loading />;
             if (error) return <div>Error</div>;
             const recipesToRender = data.recipes.filter(recipe => {
               let hasMealType = true;
