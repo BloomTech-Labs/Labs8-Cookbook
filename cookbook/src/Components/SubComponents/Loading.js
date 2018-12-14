@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet";
 
 class Loading extends Component {
   constructor(props) {
@@ -56,6 +57,9 @@ class Loading extends Component {
   render() {
     return (
       <div className="loading-container">
+        <Helmet>
+          <title>COOKBOOK</title>
+        </Helmet>
         <div
           className={
             this.state.animate
