@@ -11,6 +11,7 @@ import { GET_RECIPES_QUERY } from "./Recipes";
 import { Helmet } from "react-helmet";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { toastMessage } from "../../../utils/toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const propTypes = {};
 
@@ -231,7 +232,7 @@ class RecipeCalendar extends Component {
       // calling the query from gql, passes data from backend to front-end
       <Query query={QUERY_RECIPE_EVENT}>
         {({ loading, error, data }) => {
-          if (loading) return <Loading></Loading>;
+          if (loading) return <Loading />;
           if (error) return <div>Error</div>;
 
           // search function to filter events based on title name, not case sensitive
@@ -280,31 +281,31 @@ class RecipeCalendar extends Component {
                       className={this.filterButtonClassName("breakfast")}
                       onClick={() => this.handleFilter("breakfast")}
                     >
-                      breakfast
+                      <FontAwesomeIcon icon="coffee" /> breakfast
                     </button>
                     <button
                       className={this.filterButtonClassName("lunch")}
                       onClick={() => this.handleFilter("lunch")}
                     >
-                      lunch
+                      <span style={{ fontFamily: "burger-b" }}>b</span> lunch
                     </button>
                     <button
                       className={this.filterButtonClassName("dinner")}
                       onClick={() => this.handleFilter("dinner")}
                     >
-                      dinner
+                      <FontAwesomeIcon icon="utensils" /> dinner
                     </button>
                     <button
                       className={this.filterButtonClassName("snack")}
                       onClick={() => this.handleFilter("snack")}
                     >
-                      snack
+                      <FontAwesomeIcon icon="apple-alt" /> snack
                     </button>
                     <button
                       className={this.filterButtonClassName("dessert")}
                       onClick={() => this.handleFilter("dessert")}
                     >
-                      dessert
+                      <FontAwesomeIcon icon="cookie-bite" /> dessert
                     </button>
                   </div>
                 </div>
