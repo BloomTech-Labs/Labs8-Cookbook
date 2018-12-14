@@ -26,7 +26,7 @@ body::-webkit-scrollbar-track {
   outline: none;
 }
 button:hover {
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 @font-face {
   font-family: "burger-b";
@@ -1509,7 +1509,7 @@ button:hover {
   display: table-cell;
   padding: 0.5em;
   min-width: 1em;
-  border-right: 1px solid #EAECEC;
+  border-right: 1px solid #eaecec;
   color: black;
   vertical-align: middle;
   text-align: right;
@@ -1537,32 +1537,32 @@ button:hover {
   font-weight: bold;
 }
 .DayPicker-Day--outside {
-  color: #8B9898;
+  color: #8b9898;
   cursor: default;
 }
 .DayPicker-Day--disabled {
-  color: #DCE0E0;
+  color: #dce0e0;
   cursor: default;
   /* background-color: #eff1f1; */
 }
 /* Example modifiers */
 .DayPicker-Day--sunday {
-  background-color: #F7F8F8;
+  background-color: #f7f8f8;
 }
 .DayPicker-Day--sunday:not(.DayPicker-Day--today) {
-  color: #DCE0E0;
+  color: #dce0e0;
 }
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
   position: relative;
   background-color: #de6a5a;
-  color: #F0F8FF;
+  color: #f0f8ff;
   font-weight: bold;
 }
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
   background-color: #de6a5a;
 }
 .DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-  background-color: #F0F8FF;
+  background-color: #f0f8ff;
 }
 /* DayPickerInput */
 .DayPickerInput {
@@ -2832,7 +2832,7 @@ button:hover {
   position: relative;
   border: 2px solid #343e5a;
   height: 30px;
-  width: 650px;
+  width: 600px;
   border-radius: 50px;
   padding-left: 31px;
   padding-right: 11px;
@@ -2887,7 +2887,7 @@ button:hover {
 .recipesContainer .recipesFunctionBar .recipesFilterContainer {
   display: flex;
   flex-flow: row wrap;
-  width: 380px;
+  width: 400px;
   justify-content: space-around;
 }
 @media (max-width: 600px) {
@@ -2942,7 +2942,7 @@ button:hover {
 .recipesContainer .recipesCards {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 10px;
   /* Prevents :hover from triggering in the gaps between items */
   visibility: hidden;
@@ -3483,6 +3483,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 25px 0;
   }
 }
 .recipe-page .right-container .iframe-container {
@@ -3513,8 +3514,7 @@ button:hover {
   border-radius: 25px;
   background-color: #343e5a;
   color: #f5e9df;
-  padding-top: 20px;
-  padding-bottom: 15px;
+  padding: 20px 0;
   margin-bottom: 25px;
   margin-top: 20px;
 }
@@ -3531,7 +3531,7 @@ button:hover {
 }
 @media (max-width: 600px) {
   .recipe-page .right-container .instructions {
-    width: 300px;
+    width: 320px;
     margin-left: 0;
   }
 }
@@ -3540,7 +3540,7 @@ button:hover {
   padding-left: 10px;
   padding-right: 20px;
   line-height: 2.8rem;
-  margin-top: 10px;
+  padding: 5px;
 }
 @media (max-width: 600px) {
   .recipe-page .right-container .instructions .instruction {
@@ -3584,7 +3584,7 @@ button:hover {
   padding-left: 10px;
   padding-right: 20px;
   line-height: 2.8rem;
-  margin-top: 10px;
+  padding: 5px;
 }
 @media (max-width: 600px) {
   .recipe-page .right-container .instructions .instruction-checked {
@@ -3624,104 +3624,232 @@ button:hover {
 .recipe-page .right-container .instructions .instruction .not-checked {
   background-color: #343e5a;
 }
-.user-info {
-  max-width: 400px;
-  margin: auto;
+.group-title {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
+.group-title h1 {
+  margin: 0 0 5px 0;
+  color: #343e5a;
+}
+.group-title button {
+  background: none;
+  border: none;
+  color: #de6a5a;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.group-title button:hover {
+  color: #343e5a;
+}
+.user-info-ul {
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+}
+.user-info-ul li .row-title {
+  font-size: 1.8rem;
+  margin-left: 20px;
+}
+.user-info-ul li .row-value {
+  font-size: 2rem;
+  padding: 0 0 10px 20px;
+  color: #343e5a;
+  font-weight: bold;
+  border-bottom: 1px solid #bcc9d2;
+}
+.user-info-ul li .name-input {
+  padding: 0 0 10px 20px;
+  width: 100%;
+  border: none;
+  line-height: 1.2;
+  color: #343e5a;
+  font-size: 2rem;
+  font-family: 'Muli', sans-serif;
+  font-weight: bold;
+  border-bottom: 1px solid #de6a5a;
+}
+.user-info-ul li .email-value {
+  border-bottom: none;
+}
+.membership {
+  margin-top: 60px;
+}
+.membership .user-membership-ul {
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+}
+.membership .user-membership-ul li .row-title {
+  font-size: 1.8rem;
+  margin-left: 20px;
+}
+.membership .user-membership-ul li .row-value {
+  font-size: 2rem;
+  padding: 0 0 10px 20px;
+  color: orange;
+  font-weight: bold;
+  border-bottom: 1px solid #bcc9d2;
+}
+.membership .user-membership-ul .message-li {
+  border-bottom: none;
+  margin-left: 20px;
+}
+.membership h1 {
+  margin: 0 0 5px 0;
+  color: #343e5a;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+.membership .membership-cards {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-evenly;
 }
 @media (max-width: 600px) {
-  .user-info {
+  .membership .membership-cards {
     flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    margin: 15px;
+    align-items: center;
   }
 }
-.user-info .form-group {
-  margin: 10px 0;
-  padding: 10px 0;
-  line-height: 2;
+.membership .membership-cards .card {
   display: flex;
-  justify-content: center;
-}
-.user-info .form-group label {
-  width: 40%;
-  display: flex;
-  justify-content: center;
-  color: #343e5a;
-  font-size: 20px;
-  margin-right: 30px;
-}
-.user-info input {
-  border: 0.15em solid #de6a5a;
-  border-radius: 0.7em;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 2px solid #bcc9d2;
+  width: 220px;
+  height: 310px;
+  border-radius: 10px;
   padding: 10px;
-  display: flex;
-  justify-content: center;
-  width: 20rem;
-  font-size: 1.5rem;
 }
-.user-info #user-email,
-.user-info #user-status {
-  background-color: #eee;
-  opacity: 1;
+@media (max-width: 600px) {
+  .membership .membership-cards .card {
+    margin-bottom: 30px;
+  }
 }
-.user-info #user-email:hover,
-.user-info #user-status:hover {
-  background-color: #9e9d9d;
-  opacity: 1;
-  cursor: not-allowed;
+.membership .membership-cards .card h2 {
+  margin: 0;
+  font-weight: bold;
 }
-.buttons {
-  max-width: 30%;
+.membership .membership-cards .card .card-ul {
+  list-style: none;
+  padding-left: 20px;
+}
+.membership .membership-cards .card .card-ul li {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+.membership .membership-cards .card .card-price {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.membership .membership-cards .card button {
+  width: 110px;
   margin: auto;
-  display: flex;
-  justify-content: space-evenly;
-}
-.buttons .settings-btn {
-  border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 30px;
+  border: none;
+  height: 35px;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
   cursor: pointer;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  color: #fff;
-  width: 150px;
-  margin: 0 8px 8px 8px;
 }
-.buttons .save-btn {
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+.membership .membership-cards .card button:hover {
+  transform: scale(1);
 }
-.buttons .stripe-btn {
-  background-color: #ffa048;
-  border-color: #ffa048;
+.membership .membership-cards .non-subscribed-free {
+  background: #bcc9d2;
 }
-.buttons .cancel-btn {
-  background-color: #d9534f;
-  border-color: #d43f3a;
+.membership .membership-cards .non-subscribed-free .card-title {
+  border-bottom: 2px solid white;
 }
-.success-message {
-  text-align: center;
-  color: green;
-  font-weight: 700;
-  font-size: 1.8rem;
-  margin-top: 20px;
+.membership .membership-cards .non-subscribed-free li::before {
+  content: "•";
+  color: white;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
-.error-message {
-  text-align: center;
-  color: red;
-  font-weight: 700;
-  font-size: 1.8rem;
-  margin-top: 20px;
+.membership .membership-cards .non-subscribed-free .card-price {
+  color: white;
+}
+.membership .membership-cards .non-subscribed-free button {
+  background: white;
+  color: #bcc9d2;
+  letter-spacing: 0.5px;
+}
+.membership .membership-cards .non-subscribed-premium {
+  background: white;
+  border: 2px solid #fed092;
+  cursor: pointer;
+}
+.membership .membership-cards .non-subscribed-premium:hover {
+  transform: scale(1.03);
+}
+.membership .membership-cards .non-subscribed-premium .card-title {
+  border-bottom: 2px solid #fed092;
+}
+.membership .membership-cards .non-subscribed-premium li::before {
+  content: "•";
+  color: #fed092;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+.membership .membership-cards .non-subscribed-premium .card-price {
+  color: #fed092;
+}
+.membership .membership-cards .non-subscribed-premium button {
+  background: #fed092;
+  color: white;
+  letter-spacing: 0.5px;
+}
+.membership .membership-cards .subscribed-free {
+  background: white;
+  cursor: pointer;
+}
+.membership .membership-cards .subscribed-free .card-title {
+  border-bottom: 2px solid #bcc9d2;
+}
+.membership .membership-cards .subscribed-free:hover {
+  transform: scale(1.03);
+}
+.membership .membership-cards .subscribed-free li::before {
+  content: "•";
+  color: #bcc9d2;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+.membership .membership-cards .subscribed-free .card-price {
+  color: #bcc9d2;
+}
+.membership .membership-cards .subscribed-free button {
+  background: #bcc9d2;
+  color: white;
+  letter-spacing: 0.5px;
+}
+.membership .membership-cards .subscribed-premium {
+  background: #fed092;
+  border: 2px solid white;
+}
+.membership .membership-cards .subscribed-premium .card-title {
+  border-bottom: 2px solid white;
+}
+.membership .membership-cards .subscribed-premium li::before {
+  content: "•";
+  color: white;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+.membership .membership-cards .subscribed-premium .card-price {
+  color: white;
+}
+.membership .membership-cards .subscribed-premium button {
+  background: white;
+  color: #fed092;
+  letter-spacing: 0.5px;
 }
 .modal-portal .portal-container {
   border: 1.5px solid #343e5a;
@@ -3862,7 +3990,7 @@ button:hover {
 }
 .modal-portal .portal-container .modal-container .modal-sub-container .DayPicker .DayPicker-wrapper .DayPicker-Months .DayPicker-Month {
   border: 2px #343e5a solid;
-  height: 300px;
+  height: 200px;
   display: table;
   margin: 0 1em;
   border-spacing: 0;

@@ -9,6 +9,7 @@ import add_recipe from "../../designs/LandingPage/add_recipe.svg";
 import recipes from "../../designs/LandingPage/recipes.svg";
 import calendar from "../../designs/LandingPage/calendar.svg";
 import grocery from "../../designs/LandingPage/grocery.svg";
+import { Helmet } from "react-helmet";
 
 const { isAuthenticated } = auth;
 
@@ -24,6 +25,9 @@ class LandingPage extends Component {
   render() {
     return (
       <div className="landing-container">
+        <Helmet>
+          <title>COOKBOOK</title>
+        </Helmet>
         <div
           className="above-the-fold"
           style={{ backgroundImage: `url(${titleImg})` }}
