@@ -1335,6 +1335,32 @@ body::-webkit-scrollbar-track {
   width: 100%;
   margin-bottom: 30px;
 }
+.checkbox-container {
+  width: 100%;
+  height: 20px;
+}
+.checkbox-container .circle {
+  stroke: #343e5a;
+}
+.checkbox-container .check-back-on {
+  stroke: white;
+  stroke-width: 5px;
+  fill: none;
+}
+.checkbox-container .check-on {
+  fill: #343e5a;
+  fill-opacity: 1;
+}
+.checkbox-container .check-back-off {
+  stroke: white;
+  stroke-width: 0px;
+  fill: none;
+  stroke-opacity: 0;
+}
+.checkbox-container .check-off {
+  fill: #343e5a;
+  fill-opacity: 0;
+}
 /* DayPicker styles */
 .scheduled-for {
   display: flex;

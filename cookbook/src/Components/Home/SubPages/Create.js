@@ -11,6 +11,8 @@ import { QUERY_RECIPE_EVENT } from "./Calendar";
 import { Helmet } from "react-helmet";
 import { toastMessage } from "../../../utils/toastify";
 
+import Checkbox from "../../SubComponents/Checkbox.js";
+
 //Mutation for creating recipe
 const CREATE_RECIPE_MUTATION = gql`
   mutation(
@@ -262,6 +264,8 @@ class Create extends Component {
                 support advanced features like instructions checklists and grocery list ingredients.</p>
 
               <p>Contact the team at <b>cookbook_project@yahoo.com</b> to request support for your favorite recipe website.</p>
+
+              <Checkbox></Checkbox>
 
             </div>
 
