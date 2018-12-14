@@ -95,7 +95,7 @@ class Create extends Component {
 
   //handle text change in url search box
   handleChange = e => {
-    this.setState({ 
+    this.setState({
       [e.target.name]: e.target.value,
       type: "",
       loadingPreview: false,
@@ -207,7 +207,7 @@ class Create extends Component {
       }
       toastMessage(
         "success",
-        "Saved recipe successfully. You can find it in this page."
+        "Saved recipe successfully. You can find your recipe here!"
       );
       //redirect to recipes
       return this.props.history.push("/home/recipes");
@@ -251,26 +251,44 @@ class Create extends Component {
           </button>
         </div>
 
-        {!this.state.query &&
-          <div className='tutorial-container'>
+        {!this.state.query && (
+          <div className="tutorial-container">
+            <div className="tutorial">
+              <p>
+                Paste in the url of a recipe from any website in order to save
+                and schedule it.
+              </p>
 
-            <div className='tutorial'>
+              <p>
+                Only recipes from{" "}
+                <a
+                  href="http://www.allrecipes.com"
+                  style={{ textDecoration: "none" }}
+                >
+                  <b>allrecipes.com</b>
+                </a>{" "}
+                and{" "}
+                <a
+                  href="http://www.geniuskitchen.com"
+                  style={{ textDecoration: "none" }}
+                >
+                  <b>geniuskitchen.com</b>
+                </a>{" "}
+                currently support advanced features like instructions checklists
+                and grocery list ingredients.
+              </p>
 
-              <p>Paste in the url of a recipe from any website in order to save and schedule it.</p>
-
-              <p>Only recipes from <b>allrecipes.com</b> and <b>geniuskitchen.com</b> currently 
-                support advanced features like instructions checklists and grocery list ingredients.</p>
-
-              <p>Contact the team at <b>cookbook_project@yahoo.com</b> to request support for your favorite recipe website.</p>
-
+              <p>
+                Contact the team at <b>cookbook_project@yahoo.com</b> to request
+                support for your favorite recipe website.
+              </p>
             </div>
-
           </div>
-        }
+        )}
 
         <div className="preview-and-schedule">
           {this.state.og_title === "N/A" ? (
-            <div></div>
+            <div />
           ) : (
             <Preview
               og_title={this.state.og_title}
