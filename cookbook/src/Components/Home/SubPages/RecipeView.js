@@ -52,10 +52,10 @@ class RecipeView extends Component {
     return comparison;
   }
 
-  toggleCheckBox = (stepNumArg) => {
+  toggleCheckBox = stepNumArg => {
     // filter through instuction state to find matching instruction by id
     let inst = this.state.instructions.filter(inst => {
-      return String(inst.stepNum) == stepNumArg;
+      return inst.stepNum === stepNumArg;
     });
     // make a copy of the state
     let copyArr = this.state.instructions;
@@ -78,9 +78,11 @@ class RecipeView extends Component {
             className={inst.isCompleted ? "instruction-checked" : "instruction"}
             key={index}
           >
-            <Checkbox isCompleted={inst.isCompleted} 
-              callbackArg={inst.stepNum} callback={this.toggleCheckBox}>
-            </Checkbox>
+            <Checkbox
+              isCompleted={inst.isCompleted}
+              callbackArg={inst.stepNum}
+              callback={this.toggleCheckBox}
+            />
             <div className="description">{inst.description}</div>
           </div>
         ))}
@@ -158,7 +160,7 @@ class RecipeView extends Component {
                     </div>
                   </div>
                 ) : (
-                  <div style={{fontWeight: 'bold'}}>No events scheduled</div>
+                  <div style={{ fontWeight: "bold" }}>No events scheduled</div>
                 )}
               </div>
               <div className="recipe-info">

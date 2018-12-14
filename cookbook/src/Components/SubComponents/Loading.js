@@ -5,19 +5,26 @@ class Loading extends Component {
     super(props);
     this.state = {
       animate: true,
-      colors: ["#343e5a", "#de6a5a", "#fed092", "#f5e9df", "#bcc9d2"]
+      colors: ["#343e5a", "#de6a5a", "#fed092", "#f5e9df", "#bcc9d2"],
+      intervalId: null
     };
   }
 
-  componentDidMount = () => {
-    setInterval(() => {
+  componentDidMount() {
+    const intervalId = setInterval(() => {
       this.setState({ animate: false });
       this.shuffleColors();
       setTimeout(() => {
         this.setState({ animate: true });
       }, 100);
     }, 2900);
-  };
+    this.setState({ intervalId: intervalId });
+  }
+
+  componentWillUnmount() {
+    // use intervalId from the state to clear the interval
+    clearInterval(this.state.intervalId);
+  }
 
   shuffleColors = () => {
     let colorsCopy = this.state.colors;
