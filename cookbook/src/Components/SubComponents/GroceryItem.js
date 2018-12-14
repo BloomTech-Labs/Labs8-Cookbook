@@ -1,4 +1,5 @@
 import React from "react";
+import Checkbox from "./Checkbox";
 
 const GroceryItem = props => {
   return (
@@ -8,14 +9,9 @@ const GroceryItem = props => {
         props.ingredient.isCompleted ? "completed" : null
       }`}
     >
-      <div className="checkbox-container">
-        <input
-          className="gl-checkbox"
-          type="checkbox"
-          checked={props.ingredient.isCompleted}
-          onChange={() => props.handleItemClick(props.index)}
-        />
-      </div>
+      <Checkbox isCompleted={props.ingredient.isCompleted} 
+        callbackArg={props.index} callback={props.handleItemClick}>
+      </Checkbox>
       <span
         className="item-text"
         onClick={() => props.handleItemClick(props.index)}
