@@ -343,6 +343,13 @@ The overall style is very **round**. Components have **rounded corners**. Button
 **Each page has a unique color scheme** based on the navigation bar at the top of the page. **One color takes over the page**, while the **other color should accent functional components**. For example, most of the “Create” page is red, but buttons and inputs will turn orange when hovered over. Some colors will carry over into other pages. Recipes on the “Calendar” page are dark blue for readability and consistency.
 
 #### Image Credits:
+The top image on our landing page was retrieved from the free stock photo website: pexels. The exact URL for our image can be found here:
+https://www.pexels.com/photo/basil-delicious-food-ingredients-459469/
+
+All icons on our website were created locally, or imported from the the FontAwesome library.
+
+Lastly, the illustrations on our landing page were taken from unDraw at:
+https://undraw.co/illustrations
 
 #### Color Scheme:
 - Aqua Haze `#EBF4F4`
