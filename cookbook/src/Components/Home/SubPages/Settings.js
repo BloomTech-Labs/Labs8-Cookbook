@@ -34,19 +34,13 @@ const UPDATE_USER_MUTATION = gql`
 
 class Settings extends React.Component {
   state = {
-    fname: null,
-    lname: null
+    isEditing: false,
+    fname: "",
+    lname: ""
   };
 
-  fetchUser = () => {
-    if (this.props.userData.currentUser) {
-      return {
-        firstName:
-          this.state.fname || this.props.userData.currentUser.firstName || "",
-        lastName:
-          this.state.lname || this.props.userData.currentUser.lastName || ""
-      };
-    }
+  editHandler = () => {
+    this.setState({ isEditing: !this.state.isEditing });
   };
 
   changeHandler = e => {
@@ -69,12 +63,12 @@ class Settings extends React.Component {
     }
   };
 
-  updateUserName = async (fn, ln) => {
+  updateUserName = async () => {
     try {
       let data = {};
-      if (fn) data.firstName = fn;
-      if (ln) data.lastName = ln;
-      if (fn || ln) {
+      if (this.state.fname) data.firstName = this.state.fname;
+      if (this.state.lname) data.lastName = this.state.lname;
+      if (this.state.fname || this.state.lname) {
         await this.props.updateUser({
           variables: {
             data: data,
@@ -115,89 +109,150 @@ class Settings extends React.Component {
     if (this.props.userData.loading) {
       return <div>Loading...</div>;
     } else {
-      const { firstName, lastName } = this.fetchUser();
       return (
         <div className="settings-page">
           <Helmet>
             <title>Settings | COOKBOOK</title>
           </Helmet>
-          <form className="user-info">
-            <div className="form-group">
-              <label className="control-label">First Name</label>
-              <input
-                type="text"
-                name="fname"
-                id="user-fn"
-                value={firstName}
-                onChange={this.changeHandler}
-              />
-            </div>
-            <div className="form-group">
-              <label className="control-label">Last Name</label>
-              <input
-                type="text"
-                name="lname"
-                id="user-ln"
-                value={lastName}
-                onChange={this.changeHandler}
-              />
-            </div>
-            <div className="form-group">
-              <label className="control-label">Email</label>
-              <input
-                type="email"
-                id="user-email"
-                value={this.props.userData.currentUser.email}
-                readOnly
-              />
-            </div>
-            <div className="form-group">
-              <label className="control-label">Membership</label>
-              <input
-                type="text"
-                id="user-status"
-                value={
-                  this.props.userData.currentUser.isSubscribed
-                    ? "Premium User"
-                    : "Free User"
-                }
-                readOnly
-              />
-            </div>
-            <div className="form-group" />
-          </form>
-          <div className="buttons">
-            <button
-              type="button"
-              className="settings-btn save-btn"
-              onClick={() =>
-                this.updateUserName(this.state.fname, this.state.lname)
-              }
-            >
-              Save
+          <div className="group-title">
+            <h1>account information</h1>
+            <button onClick={this.editHandler}>
+              {this.state.isEditing ? (
+                <p onClick={this.updateUserName}>done</p>
+              ) : (
+                <p>edit</p>
+              )}
             </button>
-            {this.props.userData.currentUser.isSubscribed ? (
-              <button
-                type="button"
-                className="settings-btn cancel-btn"
-                onClick={this.cancelSubscription}
-              >
-                Cancel
-              </button>
-            ) : (
-              <StripeCheckout
-                stripeKey="pk_test_FyA4hajfxfEQ4jCcEaeQtTIL"
-                name="Cookbook Subscription"
-                zipcode={false}
-                amount={1000}
-                currency="USD"
-                email={this.props.userData.currentUser.email}
-                token={res => this.onToken(res, this.props.createSubscription)}
-                // closed={this.onClose}
-              >
-                <button className="settings-btn stripe-btn">Subscribe</button>
-              </StripeCheckout>
-            )}
+          </div>
+          <ul className="user-info-ul">
+            <li className="name-li">
+              <p className="row-title">first name</p>
+              {this.state.isEditing ? (
+                <input
+                  name="fname"
+                  className="name-input"
+                  type="text"
+                  value={this.state.fname}
+                  onChange={this.changeHandler}
+                />
+              ) : (
+                <p className="row-value">
+                  {this.props.userData.currentUser.firstName}
+                </p>
+              )}
+            </li>
+            <li className="name-li">
+              <p className="row-title">last name</p>
+              {this.state.isEditing ? (
+                <input
+                  name="lname"
+                  className="name-input"
+                  type="text"
+                  value={this.state.lname}
+                  onChange={this.changeHandler}
+                />
+              ) : (
+                <p className="row-value">
+                  {this.props.userData.currentUser.lastName}
+                </p>
+              )}
+            </li>
+            <li className="email-li">
+              <p className="row-title">email</p>
+              <p className="row-value email-value">
+                {this.props.userData.currentUser.email}
+              </p>
+            </li>
+          </ul>
+          <div className="membership">
+            <h1>membership</h1>
+            <ul className="user-membership-ul">
+              <li className="status-li">
+                <p className="row-title">current membership</p>
+                <p className="row-value">
+                  {this.props.userData.currentUser.isSubscribed
+                    ? "premium"
+                    : "standard"}
+                </p>
+              </li>
+              <li className="message-li">
+                <p>
+                  {this.props.userData.currentUser.isSubscribed
+                    ? "If you'd like to cancel your membership, please select the standard plan below"
+                    : "If you'd like to subscribe, please select the premium plan below"}
+                </p>
+              </li>
+            </ul>
+            <div className="membership-cards">
+              {this.props.userData.currentUser.isSubscribed ? (
+                <div
+                  className="card subscribed-free"
+                  onClick={this.cancelSubscription}
+                >
+                  <h2 className="card-title">standard</h2>
+                  <ul className="card-ul">
+                    <li>save your recipes to cookbook</li>
+                    <li>view recipe instructions and ingredients</li>
+                    <li>schedule recipes and view them on your calendar</li>
+                  </ul>
+                  <h2 className="card-price">free</h2>
+                  <button>unsubscribe</button>
+                </div>
+              ) : (
+                <div className="card non-subscribed-free">
+                  <h2 className="card-title">standard</h2>
+                  <ul className="card-ul">
+                    <li>save your recipes to cookbook</li>
+                    <li>view recipe instructions and ingredients</li>
+                    <li>schedule recipes and view them on your calendar</li>
+                  </ul>
+                  <h2 className="card-price">free</h2>
+                  <button>registered</button>
+                </div>
+              )}
+              {this.props.userData.currentUser.isSubscribed ? (
+                <div className="card subscribed-premium">
+                  <h2 className="card-title">premium</h2>
+                  <ul className="card-ul">
+                    <li>all standard features included</li>
+                    <li>access to grocery list</li>
+                    <li>
+                      generate a customized shopping list of ingredients for
+                      your recipes
+                    </li>
+                  </ul>
+                  <h2 className="card-price">$10/month</h2>
+                  <button>subscribed</button>
+                </div>
+              ) : (
+                <StripeCheckout
+                  stripeKey="pk_test_FyA4hajfxfEQ4jCcEaeQtTIL"
+                  name="Cookbook Subscription"
+                  zipcode={false}
+                  amount={1000}
+                  currency="USD"
+                  email={this.props.userData.currentUser.email}
+                  token={res =>
+                    this.onToken(res, this.props.createSubscription)
+                  }
+                  // closed={this.onClose}
+                >
+                  <div className="card non-subscribed-premium">
+                    <h2 className="card-title">premium</h2>
+                    <ul className="card-ul">
+                      <li>all standard features included</li>
+                      <li>access to grocery list</li>
+                      <li>
+                        generate a customized shopping list of ingredients for
+                        your recipes
+                      </li>
+                    </ul>
+                    <h2 className="card-price">$10/month</h2>
+                    <button>subscribe</button>
+                  </div>
+                </StripeCheckout>
+              )}
+            </div>
           </div>
         </div>
       );
