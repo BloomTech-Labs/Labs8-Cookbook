@@ -1,25 +1,15 @@
 import React, { Component } from 'react';
 
 class Checkbox extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          isComplete: false
-        };
-      }
 
     handleCheckClass = (base) => {
-        if (this.state.isComplete) return `${base}-on`;
+        if (this.props.isCompleted) return `${base}-on`;
         else return `${base}-off`;
-    }
-
-    toggleIsComplete = () => {
-        this.setState({ isComplete: !this.state.isComplete });
     }
     
     render() {
         return (
-            <div className='checkbox-container' onClick={() => this.toggleIsComplete()}>
+            <div className='checkbox-container' onClick={() => this.props.handleItemClick(this.props.index)}>
             
             <svg
                 viewBox="0 0 33.421566 33.421566"
