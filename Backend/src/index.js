@@ -1,5 +1,6 @@
 // This file start the server. Also all logic for authentication, billing, etc... stay here
 require("dotenv").config();
+require("newrelic");
 const createServer = require("./createServer");
 const cors = require("cors");
 
